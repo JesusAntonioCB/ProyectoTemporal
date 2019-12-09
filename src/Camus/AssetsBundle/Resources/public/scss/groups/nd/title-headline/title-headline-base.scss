@@ -1,0 +1,201 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.nd-th-base{
+  margin-bottom: 18px;
+  padding-top: 15px;
+  overflow: hidden;
+  position: relative;
+  .media-container{
+    .title, .heading, .summary{
+      float: right;
+      width: 65%;
+    }
+    .title{
+      margin:0 0 5px;
+      @include text-with-YanoneKaffeesatz-bold-color-white;
+      font-size: 44px;
+      line-height: 51px;
+      background: $color-vivid-violet;
+      padding: 20px;
+    }
+    .heading{
+      min-height: 66px;
+      margin: 0 0 20px;
+      padding: 14px 8px;
+      @include text-with-YanoneKaffeesatz-color-hollywood-cerise;
+      font-size: 28px;
+      line-height: 34px;
+      border-top: 2px solid;
+      border-bottom: 2px solid;
+    }
+    .summary{
+      margin: 0;
+      @include text-with-sans-pro-color-black;
+      font-size: 28px;
+      line-height: 38px;
+      &::selection{
+        background-color: $color-alizarin-crimson;
+      }
+    }
+    .detail{
+      clear: both;
+      padding: 15px 0;
+      &:after{
+        content: '';
+        display: table;
+        clear: both;
+      }
+    }
+    .sponsor{
+      position: absolute;
+      bottom: 13px;
+      .caption, .img-link{
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .caption{
+        width: 70px;
+        margin-right: 5px;
+        @include text-with-open-sans-5-color-nobel;
+        font-size: 11px;
+        line-height: 13px;
+      }
+      .img-link{
+        img{
+          max-width: 148px;
+          height: 32px;
+        }
+      }
+      &:after{
+        content: '';
+        display: table;
+        clear: both;
+      }
+    }
+    .extras{
+      position: absolute;
+      top: 0;
+      .social-network, .elements{
+        .hint{
+          float: left;
+          width: 70px;
+          margin-top: 3px;
+          margin-right: 5px;
+          @include text-with-open-sans-5-color-nobel;
+          font-size: 11px;
+          line-height: 13px;
+        }
+        &:after{
+          content: '';
+          display: table;
+          clear: both;
+        }
+      }
+      .social-network{
+        .logos{
+          float: left;
+        }
+      }
+      .elements{
+        margin-top: 10px;
+        .count{
+          float: left;
+          margin-top: 3px;
+          padding: 0 10px;
+          font-size: 18px;
+          @include text-with-sans-serif-color-gray;
+          border: {
+            left: 1px solid $color-nobel;
+            right: 1px solid $color-nobel;
+          }
+          span{
+            line-height: 18px;
+            display: inline-block;
+            vertical-align: text-top;
+          }
+        }
+      }
+      &:after{
+        content: '';
+        display: table;
+        clear: both;
+      }
+    }
+  }
+}
+@include two-column{
+  .nd-th-base{
+    max-width: $two-column;
+    .media-container{
+      .title, .heading, .summary{
+        width: 100%;
+      }
+      .sponsor{
+        position: static;
+        margin: 20px 0;
+        .caption{
+          width: auto;
+        }
+      }
+      .extras{
+        position: static;
+        .social-network{
+          float: left;
+        }
+        .elements{
+          float: right;
+          margin-top: 0;
+        }
+      }
+      .detail{
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+@include one-column{
+  .nd-th-base{
+    max-width: $one-column;
+    .media-container{
+      .title{
+        font-size: 26px;
+        line-height: 31px;
+      }
+      .heading{
+        min-height: 42px;
+        padding: 8px;
+        font-size: 18px;
+        line-height: 22px;
+      }
+      .summary{
+        font-size: 24px;
+        line-height: 31px;
+      }
+      .sponsor{
+        .img-link{
+          float: right;
+        }
+      }
+      .extras{
+        display: table;
+        margin: 0 auto;
+        .social-network{
+          .hint{
+            display: none;
+          }
+          .logos{
+            .wp{
+              display: inline-block;
+            }
+          }
+        }
+        .elements{
+          display: none !important;
+        }
+      }
+    }
+  }
+}

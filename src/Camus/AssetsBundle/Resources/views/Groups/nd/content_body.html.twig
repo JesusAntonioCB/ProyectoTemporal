@@ -1,0 +1,13 @@
+<div class="nd-content-body">
+  {% if noteType == 'news' %}
+  <span class="author" itemprop="author">{{ module.author }}</span>
+  <div class="content-date">
+    <span class="location" itemprop="contentLocation">{{ module.signaturePlace }}</span> / <time datetime="{{ module.publishedDate|replace({'.':'-'}) }}" itemprop="datePublished">{{ module.publishedDate }}</time>
+  </div>
+  {% endif %}
+  {% set currentPath =  app.request.getSchemeAndHttpHost() %}
+  <div id="content-body" class="media-container {{ noteType }}" itemprop="articleBody">
+    {% set bodyEmbed = setEmbedModules(module.body,embedBodyModules) %}
+    {{ bodyEmbed|pregReplace(currentPath)|raw }}
+  </div>
+</div>

@@ -1,0 +1,509 @@
+{% set stations = [
+  {
+    'url' : 'http://17793.live.streamtheworld.com/FMTU_SC',
+    'title' : 'Monterrey',
+    'city' : '103.7',
+    'frame' : '/radio/monterrey'
+  },
+  {
+    'url' : 'http://14083.live.streamtheworld.com/XEAUAMMP3_SC',
+    'title' : 'En vivo',
+    'city' : '',
+    'frame' : '/radio/tvenvivo'
+  }
+] %}
+{% if module.template == 'row_left_image' %}
+  <div class="row-left-image" data-camus-template="{{module.templateName}}"  {{ data_camus_type["lr_list_row"] }}>
+    <div class="img-container">
+      <a {{ module.slug|linkConstruct|raw }}>
+        {{ module.thumbnail|asImage(module.alt)|raw }}
+      </a>
+    </div>
+    <div class="title-container">
+      <div class="title">
+        <a {{ module.slug|linkConstruct|raw }}>
+          <span {{ data_camus_title }}> {{ module.title|striptags }} </span>
+        </a>
+      </div>
+      <div class="author">
+        <span {{ data_camus_author }}>{{ module.author }}</span>
+      </div>
+      {#{{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+      <div class="social-media"></div>#}
+    </div>
+  </div>
+{% elseif module.template == 'row_base' %}
+  <div class="lr-row-base" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }} {{ data_camus_background_color }} style="background-color: {{ module.color }}">
+    <div class="title-container">
+      <div class="section" {{ data_camus_section }}>
+        <span>{{ module.section }}</span>
+      </div>
+      <div class="title" {{ data_camus_title }}>
+        <a {{ module.slug|linkConstruct("2")|raw }}>
+          <span>{{ module.title|striptags }}</span>
+        </a>
+      </div>
+    </div>
+    {#<div class="author">
+      <span {{ data_camus_author }}>{{ module.author }}</span>
+    </div>
+    {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+    <div class="social-media"></div>#}
+  </div>
+{% elseif module.template == 'row_base_media' %}
+  <div class="lr-row-base-media" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }}>
+    <div class="title-container">
+      <div class="title">
+        <a {{ module.slug|linkConstruct|raw }}>
+          <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+        </a>
+      </div>
+      {#{{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+      <div class="social-media"></div>#}
+    </div>
+    <div class="img-container">
+      <a {{ module.slug|linkConstruct|raw }}>
+        {{ module.thumbnail|asImage(module.alt)|raw }}
+      </a>
+    </div>
+  </div>
+{% elseif module.template == 'row_base_icon' %}
+  <div class="lr-row-base-icon" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }}>
+    <div class="title-container" style="background-color: {{ module.color }}" {{ data_camus_background_color }}>
+      <div class="title">
+        <a {{ module.slug|linkConstruct|raw }}>
+          <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+        </a>
+      </div>
+    </div>
+    <div class="img-container">
+      <a {{ module.slug|linkConstruct|raw }}>
+        <div class="item-icon">
+          <span class="fa fa-play"></span>
+        </div>
+      </a>
+      <a {{ module.slug|linkConstruct|raw }}>
+        {{ module.thumbnail|asImage(module.alt)|raw }}
+      </a>
+    </div>
+  </div>
+{% elseif module.template == 'row_text_only' %}
+  <div class="lr-row-text-only" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }}>
+    {#<span class="hour">{{ module.publishedHour }}</span> #}                                                                 {#COMENTADO#}
+
+    {% if module.heading.title != '' %}                                                                                       {#AGREGADO#}
+     <div class="section-top" {{ data_camus_removable["header"] }}>
+        <span {{ data_camus_heading_title }}>{{ module.heading.title }}</span>
+    </div>
+    {% endif %}
+
+    <div class="title" {{ data_camus_title }}>
+      <a {{ exep is defined ? module.slug|linkConstruct(exep)|raw : module.slug|linkConstruct|raw }}>
+        {{ module.title|length > 65 ? module.title|slice(0, 65) ~ '...'|striptags : module.title|striptags }}
+      </a>
+    </div>
+  </div>
+{% elseif module.template == 'row_bullet' %}
+  <div class="lr-row-bullet" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }} {{ data_camus_modules }} >
+    <div class="title">
+      <a {{ module.slug|linkConstruct|raw }}>
+        <span {{ data_camus_title }} {{ data_camus_color }} style="color: {{ module.color }}" >{{ module.title|striptags }}</span>
+      </a>
+    </div>
+    <div class="author">
+      <span {{ data_camus_author }} {{ data_camus_color }} style="color: {{ module.color }}" >{{ module.author }}</span>
+    </div>
+    {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+    <!-- <div class="social-media"></div> -->
+  </div>
+{% elseif module.template == 'row_radio' %}
+  {% if stations[index - 1] is defined%}
+    <div class="lr-row-radio" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }}>
+      <div class="plaza-broadcaster">
+        <span class="city">{{ stations[index - 1].title }}</span><br>
+        <span class="station">{{ stations[index - 1].city }}</span>
+      </div>
+      <div class="player">
+        <audio class="audio-container" src="{{  stations[index - 1].url }}" data-link="{{ stations[index - 1].frame }}"></audio>
+        <div class="loaded">Escuchar</div>
+        <div class="seen">
+          <span class="hint">VIVO</span>
+          <button class="sphere">
+            <span class="fa fa-play"></span>
+            <span class="fa fa-pause"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% elseif module.template == 'row_numbered' %}
+  <li class="title lr-row-numbered" {{ data_camus_color }} style="color: {{ module.color }}">
+    <a {{ module.slug|linkConstruct|raw }}>
+      <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+    </a>
+  </li>
+{% elseif module.template == 'row_numbered_red' %}
+  <div class="row-numbered-red" data-url="{{ module.slug }}" data-camus-template="{{module.templateName}}"  {{ data_camus_type["lr_list_row"] }}>
+  <div class="count-container" style="{% if module.color %} --border-color: {{ module.color }}; {% else %} --border-color: #D61F2E; {% endif %} " >
+    <span>{{ index }}</span>
+  </div>
+    <div class="thumbnail-container">
+      <a {{ module.slug|linkConstruct("2")|raw }}>
+        {{ module.thumbnail|asImage(module.alt)|raw }}
+      </a>
+    </div>
+    <div class="title-container">
+      <div class="title">
+        <a {{ module.slug|linkConstruct("2")|raw }}>
+          <span {{ data_camus_title }}>
+          {{ module.title|striptags }}
+          </span>
+        </a>
+      </div>
+    </div>
+    {% if module.heading.title|length > 0  %}
+      <div class="headline-container">
+        <div class="headline" {{ data_camus_heading_title }}>
+          {{ module.heading.title }}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% elseif module.template == 'row_tv' %}
+  <div class="lr-row-tv" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }}>
+    <div class="image">
+      <a {{ module.slug|linkConstruct|raw }}>
+        {{ module.thumbnail|asImage(module.alt)|raw }}
+      </a>
+    </div>
+    <button type="button" class="btn-play-top-gray">
+      <span class="fa fa-play"></span>
+    </button>
+    <div class="video-list-container">
+      <a {{ module.slug|linkConstruct|raw }}>
+        <span class="section-container" {{ data_camus_title }}>
+          {{ module.title }}
+        </span>
+        <div class="tv-host-container">
+          <span><span {{ data_camus_author }} > {{ module.author }} </span></span>
+        </div>
+      </a>
+    </div>
+  </div>
+{% elseif module.template == 'row_news' %}
+  <div class="lr-row-news" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }} >
+    <div class="item-news-container">
+      <div class="hour-social-network">
+        <div class="hour">
+          <span>{{ module.publishedDate }}{{ module.publishedHour }}</span>
+          <div class="section" {{ data_camus_color }} style="color: {{ module.color }}">
+            <span {{ data_camus_section }}>{{ module.section }}</span>
+          </div>
+        </div>
+        {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        <div class="social-media"></div>
+      </div>
+      <div class="img-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+        </a>
+      </div>
+      <div class="title-container">
+        <div class="title">
+          <a {{ module.slug|linkConstruct|raw }}>
+            <span {{ data_camus_title }} {{ data_camus_color }} style="color: {{ module.color }}">{{ module.title|striptags }}</span>
+          </a>
+        </div>
+        <div class="summary">
+          <span {{ data_camus_abstract }}>{{ module.abstract|striptags|filterEnt|decodeText }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'row_media_icon' %}
+  <div class="lr-row-media-icon" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_rows_detail"] }}>
+  <div class="item-news-container">
+    <div class="item-icon">
+      <span class="fa fa-play"></span>
+    </div>
+    <div class="img-container">
+      <a {{ module.slug|linkConstruct|raw }}>
+        {{ module.thumbnail|asImage(module.alt)|raw }}
+      </a>
+    </div>
+    <div class="title-container">
+      <div class="title">
+        <a {{ module.slug|linkConstruct|raw }}><span {{ data_camus_title }}>{{ module.title|striptags }}</span></a>
+      </div>
+      <div class="date">
+        <span>{{ module.publishedDate }}</span>
+      </div>
+      <div class="social-network">
+        {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        <!-- <div class="social-media"></div> -->
+      </div>
+    </div>
+  </div>
+</div>
+{% elseif module.template == 'row_media_description' %}
+  <div class="lr-row-media-description" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_rows_detail"] }}>
+    <div class="item-news-container">
+      <div class="date">
+        <span>20.05.2017</span>
+      </div>
+      <div class="img-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+        </a>
+      </div>
+      <div class="title-container">
+        <div class="title">
+          <a {{ module.slug|linkConstruct|raw }}><span {{ data_camus_title }}>{{ module.title|striptags }}</span></a>
+        </div>
+        <div class="summary">
+          <span {{ data_camus_abstract }}>{{ module.abstract|striptags }}</span>
+        </div>
+        <div class="author">
+            <span {{ data_camus_author }}>{{ module.author ~ "." }}</span>
+            <span {{ data_camus_body }}>{{ module.body|striptags }}</span>
+        </div>
+        <div class="social-network">
+          {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+          <!-- <div class="social-media"></div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  {% elseif module.template == 'row_printed' %}
+    <div class="lr-row-printed" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }}>
+      <div class="item-news-container">
+        <div class="hour-social-network">
+          <div class="hour">
+            <span>{{ module.publishedHour }}</span>
+          </div>
+          <div class="social-network">
+            {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+            <!-- <div class="social-media"></div> -->
+          </div>
+        </div>
+        <div class="img-container">
+          <a {{ module.slug|linkConstruct|raw }}>
+            {{ module.thumbnail|asImage(module.alt)|raw }}
+          </a>
+        </div>
+        <div class="title-container">
+          <div class="title">
+            <a {{ module.slug|linkConstruct|raw }}><span {{ data_camus_title }}>{{ module.title }}</span></a>
+          </div>
+          <div class="summary">
+            <span {{ data_camus_abstract }}>{{ module.abstract|striptags }}</span>
+          </div>
+          <div class="author">
+              <span {{ data_camus_author }}>{{ module.author ~ "." }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+{% elseif module.template == 'row_specials' %}
+  <div class="lr-row-specials" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }}>
+    <div class="item-news-container">
+      <div class="hour-social-network">
+        {#<div class="hour">
+          <span>{{ module.publishedHour }}</span>
+        </div>#}
+        {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        <!-- <div class="social-media"></div> -->
+      </div>
+      <div class="img-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+        </a>
+      </div>
+      <div class="title-container">
+        <div class="title">
+          <a {{ module.slug|linkConstruct|raw }}>
+            <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+          </a>
+        </div>
+        <div class="author">
+          <span {{ data_camus_author }}>{{ module.author ~ "." }}</span>
+          <span {{ data_camus_column }}>{{ module.column }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'row_medium' %}
+  <div class="lr-row-medium" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }}>
+    <div class="img-container">
+      <a {{ module.slug|linkConstruct|raw }}>
+        {{ module.thumbnail|asImage(module.alt)|raw }}
+      </a>
+    </div>
+
+    {% if module.heading.title != '' %}                                                {#SECCION AGREGADA#}
+     <div class="section-top" {{ data_camus_removable["header"] }}>
+        <span {{ data_camus_heading_title }}>{{ module.heading.title }}</span>
+    </div>
+    {% endif %}
+
+    <div class="title">
+      <a {{ module.slug|linkConstruct|raw }}>
+        <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+      </a>
+    </div>
+    {#<div class="footer">
+      <span class="author" {{ data_camus_author }}>{{ module.author }}</span>
+      {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+      <div class="social-media"></div>
+    </div>#}
+  </div>
+{% elseif module.template == 'row_related_new' %}
+  {% if template == "media_dual" %}
+    <li class="notes-item-dual" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }}>
+      <div class="title">
+        <a {{ module.slug|linkConstruct("1")|raw }}>
+          <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+        </a>
+      </div>
+      <div class="img-container">
+        <a {{ module.slug|linkConstruct("1")|raw }}>
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+        </a>
+      </div>
+    </li>
+  {% elseif template == "media_core" %}
+    <li class="notes-item-core" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }}>
+      <div class="img-container">
+        <a {{ module.slug|linkConstruct("1")|raw }}>
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+        </a>
+      </div>
+      <div class="title">
+        <a {{ module.slug|linkConstruct("1")|raw }}>
+          <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+        </a>
+      </div>
+    </li>
+  {% endif %}
+{% elseif module.template == 'row_ranking_cell' %}
+  <div class="lr-ranking-cell" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }}>
+    <div class="position">
+      <span {{ data_camus_title }}>{{ module.title }}</span>
+    </div>
+    <div class="img-container">
+      {{ module.thumbnail|asImage(module.alt)|raw }}
+    </div>
+    <div class="description">
+      <div class="name">
+        <span {{ data_camus_author }}>{{ module.author}}</span>
+      </div>
+      <div class="age">
+        <span {{ data_camus_abstract }}>{{ module.abstract }}</span>
+      </div>
+      <div class="amount-money">
+        <span {{ data_camus_body }}>{{ module.body }}</span>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'row_profile' %}
+  <div class="lr-profile field" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }} >
+    <p class="upper-data" {{ data_camus_title }}>{{ module.title }}</p>
+    <div class="lower-data" {{ data_camus_abstract }}>{{ module.abstract|raw }}</div>
+  </div>
+{% elseif module.template == 'row_tickets_sports' %}
+  <div class="row-tickets" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }}>
+    <div class="img-container">
+      <a {{ module.slug|linkConstruct|raw }}>
+        {{ module.thumbnail|asImage(module.alt)|raw }}
+      </a>
+    </div>
+    <div class="title-container">
+      <div class="title">
+        <a {{ module.slug|linkConstruct|raw }}>
+          <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+        </a>
+        <div class="place">
+          <span> {{ module.abstract }} </span>
+        </div>
+        <div class="date">
+          <span> {{ module.body }} </span>
+        </div>
+      </div>
+      <div class="buy-button">
+        <span class="sports">Boletos Aqui</span>
+        <span class="spectacles">Comprar</span>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'row_program' %}
+  <div class="lr-row-program">
+    <div class="time">{{ module.publishedHour }} ></div>
+    <div class="info">
+      <span class="title">{{ module.title }}</span>
+      {#
+        <div class="section">{{ module.section }}</div>
+      #}
+      {% if module.author != "" %}
+        <div class="host">
+          <span class="name">Con {{ module.author }}</span>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% elseif module.template == 'row_response' %}
+  <div class="lr-row-response">
+    <div class="img-container">
+      {{ module.thumbnail|asImage(module.alt)|raw }}
+    </div>
+    <div class="title-container">
+      <div class="author">
+        <span {{ data_camus_author }}>{{ module.author }}</span>
+      </div>
+      <div class="profession">
+        <span {{ data_camus_column }}>{{ module.column }}</span>
+      </div>
+      <div class="title">
+        <a {{ module.slug|linkConstruct|raw }}>
+          <span {{ data_camus_title }}>{{ module.title }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'row_opinion' %}
+  <div class="lr-row-opinion" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }} {{ data_camus_background_color }} style="background-color: {{ module.color }}">
+    <div class="item-opinion-container">
+      <div class="hour-social-network">
+        <div class="hour">
+          <span>{{ module.publishedDate }}
+          {% if module.publishedDate is defined and module.publishedHour is defined %}
+            /
+          {% endif %}
+          {{ module.publishedHour }}</span>
+        </div>
+        {#{{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        <div class="social-media"></div>#}
+      </div>
+      <div class="img-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+        </a>
+      </div>
+      <div class="info-container">
+        <div class="title">
+          <a {{ module.slug|linkConstruct|raw }}>
+            <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+          </a>
+        </div>
+        <div class="author">
+          <a href="{{ module.authorSlug }}"><span {{ data_camus_author }}>{{ module.author }}</span></a>
+        </div>
+        <div class="column">
+          <span {{ data_camus_column }}>{{ module.column }}</span>
+        </div>
+        <div class="section" {{ data_camus_section }}>
+          <span>{{ module.section|striptags }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,8 @@
+{% if module.template == 'base' and module.tags is not empty %}
+  <div class="tags-related"><!-- content -->
+    <span class="title">TAGS RELACIONADOS:</span>
+    {% for tag in module.tags %}
+      <a href="/temas/{{ tag.nameNormalized }}" class="tag" itemprop="keywords">{{ tag.name }}</a>
+    {% endfor %}
+  </div>
+{% endif %}

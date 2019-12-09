@@ -1,0 +1,36 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.lr-row-base-icon{
+  //width: 300px;
+  height: 75px;
+  margin-bottom: 2px;
+  .title-container{
+    float: left;
+    width: 55%;
+    height: 100%;
+    background-color: $color-dark-gray;
+    padding: 8px 8px 5px 10px;
+    .title{
+      height: 51px;
+      overflow: hidden;
+      //margin-bottom: 5px;
+      @include text-with-roboto-black-color-white;
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+  .img-container{
+    position: relative;
+    float: right;
+    width: 45%;
+    height: 100%;
+    .item-icon{
+      @include item-icon("small");
+      right: unset;
+      left: 5px;
+    }
+  }
+}

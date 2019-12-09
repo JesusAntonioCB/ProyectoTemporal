@@ -1,0 +1,88 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.lo-blog {
+  @include global-container-4c;
+  //@include grid-dynamic-full;
+  .description {
+    max-width: 763px;
+    margin: 0 auto;
+    @include text-with-utopia-5-color-nobel;
+    line-height: 23px;
+    font-size: 18px;
+  }
+  .header-blog {
+    margin-top: 24px;
+    padding: 0 12px;
+    background-color: $color-gray;
+  }
+  .icon, .img-container, .title-container{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .icon{
+    margin-right: 10px;
+    img{
+
+    }
+  }
+  .img-container{
+    width: 120px;
+    height: 120px;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  .title{
+    margin-bottom: 5px;
+    @include text-with-utopia-bold-color-white;
+    font-size: 48px;
+    line-height: 58px;
+  }
+  .author{
+    @include text-with-open-sans-semibold-color-white;
+    font-size: 16px;
+    line-height: 21px;
+  }
+}
+
+@include two-column{
+  .lo-blog{
+    .description{
+      font-size: 14px;
+      line-height: 18px;
+    }
+    .img-container{
+      width: 100px;
+      height: 100px;
+    }
+  }
+};
+
+@include one-column{
+  .lo-blog{
+    .header-blog{
+      padding:{
+        top: 10px;
+        bottom: 10px;
+      }
+    }
+    .icon{
+      margin:{
+        top: 40px;
+        right: 0;
+      }
+    }
+    .img-container{
+      float: right;
+      margin-right: 0;
+    }
+    .title{
+      clear: right;
+      display: block;
+      font-size: 24px;
+      line-height: 29px;
+    }
+  }
+};

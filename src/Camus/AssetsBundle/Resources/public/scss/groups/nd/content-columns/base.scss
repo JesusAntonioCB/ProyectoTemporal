@@ -1,0 +1,104 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.content-columns{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: $global-margin-bottom;
+  .column-left{
+    width: 300px;
+    margin-right: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    .medium-rectangle{
+      .media-container{
+        border-radius: 0;
+        .sign{
+          display: none;
+        }
+      }
+    }
+    .sn-frame{
+      .media-container{
+        height: auto;
+        min-height: 70px;
+        max-height: 600px !important;
+      }
+    }
+    .trc_related_container{
+      width: 300px;
+    }
+    .list-base{
+      .media-container{
+        height: auto;
+        .lr-row-numbered:first-of-type{
+          border-top: 1px solid $color-super-light-gray;
+        }
+        .lr-row-numbered{
+          color: $color-alizarin-crimson;                                       //modificado
+          @include text-with-roboto-color-alizarin-crimson;
+          border-bottom: 1px solid $color-super-light-gray;
+          margin: 0;
+          padding: 16px 0px 16px 0px;
+        }
+      }
+    }
+  }
+  .column-right{
+    width: 618px;
+    overflow: hidden;
+  }
+  .column-right.event{
+    width: 100%;
+  }
+}
+
+@include two-column{
+  .content-columns{
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    .column-left{
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+};
+
+@include one-column{
+  .content-columns{
+    display: grid;
+    justify-content: center;
+    padding: 0px 10px;
+    
+    .column-left{
+      order:2;
+    }
+
+    .column-right, .column-left {
+      width: 100%;
+      margin: 0 auto; 
+
+      @media only screen and (max-width: 345px) {
+        max-width: 280px;
+      }
+    }
+
+    .column-right{
+      order:1;
+      text-align: justify;
+    }
+  }
+};

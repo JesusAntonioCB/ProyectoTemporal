@@ -1,0 +1,208 @@
+{% if module.template == 'billboard' %}
+  <div class="billboard">
+    <div class="media-container-light-cyan">
+      <div class="img-container">
+        {{ module.thumbnail|asImage(module.alt)|raw }}
+      </div>
+      <div class="text-container">
+        <div class="date">
+          <span {{ data_camus_title }}>{{ module.title }}</span>
+        </div>
+        <div class="title">
+          <span {{ data_camus_abstract }}>{{ module.abstract }}</span>
+        </div>
+      </div>
+      {% if module.hasSponsor is defined and module.hasSponsor == true %}
+        {{ module.sponsor|asSponsor|raw }}
+      {% endif %}
+    </div>
+  </div>
+{% elseif module.template == 'section_image' or module.template == 'section_image_nexos' or module.template == 'section_image_secondary' %}
+  <div class="eo-section-image {{ module.template == 'section_image_nexos' ? 'aside' }}" {{ data_camus_toolbar_position["tl"] }} {{ data_camus_border_color }}>
+    {% if module.hasThumbnail == true %}
+    <div class="img-container" {{ data_camus_removable["image"] }} {{ data_camus_color }} style="background-color: {{ module.color|parseRGB }}">
+      <div class="img">
+        {{ module.thumbnail|asImage(module.alt)|raw }}
+      </div>
+    </div>
+    {% endif %}
+    {% if module.title != "" %}
+    <div class="title-container" {{ data_camus_removable["title"] }} {{ data_camus_color }} style="color:{{ module.color }}">
+      {% if module.template == 'section_image' or module.template == 'section_image_nexos' %}
+        <h1 class="title" {{ data_camus_title }}>{{ module.title }}</h1>
+      {% elseif module.template == 'section_image_secondary' %}
+        <h2 class="title" {{ data_camus_title }}>{{ module.title }}</h2>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if module.template == "section_image_nexos" %}
+      <div class="link-container">
+        <span class="hint">Más artículos de la revista Nexos aquí:</span>
+        <a href="https://www.nexos.com.mx/" target="_blank" class="link">IR A NEXOS</a>
+      </div>
+    {% endif %}
+  </div>
+{% elseif module.template == 'markets' %}
+  <div class="eo-markets tabs">
+    {% set jsonData = render(controller(
+      'ApplicationCamusFrontEndBundle:Default:newmarkets'
+    ))|twigJsonDecode %}
+    <div class="head-container">
+      Mercados
+    </div>
+    <div class="media-container">
+      <div class="tabs">
+        <ul>
+          <li id="tab-title-1" class="tab-title-active">USD</li>
+          <li id="tab-title-2">MXN vs USD</li>
+          <li id="tab-title-3">TASAS</li>
+        </ul>
+      </div>
+      <div class="tab-content tab-active">
+        <div class="dollar-table">
+          <table>
+            <tr>
+              <th></th>
+              <th>COMPRA</th>
+              <th>VENTA</th>
+            </tr>
+            <tr>
+              <th class="table-title" rowspan="3">DOLAR COMPOSITE</th>
+              <td>{{ jsonData.usd.Detalle.0.CompraCash }}</td>
+              <td>{{ jsonData.usd.Detalle.0.VentaCash }}</td>
+            </tr>
+            <tr>
+              <td>{{ jsonData.usd.Detalle.0.Compra24Hr }}</td>
+              <td>{{ jsonData.usd.Detalle.0.Venta24Hr }}</td>
+            </tr>
+            <tr>
+              <td>{{ jsonData.usd.Detalle.0.Compra48Hr }}</td>
+              <td>{{ jsonData.usd.Detalle.0.Venta48Hr }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="dollar-table">
+          <table>
+            <tr>
+              <th></th>
+              <th>COMPRA</th>
+              <th>VENTA</th>
+            </tr>
+            <tr>
+              <th class="table-title" rowspan="3">DOLAR BENCHMARK</th>
+              <td>{{ jsonData.usd.Detalle.1.CompraCash }}</td>
+              <td>{{ jsonData.usd.Detalle.1.VentaCash }}</td>
+            </tr>
+            <tr>
+              <td>{{ jsonData.usd.Detalle.1.Compra24Hr }}</td>
+              <td>{{ jsonData.usd.Detalle.1.Venta24Hr }}</td>
+            </tr>
+            <tr>
+              <td>{{ jsonData.usd.Detalle.1.Compra48Hr }}</td>
+              <td>{{ jsonData.usd.Detalle.1.Venta48Hr }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="tab-content">
+        <div class="mxn-table">
+          <table>
+            <tr>
+              <th colspan="2">DOLAR EEUU VS PESO MEXICANO</th>
+            </tr>
+            <tr>
+              <td>COMPRA</td>
+              <td>{{ jsonData.usdmxn.Detalle.0.Compra }}</td>
+            </tr>
+            <tr>
+              <td>VENTA</td>
+              <td>{{ jsonData.usdmxn.Detalle.0.Venta }}</td>
+            </tr>
+            <tr>
+              <td>VARIACIÓN UNITARIA</td>
+              <td>{{ jsonData.usdmxn.Detalle.0.VariacionUnitaria }}</td>
+            </tr>
+            <tr>
+              <td>VARIACIÓN PORCENTUAL</td>
+              <td>{{ jsonData.usdmxn.Detalle.0.VariacionPorcentual }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="usd-table">
+          <table>
+            <tr>
+              <th colspan="2">PESO MEXICANO VS DOLAR EEUU</th>
+            </tr>
+            <tr>
+              <td>COMPRA</td>
+              <td>{{ jsonData.usdmxn.Detalle.1.Compra }}</td>
+            </tr>
+            <tr>
+              <td>VENTA</td>
+              <td>{{ jsonData.usdmxn.Detalle.1.Venta }}</td>
+            </tr>
+            <tr>
+              <td>VARIACIÓN UNITARIA</td>
+              <td>{{ jsonData.usdmxn.Detalle.1.VariacionUnitaria }}</td>
+            </tr>
+            <tr>
+              <td>VARIACIÓN PORCENTUAL</td>
+              <td>{{ jsonData.usdmxn.Detalle.1.VariacionPorcentual }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="tab-content">
+        <div class="rates-table">
+          <table>
+            <tr>
+              <th></th>
+              <th>CCP</th>
+              <th>CETES 28</th>
+              <th>CETES 91</th>
+              <th>CPP</th>
+              <th>IEP 1M</th>
+              <th>UDI</th>
+            </tr>
+            <tr>
+              <td>ACTUAL</td>
+              <td>{{ jsonData.tasas.Detalle.0.ValorActual }}</td>
+              <td>{{ jsonData.tasas.Detalle.1.ValorActual }}</td>
+              <td>{{ jsonData.tasas.Detalle.2.ValorActual }}</td>
+              <td>{{ jsonData.tasas.Detalle.3.ValorActual }}</td>
+              <td>{{ jsonData.tasas.Detalle.4.ValorActual }}</td>
+              <td>{{ jsonData.tasas.Detalle.5.ValorActual }}</td>
+            </tr>
+            <tr>
+              <td>ANTERIOR</td>
+              <td>{{ jsonData.tasas.Detalle.0.ValorAnterior }}</td>
+              <td>{{ jsonData.tasas.Detalle.1.ValorAnterior }}</td>
+              <td>{{ jsonData.tasas.Detalle.2.ValorAnterior }}</td>
+              <td>{{ jsonData.tasas.Detalle.3.ValorAnterior }}</td>
+              <td>{{ jsonData.tasas.Detalle.4.ValorAnterior }}</td>
+              <td>{{ jsonData.tasas.Detalle.5.ValorAnterior }}</td>
+            </tr>
+            <tr>
+              <td>VARIACIÓN</td>
+              <td>{{ jsonData.tasas.Detalle.0.VariacionUnitaria }}</td>
+              <td>{{ jsonData.tasas.Detalle.1.VariacionUnitaria }}</td>
+              <td>{{ jsonData.tasas.Detalle.2.VariacionUnitaria }}</td>
+              <td>{{ jsonData.tasas.Detalle.3.VariacionUnitaria }}</td>
+              <td>{{ jsonData.tasas.Detalle.4.VariacionUnitaria }}</td>
+              <td>{{ jsonData.tasas.Detalle.5.VariacionUnitaria }}</td>
+            </tr>
+            <tr>
+              <td>FRECUENCIA</td>
+              <td>{{ jsonData.tasas.Detalle.0.Frecuencia }}</td>
+              <td>{{ jsonData.tasas.Detalle.1.Frecuencia }}</td>
+              <td>{{ jsonData.tasas.Detalle.2.Frecuencia }}</td>
+              <td>{{ jsonData.tasas.Detalle.3.Frecuencia }}</td>
+              <td>{{ jsonData.tasas.Detalle.4.Frecuencia }}</td>
+              <td>{{ jsonData.tasas.Detalle.5.Frecuencia }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

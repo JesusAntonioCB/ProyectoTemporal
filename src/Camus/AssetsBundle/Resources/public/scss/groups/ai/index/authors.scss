@@ -1,0 +1,371 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.alphabet-autor{
+  //@include grid-dynamic-full;
+  width: 100%;
+  max-width: 100%;
+  min-width: $one-column;
+  height: auto;
+  padding-top: $global-padding-top;
+  margin-bottom: $global-margin-bottom;
+  position: relative;
+  float: none;
+  min-height: 800px;
+  .media-container{
+    width: 100%;
+    height: auto;
+    position: relative;
+    float: none;
+    >.head{
+      height: 100%;
+      width: 100%;
+      height: 60px;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+      float: none;
+      display: table;
+      .text{
+        @include text-with-open-sans-5-color-nobel;
+        height: 30%;
+        max-height: 30%;
+        position: relative;
+        float: none;
+        display: table-cell;;
+        vertical-align: bottom;
+        h6{
+          margin: 0;
+          padding: 0;
+          vertical-align: bottom;
+        }
+      }
+      .black-bar{
+        display: none;
+        width: 100%;
+        height: 70%;
+        max-height: 70%;
+        background-color: $color-space-gray;
+        position: relative;
+        float: left;
+        .letter{
+          width: 30%;
+          height: 100%;
+          float: left;
+          display: table;
+          border-right: 2px solid $color-white;
+          padding: 5px;
+          h1{
+            color: $color-white;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            display: table-cell;
+            vertical-align: middle;
+          }
+        }
+        .arrow{
+          width: 70%;
+          height: 100%;
+          float: left;
+          display: table;
+          text-align: right;
+          padding: 0 15px;
+          span{
+            color: $color-white;
+            margin: 0;
+            padding: 0;
+            font-size: 15px;
+            display: table-cell;
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+    >.content{
+      height: auto;
+      width: 100%;
+      padding: 10px;
+      position: relative;
+      float: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .text{
+        display: none;
+        width: 100%;
+        height: auto;
+        margin-bottom: 5px;
+        summary{
+          @include text-with-open-sans-5-color-nobel;
+          font-size: 11px;
+        }
+      }
+      .letters{
+        display: flex;
+        position: relative;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        float: none;
+        width: 100%;
+        .letter-container{
+          float: left;
+          position: relative;
+          width: 45px;
+          height: 50px;
+          margin-bottom: 10px;
+          &:hover{
+            .letter{
+              background-color: $color-space-gray;
+              color: $color-white;
+              height: 60px;
+            }
+            .tail{
+              display: block;
+              width: 10px;
+              height: 10px;
+              background-color: $color-space-gray;
+              transform: translate(17px, 55px) rotate(45deg)
+            }
+          }
+          .letter{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            display: table;
+            float: left;
+            position: relative;
+            padding: 11px;
+            color: $color-gray-sky;
+            border: 1px solid $color-gray-sky;
+            h1{
+              font-family: $font-sans-serif;
+              display: table-cell;
+              vertical-align: middle;
+              font-size: 20px;
+            }
+          }
+          .tail{
+            display: none;
+          }
+        }
+      }
+    }
+    .result{
+      width: 100%;
+      column-count: 4;
+      column-rule: 1px solid $color-light-grayish-cyan;
+      ul{
+        padding: 0 10px;
+        margin: 0;
+        li{
+          @include text-with-sans-serif-color-night-gray;
+          font-size: 14px;
+          list-style: none;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+.alphabet-autor{
+  .media-container{
+    >.autor{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      >*{
+        flex: none;
+      }
+      .name{
+        flex-basis: 100%;
+        text-align: center;
+        h1{
+          @include text-with-utopia-5-color-night-gray;
+          font-weight: 900;
+        }
+      }
+      .image{
+        border-radius: 50%;
+        overflow: hidden;
+        text-align: center;
+        width: 100px;
+        max-width: 100px;
+        height: 100px;
+        max-height: 100px;
+        img{
+          width: auto;
+          height: auto;
+          max-height: 100%;
+          min-height: 100%;
+        }
+      }
+      .description{
+        flex-basis: 30%;
+        summary{
+          @include text-with-open-sans-5-color-nobel;
+        }
+      }
+    }
+  }
+}
+@include three-column{
+  .alphabet-autor{
+    .media-container{
+      >.content{
+        .letters{
+          .letter-container{
+            width: 35px;
+            height: 40px;
+            &:hover{
+              .letter{
+                height: 45px;
+              }
+              .tail{
+                width: 10px;
+                height: 10px;
+                transform: translate(10px, 40px) rotate(45deg)
+              }
+            }
+            .letter{
+              h1{
+                font-size: 15px;
+              }
+            }
+          }
+        }
+      }
+      .result{
+        column-count: 3;
+      }
+    }
+  }
+};
+@include two-column{
+  .alphabet-autor{
+    .media-container{
+      >.head{
+        .text{
+          display: block;
+        }
+        .black-bar{
+          display: block;
+          .letter{
+            width: 15%;
+          }
+          .arrow{
+            width: 85%;
+          }
+        }
+      }
+      >.content{
+        background-color: $color-gray-white;
+        justify-content: flex-start;
+        .letters{
+          .letter-container{
+            width: 35px;
+            height: 35px;
+            margin-right: 7px;
+            &:hover{
+              .letter{
+                background-color: $color-nobel;
+                height: inherit;;
+              }
+              .tail{
+                display: none;
+              }
+            }
+          }
+        }
+      }
+      .result{
+        column-count: 2;
+        ul{
+          display: none;
+          &:first-child, &:first-child + ul{
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .alphabet-autor{
+    .media-container{
+      background-color: $color-gray-white;
+      >.content{
+        background-color: none;
+      }
+      >.autor{
+        .description{
+          flex-basis: 85%;
+        }
+      }
+    }
+  }
+};
+@include one-column{
+  .alphabet-autor{
+    .media-container{
+      >.head{
+        .text{
+          display: block;
+        }
+        .black-bar{
+          display: block;
+          .letter{
+            width: 30%;
+          }
+          .arrow{
+            width: 70%;
+          }
+        }
+      }
+      >.content{
+        background-color: $color-gray-white;
+        justify-content: space-between;
+        .text{
+          display: block;
+        }
+        .letters{
+          .letter-container{
+            width: 45px;
+            height: 45px;
+            &:hover{
+              .letter{
+                background-color: $color-nobel;
+                height: inherit;;
+              }
+              .tail{
+                display: none;
+              }
+            }
+          }
+        }
+      }
+      .result{
+        column-count: 1;
+        ul{
+          display: none;
+          &:first-child{
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .alphabet-autor{
+    .media-container{
+      background-color: $color-gray-white;
+      >.content{
+        background-color: none;
+      }
+      >.autor{
+        .description{
+          flex-basis: 65%;
+        }
+      }
+    }
+  }
+};

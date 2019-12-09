@@ -1,0 +1,168 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-base{
+  @include global-container-1c;
+  max-height: 352px;
+  border-radius: 10px;
+  background: $color-white;
+  .media-container{
+    @include rows-height(1);
+    .image{
+      position: relative;
+      height: 195px;
+      overflow: hidden;
+      .item-icon{
+        @include item-icon("medium");
+        right: 20px;
+        top: 20px;
+      }
+    }
+    .news-container{
+      background: $color-white;
+      border-radius: 0px 0px 10px 10px;
+      .headline-container{
+        margin-bottom: 10px;
+        // border-bottom: 3px solid var(--border-color);
+        .headline{
+          min-height: 34px;
+          padding: 2px 10px;
+          margin-bottom: 0;
+          @include text-with-YanoneKaffeesatz-color-black;
+          font-size: 25px;
+          line-height: 30px;
+          text-transform: uppercase;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        .headline-border-color{
+          position: relative;
+          border-bottom: 3px solid var(--border-color);
+          &:after{
+            content: "";
+            position: absolute;
+            right: 87%;
+            bottom: -11px;
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 8px solid var(--border-color);
+          }
+        }
+      }
+      .title{
+        max-height: 63px;
+        padding-left: 10px;
+        margin-top: 15px;
+        @include text-with-sans-pro-color-tuna;
+        font-size: 18px;
+        line-height: 21px;
+        overflow: hidden;
+      }
+      .author{
+        @include text-container-uppercase-blue-gray;
+        padding-left: 10px;
+      }
+      .sponsor{
+        font-size: 10px;
+        position: relative;
+        height: 25px;
+        margin-top: 6px;
+        @include text-with-roboto-regular-color-night-gray;
+        color:$color-gray-glass;
+        .caption{
+          width: 82px;
+          margin-right: 7px;
+        }
+        a{
+          img{
+            width: 130px;
+            height: auto;
+            max-width: unset;
+          }
+        }
+      }
+    }
+    .section{
+      position: absolute;
+      bottom: 10px;
+      padding-left: 10px;
+      @include text-with-sans-pro-color-gray-glass;
+    }
+    .info-container{
+      padding-top: 5px;
+      padding-left: 10px;
+      .section, .title{
+        font-size: 26px;
+        line-height: 27px;
+      }
+      .section{
+        @include text-with-YanoneKaffeesatz-color-red-alizarin-crimison;
+        font-size: 30px;
+      }
+      .title{
+        min-height: 75px;
+        height:auto;
+        overflow: hidden;
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 10px;
+      }
+      .author{
+        @include text-container-uppercase-blue-gray;
+      }
+    }
+    .sponsor{
+      font-size: 10px;
+      position: relative;
+      height: 25px;
+      margin-top: -15px;
+      @include text-with-roboto-regular-color-night-gray;
+      color:$color-gray-glass;
+      .caption{
+        margin-right: 7px;
+        width: 82px;
+      }
+      a{
+        img{
+          width: 130px;
+          height: auto;
+          max-width: unset;
+        }
+      }
+    }
+    .social-media{
+      position: absolute;
+      right: 20px;
+      bottom: 8px;
+      font-size: 18px;
+    }
+  }
+}
+
+@include one-column{
+  .sn-base{
+    .media-container{
+      .news-container{
+        .headline-container{
+          height: 40px;
+          border: 0;
+          border-top: 3px solid var(--border-color);
+        }
+      }
+      .info-container{
+        .section, .title{
+          font-size: 20px;
+          line-height: 21px;
+        }
+      }
+      .sponsor{
+        bottom: 40px;
+      }
+    }
+  }
+}

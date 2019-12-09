@@ -1,0 +1,132 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.nd-th-photo{
+  position: relative;
+  padding-top: $global-padding-top;
+  margin-bottom: $global-margin-bottom;
+  .firm-name{
+    padding: 15px 0;
+    border: {
+      top: 1px solid $color-super-light-gray;
+      bottom: 1px solid $color-super-light-gray;
+    }
+    h2{
+      margin: 0;
+      //font-family: $font-utopia5;
+      font-size: 20px;
+      font-weight: 400;
+      text-transform: uppercase;
+      //color: $color-mirror-gray;
+      @include text-with-open-sans-5-color-nobel;
+    }
+    &:after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+  .firm-name h2, .title, .collaborators{
+    float: right;
+    width: 70%;
+    text-align: center;
+  }
+  .media-container{
+    margin-top: 15px;
+    .social-networks{
+      position: absolute;
+      top: 0;
+      .hint{
+        float: left;
+        width: 70px;
+        margin-top: 3px;
+        margin-right: 5px;
+        @include text-with-open-sans-5-color-nobel;
+        font-size: 11px;
+        line-height: 13px;
+      }
+      .logos{
+        float: left;
+      }
+      &:after{
+        content: '';
+        display: table;
+        clear: both;
+      }
+    }
+    .title{
+      margin: 0 0 55px;
+      @include text-with-roboto-black-color-night-gray;
+      font-size: 44px;
+    }
+    .line{
+      clear: both;
+      height: 1px;
+      background-color: $color-super-light-gray;
+    }
+    .collaborators{
+      transform: translateY(-30px);
+      .image{
+        width: 65px;
+        height: 65px;
+        overflow: hidden;
+        margin: 0 auto;
+        border-radius: 50%;
+        background-color: $color-white;
+      }
+      .name{
+        margin: 0 0;
+        @include text-with-roboto-black-color-night-gray;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+      .date{
+        @include text-with-roboto-regular-color-night-gray;
+        color: $color-gray;
+        font-size: 11px;
+        font-weight: 400;
+      }
+    }
+    &:after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+}
+@include two-column{
+  .nd-th-photo{
+    .firm-name h2, .title, .collaborators{
+        width: 100%;
+    }
+    .media-container{
+      .social-networks{
+        clear: both;
+        position: static;
+        display: table;
+        margin: 0 auto;
+        .hint{
+          display: none;
+        }
+      }
+    }
+  }
+};
+@include one-column{
+  .nd-th-photo{
+    .firm-name h2{
+      font-size: 16px;
+    }
+    .media-container{
+      .title{
+        font-size: 26px;
+        line-height: 31px;
+      }
+      .line{
+        display: none;
+      }
+    }
+  }
+};

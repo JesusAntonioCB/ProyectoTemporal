@@ -1,0 +1,278 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.market-stocks{
+  .content{
+    display: flex;
+    flex-wrap: wrap;
+    >.sections{
+      flex: none;
+      width: 25%;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      padding: 0px 10px;
+      position: relative;
+      .arrow{
+        height: 35px;
+        width: 35px;
+        background-color: $color-white;
+        position: absolute;
+        right: 10px;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        border-left: 1px solid $color-grayish-cyan;
+        span{
+          width: 100%;
+          justify-content: center;
+        }
+      }
+      select{
+          height: 35px;
+          width: 100%;
+          flex: none;
+          margin-bottom: 10px;
+          @include text-with-open-sans-5-color-night-gray;
+          font-size: 16px;
+          text-transform: uppercase;
+          font-weight: 400;
+          border: 0;
+      }
+      h5{
+        @include text-with-open-sans-5-color-nobel;
+        font-size: 11px;
+        font-weight: 400;
+        margin: 0;
+        padding: 0;
+      }
+    }
+    .table{
+      flex: none;
+      width: 75%;
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+      .head{
+        flex: none;
+        width: 100%;
+        display: flex;
+        padding: 15px 5px;
+        align-items: center;
+        border-top: 1px solid $color-white;
+        h1{
+          @include text-with-open-sans-5-color-red-dark;
+          font-size: 14px;
+          text-transform: uppercase;
+          font-weight: 400;
+          flex-grow: 1;
+          margin: 0;
+        }
+        h5{
+          font-family: $font-open-sans5;
+          color: $color-dark-grayish-blue;
+          font-size: 10px;
+          font-weight: 400;
+          display: flex;
+          flex-wrap: wrap;
+          margin: 0;
+          text-align: right;
+          span{
+            flex: none;
+            width: 100%;
+            margin: 0;
+          }
+        }
+      }
+      .data{
+        flex: none;
+        width: 100%;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        .graphic{
+          flex: none;
+          flex-wrap: wrap;
+          display: flex;
+          width: 50%;
+          position: relative;
+          border: 1px solid $color-white;
+          border-bottom-width: 0px;
+          border-left-width: 0px;
+          padding: 10px;
+          h5{
+            @include text-with-open-sans-5-color-grayish-blue;
+            font-size: 11px;
+            font-weight: 400;
+            flex-grow: 1;
+            text-align: right;
+          }
+          select.days{
+            width: 90px;
+            min-height: 25px;
+            border: 1px solid $color-light-blue;
+            text-transform: uppercase;
+            @include text-with-open-sans-5-color-night-gray;
+            font-weight: 400;
+            font-size: 11px;
+          }
+          h3{
+            font-family: $font-open-sans5;
+            color: $color-dark-grayish-blue;
+            font-size: 12px;
+          }
+          table{
+            tr{
+              th,td{
+                font-family: $font-sans-serif;
+                color: $color-dark-grayish-blue;
+                font-size: 10px;
+                font-weight: 300;
+              }
+              &:first-child{
+                th:first-child{
+                  padding: 10px 0;
+                }
+              }
+              &:last-child{
+                td + td{
+                  text-align: right;
+                }
+              }
+            }
+          }
+        }
+        .statistics{
+          flex: none;
+          display: flex;
+          flex-wrap: wrap;
+          width: 50%;
+          position: relative;
+          >*{
+            flex: none;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+            text-align: center;
+            align-content: center;
+            border: 1px solid $color-white;
+            border-bottom-width: 0px;
+            border-left-width: 0px;
+            &:last-child{
+              border-bottom-width: 1px;
+            }
+            h5{
+              @include text-with-sans-serif-color-blue-gray;
+              font-size: 11px;
+              font-weight: 400;
+              text-transform: uppercase;
+              margin: 0;
+            }
+            h1{
+              @include text-with-sans-serif-color-night-gray;
+              font-size: 14px;
+              font-weight: 700;
+              margin: 0;
+            }
+          }
+          div.rate, div.variation{
+            width: 50%;
+            *{
+              flex: none;
+              width: 100%;
+              display: flex;
+              justify-content: space-around;;
+              span{
+                width: auto;
+              }
+            }
+          }
+          .rate{
+            h1{
+              font-size: 24px;
+            }
+          }
+          .variation{
+            h1{
+              color: $color-whatsapp;
+            }
+          }
+          div.max-of-day, div.min-of-day{
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            *{
+              margin: 0 5px;
+            }
+          }
+        }
+      }
+      img{
+        max-width: 100%;
+      }
+    }
+    .market-table{
+      width: 30%;
+    }
+    .statistics-min{
+      min-width: initial;
+      max-width: initial;
+      width: 30%;
+    }
+  }
+  @include two-column{
+  .sections{
+    width: 100%;
+    justify-content: center;
+    padding: 0 35%;
+    .arrow{
+      right: 35%;
+    }
+  }
+  .table{
+    width: 100%;
+  }
+}
+  @include one-column{
+  .sections{
+    padding: 0 10px;
+    align-items: center;
+    margin-bottom: $global-margin-bottom;
+    .arrow{
+      right: 10px;
+      border: 1px solid $color-light-blue;
+    }
+    select{
+      margin: 0;
+      border: 1px solid $color-light-blue;
+    }
+    h5{
+      position: absolute;
+      right: 50px;
+    }
+  }
+  .table{
+    .head{
+      h1{
+        font-size: 11px;
+      }
+    }
+    .data{
+      overflow: hidden;
+      flex-wrap: wrap;
+      width: 100%;
+      .graphic{
+        padding: 0;
+        width: 100%;
+      }
+      .statistics{
+        width: 100%;
+        height: 140px;
+      }
+    }
+  }
+};
+}

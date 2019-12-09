@@ -1,0 +1,103 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.billboard{
+  width: 100%;
+  padding-top: $global-padding-top;
+  margin-bottom: $global-margin-bottom;
+  > .media-container-light-cyan, .media-container-white {
+    padding: 10px 0;
+    .img-container, .text-container{
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .img-container{
+      width: 63px;
+      height: 127px;
+      margin-right: 10px;
+    }
+    .text-container{
+      max-width: 700px;
+      font-size: 26px;
+      line-height: 29px;
+      .date{
+        @include text-with-open-sans-bold-color-night-gray;
+      }
+      .title{
+        @include text-with-open-sans-5-color-night-gray;
+      }
+    }
+    .sponsor{
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 160px;
+      text-align: center;
+      .caption{
+        display: block;
+        margin-bottom: 5px;
+        @include text-with-sans-serif-color-nobel;
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 13px;
+      }
+      .img-link{
+        img{
+          width: 115px;
+          height: 41px;
+        }
+      }
+    }
+  }
+}
+
+@include two-column{
+  .billboard{
+    > .media-container-light-cyan, .media-container-white {
+      .img-container{
+        width: 54px;
+        height: 108px;
+      }
+      .text-container{
+        max-width: 390px;
+        font-size: 22px;
+        line-height: 24px;
+      }
+    }
+  }
+};
+
+@include one-column{
+  .billboard{
+    > .media-container-light-cyan, .media-container-white {
+      .img-container{
+        width: 37px;
+        height: 73px;
+      }
+      .text-container{
+        max-width: 240px;
+        font-size: 13px;
+        line-height: 19px;
+      }
+      .sponsor{
+        position: initial;
+        transform: none;
+        width: 95%;
+        margin-top: 5px;
+        text-align: right;
+        .caption{
+          display: none;
+        }
+        .img-link{
+          img{
+            width: 72px;
+            height: 26px;
+          }
+        }
+      }
+    }
+  }
+};

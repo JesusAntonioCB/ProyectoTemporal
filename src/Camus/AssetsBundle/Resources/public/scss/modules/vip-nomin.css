@@ -1,0 +1,4830 @@
+
+
+#container_msgfav_acmh{
+    margin-top:150px;
+    position: relative;
+}
+
+
+
+.susInfo{
+    top: 30%;
+    width: 578px;
+    height: 240px;
+    position: relative;
+    float: left;
+    background: url(http://cdn.premium.milenio.com/images/suscripciones/bgsusdatos.jpg);
+    color:#000;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+}
+
+.susInfo ul{
+    margin-top:84px;
+    padding-left: 30px;
+}
+
+.susInfo li{
+    list-style: none;
+}
+.susInfo span{
+    font-weight: bold;
+}
+
+.pagePrintContainer{
+    float: left;
+    height: 20px;
+    width: 20px;
+}
+.print_btn{
+    height: 20px;
+    width: 20px;
+    float: left;
+    background: url(http://premium.milenio.com/images/print_icon.png);
+    background-repeat: no-repeat;
+    display: block;
+    cursor: pointer;
+
+}
+#boxalert_confirm{
+    position:fixed;
+    margin:0 auto;
+    left:0;
+    height:100%;
+    width:100%;
+    color:white;
+    background: url(http://cdn.premium.milenio.com/images/fav_BlackBack.png);
+    background-repeat: repeat;
+    clear:both;
+    float:left;
+    z-index:5000;
+}
+
+#container_boxalert_confirm{
+    margin-top:150px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    -moz-border-radius:10px;
+    background: #FFF;
+    width: 546px;
+    overflow:hidden;
+}
+
+.gifsaving_confirm{
+    top:30%;
+    position: relative;
+    margin:20px;
+    float:left;
+}
+.dialogo_img_confirm{
+    top:30%;
+    width:578px;
+    height:240px;
+    position: relative;
+    float:left;
+}
+
+.dialogo_txt_confirm{
+    position: relative;
+    margin: 8px auto 0;
+}
+#boxalert_confirm .okButton{
+    display: block;
+    width: 86px;
+    height: 23px;
+    bottom: 15px;
+    left: 46px;
+    position: absolute;
+    background-image: url(http://cdn.premium.milenio.com/images/vip_dialog_aceptar_active.png);
+}
+#boxalert_confirm .cancelButton{
+    display: block;
+    width: 86px;
+    height: 23px;
+    bottom:15px;
+    right:76px;
+    position: absolute;
+    background-image: url(./images/vip_dialog_cancelar_active.png);
+}
+
+#boxalert_confirm .susInfoOk{
+    display: block;
+    width: 86px;
+    height: 23px;
+    bottom:20px;
+    right:55px;
+    position: absolute;
+    background-image: url(./images/vip_dialog_aceptar_active.png);
+}
+
+#boxalert_confirm .txt_message{
+    display: block;
+    position: absolute;
+    top: 135px;
+    font-weight: bold;
+    font-family: Amplitude;
+    color: #000;
+    font-size: 20px;
+    text-align: center;
+    width: 550px;
+}
+.pleca_mi_perfil{
+    width:1002px;
+    height:69px;
+    display:block;
+    background-image: url(./images/pleca_Mi_Perfil.jpg);
+}
+.pleca_alertas{
+    width:1002px;
+    height:69px;
+    display:block;
+    background-image: url(./images/pleca_Alertas.jpg);
+}
+.pleca_favoritos{
+    width:1002px;
+    height:69px;
+    display:block;
+    background-image: url(./images/pleca_Favoritos.jpg);
+}
+.pleca_newsletter{
+    width:1002px;
+    height:69px;
+    display:block;
+    background-image: url(./images/pleca_Newsletter.jpg);
+}
+.pleca_suscripciones{
+    width:1002px;
+    height:69px;
+    display:block;
+    background-image: url(./images/pleca_Suscripciones.jpg);
+}
+
+.single_button{
+    left:235px !important;
+}
+
+#boxalert_favoritos_acmh  a {
+    text-decoration: none;
+    background-color: rgb(192, 0, 0);
+    padding: 10px 20px;
+    float: left;
+    margin: 0px 55px 30px;
+    color: #fff;
+    border-radius: 5px;
+    font-family: arial, sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+#boxalert_favoritos_acmh  button {
+    text-decoration: none;
+    background-color: rgb(192, 0, 0);
+    padding: 10px 20px;
+    float: left;
+    margin: 0px 40px 30px;
+    color: #fff;
+    border-radius: 5px;
+    font-family: arial, sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    border: none;
+}
+
+.premium-frame{
+	padding:0 !important;
+}
+
+.contenedor_vip{
+	margin: 0;
+	padding: 0;
+	background: #f3f3f3;
+}
+
+.contenedor_vip {
+	float: left;
+	width: 1000px;
+	background-repeat: repeat-x;
+	background-position: center bottom;
+
+}
+.vip_header {
+	float: left;
+	height: 72px;
+	width: 1002px;
+	background-image: url(http://cdn.premium.milenio.com/images/vip_header.png);
+	background-repeat: repeat-x;
+	background-position: center center;
+	border-radius: 2px;
+}
+.vip_menu {
+	float: left;
+	height: 67px;
+	width: 974px;
+	border: 1px solid #bcb9b8;
+	margin-left: 11px;
+	margin-top: 11px;
+	background-image: url(http://cdn.premium.milenio.com/images/vip_headerBG.png);
+	background-repeat: repeat-x;
+	background-position: center center;
+	border-radius: 2px;
+}
+.vip_centerContainer {
+	float: left;
+  width: 100%;
+	margin-top: 10px;
+	border-radius: 2px;
+	background-repeat: repeat-x;
+	background-position: center top;
+	background-color: #FFF;
+
+
+	padding-bottom: 30px;
+	box-shadow: 0px 0px 2px #BBBBBB;
+}
+
+.vip_centerContainer_inner {
+
+
+
+
+	margin-left: 13px;
+	border-radius: 2px;
+	background-repeat: repeat-x;
+	background-position: center top;
+	background-color: #FFF;
+
+
+	padding-left: 13px;
+}
+
+.vip_favorites_header {
+    height: 30px;
+    background-image: url(http://cdn.premium.milenio.com/images/vip_headerBG.png);
+    background-repeat: repeat-x;
+    background-position: center center;
+    border-radius: 2px;
+    text-align: right;
+    padding: 3px;
+}
+
+.vip_favorites_header p{
+    margin: 30px 0;
+}
+
+.vip_favorites_list {
+    width: 976px;
+	max-height: 1111px;
+	overflow: auto;
+}
+.vip_menu a{
+	display: block;
+	height:67px;
+	width:74px;
+}
+.btn_perfil {
+	float: left;
+	height: 67px;
+	width: 74px;
+	border-right:1px solid #bcb9b8;
+	background-image: url(http://cdn.premium.milenio.com/images/vip_perfil.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.btn_perfil_active {
+	float: left;
+	height: 67px;
+	width: 74px;
+	border-right:1px solid #bcb9b8;
+	background-image: url(http://cdn.premium.milenio.com/images/vip_perfil_active.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.vip_nombre {
+	float: left;
+	height: auto;
+	width: 187px;
+	margin-top: 10px;
+	font-family: AmplitudeBold;
+	color: #b91700;
+	font-size:22px;
+}
+.vip_ciudad {
+	float: left;
+	height: auto;
+	width: 187px;
+	margin-left: 10px;
+	font-family: AmplitudeBold;
+	font-size:18px;
+}
+
+.btn_favoritos {
+	float: left;
+	height: 67px;
+	width: 74px;
+	border-right:1px solid #bcb9b8;
+	background-image: url(http://cdn.premium.milenio.com/images/vip_favoritos.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.btn_favoritos_active {
+	float: left;
+	height: 67px;
+	width: 74px;
+	border-right:1px solid #bcb9b8;
+	background-image: url(http://cdn.premium.milenio.com/images/vip_favoritos_active.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+
+.btn_alertas {
+	float: left;
+	height: 67px;
+	width: 74px;
+	border-right:1px solid #bcb9b8;
+	background-image: url(http://cdn.premium.milenio.com/images/vip_aletas.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.btn_alertas_active {
+	float: left;
+	height: 67px;
+	width: 74px;
+	border-right:1px solid #bcb9b8;
+	background-image: url(http://cdn.premium.milenio.com/images/vip_aletas_active.png);
+
+	background-position: center center;
+}
+
+.btn_suscripciones {
+	float: left;
+	height: 67px;
+	width: 85px;
+	border-right:1px solid #bcb9b8;
+	background-image: url(http://cdn.premium.milenio.com/images/suscripciones.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.btn_suscripciones_active {
+	float: left;
+	height: 67px;
+	width: 85px;
+	border-right:1px solid #bcb9b8;
+	background-image: url(http://cdn.premium.milenio.com/images/suscripciones_active.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.btn_recomendadas {
+	float: left;
+	height: 67px;
+	width: 89px;
+	border-right:1px solid #bcb9b8;
+	background-image: url(http://cdn.premium.milenio.com/images/vip_recomendadas.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.btn_recomendadas_active {
+	float: left;
+	height: 67px;
+	width: 89px;
+	border-right:1px solid #bcb9b8;
+	background-image: url(http://cdn.premium.milenio.com/images/vip_recomendadas_active.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.btn_news {
+	float: left;
+	height: 67px;
+	width: 74px;
+	border-right:1px solid #bcb9b8;
+	background-image: url(http://cdn.premium.milenio.com/images/vip_newsletter.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.btn_news_active {
+	float: left;
+	height: 67px;
+	width: 74px;
+	border-right:1px solid #bcb9b8;
+	background-image: url(http://cdn.premium.milenio.com/images/vip_newsletter_active.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.btn_guardar {
+	float: right;
+	height: 67px;
+	width: 74px;
+	display: none;
+	border-right:1px solid #bcb9b8;
+	background-image: url(http://cdn.premium.milenio.com/images/vip_guardar.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.btn_guardar_active {
+	float: right;
+	height: 67px;
+	width: 74px;
+	border-right:1px solid #bcb9b8;
+	background-image: url(http://cdn.premium.milenio.com/images/vip_guardar_active.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.vip_perfil_col_izq {
+	margin: 12px;
+	float: left;
+	width: 216px;
+}
+.vip_perfil_col_der {
+	float: left;
+	width: 705px;
+	margin-top: 12px;
+	border: 1px solid rgb(221, 221, 221);
+	background-color: #fff;
+	padding: 10px 20px;
+}
+
+.vip_datos_usuario {
+	float: left;
+	height: 186px;
+	width: 476px;
+	margin-bottom: 7px;
+	border:1px solid #bcb9b8;
+}
+.vip_datos_personales {
+	float: left;
+	overflow-x: hidden !important;
+}
+
+.vip_datos_personales li {
+	list-style: none;
+	font-family: arial;
+}
+
+.vip_photo {
+	float: left;
+	height: 223px;
+	width: 207px;
+	background-color: #fff;
+	box-shadow: -2px 2px 5px rgb(187,187,187);
+	padding: 5px;
+}
+.btn_cambiar_foto {
+	float: left;
+	height: 28px;
+	width: 107px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.vip_barra_roja {
+	float: left;
+	height: 45px;
+	width: 100%;
+	font-family: AmplitudeBold;
+	color: #b91700;
+	font-size:22px;
+	line-height: 40px;
+	text-transform: uppercase;
+	border-bottom: 1px solid #ccc;
+}
+
+.vip_barra_moviles {
+	float: left;
+	height: 45px;
+	width: 100%;
+	font-family: AmplitudeBold;
+	color: #b91700;
+	font-size:22px;
+	line-height: 40px;
+	text-transform: uppercase;
+	box-shadow: 2px 1px 3px #ccc;
+}
+
+.vip_barra_roja p {
+	display:inline;
+}
+
+.btn_session{
+	display:inline;
+	float:right;
+	margin-top: 2px;
+}
+
+.contactTitle, .token_step2 p {
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: 600;
+	color: rgb(185, 23, 0);
+	padding-left: 25px;
+	font-size: 18px;
+	margin: 20px 0 0 0;
+	width:200px;
+}
+
+.token_step2 {
+	width: 543px;
+}
+
+.facTitle{
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: 600;
+	color: rgb(185, 23, 0);
+	padding-left: 25px;
+	font-size: 18px;
+	margin: 50px 0 0 0;
+	width:900px;
+}
+
+#datos_factura .facTitle{
+	border-top: 1px solid #eaeaea;
+	padding-top: 20px;
+}
+
+#verinfo_billing .facTitle{
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: 600;
+	color: rgb(185, 23, 0);
+	padding-left: 25px;
+	font-size: 18px;
+	margin: 20px 0 0 20px;
+	width:900px;
+	border-top: 1px solid #ccc;
+	padding-top: 30px;
+}
+
+.contacform{
+	width: 70px;
+	float:left;
+	line-height: 26px;
+	text-align:right;
+	padding-right: 5px;
+	padding-left: 40px;
+}
+
+.col_izq_contacform, .lbl_tokns2{
+	width: 170px;
+	float:left;
+	line-height: 26px;
+	padding-right: 5px;
+
+	color:#000;
+    font-family: Arial,sans-serif;
+    font-size: 13px;
+}
+
+.lbl_tokns2{
+	width: 180px;
+}
+
+.col_der_contacform{
+	width: 100px;
+	float:left;
+	line-height: 26px;
+	padding-right: 5px;
+}
+
+.label_billingform {
+	line-height: 26px;
+	padding-right: 5px;
+	width: 29px;
+	padding-left: 5px;
+	float:left;
+}
+
+.label_billingform_tipo {
+	line-height: 26px;
+	padding-right: 5px;
+	width: 53px;
+	padding-left: 5px;
+	float:left;
+}
+
+.vip_datosbox {
+	float: left;
+	height: auto;
+	width: 430px;
+	margin-top: 6px;
+	margin-left: 18px;
+	font-family: Arial;
+	font-size: 12px;
+}
+.vip_datosbox input{
+	height: 25px;
+	width: 239px;
+	border: 1px solid #D1D1D1;
+	border-radius:2px;
+	color:#999;
+}
+.vip_datosbox select{
+	height: 22px;
+	width: 239px;
+	padding-top:3px;
+	border: 1px solid #D1D1D1;
+	border-radius:2px;
+	font-size:10px;
+	color:#999;
+}
+.vip_btns_perfil {
+	float: left;
+	height: 40px;
+	width: 970px;
+	text-align: right;
+	padding-top: 10px;
+}
+.vip_footer {
+	float: left;
+	height: 40px;
+	width: 976px;
+	margin-left: 13px;
+}
+.vip_btns_perfil input[type="button"]{
+	font-size:30px;
+}
+.submit {
+	padding: 5px;
+}
+.vip_news_col_izq {
+	margin: 20px;
+	float: left;
+	height: 494px;
+	width: 476px;
+	border:1px solid #bcb9b8;
+}
+.vip_alertas_col_izq {
+	margin: 20px;
+	float: left;
+	height: 230px;
+	width: 476px;
+	border:1px solid #bcb9b8;
+}
+.vip_registro_col_izq {
+	margin: 20px;
+	float: left;
+	height: 490px;
+	width: 476px;
+	border:1px solid #bcb9b8;
+}
+.vip_favs_cont {
+	margin: 20px;
+	float: left;
+	height: 526px;
+	width: 935px;
+}
+.vip_newsCont {
+	float: left;
+	height: 430px;
+	width: 437px;
+	margin-left: 15px;
+	margin-top: 12px;
+	font-family: Arial;
+	font-size: 12px;
+	font-weight: bold;
+}
+.vip_alertasCont {
+	float: left;
+	height: 210px;
+	width: 437px;
+	margin-left: 15px;
+	margin-top: 12px;
+	font-family: Arial;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.news_Cont_txt {
+	float: left;
+	height: 134px;
+	width: 437px;
+	margin-top: 20px;
+}
+.news_btns {
+	float: left;
+	height: 35px;
+	width: 437px;
+	margin-top: 15px;
+}
+.txt_recibir {
+	font-size: 15px;
+	font-weight: normal;
+}
+.btns_alertas {
+	float: left;
+	height: 50px;
+	width: 472px;
+	margin-left: 20px;
+	text-align: right;
+}
+.vip_favs_block {
+	float: left;
+	width: 91%;
+	height: auto;
+	margin-top: 10px;
+	margin-left:40px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #eaeaea;
+	min-height:80px;
+}
+.vip_favs_date {
+	float: left;
+	width: 70px;
+	height: 100%;
+	font-family: Arial;
+	font-weight: bold;
+	color: #b91700;
+	font-size: 11px;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+.vip_favs_noticiaCont .favs_title {
+	font-family: UtopiaSemi;
+	font-size: 22px;
+	color: #313131;
+	float: left;
+	width: 75%;
+	margin-bottom: 5px;
+	margin-top: 2px;
+}
+
+.vip_favs_noticiaCont .favs_title a:link{
+	text-decoration: none;
+	color:#313131;
+}
+
+.vip_favs_noticiaCont .favs_title a:hover{
+	text-decoration: none;
+	color:#313131;
+}
+
+.vip_favs_noticiaCont .favs_title a:visited{
+	text-decoration: none;
+	color:#313131;
+}
+
+.vip_favs_noticiaCont .favs_title a:active{
+	text-decoration: none;
+	color:#313131;
+}
+
+.vip_favs_noticiaCont .favs_text {
+	float: left;
+	width: 75%;
+	margin-bottom: 5px;
+}
+
+.vip_favs_noticiaCont {
+	font-family: Arial;
+	font-size: 13px;
+	font-weight: normal;
+	color: #58585a;
+	float: left;
+	width: 690px;
+	padding: 10px;
+	border-left-width: 1px;
+	border-left-style: dotted;
+	border-left-color: #e0e0e0;
+}
+.vip_favs_comments {
+	font-family: Arial;
+	font-size: 11px;
+	color: #000;
+	float: left;
+	width: 95%;
+	background-image: url(http://cdn.premium.milenio.com/images/comments_globo.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	padding-left: 17px;
+}
+.vip_favs_delete {
+	float: right;
+	height: 38px;
+	cursor: pointer;
+}
+.vip_favs_foto {
+	float: left;
+	height: 100px;
+	width: 146px;
+	margin-right: 15px;
+}
+.vip_favs_fotoCuadro {
+	float: left;
+	height: 89px;
+	width: 89px;
+	margin-right: 15px;
+}
+.vip_favs_txtReportaje {
+	float: left;
+	height: auto;
+	width: 75%;
+
+}
+.vip_favs_txtColumna {
+	float: left;
+	height: auto;
+	width: 530px;
+}
+.favs_nombreTitulo {
+	float: left;
+	width: 95%;
+	font-family: UtopiaSemi;
+	font-size: 12px;
+	padding-right: 5px;
+}
+
+.favs_nombre {
+	font-family: AmplitudeBold;
+	font-size: 13px;
+	color: #b91700;
+	text-transform: uppercase;
+	float: left;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #C4C4C4;
+	padding-right: 5px;
+	margin-right: 5px;
+}
+.vip_box_reportaje {
+	background-image: url(http://cdn.premium.milenio.com/images/reportaje_box.png);
+	background-repeat: no-repeat;
+	float: left;
+	height: 18px;
+	width: 100%;
+	padding-bottom: 2px;
+}
+
+.vip_box_entrevista {
+	background-image: url(http://cdn.premium.milenio.com/images/entrevista_box.png);
+	background-repeat: no-repeat;
+	float: left;
+	height: 18px;
+	width: 100px;
+	padding-bottom: 2px;
+}
+
+.vip_box_cronica {
+	background-image: url(http://cdn.premium.milenio.com/images/cronica_box.png);
+	background-repeat: no-repeat;
+	float: left;
+	height: 18px;
+	width: 100px;
+	padding-bottom: 2px;
+}
+
+
+.ui-tabs {
+	position: relative;
+	padding: .2em;
+}
+.ui-tabs .ui-tabs-nav {
+	margin: 0;
+	padding: .2em .2em 0;
+}
+.ui-tabs .ui-tabs-nav li {
+	list-style: none;
+	float: left;
+	position: relative;
+	top: 0;
+	margin: 1px .2em 0 0;
+	border-bottom-width: 0;
+	padding: 0;
+	white-space: nowrap;
+}
+.ui-tabs .ui-tabs-nav li a {
+	float: left;
+	padding: .5em 1em;
+	text-decoration: none;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+	margin-bottom: -1px;
+	padding-bottom: 1px;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active a,
+.ui-tabs .ui-tabs-nav li.ui-state-disabled a,
+.ui-tabs .ui-tabs-nav li.ui-tabs-loading a {
+	cursor: text;
+}
+.ui-tabs .ui-tabs-nav li a,
+.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active a {
+	cursor: pointer;
+}
+.ui-tabs .ui-tabs-panel {
+	display: block;
+	border-width: 0;
+	padding: 1em 1.4em;
+	background: none;
+}
+.button{
+    display: inline-block;
+    text-decoration: none;
+    font: 12px/12px HelveticaNeue, Arial;
+    padding: 8px 11px;
+    color: #555;
+    border: 1px solid #dedede;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    outline: 0;
+}
+
+#recomendadas .button{
+    display: inline-block;
+    text-decoration: none;
+    font: 12px/12px HelveticaNeue, Arial;
+    padding: 8px 11px;
+    color: #fff;
+    border: none!important;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    outline: 0;
+    background-color: #b91700;
+    margin-left: 45px;
+}
+
+.button.grey{
+    background: #bdbdbd;
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#bf291c', endColorstr='#9d2216');
+    background: -webkit-gradient(linear, left top, left bottom, from(#bf291c), to(#9d2216));
+    background: -moz-linear-gradient(top,  #bf291c, #9d2216);
+    background:linear-gradient(to bottom right, #bf291c 0%, #9d2216 100%);
+    color: #FFF;
+    cursor: pointer;
+
+}
+
+.vip_perfil_col_izq .button.grey{
+    background: #bdbdbd;
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#bf291c', endColorstr='#9d2216');
+    background: -webkit-gradient(linear, left top, left bottom, from(#bf291c), to(#9d2216));
+    background: -moz-linear-gradient(top,  #bf291c, #9d2216);
+    background:linear-gradient(to bottom right, #bf291c 0%, #9d2216 100%);
+    color: #FFF;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.button.grey.active {
+    color: #f00;
+}
+.button.grey:hover{
+    background: #c2c2c2;
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#9d2216', endColorstr='#bf291c');
+    background: -webkit-gradient(linear, left top, left bottom, from(#9d2216), to(#bf291c));
+    background: -moz-linear-gradient(top,  #9d2216, #bf291c);
+    background:linear-gradient(to bottom right, #9d2216 0%, #bf291c 100%);
+    cursor: pointer;
+}
+
+.vip_alerts_header > a {
+    line-height: 48px;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: Bold;
+    text-decoration: none;
+    color: #777;
+    padding-right: 30px;
+}
+.vip_alerts_header > a.selected {
+    color: #b91700;
+    font-size: 15px;
+}
+.vip_alerts_block{
+	float: left;
+	width: 100%;
+	height: auto;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #eaeaea;
+
+	height: 40px;
+	margin-bottom: 20px;
+}
+
+.vip_alerts_block#addAlert{
+	float: left;
+	width: 90%;
+	height: auto;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #bcb9b8;
+
+	height: 40px;
+	margin: 0 0 20px 45px;
+}
+
+.vip_alerts_term, .vip_alerts_freq{
+	font-family: Arial;
+	font-size: 16px;
+	color: #313131;
+	float: left;
+	width: 290px;
+	margin: 10px 5px 10px 10px;
+	padding-left: 17px;
+	line-height: 39px;
+	overflow:hidden;
+	height: 40px;
+}
+
+.alerts-header{
+	width: 90%;
+	height: 45px;
+	font-family: UtopiaSemi;
+	font-size: 25px;
+	color: #777777;
+	background-color: #f1f1f1;
+	float: left;
+	margin: 0px 20px 0px 45px;
+	line-height: 45px;
+	border: 1px solid #E6E6E6;
+}
+
+.vip_alerts_delete{
+	float: right;
+	cursor: pointer;
+}
+
+.alerts-buttons{
+	float: left;
+	margin-left: 20px;
+}
+
+.term-title{
+	line-height: 48px;
+	font-family: Arial;
+	font-size: 18px;
+	font-weight: Bold;
+	float: left;
+	width: 300px;
+	padding-left: 25px;
+}
+
+.freq-title{
+	line-height: 48px;
+	font-family: Arial;
+	font-size: 18px;
+	font-weight: Bold;
+	float: left;
+	padding-left: 22px;
+}
+
+.vip_alerts_block#addAlert input{
+	height: 25px;
+	width: 255px;
+	margin: 35px 0px 20px 0px;
+	font-size: 16px;
+	color: #999;
+}
+.vip_alerts_block#addAlert select{
+	font-size: 16px;
+	width: 100px;
+	margin-left: 40px;
+	margin-right: 40px;
+}
+
+
+
+@font-face{
+    font-family: 'AmplitudeBold';
+    src: url('http://cdn.premium.milenio.com/amplitude/amplitude_bold.eot');
+    src: url('http://cdn.premium.milenio.com/amplitude/amplitude_bold.eot?#iefix') format('embedded-opentype'),
+         url('http://cdn.premium.milenio.com/amplitude/amplitude_bold.woff') format('woff'),
+         url('http://cdn.premium.milenio.com/amplitude/amplitude_bold.ttf') format('truetype'),
+         url('http://cdn.premium.milenio.com/amplitude/amplitude_bold.svg#webfont') format('svg');
+}
+#form_envio{
+}
+
+
+.tablaEnv input,  {
+    height: 18px;
+    width: 300px;
+    border: 1px solid #CCCCCC;
+    background: #FFFFFF;
+    color: #999999;
+    font-size: 14px;
+    border-collapse: collapse;
+    padding: 5px;
+    float:left;
+    position: relative;
+}
+
+#verinfo_contact .tablaEnv {
+	width:500px;
+}
+
+
+.tablaEnv, .tablaFac {
+	font-family: Arial,sans-serif;
+	font-size: 13px;
+	color: rgb(88, 88, 90);
+	width: 900px;
+	margin-left: 25px;
+	float:left;
+}
+
+.tablaFac_contact, .tablaEnv_contact {
+	font-family: Arial,sans-serif;
+	font-size: 13px;
+
+	color:#000;
+	width: 500px;
+	margin-left: 25px;
+	padding-top: 15px;
+	padding-bottom: 20px;
+	float:left;
+}
+
+.tablaEnv tbody{
+	float: left;
+}
+
+.facTitle .tablaEnv{
+	margin-left: 60px;
+	margin-top: 20px;
+}
+
+.tablaFac_contact tr:nth-child(1n+3) td{
+  padding: 5px 0;
+}
+
+#verinfo_contact .tablaEnv td, #verinfo_billing .tablaFac td{
+	width: 420px;
+  padding: 5px 0;
+}
+
+.tablaBtns{
+    float:right;
+    margin-right: 27px;
+
+}
+
+.tablaBtns input{
+	font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px 10px;
+    background: #c0291c;
+    background: -moz-linear-gradient(top, #c0291c 0%, #9b2115 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0291c), color-stop(100%,#9b2115));
+    background: -webkit-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: linear-gradient(to bottom, #c0291c 0%,#9b2115 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 0px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.tablaBtns .campo_cambiado{
+	font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px 10px;
+    background: #c0291c;
+    background: -moz-linear-gradient(top, #c0291c 0%, #9b2115 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0291c), color-stop(100%,#9b2115));
+    background: -webkit-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: linear-gradient(to bottom, #c0291c 0%,#9b2115 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 0px;
+    color: #FFFFFF !important;
+    cursor: pointer;
+}
+
+input.botonFac{
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px 10px;
+    background: #c0291c;
+    background: -moz-linear-gradient(top, #c0291c 0%, #9b2115 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0291c), color-stop(100%,#9b2115));
+    background: -webkit-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: linear-gradient(to bottom, #c0291c 0%,#9b2115 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 0px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.botones input.botonFac{
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px 10px;
+    background: #c0291c;
+    background: -moz-linear-gradient(top, #c0291c 0%, #9b2115 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0291c), color-stop(100%,#9b2115));
+    background: -webkit-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: linear-gradient(to bottom, #c0291c 0%,#9b2115 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 0px;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+input.incorrecto
+{
+	border-color: red;
+}
+
+#verinfo_shipping, #verinfo_billing, #verinfo_producto{
+
+}
+#verinfo_producto th, #tbhistorial_pagos th{
+    font-family: 'AmplitudeBold';
+    color: #d22a11;
+    font-size: 24px;
+    padding-right: 20px;
+    text-align: left;
+}
+.btnFact{
+    float: left;
+    margin-right: 10px;
+    position:relative;
+}
+
+#suscripciones .btnFact{
+    margin-top: 10px;
+}
+
+.menu_verification .btnFact{
+    float: right;
+    position:relative;
+    margin-top: 10px;
+}
+
+.btnFact{
+    display: block;
+    background: #c0291c;
+    background: -moz-linear-gradient(top, #c0291c 0%, #9b2115 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0291c), color-stop(100%,#9b2115));
+    background: -webkit-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: linear-gradient(to bottom, #c0291c 0%,#9b2115 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px 10px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.btnFact a{
+	text-decoration: none;
+	color:#fff;
+}
+
+.btnFact a:visited{
+	text-decoration: none;
+	color:#fff;
+}
+
+
+#boxalert_confirm{
+    position:absolute;
+    margin:0 auto;
+    left:0;
+    height:100%;
+    width:100%;
+    color:white;
+    background: url(http://cdn.premium.milenio.com/images/fav_BlackBack.png);
+    background-repeat: repeat;
+    clear:both;
+    float:left;
+    z-index:5000;
+}
+
+#container_boxalert_confirm{
+    margin-top:150px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+
+    border-radius: 10px;
+    -moz-border-radius:10px;
+    background: #FFF;
+    width: 548px;
+    overflow:hidden;
+}
+
+.gifsaving_confirm{
+    top:30%;
+    position: relative;
+    margin:20px;
+    float:left;
+}
+
+.txt_saving_confirm{
+    position: relative;
+    margin: 8px auto 0;
+    overflow: hidden;
+}
+#boxalert_confirm .okButton{
+    display: block;
+    width: 86px;
+    height: 23px;
+    float:left;
+    margin: 10px 10px;
+    background-image: url(http://cdn.premium.milenio.com/images/vip_dialog_aceptar_active.png);
+}
+#boxalert_confirm .cancelButton{
+    display: block;
+    width: 86px;
+    height: 23px;
+    float:right;
+    margin: 10px 10px;
+    background-image: url(http://cdn.premium.milenio.com/images/vip_dialog_cancelar_active.png);
+}
+#boxalert_confirm .txt_message{
+    display: block;
+    float:left;
+    font-family: AmplitudeBold;
+    color: #000;
+    font-size: 20px;
+}
+.pleca_mi_perfil{
+	width:1002px;
+	height:69px;
+	display:block;
+	background-image: url(http://cdn.premium.milenio.com/images/pleca_Mi_Perfil.jpg);
+}
+.pleca_alertas{
+	width:1002px;
+	height:69px;
+	display:block;
+	background-image: url(http://cdn.premium.milenio.com/images/pleca_Alertas.jpg);
+}
+.pleca_favoritos{
+	width:1002px;
+	height:69px;
+	display:block;
+	background-image: url(http://cdn.premium.milenio.com/images/pleca_Favoritos.jpg);
+}
+
+.pleca_newsletter{
+	width:1002px;
+	height:69px;
+	display:block;
+	background-image: url(http://cdn.premium.milenio.com/images/pleca_recomendadas.jpg);
+}
+.pleca_recomendadas{
+	width:1002px;
+	height:69px;
+	display:block;
+	background-image: url(http://cdn.premium.milenio.com/images/pleca_recomendadas.jpg);
+}
+.pleca_suscripciones{
+	width:1002px;
+	height:69px;
+	display:block;
+	background-image: url(http://cdn.premium.milenio.com/images/pleca_Suscripciones.jpg);
+}
+
+
+
+.vip_suscripciones_header{
+	width: 910px;
+	height: 76px;
+
+	position: relative;
+	font-family: amplitude, AmplitudeLight, Arial;
+	font-size: 38px;
+	line-height: 51px;
+	margin-right: 40px;
+	padding-top:30px;
+	margin-left: 20px;
+}
+
+
+.vip_suscripciones_imagen{
+	width: 455px;
+	height: 400px;
+	float:left;
+	position: relative;
+	margin:10px 60px 0 20px;
+}
+
+.vip_suscripciones_texto{
+	width: 360px;
+
+	font-family: amplitude, AmplitudeLight, Arial;
+	font-size: 18px;
+	float:left;
+	position: relative;
+	margin-bottom: -10px;
+	margin-top: 10px
+	color:#2b2b2b;
+}
+
+.vip_suscripciones_imagenNL{
+	width: 455px;
+	height: 360px;
+	float:left;
+	position: relative;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 50px;
+}
+
+.vip_suscripciones_textoNL{
+	width: 375px;
+	height: 230px;
+	font-family: amplitude, AmplitudeLight, Arial;
+	font-size: 18px;
+	float:left;
+	position: relative;
+	color: rgb(115, 115, 115);
+	margin-bottom: -15px;
+	line-height: normal;
+	margin-top: 30px;
+}
+
+.vip_suscripciones_texto p{
+	line-height: normal;
+	color:rgb(115, 115, 115);
+}
+
+.vip_suscripciones_tarjetas{
+	width: 336px;
+	height:86px;
+	float:left;
+	position: relative;
+	margin-top: 20px;
+}
+
+
+
+.selectBox {
+	position: relative;
+	float:left;
+	width: 420px;
+	height: 36px;
+	border: 1px solid #ccc;
+	margin-right: 10px;
+	background-image: url("http://cdn.premium.milenio.com/images/bg_select2.png");
+	background-position: 60px;
+	background-repeat: no-repeat;
+}
+
+	.selectBox .box {
+		position: absolute;
+		top: 3px;
+		width: 350px;
+		height: 25px;
+		line-height: 22px;
+		font-family: arial;
+		font-size: 13px;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: #464646;
+		overflow: hidden;
+		border:none;
+	}
+
+	.selectBox select {
+		position: absolute;
+		left: -1px;
+		top: -1px;
+		width: 420px;
+		height: 24px;
+		border: 1px solid #ccc;
+		opacity: 0;
+		filter: alpha(Opacity=0);
+		-moz-opacity: 0;
+		cursor: pointer;
+		z-index:100;
+		background-color: #FFFFFF;
+		color:#000000;
+	}
+		.selectBox select option{
+			padding: 4px;
+			font-size: 11px;
+			color: #000;
+			border-bottom: 1px solid #ccc;
+			cursor: pointer;
+		}
+		.selectBox select option.ultimo{
+			border-bottom: 0px none;
+			background-color: #FFFFFF;
+		}
+
+		.espacio{
+			float:left;
+			width: 400px;
+		}
+
+		.botones{
+			margin-top: -15px;
+			padding-top: 10px;
+			border-top: 1px solid #DBDBDB;
+			float:left;
+			position: relative;
+		}
+
+
+
+.perfil_columna_izq .label{
+	font-family: Arial;
+	font-size: 13px;
+	font-weight:bold;
+	width: 250px;
+	float: left;
+	position: relative;
+	line-height: 26px;
+	cursor: default;
+	text-transform: uppercase;
+	color:#131313;
+}
+
+
+
+.value{
+font-family: Arial;
+font-size: 14px;
+width: 300px;
+float: left;
+position: relative;
+height: 30px;
+overflow: hidden;
+margin-right: 5px;
+line-height: 26px;
+color: #575757;
+}
+
+#gender_user{
+	font-family: Arial;
+	font-size: 14px;
+	width: 175px;
+	float: left;
+	position: relative;
+	height: 25px;
+	overflow: hidden;
+	margin-right: 5px;
+	line-height: 26px;
+	color:#888;
+}
+
+.editable-entry label, .noneditable-entry label{ font-family: Arial; font-size: 14px; font-weight:bold; margin-left: 30px; }
+
+.label_nick{ font-family: Arial; font-size: 13px; font-weight: bold; width: 45px; float: left; position: relative; margin-right: 5px; line-height: 26px; cursor: default; text-transform: uppercase; color: #131313; z-index: 1;}
+
+.editable-entry span{ font-family: Arial; }
+
+.perfil_columna_izq .editable-entry { position: relative; }
+
+.perfil_columna_der .editable-entry { position: relative; }
+
+#news .vip_newsletter_texto{
+	width: 345px;
+	height: 230px;
+	font-family: amplitude, AmplitudeLight, arial, sans-serif;
+	font-size: 18px;
+	float:left;
+	position: relative;
+	color:#737373;
+	margin-left: 20px;
+	margin-top: 40px;
+}
+
+#alertas .vip_newsletter_texto{
+	width: 345px;
+	height: 230px;
+	font-family: amplitude, AmplitudeLight, arial, sans-serif;
+	font-size: 18px;
+	float:left;
+	position: relative;
+	color:#737373;
+	margin-left: 20px;
+	margin-top: 40px;
+	background-image:url('http://cdn.premium.milenio.com/images/fondo_alerta.jpg');
+	background-repeat: no-repeat;
+}
+
+#favoritos .vip_newsletter_texto{
+	width: 375px;
+	height: 230px;
+	font-family: amplitude, AmplitudeLight, arial, sans-serif;
+	font-size: 18px;
+	float:left;
+	position: relative;
+	color:#737373;
+	margin-left: 20px;
+	margin-top: 40px;
+}
+
+#recomendadas .vip_newsletter_texto{
+	width: 375px;
+	height: 230px;
+	font-family: amplitude, AmplitudeLight, arial, sans-serif;
+	font-size: 18px;
+	float:left;
+	position: relative;
+	color:#737373;
+	margin-left: 20px;
+	margin-top: 40px;
+}
+
+.vip_newsletter_texto span{
+	font-family: AmplitudeRegular, arial, sans-serif;
+	font-size: 25px;
+	color:rgb(68,68,68);
+}
+
+.vip_newsletter_texto label{
+	font-family: AmplitudeRegular, arial, sans-serif;
+	font-size: 20px;
+	float:right;
+	position: relative;
+	margin-top: 10px;
+	color:#1f1f1f;
+}
+
+
+.vip_newsletter_textoL{
+	width: 350px;
+	height: 230px;
+	font-family: amplitude, AmplitudeLight, arial, sans-serif;
+	font-size: 18px;
+	float:left;
+	position: relative;
+	color:#737373;
+	margin-left: 30px;
+	margin-top: 40px;
+
+}
+
+.vip_newsletter_textoL span{
+	font-family: AmplitudeRegular, arial, sans-serif;
+	font-size: 26px;
+	color:#1f1f1f;
+}
+
+.vip_newsletter_textoL label{
+	font-family: AmplitudeRegular, arial, sans-serif;
+	font-size: 19px;
+	float:right;
+	position: relative;
+	margin-top: 10px;
+	color:#1f1f1f;
+}
+
+.check_newsletter{
+	width: 230px;
+	border-top: 1px #d2d2d2 solid;
+}
+
+.vip_newsletter_texto input{
+	float:left;
+	position: relative;
+	margin-top: 15px;
+	border:none;
+}
+
+.vip_newsletter_textoL input{
+	float:left;
+	position: relative;
+	margin-top: 15px;
+	border:none;
+}
+
+.vip_newsletter_boton{
+	float:right;
+	position: relative;
+}
+
+.check {
+	float:left;
+	margin-left: 60px;
+}
+
+.ingresar {
+	float:left;
+	margin-left: 15px;
+}
+
+.registro_newsletter{
+	width: 190px;
+	border-top: 1px #d2d2d2 solid;
+}
+
+.vip_newsletter_imagen{
+	width: 455px;
+	float:left;
+	position: relative;
+	margin: 40px 80px 0 0;
+}
+
+#news .vip_newsletter_imagen{
+	width: 455px;
+	height: 381px;
+	float:left;
+	position: relative;
+	margin: 40px 60px 0 20px;
+}
+
+.vip_newsletter_header{
+	width: 927px;
+	position: relative;
+	font-family: AmplitudeLight, 'amplitudelight', Arial;
+	font-size: 42px;
+	line-height: 51px;
+	padding-top: 30px;
+	margin-left: 25px;
+	color: rgb(68, 68, 68);
+	letter-spacing: -1.1px;
+	text-transform: uppercase;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #e7e7e7;
+}
+
+.vip_linea_header{
+	margin-top: 20px;
+	display:none;
+}
+
+.derecha
+{
+	margin-top: -80px;
+}
+
+.vip_favoritos_header{
+	width: 960px;
+	float:left;
+	position: relative;
+	font-family: amplitude, AmplitudeLight, Arial;
+	font-size: 38px;
+}
+
+.vip_favoritos_imagen p{
+	width: 630px;
+	font-family: arial;
+	font-weight: bold;
+	font-size: 16px;
+	float:left;
+	position: relative;
+	margin-top: -5px;
+}
+
+.vip_favoritos_imagen img{
+	float:left;
+	position: relative;
+
+}
+
+.vip_favoritos_texto{
+	width: 450px;
+	font-family: arial;
+	font-size: 16px;
+	float:left;
+	position: relative;
+	margin-left: 30px;
+}
+
+.vip_favoritos_texto li{
+	list-style: none;
+}
+
+.esquina{
+line-height: 45px;
+}
+
+.espacioimagen{
+margin-bottom: 20px;
+}
+
+#wrap{
+	background-image: url("http://cdn.premium.milenio.com/images/fondo.jpg");
+	width: 976px;
+	height: 800px;
+}
+
+#registrate_izq{
+	width: 470px;
+	float:left;
+	position:relative;
+	margin-top: 10px;
+	margin-left: 20px;
+}
+
+.btn_ingresa{
+	float:left;
+	position:relative;
+	margin-left: 40px;
+	margin-top: 5px;
+}
+
+.btn_registrar{
+	float:left;
+	position:relative;
+	margin-left: 40px;
+	margin-top: 0;
+}
+
+.susc_imagen .btnRegistra{
+	width: 90px !important;
+	text-transform: uppercase;
+	margin-right: 20px;
+	width: 80px;
+	text-transform: uppercase;
+	display: block;
+	background: #c0291c;
+	background: -moz-linear-gradient(top, #c0291c 0%, #9b2115 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0291c), color-stop(100%,#9b2115));
+	background: -webkit-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: linear-gradient(to bottom, #c0291c 0%,#9b2115 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	font-size: 13px;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 8px 10px;
+	color: #FFFFFF;
+	text-decoration: none;
+	float: right;
+	text-align: center;
+	cursor: pointer;
+	font-weight: normal;
+	margin-top: 2px;
+	margin-left: 0 !important;
+}
+
+
+
+#registrate_der{
+	width: 440px;
+	height: 340px;
+	float:left;
+	position:relative;
+	margin-top: 30px;
+	margin-left: 15px;
+	background-image: url("http://cdn.premium.milenio.com/images/bgvideo.png");
+	background-repeat-x: no-repeat;
+background-repeat-y: no-repeat;
+}
+
+#registrate_der object{
+	margin-top: 21px;
+	margin-left: 23px;
+	z-index: -1;
+}
+
+#logo{
+	float:left;
+	position: relative;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+#Texto_principal{
+	float:left;
+	position: relative;
+	font-family: amplitude, AmplitudeLight, arial, sans-serif;
+	font-size: 24px;
+	color: #FFF;
+	text-transform:uppercase;
+    margin-left: 40px !important;
+    margin-top: 25px !important;
+}
+
+#Texto_principal strong{
+	font-family: AmplitudeBold, arial, sans-serif;
+	font-size: 24px;
+	color: #FFF;
+}
+
+#pregunta_usuario{
+	float:left;
+	position: relative;
+	font-family: amplitude, AmplitudeLight, arial, sans-serif;
+	font-size: 27px;
+	text-transform:uppercase;
+	margin-left: 40px;
+	margin-top: 15px;
+	color: #494848;
+}
+
+#pregunta_ventajas{
+	float:left;
+	position: relative;
+	font-family: AmplitudeLight, arial, sans-serif;
+	font-size: 38px;
+	text-transform:uppercase;
+	margin-left: 55px;
+	line-height:25px;
+	vertical-align: bottom;
+	margin-top: 10px;
+	color: #494848;
+}
+
+.ventajas{
+	width: 280px;
+	height: 190px;
+	float:left;
+	position: relative;
+	font-family: amplitude, Amplitudelight, arial, sans-serif;
+	font-size: 13px;
+	color: #737373;
+	border-bottom: 1px solid #CCCCCC;
+	margin-left: 30px;
+	margin-bottom: 15px;
+	margin-top: 40px;
+}
+.ventajasAb{
+	width: 280px;
+	height: 170px;
+	float:left;
+	position: relative;
+	font-family: amplitude, Amplitudelight, arial, sans-serif;
+	font-size: 13px;
+	color: #737373;
+	border-bottom: 1px solid #CCCCCC;
+	margin-left: 125px;
+	margin-bottom: 15px;
+}
+
+.ventajas strong{
+	font-family: AmplitudeRegular, arial, sans-serif;
+	font-size: 17px;
+	font-weight: strong;
+	color: #1f1f1f;
+}
+
+.ventajasAB strong{
+	font-family: AmplitudeRegular, arial, sans-serif;
+	font-size: 17px;
+	font-weight: strong;
+	color: #1f1f1f;
+}
+
+.ventajas img{
+	margin-right: 30px;
+}
+.ventajasAb img{
+	margin-right: 130px;
+}
+
+#digital_izq{
+	width: 220px;
+	float:left;
+	position:relative;
+	margin-left: 25px;
+	margin-top: 30px;
+}
+
+#digital_der{
+	width: 710px;
+	float:left;
+	position:relative;
+	margin-top: 30px;
+	margin-left: 20px;
+}
+
+#periodico_digital{
+	width: 941px;
+	height: 400px;
+	margin-left: 20px;
+	float:left;
+	position:relative;
+	background-image: url("http://cdn.premium.milenio.com/images/fondoepaper.png");
+}
+
+#periodico_digital #btn_registrar{
+	margin-left: 15px;
+}
+
+#pd_izq{
+	width: 350px;
+	float:left;
+	position:relative;
+}
+
+#pd_der{
+	width: 340px;
+	float:right;
+	position:relative;
+	vertical-align: bottom;
+	margin-top: 26px;
+	margin-left: 30px;
+}
+
+#tituloPD{
+	font-family: AmplitudeBold, arial, sans-serif;
+	font-size: 32px;
+	color:#FFF;
+	background-color: #000;
+	width: 250px;
+	height:50px;
+	border-radius: 3px;
+	margin-top: 25px;
+	margin-left: -3px;
+	line-height: 50px;
+	text-align: center;
+	text-transform: capitalize;
+}
+
+#descripcion_digital{
+	font-family: amplitude, AmplitudeLight, arial, sans-serif;
+	font-size: 23px;
+	color:#FFF;
+	margin-left: 30px;
+	margin-top: 30px;
+	width: 500px;
+}
+
+#descripcion_digital li{
+	font-family: AmplitudeRegular, arial, sans-serif;
+	font-size: 17px;
+	color:#FFF;
+}
+
+
+
+.perfil_columna_izq{
+	float: left;
+	position: relative;
+	width: 350px;
+	margin-top: 20px;
+}
+
+.perfil_columna_der{
+	float: left;
+	position: relative;
+	width: 350px;
+	margin-top: 20px;
+}
+
+.pass_y_token{
+	width: 680px;
+	float:left;
+	position:relative;
+	margin-top: 20px;
+}
+
+.cuadro_token{
+	width: 340px;
+	height: 99px;
+	background-color: #f3f3f3;
+	float:left;
+	position:relative;
+}
+
+#suscripciones .cuadro_token{
+	width: 362px;
+	height: 100px;
+	background-color: #f3f3f3;
+	float:left;
+	position:relative;
+	margin-bottom: 20px;
+}
+
+
+.cuadro_boton{
+	width: 340px;
+	height: 80px;
+	float:left;
+	position:relative;
+}
+
+
+.ya_tengo_suscription{
+	width: 680px;
+	float: left;
+	position: relative;
+}
+
+.datos_personales{
+	width:740px;
+}
+
+.cuadro_boton_cont{
+	width:300px;
+	float:left;
+}
+
+.cuadro_token p{
+	font-family: arial;
+	font-size: 14px;
+	line-height: 45px;
+	margin-left: 25px;
+}
+
+
+
+.barra_susc_gris{
+	font-family: arial;
+	width: 645px;
+	text-align: left;
+}
+
+.tabla_suscripciones{
+
+  width: 100%;
+	float: left;
+	position: relative;
+	margin-left: 20px;
+	margin-bottom: 15px;
+}
+
+#tb_subs_hist{
+  width: 100%;
+}
+
+.pregunta_impresa{
+	font-family: arial;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 30px;
+	margin-left: 15px;
+	width: 400px;
+	float: left;
+	margin-top: 6px
+}
+
+#suscripciones .pregunta_impresa{
+	font-family: arial;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 30px;
+	margin-left: 8%;
+	width: 400px;
+	float: left;
+	margin-top: 6px;
+}
+
+.ingresa_token{
+	font-family: arial;p
+	font-size: 14px;
+	margin-left: 4%;
+}
+
+.ingresa_token table{
+	width: 430px;
+	float:left;
+}
+
+.ingresa_token p{
+
+	width: 220px;
+
+  margin: 0;
+}
+
+#suscripciones .ingresa_token{
+	font-family: arial;
+	font-size: 14px;
+	float: left;
+	font-weight: bold;
+
+	margin-left: 20px;
+}
+
+.RegistroToken .ingresa_token{
+	font-family: arial;
+	font-size: 14px;
+	font-weight: bold;
+	width:428px;
+	margin-left: 0 !important;
+}
+
+.susc_imagen_logueado .ingresa_token{
+	font-family: arial;
+	font-size: 14px;
+	margin-right: 30px;
+	float: left;
+	font-weight: bold;
+	width:200px !important;
+	margin-left: 20px !important;
+}
+
+
+.editar{
+	font-family: arial;
+	font-size: 12px;
+	color:#CA1900;
+	float:left;
+	margin-top: 7px;
+	cursor: pointer;
+	display:none;
+}
+
+.editar_not{
+	font-family: arial;
+	font-size: 12px;
+	color:#CA1900;
+	float:left;
+	margin-top: 7px;
+	cursor: pointer;
+	display:none;
+}
+
+.perfil_columna_der .cell .editable-entry .editar{
+	font-family: arial;
+	font-size: 12px;
+	color:#CA1900;
+	float:left;
+}
+
+
+.barra_susc_gris th{
+
+  width: 20%;
+	float:left;
+	text-align: center;
+	color: #404040;
+	font-size: 15px;
+}
+
+.datos_susc{
+	font-family: arial;
+	font-size: 14px;
+
+  width: 100%;
+}
+
+
+.tabla_suscripciones td{
+
+  width: 20%;
+	float:left;
+	position: relative;
+	font-size: 13px;
+	color:#737373;
+	text-align: center;
+}
+
+.big_billing, .big_contact, .cp_contacto, .token_step2 input {
+	border: 1px solid rgb(204, 204, 204);
+	background: none repeat scroll 0% 0% rgb(255, 255, 255);
+	color: rgb(153, 153, 153);
+	font-size: 12px;
+	padding: 5px 10px;
+	border-collapse: collapse;
+	width: 303px;
+
+}
+
+.small_billing{
+	height: 14px;
+	border: 1px solid rgb(204, 204, 204);
+	background: none repeat scroll 0% 0% rgb(255, 255, 255);
+	color: rgb(153, 153, 153);
+	font-size: 12px;
+	border-collapse: collapse;
+	padding: 5px;
+	float:left;
+	width: 29px;
+}
+
+
+.cp_billing{
+	height: 14px;
+    width: 303px;
+    border: 1px solid #CCCCCC;
+    background: #FFFFFF;
+    color: #999999;
+    font-size: 12px;
+    border-collapse: collapse;
+    padding: 5px;
+    float:left;
+    position: relative;
+}
+
+.telegono_billing {
+	height: 14px;
+	width: 63px;
+	border: 1px solid rgb(204, 204, 204);
+	background: none repeat scroll 0% 0% rgb(255, 255, 255);
+	color: rgb(153, 153, 153);
+	font-size: 12px;
+	border-collapse: collapse;
+	padding: 5px;
+	float:left;
+}
+
+.status_aprobado{
+	color:#90b318 !important;
+	font-weight: bold;
+}
+
+.status_aprobado a, .status_aprobado a:visited {
+	color:#90b318 !important;
+	text-decoration: none;
+}
+
+.status_expirado a, .status_expirado a:visited {
+	color:#b91700 !important;
+	text-decoration: none;
+}
+
+
+.status_expirado {
+
+}
+
+.label_izq_billingform{
+	line-height: 26px;
+    display: inline;
+    width: 160px;
+    margin-right: 5px;
+}
+
+.label_der_billingform{
+	line-height: 26px;
+	width: 100px;
+	padding-right: 5px;
+}
+
+input[type="password"] .campo_cambiado{
+	color:#000000 !important;
+	background-image:none !important; ;
+}
+
+.campo_cambiado {
+	color:#000 !important;
+}
+
+#token_id {
+	font-size: 14px;
+	margin-right: 10px;
+	width:110px;
+}
+
+.token_id {
+	font-size: 14px;
+	margin-right: 10px;
+	width:110px;
+	display: block;
+	margin-left: 3px !important;
+	margin-top: 8px !important;
+}
+
+#validatedMail{
+	font-size: 10px;
+	color:#CA1900;
+	width:70px;
+	float:right;
+	margin-top: 1px;
+	line-height:24px;
+	height:24px;
+	display: block;
+}
+
+.perfil_columna_izq .cell{
+	width: 342px;
+	float: left;
+	position: relative;
+}
+
+.perfil_columna_der .cell{
+	width: 300px;
+	float: left;
+	position: relative;
+}
+
+.perfil_columna_izq select, .perfil_columna_der select{
+	margin-top: 3px;
+}
+
+.perfil_columna_der .label{
+	font-family: Arial;
+	font-size: 13px;
+	font-weight:bold;
+	width: 300px;
+	float: left;
+	position: relative;
+	margin-right: 5px;
+	line-height: 26px;
+	cursor: default;
+	text-transform: uppercase;
+	color:#131313;
+}
+
+.costo_informativo_suscripciones{
+	float: left;
+	position: relative;
+	background-color: #f3f3f3;
+	width: 263px;
+	height: 32px;
+	line-height: 33px;
+	text-align: center;
+	font-family: Arial;
+	font-size: 13px;
+	font-weight: bold;
+	color: #505050;
+	margin: 10px;
+}
+
+.queesesto{
+	font-family: arial;
+
+	padding-top: 10px;
+	font-size: 12px;
+	width: 100px;
+
+	position:relative;
+	margin-left: 92px;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.cuadro_token .queesesto{
+	font-family: arial;
+	margin-top: -5px;
+	margin-right: 1px;
+	font-size: 12px;
+	float:right;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+#suscripciones .queesesto{
+	font-family: arial;
+	margin-top: -2px;
+	margin-right: 8px;
+	font-size: 12px;
+	float:right;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.value input{
+	float:left;
+	position:relative;
+	width:260px;
+	height:24px;
+	font-size: 14px;
+	font-family: arial;
+	margin-top: 1px;
+	border: 1px solid #ccc;
+	padding-left: 4px;
+}
+
+.editok {
+	float: left;
+	width: 15px;
+	margin-left: -2px;
+	margin-top: -4px;
+}
+
+.editundo {
+	float:left;
+	position:relative;
+	width:10px;
+	margin-top: -4px;
+}
+
+.noneditable-entry{
+	float:left;
+	position:relative;
+}
+
+#email{
+	width: 300px;
+}
+
+.vip_suscripciones_headerL{
+	width: 910px;
+	height: 56px;
+
+	position: relative;
+	font-family: amplitude, AmplitudeLight, Arial;
+	font-size: 38px;
+	line-height: 51px;
+	margin-right: 40px;
+	padding-top:10px;
+	margin-left: 40px;
+}
+
+.qtip-content {
+    position: relative;
+    padding: 5px 9px;
+    overflow: hidden;
+    text-align: left;
+    word-wrap: break-word;
+    font-size: 13px;
+    padding: 15px 15px 15px 15px;
+    line-height: normal;
+    background-color: #FFFFFF;
+    border: #f3f3f3;
+    border-radius: 5px 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.qtip-default .qtip-titlebar{
+	border-color: #E4E4E4;
+}
+
+.qtip-default {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #E4E4E4;
+	background-color: #FFFFFF;
+	color: #555;
+	font-family: arial;
+	font-size: 14px;
+	padding: 15px 15px 15px 15px;
+}
+
+ .lbl_cp_billing,  .lbl_tel_billing, .lbl_tipo_billing, .lbl_right_tel_contact{
+	float: left;
+	position: relative;
+	padding-right: 5px;
+}
+
+.val_pais_billing, .val_cp_billing, .val_lada_billing, .val_tel_billing, .val_right_tel_contact, .val_right_lada_contact{
+	float: left;
+	position: relative;
+	padding-right: 10px;
+	font-weight: bold;
+}
+
+.val_right_contact, .val_right_billing, .val_left_billing {
+	font-weight: bold;
+	width:300px;
+}
+
+.menu_verification{
+	float: right;
+	position: relative;
+	width: 300px;
+	margin-right:30px;
+}
+
+.val_tipo_billing{
+	overflow: hidden;
+	width:45px;
+	font-weight: bold;
+}
+
+.suscripcioneslnk{
+	float: right;
+	width: 20%;
+	position: relative;
+	font-family: arial;
+	text-align: right;
+	margin-right: 10px;
+	line-height: 25px;
+}
+
+.suscripcioneslnk a, .suscripcioneslnk a:visited {
+	color: #b91700;
+}
+
+.banner_suscripciones{
+	display:block;
+	width:655px;
+	height:173px;
+	float:left;
+	background-image:url('http://cdn.premium.milenio.com/images/bannersuscripciondigital.jpg');
+	margin-top: 30px;
+	margin-left: 3%;
+}
+
+.resend_lnk{
+	font-weight: bold;
+	color: #DB0707;
+	text-decoration: none;
+}
+
+#estado{
+	float:left;
+}
+
+.alerts_list{
+	max-height: 900px;
+	overflow-y: auto;
+	width: 90%;
+	float: left;
+	margin-left: 47px;
+}
+
+.ayuda_not{
+	cursor: pointer;
+	float:left;
+	margin-top: 5px;
+}
+
+.ayuda{
+	cursor: pointer;
+	float: left;
+	margin-top: 5px;
+}
+
+.lbl_lada_contactform{
+	width: 70px;
+	float: left;
+	line-height: 26px;
+	padding-right: 5px;
+}
+
+.lada_contacto {
+
+	width: 39px;
+	border: 1px solid #CCCCCC;
+	background: #FFFFFF;
+	color: #999999;
+	font-size: 12px;
+	border-collapse: collapse;
+	padding: 5px;
+	float: left;
+	position: relative;
+
+}
+
+.telefono_contacto {
+
+  width: 180px;
+  border: 1px solid #CCCCCC;
+  background: #FFFFFF;
+  color: #999999;
+  font-size: 12px;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+.lbl_tel_contacform{
+	float:left;
+	line-height: 28px;
+	margin-left: 13px;
+	margin-right: 5px;
+	height:14px;
+	width:54px;
+}
+
+
+
+
+
+.vip_suscripciones_txtstatus{
+
+	font-family: Arial,sans-serif;
+	font-size: 16px;
+	position: relative;
+	width: 400px;
+	float: left;
+	padding-left: 30px;
+	line-height: 25px;
+}
+
+.vip_suscripciones_txtstatus_rechazado{
+
+	font-family: Arial,sans-serif;
+	font-size: 14px;
+	position: relative;
+	width: 400px;
+	float: left;
+	padding-left: 30px;
+	line-height: 25px;
+	margin-top: 80px;
+}
+
+.vip_suscripciones_imgtatus{
+	width: 455px;
+	height: 360px;
+	float:left;
+	position: relative;
+	margin-left: 50px;
+	margin-top: 10px;
+	width: 300px;
+	height: 80px;
+	padding-top: 70px;
+}
+
+.vip_suscripciones_imgtatus_pendiente{
+	width: 300px;
+	height: 80px;
+	float:left;
+	position: relative;
+	margin-left: 40px;
+	margin-right: 40px;
+	margin-top: 10px;
+	width: 300px;
+	height: 80px;
+	padding-top: 40px;
+}
+
+.vip_suscripciones_img{
+	width: 400px;
+	float: left;
+	padding-top: 50px;
+	padding-left: 50px;
+}
+
+#notificacion_status{
+	width:900px;
+}
+
+
+.btn_suscripciones_statusir{
+
+	float: left;
+	margin-left: 150px;
+	margin-top:20px;
+}
+
+.btn_suscripciones_statusir_proceso{
+	width: 400px;
+	float: left;
+	margin-left: 110px;
+	margin-top: 10px;
+}
+
+#ttls_contact_pais, #ttl_contact_estado, #ttl_contact_sexo, #ttl_anio_porsus, #ttl_sexo_porsus {
+	padding-top: 5px;
+	position: relative;
+	float: left;
+	width: 308px;
+
+	border: 1px solid #ccc;
+	line-height: 18px;
+	padding-left: 5px;
+	background-color: #fff;
+	color:#000;
+	background-image: url(http://cdn.premium.milenio.com/images/bg_arrow.png);
+	background-repeat: no-repeat;
+	background-position: 110px;
+	font-family: arial, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+}
+
+#ttls_contact_pais:focus , #ttl_contact_estado:focus, #ttl_contact_sexo:focus, #ttl_anio_porsus:focus, #ttl_sexo_porsus:focus{
+
+outline:-webkit-focus-ring-color auto 5px
+}
+
+#ttl_billing_pais, #ttl_billing_estado {
+	padding-top: 5px;
+	position: relative;
+	float: left;
+	width: 308px;
+	height: 20px;
+	border: 1px solid #ccc;
+	line-height: 18px;
+	padding-left: 5px;
+	background-color: #fff;
+	margin-left: 182px;
+	color:#000;
+	background-image: url(http://cdn.premium.milenio.com/images/bg_arrow.png);
+	background-repeat: no-repeat;
+	background-position: 110px;
+}
+
+
+#contact_pais, #contact_estado, .select_sexo, #sexo_porsus, #anio_porsus, #contact_sexo{
+	line-height: 5px;
+
+	left: -1px;
+	width: 310px;
+	height: 24px;
+	border: 1px solid #ccc;
+	opacity: 0;
+	filter: alpha(Opacity=0);
+	-moz-opacity: 0;
+	cursor: pointer;
+	z-index: 100;
+	background-color: #FFFFFF;
+	color: #000000;
+	margin-left: 245px;
+
+}
+
+.country_billing {
+	line-height: 5px;
+	position: absolute;
+	left: -1px;
+	width: 300px;
+	height: 24px;
+	border: 1px solid #ccc;
+	opacity: 0;
+	filter: alpha(Opacity=0);
+	-moz-opacity: 0;
+	cursor: pointer;
+	z-index: 100;
+	background-color: #FFFFFF;
+	color: #000000;
+	margin-left: 222px;
+
+}
+
+#estado {
+	line-height: 5px;
+	position: absolute;
+	left: -1px;
+	width: 315px;
+	height: 24px;
+	border: 1px solid #ccc;
+	opacity: 0;
+	filter: alpha(Opacity=0);
+	-moz-opacity: 0;
+	cursor: pointer;
+	z-index: 100;
+	background-color: #FFFFFF;
+	color: #000000;
+	margin-left: 242px;
+
+}
+
+
+.incorrecto
+{
+	border-color: red !important;
+	border: 2px solid;
+}
+
+.label_billingform_cp {
+	width: 40px;
+	float: left;
+	line-height: 28px;
+}
+
+.cp_estados_billing{
+	position: absolute;
+}
+
+.cp_estados_billing ~ td{
+  padding: 5px 0;
+}
+
+
+
+.link_volverapagar{
+	color: #c71b02;
+}
+
+.green{
+	color:#1DBD08 !important ;
+}
+
+#suscripciones ul{
+	font-size: 17px;
+	width: 500px;
+	font-family: AmplitudeRegular, arial, sans-serif;
+	margin-left: 20px;
+}
+
+.descripcion{
+	font-family: arial;
+	font-size: 14px;
+	padding: 0 45px;
+	line-height: 20px;
+}
+
+.marcatextos{
+	font-weight: bold;
+}
+
+.barra_susc_gris th:first-child{
+
+  width: 60%;
+
+	text-align: left;
+}
+
+.datos_susc td:first-child{
+
+  width: 60%;
+	text-align: left;
+}
+
+
+
+
+.dispositivos_moviles{
+	width: 700px;
+	float:left;
+	margin-bottom: 20px;
+}
+
+.dispositivo{
+	width: 680px;
+	height: 45px;
+	font-family: Arial;
+	font-size: 16px;
+	color: #585858;
+	background-color: #f1f1f1;
+	float: left;
+	margin: 20px 20px 0px 0px;
+	line-height: 45px;
+	border: 1px solid #E6E6E6;
+	font-weight: bold;
+	padding-left: 20px;
+}
+
+.ayuda_movil{
+	font-family: Arial;
+	font-size: 16px;
+	color: #585858;
+	line-height: 45px;
+	font-weight: bold;
+}
+
+.barra-blanca{
+	width: 677px;
+	height: 40px;
+	float: left;
+	border-top: 1px solid #E0E0E0;
+	line-height: 40px;
+	padding-left: 25px;
+	font-family: arial;
+	font-size: 14px;
+	color: #383838;
+	float: left;
+}
+
+.barra-gris :nth-child(2){
+float: right;
+position: absolute;
+right: 242px;
+}
+
+.barra-blanca :nth-child(2){
+float: right;
+position: absolute;
+right: 242px;
+}
+
+.movil_close{
+	float:right;
+	position: relative;
+}
+
+.movil_close img{
+	width: 17px;
+	height: 17px;
+}
+
+.barra-gris{
+	width: 677px;
+	height: 40px;
+	float: left;
+	border-top: 1px solid #E0E0E0;
+	background-color: #f3f3f3;
+	font-family: arial;
+	font-size: 14px;
+	color: #383838;
+	line-height: 40px;
+	padding-left: 25px;
+}
+
+.agregar_dispositivo{
+	float: left;
+	width: 500px;
+	position: relative;
+	margin-top: 20px;
+}
+
+.agregar_movil{
+	padding-top: 5px;
+	position: relative;
+	float: left;
+	width: 175px;
+	height: 23px;
+	border: 1px solid #ccc;
+	line-height: 18px;
+	padding-left: 15px;
+	margin-left: 25px;
+	margin-right: 20px;
+	font-family: arial;
+	font-size: 14px;
+	color: #58585a;
+}
+
+.moviles-header{
+	width: 675px;
+	float:left;
+}
+
+
+
+
+
+.header_iphone{
+	width: 320px;
+	height: 40px;
+	background-color: #F3F3F3;
+	font-family: helvetica neue;
+	font-weight: bold;
+	font-size: 18px;
+	text-align: justify;
+	position: relative;
+	line-height: 38px;
+}
+
+#iphoneh_button1, #iphoneh_button3{
+	width: 90px;
+	height:40px;
+	float: left;
+	position: relative;
+}
+
+#iphoneh_button2{
+	font-family: helvetica neue;
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+	width: 140px;
+	float: left;
+	position: relative;
+}
+
+.vip_centerContainer_iphone{
+	width: 306px;
+	margin: 8px 7px 0 7px;
+	background-color: #fff;
+}
+
+.suscripciones_header_iphone, .contactTitle_iphone, .facTitle_iphone{
+	font-family: HelveticaNeue-Light, Helvetica;
+	color: #b91700 !important ;
+	font-size: 20px;
+	font-weight: lighter;
+	padding: 15px 0 15px 10px;
+	line-height: 25px;
+	margin-bottom: 0;
+}
+
+.vip_centerContainer_iphone p{
+	font-family: Helvetica;
+	font-size: 15px;
+	padding-left: 10px;
+	padding-right: 20px;
+	color:#333;
+}
+
+.vip_centerContainer_iphone ul{
+	font-family: Helvetica;
+	font-size: 14px;
+	font-weight:bold;
+	color:#333;
+}
+
+.box_iphone{
+	width:296px;
+	height:40px;
+	font-family: HelveticaNeue-Light,HelveticaNeue,Helvetica;
+	font-weight: lighter;
+	background-color: #f3f3f3;
+	line-height: 40px;
+	padding-left: 10px;
+	color:#666:;
+	background-image:url("http://cdn.premium.milenio.com/images/botonabajo.jpg");
+	font-size: 13px;
+	color:#666;
+}
+
+.suscripcion_caja_iphone select {
+	margin-top: -30px;
+	position:absolute;
+	width:296px;
+	height:30px;
+	opacity:0;
+	font-size: 24px;
+}
+
+.suscripcion_caja_iphone option {
+	height: 40px;
+	line-height: 40px;
+	font-family: helvetica;
+	font-size: 14px;
+	padding-top: 30px;
+	width: 300px;
+}
+
+
+.btnFact_iphone{
+	width:296px;
+	height: 40px;
+	background-color: #f3f3f3;
+	font-family: HelveticaNeue-Light,HelveticaNeue,Helvetica;
+	font-weight: lighter;
+	line-height: 40px;
+	padding-left: 10px;
+	color: #666;
+	background-image:url("http://cdn.premium.milenio.com/images/botonder.jpg");
+}
+
+.btnFact_iphone a:link, .btnFact_iphone a:visited{
+	text-decoration: none;
+	color: #666
+}
+
+.header_iphone a:link, .header_iphone a:visited{
+	text-decoration: none;
+	color: #b91700;
+	font-family:HelveticaNeue-Light, HelveticaNeue, Helvetica;
+	font-weight: lighter;
+	line-height: 40px;
+	padding-left: 10px;
+}
+
+.col_izq_iphone, .lbl_izq_iphone, .label_billingform_iphone, .tablaFac_iphone .label_billingform, .autocomplete_billing_iphone, .val_billing_iph, .val_contact_iph, .val_contact_ipad, .val_billing_ipad{
+	font-family: HelveticaNeue-Light, HelveticaNeue, Helvetica;
+	font-size: 14px;
+	float:left !important;
+	height: 40px;
+}
+
+.autocomplete_billing_iphone{
+	font-family: HelveticaNeue-Light, HelveticaNeue, Helvetica;
+	font-size: 14px;
+	float:left !important;
+	margin-left: 10px;
+	height:40px;
+	width:296px;
+	border-bottom: 1px solid #f3f3f3;
+}
+
+.autocomplete_billing_iphone input{
+	margin-left: 10px;
+}
+
+.tablaFac_iphone input, .ttl_all_selects_iphone{
+	border: 0;
+	font-family: helvetica;
+	font-size: 14px;
+	color: #999;
+
+}
+
+.tablaFac_iphone tr{
+	width: 296px;
+	height:40px;
+	border-bottom: 1px solid #f3f3f3;
+	display:block;
+	float:right;
+	line-height: 40px;
+}
+
+.tablaFac_iphone select {
+	margin-top: -40px;
+	position:absolute;
+	width:246px;
+	height:40px;
+	opacity:0;
+	font-size: 24px;
+}
+
+.tablaFac_iphone option {
+	font-size: 14px;
+}
+
+.ttls_contact_pais_iphone option {
+	height: 40px;
+	line-height: 40px;
+	font-family: helvetica;
+	font-size: 14px;
+	padding-top: 30px;
+	width: 300px;
+}
+
+.contactTitle_iphone, .facTitle_iphone{
+	font-size: 22px !important ;
+}
+
+.botonSave_iphone{
+	border: none;
+	font-family: HelveticaNeue-Light, helvetica;
+	font-size: 18px;
+	line-height: 32px;
+	color: #b91700;
+	font-style: lighter;
+	background-color: #f3f3f3
+}
+
+.botonClean_iphone{
+	border: none;
+	font-family: HelveticaNeue-Light, HelveticaNeue, helvetica;
+	font-size: 18px;
+	font-weight: lighter;
+	color: #666;
+	width: 306px;
+	background-color: #F3F3F3;
+	height: 40px;
+}
+
+.big_billing_iphone_soc{
+	width: 128px;
+}
+
+.big_billing_iphone{
+	width: 168px;
+}
+
+.costo_susc{
+	background-color: rgb(185, 23, 0);
+	height: 30px;
+	font-family: helvetica;
+	font-size: 13px;
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+	text-align: center;
+	line-height: 30px;
+	text-transform: uppercase;
+}
+
+.tarjetas_iphone{
+	height: 40px;
+}
+
+
+.lbl_contact_iph, .lbl_billing_iph {
+	font-family: HelveticaNeue-Light, HelveticaNeue, Helvetica;
+	font-size: 14px;
+	float:left !important;
+	color:#999;
+	height:40px;
+	margin-right:5px;
+}
+
+.lbl_contact_ipad {
+	font-family: HelveticaNeue-Light, HelveticaNeue, Helvetica;
+	font-size: 14px;
+	float:left !important;
+	color:#999;
+	height:40px;
+	margin-right:5px;
+	width: 150px;
+}
+
+.lbl_billing_ipad {
+	font-family: HelveticaNeue-Light, HelveticaNeue, Helvetica;
+	font-size: 14px;
+	float:left !important;
+	color:#999;
+	height:40px;
+	margin-right:5px;
+	width: 180px;
+}
+
+.body_susIphone{
+	width:320px;
+	background-color:#eaeaea;
+	padding-bottom: 10px;
+}
+
+.header_ipad{
+	width: 1024px;
+	background-color: rgb(243, 243, 243);
+	font-family: helvetica;
+	font-size: 17px;
+	font-weight: bold;
+	color: rgb(51, 51, 51);
+	text-align: center;
+	height: 40px;
+	margin: 0px 0px 5px;
+	line-height: 40px;
+}
+
+.suscripciones_ipad{
+	background-color: rgb(255, 255, 255);
+	width: 1014px;
+	height: 610px;
+	margin-left: 5px;
+}
+
+.suscripciones_header_ipad{
+	width: 1005px;
+	height: 80px;
+	font-family: HelveticaNeue-Light,HelveticaNeue,Helvetica;
+	font-size: 32px;
+	font-weight: lighter;
+	color: rgb(185, 23, 0);
+	line-height: 80px;
+	padding-left: 20px;
+}
+
+.vip_suscripciones_texto_ipad{
+	    font-size: 16px;
+    color: rgb(51, 51, 51);
+    font-family: HelveticaNeue,Helvetica;
+    float: left;
+}
+
+.box_ipad{
+	height: 40px;
+	float: left;
+	width: 420px;
+	background-color: rgb(243, 243, 243);
+	color: rgb(102, 102, 102);
+	padding-left: 10px;
+	font-family: HelveticaNeue,Helvetica;
+	line-height: 40px;
+	font-size: 18px;
+	background-image: url("http://cdn.premium.milenio.com/images/botonabajoipad.png");
+}
+
+.selectBox_ipad select{
+	width: 420px;
+	height: 40px;
+	font-size: 18px;
+	float: left;
+	margin-top: -40px;
+	opacity: 0;
+}
+
+.box_suscripcion_ipad{
+	height: 40px;
+	float: left;
+	width: 420px;
+	background-color: rgb(243, 243, 243);
+	color: rgb(102, 102, 102);
+	padding-left: 10px;
+	font-family: HelveticaNeue,Helvetica;
+	line-height: 40px;
+	font-size: 18px;
+}
+
+.btnFact_ipad{
+	 width: 420px;
+    height: 40px;
+    float: left;
+    background-color: rgb(243, 243, 243);
+    font-family: HelveticaNeue,Helvetica;
+    font-size: 18px;
+    line-height: 40px;
+    padding-left: 10px;
+    color: rgb(102, 102, 102);
+    background-image: url("http://cdn.premium.milenio.com/images/botonderipad.png");
+    border-top: 1px solid rgb(234, 234, 234);
+}
+
+
+.btnFact_ipad a:link {
+    color: rgb(102, 102, 102);
+    text-decoration:none;
+}
+
+.btnFact_ipad a:visited {
+    color: rgb(102, 102, 102);
+    text-decoration:none;
+}
+
+.price_sus_ipad{
+	float: left;
+	background-color: rgb(185, 23, 0);
+	height: 40px;
+	font-family: helvetica;
+	font-size: 18px;
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+	text-align: center;
+	line-height: 40px;
+	text-transform: uppercase;
+	width: 430px;
+}
+
+.contactTitle_ipad, .facTitle_ipad{
+	font-family: HelveticaNeue-Light,HelveticaNeue,helvetica;
+	font-weight: lighter;
+	font-size: 22px;
+	color: rgb(185, 23, 0);
+	height: 30px;
+	border-bottom: 1px solid rgb(51, 51, 51);
+	width: 483px;
+	margin-left: 15px;
+	line-height:20px
+}
+
+.tablaFac_ipad tr{
+	    width: 483px;
+    height: 40px;
+    border-bottom: 1px solid rgb(234, 234, 234);
+    float: right;
+}
+
+#contact_form_ipad{
+	width: 500px;
+	background-color:#fff;
+	float:left;
+	margin-left:8px
+}
+
+#form_fact_ipad{
+	width: 500px;
+	background-color:#fff;
+	float:left;
+	margin-left:8px
+}
+
+.col_izq_ipad, .lbl_izq_ipad{
+	font-family: HelveticaNeue-Light,HelveticaNeue,Helvetica;
+	font-size: 16px;
+	font-weight: lighter;
+	line-height: 40px;
+	width:140px;
+}
+
+.label_billingform_ipad, .tablaFac_ipad .label_billingform{
+	font-family: HelveticaNeue-Light,HelveticaNeue,Helvetica;
+	font-size: 16px;
+	font-weight: lighter;
+	height: 40px;
+	line-height: 40px;
+	width:175px;
+	text-align:left;
+}
+
+.big_contact_ipad, .ttl_all_selects_ipad {
+	border: 0px none;
+	font-family: HelveticaNeue,Helvetica;
+	font-size: 16px;
+	width:325px;
+	color:#999;
+}
+
+.big_billing_ipad{
+	border: 0px none;
+	font-family: HelveticaNeue,Helvetica;
+	font-size: 16px;
+	width:300px;
+	color:#999;
+}
+
+.tablaFac_ipad select{
+	width: 300px;
+	opacity: 0;
+	margin-top: -20px;
+	position: absolute;
+}
+
+.botonFac_ipad{
+	border: 0px none;
+	width: 480px;
+	height: 40px;
+	margin-left: 10px;
+	font-size: 18px;
+	font-family: helvetica;
+	color: #666;
+	font-weight: lighter;
+	background-color: #f3f3f3;
+}
+
+.cbtnclean_ipad, .cbtnsave_ipad{
+	float: left;
+	width: 500px;
+	margin-left: 8px;
+	background-color: rgb(255, 255, 255);
+}
+
+.tablaFac_iphone .incorrecto, .tablaFac_ipad .incorrecto
+{
+	color: #b91700 !important;
+}
+
+.vip_suscripciones_img_iphone img{
+	width:250px;
+	margin:30px;
+}
+
+.vip_suscripciones_imgtatus_pendiente_iphone img{
+	width: 250px;
+	margin: 0 25px;
+}
+
+.vip_suscripciones_txtstatus_iphone{
+	width: 280px;
+	padding: 10px;
+	text-align: center;
+}
+
+.vip_suscripciones_txtstatus_iphone p{
+	font-family: Helvetica;
+	font-size: 15px;
+	padding-left: 5px;
+	padding-right: 5px;
+	color: #333;
+}
+
+#verificationData_ipad .facTitle {
+	font-family: HelveticaNeue-Light, Helvetica !important ;
+	color: #b91700 !important;
+	font-size: 20px;
+	font-weight: lighter;
+	padding: 15px 0 0 10px;
+	line-height: 25px;
+}
+
+.vip_centerContainer_ipad{
+	width: 1024px;
+	background-color: #fff;
+}
+
+#verificationData_ipad #verinfo_contact{
+	width: 500px;
+	float:left;
+}
+
+#verificationData_ipad .factTitle{
+	width: 500px;
+}
+
+#verificationData_ipad #verinfo_billing{
+	width: 500px;
+	float:left;
+}
+
+#contact_form_iphone, #verinfo_contact_iphone{
+	background-color: #fff;
+}
+
+#form_fact_iphone, #verinfo_billing_iphone{
+	background-color: #fff;
+	margin-top: 7px;
+}
+
+#verificationData_ipad .tablaEnv tbody{
+	margin-left: 0px !important;
+}
+
+.autocomplete_bill_ipad{
+	padding: 5px 18px 17px 0px;
+	font-family: HelveticaNeue-Light,HelveticaNeue,Helvetica;
+	font-weight: lighter;
+	border-bottom: 1px solid rgb(234, 234, 234);
+	width: 463px;
+	float: right;
+	margin-right: 3px;
+}
+
+.tokensus_nosession{
+	float: left !important;
+	width: 300px;
+	margin: -15px 0 15px 0 !important;
+	color: blue
+}
+
+.ckbx_usecontactdata {
+	font-family: arial;
+	color: rgb(88, 88, 90);
+	font-size: 13px;
+	margin-left: 25px;
+	margin-top: 25px;
+	margin-bottom: 5px;
+	padding-left: 3px;
+}
+
+.ckbx_usecontactdata input {
+	margin-left: 12px
+}
+
+.tipo_billing{
+	margin-left: 0px;
+	opacity: 0;
+	position: absolute;
+	cursor:pointer;
+	color:#000;
+}
+
+#ttl_billing_tipo{
+	background-color: rgb(255, 255, 255);
+	border: 1px solid rgb(204, 204, 204);
+	line-height: 26px;
+	padding-left: 5px;
+	width: 90px;
+	height: 24px;
+	display: inline;
+	position: absolute;
+	overflow: hidden;
+	background-image: url(http://cdn.premium.milenio.com/images/bg_arrow.png);
+	background-position: 93px;
+}
+
+.tablaFac_iphone td:first-child{
+	width:150px;
+}
+
+
+
+
+.susc_elige_edicion{
+	text-transform: uppercase;
+	font-family: arial;
+	font-size: 12px;
+	color:#999;
+	width:973px;
+	height:30px;
+}
+
+.susc_elige_edicion li:first-child{
+	list-style: none;
+}
+
+.susc_elige_edicion li:active{
+	color:#b91700;
+}
+
+.impreso_digital{
+	width: 972px;
+	float: left;
+	border-top: 1px solid #eaeaea
+}
+.susc_descripcion h1{
+	font-weight: normal;
+}
+
+.susc_descripcion_logueado, .susc_descripcion{
+	width: 470px;
+	height:400px;
+	float: left;
+	border-right: 1px dotted #C7C7C7;
+	margin: 15px 0 20px;
+	padding-right: 20px;
+}
+
+.subtitulo{
+	font-family: AmplitudeRegular, Arial;
+	font-size: 26px;
+	width:420px;
+	color:#b91700;
+	line-height:29px;
+	margin-bottom: 10px;
+  margin: 15px 0 10px 20px;
+}
+
+.susc_imagen .subtitulo {
+	font-family: "Amplitude", "AmplitudeRegular", arial, sans-serif;
+	color: #b91700;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 18px;
+	width: 200px;
+	margin: 20px 0 0 20px;
+}
+
+.susc_texto{
+	font-family: arial;
+	font-size: 15px;
+	width:450px;
+	line-height: 18px;
+	margin:0;
+}
+
+.susc_texto_bold{
+	font-weight: bold;
+}
+
+.susc_log_bold{
+	font-family: arial;
+	font-weight: bold;
+	font-size: 15px;
+	color:#404040;
+}
+
+.susc_gratis{
+	font-weight: bold;
+	font-family: AmplitudeRegular, arial;
+}
+
+.subTexto{
+	color:#888;
+	font-size: 12px;
+	width: 230px;
+	font-family: arial;
+	padding-left: 20px;
+	float:left;
+	margin: 15px 0 0 0;
+	height: 140px;
+}
+
+.ingresa_token .subTexto{
+	color:#888;
+	font-size: 12px;
+	width: 230px;
+	font-family: arial;
+	padding:0 !important;
+
+	font-weight: normal !important;
+	height:150px;
+}
+
+.susc_imagen_logueado .subTexto, .susc_imagen .subTexto{
+	color:#888;
+	font-size: 10px;
+	width: 225px;
+	font-family: arial;
+	padding-left: 20px;
+	float:left;
+}
+
+.susc_imagen{
+	width:470px;
+	background-image: url("http://cdn.premium.milenio.com/images/imgimpresodigital.jpg");
+	background-repeat: no-repeat;
+	height: 350px;
+	float:right;
+}
+
+.susc_imagen input{
+	width: 200px;
+	height: 16px;
+	font-family: Helvetica, arial, sans-serif;
+	font-size: 14px;
+	margin: 2px 9px 0 0;
+	color: #999;
+	padding: 6px 5px 5px;
+	border:1px solid #bbb;
+	box-shadow: 0 1px 1px #eaeaea inset;
+}
+
+.sus_imagen p {
+	margin: 15px 0 5px 0;
+}
+
+.susc_imagen .subTexto{
+  height: 130px;
+}
+
+.susc_imagen_logueado, .susc_imagen{
+	width:450px;
+	background-image: url("http://cdn.premium.milenio.com/images/imglogueado.jpg");
+	background-repeat: no-repeat;
+	height: 340px;
+	float:right;
+}
+
+.edicion_papel{
+	background-image: url("http://cdn.premium.milenio.com/images/imgedicionpapel.jpg");
+	background-repeat: no-repeat;
+	float:right;
+	width: 973px;
+
+}
+
+.ya_suscriptor{
+	font-family: AmplitudeRegular, Arial, sans-serif;
+	font-size: 16px;
+	width:270px;
+	color:#b91700;
+	margin-left: 85px;
+}
+
+.ya_suscriptor a, .ya_suscriptor a:link, .ya_suscriptor a:visited{
+	color:#b91700 !important;
+	cursor: pointer;
+}
+
+
+
+.susc_descripcion_logueado .btnRegistra {
+    float: left;
+    margin-left: 20px;
+    margin-top: 10px;
+    position:relative;
+    text-transform: uppercase;
+    width: 150px;
+}
+
+.btnRegistra {
+	width: 260px;
+	text-transform: uppercase;
+	margin-left: 20px;
+}
+
+.btnRegistra a{
+    display: block;
+    background: #c0291c;
+    background: -moz-linear-gradient(top, #c0291c 0%, #9b2115 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0291c), color-stop(100%,#9b2115));
+    background: -webkit-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: linear-gradient(to bottom, #c0291c 0%,#9b2115 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px 10px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.susc_elige_edicion li{
+	display: inline;
+	margin-right: 10px;
+}
+
+.susc_elige_edicion a{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	color:#999;
+	cursor: pointer;
+}
+
+.susc_elige_edicion a:visited{
+	text-decoration: none;
+	font-family: arial;
+	font-size: 12px;
+	color:#999;
+}
+
+.susc_elige_edicion a:active{
+	color:#b91700;
+}
+
+.susc_elige_edicion ul{
+	padding: 0;
+}
+
+.susc_lnk a:link{
+	color:#b91700;
+}
+
+.susc_imagen_logueado input, .susc_imagen input{
+	width: 200px;
+	height: 25px;
+	margin-top: 5px;
+	float:left;
+}
+
+.btnOK{
+	background: #c9c9c9;
+	background: -moz-linear-gradient(top, #f1f1f1 0%, #c9c9c9 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1f1f1), color-stop(100%,#c9c9c9));
+	background: -webkit-linear-gradient(top, #f1f1f1 0%,#c9c9c9 100%);
+	background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: linear-gradient(to bottom, #F1F1F1 0%,#C9C9C9 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+	width: 40px;
+	height: 25px;
+	float: left;
+	margin-top: 28px;
+
+	border: 1px solid #CFCFCF;
+	font-size: 14px;
+  text-align: center;
+}
+
+.btnOK a{
+	text-decoration: none;
+	color: #404040;
+	text-transform: uppercase;
+	font-family: arial;
+	font-weight: bolder;
+}
+
+.susc_descripcion_logueado .vip_suscripciones_tarjetas {
+width: 436px;
+height: 86px;
+float: left;
+position: relative;
+margin-left: 20px;
+margin-top: 0;
+}
+
+.susc_texto_log, .susc_texto{
+	font-family: AmplitudeRegular, arial;
+	font-size: 18px;
+	width: 430px;
+	margin: 15px 0 10px 20px;
+	letter-spacing: .1px;
+	line-height: 21px;
+}
+
+.susc_imagen_logueado, .susc_imagen{
+	width: 450px;
+	background-image: url("http://cdn.premium.milenio.com/images/imglogueado.jpg");
+	background-repeat: no-repeat;
+	height: 340px;
+	float: right;
+	margin-top: 15px;
+}
+
+.ya_suscriptor_log, .susc_imagen_logueado .subtitulo{
+	font-family: Amplitude, arial, sans-serif;
+	color: #b91700;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 18px;
+	width: 200px;
+	margin-left: 20px;
+	margin-top:20px;
+}
+
+.vip_suscripcion_caja{
+	margin-left: 20px;
+}
+
+.tab_selected_susnl{
+	color:#b91700 !important;
+	font-weight: bold;
+}
+
+.botonFac_new{
+	width: 340px;
+	text-transform: uppercase;
+	display: block;
+    background: #c0291c;
+    background: -moz-linear-gradient(top, #c0291c 0%, #9b2115 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0291c), color-stop(100%,#9b2115));
+    background: -webkit-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: linear-gradient(to bottom, #c0291c 0%,#9b2115 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px 10px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.imgloader{
+	margin-left: 450px;
+	margin-top: 300px;
+
+}
+
+.premium_nofavs{
+	width:90%;
+	margin-left: 20px;
+	text-align: center;
+    font-family: helvetica,arial;
+    padding: 50px 20px;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #ccc;
+    font-weight: bold;
+}
+
+#favoritos .premium_nofavs{
+	width:90%;
+	margin-left: 20px;
+	text-align: center;
+    font-family: helvetica,arial;
+    padding: 50px 20px;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #ccc;
+    font-weight: bold;
+    border-bottom: 1px solid #eaeaea;
+    box-shadow: 1px 6px 10px -10px;
+}
+
+.premium_nofavs_description{width: 390px; margin: 5px 0 0 25px; float: left; line-height: 25px; color: #303030; font-family: amplitude, arial; font-size: 20px;}
+
+.premium_nofavs_title{ font-family: amplitude-bold, AmplitudeBold, amplitude, arial; font-size: 26px; font-weight: bold;}
+
+.premium_nofavs_img{ width:500px; display:inline-block; margin: 30px 0 0 30px;}
+
+.sus_tachadonl{
+	text-decoration: line-through !important;
+}
+
+.sus_precio_tachado {
+	text-decoration: line-through;
+	color:#b91700;
+}
+
+.precio {
+	font-family: AmplitudeBold, arial;
+	color:#b91700;
+}
+
+#socialconnectionsc{
+	float:left;
+	height:60px !important;
+}
+
+.txt_addconections{
+	font-family: Arial;
+	font-size: 14px;
+	width: 175px;
+	float: left;
+	position: relative;
+	height: 25px;
+	overflow: hidden;
+	margin-right: 5px;
+	line-height: 26px;
+	color: #555;
+}
+
+.col_acceso{
+	float: right;
+	position: absolute;
+	right: 266px;
+	text-transform: capitalize;
+}
+
+#btnCompra_sinCuenta {
+	width: 80px;
+	text-transform: uppercase;
+	display: block;
+	background: #c0291c;
+	background: -moz-linear-gradient(top, #c0291c 0%, #9b2115 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0291c), color-stop(100%,#9b2115));
+	background: -webkit-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: linear-gradient(to bottom, #c0291c 0%,#9b2115 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	font-size: 13px;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 8px 10px;
+	color: #FFFFFF;
+	text-decoration: none;
+	float: right;
+	text-align: center;
+	cursor: pointer;
+}
+
+
+.oferta_2pesos_txt{
+	font-family: "Arial Black", Arial, sans-serif;
+	font-weight: 800;
+	font-size: 46px;
+	color: #202020;
+	margin: 10px 0 30px 0;
+	white-space: nowrap;
+	text-align: right;
+	letter-spacing: -1.3px;
+	line-height: 52px;
+}
+
+.precio_rojo{
+	color: #b91700;
+}
+
+.cost_anual_der{
+	font-size: 18px;
+	float: right;
+	line-height: 14px;
+}
+
+#btnCompra_sinCuenta a{
+	text-decoration: none;
+	color: #FFF;
+}
+
+#btnCompra_sinCuenta a:visited{
+	text-decoration: none;
+	color: #FFF;
+}
+
+.pasos_suscripciones{
+	font-family: Arial, sans-serif;
+	color: #bbb;
+	width: 950px;
+	padding: 6px 0 16px 0;
+	border-bottom: 1px solid #eaeaea;
+	margin-left: 10px;
+	height:20px;
+	line-height: 32px;
+	font-size: 15px;
+}
+
+.menupasos_text {
+
+  float: left;
+  margin: 0 0 0 6px;
+  background-image: none !important;
+}
+
+.selecciona_impreso {
+width: 438px;
+font-family: arial, sans-serif;
+font-size: 15px;
+color: #404040;
+margin: 60px 30px 0px 45px;
+float: left;
+background-image: url(http://cdn.premium.milenio.com/images/bg_plaza.png);
+background-repeat: no-repeat;
+
+background-position: -20px 80px;
+}
+
+.selecciona_impreso input{
+	display: inline-block;
+	margin: 0 5px 10px 0;
+}
+
+#subscriptiontobuy {
+	display: block;	margin-top: -35px;	opacity: 0;	width: 400px;	cursor: pointer;
+}
+
+.selectBoxNew{
+	margin-top: 5px;
+}
+
+.selecciona_impreso div:first-child {
+  height: auto;
+	font-weight: bold;	margin-bottom: 10px;
+}
+
+.selecciona_impreso a, .selecciona_impreso a:visited{
+	text-decoration: none;color: #b91700;font-weight: bold;
+}
+
+.selecciona_impreso p{
+	margin: 80px 0 20px 0;	font-weight: bold;
+}
+
+.right_column_step1 {
+	width: 420px;	float: right;	margin-top: 45px;
+}
+
+#btn_step2sus {
+    width: 80px;
+    text-transform: uppercase;
+    display: block;
+    background: #c0291c;
+    background: -moz-linear-gradient(top, #c0291c 0%, #9b2115 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0291c), color-stop(100%,#9b2115));
+    background: -webkit-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: linear-gradient(to bottom, #c0291c 0%,#9b2115 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px 10px;
+    color: #FFFFFF;
+    text-decoration: none;
+    float: right;
+    text-align: center;
+    margin: 20px 25px 0 0;
+    cursor: pointer;
+}
+
+#btn_regresar2sus {
+    width: 80px;
+    text-transform: uppercase;
+    display: block;
+    background: #c0291c;
+    background: -moz-linear-gradient(top, #c0291c 0%, #9b2115 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0291c), color-stop(100%,#9b2115));
+    background: -webkit-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+    background: linear-gradient(to bottom, #c0291c 0%,#9b2115 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px 10px;
+    color: #FFFFFF;
+    text-decoration: none;
+    float: left;
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+    margin-left: 200px;
+}
+
+.tablaFac tr td:first-child{
+	width:180px;
+	float:left;
+}
+
+.tablaFac td{
+	width:300px;
+	float:left;
+}
+
+#ttl_contact_birthday{
+	line-height: 25px;
+	padding-left: 5px;
+	width: 308px;
+	height: 24px;
+	border: 1px solid #ccc;
+	filter: alpha(Opacity=0);
+	-moz-opacity: 0;
+	cursor: pointer;
+	z-index: 100;
+	background-color: #FFFFFF;
+	color: #000000;
+	background-image: url(http://cdn.premium.milenio.com/images/bg_arrow.png);
+	background-repeat: no-repeat;
+	background-position: 110px;
+}
+
+#contact_birthday{
+	position: absolute;
+	width: 310px;
+	height: 24px;
+	border: 1px solid #ccc;
+	opacity: 0;
+	margin-top: -25px;
+	filter: alpha(Opacity=0);
+	-moz-opacity: 0;
+	cursor: pointer;
+	z-index: 100;
+	background-color: #FFFFFF;
+	color: #000000;
+}
+
+.menupasos_img1{
+	background-image: url("http://cdn.premium.milenio.com/images/1.png");	width: 28px !important ;	height: 28px;	float:left;
+}
+
+.menupasos_img2{
+	background-image: url("http://cdn.premium.milenio.com/images/2.png");	width: 28px !important; height: 28px;	float:left;
+}
+
+.menupasos_img3{
+	background-image: url("http://cdn.premium.milenio.com/images/3.png");	width: 28px !important;	height: 28px;	float:left;
+}
+
+.menupasos_img4{
+	background-image: url("http://cdn.premium.milenio.com/images/4.png");	width: 28px !important;	height: 28px;	float:left;
+}
+
+.paso_green{
+	background-image: url("http://cdn.premium.milenio.com/images/listo_verde.png"); background-repeat: no-repeat;   float:left;
+}
+
+.tablaBtns td:first-child {
+	float:right;
+	margin-bottom: 5px;
+}
+
+.tablaBtns tr:nth-child(2), .tablaBtns tr:first-child + tr{
+	font-family: Arial, Helvetica, sans-serif;	font-size: 12px;	color:#444;
+}
+
+
+#form_fact {
+	margin-left: 20px;
+}
+
+#contact_form {
+	margin-left: 20px; height:540px;
+}
+
+.box_imgn_slectdbyuser img, .img_portada_verif img{
+ margin: 8px 45px 0 0 ;
+ float:right;
+}
+
+#error_gigya_email {
+	color:#D12A13; font-family: Helvetica, Arial, sans-serif; font-size: 13px; margin: 45px 15px 0 0; float:right; width:400px;
+}
+
+#error_gigya_pass{
+	color:#D12A13; font-family: Helvetica, Arial, sans-serif; font-size: 13px; margin: 47px 15px 0 0; float:right; width:400px;
+}
+
+.lbl_left_contact, .lbl_left_billing {
+	width:160px;
+	height:20px;
+	line-height: 20px;
+}
+
+.login_into_formsus{
+	font-family: helvetica,arial,sans-serif;
+	font-size: 13px;
+	color: #FFFFFF;
+	background-image: url(http://cdn.premium.milenio.com/images/mtv_bg-mask-diag-stripe_sk-md1.png);
+	background-color: #555;
+	height: 25px;
+	margin: 0;
+	padding: 10px 0 10px 16px;
+	line-height: 10px;
+}
+
+.login_into_formsus p{
+	margin:0;
+	margin-right: 20px;
+	font-size: 13px;
+}
+
+#verinfo_contact{
+	height:450px;
+}
+
+.paso_red {
+	color: #b91700;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 32px;
+}
+
+#verinfo_contact .facTitle{
+	margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.ingresa_token select{
+	margin-top: -25px;
+	width: 200px;
+	opacity: 0;
+	height: 30px;
+	position: absolute;
+}
+
+.cambiado{
+	color:#333 !important;
+}
+
+.pasos_suscripciones div{
+	width: 250px; height: 30px; display: inline; float:left;
+}
+
+.pasos_suscripciones div:nth-child(4), .pasos_suscripciones div:last-child {
+	width: 200px; height: 30px; display: inline; float:left;
+}
+
+.RegistroToken{
+	float:left;
+	margin-top:80px;
+	width:940px;
+}
+
+.RegistroToken input {
+	width: 250px;
+	height: 12px;
+	font-family: Helvetica, arial, sans-serif;
+	font-size: 14px;
+	margin-top: 2px;
+	color: #999;
+	padding: 5px;
+}
+
+.RegistroToken  .btnRegistra {
+	width: 100px !important;
+	text-transform: uppercase;
+	margin-left: 20px;
+	width: 80px;
+	text-transform: uppercase;
+	display: block;
+	background: #c0291c;
+	background: -moz-linear-gradient(top, #c0291c 0%, #9b2115 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0291c), color-stop(100%,#9b2115));
+	background: -webkit-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: linear-gradient(to bottom, #c0291c 0%,#9b2115 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	font-size: 13px;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 8px 10px;
+	color: #FFFFFF;
+	text-decoration: none;
+	float: right;
+	text-align: center;
+	margin-top: 20px;
+	cursor: pointer;
+	font-weight: normal;
+}
+
+.RegistroToken .ingresa_token p{
+	font-family: Arial, sans-serif !important;
+	font-weight: bold;
+	font-size: 14px !important;
+	color: #000 !important;
+	padding: 0 !important;
+}
+
+.RegistroToken p:first-child{
+	font-family: AmplitudeRegular, Arial;
+	font-size: 26px;
+	width: 470px;
+	color: #b91700;
+	padding-left: 20px;
+	margin: 0 0 20px 0;
+}
+
+.RegistroToken table{
+	border-top: 1px solid #ccc;
+padding-top: 30px;
+margin-left: 20px;
+width:740px;
+}
+
+
+.pass_with_text_1, .pass_with_text_2{
+	background-image: url(http://cdn.premium.milenio.com/images/bg_contrasena.png);
+	background-repeat: no-repeat;
+	background-position: 2px;
+}
+
+.confpass_with_text_1, .confpass_with_text_2{
+	background-image: url(http://cdn.premium.milenio.com/images/bg_confirmarcont.png);
+	background-repeat: no-repeat;
+	background-position: 2px;
+}
+
+.msg_error_frm1{
+	color: #D12A13;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	margin: 3px 0 0 3px;
+	width: 400px;
+	height:20px;
+	font-weight: normal;
+	line-height: 22px;
+	float: left;
+}
+
+.msg_error_frm2{
+	color: #D12A13;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	margin: 13px 0 0 3px;
+	width: 400px;
+	height:12px;
+	font-weight: normal;
+	height: 12px;
+}
+
+..token_step2 .msg_error_frm1{
+	color: #D12A13;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	margin: 10px 0 0 25px;
+	width: 350px;
+	height:20px;
+	font-weight: normal;
+	line-height: 22px;
+	float: left;
+}
+
+.labels_tokens2{
+	font-family: arial;
+	font-size: 13px;
+	width:100px;
+}
+
+.labels_tokens2_right {
+	font-family: arial;
+	font-size: 13px;
+	width:200px;
+	margin-left: 70px;
+}
+
+.RegistroToken .ingresa_token {
+	width:200px!important;
+}
+
+.RegistroToken input{
+	width: 252px;
+	height: 14px;
+	font-family: Helvetica, arial, sans-serif;
+	font-size: 14px;
+	margin: 2px 9px 0 0;
+	color: #999;
+	padding: 5px;
+	border: 1px solid #bbb;
+	box-shadow: 0 1px 1px #eaeaea inset;
+}
+
+.highlight_red{
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 6px 8px;
+	margin: 0 5px 0 5px;
+	background: #c0291c;
+	background: -moz-linear-gradient(top, #c0291c 0%, #9b2115 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0291c), color-stop(100%,#9b2115));
+	background: -webkit-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: linear-gradient(to bottom, #c0291c 0%,#9b2115 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 0px;
+	color: #FFFFFF;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.login_into_formsus a{
+	text-decoration: none;
+	width: 100px ;
+	text-transform: uppercase;
+	background: #c0291c;
+	background: -moz-linear-gradient(top, #c0291c 0%, #9b2115 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0291c), color-stop(100%,#9b2115));
+	background: -webkit-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: linear-gradient(to bottom, #c0291c 0%,#9b2115 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 8px 5px;
+	color: #FFFFFF;
+	text-decoration: none;
+	text-align: center;
+	display: inline-block;
+	cursor: pointer;
+	font-weight: normal;
+	margin-left: 10px;
+}
+
+#btnCompra_conCuenta{
+	display: block;
+	background: #c0291c;
+	background: -moz-linear-gradient(top, #c0291c 0%, #9b2115 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0291c), color-stop(100%,#9b2115));
+	background: -webkit-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: linear-gradient(to bottom, #c0291c 0%,#9b2115 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	font-size: 13px;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 8px 10px;
+	color: #FFFFFF;
+	text-decoration: none;
+	width: 85px;
+	height: 32px;
+	float: right;
+	cursor: pointer;
+	margin-top:20px;
+  margin-bottom: 20px;
+}
+
+#captcha_sus {
+	margin-left: 225px;
+	width:320px;
+	float:left;
+}
+
+
+.token_step1{
+
+	height: 70px;
+	float: left;
+
+}
+
+.btnTokenStep2, .btnRegistra {
+
+  width: 90px;
+	text-transform: uppercase;
+	background: #c0291c;
+	background: -moz-linear-gradient(top, #c0291c 0%, #9b2115 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0291c), color-stop(100%,#9b2115));
+	background: -webkit-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: -o-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: -ms-linear-gradient(top, #c0291c 0%,#9b2115 100%);
+	background: linear-gradient(to bottom, #c0291c 0%,#9b2115 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0291c', endColorstr='#9b2115',GradientType=0 );
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+
+  font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+
+  padding: 5px 15px;
+	color: #FFFFFF;
+	text-decoration: none;
+	float: right;
+	text-align: center;
+
+	cursor: pointer;
+  margin-top: 25px;
+}
+
+.token_step2 table{
+	margin: 20px 0 0 23px;
+}
+
+.bannermercadosus{
+	width: 400px;
+	display: inline-block;
+	background-image: url(http://cdn.premium.milenio.com/images/logostarjetas.jpg);
+	height: 57px;
+	background-position: 0 20px;
+	background-repeat: no-repeat;
+	padding-left: 5px;
+}
+
+.bannerpaypalsus{
+	display: inline-block;
+	text-indent: -9999px;
+	background-image: url(http://cdn.premium.milenio.com/images/logopaypal.jpg);
+	background-repeat: no-repeat;
+	width: 391px;
+	height: 70px;
+	margin-left: 5px;
+}
+#intereses_container {
+    float: left;
+    margin-bottom: 30px;
+}
+
+ #intereses_container_sa {
+    float: left;
+    margin-bottom: 30px;
+    margin-left: 45px;
+    border-top: 1px solid #eaeaea;
+    width: 880px;
+}
+
+#intereses_container > span {
+    width: 170px;
+    display: table-cell;
+    font: bold 14px arial,sans-seriff;
+    color: #444;
+}
+
+#intereses_container_sa > span{
+    width: 210px;
+    display: table-cell;
+    font: bold 14px arial,sans-seriff;
+    color: #444;
+}
+
+#intereses_container input, #intereses_container_sa input{
+    margin-right: 10px;
+}
+
+.rec_header{
+	font-family: arial, sans-serif;
+	font-weight: bold;
+	color: #b91700;
+	margin: 15px 0;
+}
+
+#newsletter_container{
+	font-family: helvetica neue, arial, sans-serif;
+	padding: 10px 0;
+	float: left;
+	margin-top: 15px;
+	font-size: 14px;
+	}
+
+.wdgt_list_item{
+	text-decoration: none;
+	margin: 5px 30px;
+	color: #313131;
+	font-family: utopiaSemi, helvetica neue, arial, sans-serif;
+	width: 900px;
+	float: left;
+	border-bottom: 1px solid #CACACA;
+	padding-bottom: 15px;
+	font-size: 20px
+}
+
+.wdgt_list_item span{
+	font-size: 11px;
+	color: #b91700;
+	font-weight: bold;
+	line-height: 20px;
+	font-family: arial, sans-serif;
+}
+
+.wdgt_list_item > div {
+	width: 550px;
+
+	border-left: 1px dotted #e0e0e0;
+	float: right;
+	padding-left: 15px;
+	margin-right: 250px;
+}
+
+#newsletter_container input{
+	margin-right: 10px;
+}
+
+#alertas .wdgt_list_header{
+	font-family: helvetica neue, arial, sans-serif;
+
+	background-color: #b91700;
+	height: 40px;
+	width: 90%;
+	margin-left: 40px;
+	position: relative;
+	float: left;
+	line-height: 40px;
+	padding-left: 10px;
+	font-size: 13px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+#alertas .vip_favs_block{
+	margin-top: 0 !important;
+	margin-bottom: 10px;
+}
+
+#alertas .favs_text {
+	width:500px !important;
+}
+
+#alertas .vip_favs_noticiaCont .favs_title {
+	width:520px;
+}
+
+#alertas .vip_alerts_header, #recomendadas .vip_alerts_header {
+	border-bottom: 1px solid #e9e9e9;
+	width:90%;
+	margin-left: 45px
+}
+
+#tab_secciones, #tab_locales{
+	width:129px;
+	display:inline-block;
+	padding:10px;
+	font-size: 15px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+#wdgt_alerts td{
+	padding-left: 10px;
+}
+#loader {
+ height: 700px;
+ background-color: FFF;
+}
+
+.susInfo{
+    top: 30%;
+    width: 578px;
+    height: 240px;
+    position: relative;
+    float: left;
+    background: url(http://cdn.premium.milenio.com/images/suscripciones/bgsusdatos.jpg);
+    color:#000;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+}
+
+.susInfo ul{
+    margin-top:84px;
+    padding-left: 10px;
+}
+
+.susInfo li{
+    list-style: none;
+}
+.susInfo span{
+    font-weight: bold;
+}
+
+#boxalert_confirm .susInfoOk{
+    display: block;
+    width: 86px;
+    height: 23px;
+    bottom:20px;
+    right:55px;
+    position: absolute;
+    background-image: url(http://cdn.premium.milenio.com/images/vip_dialog_aceptar_active.png);
+}
+
+#container_boxalert_confirm ul{
+	font-family: arial, sans-serif !important;
+    font-size: 14px !important;
+
+}

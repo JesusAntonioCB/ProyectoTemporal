@@ -1,0 +1,67 @@
+{% if module.template == 'base' %}
+  <div class="nd-md-base">
+    <div class="media-container">
+      <div class="carousel">
+        {% if module.media is iterable and module.media.0 is defined %}
+          {% for image in module.media %}
+            <div class="slide">
+              <div class="img-container">
+              {% if image.providerName is defined and image.providerName == "camus.media.brigthcove_provider" %}
+                 <video id="player{{ image.publishedVersion.providerReference }}" class="video-js video-item" data-account="57828478001" data-player="SyoL14kBx" data-embed="default" data-video-id="{{ image.publishedVersion.providerReference }}" width="100%" height="100%" controls></video>
+                 <button class="btn-remove-floated"><i class="fa fa-times"></i></button>
+                </div>
+              {% elseif image.providerName is defined and image.providerName == "camus.media.youtube_provider" %}
+                 <iframe src="https://www.youtube.com/embed/{{ image.publishedVersion.providerReference }}" class="video-item" frameborder="0" gesture="media" allow="encrypted-media" width="100%" height="100%" allowfullscreen></iframe>
+                 <button class="btn-remove-floated"><i class="fa fa-times"></i></button>
+                </div>
+              {% else %}
+                {{ image.src|imageSize(module.template, image.publishedVersion.title)|raw }}
+                <div class="text-container">
+                  {{ app.request.getPathInfo|socialTag(module.title, image.src)|raw }}
+                  <div class="social-media"></div>
+                </div>
+                <meta itemprop="image" content="{{ image.src }}">
+              </div>
+              <div class="text-title-container">
+                <div class="text-container">
+                  <h3 class="text">
+                    {{ image.publishedVersion.title ?? module.title }}
+                  </h3>
+                </div>
+              </div>
+            {% endif %}
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+    {% if module.media|length > 1 and module.media.0 is defined %}
+    <div class="switcher">
+      <div class="arrows">
+        <div class="left">
+          <i class="fa fa-play-circle" aria-hidden="true"></i>
+        </div>
+        <div class="right">
+          <i class="fa fa-play-circle" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="count">
+        <span class="currentSlide"> 1 </span> / <span> {{ module.media|length }} </span>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+{% elseif module.template == 'caption' %}
+  <div class="nd-md-caption">
+    <div class="media-container">
+      <div class="img-container">
+        {{ module.thumbnail|asImage(module.alt)|raw }}
+      </div>
+      <div class="caption">
+        <div class="title" {{ data_camus_title }}>{{ module.title }}</div>
+        {{ app.request.getPathInfo|socialTag(module.title, module.thumbnail)|raw }}
+        <!-- <div class="social-media"></div> -->
+      </div>
+    </div>
+  </div>
+{% endif %}

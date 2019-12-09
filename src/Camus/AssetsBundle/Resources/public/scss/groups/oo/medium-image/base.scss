@@ -1,0 +1,124 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.oo-medium-image-base{
+  border: 0;
+  @include global-container-2c;
+  .media-container-light-cyan{
+    @include rows-height(1);
+    border-radius: 10px;
+    overflow: hidden;
+    .image{
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      width: 50%;
+      height: 100%;
+      float: right;
+      img{
+        border-radius: 0 0 10px 0;
+      }
+    }
+    .summary-container{
+      position: relative;
+      width: 50%;
+      height: 100%;
+      float: left;
+      .head{
+        border-top-left-radius: 8px;
+        padding: 0;
+        display: flex;
+        .caption{
+          display: none;
+          padding: 0;
+        }
+        .sponsor{
+          display: inline-block;
+          margin-right: 5px;
+          img{
+            height: 35px;
+            max-height: 35px;
+            max-width: 200px;
+          }
+        }
+        span{
+          display: inline-block;
+          height: 35px;
+          padding: 6px;
+        }
+      }
+      // .head-image{
+      //   padding: 0;
+      //   // overflow: visible;
+      //   .sponsor{
+      //     // overflow: visible;
+      //     width: 100%;
+      //     height: 100%;
+      //   }
+      // }
+      .text{
+        .title{
+          max-height: 140px;
+          margin-bottom: 15px;
+          text-transform: uppercase;
+          @include text-with-YanoneKaffeesatz-color-white;
+        }
+        .abstract{
+          max-height: 95px;
+          @include text-with-sans-pro-color-white;
+        }
+      }
+      .footer{
+        .section{
+          float: left;
+        }
+      }
+    }
+  }
+}
+
+@include one-column{
+  .oo-medium-image-base{
+    border-bottom: 0;
+    .media-container-light-cyan{
+      height: 420px;
+      .image{
+        width: 100%;
+        height: 60%;
+      }
+      .summary-container{
+        width: 100%;
+        height: 40%;
+        .head{
+          font-size: 22px;
+          height: 40px;
+          width: 100%;
+          // padding: 8px 15px;
+          border-top-left-radius: 0;
+          .sponsor{
+            img{
+              max-height: 40px;
+              height: 40px;
+            }
+          }
+        }
+        .text{
+          .title{
+            margin-bottom: 10px;
+          }
+          .abstract{
+            max-height: 51px;
+          }
+        }
+        .footer{
+          position: relative;
+          bottom: 0;
+          .section{
+            display: none;
+          }
+        }
+      }
+    }
+  }
+};

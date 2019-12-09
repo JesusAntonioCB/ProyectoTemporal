@@ -1,0 +1,198 @@
+{% set automatic = false %}
+{% set matchId = "" %}
+{% if contentLayer.automatic is defined  %}
+  {% if contentLayer.automatic == true %}
+    {% set automatic = true %}
+  {% endif %}
+{% endif %}
+{% if contentLayer.matchId is defined  %}
+  {% if contentLayer.matchId is not empty %}
+    {% set matchId = contentLayer.matchId %}
+  {% endif %}
+{% endif %}
+
+{% if urlStats is defined %}
+  {% if tabStats == "" and urlStats is empty %}
+    {% if matchId is not empty and automatic == true %}
+      {% set tabStats = "resumen" %}
+      {% set matchSrv = getMatchSrv(getUrlResumen(matchId)) %}
+    {% else %}
+      {% set tabStats = "en-vivo" %}
+      {% set matchSrv = modules.body %}
+    {% endif %}
+  {% else %}
+    {% if urlStats[0] is defined %}
+      {% set matchSrv = getMatchSrv(urlStats[0]) %}
+    {% else %}
+      {% set matchSrv = modules.body %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+{# {% set tabs = {
+  "previo" : {"title" : "Previo", "template" : "streak","type":"PREV"} ,
+  "antecedentes" : {"title" : "Antecedentes", "template" : "history", "type": "ANTEC"},
+  "en-vivo" : {"title" : "En Vivo", "template" : "mam", "type": "LIVE"},
+  "ficha" : {"title" : "Ficha", "template" : "lineup", "type": "SIGN"},
+  "estadisticas" : {"title" : "Estadísticas", "template" : "stadistics", "type": "STATS"},
+  "resumen" : {"title" : "Resumen", "template" : "goals", "type": "HIGHL"}}
+%} #}
+
+{% set tabs = {
+  "en-vivo" : {"title" : "En Vivo", "template" : "mam", "type": "LIVE"}
+  }
+%}
+
+{% set automaticHead = [] %}
+{% if matchId is not empty and automatic == true %}
+  {% set automaticHead = getMatchSrv(getMatchData(matchId)) %}
+{% endif %}
+
+{% for module in modules.head %}
+  {% if module.type is defined %}
+    {% set type = module.type|splitTemplate %}
+    {% set embedBodyModulesData = [] %}
+    {% if modules.embedBodyModules is defined %}
+      {% set embedBodyModulesData = modules.embedBodyModules %}
+    {% endif %}
+    {% if type[1] == "leaderboard" %}
+      {% include 'Application\Camus\AssetsBundle:Groups:ad/pleca.html.twig' ignore missing with {} %}
+    {% endif %}
+    {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule, embedBodyModules: embedBodyModulesData,automatic: automaticHead} %}
+  {% endif %}
+{% endfor %}
+{% if matchId is not empty and automatic == true %}
+  <div class="game-menu">
+    {% set contentTabs = {
+      "previo" : {"title" : "Previo", "template" : "streak","type":"PREV"} ,
+      "en-vivo" : {"title" : "En Vivo", "template" : "mam", "type": "LIVE"},
+      "antecedentes" : {"title" : "Antecedentes", "template" : "history", "type": "ANTEC"},
+      "resumen" : {"title" : "Resumen", "template" : "goals", "type": "HIGHL"}}
+    %}
+    {% for index, tab in contentTabs %}
+      <a class="menu-button" href="{{ contentUrl }}{{ '/%s'|format(index) }}">
+        <div class="option-menu {{ index == tabStats ? 'active' }}">
+          <span>{{ tab.title }}</span>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+
+{% elseif contentLayer.contentTabs is defined %}
+  {% if contentLayer.contentTabs is not empty and contentLayer.matchId is not empty %}
+    <div class="game-menu">
+      {% for cnt in contentLayer.contentTabs %}
+        {% for index, tab in tabs %}
+          {% if cnt.type == tab.type %}
+            <a class="menu-button" href="{{ contentUrl }}{{ '/%s'|format(index) }}">
+              <div class="option-menu {{ index == tabStats ? 'active' }}">
+                <span>{{ tab.title }}</span>
+              </div>
+            </a>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="match-notes-block">
+  {% for cnt in contentLayer.contentTabs  %}
+    {% if cnt.name|normalize == tabStats %}
+      {% if cnt.module is defined and cnt.module is not empty %}
+        {% for mdl in cnt.module %}
+          {% set type = mdl.type|splitTemplate %}
+          {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: mdl|getModelModule} %}
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  </div>
+
+{% endif %}
+
+
+<div class="nd-content-live">
+  <div class="show-resume">
+    {#
+        {% set game_events = [] %}
+        {% set game_events = game_events|merge(home_events) %}
+        {% set game_events = game_events|merge(away_events) %}
+        {% set goal_data = [] %}
+        {% set goal_temp = [] %}
+        {% set event_home_data = [] %}
+        {% set event_home_temp = [] %}
+        {% set event_away_data = [] %}
+        {% set event_away_temp = [] %}
+        {% for event in game_events %}
+          {% set itemIndex = loop.index0 %}
+          {% if event['type']|lower == 'gol' %}
+            {% set goal_data = goal_data|merge([event]) %}
+            {% set goal_temp = goal_temp|merge([event['minute']]) %}
+          {% endif %}
+        {% endfor %}
+        {% for event in home_events %}
+          {% set itemIndex = loop.index0 %}
+          {% if event['type']|lower != 'asistencia para gol' %}
+            {% set event_home_data = event_home_data|merge([event]) %}
+            {% set event_home_temp = event_home_temp|merge([event['minute']]) %}
+          {% endif %}
+        {% endfor %}
+        {% for event in away_events %}
+          {% set itemIndex = loop.index0 %}
+          {% if event['type']|lower != 'asistencia para gol' %}
+            {% set event_away_data = event_away_data|merge([event]) %}
+            {% set event_away_temp = event_away_temp|merge([event['minute']]) %}
+          {% endif %}
+        {% endfor %}
+        {% set const = 1.1111111111 %}
+        {% set const_limit = 0 %}
+        <div class="toggle-resume">
+          <span>Ver resumen</span><div class="toggle-state"><i class="fas fa-angle-down"></i></div>
+        </div>
+        <div class="toggle-gray">
+          <div class="toggle-area">
+            <div class="toggle-info">
+              <div class="header">
+                <div class="title">
+                  <span>GOLES<span>
+                </div>
+              </div>
+              <table class="goals">
+                {% set goals_home = 0 %}
+                {% set goals_away = 0 %}
+                {% for goal in goal_temp|sort|keys %}
+                  {% set player_name = '' %}
+                  {% set logo_url = '' %}
+                  {% if match['home_team_id'] == goal_data[goal]['team_id'] %}
+                    {% set logo_url = match['home_team_logo'] %}
+                    {% set goals_home = goals_home + 1 %}
+                    {% for player in home_data if player['player_id'] == goal_data[goal]['player_id'] %}
+                      {% set player_name = player['player_first_name']|split(' ')[0] ~ " " ~ player['player_last_name'] %}
+                    {% endfor %}
+                  {% elseif match['away_team_id'] == goal_data[goal]['team_id'] %}
+                    {% set logo_url = match['away_team_logo'] %}
+                    {% set goals_away = goals_away + 1 %}
+                    {% for player in away_data if player['player_id'] == goal_data[goal]['player_id'] %}
+                      {% set player_name = player['player_first_name']|split(' ')[0] ~ " " ~ player['player_last_name'] %}
+                    {% endfor %}
+                  {% endif %}
+                  <tr>
+                    <td><img src="https://static.mediotiempo.com/0x20/{{ logo_url }}"></td>
+                    <td><strong>{{ goals_home }} - {{ goals_away }}</strong></td>
+                    <td>{{ goal_data[goal]['minute'] }}'</td>
+                    <td>{{ player_name }}</td>
+                  </tr>
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+        </div>#}
+      </div>
+  <div class="main-container">
+    {% for index, tab in tabs %}
+      {% if index == tabStats %}
+        {% include 'Application\Camus\AssetsBundle:Fixtures:match/'~tab.template~'.html.twig' ignore missing with {data: matchSrv} %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

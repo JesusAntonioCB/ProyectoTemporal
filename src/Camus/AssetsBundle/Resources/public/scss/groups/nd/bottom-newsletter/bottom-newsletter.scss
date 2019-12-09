@@ -1,0 +1,175 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.nd-newsletter{
+  //@include grid-dynamic-full;
+  width: 100%;
+  background-color: $color-red-dark;
+  display: flex;
+  padding: 20px;
+  margin-bottom: 20px;
+  .left-col{
+    width: 40%;
+    img{
+      width: 40%;
+    }
+    >span{
+      display: none;
+    }
+  }
+  .right-col{
+    width: 60%;
+    >span{
+      display: block;
+      color: $color-white;
+      font-size: 18px;
+    }
+    .main-text{
+      font-size: 34px;
+      font-weight: 900;
+    }
+    .checkboxes{
+      display: flex;
+      flex-wrap: wrap;
+      >span{
+        color: $color-white;
+        font-size: 11px;
+        margin: 10px 5px;
+        width: 30%;
+        display: block;
+      }
+      .checkbox{
+        width: 30%;
+        margin: 10px 5px;
+        input{
+          // display: none;
+          position: absolute;
+          opacity: 0;
+          left: 24px;
+          width: 30px;
+          height: 30px;
+        }
+        .label-check{
+          width: 30px;
+          height: 30px;
+          display: inline-block;
+          border: 1px solid $color-white;
+          .fa{
+            opacity: 0;
+            transition: all .2s ease;
+            font-size: 24px;
+            pointer-events: none;
+            color: $color-white;
+          }
+        }
+        .label{
+          font-size: 18px;
+          padding: 0;
+          margin: 0;
+          vertical-align: top;
+          margin-top: 5px;
+          display: inline-block;
+          color: $color-white;
+          margin-left: 5px;
+        }
+        input[type="checkbox"]:checked ~ .label-check{
+          .fa{
+            opacity: 1;
+          }
+        }
+      }
+    }
+    .emailContainer{
+      margin-top: 25px;
+      input[type="text"]{
+        width: 66%;
+        padding: 5px;
+      }
+      button{
+        width: 33%;
+        padding: 5px;
+        background-color: $color-space-gray;
+        color: $color-white;
+        border: none;
+        margin-left: -5px;
+        height: 34px;
+        font-weight: 900;
+      }
+    }
+  }
+  @include two-column{
+    .right-col{
+      .main-text{
+        font-size: 30px;
+      }
+      .checkboxes{
+        >span{
+          width: 47%;
+        }
+        .checkbox{
+          width: 47%;
+        }
+      }
+    }
+  }
+
+  @include one-column{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    .left-col{
+      width: 100%;
+      >span{
+        display: block;
+      }
+    }
+    .right-col{
+      width: 100%;
+      position: relative;
+      >span{
+        display: none;
+      }
+      .checkboxes{
+        >span{
+          width: 98%;
+        }
+        .checkbox{
+          width: 45%;
+          margin: 10px 2px;
+          .label{
+            font-size: 16px;
+          }
+        }
+      }
+      .emailContainer{
+        input[type="text"]{
+          width: 100%;
+        }
+        button{
+          float: right;
+          width: 45%;
+        }
+      }
+      >span:first-child{
+        font-size: 15px;
+        float: right;
+        width: 55%;
+        position: absolute;
+        top: -49px;
+        right: 0;
+        display: block;
+      }
+      >span.main-text:nth-child(4){
+        font-size: 16px;
+        width: 55%;
+        float: right;
+        position: absolute;
+        top: -100px;
+        right: 0;
+        display: block;
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{% import "Application\Camus\AssetsBundle:Fixtures:see-more.html.twig" as seeMore %}
+
+{% if module.template == 'cartoon' %}
+<div class="sn-sample-cartoon">
+  <div class="media-container">
+    {{ seeMore.text(module, true, false, "heading") }}
+    <div class="sampler">
+      <div class="img-container">
+        <a target="_blank" href="{{ module.slug }}">
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+        </a>
+      </div>
+      <div class="info-container">
+        <div class="title">
+          <a target="_blank" href="{{ module.slug }}">
+            <span {{ data_camus_title }}>{{module.title}}</span>
+          </a>
+        </div>
+        <div class="author">
+          <a href="{{ module.authorSlug }}">
+            <span {{ data_camus_author }}>{{ module.author }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% elseif module.template == 'opinion' %}
+<div class="sn-sample-opinion">
+  <div class="media-container">
+    {{ seeMore.text(module, true, false, "heading") }}
+    <div class="sampler">
+      <div class="img-container">
+        <a target="_blank" href="{{ module.slug }}">
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+        </a>
+      </div>
+      <div class="info-container">
+        <div class="author">
+          <span><a {{ data_camus_author }} href="{{ module.authorSlug }}"> {{ module.author }}</a></span>
+        </div>
+        <div class="column">
+          <span {{ data_camus_column }}>{{ module.column }}</span>
+        </div>
+        <div class="title">
+          <a target="_blank" href="{{ module.slug }}">
+            <span {{ data_camus_title }}>{{module.title}}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

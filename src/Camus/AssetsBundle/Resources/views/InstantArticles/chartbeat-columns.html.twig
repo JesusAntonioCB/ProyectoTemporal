@@ -1,0 +1,17 @@
+{% if chartbeatId %}
+	<figure class="op-tracker">
+		<iframe>
+			<script type='text/javascript'>
+		    	var _sf_async_config = {};
+		        _sf_async_config.uid = {{chartbeatId}};
+		        _sf_async_config.domain = '{{chartbeatDomain}}';
+		        _sf_async_config.title = "{{ content.publishedVersion.title }}";
+		        _sf_async_config.sections = "Firmas";
+		        _sf_async_config.authors = "{{ signature }}";
+		        _sf_async_config.useCanonical = true;
+		        window._sf_endpt = (new Date()).getTime();
+		    </script>
+		    <script defer src="https://static.chartbeat.com/js/chartbeat_fia.js"></script>
+	    </iframe>
+	</figure>
+{% endif %}

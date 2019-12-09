@@ -1,0 +1,18 @@
+<div class="inside-list">
+  <div class="media-container">
+    <div class="list-name">
+      <h1>{{listName}}</h1>
+    </div>
+    {% for element in list %}
+      <div class="element">
+        <h1 class="title">{{element.title}}</h1>
+        <h2 class="subtitle">{{element.subtitle}}</h2>
+      </div>
+    {% endfor %}
+    {% for link in links %}
+      <div class="link">
+        <h1><span class="fa fa-chevron-right"></span>  {{link.text}}</h1>
+      </div>
+    {% endfor %}
+  </div>
+</div>

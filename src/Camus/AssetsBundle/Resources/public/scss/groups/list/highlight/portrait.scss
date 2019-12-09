@@ -1,0 +1,28 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.list-highlight-portrait{
+  @include global-container-1c;
+  .media-container{
+    .sn-base{
+      margin-bottom: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    .lr-row-base{
+      float: right;
+      padding-left: 10px;
+      .social-media{
+        padding-right: 20px;
+      }
+    }
+  }
+}
+
+@include one-column{
+  .list-highlight-portrait{
+    max-width: $one-column;
+  }
+}

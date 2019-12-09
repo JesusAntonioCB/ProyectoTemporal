@@ -1,0 +1,128 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.lr-row-media-description{
+  border-top: 1px solid $color-nobel;
+  .item-news-container{
+    position: relative;
+    margin: 0 auto;
+    width: 830px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    .date{
+      float: left;
+      span{
+        font-size: 12px;
+        color: $color-nobel;
+        font-weight: 900;
+      }
+    }
+    .img-container, .title-container{
+      display: inline-block;
+      vertical-align: top;
+      height: 130px;
+      margin-left: 10px;
+    }
+    .img-container{
+      width: 217px;
+      img{
+        width: 100%;
+      }
+    }
+    .title-container{
+      position: relative;
+      width: 400px;
+      h1{
+        max-height: 59px;
+        overflow: hidden;
+        margin-top: 0;
+        font-family: $font-utopia5;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 29px;
+        color: $color-night-gray;
+      }
+      .summary, .author{
+        max-height: 20px;
+        font-family: $font-open-sans5;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 20px;
+        color: $color-clear-gray;
+      }
+      .author{
+        text-transform: uppercase;
+      }
+      .social-network{
+        position: absolute;
+        bottom: 0;
+      }
+    }
+  }
+}
+
+@include three-column{
+  .lr-row-media-description{
+    .item-news-container {
+      width: 790px;
+    }
+  }
+};
+
+@include two-column{
+  .lr-row-media-description{
+    .item-news-container {
+      width: 587px;
+      .title-container{
+        width: 280px;
+        h1{
+          width: 100%;
+          font-size: 22px;
+        }
+      }
+    }
+  }
+};
+
+@include one-column{
+  .lr-row-media-description{
+    .item-news-container {
+      display: inline-block;
+      width: 273px;
+      margin-left: 20px;
+      margin-right: 7px;
+      .date{
+        float: none;
+      }
+      .img-container, .title-container{
+        height: 104px;
+      }
+      .img-container{
+        float: right;
+        width: 90px;
+      }
+      .title-container{
+        float: left;
+        width: 163px;
+        overflow: hidden;
+        margin-left: 0;
+        .title{
+          max-height: 55px;
+          min-height: 55px;
+        }
+        h1{
+          font-size: 17px;
+          line-height: 20px;
+        }
+        .summary{
+          display: none;
+        }
+        .social-network{
+          right: 0;
+        }
+      }
+    }
+  }
+};

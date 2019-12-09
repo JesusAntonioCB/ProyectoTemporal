@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" prefix="op: http://media.facebook.com/op#">
+    <head>
+        <meta property="fb:use_automatic_ad_placement" content="true">
+        <meta charset="utf-8">
+        <link rel="canonical" href="{{ articleUrlMovil }}">
+        <link rel="stylesheet" title="default" href="#">
+        <title>{{ content.publishedVersion.title }}</title>
+        <meta property="fb:article_style" content="Firmas">
+    </head>
+    <body>
+        <article>
+            <header>
+                {{ include('ApplicationCamusAssetsBundle:InstantArticles:ads.html.twig') }}
+            	<figure data-mode=aspect-fit>
+                    <img src="{{ authorImage is null ? domain~'/bundles/applicationcamusassets/images/placeholder.jpg' : authorImage|media_slug([], false, null, null, true) }}" />
+            	</figure>
+            	<h1>{{ content.publishedVersion.title }}</h1>
+            	<h3 class="op-kicker">
+            		{{ signature }}
+            	</h3>
+            	<time class="op-published" dateTime="{{ content.publishedDate|date('Y-m-d\TH:i') }}">{{ content.publishedDate|date('Y-m-d\TH:i') }}</time>
+            </header>
+            {{ include('ApplicationCamusAssetsBundle:InstantArticles:chartbeat-columns.html.twig') }}
+            {{ include('ApplicationCamusAssetsBundle:InstantArticles:comscore.html.twig') }}
+            {{ include('ApplicationCamusAssetsBundle:InstantArticles:google-analytics.html.twig') }}
+
+            {{ body | raw }}
+
+            {{ include('ApplicationCamusAssetsBundle:InstantArticles:footer.html.twig') }}
+        </article>
+    </body>
+</html>

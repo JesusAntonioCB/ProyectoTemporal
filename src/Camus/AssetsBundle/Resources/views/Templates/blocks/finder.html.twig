@@ -1,0 +1,105 @@
+<div class="finder">
+  <div class="media-container">
+    <div class="finder-container">
+      <form class="search-form" class="search-item" name="search-form" action="/buscador" method="GET">
+        <div class="top">
+            <input type="text" class="name-to-search" name="text" required placeholder="¿Qué buscas?" />
+            <button type="submit" class="search-icon">
+              <span class="fa fa-search"></span>
+            </button>
+        </div>
+        {#
+        <div class="bottom">
+          <span class="filter-results">Filtrar Resultados</span>
+          <div class="icon show-filters">
+              <span class="fa fa-chevron-down"></span>
+          </div>
+          <div class="extra-filters">
+            <div class="section-filter filter">
+              <div class="filter-label">Filtrado por Sección</div>
+              <select name="categories" class="filter-input" disabled>
+                <option value="0">Todas</option>
+                <option value="1">Politica</option>
+                <option value="2">Deportes</option>
+                <option val8e="3">Espectáculos</option>
+              </select>
+            </div>
+            <div class="date-filter filter">
+              <div class="filter-label">Filtrado por Fecha</div>
+              <input type="date" name="start-date" class="filter-input" disabled value="">
+              <input type="date" name="end-date" class="filter-input" disabled value="">
+            </div>
+            <div class="type-filters filter">
+              <div class="filter-label">Filtrado por Tipo de Noticia</div>
+              <div class="check-filter">
+                <label class="container-checker">
+                  <input type="checkbox" checked name="news"  class="filter-input" disabled value=true>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Noticia</span>
+              </div>
+              <div class="check-filter">
+                <label class="container-checker">
+                  <input type="checkbox" neme="interview" class="filter-input" disabled value=true>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Entrevista</span>
+              </div>
+              <div class="check-filter">
+                <label class="container-checker">
+                  <input type="checkbox" name="report" class="filter-input" disabled value=true>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Reportaje</span>
+              </div>
+              <div class="check-filter">
+                <label class="container-checker">
+                  <input type="checkbox" name="video" class="filter-input" disabled value=true>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Videonoticia</span>
+              </div>
+              <div class="check-filter">
+                <label class="container-checker">
+                  <input type="checkbox" name="firm" class="filter-input" disabled value=true>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Firma</span>
+              </div>
+              <div class="check-filter">
+                <label class="container-checker">
+                  <input type="checkbox" name="chronic" class="filter-input" disabled value=true>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Crónica</span>
+              </div>
+              <div class="check-filter">
+                <label class="container-checker">
+                  <input type="checkbox" name="photogallery" class="filter-input" disabled value=true>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Fotogalería</span>
+              </div>
+            </div>
+            <div class="ok-filter filter">
+              <button type="button" name="ok">OK</button>
+            </div>
+          </div>
+        </div>
+        #}
+      </form>
+    </div>
+    <div class="finder-options">
+      <div class="num-results">
+        <span>Resultados:</span> <span>834</span>
+      </div>
+      <!--div class="sort-options">
+        <div class="sort-by">
+          <span>Ordenar por:</span>
+        </div>
+        <button class="date">Fecha</button>
+      </div-->
+    </div>
+
+  </div>
+</div>

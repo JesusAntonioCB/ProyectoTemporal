@@ -1,0 +1,48 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.lr-row-tv {
+  position: relative;
+  padding: 13px 0;
+  border-top: 1px solid $color-silver;
+  .image{
+    float: left;
+    width: 85px;
+    height: 49px;
+  }
+  .btn-play-top-gray{
+    top: 23px;
+    left: 70px;
+    padding: 7px;
+    .fa-play{
+      font-size: 12px;
+    }
+  }
+  .video-list-container{
+    padding-left: 25px;
+    overflow: hidden;
+    font-family: $font-open-sans5;
+    color: $color-silver;
+    .section-container{
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 600;
+      margin: 0 0 3px;
+    }
+    .tv-host-container{
+      font-size: 11px;
+      line-height: 15px;
+      text-transform: uppercase;
+    }
+  }
+  a:hover{
+    text-decoration: underline;
+  }
+  &:after{
+    content: '';
+    display: table;
+    clear: both;
+  }
+}

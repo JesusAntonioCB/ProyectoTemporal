@@ -1,0 +1,105 @@
+{% import "Application\Camus\AssetsBundle:Fixtures:see-more.html.twig" as seeMore %}
+
+{% if module.template == 'base' %}
+  <div class="sn-opinion" data-camus-template="{{module.templateName}}" {{ data_camus_type["sn_base"] }} {{ data_camus_toolbar_position["br"] }}>
+    {% if module.heading.title != '' %}
+      {{ seeMore.text(module, true, true, "heading") }}
+    {% endif %}
+    <div class="firms-note">
+      <div class="image">
+        <a href="{{ module.authorSlug }}">
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+          {#{{ module.authorMedia|asImageAuthor|raw }}#}
+        </a>
+      </div>
+      <div class="author">
+        <span><a {{ data_camus_author }} href="{{ module.authorSlug }}"> {{ module.author }}</a></span>
+      </div>
+      <div class="column">
+        <span {{ data_camus_column }} >{{ module.column }}</span>
+      </div>
+      <div class="title">
+        <a {{ module.slug|linkConstruct|raw }}>
+          <span {{ data_camus_title }}>{{ module.title }}</span>
+        </a>
+      </div>
+      <div class="bottom">
+        <div class="section">
+          <a {{ module.slug|linkConstruct|raw }}>
+            <span {{ data_camus_section }}>{{ module.section }}</span>
+          </a>
+        </div>
+        {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        <!-- <div class="social-media"></div> -->
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'middle'%}
+  <div class="firms-note" {{ data_camus_background_color }} {{ data_camus_color_alpha }} style="background-color: {{ module.color|parseRGB }}" data-camus-template="{{module.templateName}}" {{ data_camus_type["sn_opinion"] }} {{ data_camus_background }}>
+    <div class="author">
+      <span><a {{ data_camus_author }} href="{{ module.authorSlug }}">{{ module.author }}</a></span>
+    </div>
+    <div class="image">
+      <a href="{{ module.authorSlug }}">
+        {{ module.thumbnail|asImage(module.alt)|raw }}
+        {#{{ module.authorMedia|asImageAuthor|raw }}#}
+      </a>
+    </div>
+    <div class="title">
+      <a {{ module.slug|linkConstruct|raw }}>
+        <span {{ data_camus_title }}>{{ module.title }}</span>
+      </a>
+    </div>
+    <div class="footer">
+      {#<div class="section"><span {{ data_camus_section }}>{{ module.section }}</span></div>#}
+      {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+      <div class="social-media"></div>
+    </div>
+  </div>
+{% elseif module.template == 'descriptive' %}
+  <div class="sn-opinion-descriptive" data-camus-template="{{module.templateName}}" {{ data_camus_type["sn_opinion"] }}>
+    <div class="firms-note">
+      <div class="author">
+        <span><a {{ data_camus_author }} href="{{ module.authorSlug }}">{{ module.author }}</a></span>
+      </div>
+      <div class="image">
+        <a href="{{ module.authorSlug }}">
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+          {#{{ module.authorMedia|asImageAuthor|raw }}#}
+        </a>
+      </div>
+      <div class="column">
+        <span {{ data_camus_title }}>{{ module.title }}</span>
+      </div>
+      <div class="abstract">
+        <span {{ data_camus_abstract }}>{{ module.abstract|raw|raw }}</span>
+      </div>
+        {#<div class="section"><span {{ data_camus_section }}>{{ module.section }}</span></div>#}
+        {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        <div class="social-media"></div>
+
+    </div>
+  </div>
+{% elseif module.template == 'horoscope' %}
+  <div class="sn-opinion-horoscope" data-camus-template="{{module.templateName}}" {{ data_camus_type["sn_opinion"] }}>
+    <div class="firms-note">
+      <div class="author">
+        <span><a {{ data_camus_author }} href="{{ module.authorSlug }}">{{ module.author }}</a></span>
+      </div>
+      <div class="image">
+        <a href="{{ module.authorSlug }}">
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+          {#{{ module.authorMedia|asImageAuthor|raw }}#}
+        </a>
+      </div>
+      <div class="column">
+        <span {{ data_camus_title }}>{{ module.title }}</span>
+      </div>
+      <div class="abstract">
+        <span {{ data_camus_abstract }}>{{ module.abstract|raw|raw }}</span>
+      </div>
+      {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+      <div class="social-media"></div>
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,309 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.ctr-tickets{
+  margin-bottom: 20px;
+  position: relative;
+  width: 100%;
+  .title-container{
+    margin-bottom: 25px;
+    position: relative;
+    min-height: 84px;
+    img{
+      width: 100%;
+      position: absolute;
+    }
+    .search-tickets-container{
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      top: 50%;
+      width: 39%;
+      input{
+        width: 100%;
+        height: 35px;
+      }
+      .fa{
+        position: absolute;
+        right: 0;
+        height: 100%;
+        background-color: $color-pink-tickets;
+        width: 30px;
+        padding: 10px 5px;
+        color: $color-white;
+        top: 0;
+        font-size: 17px;
+        cursor: pointer;
+      }
+    }
+  }
+  >select{
+    position: absolute;
+    right: 0;
+    padding: 20px;
+    width: 150px;
+    height: 32px;
+    background-color: $color-white;
+    color: $color-pink-tickets;
+    border: none;
+    font-weight: 800;
+    font-size: 18px;
+    top: 125px;
+  }
+  .last-month{
+    margin: 0 40px;
+    font-size: 36px;
+  }
+  .last-month-separator{
+    border-collapse: collapse;
+    margin: 0 40px;
+    float: left;
+    width: 92%;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid $color-light-silver;
+    padding: 0;
+  }
+  .events-container{
+    margin: 0 20px;
+    .event{
+      height: 166px;
+      display: inline-block;
+      width: 280px;
+      margin: 10px;
+      vertical-align: top;
+      .event-container{
+        position: relative;
+        height: 164px;
+        overflow: hidden;
+        img{
+          position: absolute;
+          width: 100%;
+        }
+        .event-info-container{
+          background-color: rgba($color-black,0.4);
+          width: 100%;
+          height: 80px;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          p{
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            margin: 0;
+            padding: 0;
+            span{
+              color: $color-white;
+              display: block;
+              float: left;
+              width: 100%;
+            }
+          }
+          .view{
+            display: block;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            text-align: center;
+            .view-more{
+              background-color: $color-pink-tickets;
+              color: $color-white;
+              text-decoration: none;
+              padding: 5px;
+              display: block;
+              width: 64px;
+              height: 31px;
+              line-height: 25px;
+              cursor: pointer;
+              &.search{
+                width: 85px;
+              }
+            }
+          }
+        }
+      }
+      .child-items{
+        display: none;
+        margin: 0;
+        padding: 0;
+        >li{
+          height: auto;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          margin-top: 20px;
+          overflow: hidden;
+          border-bottom: 1px solid $color-light-silver;
+          .event-catName{
+            float: left;
+            width: 100%;
+            font-size: 14px;
+          }
+          .event-name{
+            float: left;
+            width: 100%;
+            color: #1e1e1e;
+            font-size: 24px;
+            margin: 10px 0;
+          }
+          .event-buy{
+            float: right;
+            .ticketbis-buy{
+              padding: 6px 10px;
+              font-size: 14px;
+              background-color: #79bb02;
+              display: block;
+              color: $color-white;
+            }
+          }
+          .event-address{
+            color: #1e1e1e;
+            font-size: 20px;
+            float: left;
+            width: 69%;
+          }
+          .event-city{
+            float: left;
+            font-size: 16px;
+            color: #1e1e1e;
+            width: 69%;
+          }
+          .event-date{
+            color: #1e1e1e;
+            font-size: 16px;
+            float: left;
+            margin-bottom: 10px;
+            width: 69%;
+          }
+        }
+      }
+      &.view-tickets{
+        height: auto;
+        .child-items{
+          display: block;
+        }
+      }
+    }
+    .category-no-result{
+      margin: 15px 0;
+      div:first-child{
+        font-weight: 900;
+        font-size: 20px;
+      }
+      div:nth-child(2){
+        font-size: 16px;
+      }
+    }
+    .event-no-result{
+      margin-bottom: 15px;
+      div:first-child{
+        font-weight: 900;
+        font-size: 20px;
+      }
+      div:nth-child(2){
+        font-size: 16px;
+      }
+    }
+  }
+  .pager{
+    width: 300px;
+    float: right;
+    .page{
+      margin: 0 3px;
+      width: 15px;
+      min-width: 15px;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .page.selected{
+      text-decoration: underline;
+    }
+    .previous, .next{
+      cursor: pointer;
+      display: inline-block;
+      background-color: $color-night-gray;
+      color: $color-white;
+      width: 22px;
+      vertical-align: bottom;
+      padding: 4px;
+      .fa{
+        font-size: 16px;
+      }
+    }
+  }
+  .events-container.search ~ .pager{
+    display: none;
+  }
+  .pager.shows{
+    // .previous, .next{
+    //   background-color: $color-pink-tickets;
+    // }
+    .page{
+      color: $color-pink-tickets;
+    }
+  }
+
+  @include three-column{
+    .last-month{
+      margin: 0;
+    }
+    .last-month-separator{
+      margin: 0;
+      width: 100%;
+    }
+    .events-container{
+      margin: 0;
+      .event{
+        width: 289px;
+      }
+    }
+  }
+
+  @include two-column{
+    .title-container{
+      min-height: 58px;
+      .search-tickets-container{
+        top: 26px;
+      }
+    }
+    >select{
+      top: 90px;
+      // left: 100%;
+      // transform: translateX(-100%);
+      padding: 0;
+    }
+    .events-container{
+      .event{
+        margin: 8px;
+      }
+    }
+  }
+
+  @include one-column{
+    .title-container{
+      min-height: 0;
+      .search-tickets-container{
+        top: auto;
+        position: relative;
+        transform: none;
+        left: auto;
+        width: 100%;
+        margin-top: 10px;
+        border: 1px solid $color-pink-tickets;
+      }
+      img{
+        position: relative;
+      }
+    }
+    >select{
+      position: relative;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}

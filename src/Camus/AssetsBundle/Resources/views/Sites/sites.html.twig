@@ -1,0 +1,21 @@
+{#<div id="our-sites">
+  <div class="sites"><span>NUESTROS SITIOS</span></div>
+  {% for siteNew in sitesNews() %}
+    <div class="site-content">
+      <a href="{{ siteNew.url }}">
+        <img src="{{ siteNew.thumbnail }}" class="image">
+      </a>
+      <div class="site-abstract">
+        <div class="site-sponsor">
+          <span><a href="{{ siteNew.domain }}" target="_blank" title="Visitar {{ siteNew.domain }}"><img src="{{ siteNew.logo }}"></a></span>
+          <span>{{ siteNew.headline }}</span>
+        </div>
+        <div class="site-link">
+          <a href="{{ siteNew.url }}">
+            <span>{{ siteNew.title }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>#}

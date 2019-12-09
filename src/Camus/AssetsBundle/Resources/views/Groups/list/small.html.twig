@@ -1,0 +1,208 @@
+{% import "Application\Camus\AssetsBundle:Fixtures:see-more.html.twig" as seeMore %}
+
+{% if module.template == 'base' or module.template == 'base_media' or module.template == 'base_opinions' %}
+  {% if module.modules is defined and module.modules is not empty %}
+    <div class="list-base" {{ data_camus_module_type["list"] }} data-camus-template="{{module.templateName}}" {{ data_camus_type["list_small"] }} {{ data_camus_toolbar_position["br"] }} data-camus-id="{{ module.id }}">
+      <div class="media-container">
+        {% if module.title != '' %}
+          {% if module.template != 'base' %}
+            {% set more = true %}
+            {% set removable = false %}
+          {% else %}
+            {% set more = false %}
+            {% set removable = true %}
+          {% endif %}
+          {{ seeMore.text(module, more, removable) }}
+        {% endif %}
+        <div class="list" {{ data_camus_modules }}>
+          {% for listElement in module.modules %}
+          {% set type = listElement.type|splitTemplate %}
+          {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule, index: loop.index} %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% elseif  module.template == 'small_hour' %}
+  <div class="list-small-hour" {{ data_camus_module_type["list"] }} data-camus-id="{{ module.id }}">
+    {{ seeMore.text(module, true, false) }}
+    <div class="media-container" {{ data_camus_modules }}>
+      {% for listElement in module.modules %}
+        {% set type = listElement.type|splitTemplate %}
+        {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+      {% endfor %}
+    </div>
+  </div>
+{% elseif  module.template == 'medium' %}
+  <div class="list-medium" {{ data_camus_module_type["list"] }} data-camus-id="{{ module.id }}">
+    {{ seeMore.text(module, true, false) }}
+    <div class="media-container" {{ data_camus_modules }}>
+      {% for listElement in module.modules %}
+        {% set type = listElement.type|splitTemplate %}
+        {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+      {% endfor %}
+    </div>
+  </div>
+                                                                                                             COMENTADA LA SECCION VER MAS
+{% elseif module.template == 'findings' or module.template == 'tribune' %}
+  {#}<div class="list-base-{{ module.template }}" {{ data_camus_module_type["list"] }} data-camus-template="{{module.templateName}}" {{ data_camus_type["list_small"] }} {{ data_camus_toolbar_position["br"] }} data-camus-id="{{ module.id }}">
+    <div class="media-container">
+      {% if module.title != '' %}
+      <div class="section-see-more-container-transparent">
+        <div class="section-title-container-transparent">
+          <span {{ data_camus_title }}>{{ module.title }}</span>
+        </div>
+      </div>
+      {% endif %}
+      <div class="list" {{ data_camus_modules }}>
+        {% for listElement in module.modules %}
+        {% set type = listElement.type|splitTemplate %}
+        {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule, index: loop.index} %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>#}
+
+{% elseif module.template == 'large_news' or module.template == 'large_news_photo' %}
+  <div class="list-large-news" {{ data_camus_toolbar_position["tl"] }} {{ data_camus_module_type["list"] }} {{ data_camus_background_color }} data-camus-id="{{ module.id }}">
+    <div class="news-container">
+      {% if module.title != '' %}
+        <div class="headline" {{ data_camus_removable["header"] }}>
+          {% if module.template == 'large_news_photo' %}
+            <h2 class="title" {{ data_camus_title }}>{{ module.title }}</h2>
+          {% else %}
+            <h1 class="title" {{ data_camus_title }}>{{ module.title }}</h1>
+          {% endif %}
+        </div>
+      {% endif %}
+      <div class="list-news-container">
+        <div class="list" {{ data_camus_modules }}>
+          {% for listElement in module.modules %}
+            {% set type = listElement.type|splitTemplate %}
+            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+          {% endfor %}
+        </div>
+          {{ include ('Application\Camus\AssetsBundle:Groups:list/pagination.html.twig', { 'paging': module.paging}) }}
+      </div>
+      </div>
+  </div>
+{% elseif module.template == "large_last_news" %}
+  <div class="list-large-last-news" {{ data_camus_toolbar_position["tl"] }} {{ data_camus_module_type["list"] }} {{ data_camus_background_color }} data-camus-id="{{ module.id }}">
+    <div class="news-container">
+      {% set urlSection = "" %}
+      {% if app.request.cookies.has("sectionLink") %}
+        {% set urlSection = app.request.cookies.get("sectionLink") %}
+      {% endif %}
+      <div class="headline">
+        {% if 'admin' not in app.request.getSchemeAndHttpHost() %}
+          <span class="title">ÚLTIMA HORA</span>
+          <div class="containerLastHour">
+            <span class="chose-section">Elije sección:</span>
+            <select id="selectLastHour" name="section" class="select-last-news">
+              <option selected link="" value="-1">Todas</option>
+              {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:sections', {sectionUrl : urlSection })) }}
+            </select>
+          </div>
+        {% else %}
+          <span>Última Hora</span>
+        {% endif %}
+      </div>
+      <div class="list-news-container">
+        <div class="list" {{ data_camus_modules }}>
+          {% for listElement in module.modules %}
+            {% set type = listElement.type|splitTemplate %}
+            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+          {% endfor %}
+        </div>
+          {{ include ('Application\Camus\AssetsBundle:Groups:list/pagination.html.twig', { 'paging': module.paging, "isLastNews": "true" }) }}
+      </div>
+      </div>
+  </div>
+{% elseif module.template == 'large_news_linked' %}
+  <div class="list-large-news" {{ data_camus_toolbar_position["tl"] }} {{ data_camus_module_type["list"] }} {{ data_camus_background_color }} style="background-color: {{ module.color }}" data-camus-id="{{ module.id }}">
+    <div class="news-container">
+      <div class="headline photo" {{ data_camus_removable["header"] }}>
+        <span {{ data_camus_title }}>{{ module.title }}</span>
+        <a href="/opinion/moneros" class="type-home-link">IR A MONEROS</a>
+      </div>
+      <div class="list-news-container">
+        <div class="list" {{ data_camus_modules }}>
+          {% for listElement in module.modules %}
+            {% set type = listElement.type|splitTemplate %}
+            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+          {% endfor %}
+        </div>
+      </div>
+      </div>
+  </div>
+{% elseif module.template == 'large_news_cartoons' %}
+  <div class="list-large-news-cartoons" {{ data_camus_toolbar_position["tl"] }} {{ data_camus_module_type["list"] }} {{ data_camus_background_color }} data-camus-id="{{ module.id }}">
+    <div class="head-container" {{ data_camus_removable["header"] }}>
+      <h1 class="headline" {{ data_camus_title }}>{{ module.title }}</h1>
+      <div class="buttons-container">
+        <div class="ctr-btn date-button-cartoon">
+          <span class="fa fa-calendar"></span>
+          <span {{ data_camus_author_button }}>ELEGIR FECHA</span>
+        </div>
+        <div class="ctr-btn sort-button-cartoon">
+          <span {{ data_camus_date_button }}>TODOS LOS MONEROS</span>
+        </div>
+      </div>
+    </div>
+    <div class="list-news-container">
+      <div class="list" {{ data_camus_modules }}>
+        {% for listElement in module.modules %}
+          {% set type = listElement.type|splitTemplate %}
+          {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'large_topics' %}
+  <div class="list-large-news topics" {{ data_camus_toolbar_position["tl"] }} {{ data_camus_module_type["list"] }} {{data_camus_allow_empty_module["1"]}} data-camus-id="{{ module.id }}">
+    <div class="block author-modal">
+      <div class="close-modal">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </div>
+      <div class="alphabet-container">
+        <div class="title-container text-with-open-serif-color-pencil-gray">Índice de Autores</div>
+        <span class="letter current">A</span>
+        <span class="letter ">B</span>
+        <span class="letter ">C</span>
+        <span class="letter ">D</span>
+        <span class="letter ">E</span>
+        <span class="letter ">F</span>
+        <span class="letter ">G</span>
+        <span class="letter ">H</span>
+        <span class="letter ">I</span>
+        <span class="letter ">J</span>
+        <span class="letter ">K</span>
+        <span class="letter ">L</span>
+        <span class="letter ">M</span>
+        <span class="letter ">N</span>
+        <span class="letter ">O</span>
+        <span class="letter ">P</span>
+        <span class="letter ">Q</span>
+        <span class="letter ">R</span>
+        <span class="letter ">S</span>
+        <span class="letter ">T</span>
+        <span class="letter ">U</span>
+        <span class="letter ">V</span>
+        <span class="letter ">W</span>
+        <span class="letter ">X</span>
+        <span class="letter ">Y</span>
+        <span class="letter ">Z</span>
+      </div>
+      <div class="authors-container">
+        <!--div class="author">
+          <a href="/opinion/moneros/angel-mora"><img class="author-image" src="http://beta.milenio.com/uploads/media/2018/04/20/imagen-generica-autor-moneros.jpeg">
+            <div class="author-info">
+              <div class="title-container">Ángel Mora</div>
+              <div class="column-container"></div>
+            </div>
+          </a>
+        </div-->
+      </div>
+    </div>
+  </div>
+{% endif %}

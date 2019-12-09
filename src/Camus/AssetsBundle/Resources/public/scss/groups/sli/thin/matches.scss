@@ -1,0 +1,119 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sli-thin-matches{
+  padding-top: 0;
+  border-top: 0 !important;
+  .media-container{
+    .left,.right{
+      color: $color-green;
+      width: 20px;
+      display: inline-block;
+      >div{
+        font-weight: bolder;
+        font-size: large;
+      }
+    }
+    .container-games-slider{
+      width: 1204px;
+      overflow-x: hidden;
+      display: inline-flex;
+      margin: 0 auto;
+      .match-container{
+        width: 150px;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 10px;
+        flex: none;
+      }
+
+      >div:nth-child(n+2){
+        border-right: 1px solid black;
+      }
+      .league-score-name{
+        background: $color-green;
+        color: $color-white;
+        .name{
+          width: 80px;
+          span{
+            font-weight: bolder;
+            font-size: 14px;
+          }
+        }
+        .score{
+          span{
+            font-weight: 300;
+            font-size: 12px;
+          }
+        }
+      }
+      .match-container{
+        .title{
+          span{
+            font-size: 12px;
+          }
+        }
+        .match-score{
+          .name{
+            width: 50%;
+            display: inline-block;
+            span{
+              font-size: 14px;
+            }
+          }
+          .score{
+            width: 46%;
+            display: inline-block;
+            text-align: right;
+          }
+          .local-team, .visit-team{
+            span{
+              font-weight: bolder;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@include three-column{
+  .sli-thin-matches{
+    min-width: $three-column !important;
+    max-width: $three-column !important;
+    .media-container{
+      .container-games-slider{
+        width: 885px;
+      }
+    }
+  }
+}
+@include two-column{
+  .sli-thin-matches{
+    min-width: $two-column !important;
+    max-width: $two-column !important;
+    .media-container{
+      .left,.right{
+        display: none;
+      }
+      .container-games-slider{
+        width: 100%;
+      }
+    }
+  }
+}
+@include one-column{
+  .sli-thin-matches{
+    min-width: $one-column !important;
+    max-width: $one-column !important;
+    .media-container{
+      .left,.right{
+        display: none;
+      }
+      .container-games-slider{
+        width: 100%;
+      }
+    }
+  }
+}

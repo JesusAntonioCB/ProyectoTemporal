@@ -1,0 +1,28 @@
+{% set sectionUrl = '' %}
+{% if 'ultima' not in section %}
+  {% set sectionUrl = section %}
+{% endif %}
+{% if sectionUrl is empty %}
+{% endif %}
+{% for listSection in jsonData.sections %}
+  {% if listSection.identifier == "menuUltimaHora" %}
+    {% for listChild in listSection.data %}
+      {% set selected = '' %}
+      {% if sectionUrl is empty %}
+      {% elseif sectionUrl == listChild.url %}
+        {% set selected = 'selected' %}
+      {% endif %}
+      {% set optionValue = "" %}
+      {% if listChild.slug is not null %}
+        {% if listChild.slug.section is defined %}
+          {% if listChild.slug.section.id is defined %}
+            {% set optionValue = listChild.slug.section.id %}
+          {% endif %}
+        {% endif %}
+      {% else %}
+        {% set optionValue = listChild.id %}
+      {% endif %}
+      <option {{ selected }} link="{{ listChild.url }}" value="{{ optionValue }}">{{ listChild.title }}</option>
+    {% endfor %}
+  {% endif %}
+{% endfor %}

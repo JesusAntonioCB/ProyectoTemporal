@@ -1,0 +1,27 @@
+{% extends 'Camus\AssetsBundle:Base:base.html.twig'%}
+{% block body %}
+  {{ parent() }}
+  <div class="contenedor-notas-block">
+    <div class="ctr-error">
+      <div class="error-description">
+        <div class="error-icon">
+          <img src="/bundles/applicationcamusassets/images/404_1.png">
+        </div>
+
+        <div class="error-text">
+          <img src="/bundles/applicationcamusassets/images/404_message.png">
+        </div>
+
+      </div>
+      <div class="error-options">
+        <div class="error-home">
+          <div class="error-container">
+            <div class="error-title">
+              <span><a href="/">Regresar a Home</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

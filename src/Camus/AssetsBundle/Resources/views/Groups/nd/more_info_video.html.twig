@@ -1,0 +1,26 @@
+{% if module.template == 'base' %}
+  {#
+    <div class="nd-miv-base sli-videos">
+      <div class="square-container-white"></div>
+      <div class="videos-title">MÁS INFORMACIÓN EN VIDEOS</div>
+      <div class="videos">
+        {% for listElement in module.modules %}
+          {% set type = listElement.type|splitTemplate %}
+          {{ include ('Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig', {module: listElement|getModelModule}) }}
+        {% endfor %}
+        {#<div class="left">
+          {% for listElement in module.modules|slice(0,3)%}
+            {% set type = listElement.type|splitTemplate %}
+            {{ include ('Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig', {module: listElement|getModelModule}) }}
+          {% endfor %}
+        </div>
+        <div class="right">
+          {% for listElement in module.modules|slice(3,5)%}
+            {% set type = listElement.type|splitTemplate %}
+            {{ include ('Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig', {module: listElement|getModelModule}) }}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  #}
+{% endif %}

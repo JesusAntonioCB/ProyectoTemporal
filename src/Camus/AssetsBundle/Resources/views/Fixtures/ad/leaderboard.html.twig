@@ -1,0 +1,21 @@
+{#<div class="ad leaderboard">
+  {% set moduleId = (module.id != null) ? module.id : module.adId %}
+  <div data-camus-module-ad-div="true" id="div-gpt-ad-head-{{ moduleId }}">
+    <script>
+    googletag.cmd.push(function() {
+      var mapping = googletag.sizeMapping()
+      .addSize([980, 0], [728, 90])
+      .addSize([0, 0], [320, 100])
+      .addSize([0, 0], [320, 50])
+      .build();
+      googletag.defineSlot('/93357320/New_Mediotiempo/Futbol/General/Nota/H_Random', [[728,90], [320, 100], [320, 50]], "div-gpt-ad-head-{{ moduleId }}")
+      .defineSizeMapping(mapping)
+      .setTargeting('AdType', ["H_Random"])
+      .setCollapseEmptyDiv(true)
+      .addService(googletag.pubads());
+      googletag.display("div-gpt-ad-head-{{ moduleId }}");
+    });
+    </script>
+  </div>
+</div>
+#}

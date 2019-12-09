@@ -1,0 +1,248 @@
+{% set classifData = sportsClassification() %}
+{% set resultsData = sportsResults() %}
+{% set scorersData = sportsScorers() %}
+{% if module.template == 'small' %}
+  <div class="tabs-small" {{data_camus_allow_empty_module["1"]}}>
+    <div class="title">
+      <span {{ data_camus_title }}>{{ module.title }}</span>
+    </div>
+    <div class="media-container">
+      <div class="tabs">
+        <ul>
+          <li class="tab-name tab-title-active" id="tab-title-1">Leído</li>
+          <li class="tab-name"id="tab-title-2">Comentado</li>
+          <li class="tab-name" id="tab-title-3">Compartido</li>
+        </ul>
+      </div>
+      <div class="content">
+        <div {{ data_camus_modules }} class="classification-tab tab-active tab-content">
+          {# {% for slide in module.modules %}
+            {% set type = slide.type|splitTemplate %}
+            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: slide|getModelModule, parentId: module.id } %}
+          {% endfor %} #}
+        </div>
+        <div {{ data_camus_modules }} class="results-tab tab-content">
+          {# {% for slide in module.modules %}
+            {% set type = slide.type|splitTemplate %}
+            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: slide|getModelModule, parentId: module.id } %}
+          {% endfor %} #}
+        </div>
+        <div {{ data_camus_modules }} class="scorers-tab tab-content">
+          {# {% for slide in module.modules %}
+            {% set type = slide.type|splitTemplate %}
+            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: slide|getModelModule, parentId: module.id } %}
+          {% endfor %} #}
+        </div>
+      </div>
+    </div>
+  </div>
+  {# <div class="tabs-small" {{data_camus_allow_empty_module["1"]}}>
+    <div class="title">
+      <span {{ data_camus_title }}>{{ module.title }}</span>
+    </div>
+    <div class="media-container">
+      <div class="tabs">
+        <ul>
+          <li class="tab-name tab-title-active" id="tab-title-1">Puntuación</li>
+          <li class="tab-name"id="tab-title-2">Resultados</li>
+          <li class="tab-name" id="tab-title-3">Goleadores</li>
+        </ul>
+      </div>
+      <div class="content">
+          <table class="classification-tab tab-active tab-content">
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>PTS</th>
+            <th>PG</th>
+            <th>PE</th>
+            <th>PP</th>
+            <th>DIF</th>
+          </tr>
+          {% for team in classifData|slice(0, 6) %}
+            <tr>
+              <td>{{ team.pos }}</td>
+              <td><img src="{{ team.img_small }}"/></td>
+              <td>{{ team.equipo }}</td>
+              <td>{{ team.pts }}</td>
+              <td>{{ team.jg }}</td>
+              <td>{{ team.je }}</td>
+              <td>{{ team.jp }}</td>
+              <td>{{ team.dif }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+          <table class="results-tab tab-content">
+          {% for key,match in resultsData.jAct %}
+          {% set lastResult = match.startdate != "" ? "last-result" : "" %}
+            <tr {{ match.startdate != "" ? 'style="border-top: 1px solid #518424"' : "" }}>
+              <td class="start-date">{{ match.startdate }}</td>
+              <td class="start-time">{{ match.starttime }}</td>
+              <td class="team">{{ match.home_team }}</td>
+              <td>{{ match.home_score }} - {{ match.away_score }}</td>
+              <td class="team">{{ match.away_team }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+          <table class="scorers-tab tab-content">
+          <tr>
+            <th></th>
+            <th></th>
+            <th>JUGADORES</th>
+            <th>GOLES</th>
+          </tr>
+          {% for player in scorersData|slice(0,6) %}
+            <tr>
+              <td>{{ player.pos }}</td>
+              <td><img src="{{ player.img_small }}"/></td>
+              <td>{{ player.jugador }}</td>
+              <td>{{ player.goles }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+          <div class="button"><a href="http://www.milenio.com/deportes/estadisticas">VER COMPLETA</a></div>
+      </div>
+    </div>
+  </div> #}
+{% elseif module.template == 'large' %}
+<div class="tabs-large sports-stats" {{data_camus_allow_empty_module["1"]}}>
+ <div class="media-container">
+   <ul class="tabs">
+     <li id="tab-title-1" class="tab-name tab-title-active">Puntuación</li>
+     <li id="tab-title-2" class="tab-name">Resultados</li>
+     <li id="tab-title-3" class="tab-name">Goleadores</li>
+   </ul>
+   <div class="content {{ module.type }}">
+     <div id="tab-content-1" class="tab-content tab-active">
+       <!--<div class="filter-date">
+         <div class="edition-filter">
+           <div class="span">
+             <span>Filtrar por edicion:</span>
+           </div>
+           <select class="editions-list">
+             <option value="APERTURA 2016">APERTURA 2016</option>
+             <option value="APERTURA 2015">APERTURA 2015</option>
+             <option value="APERTURA 2014">APERTURA 2014</option>
+           </select>
+         </div>
+       </div>-->
+       <div class="grid-container-clasification">
+         <div class="liga-mx-logo-container">
+           <div class="name">
+             <h2>Liga MX</h2>
+           </div>
+           <div class="img-container">
+             <img src="/bundles/applicationcamusassets/images/sports-statics/liga-mx-logo.png">
+           </div>
+         </div>
+         <div class="grid">
+           <table>
+             <tr>
+               <th>EQUIPOS</th>
+               <th></th>
+               <th></th>
+               <th>PTS</th>
+               <th>PG</th>
+               <th>PE</th>
+               <th>PP</th>
+               <th>DIF</th>
+             </tr>
+             {% for team in classifData %}
+             <tr>
+               <td>{{ team.pos }}</td>
+               <td><img src="{{ team.img_small }}"/></td>
+               <td>{{ team.equipo }}</td>
+               <td>{{ team.pts }}</td>
+               <td>{{ team.jg }}</td>
+               <td>{{ team.je }}</td>
+               <td>{{ team.jp }}</td>
+               <td>{{ team.dif }}</td>
+             </tr>
+             {% endfor %}
+           </table>
+         </div>
+       </div>
+     </div>
+     <div id="tab-content-2" class="tab-content">
+       <div class="filter-date">
+         <div class="edition-filter">
+           <div class="span">
+             <span>Filtrar por jornada:</span>
+           </div>
+           <select class="editions-list">
+             {% for i in 1..resultsData.jCount %}
+             <option value="{{ i }}">Jornada {{ i }}</option>
+             {% endfor %}
+           </select>
+         </div>
+       </div>
+       <div class="grid-container-results">
+         <div class="liga-mx-logo-container">
+           <div class="name">
+             <h2>Liga MX</h2>
+           </div>
+           <div class="img-container">
+             <img src="/bundles/applicationcamusassets/images/sports-statics/liga-mx-logo.png">
+           </div>
+         </div>
+         <div class="grid">
+           <table>
+             <tr>
+               <th>FECHA</th>
+               <th>HORA</th>
+               <th></th>
+               <th></th>
+               <th>PARTIDO</th>
+               <th></th>
+               <th></th>
+             </tr>
+             {% for key, match in resultsData.jAct %}
+             <tr>
+               <td class="start-date">{{ match.startdate }}</td>
+               <td class="start-time">{{ match.starttime }}</td>
+               <td class="team-home">{{ match.home_team }}</td>
+               <td class="logo-home"><img src="{{ match.img_home }}" /></td>
+               <td class="score">{{ match.home_score }}-{{ match.away_score }}</td>
+               <td class="logo-away"><img src="{{ match.img_away }}" /></td>
+               <td class="team-away">{{ match.away_team }}</td>
+             </tr>
+             {% endfor %}
+           </table>
+         </div>
+       </div>
+     </div>
+     <div id="tab-content-3" class="tab-content">
+       <div class="grid-container-scorers">
+         <div class="liga-mx-logo-container">
+           <div class="name">
+             <h2>Liga MX</h2>
+           </div>
+           <div class="img-container">
+             <img src="/bundles/applicationcamusassets/images/sports-statics/liga-mx-logo.png">
+           </div>
+         </div>
+         <div class="grid">
+           <table>
+             <tr>
+               <th>JUGADORES</th>
+               <th></th>
+               <th></th>
+               <th>GOLES</th>
+             </tr>
+             {% for player in scorersData %}
+             <tr>
+               <td>{{ player.pos }}</td>
+               <td><img src="{{ player.img_small }}"/></td>
+               <td>{{ player.jugador }}</td>
+               <td>{{ player.goles }}</td>
+             </tr>
+             {% endfor %}
+           </table>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+{% endif %}

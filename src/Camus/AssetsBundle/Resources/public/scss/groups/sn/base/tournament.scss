@@ -1,0 +1,77 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn_tournament{
+  @include global-container-1c;
+  display: inline-block;
+  margin-bottom: 18px;
+  border-top: 5px solid $color-yellow;
+  overflow: hidden;
+  .container{
+    width: 100%;
+    @include rows-height(1);
+    .img-logo{
+      margin-top: 15px;
+      .img{
+        width: 140px;
+        position: relative;
+        left: 65px;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .info-container{
+      margin-top: 30px;
+      margin-bottom: 40px;
+      left: 8px;
+      position: relative;
+      .text{
+        @include text-with-roboto-regular-color-night-gray;
+        font-size: 14px;
+        table{
+          tr{
+            .text-bold{
+              padding-left: unset;
+              text-align: right;
+              @include text-with-roboto-black-color-night-gray;
+            }
+            td{
+              padding-left: 10px;
+            }
+          }
+        }
+      }
+    }
+    .see-more{
+      .content{
+        a{
+          @include text-with-roboto-black-color-night-gray;
+          border:1px solid $color-black;
+          color: #242424;
+          text-align: center;
+          margin-left: 70px;
+          padding: 7px 33px 7px 32px;
+        }
+      }
+    }
+  }
+}
+@include one-column{
+  .sn_tournament{
+    .container{
+      .img-logo{
+        padding-left: 20px;
+      }
+      .info-container{
+        padding-left: 20px;
+      }
+      .see-more{
+        padding-left: 20px;
+      }
+    }
+  }
+}

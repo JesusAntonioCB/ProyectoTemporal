@@ -1,0 +1,228 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.eo-tv-program{
+  @include container-space-gray;
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 20px;
+  background: $color-night-gray;
+  .live-title-container{
+    position: relative;
+    float: left;
+    width: 27%;
+    .img-milenio-container{
+      margin-top: 5px;
+    }
+    .live-title{
+      h2{
+        @include text-with-roboto-medium-color-white;
+        text-transform: uppercase;
+        &:before{
+          content: '\276F';
+          float: left;
+          margin-right: 20px;
+          font-size: 20px;
+          line-height: 2.1;
+        }
+        margin: 0;
+        font-size: 40px;
+      }
+    }
+  }
+  .media-container{
+    float: right;
+    width: 73%;
+    .news-container, .summary-container{
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+  .news-container{
+    width: 646px;
+    height: 364px;
+    .holder-container, .float-container{
+      height: inherit;
+    }
+    .holder-container{
+      cursor: pointer;
+      img{
+        width: 100%;
+      }
+      .btn-play{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &:hover .btn-play{
+        opacity: 0.8;
+      }
+    }
+    iframe{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .summary-container{
+    position: relative;
+    width: 207px;
+    height: 364px;
+    margin-left: 2%;
+    .title{
+      max-height: 116px;
+      margin-bottom: 10px;
+      @include text-with-roboto-black-color-white;
+      font-size: 22px;
+      line-height: 29px;
+      overflow: hidden;
+    }
+    .host{
+      @include text-with-roboto-regular-color-white;
+      font-size: 11px;
+      line-height: 15px;
+    }
+    .abstract{
+      max-height: 60px;
+      @include text-with-roboto-regular-color-white;
+      font-size: 14px;
+      line-height: 20px;
+      overflow: hidden;
+    }
+    .hour{
+      font-size: 11px;
+      line-height: 15px;
+      color: #FFFFFF;
+      font-family: $font-open-sans5;
+      font-weight: 400;
+      margin-top: 5px;
+    }
+    .social-networks-share{
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      .social-media-large{
+        overflow: auto;
+      }
+    }
+  }
+  &:after{
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+@include three-column{
+  .eo-tv-program{
+    .live-title-container{
+      width: 100%;
+      margin-bottom: 15px;
+      .live-title{
+        display: inline-block;
+      }
+      .img-milenio-container{
+        float: left;
+        margin-right: 25px;
+      }
+    }
+    .media-container{
+      width: 100%;
+    }
+    .summary-container{
+      border-top: 1px solid $color-white;
+      padding-top: 10px;
+    }
+  }
+};
+@include two-column{
+  .eo-tv-program{
+    padding: 0;
+    .live-title-container{
+      padding: 0 15px;
+      margin-top: 15px;
+    }
+    .news-container{
+      width: 100%;
+      height: 348px;
+    }
+    .summary-container{
+      width: 100%;
+      height: auto;
+      margin: 15px 0;
+      padding: 0 15px;
+      border-top: 0;
+      .headline-top{
+        width: 63%;
+        padding-right: 15px;
+      }
+      .social-networks-share{
+        width: 35%;
+        top: 0;
+        right: 15px;
+        bottom: unset;
+        span:first-child{
+          display: none;
+        }
+        .share-container{
+          min-height: 30px;
+          height: 30px;
+          padding: 6px 20px;
+        }
+      }
+    }
+  }
+};
+@include one-column{
+  .eo-tv-program{
+    .live-title-container{
+      .live-title{
+        display: block;
+        h2{
+          font-size: 30px;
+        }
+      }
+      .img-milenio-container{
+        width: 62px;
+        margin-right: 0;
+        img{
+          width: 100%;
+        }
+      }
+    }
+    .news-container{
+      height: 210px;
+      .holder-container{
+        .btn-play{
+          top: 20px;
+          right: 20px;
+          left: unset;
+          transform: none;
+        }
+      }
+    }
+    .summary-container{
+      .headline-top{
+        width: 100%;
+        padding-right: 0;
+        .title{
+          max-height: unset;
+          font-size: 19px;
+          line-height: 24px;
+        }
+      }
+      .abstract{
+        max-height: unset;
+        font-size: 12px;
+        line-height: 18px;
+      }
+      .social-networks-share{
+        position: static;
+        margin-top: 15px;
+        .share-container{
+          min-height: 40px;
+        }
+      }
+    }
+  }
+};

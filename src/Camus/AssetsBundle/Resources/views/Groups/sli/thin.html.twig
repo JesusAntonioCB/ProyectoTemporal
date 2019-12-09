@@ -1,0 +1,127 @@
+{% if module.template == 'matches' %}
+  <div class="sli-thin-matches" {{ data_camus_module_type["sli"] }}>
+    <div class="media-container">
+      <div class="left">
+        <div class="fa fa-chevron-left"></div>
+      </div>
+      <div {{ data_camus_modules }} class="thin-data container-games-slider">
+        <div class="league-score-name match-container">
+          <div class="name">
+            <span>APERTURA 2017</span>
+          </div>
+          <div class="score">
+            <span>Marcador</span>
+          </div>
+        </div>
+        {% for i in 0..8 %}
+          <div class="match-container">
+            <div class="title">
+              <span>FINALIZADO</span>
+            </div>
+            <div class="match-score">
+              <div class="local-team">
+                <div class="name">
+                  <span>León</span>
+                </div>
+                <div class="score">
+                  <span>0</span>
+                </div>
+              </div>
+              <div class="visit-team">
+                <div class="name">
+                  <span>León</span>
+                </div>
+                <div class="score">
+                  <span>0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="right">
+        <div class="fa fa-chevron-right"></div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'themes' %}
+  <div class="sli-thin-themes" {{ data_camus_module_type["sli"] }} {{data_camus_allow_empty_module["1"]}}>
+    <div class="media-container">
+      <div class="head">
+        <h5> Últimos Temas </h5>
+      </div>
+      <div class="carousel">
+        <div class="left">
+          <span class="fa fa-caret-left"></span>
+        </div>
+        {% if boardColor is defined %}
+          {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:latestTopics')) }}
+        {% endif %}
+        <div class="right">
+          <span class="fa fa-caret-right"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'programs' %}
+  <div class="sli-thin-programs" {{ data_camus_module_type["sli"] }}>
+    <div class="media-container">
+      <div class="headline">
+        <span {{ data_camus_title }}>A CONTINUACIÓN...</span>
+      </div>
+      <button class="left">
+        <span class="fa fa-chevron-left"></span>
+      </button>
+      <button class="right">
+        <span class="fa fa-chevron-right"></span>
+      </button>
+      <ul {{ data_camus_modules }} class="thin-data">
+        {% for module in module.modules if module != null %}
+          {% set type = module.type|splitTemplate %}
+            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% elseif module.template == 'authors' %}
+  <div class="sli-thin-authors" {{ data_camus_module_type["sli"] }}>
+    <div class="media-container">
+      <div class="head">
+        <h5>{{ module.title }}</h5>
+      </div>
+      <div class="carousel">
+        <div class="left">
+          <span class="fa fa-caret-left"></span>
+        </div>
+        <div class="authors">
+          <ul class="thin-data" {{ data_camus_modules }}>
+            <li><a href="#">PEDRO PÉREZ</a></li>
+            <li><a href="#">CARLOS MARÍN</a></li>
+            <li><a href="#">PÉREZ REVERTE</a></li>
+            <li><a href="#">ANTONIO MUÑOZ</a></li>
+            <li><a href="#">ELIZABETH PEÑA</a></li>
+            <li><a href="#">ANDY ZUCA</a></li>
+            <li><a href="#">ENMAR RAMÍREZ</a></li>
+            <li><a href="#">BÁRBARA ANDERSON</a></li>
+          </ul>
+        </div>
+        <div class="right">
+          <span class="fa fa-caret-right"></span>
+        </div>
+      </div>
+    </div>
+</div>
+{% elseif module.template == 'clubs' %}
+  {#
+  <div class="sli-thin-clubs" {{ data_camus_module_type["sli"] }} {{data_camus_allow_empty_module["1"]}}>            //COMENTADO
+    <div class="media-container">
+      <div {{ data_camus_modules }} class="thin-data container-games-slider">
+        {% for module in module.modules if module != null %}
+          {% set type = module.type|splitTemplate %}
+            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  #}
+{% endif %}

@@ -1,0 +1,50 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.lr-row-text-only{
+  //width: 100%;
+  padding: 8px 0;
+  border-top: 1px solid $color-gray-white;
+  .hour{
+    float: left;
+    padding-right: 10px;
+    margin-right: 10px;
+    @include text-with-roboto-color-alizarin-crimson;
+    font-size: 13px;
+    line-height: 21px;
+    border-right: 1px solid $color-alizarin-crimson;
+  }
+  .section-top{                                                       //AGREGADO
+    margin-top: 15px;
+    margin-bottom: 5px;
+    height: 30px;
+    display: inline-block;
+    padding: 0 15px;
+    @include text-with-roboto-black-color-white;
+    text-transform: uppercase;
+    background-color: $color-alizarin-crimson;
+    line-height: 30px;
+  }
+  .title{
+    max-height: 40px;
+    @include text-with-roboto-medium-color-dark-gray;
+    font-size: 16px;
+    line-height: 20px;
+    overflow: hidden;
+  }
+  &:after{
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@include one-column{
+  .lr-row-text-only{
+    .hour{
+      line-height: 40px;
+    }
+  }
+};

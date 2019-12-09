@@ -1,0 +1,7 @@
+{% for plaza in jsonDataPlaces %}
+  {% if plaza.slug == '/'~currentSection %}
+    <li class="selected"><a href="{{ plaza.slug }}">{{ plaza.name }}</a></li>
+  {% else %}
+    <li><a href="{{ plaza.slug }}">{{ plaza.name }}</a></li>
+  {% endif %}
+{% endfor %}

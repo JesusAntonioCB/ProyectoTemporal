@@ -1,0 +1,66 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-top-text-growable{
+  @include global-container-2c;
+  .media-container{
+    @include rows-height(1);
+    .image{
+      height: inherit;
+    }
+    .item-icon{
+      @include item-icon("large");
+      bottom: 20px;
+      right: 20px;
+    }
+    .headline-top-container-gradient{
+      .title, .hint{
+        font-size: 26px;
+        line-height: 27px;
+      }
+      .sponsor{
+        font-size: 10px;
+        position: relative;
+        height: 25px;
+        margin-top: unset;
+        @include text-with-roboto-regular-color-white;
+        .caption{
+          width: 82px;
+          margin-right: 7px;
+        }
+        a{
+          img{
+            width: 130px;
+            height: auto;
+            max-width: unset;
+          }
+        }
+      }
+    }
+    .description-btn-container{
+      left: 20px;
+      bottom: 20px;
+    }
+  }
+}
+
+@include one-column{
+  .sn-top-text-growable{
+    .media-container{
+      .item-icon{
+        @include item-icon("small");
+      }
+      .headline-top-container-gradient{
+        .title, .hint{
+          font-size: 26px;
+          line-height: 27px;
+        }
+        .sponsor{
+          //bottom: 40px;
+        }
+      }
+    }
+  }
+};

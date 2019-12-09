@@ -1,0 +1,85 @@
+#menu{
+  display: none;
+  max-width: 1254px;
+  margin: 0 auto;
+  background: #E5E5E5;
+  .center {
+    -webkit-column-count: 5;
+    -moz-column-count: 5;
+    column-count: 5;
+    -webkit-column-width: 150px;
+    -moz-column-width: 150px;
+    column-width: 150px;
+    -moz-column-fill: balance;
+    column-fill: balance;
+    padding: 20px 10px;
+    //margin: 0 auto;
+    //min-height: 850px;
+    //max-width: 1042px;
+    //-webkit-column-rule: 1px outset rgba(179, 179, 179, 0.62);
+    //-moz-column-rule: 1px outset rgba(179, 179, 179, 0.62);
+    //column-rule: 1px outset rgba(179, 179, 179, 0.62);
+    .item {
+      list-style-type: none;
+      .father {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: $color-night-gray;
+        font-family: $font-open-sans-bold;
+        line-height: 20px;
+        padding-top: 5px;
+        //padding-bottom: 5px;
+        border-top: 1px solid $color-black;
+      }
+      .child-list {
+        @include text-with-open-sans-5-color-night-gray;
+        font-size: 12px;
+        line-height: 20px;
+      }
+    }
+  }
+}
+
+#menu-mobile{
+  padding: 25px;
+  .item{
+    .father{
+      min-height: 35px;
+      line-height: 35px;
+      font-size: 15px;
+      font-family: $font-SourceSansPro-bold;
+      padding-left: 15px;
+      border-top: 2px solid $color-red-dark;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+    .father:after{
+      content: "";
+      clear: both;
+      display: table;
+    }
+    .fa{
+      float: right;
+      padding: 12px;
+    }
+    .father:hover /*.father:hover .fa*/{
+      background-color: #C4BEBE;
+    }
+    .child-list{
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      background-color: #C4BEBE;
+      line-height: 35px;
+      font-size: 11px;
+      font-family: $font-open-sans-bold;
+    }
+  }
+  .child-list{
+    .child{
+      padding: 0px 15px;
+      cursor: pointer;
+      border-top: 1px solid $color-white;
+    }
+  }
+}

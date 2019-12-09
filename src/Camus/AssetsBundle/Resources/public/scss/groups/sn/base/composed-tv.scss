@@ -1,0 +1,119 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-composed-tv{
+  @include global-container-2c;
+  .media-container{
+    display: flex;
+    flex-wrap: wrap;
+    @include rows-height(1);
+    .section-see-more-container-transparent{
+      width: 100%;
+    }
+    .main-preview-container, .container-bottom{
+      width: 50%;
+      height: 306px;
+    }
+    .main-preview-container{
+      background-color: $color-dark-gray;
+      .video-preview-container{
+        position: relative;
+        width: 100%;
+        height: 50%;
+        img{
+          width: 100%;
+        }
+        .btn-play-top-gray{
+          top: 20px;
+          right: 20px;
+          padding: 16px;
+          .fa-play{
+            font-size: 17px;
+          }
+        }
+      }
+    }
+    .news-container{
+      @include headline-container-dark-gray;
+      height: 50%;
+      .section-container{
+        height: 80px;
+        overflow: hidden;
+        font-family: $font-utopia-semibold;
+        font-size: 23px;
+        line-height: 25px;
+        margin-bottom: 5px;
+        padding-top: 30px;
+      }
+      .description-container{
+        height: 36px;
+        overflow: hidden;
+        margin-bottom: 5px;
+        font-family: $font-open-sans5;
+        font-size: 14px;
+        line-height: 18px;
+      }
+    }
+    .live-logo-container{
+      @include live-logo-container-white;
+      position: absolute;
+      top: -17px;
+      margin-bottom: 0px;
+      .text{
+        display: inline-block;
+        margin-left: 4px;
+        margin-top: 9px;
+        span{
+          font-size: 16px;
+          font-weight: 900;
+        }
+      }
+      .image{
+        display: inline-block;
+        float: left;
+        margin-top: 3px;
+        margin-left: 4px;
+      }
+    }
+    .container-bottom{
+      overflow: auto;
+      @include container-space-gray;
+      &::-webkit-scrollbar{
+        display: none;
+      }
+      padding:{
+        right: 10px;
+        left: 20px;
+      }
+    }
+    .outstanding-title{
+      padding: 10px 0px;
+      color: $color-white;
+      span{
+        line-height: 14px;
+        text-align: left;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 700;
+        color: $color-white;
+      }
+    }
+  }
+  .social-media{
+    color: $color-white;
+  }
+}
+
+@include one-column{
+  .sn-composed-tv{
+    @include rows-height(2);
+    .main-preview-container{
+      width: 100% !important;
+    }
+    .container-bottom{
+      width: 100% !important;
+    }
+  }
+}

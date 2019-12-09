@@ -1,0 +1,83 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-opinion{
+  @include global-container-1c;
+  .firms-note{
+    @include rows-height(1);
+    padding: 15px 10px 0;
+    @include container-super-light-gray;
+    text-align: center;
+    overflow: hidden;
+    .image{
+      width: 102px;
+      height: 102px;
+      margin: 0 auto;
+      border-radius: 50%;
+      /*&:after {
+        position: absolute;
+        content: "";
+        width: 102px;
+        height: 102px;
+        opacity: 0.5;
+        background: $color-yellow;
+        border-radius: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 15px;
+      }*/
+    }
+    .author{
+      margin-top: 15px;
+      @include text-with-sans-serif-color-black;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .column{
+      @include text-with-open-sans-5-color-nobel;
+      font-size: 11px;
+    }
+    .title{
+      max-height: 78px;
+      overflow: hidden;
+      margin-top: 10px;
+      @include text-with-roboto-black-color-dark-gray;
+      font-size: 24px;
+      line-height: 26px;
+    }
+    .bottom{
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      min-width: 55px;
+      transform: translateX(-50%);
+      .section{
+        @include text-with-sans-serif-color-blue-gray;
+        font-size: 10px;
+        text-transform: uppercase;
+        border-bottom: 1px solid $color-blue-gray;
+        padding-bottom: 5px;
+      }
+      .social-media{
+        padding-top: 5px;
+        width: 100%;
+        .share-social-media{
+          justify-content: space-around;
+          &>div,a{
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+  .section-see-more-container-transparent ~ .firms-note, .section-see-more-container-transparent[style*="block"] ~ .firms-note{
+    height: 306px;
+    max-height: 306px;
+    min-height: 306px;
+  }
+  .section-see-more-container-transparent[style*="none"] ~ .firms-note{
+    @include rows-height(1);
+  }
+}

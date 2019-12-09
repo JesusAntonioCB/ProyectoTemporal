@@ -1,0 +1,61 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+
+.leaderboard{
+  width:100%;
+  margin-bottom: 18px;
+  text-align: center;
+  img{
+    width: 100%;
+    max-width: 728px;
+  }
+  div[data-camus-module-ad-div="true"]{
+    padding: 15px 0;
+  }
+}
+.ad.ticker{
+  float: left;
+}
+.ad.pleca{
+  width:100%;
+  margin-bottom: 18px;
+  text-align: center;
+  img{
+    width: 100%;
+    max-width: 728px;
+  }
+  div[data-camus-module-ad-div="true"]{
+    padding: 0 !important;
+  }
+}
+
+.contenedor-notas-block{
+  .ad.layer{
+    position: fixed;
+    top: 20%;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    z-index: 999;
+    .fa-times{
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 16px;
+    }
+  }
+}
+.layer{
+  background: lightgray;
+  width: 990px;
+  height: 579px;
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
+  z-index: 999;
+  left: 50%;
+  transform: translateX(-50%);
+}

@@ -1,0 +1,25 @@
+<div {{ data_camus_module_type["csn"] }} >
+    {% if module.template == "facebook_module" %}
+        {% if module.body|length > 0 and module.body != "Cuerpo....." %}
+            <div data-camus-body="">
+                {{ module.body|raw }}
+            </div>
+        {% else %}
+                <div class="fb-like">
+                    <div class="fb-post" data-href="{{module.media|asImage}}"></div>
+                </div>
+                <div data-camus-body="">
+                </div>
+        {% endif %}
+    {% else  %}
+            {% if module.body|length > 0 and module.body != "Cuerpo....." %}
+                <div data-camus-body="">
+                    {{ module.body|raw }}
+                </div>
+            {% else %}
+                <div class="{{module.template}}" data-href="{{module.media|asImage}}"></div>
+                <div data-camus-body="">
+                </div>
+            {% endif %}
+    {% endif %}
+</div>

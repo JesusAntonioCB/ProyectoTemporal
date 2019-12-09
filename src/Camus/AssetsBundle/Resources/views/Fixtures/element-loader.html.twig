@@ -1,0 +1,4 @@
+{% for module in modules %}
+{% set type = module.type|splitTemplate %}
+{% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule, boardColor: boardColor} %}
+{% endfor %}

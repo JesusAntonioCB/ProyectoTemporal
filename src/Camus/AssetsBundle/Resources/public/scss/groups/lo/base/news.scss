@@ -1,0 +1,205 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.lo-news{
+  @include global-container-4c;
+  //@include grid-dynamic-full;
+  padding: 25px 0;
+  //background-color: $color-light-cyan;
+  background-color: $color-gray-white;
+  .media-container{
+    display: table;
+    margin: 0 auto;
+    .item, .holder{
+      float: left;
+    }
+    &:after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+  .item{
+    .hour{
+      @include text-with-roboto-black-color-gray-glass;
+      font-size: 12px;
+      line-height: 14px;
+      margin: 10px 20px 0 0;
+    }
+    .social-media{
+      display: none;
+    }
+  }
+  .holder{
+    width: 848px;
+    .title{
+      margin: 0 0 15px;
+      //@include text-with-utopia-semibold-color-night-gray;
+      @include text-with-roboto-black-color-night-gray;
+      font-size: 38px;
+      line-height: 42px;
+    }
+    .summary-container{
+      @include text-with-roboto-regular-color-gray;
+      padding: 17px 0 15px 0;
+      margin: 0 20px 13px 0;
+      font-size: 16px;
+      line-height: 18px;
+      border-top: 1px solid $color-lighter-silver;
+      border-bottom: 1px solid $color-lighter-silver;
+    }
+    .news-img-container{
+      &:after{
+        content: '';
+        display: table;
+        clear: both;
+      }
+    }
+    .img-container{
+      float: right;
+      width: 535px;
+      // height: 300px;
+    }
+    .news-preview-container{
+      padding-right: 25px;
+      // font-family: $font-utopia5;
+      @include text-with-roboto-regular-color-night-gray;
+      overflow: hidden;
+      .author{
+        margin-bottom: 10px;
+        font-size: 12px;
+        line-height: 18px;
+        color:$color-gray;
+        text-transform: uppercase;
+      }
+      .note{
+        .hint{
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 27px;
+        }
+        >a{
+          font-size: 12px;
+          line-height: 18px;
+          text-decoration: underline;
+          text-transform: uppercase;
+        }
+      }
+      .social-media{
+        float: left;
+        display: none;
+      }
+    }
+  }
+}
+
+@include three-column{
+  .lo-news{
+    .media-container{
+      .item, .holder{
+        float: unset;
+      }
+    }
+  }
+}
+
+@include two-column{
+  .lo-news{
+    padding: 30px 69px 49.29988982883606px;
+    .media-container{
+      .item, .holder{
+        float: unset;
+      }
+    }
+    .item{
+      margin-bottom: 15px;
+      float: none;
+      .hour{
+        display: inline-block;
+        padding-right: 40px;
+      }
+      .social-media{
+        display: none;
+      }
+    }
+    .holder{
+      width: 100%;
+      .title{
+        font-size: 32px;
+        line-height: 35px;
+      }
+      .summary-container{
+        margin-right: 0;
+        padding: 13px 0px 13px;
+      }
+      .img-container{
+        float: none;
+        width: 100%;
+        // height: 327px;
+        margin-bottom: 15px;
+      }
+      .news-preview-container{
+        .social-media{
+          display: none;
+        }
+      }
+    }
+  }
+};
+
+@include one-column{
+  .lo-news{
+    padding: 12px 8px 10px;
+    .item{
+      margin-bottom: 11px;
+      .hour{
+        border: 0;
+        margin-left: 10px;
+        padding-right: 0px;
+        //margin-right: 0px;
+        margin-top: 0;
+      }
+    }
+    .holder{
+      .title{
+        font-size: 22px;
+        line-height: 26px;
+        margin: 0px 10px 0px;
+      }
+      .summary-container{
+        border: 0;
+        padding: 16px 0 10px;
+        margin: 0 11px;
+        font-size: 15px;
+        line-height: 18px;
+      }
+      // .img-container{
+      //   height: 172px;
+      // }
+      .news-preview-container{
+        padding-right: 0;
+        margin-left: 10px;
+        .author{
+          display: inline-block;
+          font-size: 10px;
+          line-height: 12px;
+          margin-bottom: 0;
+        }
+        .social-media{
+          display: inline-block;
+          margin-right: 10px;
+          float: right;
+        }
+        .note{
+          .hint{
+            margin-top: 10px;
+            font-size: 15px;
+            line-height: 23px;
+          }
+        }
+      }
+    }
+  }
+};

@@ -1,0 +1,201 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.medium-rectangle{
+  @include global-container-1c;
+  border-top: 0;
+  .media-container{
+    width: 300px;
+    margin: 0 auto;
+    .sign{
+      position: relative;
+      height: 107px;
+      font-size: 11px;
+      border: 1px solid $color-gray-white;
+      color: $color-nobel;
+      span{
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+      }
+    }
+  }
+}
+// Estilo de publicidad en los listados de secciones
+.list-large-news, .list-large-news-cartoons, .list-large-last-news{
+  .medium-rectangle{
+    width: 100%;
+    margin-bottom: 0;
+    padding: 20px 0;
+    border-top: 1px solid $color-nobel;
+    .media-container{
+      width: 100%;
+      >div:not(.sign){
+        display: inline-block;
+      }
+      .sign{
+        float: left;
+        border: none;
+        span{
+          position: static;
+        }
+      }
+    }
+    @include two-column{
+      .sign{
+        display: none;
+      }
+    };
+  }
+}
+
+.list-large-news, .list-large-last-news{
+  .medium-rectangle{
+    .media-container{
+      .sign{
+        padding-right: 15px;
+        margin-left: 23%;
+      }
+      @include three-column{
+        .sign{
+          margin-left: 16%;
+        }
+      };
+      @include one-column{
+        width: 300px;
+      }
+    }
+  }
+}
+
+.list-large-news-cartoons{
+  .medium-rectangle{
+    .media-container{
+      .sign{
+        padding-right: 20px;
+        margin-left: 18%;
+      }
+      @include three-column{
+        .sign{
+          margin-left: 9%;
+        }
+      };
+      @include one-column{
+        width: 300px;
+      }
+    }
+  }
+}
+
+// Estilo de publicidad en los listados de MAM y EDT
+.column-right.event .medium-rectangle{
+  width: 100%;
+  margin-bottom: 0;
+  padding: 20px 0;
+  .media-container{
+    width: 100%;
+    height: auto;
+    >div:not(.sign){
+      display: inline-block;
+    }
+    .sign{
+      float: left;
+      margin-right: 30%;
+      border: none;
+      span{
+        position: static;
+      }
+    }
+    @include two-column{
+      .sign{
+        margin-right: 43%;
+      }
+    };
+    @include one-column{
+      .sign{
+        display: none;
+      }
+    };
+    @include one-column{
+      width: 300px;
+    }
+  }
+}
+
+.leaderboard{
+  width:100%;
+  margin-bottom: 18px;
+  text-align: center;
+  img{
+    width: 100%;
+    max-width: 728px;
+  }
+  div[data-camus-module-ad-div="true"]{
+    padding: 15px 0;
+  }
+}
+.ad.ticker{
+  float: left;
+}
+.ad.pleca{
+  width:100%;
+  margin-bottom: 18px;
+  text-align: center;
+  img{
+    width: 100%;
+    max-width: 728px;
+  }
+  div[data-camus-module-ad-div="true"]{
+    padding: 0 !important;
+  }
+}
+
+.skyscraper{
+  width: 160px;
+  height: 600px;
+  position: fixed !important;
+  z-index: 0;
+  &.left{
+    left: 0;
+  }
+  &.right{
+    right: 0;
+  }
+}
+@include skyscraper-media{
+  .skyscraper{
+    z-index: -1;
+  }
+};
+
+.contenedor-notas-block{
+  .ad.layer{
+    position: fixed;
+    top: 20%;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    z-index: 999;
+    .fa-times{
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 16px;
+    }
+  }
+}
+.layer{
+  background: lightgray;
+  width: 990px;
+  height: 579px;
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
+  z-index: 999;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@include skyscrapers-hide;

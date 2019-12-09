@@ -1,0 +1,196 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.ctr-stadistics-player-scores{
+  .body-container{
+    .content{
+      .stadistics-table{
+        .content{
+          padding-left: 205px;
+          padding-right: 95px;
+          .select-container{
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 18px;
+            .league-select, .section-select{
+              width: 145px;
+              margin-right: 20px;
+              .select-box{
+                display: flex;
+                padding-left: 2px;
+                border: 2px solid black;
+                .title-box{
+                  padding-top: 6px;
+                  width: 110px;
+                  padding-bottom: 4px;
+                  .dropbtn{
+                    background-color: unset;
+                    border: none;
+                    cursor: pointer;
+                    text-transform: uppercase;
+                    font-size: 11px;
+                    @include text-with-roboto-regular-color-night-gray;
+                  }
+                  .dropdown-content{
+                    height: auto;
+                    max-height: 270px;
+                    overflow: auto;
+                    display: none;
+                    position: absolute;
+                    background-color: $color-very-clear-gray;
+                    width: 145px;
+                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    z-index: 1;
+                    margin-left: -4px;
+                    margin-top: 5px;
+                    a{
+                      color: $color-black;
+                      padding: 10px 16px;
+                      text-decoration: none;
+                      display: block;
+                      cursor: pointer;
+                    }
+                    a:hover{
+                      background-color: $color-super-light-gray;
+                    }
+                  }
+                }
+                .arrow-box{
+                  height: auto;
+                  display: flex;
+                  float: right;
+                  align-items: center;
+                  background-color: $color-black;
+                  color: $color-white;
+                  width: 32px;
+                  justify-content: centeR;
+                }
+              }
+              .select-box:hover{
+                .dropdown-content{
+                  display: grid;
+                }
+              }
+            }
+          }
+          .table{
+            margin-bottom: 60px;
+            table{
+              width: 100%;
+              background-color: $color-very-clear-gray;
+              tr:nth-child(even) {
+                background-color: $color-white;
+              }
+              thead{
+                tr{
+                  border-top: 2px solid $color-yellow;
+                  background-color: $color-white;
+                  th{
+                    padding-top: 15px;
+                    padding-bottom: 10px;
+                    text-align: center;
+                    text-transform: uppercase;
+                    font-size: 11px;
+                    @include text-with-roboto-black-color-night-gray;
+                  }
+                }
+              }
+              tbody{
+                tr{
+                  td{
+                    padding-top: 15px;
+                    padding-bottom: 10px;
+                    text-align: center;
+                    text-transform: uppercase;
+                    font-size: 11px;
+                    @include text-with-roboto-regular-color-dark-gray;
+                  }
+                }
+                .table-results{
+                  border-top: 1px solid $color-sharp-gray;
+                  td{
+                    text-align: center;
+                    text-transform: uppercase;
+                    font-size: 11px;
+                    @include text-with-roboto-black-color-night-gray;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .footer-container{
+    margin-bottom: 30px;
+    .content{
+      background-color:$color-very-light-gray;
+      padding-top: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-bottom: 10px;
+      .means{
+        p{
+          font-size: 12px;
+          span{
+            @include text-with-roboto-black-color-night-gray;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include three-column{
+  .ctr-stadistics-player-scores{
+    .body-container{
+      .content{
+        .stadistics-table{
+          .content{
+            padding-left: 45px;
+            padding-right: 58px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include two-column{
+  .ctr-stadistics-player-scores{
+    .body-container{
+      .content{
+        .stadistics-table{
+          .content{
+            padding-left: unset;
+            padding-right: unset;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include one-column{
+  .ctr-stadistics-player-scores{
+    .body-container{
+      .content{
+        .stadistics-table{
+          .content{
+            .table{
+              margin-bottom: 30px;
+              overflow: auto;
+              width: 360px;
+              table{
+                width: 550px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

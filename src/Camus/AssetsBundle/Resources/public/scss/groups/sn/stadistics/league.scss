@@ -1,0 +1,130 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-league-stadistics {
+  width: 300px;
+  margin-bottom: 20px;
+  .media-container {
+    .content {
+      .stadistics-header {
+        border-width: 2px 0px;
+        border-style: solid;
+        border-color: $color-alizarin-crimson;
+        .title {
+          @include text-with-roboto-black-color-dark-gray;
+          line-height: 34px;
+          font-size: 26px;
+        }
+      }
+      .head-group {
+        background-color: $color-alizarin-crimson;                          //modificado
+        padding-top: 5px;
+        padding-bottom: 2px;
+        text-transform: uppercase;
+        @include text-with-roboto-medium-color-white;
+        text-align: center;
+        font-size: 12px;
+        position: relative;
+      }
+
+      .table-content {
+        width: 100%;
+      }
+      .stadistics-footer {
+        @include text-with-roboto-black-color-black;
+        text-align: left;
+        margin-left: 1px;
+        margin-top: 12px;
+        line-height: 17px;
+        text-transform: uppercase;
+        .gold {
+          font-size: 16px;
+          color: $color-alizarin-crimson;
+          font-weight: 700;
+          line-height: 22px;
+        }
+      }
+    }
+  }
+}
+
+.sn-league-stadistics:empty {
+ width: 0px !important;
+ display: none;
+}
+
+@include three-column{
+  .sn-league-stadistics {
+    width: 300px;
+  }
+};
+
+@include two-column{
+  .sn-league-stadistics {
+    margin: 0px 112px 0 112px;
+    margin-bottom: 60px;
+    width: 300px;
+  }
+};
+
+@include one-column{
+  .sn-league-stadistics {
+    width: 300px;
+    margin: unset;
+    margin-bottom: 30px;
+    .media-container {
+      .content {
+        .stadistics-header {
+          .title {
+            line-height: 29px;
+            font-size: 22px;
+          }
+        }
+      }
+    }
+  }
+};
+
+.sn-league-stadistics.large {
+  width: auto;
+  overflow-x: auto;
+  .media-container {
+    .content {
+      overflow-x: auto;
+      width: 100%;
+      table {
+        margin-left: 50px;
+        tr {
+          th:nth-child(n+3), td:nth-child(n+3) {
+            padding: 0 5px;
+          }
+          .fixed-side {
+            position: absolute;
+            margin: 0;
+            left: 0;
+            img {
+              transform: translateX(30px);
+            }
+          }
+          th.fixed-side, td.fixed-side:first-child {
+            background-color: $color-white;
+            width: 50px;
+          }
+          td.fixed-side.gray:first-child {
+            background-color: $color-very-clear-gray;
+            width: 50px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include two-column{
+  .sn-league-stadistics.large {
+    width: 100%;
+    margin: auto;
+  }
+}

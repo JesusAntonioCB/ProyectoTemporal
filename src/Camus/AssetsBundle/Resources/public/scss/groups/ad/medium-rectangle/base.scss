@@ -1,0 +1,131 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.medium-rectangle{
+  @include global-container-1c;
+  .media-container{
+    width: 300px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    .sign{
+      position: relative;
+      height: 102px;
+      @include text-with-sans-pro-bold-color-mirror-gray;
+      font-size: 12px;
+      background-color: $color-white;
+      span{
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+      }
+    }
+  }
+}
+// Estilo de publicidad en los listados de secciones
+.list-large-news, .list-large-news-cartoons, .list-large-last-news{
+  .medium-rectangle{
+    width: 100%;
+    margin-bottom: 0;
+    padding: 20px 0;
+    .media-container{
+      width: 100%;
+      border-radius: 0;
+      >div:not(.sign){
+        display: inline-block;
+      }
+      .sign{
+        float: left;
+        border: none;
+        background-color: transparent;
+        span{
+          position: static;
+        }
+      }
+    }
+    @include two-column{
+      .media-container{
+        width: 576px;
+        .sign{
+          display: none;
+        }
+      }
+    };
+  }
+}
+
+.list-large-news, .list-large-last-news{
+  .medium-rectangle{
+    .media-container{
+      .sign{
+        padding-right: 15px;
+        margin-left: 21.5%;
+      }
+      @include three-column{
+        .sign{
+          margin-left: 14%;
+        }
+      };
+      @include one-column{
+        width: 300px;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+.list-large-news-cartoons{
+  .medium-rectangle{
+    .media-container{
+      .sign{
+        padding-right: 20px;
+        margin-left: 18%;
+      }
+      @include three-column{
+        .sign{
+          margin-left: 9%;
+        }
+      };
+      @include one-column{
+        width: 300px;
+      }
+    }
+  }
+}
+
+// Estilo de publicidad en los listados de MAM y EDT
+.column-right.event .medium-rectangle{
+  width: 100%;
+  margin-bottom: 0;
+  padding: 20px 0;
+  .media-container{
+    width: 100%;
+    height: auto;
+    >div:not(.sign){
+      display: inline-block;
+    }
+    .sign{
+      float: left;
+      margin-right: 30%;
+      border: none;
+      span{
+        position: static;
+      }
+    }
+    @include two-column{
+      .sign{
+        margin-right: 43%;
+      }
+    };
+    @include one-column{
+      .sign{
+        display: none;
+      }
+    };
+    @include one-column{
+      width: 300px;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{% import "Application\Camus\AssetsBundle:Fixtures:see-more.html.twig" as seeMore %}
+
+{% if module.template == 'base' %}
+<div class="sn-quote-base">
+  <div class="media-container">
+    {{ seeMore.text(module, false, false, "heading", "Frase del día") }}
+    <div class="quote-note">
+      <div class="author-container">
+        <div class="author-description-container">
+          <div class="author-name">
+            <span {{ data_camus_author }}>{{ module.author }}</span>
+          </div>
+          <div class="profession-name">
+            <span {{ data_camus_body }}>{{ module.body }}</span>
+          </div>
+        </div>
+        <div class="img-container">
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+        </div>
+      </div>
+      <div class="text-container-open-sans-left-top">
+        <span {{ data_camus_title }}>{{ module.title }}</span>
+      </div>
+      <div class="summary-container">
+        <span {{ data_camus_abstract }}>{{ module.abstract }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

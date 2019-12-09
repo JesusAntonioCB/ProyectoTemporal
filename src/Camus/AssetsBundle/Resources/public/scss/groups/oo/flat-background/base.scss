@@ -1,0 +1,59 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.oo-flat-background{
+  @include global-container-1c;
+  .media-container-light-cyan{
+    @include rows-height(1);
+    .text{
+      .title{
+        max-height: 140px;
+        margin-bottom: 20px;
+        //color: $color-night-gray;
+        @include text-with-roboto-black-color-night-gray;
+        font-family: $font-medium;
+      }
+      .img-container{
+        float: right;
+        width: 79px;
+        // height: 70px;
+        margin-left: 8px;
+      }
+      .abstract{
+        max-height: 114px;
+        @include text-with-roboto-regular-color-night-gray;
+        color: $color-gray;
+      }
+      &:after{
+        content: '';
+        display: table;
+        clear: both;
+      }
+    }
+  }
+}
+
+@include one-column{
+  .oo-flat-background{
+    .media-container-light-cyan{
+      min-height: auto;
+      height: auto;
+      .text{
+        .title{
+          margin-bottom: 10px;
+        }
+      }
+      .abstract{
+        max-height: 85px;
+      }
+      .footer{
+        position: initial;
+        margin-top: 10px;
+        padding-bottom: 15px;
+        overflow: hidden;
+      }
+    }
+  }
+};

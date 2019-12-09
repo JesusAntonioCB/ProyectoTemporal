@@ -1,0 +1,41 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-printed{
+  @include global-container-1c;
+  .media-container{
+    @include rows-height(1);
+    .printed-info{
+      height: 306px;
+      padding: 10px 10px 15px;
+      @include container-light-cyan;
+    }
+    .edition-description-container{
+      float: left;
+      width: 75px;
+    }
+    .printed-edition-headline-container-left{
+      @include text-with-open-sans-bold-color-black;
+      font-size: 13px;
+      line-height: 16px;
+    }
+    .printed-edition-date-container-left{
+      margin-top: 5px;
+      @include text-with-open-sans-5-color-nobel;
+      font-size: 11px;
+      line-height: 13px;
+    }
+    .edition-print{
+      float: right;
+      width: 185px;
+      height: 100%;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+}

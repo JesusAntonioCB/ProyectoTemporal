@@ -1,0 +1,183 @@
+<div class="finder">
+  <div class="media-container">
+    {% if modules is empty %}
+    <div id="notFoundDIV_1">
+        <div id="notFoundDIV_2">
+          <p id="notFoundP_3">
+            {{ module.dataSearch.text }}( 0 resultados )
+          </p>
+          <p id="notFoundP_4">
+            Te recomendamos verificar que las palabras estén escritas correctamente, así como probar algunas relacionadas con la búsqueda que necesitas realizar.
+          </p>
+        </div>
+      </div>
+    {% endif %}
+    <div class="finder-container">
+      <form class="search-form" class="search-item" name="search-form" action="/buscador" method="GET">
+        <div class="top">
+            <input type="text" class="name-to-search" name="text" required placeholder="¿Qué buscas?"/>
+            <button type="submit" class="search-icon">
+              <span class="fa fa-search"></span>
+            </button>
+        </div>
+        {#
+        <div class="bottom">
+          <div class="icon show-filters">
+            <span class="fa fa-chevron-down"></span>
+          </div>
+          <div class="filter-results">
+            <span>FILTRAR RESULTADOS</span>
+          </div>
+          <div class="extra-filters">
+            <div class="section-filter filter">
+              <div class="filter-label">Filtrado por Sección</div>
+              {% set sections = ["Politica","Espectáculos","Deportes"] %}
+              <select name="section" class="filter-input" disabled>
+                <option value="">Todas</option>
+                {% for index,value in sections %}
+                  {% set selected = '' %}
+                  {% if module.dataSearch.section is defined %}
+
+                    {% if loop.index == module.dataSearch.section %}
+                      {% set selected = 'selected' %}
+                    {% endif %}
+                  {% endif %}
+                  <option {{ selected }} value="{{ loop.index }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="date-filter filter">
+              <div class="filter-label">Filtrado por Fecha</div>
+              {% set startDate = '' %}
+              {% set endDate = '' %}
+              {% if module.dataSearch["start-date"] is defined %}
+                {% set startDate = module.dataSearch["start-date"] %}
+              {% endif %}
+              {% if module.dataSearch["end-date"] is defined %}
+                {% set endDate = module.dataSearch["end-date"] %}
+              {% endif %}
+              <div class="filter-input-container" id="start-date-container" value="{{ startDate }}">
+                <input type="date" name="start-date" class="filter-input" disabled value="{{ startDate }}">
+              </div>
+              <div class="filter-input-container" id="end-date-container" value="{{ endDate }}">
+                <input type="date" name="end-date" class="filter-input" disabled value="{{ endDate }}">
+              </div>
+            </div>
+            <div class="type-filters filter">
+              {% set checkedNWS = '' %}
+              {% set checkedENT = '' %}
+              {% set checkedRPG = '' %}
+              {% set checkedVID = '' %}
+              {% set checkedFIR = '' %}
+              {% set checkedCHR = '' %}
+              {% set checkedPGL = '' %}
+              {% if module.dataSearch.typeContent is defined %}
+                {% for index, value in module.dataSearch.typeContent %}
+                  {% if 'NWS' == value %}
+                    {% set checkedNWS = 'checked' %}
+                  {% endif %}
+                  {% if 'ENT' == value %}
+                    {% set checkedENT = 'checked' %}
+                  {% endif %}
+                  {% if 'RPG' == value %}
+                    {% set checkedRPG = 'checked' %}
+                  {% endif %}
+                  {% if 'VID' == value %}
+                    {% set checkedVID = 'checked' %}
+                  {% endif %}
+                  {% if 'FIR' == value %}
+                    {% set checkedFIR = 'checked' %}
+                  {% endif %}
+                  {% if 'CHR' == value %}
+                    {% set checkedCHR = 'checked' %}
+                  {% endif %}
+                  {% if 'PGL' == value %}
+                    {% set checkedPGL = 'checked' %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              <div class="filter-label">Filtrado por Tipo de Noticia</div>
+              <div class="check-filter">
+                <label class="container-checker">
+                  <input type="checkbox" {{ checkedNWS }} name="typeContent[]" class="filter-input" disabled value=NWS>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Noticia</span>
+              </div>
+              <div class="check-filter">
+                <label class="container-checker">
+                  <input type="checkbox" {{ checkedENT }} name="typeContent[]" class="filter-input" disabled value=ENT>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Entrevista</span>
+              </div>
+              <div class="check-filter">
+                <label class="container-checker">
+                  <input type="checkbox" {{ checkedRPG }} name="typeContent[]" class="filter-input" disabled value=RPG>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Reportaje</span>
+              </div>
+              <div class="check-filter">
+                <label class="container-checker">
+                  <input type="checkbox" {{ checkedVID }} name="typeContent[]" class="filter-input" disabled value=VID>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Videonoticia</span>
+              </div>
+              <div class="check-filter">
+                <label class="container-checker">
+                  <input type="checkbox" {{ checkedFIR }} name="typeContent[]" class="filter-input" disabled value=FIR>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Firma</span>
+              </div>
+              <div class="check-filter">
+                <label class="container-checker">
+                  <input type="checkbox" {{ checkedCHR }} name="typeContent[]" class="filter-input" disabled value=CHR>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Crónica</span>
+              </div>
+              <div class="check-filter">
+                <label class="container-checker">
+                  <input type="checkbox" {{ checkedPGL }} name="typeContent[]" class="filter-input" disabled value=PGL>
+                  <span class="checkmark"></span>
+                </label>
+                <span>Fotogalería</span>
+              </div>
+            </div>
+            <div class="ok-filter filter">
+              <button type="submit">OK</button>
+            </div>
+          </div>
+        </div>
+        #}
+      </form>
+    </div>
+    <div class="finder-options">
+      <div class="num-results">
+        {% set results = 0 %}
+        {% if modules|length > 0 %}
+        {% if modules.2.paging.totalPages == 1 %}
+          {% if modules.2.modules|length > 3 %}
+            {% set results = modules.2.modules|length - 2 %}
+            {% else %}
+              {% set results = modules.2.modules|length - 1 %}
+          {% endif %}
+          {% else %}
+            {% set results = modules.2.limit * modules.2.paging.totalPages %}
+        {% endif %}
+        {% endif %}
+        <span>Resultados:</span> {{ results }}<span></span>
+      </div>
+      <!--div class="sort-options">
+        <div class="sort-by">
+          <span>Ordenar por:</span>
+        </div>
+        <button class="date">Fecha</button>
+      </div-->
+    </div>
+
+  </div>
+</div>

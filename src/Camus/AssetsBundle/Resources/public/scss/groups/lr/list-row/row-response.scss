@@ -1,0 +1,43 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.lr-row-response{
+  padding: 10px 0;
+  border-top: 1px solid $color-space-silver;
+  .img-container{
+    float: left;
+    width: 52px;
+    height: 52px;
+    margin-right: 10px;
+    border-radius: 50%;
+    img{
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .title-container{
+    overflow: hidden;
+    .author{
+      @include text-with-open-sans-bold-color-night-gray;
+      font-size: 13px;
+      line-height: 16px;
+    }
+    .profession{
+      @include text-with-open-sans-5-color-light-silver;
+      font-size: 11px;
+      line-height: 14px;
+    }
+    .title{
+      @include text-with-utopia-5-color-night-gray;
+      font-size: 16px;
+      line-height: 18px;
+    }
+  }
+  &:after{
+    content: '';
+    display: table;
+    clear: both;
+  }
+}

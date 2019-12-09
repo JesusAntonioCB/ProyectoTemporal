@@ -1,0 +1,51 @@
+<div class="indicators">
+  <div class="media-container">
+    <div class="tabs">
+      <ul>
+        <a href="/markets/stock-market"><li>Bolsas</li></a>
+        <a href="/markets/bmv"><li>BMV</li></a>
+        <a href="/markets/indicators"><li>Indicadores</li></a>
+        <a href="/markets/funds"><li>Fondos</li></a>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="sections">
+        <div class="arrow">
+          <span class="fa fa-chevron-down"></span>
+        </div>
+        <select>
+          <option value="1">Tasas</option>
+          <option value="2">SIEFORES</option>
+          <option value="3">Metales</option>
+          <option value="4">Petróleo / Gas</option>
+        </select>
+        <h5>Elija indice</h5>
+      </div>
+      <div class="tables">
+        {% for table in tables %}
+        <div class="table">
+          {% if table.header %}
+          <div class="table-name">
+            <h1>{{table.table-name}}</h1>
+          </div>
+          {% endif %}
+          <table>
+            <tr>
+              {% for title in table.titles %}
+              <th>{{title}}</th>
+              {% endfor %}
+            </tr>
+            {% for row in table.rows %}
+            <tr>
+              {% for val in row %}
+              <td>{{val}}</td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

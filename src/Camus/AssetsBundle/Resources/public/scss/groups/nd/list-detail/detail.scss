@@ -1,0 +1,82 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.container-list-module-normal{
+  width: $two-column;
+  margin: 27px 0;
+  overflow: hidden;
+  .container-image{
+    height:367px;
+    img
+    {
+      width:100%;
+      height:100%;
+    }
+  }
+  .container-author{
+    @include text-with-utopia-5-color-night-gray;
+    font-size:18px;
+    line-height:23px;
+    .lower-data{
+      @include text-with-utopia-5-color-night-gray;
+      font-size:22px;
+      line-height:28px;
+      font-weight:900;
+    }
+  }
+  .text{
+    .circle{
+      background:$color-red-dark;
+      border-radius:50%;
+      width:50px;
+      height:50px;
+      float:left;
+      text-align:center;
+      line-height:50px;
+      @include text-with-open-sans-5-color-white;
+      font-weight:700;
+      font-size:18px;
+      margin-right:10px;
+    }
+    line-height:27px;
+    font-weight:400;
+    @include text-with-open-sans-5-color-night-gray;
+    font-size:18px;
+    &:after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+}
+
+@include one-column{
+  .container-list-module-normal{
+    width: $one-column;
+    margin: 14px 0;
+    .container-image{
+      height:194px;
+    }
+    .container-author{
+      padding-bottom:3px;
+      margin-top:10px;
+      position:relative;
+      font-size:18px;
+      font-weight:400;
+      line-height:23px;
+      .lower-data{
+        font-size:22px;
+        line-height:28px;
+      }
+    }
+  .text{
+      padding-bottom:3px;
+      margin-top:3px;
+      position:relative;
+      line-height:28px;
+      font-weight:900;
+    }
+  }
+};

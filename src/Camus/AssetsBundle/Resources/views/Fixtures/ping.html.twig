@@ -1,0 +1,87 @@
+{% macro ping(value) %}
+<script>
+//var service = "http://juan.beta.ping.appsdigital.es/"; //TEST
+var service = "https://ping.appsdigital.es/";
+
+window.onload = function() {
+  gigya.accounts.getAccountInfo({extraProfileFields: 'verified', callback: checkPing});
+}
+
+function ping(){
+  var scritpMD5 = document.createElement('script');
+  scritpMD5.src ='/bundles/applicationcamusassets/js/CamusGlobalComponents/md5/md5.js';
+  scritpMD5.onload=function(){
+    var GEME4u1gb7oB6xT = hex_md5(Math.random().toString() + Date.now().toString() + Math.random().toString());
+    var ekLDa2k08jDpNWlj = 0;
+    if(readCookie("GEME4u1gb7oB6xT2") != null){
+      var mYuPiVnM = readCookie("GEME4u1gb7oB6xT2"),
+      mYuPiVnM = mYuPiVnM.split("|"),
+      GEME4u1gb7oB6xT = mYuPiVnM[0],
+      ekLDa2k08jDpNWlj = mYuPiVnM[1];
+    } else{
+      createCookie("GEME4u1gb7oB6xT2",GEME4u1gb7oB6xT + '|0',365);
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", service, true);
+    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhttp.send("ekLDa2k08jDpNWlj="+ekLDa2k08jDpNWlj+"&GEME4u1gb7oB6xT="+GEME4u1gb7oB6xT+"&zpgf8Zf1UUiL0Wd=500&D2uAPPvE5Soocdh={{value}}");
+  }
+  document.body.appendChild(scritpMD5);
+}
+
+function createCookie(name,value,days) {
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime()+(days*24*60*60*1000));
+    var expires = "; expires="+date.toGMTString();
+  }
+  else var expires = "";
+  document.cookie = name+"="+value+expires+";domain=.milenio.com;path=/";
+}
+
+function readCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0;i < ca.length;i++) {
+    var c = ca[i];
+    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+  }
+  return null;
+}
+
+function eraseCookie(name) {
+  createCookie(name,"",-1);
+}
+
+function checkPing(result) {
+  if(result.errorCode == 0 && result.UID != null && result.isActive) {
+    var vipUser = result;
+    if (vipUser.isVerified || vipUser.data.isCustomer) {
+      vipUser.isLoggedIn = true;
+      if(readCookie("GEME4u1gb7oB6xT2") != null) {
+        var UcWTU4aHy1Qwr7d = readCookie("GEME4u1gb7oB6xT2"),
+        gUID = vipUser.UID,
+        OiKjGHMs = UcWTU4aHy1Qwr7d.split("|"),
+        GEME4u1gqoB6xTM = OiKjGHMs[0];
+
+        if(GEME4u1gqoB6xTM !=  gUID) {
+          var equivService = service + "equiv/";
+
+          var xhttp = new XMLHttpRequest();
+          xhttp.open("POST", equivService, true);
+          xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+          xhttp.send("HMnjIRJ2oVZYivY="+gUID+"&UcWTU4aHy1Qwr7d="+GEME4u1gqoB6xTM);
+          createCookie("GEME4u1gb7oB6xT2",gUID + "|1",365);
+        } else {
+          ping();
+        }
+      }
+    }
+  } else {
+    ping();
+  }
+}
+</script>
+{% endmacro %}

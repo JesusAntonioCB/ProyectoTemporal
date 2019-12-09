@@ -1,0 +1,7 @@
+{% if masVistas|length > 0 %}
+	<ul class="op-related-articles">
+	{% for noticia in masVistas %}
+		<li><a href="{{ noticia }}"></a></li>
+	{% endfor %}
+	</ul>
+{% endif %}

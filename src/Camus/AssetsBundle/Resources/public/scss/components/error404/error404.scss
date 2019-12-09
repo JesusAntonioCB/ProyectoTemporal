@@ -1,0 +1,245 @@
+.ctr-error {
+  width: 100%;
+  .error-description {
+    border-style: solid;
+    border-color: $color-white;
+    background-color: $color-alto;
+    padding: 27px 0 31px;
+    position: relative;
+    border-width: 1px 0px 0px;
+    .error-icon, .error-text{
+      max-height: 320px;
+      width:100%;
+      img {
+        height: 100%;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    .error-text {
+      img{
+        max-height: 193.5px
+      }
+      .error-exclamation {
+        @include text-with-roboto-medium-color-black;
+        font-size: 50px;
+        line-height: 60px;
+        width: 168px;
+        margin: auto;
+      }
+      .error-title {
+        @include text-with-roboto-medium-color-black;
+        line-height: 41px;
+        font-size: 34px;
+        width: 640px;
+        margin: auto;
+        text-align: center;
+      }
+      .error-message {
+        @include text-with-roboto-regular-color-black;
+        font-size: 20px;
+        line-height: 28px;
+        width: 475px;
+        margin: 7px auto 0;
+      }
+    }
+  }
+  .error-options {
+    margin-top: 18px;
+    .error-home {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      .error-container {
+        margin: auto;
+        .error-title {
+          @include text-with-roboto-regular-color-white;
+          text-align: center;
+          letter-spacing: -1px;
+          font-size: 30px;
+          line-height: 36px;
+        }
+      }
+    }
+    .error-search {
+      float: right;
+      .error-container {
+        width: 400px;
+        margin: auto;
+        .search-form.search-item.search-active {
+          width: 300px;
+          padding-left: 20px;
+          float: left;
+          padding-top: 30px;
+          .search-input.search-hidden {
+            @include text-with-roboto-regular-color-black;
+            width: 100%;
+            min-height: 41px;
+            border: 1px solid $color-gallery;
+            background-color: transparent;
+            text-align: left;
+            letter-spacing: -1px;
+            font-size: 24px;
+            line-height: 29px;
+            margin: auto;
+            padding: 9px 0px 9px 15px;
+          }
+        }
+      }
+    }
+    .error-home, .error-search {
+      border: 1px solid $color-gallery;
+      width: 605px;
+      padding: 39px 0;
+      background-color: $color-night-gray;
+      .error-icon {
+        width: 92px;
+        height: 92px;
+        border-radius: 50%;
+        margin: auto;
+        float: left;
+        img {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+@include three-column{
+  .ctr-error {
+    .error-options {
+      .error-home, .error-search {
+        width: 446px;
+      }
+    }
+  }
+};
+
+@include two-column{
+  .ctr-error {
+    .error-description {
+      .error-text {
+        width: 100%;
+        .error-title {
+          line-height: 40px;
+          font-size: 32px;
+          width: 603px;
+        }
+      }
+    }
+    .error-options {
+      margin-top: 18px;
+      .error-home {
+        .error-container {
+          // padding: 39px 0 39px;
+          .error-title {
+            font-size: 25px;
+            line-height: 30px;
+          }
+        }
+      }
+      .error-search {
+        // padding: 39px 0 21px;
+        .error-container {
+          .search-form.search-item.search-active {
+            width: 200px;
+            .search-input.search-hidden {
+              font-size: 19px;
+              line-height: 22px;
+            }
+          }
+        }
+      }
+      .error-home, .error-search {
+        width: 299px;
+        padding: 21px 0;
+      }
+    }
+  }
+};
+
+@include one-column{
+  .ctr-error {
+    .error-description {
+      .error-icon {
+        width: 362px;
+        height: 180px;
+        img {
+          width: 90%;
+        }
+      }
+      .error-text {
+        img{
+          max-height: 98.4px;
+          left: 49.9%;
+        }
+        .error-exclamation {
+          font-size: 24px;
+          line-height: 29px;
+          width: 81px;
+        }
+        .error-title {
+          font-size: 18px;
+          line-height: 22px;
+          width: 247px;
+        }
+        .error-message {
+          font-size: 13px;
+          line-height: 18px;
+          width: 310px;
+        }
+      }
+    }
+    .error-options {
+      margin-top: 18px;
+      .error-home {
+        .error-container {
+          width: 215px;
+          .error-title {
+            font-size: 18px;
+            line-height: 22px;
+            padding: 16px 10px;
+          }
+        }
+      }
+      .error-search {
+        margin-top: 13px !important;
+        .error-container {
+          width: 100%;
+          .search-form.search-item.search-active {
+            width: 200px;
+            float: left;
+            padding-left: 5px;
+            padding-top: 20px;
+            .search-input.search-hidden {
+              min-height: 23px;
+              height: 23px;
+              font-size: 18px;
+              line-height: 22px;
+              padding: 0 10px;
+            }
+          }
+        }
+      }
+      .error-home, .error-search {
+        width: 300px;
+        height: 71px;
+        float: none;
+        padding: 7px;
+        .error-container {
+          .error-icon {
+            width: 65px;
+            height: 55px;
+            margin: 0;
+            font-size: 36px;
+            line-height: 43px;
+            padding: 6px 11px;
+            float: left;
+          }
+        }
+      }
+    }
+  }
+};

@@ -1,0 +1,592 @@
+//Titulos y Autores
+$font-utopia5: "---utopia-5";
+$font-utopia-bold: "---utopia-bold";
+$font-utopia-semibold: "---utopia-semibold";
+//-contenido y -autores
+$font-open-sans: open-sans;
+$font-sans-serif: sans-serif;
+//Indicaciones
+$font-open-sans5: "---open -sans-5";
+$font-open-sans-semibold: "---open -sans-semibold";
+$font-open-sans-bold: "---open -sans-bold";
+//Default
+$font-arial: "-arial";
+$font-helvetica: "-helvetica";
+$font-helvetica-neue: "-helvetica -neue";
+//Iconos
+//$font-awesome5: '---font-awesome-5';
+$font-regular: "regular";
+$font-medium: "medium";
+$font-black: "black";
+//FAMA fonts
+$font-SourceSansPro-light: "SourceSansPro-Light";
+$font-SourceSansPro-regular: "SourceSansPro-Regular";
+$font-SourceSansPro-bold: "SourceSansPro-Bold";
+$font-YanoneKaffeesatz-light: "YanoneKaffeesatz-Light";
+$font-YanoneKaffeesatz-regular: "YanoneKaffeesatz-Regular";
+$font-YanoneKaffeesatz-bold: "YanoneKaffeesatz-Bold";
+
+//--- mediotiempo font-sets
+// @mixin text-with-roboto-color-yellow{
+//   font-family: $font-black, $font-sans-serif;
+//   color: $color-yellow;
+// }
+@mixin text-with-roboto-color-alizarin-crimson{
+  font-family: $font-black, $font-sans-serif;
+  color: $color-alizarin-crimson;
+}
+@mixin text-with-roboto-regular-color-yellow{
+  font-family: $font-regular, $font-sans-serif;
+  color: $color-yellow;
+}
+@mixin text-with-roboto-regular-color-alizarin-crimson{
+  font-family: $font-regular, $font-sans-serif;
+  color: $color-alizarin-crimson;
+}
+@mixin text-with-roboto-medium-color-yellow{
+  font-family: $font-medium, $font-sans-serif;
+  color: $color-yellow;
+}
+@mixin text-with-roboto-medium-color-alizarin-crimson{
+  font-family: $font-medium, $font-sans-serif;
+  color: $color-alizarin-crimson;
+}
+@mixin text-with-roboto-color-concrete{
+  font-family: $font-black, $font-sans-serif;
+  color: $color-concrete;
+}
+@mixin text-with-roboto-medium-color-black{
+  font-family: $font-SourceSansPro-regular, $font-sans-serif;
+  color: $color-black;
+}
+@mixin text-with-roboto-medium-color-dusty-gray{
+  font-family: $font-SourceSansPro-regular, $font-sans-serif;
+  color: $color-dusty-gray;
+}
+@mixin text-with-roboto-regular-color-black{
+  font-family: $font-regular, $font-sans-serif;
+  color: $color-black;
+}
+@mixin text-with-roboto-black-color-black{
+  font-family: $font-black, $font-sans-serif;
+  color: $color-black;
+}
+@mixin text-with-roboto-regular-color-clear-gray{
+  font-family: $font-regular, $font-sans-serif;
+  color: $color-clear-gray;
+}
+@mixin text-with-roboto-black-color-mine-shaft{
+  font-family: $font-black, $font-sans-serif;
+  color: $color-mine-shaft;
+}
+@mixin text-with-roboto-black-color-red-dark{
+  font-family: $font-black, $font-sans-serif;
+  color: $color-red-dark;
+}
+@mixin text-with-roboto-black-color-white{
+  font-family: $font-black, $font-sans-serif;
+  color: $color-white;
+}
+@mixin text-with-roboto-black-color-black{
+  font-family: $font-black, $font-sans-serif;
+  color: $color-black;
+}
+@mixin text-with-roboto-black-color-concrete{
+  font-family: $font-black, $font-sans-serif;
+  color: $color-concrete;
+}
+@mixin text-with-roboto-regular-color-white{
+  font-family: $font-regular, $font-sans-serif;
+  color: $color-white;
+}
+@mixin text-with-roboto-regular-color-dove-gray{
+  font-family: $font-regular, $font-sans-serif;
+  color: $color-dove-gray;
+}
+@mixin text-with-roboto-regular-color-night-gray{
+  font-family: $font-regular, $font-sans-serif;
+  color: $color-night-gray;
+}
+@mixin text-with-roboto-regular-color-dark-gray{
+  font-family: $font-regular, $font-sans-serif;
+  color: $color-dark-gray;
+}
+@mixin text-with-roboto-medium-color-gray{
+	font-family: $font-medium, $font-sans-serif;
+  color: $color-gray;
+}
+@mixin text-with-roboto-regular-color-gray{
+  font-family: $font-regular, $font-sans-serif;
+  color: $color-gray;
+}
+@mixin text-with-roboto-regular-color-mirror-gray{
+  font-family: $font-regular, $font-sans-serif;
+  color: $color-mirror-gray;
+}
+@mixin text-with-roboto-medium-color-mirror-gray{
+  font-family: $font-medium, $font-sans-serif;
+  color: $color-mirror-gray;
+}
+@mixin text-with-roboto-medium-color-night-gray{
+  font-family: $font-medium, $font-sans-serif;
+  color: $color-night-gray;
+}
+@mixin text-with-roboto-black-color-dark-gray{
+  font-family: $font-black, $font-sans-serif;
+  color: $color-dark-gray;
+}
+@mixin text-with-roboto-medium-color-dark-gray{
+  font-family: $font-medium, $font-sans-serif;
+  color: $color-dark-gray;
+}
+@mixin text-with-roboto-black-color-gray{
+	font-family: $font-black, $font-sans-serif;
+  color: $color-gray;
+}
+@mixin text-with-roboto-black-color-gray-glass{
+	font-family: $font-black, $font-sans-serif;
+  color: $color-gray-glass;
+}
+@mixin text-with-roboto-medium-color-gray-glass{
+	font-family: $font-medium, $font-sans-serif;
+  color: $color-gray-glass;
+}
+@mixin text-with-roboto-regular-color-gray-glass{
+	font-family: $font-regular, $font-sans-serif;
+  color: $color-gray-glass;
+}
+@mixin text-with-roboto-black-color-night-gray{
+	font-family: $font-black, $font-sans-serif;
+  color: $color-night-gray;
+}
+@mixin text-with-roboto-medium-color-white{
+	font-family: $font-medium, $font-sans-serif;
+  color: $color-white;
+}
+@mixin text-with-roboto-regular-color-nobel{
+	font-family: $font-regular, $font-sans-serif;
+  color: $color-nobel;
+}
+@mixin text-with-roboto-medium-color-nobel{
+	font-family: $font-medium, $font-sans-serif;
+  color: $color-nobel;
+}
+@mixin text-with-roboto-black-color-nobel{
+	font-family: $font-black, $font-sans-serif;
+  color: $color-nobel;
+}
+//--- mediotiempo font-sets
+
+
+@mixin text-with-open-serif-color-dark-gray{
+	font-family: $font-open-sans, $font-sans-serif;
+	color: $color-dark-gray;
+}
+@mixin text-with-open-serif-color-night-silver{
+	font-family: $font-open-sans, $font-sans-serif;
+	color: $color-space-silver;
+}
+@mixin text-with-open-serif-color-pencil-gray{
+	font-family: $font-open-sans, $font-sans-serif;
+	color: $color-pencil-gray;
+}
+@mixin text-with-open-serif-color-white{
+	font-family: $font-open-sans, $font-sans-serif;
+	color: $color-white;
+}
+@mixin text-with-open-serif-color-red-pink{
+	font-family: $font-open-sans, $font-sans-serif;
+	color: $color-red-pink;
+}
+@mixin text-with-open-serif-color-red-flamingo{
+	font-family: $font-open-sans, $font-sans-serif;
+	color: $color-red-flamingo;
+}
+@mixin text-with-arial-color-night-gray{
+  font-family: $font-arial;
+  color: $color-night-gray;
+}
+@mixin text-with-arial-color-silver{
+  font-family: $font-arial;
+  color: $color-silver;
+}
+@mixin text-with-helvetica-color-night-gray{
+  font-family: $font-helvetica;
+  color: $color-night-gray;
+}
+@mixin text-with-helvetica-color-silver{
+  font-family: $font-helvetica;
+  color: $color-silver;
+}
+@mixin text-with-helvetica-neue-color-night-gray{
+  font-family: $font-helvetica-neue;
+  color: $color-night-gray;
+}
+@mixin text-with-helvetica-neue-color-silver{
+  font-family: $font-helvetica-neue;
+  color: $color-silver;
+}
+//-utopia
+@mixin text-with-utopia-5-color-night-gray{
+  font-family: $font-utopia5;
+  color: $color-night-gray;
+}
+@mixin text-with-utopia-5-color-silver{
+  font-family: $font-utopia5;
+  color: $color-silver;
+}
+@mixin text-with-utopia-5-color-white{
+  font-family: $font-utopia5;
+  color: $color-white;
+}
+@mixin text-with-utopia-5-color-nobel{
+  font-family: $font-utopia5;
+  color: $color-nobel;
+}
+@mixin text-with-utopia-5-color-light-blue{
+  font-family: $font-utopia5;
+  color: $color-light-blue;
+}
+@mixin text-with-utopia-5-color-blue-gray{
+  font-family: $font-utopia5;
+  color: $color-blue-gray;
+}
+@mixin text-with-utopia-5-color-pink-dark{
+  font-family: $font-utopia5;
+  color: $color-pink-dark;
+}
+@mixin text-with-utopia-5-color-black{
+  font-family: $font-utopia5;
+  color: $color-black;
+}
+@mixin text-with-utopia-5-color-red-dark{
+  font-family: $font-utopia5;
+  color: $color-red-dark;
+}
+@mixin text-with-utopia-5-color-yellow{
+  font-family: $font-utopia5;
+  color: $color-yellow;
+}
+@mixin text-with-utopia-5-color-alizarin-crimson{
+  font-family: $font-utopia5;
+  color: $color-alizarin-crimson;
+}
+@mixin text-with-utopia-bold-color-black{
+	font-family: $font-utopia-bold;
+  color: $color-black;
+}
+@mixin text-with-utopia-bold-color-white{
+	font-family: $font-utopia-bold;
+  color: $color-white;
+}
+@mixin text-with-utopia-bold-color-night-gray{
+	font-family: $font-utopia-bold;
+  color: $color-night-gray;
+}
+@mixin text-with-utopia-bold-color-red-dark{
+  font-family: $font-utopia-bold;
+  color: $color-red-dark;
+}
+@mixin text-with-utopia-bold-color-grayish-cyan{
+  font-family: $font-utopia-bold;
+  color: $color-grayish-cyan;
+}
+@mixin text-with-utopia-semibold-color-red-dark{
+  font-family: $font-utopia-semibold;
+  color: $color-red-dark;
+}
+@mixin text-with-utopia-semibold-color-white{
+	font-family: $font-utopia-semibold;
+	color: $color-white;
+}
+@mixin text-with-utopia-semibold-color-black{
+	font-family: $font-utopia-semibold;
+	color: $color-black;
+}
+@mixin text-with-utopia-semibold-color-night-gray{
+  font-family: $font-utopia-semibold;
+  color: $color-night-gray;
+}
+//-open -sans
+@mixin text-with-open-sans-color-gray{
+  font-family: $font-open-sans;
+  color: $color-gray;
+}
+@mixin text-with-open-sans-color-blue-gray{
+  font-family: $font-open-sans;
+  color: $color-gray;
+}
+@mixin text-with-open-sans-color-dark-gray-blue{
+  font-family: $font-open-sans;
+  color: $color-dark-gray-blue;
+}
+@mixin text-with-open-sans-color-white{
+  font-family: $font-open-sans;
+  color: $color-white;
+}
+@mixin text-with-open-sans-space-silver{
+  font-family: $font-open-sans;
+  color: $color-space-silver;
+}
+@mixin text-with-open-sans-color-night-gray{
+  font-family: $font-open-sans;
+  color: $color-night-gray;
+}
+@mixin text-with-open-sans-color-red-pink{
+  font-family: $font-open-sans;
+  color: $color-red-pink;
+}
+@mixin text-with-open-sans-color-pencil-gray{
+  font-family: $font-open-sans;
+  color: $color-pencil-gray;
+}
+@mixin text-with-open-sans-color-black{
+  font-family: $font-open-sans;
+  color: $color-black;
+}
+@mixin text-with-open-sans-color-nobel{
+  font-family: $font-open-sans;
+  color: $color-nobel;
+}
+@mixin text-with-open-sans-color-night-silver{
+  font-family: $font-open-sans;
+  color: $color-night-silver;
+}
+//-open -sans 5
+@mixin text-with-open-sans-5-color-red-dark{
+  font-family: $font-open-sans5;
+  color: $color-red-dark;
+}
+@mixin text-with-open-sans-5-color-green{
+	font-family: $font-open-sans5;
+	color: $color-green;
+}
+@mixin text-with-open-sans-5-color-white{
+  font-family: $font-open-sans5;
+  color: $color-white;
+}
+@mixin text-with-open-sans-5-color-light-silver{
+	font-family: $font-open-sans5;
+	color: $color-light-silver;
+}
+@mixin text-with-open-sans-5-color-dark-gray-sky{
+	font-family: $font-open-sans5;
+	color: $color-dark-gray-sky;
+}
+@mixin text-with-open-sans-5-color-military-gray{
+	font-family: $font-open-sans5;
+	color: $color-military-gray;
+}
+@mixin text-with-open-sans-5-color-blue{
+	font-family: $font-open-sans5;
+	color: $color-blue;
+}
+@mixin text-with-open-sans-5-color-blue-gray{
+  font-family: $font-open-sans5;
+  color: $color-blue-gray;
+}
+@mixin text-with-open-sans-5-color-nobel{
+  font-family: $font-open-sans5;
+  color: $color-nobel;
+}
+@mixin text-with-open-sans-5-color-night-gray{
+  font-family: $font-open-sans5;
+  color: $color-night-gray;
+}
+@mixin text-with-open-sans-5-color-black{
+  font-family: $font-open-sans5;
+  color: $color-black;
+}
+@mixin text-with-open-sans-5-color-gray{
+  font-family: $font-open-sans5;
+  color: $color-gray;
+}
+@mixin text-with-open-sans-5-color-mirror-gray{
+  font-family: $font-open-sans5;
+  color: $color-mirror-gray;
+}
+@mixin text-with-open-sans-5-color-clear-gray{
+  font-family: $font-open-sans5;
+  color: $color-clear-gray;
+}
+@mixin text-with-open-sans-5-color-grayish-blue{
+  font-family: $font-open-sans5;
+  color: $color-grayish-blue;
+}
+//-sans -serif
+@mixin text-with-sans-serif-color-gray{
+  font-family: $font-sans-serif;
+  color: $color-gray;
+}
+@mixin text-with-sans-serif-color-red-dark{
+	font-family: $font-sans-serif;
+	color: $color-red-dark;
+}
+@mixin text-with-sans-serif-color-blue-gray{
+  font-family: $font-sans-serif;
+  color: $color-gray;
+}
+@mixin text-with-sans-serif-color-white{
+  font-family: $font-sans-serif;
+  color: $color-white;
+}
+@mixin text-with-sans-serif-color-space-silver{
+  font-family: $font-sans-serif;
+  color: $color-space-silver;
+}
+@mixin text-with-sans-serif-color-night-gray{
+  font-family: $font-sans-serif;
+  color: $color-night-gray;
+}
+@mixin text-with-sans-serif-color-red-pink{
+  font-family: $font-sans-serif;
+  color: $color-red-pink;
+}
+@mixin text-with-sans-serif-color-pencil-gray{
+  font-family: $font-sans-serif;
+  color: $color-pencil-gray;
+}
+@mixin text-with-sans-serif-color-black{
+  font-family: $font-sans-serif;
+  color: $color-black;
+}
+@mixin text-with-sans-serif-color-nobel{
+  font-family: $font-sans-serif;
+  color: $color-nobel;
+}
+@mixin text-with-sans-serif-color-night-silver{
+  font-family: $font-sans-serif;
+  color: $color-night-silver;
+}
+@mixin text-with-sans-serif-color-matterhorn{
+	font-family: $font-sans-serif;
+	color: $color-matterhorn;
+}
+@mixin text-with-sans-serif-color-sharp-gray{
+	font-family: $font-sans-serif;
+	color: $color-sharp-gray;
+}
+// -open -sans-semibold
+@mixin text-with-open-sans-semibold-color-white{
+	font-family: $font-open-sans-semibold;
+	color: $color-white;
+}
+@mixin text-with-open-sans-semibold-color-red-dark{
+	font-family: $font-open-sans-semibold;
+	color: $color-red-dark;
+}
+@mixin text-with-open-sans-semibold-color-night-gray{
+	font-family: $font-open-sans-semibold;
+	color: $color-night-gray;
+}
+@mixin text-with-open-sans-semibold-color-gray{
+	font-family: $font-open-sans-semibold;
+	color: $color-gray;
+}
+
+//open -sans-bold
+@mixin text-with-open-sans-bold-color-black{
+  font-family: $font-open-sans-bold;
+  color: $color-black;
+}
+@mixin text-with-open-sans-bold-color-white{
+  font-family: $font-open-sans-bold;
+  color: $color-white;
+}
+@mixin text-with-open-sans-bold-color-night-gray{
+  font-family: $font-open-sans-bold;
+  color: $color-night-gray;
+}
+@mixin text-with-open-sans-bold-color-nobel{
+  font-family: $font-open-sans-bold;
+  color: $color-nobel;
+}
+@mixin text-with-open-sans-bold-color-gray{
+	font-family: $font-open-sans-bold;
+	color: $color-gray;
+}
+@mixin text-with-sans-serif-color-night-gray{
+  font-family: $font-open-sans-semibold;
+  color: $color-night-gray;
+}
+@mixin text-with-open-sans-5-color-silver{
+	font-family: $font-open-sans5;
+	color: $color-silver;
+}
+//Fama fonts
+@mixin text-with-sans-pro-light-color-black{
+  font-family: $font-SourceSansPro-light;
+  color: $color-black;
+}
+@mixin text-with-sans-pro-light-color-white{
+  font-family: $font-SourceSansPro-light;
+  color: $color-white;
+}
+@mixin text-with-sans-pro-light-color-military-gray{
+  font-family: $font-SourceSansPro-light;
+  color: $color-military-gray;
+}
+@mixin text-with-sans-pro-color-black{
+  font-family: $font-SourceSansPro-regular;
+  color: $color-black;
+}
+@mixin text-with-sans-pro-color-gray-glass{
+  font-family: $font-SourceSansPro-regular;
+  color: $color-gray-glass;
+}
+@mixin text-with-sans-pro-bold-color-black{
+  font-family: $font-SourceSansPro-bold;
+  color: $color-black;
+}
+@mixin text-with-sans-pro-bold-color-mirror-gray{
+  font-family: $font-SourceSansPro-bold;
+  color: $color-mirror-gray;
+}
+@mixin text-with-sans-pro-bold-color-white{
+  font-family: $font-SourceSansPro-bold;
+  color: $color-white;
+}
+@mixin text-with-sans-pro-color-white{
+  font-family: $font-SourceSansPro-regular;
+  color: $color-white;
+}
+@mixin text-with-sans-pro-color-tuna{
+  font-family: $font-SourceSansPro-regular;
+  color: $color-tuna;
+}
+@mixin text-with-sans-pro-color-red-alizarin-crimison{
+  font-family: $font-SourceSansPro-regular;
+  color: $color-red-alizarin-crimison;
+}
+@mixin text-with-YanoneKaffeesatz-color-black{
+  font-family: $font-YanoneKaffeesatz-regular;
+  color: $color-black;
+}
+@mixin text-with-YanoneKaffeesatz-color-hollywood-cerise{
+  font-family: $font-YanoneKaffeesatz-regular;
+  color: $color-hollywood-cerise;
+}
+@mixin text-with-YanoneKaffeesatz-bold-color-black{
+  font-family: $font-YanoneKaffeesatz-bold;
+  color: $color-dark-gray;
+}
+@mixin text-with-YanoneKaffeesatz-color-red-alizarin-crimison{
+  font-family: $font-YanoneKaffeesatz-regular;
+  color: $color-red-alizarin-crimison;
+}
+@mixin text-with-YanoneKaffeesatz-color-white{
+  font-family: $font-YanoneKaffeesatz-regular;
+  color: $color-white;
+}
+@mixin text-with-YanoneKaffeesatz-bold-color-white{
+  font-family: $font-YanoneKaffeesatz-bold;
+  color: $color-white;
+}
+@mixin text-with-YanoneKaffeesatz-bold-color-red-alizarin-crimison{
+  font-family: $font-YanoneKaffeesatz-bold;
+  color: $color-red-alizarin-crimison;
+}
+@mixin text-with-YanoneKaffeesatz-light-color-red-alizarin-crimison{
+  font-family: $font-YanoneKaffeesatz-light;
+  color: $color-red-alizarin-crimison;
+}

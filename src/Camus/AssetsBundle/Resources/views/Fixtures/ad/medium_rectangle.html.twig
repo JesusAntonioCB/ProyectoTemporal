@@ -1,0 +1,15 @@
+<div class="ad medium-rectangle">
+  <div class="media-container">
+    {% set moduleId = (module.id != null) ? module.id : module.adId %}
+    <div data-camus-module-ad-div="true" id="div-gpt-ad-block-{{ moduleId }}">
+      <script>
+      googletag.cmd.push(function() {
+        googletag.defineSlot("{{ module.adCode }}", [[300, 250], [300, 600]], "div-gpt-ad-block-{{ moduleId }}")
+        .setTargeting('AdType', ["{{ module.adTarget }}"])
+        .addService(googletag.pubads());
+        googletag.display("div-gpt-ad-block-{{ moduleId }}");
+      });
+      </script>
+    </div>
+  </div>
+</div>

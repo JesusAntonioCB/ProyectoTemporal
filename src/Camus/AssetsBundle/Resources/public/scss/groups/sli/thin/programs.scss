@@ -1,0 +1,92 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sli-thin-programs{
+  width: 99%;
+  padding-top: $global-padding-top;
+  margin-bottom: $global-margin-bottom;
+  .media-container{
+    float: none;
+    display: flex;
+    flex-wrap: wrap;
+    .headline{
+      padding-left: 10px;
+      color: $color-blue-gray;
+      font-family: $font-sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      flex-grow: 1;
+      align-self: center;
+    }
+    .left, .right{
+      width: 35px;
+      height: 35px;
+      margin: 0 2px;
+      background-color: transparent;
+      border-style: solid;
+      border-color: #ebebeb;
+      border-width: 1px;
+      text-align: center;
+      color: #999;
+      outline: none;
+      &:hover{
+        color: $color-pencil-gray;
+      }
+    }
+    ul{
+      margin: 10px 0 0 0;
+      padding: 0;
+      list-style: none;
+      overflow: hidden;
+      .lr-row-program{
+        float: left;
+        width: 300px;
+        margin-right: 2px;
+        padding: 10px 10px 5px;
+        background-color: #E1E1E1;
+        height: 65px;
+        max-height: 65px;
+        .time{
+          float: left;
+          display: block;
+          height: 100%;
+          font-size: 12px;
+          font-weight: 900;
+        }
+        .info{
+          float: left;
+          margin-left: 5px;
+          position: relative;
+          bottom: 2px;
+          margin-bottom: 10px;
+          .title{
+            font-size: 12px;
+            font-weight: 900;
+          }
+          .host{
+            .name{
+              font-family: '---open -sans-5';
+              font-size: 12px;
+            }
+          }
+        }
+        .text{
+          h3{
+            @include text-with-open-sans-semibold-color-night-gray;
+            font-size: 14px;
+            margin: 0;
+          }
+          h5{
+            margin: 5px 0 0 51px;
+            @include text-with-open-sans-5-color-night-gray;
+            font-size: 11px;
+            line-height: 15px;
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+  }
+}

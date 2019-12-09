@@ -1,0 +1,60 @@
+.suscription-info{
+  h3{
+    color: #b10b1f;
+    font-weight: bold;
+  }
+  td{
+    padding-left: 15px;
+  }
+  td:nth-child(2) {
+    font-weight: bold;
+    color: gray;
+  }
+  .suscription-button{
+    background: #b10b1f;
+    color: white;
+    border-radius: 4px;
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+    float: right;
+  }
+
+  img{
+    position: absolute;
+    margin-left: 500px;
+    margin-top: -310px;
+  }
+}
+
+.suscription-payment{
+  margin-top: 100px;
+  margin-bottom: 100px;
+  .payment{
+    margin-top: 30px;
+    span{
+      margin-left: 10px;
+    }
+  }
+  select{
+    height: 30px;
+  }
+  img{
+    position: absolute;
+    margin-left: 500px;
+    margin-top: -245px;
+  }
+
+  .suscription-button{
+    background: #b10b1f;
+    color: white;
+    border-radius: 4px;
+    padding: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+    float: right;
+  }
+  .buttons-pay{
+    margin-top: 10px;
+  }
+}

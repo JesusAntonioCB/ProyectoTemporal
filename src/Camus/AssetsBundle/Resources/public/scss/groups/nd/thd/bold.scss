@@ -1,0 +1,24 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.see-also{
+  width: 100%;
+  margin: $global-margin-bottom 0;
+  overflow: hidden;
+  .media-container{
+    // p{
+    //   @include text-with-utopia-5-color-night-gray;
+    //   font-size: 17px;
+    //   line-height: 24px;
+    // }
+    .text{
+      @include text-with-roboto-medium-color-night-gray;
+      font-size: 18px;
+      .dni{
+        @include text-with-roboto-medium-color-alizarin-crimson;
+      }
+    }
+  }
+}

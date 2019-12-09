@@ -1,0 +1,104 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+$shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+$height: 115px;
+
+.sli-ticker-caliente{
+  @include global-container-4c;
+  border-top: 0;
+  margin-bottom: 0px !important;
+  .items-league{
+    height: $height;
+    overflow: hidden;
+    box-shadow: $shadow;
+  }
+  .img-container{
+    float: left;
+    width: 100px;
+    margin-right: 15px;
+  }
+  .item-wrapper{
+    overflow: hidden;
+    position: relative;
+    padding: 0 15px;
+  }
+  .left{
+    left: 0;
+  }
+  .right{
+    right: 0;
+  }
+  .left, .right{
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    background-color: $color-night-gray;
+    border: 0;
+    color: #fff;
+    padding: 3px 2px;
+    font-size: 10px;
+    outline: 0;
+  }
+  .slick-track:before, .slick-track:after{
+    content: '';
+    display: table;
+    clear: both;
+  }
+  .img-league{
+    float: left;
+    margin-right: 10px;
+    height: 50px;
+  }
+  .item-list{
+    float: left;
+    box-shadow: $shadow;
+  }
+  .lr-row-ticker-caliente{
+    float: left;
+    height: $height;
+    padding: 0 10px;
+    .team-first{
+      margin-bottom: 5px;
+    }
+    .title{
+      margin-bottom: 5px;
+      @include text-with-roboto-regular-color-nobel;
+      font-size: 12px;
+    }
+    .team-image{
+      height: 30px;
+    }
+    .team-name{
+      display: inline-block;
+      vertical-align: middle;
+      width: 120px;
+      @include text-with-roboto-regular-color-nobel;
+    }
+    .team-score{
+      @include text-with-roboto-medium-color-black;
+    }
+    .odds-home{
+      display: block;
+      @include text-with-roboto-medium-color-black;
+      text-align: right;
+    }
+  }
+}
+
+@include one-column{
+  .sli-ticker-caliente{
+    .img-container{
+      width: 75px;
+      margin-right: 5px;
+    }
+    .item-wrapper{
+      padding: 0;
+    }
+    .left, .right{
+      display: none !important;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{% import "Application\Camus\AssetsBundle:Fixtures:see-more.html.twig" as seeMore %}
+
+<div class="sn-subscribe" {{ data_camus_no_content }}>
+  <div class="media-container">
+    {{ seeMore.text(module, false, false) }}
+    <div class="principal-container">
+      <div class="description">
+        <span {{ data_camus_abstract }} {{ data_camus_text_limit["100"] }}>{{ module.abstract }}</span>
+      </div>
+      <div class="images-container">
+        <div class="m-logo-shapes-container">
+          <div class="m-logo">
+            <img src="/bundles/applicationcamusassets/images/icon-milenio.png">
+          </div>
+          <span class="fa fa-arrow-right"></span>
+        </div>
+        <span class="envelope fa fa-envelope"></span>
+      </div>
+      <button class="btn-subscribe btn-login">SUSCRÍBETE</button>
+    </div>
+  </div>
+</div>

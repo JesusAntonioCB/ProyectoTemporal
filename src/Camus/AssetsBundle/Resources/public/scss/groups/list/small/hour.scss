@@ -1,0 +1,24 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.list-small-hour{
+  @include global-container-1c;
+  .media-container{
+    .sn-base{
+      float: left;
+      margin-bottom: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    .lr-row-base{
+      float: right;
+    }
+    .lr-row-text-only{
+      .title{
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}

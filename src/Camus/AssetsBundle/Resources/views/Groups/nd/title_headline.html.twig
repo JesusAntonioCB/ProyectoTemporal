@@ -1,0 +1,315 @@
+{% if module.template == 'title_headline_base' %}
+  <div class="nd-th-base">
+    <div class="media-container">
+      <h1 class="title" itemprop="headline" style="background-color: {{ module.color }}">{{ module.title|raw }}</h1>
+      {% if module.heading.title != '' %}
+        <h2 class="heading">{{ module.heading.title|striptags }}</h2>
+      {% endif %}
+      <div class="detail">
+        {% if module.abstract != '' %}
+          <h2 class="summary" itemprop="description">{{ module.abstract|raw }}</h2>
+        {% endif %}
+      </div>
+      {% if module.sponsor is defined and module.sponsor.media != '' %}
+        {{ module.sponsor|asSponsor|raw }}
+      {% endif %}
+      <div class="extras">
+        <div class="social-network">
+          <span class="hint">Comparte esta noticia</span>
+          <div class="social-media-buttons"></div>
+          {#<div id="share-icons-container" class="share-icons-container logos"></div>#}
+        </div>
+        {#<div class="elements">
+          <span class="hint">Esta noticia tiene</span>
+          <div class="count">
+            <span class="fa fa-video-camera"></span>
+            <span>4 videos</span>
+          </div>
+        </div>#}
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'title_headline_photo' %}
+  <div class="nd-th-photo">
+    <div class="firm-name">
+      <h2>{{ module.column }}</h2>
+    </div>
+    <div class="media-container">
+      {#{% if module.sponsor is defined and module.sponsor.media != '' %}
+        <div class="sponsored-content">
+          <div class="text">
+            <span>Patrocinado por </span>
+          </div>
+          <div class="img-container">
+            <img src="bundles/applicationcamusassets/images/news-elements/sponsored-image.png">
+          </div>
+        </div>
+      {% endif %}#}
+      <h1 class="title">{{ module.title|striptags }}</h1>
+      <div class="line"></div>
+      <div class="collaborators">
+        <div class="image">
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+        </div>
+        <h3 class="name">{{ module.author }}</h3>
+        <time class="date">{{ module.publishedDate }}{{ module.publishedHour }}</time>
+      </div>
+      <div class="social-networks">
+        <span class="hint">Comparte esta noticia</span>
+        <div id="share-icons-container" class="logos"></div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'sponsorship' %}
+{% elseif module.template == 'title_headline_sports' %}
+{% set hideMAM = '' %}
+  {% if module.teamHome is empty and module.teamAway is empty %}
+    {% set hideMAM = 'min-height:auto;background-color: white;' %}
+  {% endif %}
+  {% if titleNote is defined %}
+    {#
+      <h1 class="container-title" itemprop="headline">{{ titleNote }}</h1>
+    #}
+  {% endif %}
+  {% if retrieveTitle is defined %}
+    {% if retrieveTitle is not empty %}
+      {#
+        <span class="summary-title">{{ retrieveTitle }}</span>
+      #}
+    {% endif %}
+  {% endif %}
+  <div {{ data_camus_module_type["match"] }} class="title-headline-sports" style="{{ hideMAM }}">
+    {% if automatic is defined %}
+      {% if automatic.home_team_name is defined %}
+        {% set module = module|merge({ teamHome : automatic.home_team_name }) %}
+      {% endif %}
+      {% if automatic.away_team_name is defined %}
+        {% set module = module|merge({ teamAway: automatic.away_team_name })  %}
+      {% endif %}
+      {% if automatic.home_team_score is defined %}
+        {% set module = module|merge({ scoreHome: automatic.home_team_score }) %}
+      {% endif %}
+      {% if automatic.away_team_score is defined %}
+        {% set module = module|merge({ scoreAway: automatic.away_team_score })  %}
+      {% endif %}
+      {% if automatic.home_team_logo is defined %}
+        {% set module = module|merge({ teamHomeMedia: getImageMictlan(automatic.home_team_logo) })  %}
+      {% endif %}
+      {% if automatic.away_team_logo is defined %}
+        {% set module = module|merge({ teamAwayMedia: getImageMictlan(automatic.away_team_logo) }) %}
+      {% endif %}
+      {% if automatic.match_status is defined %}
+        {% set periodMatch = "" %}
+        {% if automatic.match_status == "Terminado"%}
+          {% set periodMatch = "FT" %}
+        {% endif %}
+        {% set module = module|merge({ periodMatch: periodMatch })  %}
+      {% endif %}
+    {% endif %}
+    {% if module.teamHome is not empty and module.teamAway is not empty %}
+      <div class="container-info">
+        <div class="match-content">
+        {% if module.sponsor.media|length > 0 %}
+        <div class="top">
+          {{ module.sponsor|asSponsor|raw }}
+        </div>
+        {% endif %}
+        <div class="middle">
+          <div class="team-local">
+            <div class="name" {{ data_camus_team_home }}>
+              {{ module.teamHome }}
+            </div>
+            <div class="logo">
+              {{ module.teamHomeMedia|asImageTeam("data-camus-media-home")|raw }}
+            </div>
+          </div>
+            <div class="score">
+            <div class="number">
+              <span {{ data_camus_score_home }}>{{ module.scoreHome|number_format }}</span>
+              <span class="home-mobile">
+                {{ module.teamHome }}
+              </span>
+            </div>
+            <div class="time"><p {{ data_camus_period_match }}>{{ module.periodMatch }}</p> <p {{ data_camus_minute_match }}>{{ module.minuteMatch }}</p>
+            </div>
+            <div class="number">
+              <span {{ data_camus_score_away }}>{{ module.scoreAway|number_format }}</span>
+              <span class="away-mobile">
+                {{ module.teamAway }}
+              </span>
+            </div>
+          </div>
+          <div class="team-away">
+            <div class="logo">
+              {{ module.teamAwayMedia|asImageTeam("data-camus-media-away")|raw }}
+            </div>
+            <div class="name" {{ data_camus_team_away }}>
+              {{ module.teamAway }}
+            </div>
+          </div>
+        </div>
+        {% set displayPenal = "none" %}
+        {% if module.penaltiesPoints.visible is defined %}
+          {% if module.penaltiesPoints.visible == 'true' %}
+            {% set displayPenal = "block" %}
+          {% endif %}
+        {% endif %}
+        <div class="penal" style="display: {{ displayPenal }} ">
+            <div class="points home">
+              {% if module.penaltiesPoints is defined and module.penaltiesPoints.home is defined %}
+                {% if module.penaltiesPoints.home %}
+                  {% for point in module.penaltiesPoints.home %}
+                      {% set clase = '' %}
+                      {% if point == 'true'  %}
+                        {% set clase = 'bg-green'%}
+                      {% endif %}
+                      {% if point == 'false'  %}
+                        {% set clase = 'bg-red'%}
+                      {% endif %}
+                    <div class="circle-point {{clase}}" {{data_camus_penalties_points_home ~ '=' ~ point }} ></div>
+                  {% endfor %}
+                {% else %}
+                  <div class="circle-point" {{data_camus_penalties_points_home}} ></div>
+                  <div class="circle-point" {{data_camus_penalties_points_home}} ></div>
+                  <div class="circle-point" {{data_camus_penalties_points_home}} ></div>
+                  <div class="circle-point" {{data_camus_penalties_points_home}} ></div>
+                  <div class="circle-point" {{data_camus_penalties_points_home}} ></div>
+                {% endif %}
+              {% endif %}
+            </div>
+          <div class="number_penal">
+            <span class="penal_score_home home" {{ data_camus_penalties_home }}>{{module.teamHomePenalty}}</span>
+            <span> - </span>
+            <span class="penal_score_away away" {{ data_camus_penalties_away }}>{{module.teamAwayPenalty}}</span>
+          </div>
+          <div class="points away">
+            {% if module.penaltiesPoints is defined and module.penaltiesPoints.away is defined %}
+              {% if module.penaltiesPoints.away %}
+                {% for point in module.penaltiesPoints.away %}
+                    {% set clase = '' %}
+                    {% if point == 'true'  %}
+                      {% set clase = 'bg-green'%}
+                    {% endif %}
+                    {% if point == 'false'  %}
+                      {% set clase = 'bg-red'%}
+                    {% endif %}
+                  <div class="circle-point {{clase}}" {{data_camus_penalties_points_away ~ '=' ~ point }} ></div>
+                {% endfor %}
+              {% else %}
+                <div class="circle-point" {{data_camus_penalties_points_away}} ></div>
+                <div class="circle-point" {{data_camus_penalties_points_away}} ></div>
+                <div class="circle-point" {{data_camus_penalties_points_away}} ></div>
+                <div class="circle-point" {{data_camus_penalties_points_away}} ></div>
+                <div class="circle-point" {{data_camus_penalties_points_away}} ></div>
+              {% endif %}
+            {% endif %}
+        </div>
+      </div>
+        <div class="remove-container">
+          {% if module.penaltiesPoints.visible is defined %}
+            {% if module.penaltiesPoints.visible == "true" %}
+              <span class="msg">Remover Penales</span>
+              <i class="fa fa-minus-square"></i>
+            {% else %}
+              <span class="msg">Mostrar Penales</span>
+              <i class="fa fa-plus-square"></i>
+            {% endif %}
+          {% else %}
+            <span class="msg">Mostrar Penales</span>
+            <i class="fa fa-plus-square"></i>
+          {% endif %}
+        </div>
+        <div class="bottom">
+          <div class="author">
+            <div class="name">
+              <div class="author">
+                {% if contentLayer is defined %}
+                  <span itemprop="author" {{ data_camus_author }}>{{ contentLayer.author|default(module.author) }}</span>
+                {% endif %}
+              </div>
+            </div>
+            <div class="date">
+              {% if contentLayer is defined %}
+                <time datetime="{{ contentLayer.publishedDate|replace({'/':'-'})|default("") }}" itemprop="datePublished">{{ contentLayer.publishedDate|default("") }}</time>
+              {% endif %}
+            </div>
+          </div>
+          <div class="league-description">
+            <div class="name" {{ data_camus_title }}>
+              {{ module.title|raw }}
+            </div>
+            <div class="matchweek">
+              {#<span {{ data_camus_abstract }}>{{ module.abstract|raw }}</span>#}
+            </div>
+          </div>
+          <!-- <div class="refresh-time">
+            <span>Actualizar</span>
+            <button class="btn-refresh">
+              Actualizar <span class="fa fa-refresh"></span>
+            </button>
+          </div> -->
+        </div>
+      </div>
+      </div>
+    {% endif %}
+    <div class="detail">
+      <div class="extras">
+        <div class="social-network">
+          <span class="hint">Comparte esta noticia</span>
+          <div id="share-icons-container" class="logos"></div>
+        </div>
+      </div>
+      {% set currentPath =  app.request.getSchemeAndHttpHost() %}
+      {% set bodyEmbed = module.body %}
+      {% if embedBodyModules is defined %}
+        {% set bodyEmbed = setEmbedModules(module.body,embedBodyModules) %}
+      {% endif %}
+      <div class="summary" itemprop="description">
+        {{ bodyEmbed|pregReplace(currentPath)|raw }}
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'title_headline_live' %}
+  <div class="nd-th-live">
+    <div class="media-container">
+      <h3 class="heading" {{ data_camus_body }}>{{ module.body|raw }}</h3>
+      <h1 class="title" {{ data_camus_title }}>{{ module.title|raw }}</h1>
+      <div class="extras">
+        <div class="social-network">
+          <span class="hint">Comparte esta noticia</span>
+          <div id="share-icons-container" class="logos"></div>
+        </div>
+        <!-- <div class="refresh-time">
+          <span>Actualizar</span>
+          <button class="btn-refresh">
+            Actualizar <span class="fa fa-refresh"></span>
+          </button>
+        </div> -->
+        {#<div class="elements">
+          <span class="hint">Esta noticia tiene</span>
+          <div class="count">
+            <span class="fa fa-video-camera"></span>
+            <span>4 videos</span>
+          </div>
+        </div>#}
+      </div>
+    </div>
+    <div class="content">
+      <div class="summary" {{ data_camus_abstract }}>{{ module.abstract|raw }}</div>
+      {% if module.sponsor.media_id is defined and module.sponsor_id != null %}
+        <div class="sponsored-content">
+          <span class="hint">Patrocinado por </span>
+          <div class="img-container">
+            <img src="/bundles/applicationcamusassets/images/news-elements/sponsored-image.png">
+          </div>
+        </div>
+      {% endif %}
+      <div class="author">
+        <span {{ data_camus_author }}> {{ module.author }}</span>
+      </div>
+      <div class="place-date-container">
+        <span class="content-date">{{ module.signaturePlace }} / {{ module.date }}</span>
+      </div>
+    </div>
+  </div>
+{% endif %}

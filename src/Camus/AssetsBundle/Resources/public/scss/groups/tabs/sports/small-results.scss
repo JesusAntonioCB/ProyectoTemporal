@@ -1,0 +1,60 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.tabs-small{
+  table.results-tab{
+    line-height: 27px;
+    font-family: $font-sans-serif;
+    th{
+      width: 35px;
+      font-size: 9px;
+      text-align: center;
+      font-weight: 500;
+    }
+    tr{
+      border-top: 1px solid $color-white;
+      &:first-child{
+        border-top: 0 !important;
+      }
+    }
+    td:first-child{
+      padding-left: 5px;
+      color: $color-green;
+      font-size: 10px;
+      font-family: $font-open-sans5;
+      width: 55px;
+    }
+    td:nth-child(2){
+      width: 25px;
+      color: $color-night-gray;
+      font-size: 10px;
+      padding-right: 5px;
+    }
+    td:nth-child(3){
+      text-align: right;
+    }
+    td:nth-child(4){
+      width: 50px;
+      padding: 0 7px;
+      font-weight: 700;
+      text-align: center;
+    }
+    td:nth-child(3), td:nth-child(5){
+      width: 90px;
+      font-size: 12px;
+    }
+  }
+  .btn-full-table-container{
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: $color-gray;
+    button{
+      background: transparent;
+      border: 1px solid $color-light-gray;
+      padding: 6px 10px 6px 10px;
+    }
+  }
+}

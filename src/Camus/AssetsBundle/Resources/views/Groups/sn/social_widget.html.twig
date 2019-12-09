@@ -1,0 +1,45 @@
+{% if module.template == 'base' or module.template == 'base_aficion' or module.template == 'base_hey' %}
+<div class="in-the-networks tabs tabs-small" {{ data_camus_type["sn_social_widget"] }} {{data_camus_allow_empty_module["1"]}} {{data_camus_modal_tools["1"]}}>
+  {% set facebookUrl = 'https://www.facebook.com/RevistaFamaMx/' %}
+  {% set twitterUrl = 'https://twitter.com/fama_revista' %}
+  {% set youtubeUrl = 'https://www.youtube.com/user/FamaRevista' %}
+  <div class="media-container">
+    <div class="headline">
+      <span {{ data_camus_title }}>{{ module.title }}</span>
+      {% if module.template == 'base' or module.template == 'base_aficion' %}
+        <a href="{{ youtubeUrl }}" target="_blank"><i class="fa fa-youtube"></i></a>
+      {% endif %}
+      {# {% if module.template == 'base' %}
+        <a href="{{ googleUrl }}" target="_blank"><i class="fa fa-google-plus"></i></a>
+      {% endif %} #}
+      <a href="{{ facebookUrl }}" target="_blank"><i class="fa fa-facebook-f"></i></a>
+      <a href="{{ twitterUrl }}" target="_blank"><i class="fa fa-twitter"></i></a>
+    </div>
+    <div class="tabs">
+      <ul>
+        <li class="tab-title-active" id="tab-title-1">Facebook feed</li>
+        <li id="tab-title-2">Twitter feed</li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="tab-content tab-active" id="tab-content-1">
+        <div class="fb-page"
+        data-href="{{ facebookUrl }}"
+        data-tabs="timeline"
+        data-small-header="false"
+        data-adapt-container-width="true"
+        data-hide-cover="false"
+        data-show-facepile="true">
+          <blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore">
+            <a href="{{ facebookUrl }}">{{ site_name }}</a>
+          </blockquote>
+        </div>
+      </div>
+      <div class="tab-content" id="tab-content-2">
+        <a class="twitter-timeline" href="{{ twitterUrl }}">Tweets by {{ site_name }}</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

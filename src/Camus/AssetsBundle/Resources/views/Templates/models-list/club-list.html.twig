@@ -1,0 +1,23 @@
+<div class="club-list">
+  <div class="media-container">
+    <h1>
+      <span class="list-name">{{listName}}</span>
+    </h1>
+    <div class="list">
+      {% for i in 0..2 %}
+      <ul>
+        {% for j in 0..7 %}
+        <li>
+          <h1>
+            <span class="club">{{club}}</span>
+          </h1>
+          <h5>
+            <span class="league">{{league}}</span>
+          </h5>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endfor %}
+    </div>
+  </div>
+</div>

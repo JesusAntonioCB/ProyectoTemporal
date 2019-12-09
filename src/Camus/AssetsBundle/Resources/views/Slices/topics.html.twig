@@ -1,0 +1,6 @@
+<span class="today">Hoy</span>
+<ul>
+  {% for topic in jsonDataTopics %}
+    <li><a href="/temas/{{ topic.nameNormalized }}">{{ topic.name }}</a></li>
+  {% endfor %}
+</ul>

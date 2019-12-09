@@ -1,0 +1,110 @@
+$one-column: 100%;
+$two-column: 618px;
+$three-column: 936px;
+$four-column: 1254px;
+
+$global-height: 352px;
+$global-padding-top: 6px;
+$global-margin-bottom: 18px;
+
+@mixin rows-height($rows) {
+  height: ($global-height * $rows) + ($global-margin-bottom * ($rows - 1));
+  //min-height: ($global-height * $rows) + ($global-margin-bottom * ($rows - 1));
+  //max-height: ($global-height * $rows) + ($global-margin-bottom * ($rows - 1));
+}
+
+@mixin prefix($declarations, $prefixes: ()) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+    #{$property}: $value;
+  }
+}
+
+.global-container{
+  display: inline-block;
+  margin-bottom: $global-margin-bottom;
+  //padding-top: $global-padding-top;
+  // border-top: 5px solid $color-alizarin-crimson;
+  overflow: hidden;
+}
+.global-container-1c{
+  @extend .global-container;
+  width: 300px;
+  @include one-column{
+    width: $one-column;
+  };
+}
+.global-container-2c{
+  @extend .global-container;
+  width: $two-column;
+  @include one-column{
+    width: $one-column;
+  };
+}
+.global-container-3c{
+  @extend .global-container;
+  width: $three-column;
+  @include one-column{
+    width: $one-column;
+  };
+}
+.global-container-4c{
+  @extend .global-container;
+  width: $four-column;
+  @include three-column{
+    width: $three-column;
+  };
+  @include two-column{
+    width: $two-column;
+  };
+  @include one-column{
+    width: $one-column;
+  };
+}
+
+// @mixin grid-vertical(){
+//   grid-column: auto / span 1;
+//   grid-row: auto / span 2;
+// }
+//
+// @mixin grid-horizontal(){
+//   grid-column: auto / span 2;
+//   grid-row: auto / span 1;
+// }
+//
+// @mixin grid-combined(){
+//   grid-column: auto / span 2;
+//   grid-row: auto / span 2;
+// }
+//
+// @mixin grid-desktop(){
+//   grid-column: auto / span 4;
+//   grid-row: auto / span 1;
+// }
+// @mixin grid-tablet(){
+//   grid-column: auto / span 3;
+//   grid-row: auto / span 1;
+// }
+// @mixin grid-mobile-large(){
+//   grid-column: auto / span 2;
+//   grid-row: auto / span 1;
+// }
+// @mixin grid-mobile-small(){
+//   grid-column: auto / span 1;
+//   grid-row: auto / span 1;
+// }
+//
+// @mixin grid-dynamic-full(){
+//   @include grid-desktop();
+//   @include three-column(){
+//     @include grid-tablet();
+//   }
+//   @include two-column(){
+//     @include grid-mobile-large();
+//   }
+//   @include one-column(){
+//     @include grid-mobile-small();
+//   }
+// }

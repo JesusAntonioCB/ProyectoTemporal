@@ -1,0 +1,16 @@
+services:
+  #  md_front_end.example:
+  #      class: Camus\FrontEndBundle\Example
+  #      arguments: [@service_id, "plain_value", %parameter%]
+   httpClient:
+       class: GuzzleHttp\Client
+       arguments:
+           0:
+               base_uri: '%service_host%/v1/'
+               headers:
+                   X-Api-Key: 8qdHugTGrEWiRvcgNYj=LUGrYAdbCamGf=XbhN38GKpKC9
+               http_errors: false
+   moduleFilter:
+       class: Application\Camus\AssetsBundle\Twig\ModelModuleExtension
+       tags:
+           - { name: twig.extension }

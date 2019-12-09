@@ -1,0 +1,21 @@
+{% if module.template == 'base' %}
+  {% if 'admin' in app.request.getSchemeAndHttpHost() %}
+    <div class="eo-taboola" data-camus-module-type="taboola" template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+      <picture>
+        <source media="(max-width: 649px)" srcset="/bundles/applicationcamusassets/images/taboola-vertical.png">
+        <img src="/bundles/applicationcamusassets/images/taboola-horizontal.png">
+      </picture>
+    </div>
+  {% else %}
+    <div id="taboola-below-home-thumbnails" class="eo-taboola"></div>
+    <script type="text/javascript">
+      window._taboola = window._taboola || [];
+      _taboola.push({
+        mode: 'thumbnails-b',
+        container: 'taboola-below-home-thumbnails',
+        placement: 'Below Home Thumbnails',
+        target_type: 'mix'
+      });
+    </script>
+  {% endif %}
+{% endif %}

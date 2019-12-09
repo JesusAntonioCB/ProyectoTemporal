@@ -1,0 +1,82 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.oo-top-text{
+  @include global-container-2c;
+  border-radius: 10px;
+  .media-container{
+    @include rows-height(1);
+    .image{
+      height: inherit;
+    }
+    .sphere{
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      padding: 19px;
+      line-height: 0;
+      border-radius: 50%;
+      opacity: 0.5;
+      background-color: $color-white;
+      &:hover{
+        opacity: 0.8;
+      }
+      >span{
+        font-size: 30px;
+      }
+    }
+    .headline-top-container-gradient{
+      .title{
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 30px;
+        line-height: 36px;
+      }
+      .sponsor{
+        font-size: 10px;
+        position: relative;
+        height: 25px;
+        margin-top: 6px;
+        @include text-with-roboto-regular-color-night-gray;
+        color:$color-gray-glass;
+        .caption{
+          width: 82px;
+          margin-right: 7px;
+        }
+        a{
+          img{
+            width: 130px;
+            height: auto;
+            max-width: unset;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include one-column{
+  .oo-top-text{
+    .media-container{
+      .sphere{
+        span{
+          font-size: 16px;
+        }
+      }
+      .headline-top-container-gradient{
+        .title{
+          font-size: 20px;
+          line-height: 22px;
+        }
+        .sponsor{
+          //bottom: 40px;
+        }
+      }
+    }
+  }
+}

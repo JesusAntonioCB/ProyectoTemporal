@@ -1,0 +1,163 @@
+@mixin market-sections($parent){
+  .stock-market,.bmv,.indicators,.funds{
+    width: 100%;
+    max-width: $four-column;
+    min-width: $one-column;
+    height: auto;
+    padding-top: $global-padding-top;
+    margin-bottom: $global-margin-bottom;
+    position: relative;
+    float: none;
+    .media-container{
+      width: 100%;
+      height: auto;
+      position: relative;
+      float: none;
+      display: flex;
+      flex-wrap: wrap;
+      .tabs{
+        width: 100%;
+        height: auto;
+        position: relative;
+        float: none;
+        ul{
+          width: 100%;
+          height: auto;
+          position: relative;
+          float: none;
+          display: flex;
+          padding: 0 10px;
+          margin: 0;
+          overflow: auto;
+          *{
+            width: 100%;
+          }
+          a{
+            li{
+              list-style: none;
+              flex-grow: 1;
+              padding: 10px;
+              color: $color-night-gray;
+              outline: none;
+              border: 1px solid $color-light-blue;
+              border-bottom: 0;
+              cursor: pointer;
+              h1{
+                font-family: $font-open-sans5;
+                font-size: 15px;
+                font-weight: 700;
+                margin: 0;
+                padding: 0;
+                user-select: none;
+              }
+            }
+          }
+        }
+      }
+      .content{
+        width: 100%;
+        height: auto;
+        position: relative;
+        float: none;
+        display: flex;
+        flex-wrap: wrap;
+        background-color: $color-sky-cyan;
+        padding: 30px 10px 0;
+      }
+    }
+  }
+  .stock-market{
+    .media-container{
+      .tabs{
+        ul{
+          a:nth-child(1){
+            background-color: $color-sky-cyan;
+            color: $color-night-gray;
+          }
+        }
+      }
+    }
+  }
+  .bmv{
+    .media-container{
+      .tabs{
+        ul{
+          a:nth-child(2){
+            background-color: $color-sky-cyan;
+            color: $color-night-gray;
+          }
+        }
+      }
+    }
+  }
+  .indicators{
+    .media-container{
+      .tabs{
+        ul{
+          a:nth-child(3){
+            background-color: $color-sky-cyan;
+            color: $color-night-gray;
+          }
+        }
+      }
+    }
+  }
+  .funds{
+    .media-container{
+      .tabs{
+        ul{
+          a:nth-child(4){
+            background-color: $color-sky-cyan;
+            color: $color-night-gray;
+          }
+        }
+      }
+    }
+  }
+  #{$parent}{
+    .media-container{
+      .content{
+        @content;
+      }
+    }
+  }
+}
+@mixin market-sections-three-columns($parent){
+  @include three-column{
+    #{$parent}{
+      .media-container{
+        .content{
+          @content;
+        }
+      }
+    }
+  }
+}
+@mixin market-sections-two-columns($parent){
+  @include two-column{
+    #{$parent}{
+      .media-container{
+        .content{
+          @content;
+        }
+      }
+    }
+  }
+}
+@mixin market-sections-one-column($parent){
+  @include one-column{
+    #{$parent}{
+      .media-container{
+        .content{
+          @content;
+        }
+      }
+    }
+  }
+}
+@import "stock-market.scss";
+@import "bmv.scss";
+@import "indicators.scss";
+@import "funds.scss";
+@import "../../ordinary_openings/market_table/market-table.scss";
+@import "../../ordinary_openings/statistics/statistics.scss";

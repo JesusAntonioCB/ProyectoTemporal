@@ -1,0 +1,142 @@
+{% extends 'Application\Camus\AssetsBundle:Base:base.html.twig' %}
+{% set image = "/bundles/applicationcamusassets/images/placeholder.jpg" %}
+{% set layerPublishedDate = contentLayer.publishedDate|default("")|replace({'/': "-"}) %}
+{% set layerColumn = "" %}
+{% if contentType == 'NWS' or contentType == 'ENT' or contentType == 'CHR' %}
+  {% set retrieveTitle = modules.head.nd_title_headline_base.title %}
+  {% if modules.head.nd_media_detail_base.thumbnail is defined and modules.head.nd_media_detail_base.thumbnail is not empty %}
+    {% set thumbnailSrc = modules.head.nd_media_detail_base.thumbnail.src %}
+    {% if thumbnailSrc is not empty %}
+      {% set image = thumbnailSrc %}
+    {% endif %}
+  {% endif %}
+  {% set retrieveAuthor = modules.body.0.author.name %}
+  {% if modules.body.0.publishedDate is defined %}
+    {% set layerPublishedDate =  modules.body.0.publishedDate|replace({'.': "-"})|slice(0,10) %}
+  {% endif %}
+  {% set retrieveAuthor = modules.body.0.author.name %}
+{% elseif contentType == 'FIR' or contentType == 'POS' or contentType == 'DEB' %}
+  {% set retrieveTitle = modules.head.nd_title_headline_photo.title %}
+  {% if modules.head.nd_title_headline_photo.thumbnail.src is defined  %}
+    {% set image = modules.head.nd_title_headline_photo.thumbnail.src %}
+  {% endif %}
+  {% if modules.head.nd_title_headline_photo.content.author.name is defined %}
+    {% set retrieveAuthor = modules.head.nd_title_headline_photo.content.author.name %}
+  {% endif %}
+  {% if modules.head.nd_title_headline_photo.content.publishedDate is defined  %}
+    {% set layerPublishedDate = modules.head.nd_title_headline_photo.content.publishedDate|replace({'.': "-"}) %}
+  {% endif %}
+  {% if modules.head.nd_title_headline_photo.content.column is defined  %}
+    {% set layerColumn = modules.head.nd_title_headline_photo.content.column %}
+  {% endif %}
+{% elseif contentType == 'PGL' or contentType == 'CRT' %}
+  {% set retrieveTitle = modules.body.0.title %}
+  {% set imageIndex = '0' %}
+  {% if app.request.query.get('image') is defined and app.request.query.get('image') is not null %}
+    {% set imageIndex = app.request.query.get('image') %}
+    {% set imageIndex = imageIndex-1 %}
+  {% endif %}
+  {% set image = modules.body.0.media[imageIndex].src %}
+{% elseif contentType == 'MAM' %}
+  {% set retrieveTitle = modules.head.nd_title_headline_sports.summary|default("") %}
+  {% set retrieveAuthor = modules.head.nd_title_headline_sports.author.name|default("") %}
+  {% set image = modules.head.nd_title_headline_sports.media.src|default("") %}
+{% elseif contentType == 'EDT' or contentType == 'VID' %}
+  {% set retrieveTitle = modules.head.nd_title_headline_live.title %}
+{% endif %}
+
+{% set keywords = modules.keywords %}
+{% set titleNote = modules.meta.title_note.content|default(retrieveTitle) %}
+{% set title = modules.meta.title.content|default(retrieveTitle) %}
+{% set description = modules.meta.description.content|default("") %}
+{% set author = retrieveAuthor|default("Fama") %}
+
+{% block GTM %}
+  {% if gtm is defined %}
+    <script type="text/javascript">
+      dataLayer = [{
+        'varSeccion': '{{ contentLayer.section|default("") }}',
+        'varSubSeccion': '{{ contentLayer.subSection|default("") }}',
+        'varSubSubSeccion': '{{ contentLayer.subSubSection|default("") }}',
+        'varAutor': '{{ contentLayer.author|default("") }}',
+        'varPlaza': '{{ contentLayer.place|default("Nacional") }}',
+        'varFormato': '{{ contentType }}',
+        'varEditor' : '{{ contentLayer.editor|default("") }}',
+        'varFechaPublicacion': '{{ layerPublishedDate }}'
+      }];
+    </script>
+  {% endif %}
+  {{ parent() }}
+{% endblock %}
+
+{% block metas %}
+  {% if modules.meta is not empty %}
+    {% import "Application\Camus\AssetsBundle:Fixtures:metas.html.twig" as metas %}
+    {{ metas.data(app.request.uri, title, description, keywords, image, contentType) }}
+  {% else %}
+    <title>{{ site_name }}</title>
+  {% endif %}
+  <script type="text/javascript">
+  window._taboola = window._taboola || [];
+  _taboola.push({article:'auto'});
+  !function (e, f, u, i) {
+    if (!document.getElementById(i)){
+      e.async = 1;
+      e.src = u;
+      e.id = i;
+      f.parentNode.insertBefore(e, f);
+    }
+  }(document.createElement('script'),
+  document.getElementsByTagName('script')[0],
+  '//cdn.taboola.com/libtrc/milenio-fama/loader.js',
+  'tb_loader_script');
+  if(window.performance && typeof window.performance.mark == 'function')
+    {window.performance.mark('tbl_ic');}
+</script>
+{% endblock %}
+
+{% block body %}
+  {% set contentTypes = {'NWS': 'news', 'ENT': 'news', 'CHR': 'news', 'FIR': 'opinion', 'DEB': 'opinion', 'PGL': 'basic', 'MAM': 'live', 'EDT': 'event', 'VID': 'basic', 'CRT': 'basic', 'POS': 'opinion', 'INF': 'basic'} %}
+  {% set detailType = contentTypes[contentType] %}
+  <article class="contenedor-detail-block {{ detailType }}" itemscope itemtype="http://schema.org/Article">
+    {% include 'Application\Camus\AssetsBundle:Detail:'~detailType~'.html.twig' ignore missing with {modules: modules, id: contentId, urlStats : urlStadistics, tabStats : tabStadistics} %}
+    <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization" style="display: none;">
+      <meta itemprop="name" content="{{ site_name }}">
+		  <meta itemprop="logo" content="{{ site_domain }}/bundles/applicationcamusassets/images/logo_fam.png">
+		</div>
+    <meta itemprop="mainEntityofPage" content="{{ app.request.pathinfo }}">
+  </article>
+  <script type="text/javascript">
+    window._taboola = window._taboola || [];
+    _taboola.push({flush: true});
+  </script>
+{% endblock %}
+
+{% block chartbeat %}
+<script type="text/javascript" class="chartbeatContainer">
+  var _sf_async_config={};
+  _sf_async_config.uid = 49523; /* ID de cuenta chartbeat */
+  _sf_async_config.domain = '{{ site_short_domain }}'; /* Dominio del sitio */
+  _sf_async_config.sections = '{{ currentSection }}'; /* Puede contener más de una sección separada por comas ej: Política, Policia, etc */
+  _sf_async_config.authors = '{{ author }}'; /* Puede contener más de un autor separado por comas ej: Ciro Gómez Leyva, Redacción Mty, etc.*/
+  _sf_async_config.type = '{{ contentType }}';
+  (function(){
+    function loadChartbeat() {
+      window._sf_endpt=(new Date()).getTime();
+      var e = document.createElement("script");
+      e.setAttribute("language", "javascript");
+      e.setAttribute("type", "text/javascript");
+      e.setAttribute("src","//static.chartbeat.com/js/chartbeat.js");
+      document.body.appendChild(e);
+    }
+    var oldonload = window.onload;
+    window.onload = (typeof window.onload != "function") ? loadChartbeat() : function() { oldonload(); loadChartbeat();};
+  })();
+</script>
+{% endblock %}
+
+{% block comscore %}
+{% endblock %}
+
+{% block ping %}
+{% endblock %}

@@ -1,0 +1,57 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-subscribe{
+  @include global-container-1c;
+  .media-container{
+    @include rows-height(1);
+    .principal-container{
+      height: 306px;
+      padding: 15px 15px 20px;
+      background-color: $color-light-cyan;
+      .description{
+        min-height: 101px;
+        font-family: $font-open-sans5;
+        font-size: 17px;
+        line-height: 22px;
+        color: $color-black;
+      }
+      .images-container{
+        .m-logo-shapes-container, .envelope{
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .m-logo-shapes-container{
+          width: 50%;
+          .m-logo{
+            display: inline-block;
+            padding: 20px;
+            border-radius: 50%;
+            background: $color-white;
+            img{
+              width: 45px;
+            }
+          }
+          .fa-arrow-right{
+            vertical-align: middle;
+            margin-left: -5px;
+            font-size: 50px;
+            color: $color-white;
+          }
+        }
+        .envelope{
+          font-size: 90px;
+          color: $color-white;
+        }
+      }
+      .btn-subscribe{
+        @include btn-container-important;
+        width: 100%;
+        margin: 36px auto 0;
+        padding: 12px 0;
+      }
+    }
+  }
+}

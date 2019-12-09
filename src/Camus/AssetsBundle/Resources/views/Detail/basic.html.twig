@@ -1,0 +1,13 @@
+{% for module in modules.head %}
+  {% if module.type is defined %}
+    {% set type = module.type|splitTemplate %}
+    {% if type[1] == "leaderboard" %}
+      {% include 'Application\Camus\AssetsBundle:Groups:ad/pleca.html.twig' ignore missing with {} %}
+    {% endif %}
+    {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+  {% endif %}
+{% endfor %}
+{% for module in modules.body %}
+  {% set type = module.type|splitTemplate %}
+  {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+{% endfor %}

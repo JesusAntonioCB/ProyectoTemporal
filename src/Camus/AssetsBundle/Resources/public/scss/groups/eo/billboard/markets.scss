@@ -1,0 +1,115 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.eo-markets{
+  width: 100%;
+  padding-top: $global-padding-top;
+  margin-bottom: $global-margin-bottom;
+  color: $color-white;
+  .head-container{
+    text-align: center;
+    padding: 10px;
+    font-size: 24px;
+    background-color: $color-space-gray;
+  }
+  .media-container{
+    background-color: $color-very-clear-gray;
+    height: 220px;
+    display: flex;
+    .tabs{
+      width: 30%;
+      margin-top: 10px;
+      ul{
+        width: 100%;
+        margin: 0;
+        padding: 5px 10px;
+        li{
+          list-style: none;
+          padding: 10px 5px;
+          color: $color-black;
+        }
+        li.tab-title-active{
+          background-color: $color-gray;
+          color: $color-white;
+        }
+      }
+    }
+    .tab-content{
+      display: none;
+      color: $color-black;
+      width: 69%;
+      margin-top: 10px;
+      .dollar-table, .usd-table, .mxn-table, .rates-table{
+        width: 50%;
+        padding: 5px;
+        table{
+          width: 100%;
+          text-align: center;
+          background-color: $color-white;
+          tr:first-child{
+            background-color: $color-space-gray;
+            color: $color-white;
+            th{
+              padding: 5px;
+              text-align: center
+            }
+          }
+          th[rowspan="3"]{
+            padding: 0 10px;
+            background-color: $color-gray;
+            color: white;
+          }
+          td{
+            padding: 5px;
+          }
+        }
+      }
+      .usd-table, .mxn-table, .rates-table{
+        table{
+          tr{
+            td:first-child{
+              text-align: left;
+            }
+          }
+        }
+      }
+      .rates-table{
+        width: 100%;
+      }
+    }
+    .tab-content.tab-active{
+      display: flex;
+    }
+  }
+
+  @include two-column{
+    .media-container{
+      flex-wrap: wrap;
+      height: auto;
+      .tabs{
+        width: 100%;
+      }
+      .tab-content{
+        width: 100%;
+      }
+    }
+  }
+
+  @include one-column{
+    .media-container{
+      .tab-content{
+        .dollar-table, .usd-table, .mxn-table, .rates-table{
+          width: 100%;
+        }
+        .rates-table{
+          overflow: scroll;
+        }
+      }
+      .tab-content.tab-active{
+        flex-wrap: wrap;
+      }
+    }
+  }
+}

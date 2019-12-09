@@ -1,0 +1,44 @@
+{% if page is defined %}
+  {% if page is iterable %}
+    {% if paging is defined %}
+      {% if paging.totalPages is defined and paging.totalPages > 1 %}
+        {% set currentPath = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
+        {% set searchTerm = '' %}
+        {% if app.request.get('text') is not null %}
+          {% set searchTerm = '?text=' ~ app.request.get('text') %}
+        {% endif %}
+        {% set searchTerms = '?' %}
+        {% if isLastNews is defined %}
+          {% set searchTerms = '' %}
+        {% else %}
+          {% if app.request.query.all|length > 0 %}
+            {% set searchTerms = searchTerms ~ app.request.query.all|url_encode %}
+          {% endif %}
+        {% endif %}
+        {% set pageUrl = 'page/' %}
+        {% set pathPage = currentPath|replace({ ('/page/' ~ page.active): '' })%}
+        <div class="number-pages-container">
+          {% if (page.active - 1) > 0  %}
+            <a href="{{ pathPage }}/{{pageUrl}}{{page.active - 1}}{{ searchTerms }}" class="link-pagination">
+              <span class="fa fa-chevron-left"></span>ANTERIOR
+            </a>
+          {% endif %}
+          {% for i in page.min..page.max %}
+            {% if page.active == i %}
+              <span><a style="text-decoration:underline;" href="{{ pathPage }}/{{pageUrl}}{{i}}">{{ i }}</a></span>
+            {% else %}
+              {% if i <= paging.totalPages  %}
+                <span><a href="{{ pathPage }}/{{pageUrl}}{{i}}{{ searchTerms }}">{{ i }}</a></span>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          {% if page.active < paging.totalPages %}
+            <a href="{{ pathPage }}/{{pageUrl}}{{page.active + 1}}{{ searchTerms }}" class="link-pagination">
+              SIGUIENTE<span class="fa fa-chevron-right"></span>
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endif %}

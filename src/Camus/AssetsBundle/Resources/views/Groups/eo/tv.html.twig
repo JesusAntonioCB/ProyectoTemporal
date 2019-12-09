@@ -1,0 +1,159 @@
+{% if module.template == 'composed' %}
+  <div class="eo-composed" data-camus-module-type="ctr">
+    <div class="media-container">
+      <div class="headboarder-container">
+        <div class="headline-container-space-gray" {{ data_camus_background_color }} style="background-color: {{ module.color }}">
+          <span {{ data_camus_extra_heading_title }}>{{ module.extraHeading.title }}</span>
+        </div>
+        <div class="section-container-yellow">
+          <div class="m-logo-container">
+            {{ module.heading.media|asImageHeading|raw }}
+          </div>
+          <div class="extra" {{ data_camus_module_color_contrast }} {{ data_camus_heading_title }}>{{ module.heading.title }}</div>
+        </div>
+      </div>
+      <div class="headline-container-transparent">
+        <a {{ module.slug|linkConstruct|raw }}>
+          <span {{ data_camus_title }}>{{ module.title }}</span>
+        </a>
+      </div>
+      <div class="container-space-gray">
+        <div class="live-title-container">
+          <div class="live-title">
+            <h1>EN VIVO</h1>
+          </div>
+          <div class="img-milenio">
+            <a href="">
+              {#
+                <img src="/bundles/applicationcamusassets/images/extraordinary-openings/milenio-television.png" alt="" />
+              #}
+            </a>
+          </div>
+        </div>
+        <div class="detail-container" {{ data_camus_modules }}>
+          {{ include ('Application\Camus\AssetsBundle:Groups:lo/base.html.twig', {father: module}) }}
+          {% if module.modules|length > 0 %}
+            {% for listElement in module.modules %}
+              {% set type = listElement.type|splitTemplate %}
+              {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'base' %}
+  <div class="eo-tv-base">
+    {% if module.heading.title != '' %}
+      <div class="live-title-container">
+        <div class="live-title">
+          {% if module.content == '' %}
+            <h2 style="color: rgb(252,236,63);" {{ data_camus_heading_title }}>{{ module.heading.title }}</h2>
+          {% else %}
+            <h2 {{ data_camus_heading_title }}>{{ module.heading.title }}</h2>
+          {% endif %}
+        </div>
+        <div class="img-milenio-container">
+          <a href="">
+            {#
+              <img src="/bundles/applicationcamusassets/images/extraordinary-openings/milenio-television.png" alt="">
+            #}
+
+          </a>
+        </div>
+      </div>
+    {% endif %}
+    <div class="media-container">
+      <div class="news-container">
+        <div class="holder-container" data-provider="{{ module.provider }}" data-reference="{{ module.providerReference }}" preload="true">
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+          <button type="button" class="btn-play" {{ data_camus_extra_media_icon }}>
+            <span class="fa fa-play"></span>
+          </button>
+        </div>
+      </div>
+      <div class="summary-container">
+        <div class="headline-top">
+          <div class="title">
+            {% if module.slug == '' %}
+              <span {{ data_camus_title }}>{{ module.title }}</span>
+            {% else %}
+              <a {{ module.slug|linkConstruct|raw }}>
+                <span {{ data_camus_title }}>{{ module.title }}</span>
+              </a>
+            {% endif %}
+          </div>
+          <div class="hour">
+            <span>{{ module.publishedDate }}{{ module.publishedHour }}</span>
+          </div>
+          <div class="abstract">
+            <span {{ data_camus_abstract }}>{{ module.abstract }}</span>
+          </div>
+        </div>
+        <div class="social-networks-share">
+          <div class="span-share">
+            <span>Compartir</span>
+          </div>
+          {% set slugUrl = app.request.requestUri %}
+          {{ slugUrl|socialTag(module.title, module.thumbnail)|raw }}
+          <div class="social-media-large"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'program' %}
+  <div class="eo-tv-program">
+    {% if module.heading.title != '' %}
+      <div class="live-title-container">
+        <div class="live-title">
+          <h2 {{ data_camus_heading_title }}>{{ module.heading.title }}</h2>
+        </div>
+        {#<div class="img-milenio-container">
+          <a href="">
+            <img src="/bundles/applicationcamusassets/images/extraordinary-openings/milenio-television.png" alt="">
+          </a>
+        </div>#}
+      </div>
+    {% endif %}
+    <div class="media-container">
+      <div class="news-container">
+        <div class="holder-container" data-provider="{{ module.provider }}" data-reference="{{ module.providerReference }}" preload="true">
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+          <button type="button" class="btn-play" {{ data_camus_extra_media_icon }}>
+            <span class="fa fa-play"></span>
+          </button>
+        </div>
+      </div>
+      <div class="summary-container">
+        <div class="headline-top">
+          <div class="title">
+            {% if module.slug == '' %}
+              <span {{ data_camus_title }} {{ data_camus_text_limit["70"] }}>{{ module.title }}</span>
+            {% else %}
+              <a {{ module.slug|linkConstruct|raw }}>
+                <span {{ data_camus_title }} {{ data_camus_text_limit["70"] }}>{{ module.title }}</span>
+              </a>
+            {% endif %}
+          </div>
+          <!--div class="host">
+            CON <span {{ data_camus_author }}>{{ module.author }}</span>
+          </div-->
+          <div class="abstract" {{ data_camus_abstract }} {{ data_camus_text_limit["160"] }}>
+            {{ module.abstract|raw }}
+          </div>
+          <div class="hour">
+            <span>{{ module.publishedDate }}{{ module.publishedHour }}</span>
+          </div>
+        </div>
+        <div class="social-networks-share">
+          <div class="span-share">
+            <span>Compartir</span>
+          </div>
+          {% set slugUrl = app.request.requestUri %}
+          {{ slugUrl|socialTag(module.title, module.thumbnail)|raw }}
+          <div class="social-media-large"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

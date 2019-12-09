@@ -1,0 +1,79 @@
+{% if module.template == 'gallery' %}
+  <div {{ data_camus_module_type["sli"] }} class="sli-opening slider" data-camus-id="{{ module.id }}">
+    {% if module.subtitle != '' %}
+      <h2 class="heading">{{ module.subtitle|striptags }}</h2>
+    {% endif %}
+    <div class="media-container">
+      <div class="description-cartoon">
+        <h1 class="title" {{ data_camus_title }}>{{ module.title|striptags }}</h1>
+        <div class="summary">
+          <span {{ data_camus_abstract }}>{{ module.abstract|raw }}</span>
+        </div>
+        <div class="section">
+          <span {{ data_camus_section }}>{{ module.section }}</span>
+        </div>
+        <div class="date">
+          <span></span>
+        </div>
+      </div>
+      <div class="gallery-container" {{ data_camus_modules }}>
+        {% for listElement in module.media %}
+        {% if listElement is not empty %}
+          {#{% set type = listElement.type|splitTemplate %}#}
+          {% set infografiaClass = "" %}
+          {% if contentLayer.type == "INF" %}
+            {% set infografiaClass = "infografia" %}
+          {% endif %}
+          <div class="img-item {{ infografiaClass }}">
+            {{ listElement.src|imageSize(module.template)|raw }}
+            <span class="detail">{{ listElement.publishedVersion.title }}</span>
+          </div>
+          {#{{ include ('Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig', {module: listElement|getModelModule}) }}#}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="left-container">
+
+        <div class="cartoon-counter">
+          <div class="arrow-buttons">
+
+            {#MODIFICACION DE LAS FLECHAS#}
+            <button class="left"> <span> <img src="/bundles/applicationcamusassets/images/flecha_cartones_atras.jpg" alt="Flecha atras"/></button> </span>
+            <button class="right"> <span> <img src="/bundles/applicationcamusassets/images/flecha_cartones_adelante.jpg" alt="Flecha adelante"/></button> </span>
+
+            {#  FLECHAS ANTERIORES
+            <button class="left"><span class="fa fa-chevron-left"></span></button>
+            <button class="right"><span class="fa fa-chevron-right"></span></button>
+            #}
+
+          </div>
+          <div class="counter">
+            {#<div class="mono">
+              <span>Mono</span>
+            </div>#}
+            <div class="number">
+              <span class="img-index">1</span>
+              <span>/</span>
+              <span>{{ module.media|length }}</span>
+            </div>
+          </div>
+          <span class="img-detail">{{ module.media.0.publishedVersion.title }}</span>
+        </div>
+
+        <div class="social-networks-share">
+          <div class="span-share">
+            {# <span>Compartir</span> #}                                                                {#COMENTADO#}
+          </div>
+          {% set slugUrl = app.request.requestUri %}
+          {{ slugUrl|socialTag(module.title, module.media.0.src)|raw }}
+          <div class="social-media-large"></div>
+        </div>
+
+      </div>
+      <div class="detail-container">
+        <span class="img-index">1</span>
+        <span class="img-detail">{{ module.media.0.publishedVersion.title }}</span>
+      </div>
+    </div>
+  </div>
+{% endif %}

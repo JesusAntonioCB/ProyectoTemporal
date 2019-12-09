@@ -1,0 +1,69 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sli-thin-authors{
+  display: none;
+  width: 99%;
+  max-width: 100%;
+  min-width: $one-column;
+  height: 100px;
+  padding-top: $global-padding-top;
+  margin-bottom: $global-margin-bottom;
+  .media-container{
+    width: 100%;
+    height: 100%;
+    background-color: $color-clear-cyan;
+    display: block;
+    .head{
+      width: 100%;
+      height: 30%;
+      display: table;
+      text-align: center;
+      h5{
+        @include text-with-sans-serif-color-nobel;
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+    .carousel{
+      width: 100%;
+      height: 70%;
+      >*{
+        @include text-with-open-sans-5-color-night-gray;
+        position: relative;
+        width: 15%;
+        height: 100%;
+        max-height: 100%;
+        text-align: center;
+        overflow: hidden;
+        float: left;
+        border: 2px solid $color-white;
+        .fa{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+        }
+      }
+      .authors{
+        width: 70%;
+        padding: 0 10px;
+        ul{
+          height: 100%;
+          padding: 0;
+          margin: 0;
+          overflow: inherit;
+          list-style-type: none;
+          li{
+            float: left;
+            margin-right: 10px;
+            padding-top: 20px;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}

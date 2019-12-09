@@ -1,0 +1,155 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.epaper_body{
+  .buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .edition_btn{
+      border: 1px solid #95bcbb !important;
+    }
+  }
+  .buttons > a{
+    font-family: $font-open-sans-bold !important;
+    padding-left: 0px !important;
+    font-size: 14px !important;
+    line-height: 37px !important;
+    padding-top: 5px !important;
+    padding-left: 15px !important;
+    text-align: left !important;
+    width: 29% !important;
+    z-index: 2 !important;
+  }
+  .container-fluid{
+    .visor-supplements, .supp-library{
+      max-width: none;
+    }
+    .visor-supplements, .supp-library{
+      border-top: none;
+      margin-top: 15px;
+      width: 100% !important;
+      .supplement_div{
+        display: inline-block;
+        width: 180px;
+        margin: auto 15px;
+        height: 280px;
+        vertical-align: top;
+        .wrapper{
+          height: 225px;
+          overflow: hidden;
+        }
+        .choose-supplement-detail{
+          display: block;
+          color: white;
+          background: #9CB0BB;
+          margin-top: 5px;
+          margin-bottom: 5px;
+          border-radius: 0px;
+        }
+      }
+    }
+    .selectParent{
+      >p{
+        display: inline-block;
+      }
+      .selectOptionsSupp{
+        display:inline-block;
+        width: 365px !important;
+        height: 50px;
+        margin: 0 auto;
+        font: 16px '__Open Sans_5';
+        font-weight: 400;
+        line-height: 19px;
+        background: url("http://beta.epaper.milenio.com/bundles/app/images/select_arrow.png") no-repeat right center;
+        background-color: white;
+        border-radius: 0 !important;
+        -moz-appearance: window;
+        -webkit-appearance: none;
+        padding-left: 20px;
+        @include one-column{
+          width: 90% !important;
+        }
+      }
+    }
+  }
+  .supp_container{
+    border-width: 1px !important;
+  }
+}
+@include two-column{
+  .epaper_body{
+    .container-fluid{
+      .visor-supplements{
+        .supplement_div{
+          display: inline-block;
+          // width: 140px;
+          width: 162px;
+          margin: auto 15px;
+          height: 280px;
+          vertical-align: top;
+          .wrapper{
+            height: 225px;
+          }
+          .choose-supplement-detail{
+            display: block;
+            color: white;
+            background: #9CB0BB;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border-radius: 0px;
+          }
+        }
+      }
+    }
+  }
+}
+@include one-column{
+  .epaper_body{
+    .eo-section-image{
+      margin: 0;
+      .title-container{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        h1{
+          font-size: 22px;
+        }
+      }
+    }
+    .buttons > a{
+      font-family: $font-open-sans-bold !important;
+      padding-left: 0px !important;
+      font-size: 12px !important;
+      line-height: 37px !important;
+      padding-top: 5px !important;
+      padding-left: 10px !important;
+      width: 34% !important;
+    }
+    .container-fluid{
+      .edition_select{
+        width: 90% !important;
+        font-size: 14px;
+      }
+      .supplement_select{
+        width: 90% !important;
+        font-size: 14px;
+      }
+      .selectParent p{
+        padding-top: 0px;
+        padding-bottom: 15px;
+      }
+      .currentDate{
+        text-align: left;
+        color: black;
+        font-weight: 400;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        width: 90%;
+        margin: 10px auto;
+      }
+    }
+  }
+}

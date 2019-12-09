@@ -1,0 +1,24 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.nd-disclaimer{
+  margin-bottom: $global-margin-bottom;
+  img{
+    float: right;
+  }
+  &:after{
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@include one-column {
+  .nd-disclaimer{
+    img{
+      width: 100%;
+    }
+  }
+};

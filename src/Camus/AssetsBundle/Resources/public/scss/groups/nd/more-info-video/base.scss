@@ -1,0 +1,125 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.nd-miv-base{
+  margin-bottom: 25px;
+  background-color: #444;
+  .square-container-white{
+    left: 50%;
+    transform: translatey(-50%) rotate(45deg);
+    background-color: $color-sharp-gray;
+  }
+  .videos-title{
+    padding-top: 30px;
+    font-size: 14px;
+    font-weight: 800;
+    text-align: center;
+    color: $color-white;
+  }
+  .videos{
+    height: 370px;
+    padding: 10px 0;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: auto;
+    .sn-bottom-text-growable{
+      min-width: 25%;
+      max-width: 25%;
+      width: 25%;
+      height: 46%;
+      padding: {
+        top: 0;
+        left: 3px;
+      }
+      margin-bottom: 14px;
+      border-top: none;
+      &:first-child{
+        min-width: 50%;
+        max-width: 50%;
+        width: 50%;
+        height: 100%;
+        padding: 0;
+        .media-container{
+          .title{
+            font-size: 24px;
+            line-height: 26px;
+          }
+          .img-container{
+            .btn-play{
+              padding: 19px;
+            }
+          }
+        }
+      }
+      .media-container{
+        height: 100%;
+        min-height: 100%;
+        max-height: 100%;
+        .headline-bottom-container-gradient{
+          padding: 10px;
+        }
+        .title{
+          margin-bottom: 0;
+          font-family: $font-open-sans5;
+          font-size: 14px;
+          line-height: 16px;
+        }
+        .social-media{
+          display: none;
+        }
+        .img-container{
+          .btn-play{
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include two-column{
+  .nd-miv-base{
+    .videos{
+      margin: 0 10px;
+      .sn-bottom-text-growable{
+        min-width: 40%;
+        max-width: 40%;
+        width: 40%;
+        &:first-child{
+          min-width: 65%;
+          max-width: 65%;
+          width: 65%;
+        }
+      }
+    }
+  }
+};
+
+@include one-column{
+  .nd-miv-base{
+    .videos{
+      height: 210px;
+      .sn-bottom-text-growable{
+        min-width: 95%;
+        max-width: 95%;
+        width: 95%;
+        height: 100%;
+        &:first-child{
+          min-width: 95%;
+          max-width: 95%;
+          width: 95%;
+          .media-container{
+            .title{
+              font-size: 14px;
+              line-height: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+};

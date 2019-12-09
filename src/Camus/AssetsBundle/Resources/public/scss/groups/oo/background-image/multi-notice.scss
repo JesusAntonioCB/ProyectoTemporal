@@ -1,0 +1,250 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.oo-background-image-multi-notice{
+  width: 100%;
+  margin-bottom: $global-margin-bottom;
+  .media-container{
+    background-color: $color-vivid-violet;
+    padding: 5px;
+    &:after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+    .headline-container{
+      .headline{
+        @include text-with-YanoneKaffeesatz-color-white;
+      }
+    }
+    .headline-notice-gradient{
+      position: relative !important;
+      padding: 0 !important;
+      .info-container{
+        .title{
+          text-align: left;
+        }
+        .footer{
+          float: left;
+          width: 100%;
+          position: relative;
+          .social-media{
+            font-size: 16px;
+            color: $color-white;
+          }
+        }
+      }
+    }
+  }
+  .sn-wrapper{
+    float: left;
+    .media-container{
+      width: 95% !important;
+      margin: auto;
+      .headline-container{
+        .headline{
+          min-height: 0;
+          margin-bottom: 0;
+          text-transform: uppercase;
+          font-size: 30px;
+          padding-top: 5px;
+          padding-left: 3px;
+        }
+      }
+    }
+    &.primary{
+      width: 66.66%;
+      .headline-container{
+        .headline{
+          color: $color-red-alizarin-crimison;
+        }
+      }
+      .img-container{
+        height: 490px;
+      }
+      .item-icon{
+        @include item-icon("large");
+        left: 20px;
+        top: 20px;
+      }
+      .headline-notice-gradient{
+        .info-container{
+          .title{
+            overflow: hidden;
+            height: auto;
+            font-size: 35px;
+            color: white;
+            @include text-with-sans-pro-color-white;                                                //color de las letras
+          }
+          .abstract{
+            font-size: 25px;
+          }
+        }
+      }
+    }
+    &.secondary{
+      width: 33.33%;
+      .img-container{
+        height: 240px;
+      }
+      .item-icon{
+        @include item-icon("medium");
+        left: 20px;
+        top: 20px;
+      }
+      .headline-notice-gradient{
+        .info-container{
+          .title{
+            font-size: 25px;
+            line-height: 34px;
+            color: white;
+          }
+          .abstract{
+            font-size: 16px;
+            line-height: 18px;
+          }
+        }
+      }
+    }
+    &:nth-child(2){
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@include three-column{
+  .oo-background-image-multi-notice{
+    .sn-wrapper{
+      &.primary{
+        .img-container{
+          height: 375px;
+        }
+        .headline-notice-gradient{
+          .info-container{
+            .title{
+              height: auto;                                          //color de las letras
+            }
+          }
+        }
+      }
+      &.secondary{
+        .img-container{
+          height: 177px;
+        }
+        .headline-notice-gradient{
+          .info-container{
+            .title{
+              font-size: 24px;
+              line-height: 26px;
+              color: white;
+            }
+            .abstract{
+              font-size: 14px;
+              line-height: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+};
+
+@include two-column{
+  .oo-background-image-multi-notice{
+    .sn-wrapper{
+      &.primary{
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: $global-margin-bottom;
+        .img-container{
+          height: 365px;
+        }
+        .headline-notice-gradient{
+          .info-container{
+            .title{
+              height: auto;
+              font-size: 31px;
+              color: white;
+            }
+            .abstract{
+              font-size: 22px;
+            }
+          }
+        }
+      }
+      &.secondary{
+        width: 300px;
+        margin-right: 0;
+        .img-container{
+          height: 173px;
+        }
+      }
+    }
+  }
+};
+
+@include one-column{
+  .oo-background-image-multi-notice{
+    .sn-wrapper{
+      .headline-container{
+        .headline{
+          text-transform: uppercase;
+          font-size: 30px;
+          padding-top: 5px;
+          padding-left: 3px;
+        }
+      }
+      .media-container{
+        .img-container{
+          position: relative;
+          overflow: hidden;
+          margin: auto;
+          height: auto;
+        }
+        .headline-notice-gradient{
+          .info-container{
+            background: $transparent !important;
+            height: auto;
+            overflow: hidden;
+            margin: 5px 0;
+            font-size: 24px;
+            line-height: 26px;
+            .title{
+              height: auto;
+              font-size: 28px;
+              line-height: 27px;
+              color: white;
+              overflow: hidden;
+            }
+          }
+        }
+      }
+      &.primary,&.secondary{
+        .headline-notice-gradient{
+          .info-container{
+            .abstract{
+              font-size: 12px;
+              line-height: 14px;
+            }
+          }
+        }
+      }
+      &.primary{
+        padding: 0;
+      }
+      &.secondary{
+        width: 100%;
+        .img-container{
+          height: 100%;
+          max-height: 205px;
+        }
+      }
+      &:nth-child(2){
+        margin-right: 0;
+        // margin-bottom: $global-margin-bottom;
+      }
+    }
+  }
+};

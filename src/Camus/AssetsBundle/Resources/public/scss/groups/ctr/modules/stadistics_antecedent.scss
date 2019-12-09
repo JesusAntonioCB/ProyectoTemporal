@@ -1,0 +1,229 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.ctr-stadistics-antecedent{
+  .media-container{
+    .module-container{
+      width: 620px;
+      margin: 0 auto;
+      .goals, .next-games{
+        .stadistics-head{
+          .head-container{
+            .title{
+              border-style: solid;
+              border-color: $color-yellow;
+              padding-top: 3px;
+              font-size: 26px;
+              padding-bottom: 4px;
+              border-width: 5px 0px 1px;
+              @include text-with-roboto-black-color-dark-gray;
+            }
+          }
+        }
+      }
+      .goals-container{
+        .goals-row{
+          display: flex;
+          align-items: center;
+          margin-top: 8px;
+          margin-bottom: 7px;
+          border-bottom: 1px solid $color-sharp-gray;
+        }
+        .logo-container, .score, .time-score, .scorer, .support{
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .score{
+          width: 85px;
+          border-right: 1px solid $color-sharp-gray;
+          text-align: center;
+          font-size: 19px;
+          @include text-with-roboto-black-color-night-gray;
+        }
+        .time-score{
+          width: 90px;
+          border-right: 1px solid $color-sharp-gray;
+          text-align: center;
+          font-size: 19px;
+          @include text-with-roboto-regular-color-night-gray;
+        }
+        .scorer, .support{
+          padding-top: 5px;
+          padding-bottom: 5px;
+          padding-left: 18px;
+          font-size: 12px;
+          line-height: 16px;
+        }
+        .scorer{
+          width: 212px;
+          @include text-with-roboto-black-color-dark-gray;
+          border-right: 1px solid $color-sharp-gray;
+        }
+        .support{
+          width: 170px;
+          @include text-with-roboto-regular-color-dark-gray;
+        }
+      }
+      .next-games{
+        margin-top: -30px;
+        margin-bottom: 65px;
+        .next-games-container{
+          .next-games-row{
+            padding-top: 13px;
+            padding-bottom: 11px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid $color-sharp-gray;
+            .next-game-info{
+              width: 120px;
+              font-size: 12px;
+              @include text-with-roboto-black-color-night-gray;
+              .ligue{
+                text-transform: uppercase;
+              }
+            }
+            .next-game-date{
+              width: 222px;
+              text-align: center;
+              text-transform: uppercase;
+              font-size: 12px;
+              @include text-with-roboto-regular-color-night-gray;
+            }
+            .next-games-teams{
+              width: 278px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              .team-info{
+                display: flex;
+                align-items: center;
+                .first-team-name, .second-team-logo{
+                  grid-column: 1;
+                }
+                .first-team-logo, .second-team-name{
+                  grid-column: 2;
+                }
+                .first-team-name, .second-team-name{
+                  font-size: 14px;
+                  @include text-with-roboto-regular-color-night-gray;
+                }
+                .first-team-name.active, .second-team-name.active{
+                  text-transform: uppercase;
+                  @include text-with-roboto-black-color-night-gray;
+                }
+                .first-team-logo, .second-team-logo{
+                  width: 35px;
+                  img{
+                    width: 100%;
+                    height: 35px;
+                    object-fit: cover;
+                    border-radius: 62px;
+                  }
+                }
+                .first-team-logo{
+                  margin-left: 5px;
+                }
+                .second-team-logo{
+                  margin-right: 18px;
+                }
+              }
+              .versus{
+                width: 40px;
+                text-align: center;
+                font-size: 14px;
+                @include text-with-roboto-black-color-night-gray;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@include one-column{
+  .ctr-stadistics-antecedent{
+    .media-container{
+      .module-container{
+        width: 350px;
+        .goals, .next-games{
+          .stadistics-head{
+            .head-container{
+              .title{
+                text-transform: uppercase;
+                padding-left: 10px;
+                font-size: 14px;
+                padding-top: 14px;
+                padding-bottom: 12px;
+              }
+            }
+          }
+        }
+        .goals-container{
+          .goals-row:last-of-type{
+            border-bottom: unset;
+            padding-bottom: 3px;
+          }
+          .score{
+            font-size: 15px;
+            width: 55px;
+          }
+          .time-score{
+            font-size: 15px;
+            width: 50px;
+          }
+          .scorer, .support{
+            width: 100px;
+            border-right:unset;
+            padding-top: 0px;
+            padding-left: 8px;
+            padding-bottom: 0px;
+          }
+        }
+        .next-games{
+          margin-top: -15px;
+          .next-games-container{
+            .next-games-row{
+              padding: 0;
+              .next-game-info{
+                padding: 10px 0px 10px 0;
+                border-right: 1px solid $color-sharp-gray;
+                font-size: 9px;
+                font-family: $font-medium, $font-sans-serif;
+                color: $color-night-gray;
+              }
+              .next-game-date{
+                font-size: 10px;
+                width: unset;
+                width: 50px;
+              }
+              .next-games-teams{
+                border-left: 1px solid $color-sharp-gray;
+                .team-info{
+                  display: grid;
+                  .first-team-name, .second-team-name{
+                    grid-column: 1;
+                    grid-row: 2;
+                    font-size: 12px;
+                  }
+                  .first-team-logo, .second-team-logo{
+                    grid-column: 1;
+                    grid-row: 1;
+                    width: 25px;
+                    img{
+                      height: 25px;
+                    }
+                  }
+                }
+                .versus{
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

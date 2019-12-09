@@ -1,0 +1,350 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-stadistics-calendar, .sn-league-stadistics.calendar{
+  .body-container{
+    .going-container, .lap-container{
+      .body-going, .body-lap{
+        .going-body-container, .lap-body-container{
+          .going-data, .lap-data{
+            .title{
+              width: 60px;
+            }
+            .going-teams, .lap-teams{
+              .first-team, .second-team{
+                width: 75px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.sn-stadistics-calendar, .sn-league-stadistics.calendar{
+  .stadistics-footer {
+    @include text-with-roboto-black-color-black;
+    text-align: left;
+    margin-left: 1px;
+    margin-top: 12px;
+    line-height: 17px;
+    text-transform: uppercase;
+    .gold {
+      font-size: 16px;
+      color: $color-alizarin-crimson;
+      font-weight: 700;
+      line-height: 22px;
+    }
+  }
+  .body-container{
+    .stadistics-header {
+      border-width: 2px 0px;
+      border-style: solid;
+      border-color: $color-alizarin-crimson;
+      .title {
+        @include text-with-roboto-black-color-dark-gray;
+        line-height: 34px;
+        font-size: 26px;
+      }
+      &.automatic {
+        margin-bottom: 10px;
+      }
+    }
+    .head-going, .head-lap{
+      background-color: $color-alizarin-crimson;
+      padding-top: 5px;
+      padding-bottom: 2px;
+      text-transform: uppercase;
+      @include text-with-roboto-medium-color-white;
+      text-align: center;
+      font-size: 12px;
+      position: relative;
+    }
+    .going-container, .lap-container{
+      .body-going, .body-lap{
+        .going-header, .lap-header{
+          .date-separator{
+            display: flex;
+            align-items: center;
+            .going-date, .lap-date{
+              padding-top: 16px;
+              text-transform: uppercase;
+              font-size: 12px;
+              @include text-with-roboto-color-alizarin-crimson;
+            }
+            .going-separator-line, .lap-separator-line{
+              width: 280px;
+              height: 1px;
+              background-color: $color-alizarin-crimson;
+              position: relative;
+              margin-top: 14px;
+              left: 10px;
+            }
+          }
+        }
+        .going-body-container, .lap-body-container{
+          .going-data, .lap-data{
+            border-bottom: 1px solid $color-sharp-gray;
+            padding-bottom: 7px;
+            margin-bottom: 4px;
+            display: flex;
+            padding-left: 10px;
+            .title{
+              position: relative;
+              left: 0;
+              .going-hour, .lap-hour{
+                padding-top: 7px;
+                font-size: 12px;
+                @include text-with-roboto-black-color-night-gray;
+              }
+              .going-title, .lap-title{
+                padding-top: 5px;
+                font-size: 12px;
+                @include text-with-roboto-regular-color-night-gray;
+              }
+            }
+            .going-teams, .lap-teams{
+              position: relative;
+              margin: auto;
+              .first-team{
+                display: table-cell;
+              }
+              .first-team, .second-team{
+                display: table-cell;
+                padding: 0 10px;
+                text-align: center;
+                img{
+                  width: 22px;
+                  height: auto;
+                }
+                .team-name{
+                  text-align: center;
+                  font-size: 12px;
+                  margin-top: 7px;
+                  @include text-with-roboto-black-color-night-gray;
+                }
+              }
+              .result-team{
+                width: 100.1px;
+                display: table-cell;
+                padding: 0;
+                text-align: center;
+                font-size: 22px;
+                @include text-with-roboto-black-color-night-gray;
+              }
+            }
+            .going-type, .lap-type{
+              .recap{
+                background-color: $color-sunset-orange;
+              }
+              .previus{
+                background-color: $color-yellow;
+              }
+              .live{
+                background-color: $color-scooter;
+              }
+              .title-type{
+                text-align: center;
+                font-size: 11px;
+                margin-top: 15px;
+                text-transform: uppercase;
+                padding: 2px 5px;
+                @include text-with-roboto-regular-color-white;
+              }
+            }
+          }
+          .going-data:last-of-type, .lap-data:last-of-type{
+            border-bottom: unset;
+            margin-bottom: 20px;
+            padding-bottom: unset;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include one-column{
+  /*.sn-stadistics-calendar {
+    overflow-x: auto;
+    .body-container {
+      .going-container {
+        width: 390px;
+      }
+    }
+  }*/
+  .sn-stadistics-calendar{
+    .body-container{
+      .going-container, .lap-container{
+        .head-going, .head-lap{
+
+        }
+        .body-going, .body-lap{
+          .going-header, .lap-header{
+            margin-bottom: -5px;
+            .date-separator{
+
+              .going-date, .lap-date{
+
+              }
+              .going-separator-line, .lap-separator-line{
+                width: 288px;
+              }
+            }
+          }
+          .going-body-container, .lap-body-container{
+            .going-data, .lap-data{
+              padding-left: 0px;
+              .title{
+                margin-right: unset;
+                .going-hour, .lap-hour{
+
+                }
+                .going-title, .lap-title{
+                  position: relative;
+                  width: 80px;
+                  left: 40px;
+                }
+              }
+              .going-teams, .lap-teams{
+                margin-right: unset;
+                .first-team{
+
+                }
+                .first-team, .second-team{
+                  display: grid;
+                  img{
+                    grid-column: 2;
+                    grid-row: 1;
+                  }
+                  .team-name{
+                    width: 70px;
+                    grid-column: 1;
+                    grid-row: 1;
+                  }
+                }
+                .result-team{
+                  width: 70px;
+                  margin-right: unset;
+                }
+              }
+              .going-type, .lap-type{
+                position: relative;
+                top: 14px;
+                right: 205px;
+                .recap{
+
+                }
+                .previus{
+
+                }
+                .title-type{
+
+                }
+              }
+            }
+            .going-data:last-of-type, .lap-data:last-of-type{
+
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.sn-league-stadistics.calendar.small {
+  width: 300px;
+  margin: unset;
+  padding-top: 0;
+  .body-container{
+    .stadistics-headers {
+      .title:first-child {
+        width: 132px;
+        padding-right: 40px;
+      }
+      .title:nth-child(2) {
+        width: 120px;
+        padding-right: 70px;
+      }
+      .title:last-child {
+        right: 0px;
+        width: 46px;
+      }
+    }
+    .stadistics-headers > .title {
+      @include text-with-roboto-black-color-dark-gray;
+      display: table-cell;
+      line-height: 23px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .going-container, .lap-container{
+      .body-going, .body-lap{
+        .going-header, .lap-header{
+          .date-separator{
+            display: flex;
+            align-items: center;
+            .going-date, .lap-date{
+              padding-top: 0px;
+              text-transform: uppercase;
+              font-size: 12px;
+              @include text-with-roboto-color-alizarin-crimson;
+            }
+            .going-separator-line, .lap-separator-line{
+              width: 200px;
+              margin-top: 0px;
+            }
+          }
+        }
+        .going-body-container, .lap-body-container{
+          .going-data, .lap-data{
+            .title{
+              width: 60px;
+              .going-title{
+                font-size: 11px;
+              }
+              /*.going-title, .lap-title{
+                word-break: break-all;
+              }*/
+            }
+            .going-teams, .lap-teams{
+              position: relative;
+              margin: auto;
+              .first-team{
+                display: table-cell;
+              }
+              .first-team, .second-team{
+                display: table-cell;
+                padding: 0 5px;
+                text-align: center;
+                width: 50px;
+              }
+              .result-team{
+                display: table-cell;
+                padding: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include two-column{
+  .sn-league-stadistics.calendar.small {
+    margin: 0px 112px;
+    margin-bottom: 60px;
+  }
+};
+
+@include one-column{
+  .sn-league-stadistics.calendar.small {
+    margin: unset;
+    margin-bottom: 30px;
+  }
+};

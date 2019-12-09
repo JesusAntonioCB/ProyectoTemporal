@@ -1,0 +1,95 @@
+{% if module.template == 'row_live' %}
+  <div class="nd_row_detail_live" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }}>
+    <div class="item-news-container">
+      <div class="hour-social-network">
+        <div class="hour" style="background-color: {{ module.color }}">
+          {% set colorText = 'white' %}
+          {% set colorTextPrimordial = module.color %}
+          {% if module.color == 'rgba(252,238,33,1)'%}
+            {% set colorText = 'black' %}
+            {% set colorTextPrimordial = 'black' %}
+          {% endif %}
+          <span style="color:{{ colorText }}">{{ module.title }}</span>
+        </div>
+      </div>
+      <div class="title-container">
+        {% if module.hasThumbnail %}
+          <div class="img-container">
+            <a {{ module.slug|linkConstruct|raw }}>
+              {{ module.thumbnail|asImage(module.alt)|raw }}
+            </a>
+          </div>
+        {% endif %}
+        {#
+          <div class="title">
+            <a href="{{ module.slug }}">
+              <span style="color:{{ colorTextPrimordial }}" {{ data_camus_title }}>{{ module.title }}</span>
+            </a>
+          </div>
+        #}
+        <div class="summary" style="color:{{ colorTextPrimordial }}" {{ data_camus_abstract }}>
+          {{ module.body|raw }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'row_live_free'%}
+  <div class="nd_row_detail_live" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }}>
+    <div class="item-news-container" data-camus-module-free-html>
+      <div class="hour-social-network">
+        <div class="hour" style="background-color: {{ module.color }}">
+          {% set colorText = 'white' %}
+          {% if module.color == 'rgba(252,238,33,1)'%}
+            {% set colorText = 'black' %}
+          {% endif %}
+          <span style="color:{{ colorText }}">{{ module.title }}</span>
+        </div>
+      </div>
+      <div class="title-container">
+        {{ module.body|raw }}
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'small_active' %}
+{% elseif module.template == 'discussion' %}
+  <div class="row-left-image" data-camus-template="{{module.templateName}}"  {{ data_camus_type["lr_list_row"] }}>
+    <div class="img-container">
+      <a {{ module.slug|linkConstruct|raw }}>
+        {{ module.thumbnail|asImage(module.alt)|raw }}
+      </a>
+    </div>
+    <div class="title-container">
+      <div class="title">
+        <a href="{{ module.slug }}">
+          <span {{ data_camus_title }}> {{ module.title }} </span>
+        </a>
+      </div>
+      <div class="author">
+        <h2 {{ data_camus_author }}>{{ module.author }}</h2>
+      </div>
+      {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+      <!-- <div class="social-media"></div> -->
+    </div>
+  </div>
+{% elseif module.template == 'media_text' %}
+{% elseif module.template == 'row_match' %}
+  <div class="row-detail-match" data-camus-template="{{module.templateName}}" {{ data_camus_type["lr_list_row"] }}>
+    <div class="item-news-container">
+      <div class="module-container">
+        <div class="hour-social-network">
+          <div class="img-container">
+            {{ module.media|asImage(module.alt)|raw }}
+          </div>
+          <div class="hour">
+            <span>{{ module.title }}</span>
+          </div>
+        </div>
+        <div class="title-container">
+          <div class="summary" {{ data_camus_abstract }}>
+            {{ module.body|raw }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

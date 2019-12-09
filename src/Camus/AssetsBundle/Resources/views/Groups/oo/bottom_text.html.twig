@@ -1,0 +1,57 @@
+{% if module.template == 'player' %}
+  <div class= "oo-player">
+    <div class="headerContainer"> <spa class="red"n>VR</span><span class="white">360</span> </div>
+    <div class="video-container">
+      {#<video src="{{ module.thumbnail }}"  controls>#}
+      {#</video>#}
+      {#<div id="contenedorVRPrincipal">#}
+        {#<div id="controlesPlayerVR">#}
+          {#<div id="botonPlayVR">#}
+            {#<div class="faItem faPlayVR controlPlayer hidden" aria-hidden="true" >#}
+              {#<span class="fa fa-play" width="25px" height="25px"></span>#}
+            {#</div>#}
+            {#<div class="faItem faPauseVR controlPlayer" aria-hidden="true" >#}
+              {#<span class="fa fa-pause"  width="25px" height="25px"></span>#}
+            {#</div>#}
+          {#</div>#}
+          {#<div id='cTime'></div>#}
+          {#<div class="progress">#}
+            {#<progress id="progress-bar" value="0" min="0"max="100"></progress>#}
+          {#</div>#}
+          {#<div id='tTime'></div>#}
+            {#<!-- <div id="goFullscreen">#}
+              {#<img src="images/btn_fullscreen_off_blanco.png" alt="" />#}
+            {#</div> -->#}
+        {#</div>#}
+        {#<div class="startPlay">#}
+          {#<span class="fa fa-play" width="50px" height="50px"></span>#}
+        {#</div>#}
+      {#</div>#}
+      <iframe src="{{ module.frame }}" width="100%" height="100%"></iframe>
+    </div>
+    <div class="bottom">
+      <div class="text-container">
+        <div class="title">
+          <span {{ data_camus_title }}>{{module.title}}</span>
+        </div>
+        <div class="abstract">
+          <span {{ data_camus_abstract }}>{{ module.abstract|striptags|filterEnt|decodeText }}</span>
+        </div>
+        <div class="date">
+          <span>06.07.2016</span>
+        </div>
+      </div>
+      <div class="social-networks-share">
+        <div class="span-share">
+          <span>Compartir</span>
+        </div>
+        {% set slugTv = app.request.requestUri %}
+        {{ slugTv|socialTag(module.title, module.thumbnail)|raw }}
+        <div class="social-media-large"></div>
+      </div>
+    </div>
+    <div class="sponsor-container" data-camus-module-free-html>
+      {{ module.body|raw }}
+    </div>
+  </div>
+{% endif %}

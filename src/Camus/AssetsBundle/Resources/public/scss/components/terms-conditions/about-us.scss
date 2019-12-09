@@ -1,0 +1,10 @@
+.block-about{
+  .directorio{
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    @include text-with-roboto-regular-color-night-gray;
+    font-size: 15px;
+    line-height: 27px;
+  }
+}

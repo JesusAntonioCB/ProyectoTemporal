@@ -1,0 +1,419 @@
+{% if module.template == 'market_stocks' %}
+  {% set jsonData = render(controller(
+    'ApplicationCamusFrontEndBundle:Default:stocks'
+  ))|twigJsonDecode %}
+  <div class="market-stocks" {{ data_camus_module_tab }}
+    <div class="media-container">
+      <div class="content">
+        <div class="sections">
+          <div class="arrow">
+            <span class="fa fa-chevron-down"></span>
+          </div>
+          <select>
+            <option value="1">IPC</option>
+            <option value="2">DOW J ONES</option>
+            <option value="3">NASDAQ</option>
+            <option value="4">S&amp;P500</option>
+          </select>
+          <h5>Elija indice</h5>
+        </div>
+        <div class="table">
+          <div class="head">
+            <h1>
+              <span class="section">ipc - índice actual (intradía)</span>
+            </h1>
+            <h5>
+              <span class="date">11.10.2016</span>
+              <span class="hour">16:30 Hrs.</span>
+            </h5>
+          </div>
+          <div class="data">
+            <div class="graphic">
+              <h5>Histórico gráfica</h5>
+              <select class="days">
+                <option value="1">1 Día</option>
+                {% for i in 2..6 %}
+                  <option value="{{i}}">{{i}} Días</option>
+                {% endfor %}
+              </select>
+              <img src="http://servicios2.milenio.com/render_web/mercados/ipc_today.jpg" alt=""></th>
+            </div>
+            <div class="statistics">
+              <div class="rate">
+                <h5>índice</h5>
+                <h1>
+                  <span class="number">{{ jsonData.ipc.PrecioActual }}</span>
+                </h1>
+              </div>
+              <div class="variation">
+                <h5>Varicación</h5>
+                <h1>
+                  <span class="number">{{ jsonData.ipc.VariacionUnitaria }}</span>
+                  <span class="percentage">{{ jsonData.ipc.VariacionPorcentual }}</span>
+                </h1>
+              </div>
+              <div class="max-of-day">
+                <h5>Máximo del día</h5>
+                <h1>
+                  <span class="number">{{ jsonData.ipc.MaximoDia }}</span>
+                </h1>
+              </div>
+              <div class="min-of-day">
+                <h5>Mínimo del día</h5>
+                <h1>
+                  <span class="number">{{ jsonData.ipc.MinimoDia }}</span>
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="market-table">
+          <div class="media-container">
+            <div class="table-name">
+              <h1>MAYORES ALZAS</h1>
+            </div>
+            <table>
+              <tr>
+                <th>
+                  EMISORAS
+                </th>
+                <th>
+                  VARIACIÓN
+                </th>
+              </tr>
+              {% for row in jsonData.alzas %}
+              <tr>
+                <td>{{row.Descripcion }}</td>
+                <td>{{row.VariacionUnitaria}}</td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+        <div class="market-table">
+          <div class="media-container">
+            <div class="table-name">
+              <h1>MAYORES BAJAS</h1>
+            </div>
+            <table>
+              <tr>
+                <th>
+                  EMISORAS
+                </th>
+                <th>
+                  VARIACIÓN
+                </th>
+              </tr>
+              {% for row in jsonData.bajas %}
+              <tr>
+                <td>{{row.Descripcion }}</td>
+                <td>{{row.VariacionUnitaria}}</td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+        <div class="statistics-min">
+          <div class="media-container">
+            <div class="title">
+              <h1>Índices</h1>
+            </div>
+            {% for section in jsonData.indices %}
+              <div class="section">
+                <h2 class="name">{{section.Bolsa}}</h2>
+                <h1 class="value">{{section.IndiceCierre}}</h1>
+                {% if section.Signo == '+' %}
+                <h3 class="increase">{{section.VariacionPorcentual }}</h3>
+                {% elseif section.Signo ==  '-' %}
+                <h3 class="decrease">{{section.VariacionPorcentual }}</h3>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="market-table">
+          <div class="media-container">
+            <div class="table-name">
+              <h1>TASAS</h1>
+            </div>
+            <table>
+              <tr>
+                <th>
+                  EMISORAS
+                </th>
+                <th>
+                  ÚLTIMO
+                </th>
+              </tr>
+              {% for row in jsonData.tasas %}
+              <tr>
+                <td>{{row.Descripcion }}</td>
+                <td>{{row.ValorActual}}</td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+        <div class="market-table">
+          <div class="media-container">
+            <div class="table-name">
+              <h1>DIVISAS</h1>
+            </div>
+            <table>
+              <tr>
+                <th>
+                  MONEDAS
+                </th>
+                <th>
+                  COMPRA
+                </th>
+                <th>
+                  VENTA
+                </th>
+              </tr>
+              {% for row in jsonData.divisas %}
+              <tr>
+                <td>{{row.Descripcion }}</td>
+                <td>{{row.Compra|slice(0,4) }}</td>
+                <td>{{row.Venta|slice(0,4) }}</td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+        <div class="market-table">
+          <div class="media-container">
+            <div class="table-name">
+              <h1>INDICADORES</h1>
+            </div>
+            <table>
+              <tr>
+                <th>
+                  EMISORAS
+                </th>
+                <th>
+                  VALOR ACTUAL
+                </th>
+              </tr>
+              {% for row in jsonData.indicadores %}
+              <tr>
+                <td>{{row.Instrumento }}</td>
+                <td>{{row.ValorActual|slice(0,4) }}</td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'market_bmv'%}
+  {% set jsonData = render(controller(
+    'ApplicationCamusFrontEndBundle:Default:bmv'
+  ))|twigJsonDecode %}
+  <div class="market-bmv" {{ data_camus_module_tab }}>
+    <div class="media-container">
+      <div class="content">
+        <div class="sections">
+          <div class="arrow">
+            <span class="fa fa-chevron-down"></span>
+          </div>
+          <select>
+            <option value="1">listado completo</option>
+            <option value="2">los mayores cambios</option>
+            <option value="3">IPC</option>
+            <option value="4">ADR'S</ >
+          </select>
+          <h5>Elija indice</h5>
+        </div>
+        <div class="tables">
+          <div class="table">
+            <div class="table-name">
+            </div>
+            <table>
+              <tr>
+                <th>Emisoras</th>
+                <th>Precio Actual</th>
+                <th>Variación Unitaria</th>
+                <th>Variación %</th>
+                <th>Volumen Total</th>
+              </tr>
+              {% for row in jsonData.bmv %}
+                <tr>
+                  <td>{{ row.Descripcion }}</td>
+                  <td>{{ row.PrecioActual }}</td>
+                  <td>{{ row.VariacionUnitaria }}</td>
+                  <td>{{ row.VariacionPorcentual }}</td>
+                  <td>{{ row.VolumenTotal }}</td>
+                </tr>
+              {% endfor %}
+            </table>
+          </div>
+          <div class="statistics-min">
+            <div class="media-container">
+              <div class="title">
+                <h1>Índices</h1>
+              </div>
+              {% for section in jsonData.indices %}
+                <div class="section">
+                  <h2 class="name">{{section.Bolsa}}</h2>
+                  <h1 class="value">{{section.IndiceCierre}}</h1>
+                  {% if section.Signo == '+' %}
+                  <h3 class="increase">{{section.VariacionPorcentual }}</h3>
+                  {% elseif section.Signo ==  '-' %}
+                  <h3 class="decrease">{{section.VariacionPorcentual }}</h3>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'market_indicators' %}
+  {% set jsonData = render(controller(
+    'ApplicationCamusFrontEndBundle:Default:indicators'
+  ))|twigJsonDecode %}
+  <div class="market-indicators" {{ data_camus_module_tab }}>
+    <div class="media-container">
+      <div class="content">
+        <div class="sections">
+          <div class="arrow">
+            <span class="fa fa-chevron-down"></span>
+          </div>
+          <select>
+            <option value="1">Tasas</option>
+            <option value="2">SIEFORES</option>
+            <option value="3">Metales</option>
+            <option value="4">Petróleo / Gas</option>
+          </select>
+          <h5>Elija indice</h5>
+        </div>
+        <div class="tables">
+          <div class="table">
+            <div class="table-name">
+              <h1>MERCADO PRIMARIO</h1>
+            </div>
+            <table>
+              <tr>
+                <th>Emisoras</th>
+                <th>Valoración Actual</th>
+                <th>Variación Unitaria</th>
+                <th>Valor Anterior</th>
+              </tr>
+              {% for row in jsonData.primary %}
+                <tr>
+                  <td>{{ row.Descripcion }}</td>
+                  <td>{{ row.ValorActual }}</td>
+                  <td>{{ row.VariacionUnitaria }}</td>
+                  <td>{{ row.ValorAnterior }}</td>
+                </tr>
+              {% endfor %}
+            </table>
+          </div>
+          <div class="table">
+            <div class="table-name">
+              <h1>MERCADO SECUNDARIO</h1>
+            </div>
+            <table>
+              <tr>
+                <th>Emisoras</th>
+                <th>Valoración Actual</th>
+                <th>Variación Unitaria</th>
+                <th>Valor Anterior</th>
+              </tr>
+              {% for row in jsonData.secondary %}
+                <tr>
+                  <td>{{ row.Descripcion }}</td>
+                  <td>{{ row.ValorActual }}</td>
+                  <td>{{ row.VariacionUnitaria }}</td>
+                  <td>{{ row.ValorAnterior }}</td>
+                </tr>
+              {% endfor %}
+            </table>
+          </div>
+          <div class="table">
+            <div class="table-name">
+              <h1>MERCADO INTERNACIONAL</h1>
+            </div>
+            <table>
+              <tr>
+                <th>Emisoras</th>
+                <th>Valoración Actual</th>
+                <th>Variación Unitaria</th>
+                <th>Valor Anterior</th>
+              </tr>
+              {% for row in jsonData.international %}
+                <tr>
+                  <td>{{ row.Descripcion }}</td>
+                  <td>{{ row.ValorActual }}</td>
+                  <td>{{ row.VariacionUnitaria }}</td>
+                  <td>{{ row.ValorAnterior }}</td>
+                </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'market_funds' %}
+  {% set jsonData = render(controller(
+    'ApplicationCamusFrontEndBundle:Default:funds'
+  ))|twigJsonDecode %}
+  <div class="market-funds" {{ data_camus_module_tab }}>
+    <div class="media-container">
+      <div class="content">
+        <div class="tables">
+          <div class="table">
+            <div class="table-name">
+              <h1>LAS QUE SUBIERON</h1>
+            </div>
+            <table>
+              <tr>
+                <th>Emisoras</th>
+                <th>Administrador</th>
+                <th>Tipo Inversionista</th>
+                <th>Último</th>
+                <th>Variación % diaria</th>
+              </tr>
+              {% for row in jsonData.ups %}
+                <tr>
+                  <td>{{ row.Emisora }}</td>
+                  <td>{{ row.Administrador }}</td>
+                  <td>{{ row.TipoDeInversionista }}</td>
+                  <td>{{ row.UltimoValor }}</td>
+                  <td>{{ row.VariacionPorcentualDia }}</td>
+                </tr>
+              {% endfor %}
+            </table>
+          </div>
+          <div class="table">
+            <div class="table-name">
+              <h1>LAS QUE BAJARON</h1>
+            </div>
+            <table>
+              <tr>
+                <th>Emisoras</th>
+                <th>Administrador</th>
+                <th>Tipo Inversionista</th>
+                <th>Último</th>
+                <th>Variación % diaria</th>
+              </tr>
+              {% for row in jsonData.downs %}
+                <tr>
+                  <td>{{ row.Emisora }}</td>
+                  <td>{{ row.Administrador }}</td>
+                  <td>{{ row.TipoDeInversionista }}</td>
+                  <td>{{ row.UltimoValor }}</td>
+                  <td>{{ row.VariacionPorcentualDia }}</td>
+                </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

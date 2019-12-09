@@ -1,0 +1,93 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-live-large{
+  @include global-container-2c;
+  border-top: 5px solid $color-dark-gray;
+  .media-container{
+    @include rows-height(1);
+    .img-container{
+      height: inherit;
+    }
+    .btn-play{
+      padding: 20px;
+      position: absolute;
+      z-index: 5;
+      left: 15px;
+      top: 15px;
+      background-color: rgba($color-dark-gray,0.5);
+      border: 2px solid $color-dark-gray;
+      .fa-play{
+        color:$color-white;
+        font-size: 30px;
+      }
+    }
+    .headline-bottom-container-gradient{
+      @include text-with-roboto-black-color-white;
+      .title, .section{
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 26px;
+        line-height: 27px;
+      }
+      .section{
+        color: $color-red-alizarin-crimison;
+      }
+      .live-container-white{
+        display: inline-block;
+        padding: 2px 5px;
+        margin-top: 15px;
+        background-color: $color-red-alizarin-crimison;
+        img{
+          max-width: 32px;
+        }
+        .live-logo-container, .span-live-logo-container{
+          display: inline-block;
+          vertical-align: middle;
+        }
+        .span-live-logo-container{
+          padding-left: 6px;
+          @include text-with-YanoneKaffeesatz-color-white;
+          font-size: 14px;
+          border-left: 1px solid $color-white;
+        }
+      }
+      // .social-media{
+      //   margin-top: 9px;
+      //   color: $color-white;
+      //   i.fa{
+      //     font-size: 16px;
+      //   }
+      // }
+    }
+  }
+}
+
+@include one-column{
+  .sn-live-large{
+    border-top: 3px solid $color-red-alizarin-crimison;
+    .media-container{
+      height: 270px;
+      .btn-play{
+        padding: 11px;
+        left: 9px;
+        top: 9px;
+        .fa-play{
+          font-size: 18px;
+        }
+      }
+      .headline-bottom-container-gradient{
+        padding: 9px;
+        .title, .section{
+          font-size: 20px;
+          line-height: 21px;
+        }
+      }
+    }
+  }
+};

@@ -1,0 +1,46 @@
+{% if module.template == 'block' %}
+  <div class="oo-urgent">
+    <div class="media-container">
+      <div class="news-container">
+        <div class="heading-gray">
+          <span {{ data_camus_heading_title }}>{{ module.heading.title }}</span>
+        </div>
+        <div class="hour-time">
+          {% if module.abstract != "" %}
+            <span {{ data_camus_abstract }}>{{ module.abstract|raw }}</span>
+          {% endif %}
+        </div>
+        {% if module.slug != "" %}
+          <a href="{{ module.slug }}">
+            <h1 class="hour-headline" {{ data_camus_title }}>{{ module.title }}</h1>
+          </a>
+        {% else %}
+          <h1 class="hour-headline" {{ data_camus_title }}>{{ module.title }}</h1>
+        {% endif %}
+        <div class="update-container">
+          <span {{ data_camus_body }}>{{ module.body|raw }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'inline' %}
+  <div class="oo-urgent-inline">
+    <div class="media-container">
+      <div class="news-container">
+        <div class="heading-gray">
+          <span {{ data_camus_heading_title }}>{{ module.heading.title }}</span>
+        </div>
+        {% if module.slug != "" %}
+          <a href="{{ module.slug }}">
+            <h1 class="hour-headline" {{ data_camus_title }}>{{ module.title }}</h1>
+          </a>
+        {% else %}
+          <h1 class="hour-headline" {{ data_camus_title }}>{{ module.title }}</h1>
+        {% endif %}
+        <div class="update-container">
+          <span {{ data_camus_abstract }}>{{ module.abstract }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

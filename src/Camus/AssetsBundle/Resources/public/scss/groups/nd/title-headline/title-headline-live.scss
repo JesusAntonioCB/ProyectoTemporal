@@ -1,0 +1,209 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.nd-th-live{
+  overflow: hidden;
+  position: relative;
+  .heading{
+    min-height: 46px;
+    margin: 0 0 20px;
+    padding: 12px 0;
+    padding-left: 34%;
+    @include text-with-roboto-regular-color-white;
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 20px;
+    border-top: 1px solid $color-white;
+    border-bottom: 1px solid $color-white;
+  }
+  .media-container{
+    padding: 20px 8px 10px;
+    background-color: $color-shamrock-green;
+    .title {
+      float: right;
+      width: 66%;
+    }
+    .title{
+      margin:0 0 50px;
+      @include text-with-roboto-black-color-white;
+      font-size: 44px;
+      line-height: 48px;
+    }
+    .extras{
+      position: absolute;
+      top: 95px;
+      .social-network, .elements{
+        &:after{
+          content: '';
+          display: table;
+          clear: both;
+        }
+        .hint{
+          float: left;
+          width: 70px;
+          margin-top: 3px;
+          margin-right: 5px;
+          @include text-with-roboto-regular-color-white;
+          font-size: 10px;
+          line-height: 13px;
+        }
+      }
+      .social-network{
+        .logos{
+          float: left;
+        }
+      }
+      .elements{
+        margin-top: 10px;
+        .count{
+          float: left;
+          margin-top: 3px;
+          padding: 0 10px;
+          font-size: 18px;
+          @include text-with-sans-serif-color-gray;
+          border: {
+            left: 1px solid $color-nobel;
+            right: 1px solid $color-nobel;
+          }
+          span{
+            line-height: 18px;
+            display: inline-block;
+            vertical-align: text-top;
+          }
+        }
+      }
+      &:after{
+        content: '';
+        display: table;
+        clear: both;
+      }
+      // .refresh-time {
+      //   margin-top: 10px;
+      //   button {
+      //     background-color: $color-red-dark;
+      //     border: none;
+      //     font-size: 16px;
+      //     min-height: 30px;
+      //     width: 110px;
+      //     @include text-with-sans-serif-color-white;
+      //   }
+      //   &> span{
+      //     font-size: 11px;
+      //     color: $color-blue-gray;
+      //   }
+      // }
+    }
+    &:after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+  .content{
+    float: right;
+    width: 65%;
+    padding: 25px 0;
+    .summary{
+      margin-bottom: 25px;
+      @include text-with-roboto-regular-color-mirror-gray;
+      font-size: 22px;
+      line-height: 33px;
+    }
+    .author{
+      @include text-with-roboto-black-color-night-gray;
+      font-size: 12px;
+      line-height: 18px;
+    }
+    .place-date-container{
+      .content-date {
+        @include text-with-roboto-regular-color-gray;
+        font-size: 11px;
+        line-height: 17px;
+      }
+    }
+  }
+}
+@include two-column{
+  .nd-th-live{
+    .heading{
+      padding-left: 0;
+      text-align: center;
+    }
+    .media-container{
+      .title, .summary{
+        width: 100%;
+      }
+      .extras{
+        clear: both;
+        position: static;
+        // .social-network{
+        //   float: left;
+        // }
+        // .refresh-time{
+        //   float: right;
+        //   margin-top: 0;
+        // }
+        .elements{
+          float: right;
+          margin-top: 0;
+        }
+      }
+    }
+    .content{
+      width: 100%;
+    }
+  }
+}
+@include one-column{
+  .nd-th-live{
+    max-width: $one-column;
+    .heading{
+      margin: 0 10px 20px;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    .media-container{
+      padding: 10px 0 0;
+      .title, .refresh-time{
+        padding: 0 10px;
+      }
+      .title{
+        margin-bottom: 35px;
+        font-size: 26px;
+        line-height: 31px;
+      }
+      .extras{
+        padding-top: 10px;
+        background-color: $color-white;
+        .social-network{
+          .hint{
+            display: none;
+          }
+          .logos{
+            float: none;
+            display: table;
+            margin: 0 auto;
+          }
+        }
+        // .refresh-time{
+        //   margin: {
+        //     top: 0;
+        //     bottom: 10px;
+        //   }
+        // }
+        .elements{
+          display: none !important;
+        }
+      }
+    }
+    .content{
+      padding: 15px 0;
+      .summary{
+        font-size: 15px;
+        line-height: 20px;
+      }
+    }
+  }
+}

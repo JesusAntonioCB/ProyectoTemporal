@@ -1,0 +1,280 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+$width: 958px;
+
+// Tabs
+.game-menu{
+  display: table;
+  width: 100%;
+  max-width: $width;
+  margin: 0 auto;
+  table-layout: fixed;
+  margin-bottom: 35px;
+  .menu-button{
+    display: table-cell;
+    text-decoration: unset;
+    .option-menu{
+      border-left:1px solid $color-nobel;
+      border-top:1px solid $color-nobel;
+      border-bottom:1px solid $color-nobel;
+      padding-top: 17px;
+      text-align: center;
+      text-transform: none;
+      font-size: 12px;
+      padding-bottom: 17px;
+      @include text-with-roboto-black-color-night-gray;
+    }
+    .option-menu.active{
+      border-bottom: unset;
+    }
+  }
+  .menu-button:last-of-type{
+    .option-menu{
+      border-right:1px solid $color-nobel;
+    }
+  }
+  .menu-button:hover{
+    text-decoration: unset;
+  }
+}
+
+// Modules
+.match-notes-block{
+  position: relative;
+  width: 100%;
+  max-width: 1254px;
+  margin: 0px auto;
+  display: flex;
+  display: -webkit-flex;
+  display: -moz-flex;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  justify-content: space-between;
+  @include three-column{
+    max-width: 966px;
+  }
+  @include two-column{
+    max-width: 618px;
+    padding: 0;
+  }
+  @include one-column{
+    max-width: 375px;
+    padding: 0 6px;
+  }
+}
+
+// Stats
+.nd-content-live{
+  max-width: $width;
+  margin: 0 auto;
+  .show-resume {
+    .toggle-resume {
+      @include text-with-roboto-black-color-black;
+      min-height: 25px;
+      background-color: $colot-luminous-vivid-yellow;
+      padding-left: 7px;
+      padding-top: 1px;
+      text-align: left;
+      line-height: 21px;
+      position: relative;
+      .toggle-state {
+        float: right;
+        right: 7px;
+        position: relative;
+      }
+    }
+    .toggle-gray {
+      background-color: $color-concrete;
+      width: 100%;
+      padding: 24px 0 23px;
+      display: none;
+      .toggle-area {
+        width: 406px;
+        margin: auto;
+        .toggle-graphic {
+          padding: 0 38px 5px;
+          border-bottom: 1px solid #C4BEBE;
+          display: inline-block;
+          .away, .home {
+            width: 366px;
+            margin-left: auto;
+            display: inline-block;
+            .logo_team {
+              width: 20px;
+              float: left;
+              img {
+                width: 100%;
+              }
+            }
+            .event_container {
+              width: 313px;
+              margin-left: 13px;
+              display: inline-block;
+              .time {
+                max-width: 18px;
+                float: left;
+                .exchange {
+                  width: 12px;
+                  height: 16px;
+                  .fa-caret-up {
+                    transform: translate(3px,-5px);
+                  }
+                  .fa-caret-down {
+                    transform: translate(3px,-15px);
+                  }
+                  .fa-caret-up::before {
+                    color: $color-chateau-green;
+                  }
+                  .fa-caret-down::before {
+                    color: $color-red-ribbon;
+                  }
+                }
+                .card-event.cards {
+                  float: left;
+                }
+                .cards {
+                  margin: 0 3px;
+                  height: 18px;
+                  width: 18px;
+                  display: inline-block;
+                  .card {
+                    width: 10.5px;
+                    height: 13px;
+                    position: relative;
+                    left: 5.9px;
+                    display: block;
+                    top: -21px;
+                  }
+                  .yellow {
+                    background-color: $color-supernova;
+                  }
+                  .red {
+                    background-color: $color-red-ribbon;
+                  }
+                  img {
+                    height: 100%;
+                    position: relative;
+                    z-index: 1;
+                  }
+                }
+              }
+            }
+          }
+          .time-line {
+            width: 313px;
+            margin: 5px 0 5px 32px;
+            height: 8px;
+            .first-half, .second-half {
+              width: 154px;
+              height: 100%;
+              background-color: $color-mine-shaft;
+            }
+            .first-half {
+              float: left;
+            }
+            .second-half {
+              float: right;
+            }
+          }
+        }
+        .toggle-info {
+          .header {
+            width: 147px;
+            min-height: 28px;
+            background-color: transparent;
+            position: relative;
+            margin: auto;
+            .title {
+              @include text-with-roboto-black-color-black;
+              text-align: center;
+              text-transform: uppercase;
+              font-size: 12px;
+              line-height: 28px;
+            }
+          }
+          .goals {
+            width: 366px;
+            margin: auto;
+            tr {
+              background-color: transparent;
+              td:nth-child(3n) {
+                padding-left: 15px;
+              }
+              td {
+                @include text-with-roboto-regular-color-black;
+                text-transform: uppercase;
+                text-align: left;
+                font-size: 14px;
+                line-height: 20px;
+                img {
+                  width: 20px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  // .media-container{
+  //   display: grid;
+  //   justify-content: center;
+  // }
+  .ad.medium-rectangle{
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+@include two-column{
+  .nd-content-live{
+    .match-resume {
+      width: 85.83%;
+      min-width: 320px;
+    }
+  }
+}
+
+@include one-column{
+  .game-menu{
+    .menu-button{
+      .option-menu{
+        font-size: 9px
+      }
+    }
+  }
+
+  .nd-content-live{
+    .match-resume {
+      width: 320px;
+      .toggle-resume {
+        width: 75px;
+        min-height: 15px;
+        height: 15px;
+        font-size: 12px;
+        line-height: 14px;
+        padding-left: 3px;
+        .toggle-state {
+          display: none;
+        }
+      }
+      .toggle-gray {
+        .toggle-area {
+          width: 287px;
+          .goals {
+            width: 100%;
+            tr {
+              td {
+                font-size: 12px;
+                line-height: 15px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

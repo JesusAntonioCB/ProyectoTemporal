@@ -1,0 +1,61 @@
+.market-table{
+  width: $one-column;
+  max-width: $one-column;
+  min-width: $one-column;
+  padding-top: $global-padding-top;
+  margin-bottom: $global-margin-bottom;
+  float: none;
+  position: relative;
+  border-top: 1px solid $color-red-dark;
+  .media-container{
+    width: 100%;
+    overflow: hidden;
+    float: none;
+    position: relative;
+    .table-name{
+      width: 100%;
+      float: none;
+      position: relative;
+      padding-left: 10px;
+      h1{
+        margin: 10px 0;
+        @include text-with-open-sans-5-color-red-dark;
+        font-size: 14px;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+    }
+    table{
+      width: 100%;
+      min-height: 220px;
+      tr{
+        width: 100%;
+        border-bottom: 1px solid $color-nobel;
+        font-family: $font-sans-serif;
+        height: 30px;
+        line-height: normal;
+        th{
+          color: $color-dark-grayish-blue;
+          font-size: 10px;
+          font-weight: 400;
+          margin: 10px 0;
+          padding: 5px 0;
+          text-align: right;
+          &:first-child{
+            text-align: left;
+          }
+        }
+        td{
+          color: $color-night-gray;
+          font-size: 13px;
+          font-weight: 600;
+          text-align: right;
+          &:first-child{
+            text-align: left;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+}

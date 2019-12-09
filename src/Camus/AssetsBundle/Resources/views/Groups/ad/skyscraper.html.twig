@@ -1,0 +1,10 @@
+<div class="ad skyscraper {{ module.adTarget|lower }}" {{ data_camus_module_type["ad"] }} {{ data_camus_toolbar_position["br"] }}>
+  {% set moduleId = (module.id != null) ? module.id : module.adId %}
+  <div data-camus-module-ad-div="true" id="div-gpt-ad-skyn-{{ moduleId }}">
+    <script>
+      googletag.cmd.push(function() {
+        googletag.display("div-gpt-ad-skyn-{{ moduleId }}");
+      });
+    </script>
+  </div>
+</div>

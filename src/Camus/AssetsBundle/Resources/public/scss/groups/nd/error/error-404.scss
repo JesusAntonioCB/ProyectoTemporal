@@ -1,0 +1,81 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.nd-error404{
+  position: relative;
+  background: $color-light-cyan;
+  overflow: hidden;
+  //@include grid-dynamic-full;
+  width: 100%;
+  .advert{
+    position: relative;
+    max-width: 1024px;
+    margin: 0 auto;
+    overflow: hidden;
+    .logo-milenio-container{
+      display: table;
+      padding: 10px;
+      margin: 0 auto;
+      background-color: $color-white;
+      border-radius: 50%;
+    }
+    .sign{
+      width: 330px;
+      position: absolute;
+      right: 0;
+      top: 30px;
+      text-align: center;
+      .title-error{
+        display: block;
+        margin:5px 0 15px;
+        font-family: $font-open-sans-semibold;
+        font-size: 40px;
+        line-height: 48px;
+        color: $color-red-dark;
+      }
+      .title-sorry{
+        font-family: $font-open-sans5;
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+  }
+}
+@include two-column{
+  .nd-error404{
+    .background-img{
+      transform: translateX(-21%);
+    }
+  }
+};
+
+@include one-column{
+  .nd-error404{
+    .advert{
+      .logo-milenio-container{
+        padding: 6px;
+        .logo-milenio{
+          width: 25px;
+        }
+      }
+      .sign{
+        top: 10px;
+        right: 3%;
+        width: 212px;
+        .title-error{
+          font-size: 26px;
+          line-height: 31px;
+        }
+        .title-sorry{
+          font-size: 12px;
+          line-height: 19px;
+        }
+      }
+      .background-img{
+        width: 640px;
+      }
+    }
+  }
+};

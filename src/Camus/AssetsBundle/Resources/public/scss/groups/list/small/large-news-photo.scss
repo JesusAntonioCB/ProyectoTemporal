@@ -1,0 +1,130 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.list-large-news, .list-large-last-news{
+  width: 100%;
+  margin-bottom: $global-margin-bottom;
+  border-radius: 8px;
+  overflow: hidden;
+  .headline{
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    padding: 10px 0;
+    background: #D61F2E;
+    color: $color-white;
+    .title{
+      margin: 0;
+      @include text-with-YanoneKaffeesatz-color-white;
+      font-size: 40px;
+      line-height: 49px;
+    }
+  }
+}
+
+.list-large-news{
+  .headline{
+    // &.photo{
+    //   display: flex;
+    //   justify-content: space-between;
+    //   padding: 0 20px;
+    //   .type-home-link{
+    //     padding: 0 10px;
+    //     font-size: 16px;
+    //     border: 1px solid $color-black;
+    //   }
+    // }
+    &:after{
+      color: $color-red-alizarin-crimison;
+      content: "";
+      position: absolute;
+      width: 40px;
+      height: 15px;
+      bottom: -15px;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 12px solid;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  .list-news-container{
+    width: 100%;
+    background-color: $color-white;
+    @include pagination-controls;
+  }
+}
+
+.list-large-last-news{
+  .headline{
+    .containerLastHour{
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      .select-last-news{
+        width: 115px;
+        height: 48px;
+        background-color: #fff;
+        color: $color-alizarin-crimson;
+        font-weight: 900;
+        font-size: 12px;
+      }
+      .chose-section{
+        font-size: 13px;
+        color: $color-space-gray;
+      }
+    }
+  }
+}
+
+@include three-column{
+  .list-large-news{
+
+  }
+
+  .list-large-last-news{
+
+  }
+};
+
+@include two-column{
+  .list-large-news{
+
+  }
+
+  .list-large-last-news{
+
+  }
+};
+
+@include one-column{
+  .list-large-news{
+    .headline{
+      padding: 15px 0;
+      .title{
+        font-size: 30px;
+        line-height: 36px;
+      }
+      .type-home-link{
+        display: none;
+      }
+    }
+  }
+
+  .list-large-last-news{
+    .headline{
+      .title{
+        font-size: 18px;
+        line-height: 22px;
+      }
+      .containerLastHour{
+        .chose-section{
+          display: none;
+        }
+      }
+    }
+  }
+};

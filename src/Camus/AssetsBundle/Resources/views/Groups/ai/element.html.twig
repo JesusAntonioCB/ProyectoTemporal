@@ -1,0 +1,18 @@
+{% if module.template == 'club' %}
+  <li data-camus-template="{{module.templateName}}" {{ data_camus_type["ai_element"] }}>
+    <a {{ module.slug|linkConstruct|raw }} {{ data_camus_link }}>
+      <h1>
+        <span class="club" {{ data_camus_title }}>{{ module.title }}</span>
+      </h1>
+    </a>
+    <h5>
+      <span class="league" {{ data_camus_abstract }}>{{ module.abstract }}</span>
+    </h5>
+  </li>
+{% elseif module.template == 'club_image' %}
+  <div class="club-badge" data-camus-template="{{module.templateName}}" {{ data_camus_type["ai_element"] }} {{data_camus_modal_tools["1"]}}>
+    <a {{ module.slug|linkConstruct|raw }} {{ data_camus_link }}>
+      {{ module.thumbnail|asImage(module.alt)|raw }}
+    </a>
+  </div>
+{% endif %}

@@ -1,0 +1,88 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-bottom-text-growable-left{
+  @include global-container-2c;
+  .media-container{
+    @include rows-height(1);
+    .img-container{
+      height: inherit;
+    }
+    .headline-bottom-container-gradient{
+      .item-icon{
+        @include item-icon("large");
+        border-color: $color-alizarin-crimson;
+      }
+      .text{
+        padding: 0 30px;
+      }
+      .section-container{
+        position: relative;
+        display: inline-block;
+        padding: 5px 8px;
+        margin-bottom: 20px;
+        @include text-with-YanoneKaffeesatz-color-white;
+        font-size: 25px;
+        line-height: 25px;
+        text-transform: uppercase;
+        background-color: $color-hollywood-cerise;
+        &:after{
+          content: "";
+          position: absolute;
+          width: 40px;
+          height: 15px;
+          bottom: -15px;
+          left: 8px;
+          border-left: 20px solid transparent;
+          border-right: 20px solid transparent;
+          border-top: 12px solid;
+          color: $color-hollywood-cerise;
+          @include one-column{
+            left: 30px;
+          }
+        }
+      }
+      .title-container{
+        margin-bottom: 5px;
+        @include text-with-sans-pro-color-white;
+        font-size: 24px;
+        line-height: 29px;
+      }
+      .social-media{
+        font-size: 16px;
+        color: $color-white;
+      }
+    }
+  }
+}
+
+@include one-column{
+  .sn-bottom-text-growable-left{
+    .media-container{
+      .headline-bottom-container-gradient{
+        padding: 10px 0;
+        .item-icon{
+          display: none;
+        }
+        .text{
+          padding: 0;
+        }
+        .section-container{
+          width: 100%;
+          padding: 5px 20px;
+        }
+        .title-container{
+          height: 42px;
+          font-size: 18px;
+          line-height: 21px;
+          padding: 0 20px;
+        }
+        .social-media{
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+};

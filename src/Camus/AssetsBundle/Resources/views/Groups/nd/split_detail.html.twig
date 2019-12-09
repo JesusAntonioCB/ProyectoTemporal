@@ -1,0 +1,129 @@
+{% if module.template == 'base'%}
+  <div class="nd-sd-base">
+    <div class="media-container">
+      <div class="quartering-text">
+        <div class="circle-container-white">
+          <span class="fa fa-arrow-right"></span>
+        </div>
+        <div class="title" {{data_camus_title}}>
+          {{ module.title }}
+        </div>
+        <div class="text" {{data_camus_body}}>
+            <div>
+                {{ module.body|charsDecode|raw }}
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'base_dni' %}
+  <div class="nd-sd-base-dni">
+    <div class="media-container">
+      <div class="the-data-text">
+        <div class="circle-container-white">
+          <span class="fa fa-arrow-right"></span>
+        </div>
+        <div class="title-container">
+          <div class="dni" {{ data_camus_heading_title }}>{{ module.heading.title }}</div>
+          <div class="title" {{ data_camus_title }}>{{ module.title }}</div>
+        </div>
+        <div class="text" {{ data_camus_body }}>
+          {{ module.body|charsDecode|raw }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'highlights' %}
+{% elseif module.template == 'profile' %}
+  <div class="nd-sd-profile" {{ data_camus_module_type["list"] }}>
+    <div class="media-container">
+      <div class="news-elements-dni-text">
+        <div class="circle-container-white">
+          <span class="fa fa-arrow-right"></span>
+        </div>
+        <div class="title-container">
+          <span class="dni" {{ data_camus_heading_title }}>{{ module.heading.title }}</span>
+          <span class="title" {{ data_camus_title }}>{{ module.title }}</span>
+        </div>
+        <div class="description" {{ data_camus_modules }} >
+          {% for module in module.modules if module != null %}
+            {% set type = module.type|splitTemplate %}
+              {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+          {% endfor %}
+        </div>
+        <div class="text-container">
+          <div class="img-container">
+            {{ module.thumbnail|asImage(module.alt)|raw }}
+          </div>
+          <div class="text" {{ data_camus_abstract }}>
+            {{ module.abstract|raw }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'media' %}
+  <div class="nd-sd-media">
+    <div class="media-container">
+      <div class="img-container">
+        <div class="img">
+           {{ module.thumbnail|asImage(module.alt)|raw }}
+        </div>
+        <div class="headline-top-container-gradient">
+          <div class="title-container">
+            <span class="dni" {{ data_camus_heading_title }}>{{ module.heading.title }}</span>
+            {% if module.slug == "" %}
+              <span class="title" {{ data_camus_title }}>{{ module.title }}</span>
+            {% else %}
+              <a {{ module.slug|linkConstruct|raw }}><span class="title" {{ data_camus_title }}>{{ module.title }}</span></a>
+            {% endif %}
+          </div>
+        </div>
+        <div class="circle-container-white">
+          <span class="fa fa-arrow-right"></span>
+        </div>
+        {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == 'default' %}
+          <button class="item-icon btn-play" data-provider="{{ module.provider }}" data-reference="{{ module.providerReference }}">
+            <span class="fa fa-play"></span>
+          </button>
+        {% endif %}
+      </div>
+      <div class="player-live" style="display:none;"></div>
+    </div>
+  </div>
+{% elseif module.template == 'ranking' %}
+  <div class="nd-sd-ranking" {{ data_camus_module_type["list"] }}>
+    <div class="media-container">
+      <div class="news-elements-ranking-table">
+        <div class="circle-container-white">
+          <span class="fa fa-arrow-right"></span>
+        </div>
+        <div class="title-container">
+          <div class="dni">Ranking.</div>
+          <div class="title" {{ data_camus_title }}>{{ module.title }}</div>
+        </div>
+        <div class="table" {{ data_camus_modules }}>
+          {% for module in module.modules if module != null %}
+            {% set type = module.type|splitTemplate %}
+              {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'text_tribune' %}
+  <div class="nd-sd-text-tribune">
+    <div class="media-container">
+      <div class="quartering-text">
+        <div class="title-container">
+          <div class="header" {{ data_camus_heading_title }}>{{ module.heading.title }}</div>
+          <div class="title" {{ data_camus_title }}>{{ module.title }}</h1>
+          </div>
+        </div>
+        <div class="text" {{ data_camus_abstract }}>
+          {{ module.abstract }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

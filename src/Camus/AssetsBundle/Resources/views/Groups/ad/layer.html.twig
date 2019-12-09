@@ -1,0 +1,10 @@
+<div class="ad layer" {{ data_camus_module_type["ad"] }}>
+  {% set moduleId = (module.id != null) ? module.id : module.adId %}
+  <div data-camus-module-ad-div="true" id="div-layer">
+    <script>
+      googletag.cmd.push(function() {
+        googletag.display("div-layer");
+      });
+    </script>
+  </div>
+</div>

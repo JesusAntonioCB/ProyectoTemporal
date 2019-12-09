@@ -1,0 +1,212 @@
+{% set tabNameId = '' %}
+{% set nameActive = '' %}
+{% if count is defined %}
+  {% set tabNameId = 'tab-content-'~ count %}
+  {% if count == 1 %}
+    {% set nameActive = 'tab-active' %}
+  {% endif %}
+{% elseif module.count is defined %}
+  {% set count = module.count %}
+  {% set tabNameId = 'tab-content-'~ count %}
+  {% if count == 1 %}
+    {% set nameActive = 'tab-active' %}
+  {% endif %}
+{% endif %}
+{% if module.template == 'large_classification' %}
+  {% set jsonData = sportsClassification() %}
+  <div class="tab-content {{ nameActive }}" id="{{ tabNameId }}" data-camus-template="{{module.templateName}}" {{ data_camus_background_color }} style="background-color: {{ module.color }}">
+    <div class="filter-date">
+      <div class="edition-filter">
+        <div class="span">
+          <span>Filtrar por edicion:</span>
+        </div>
+        <select class="editions-list">
+          <option value="APERTURA 2016">APERTURA 2016</option>
+          <option value="APERTURA 2015">APERTURA 2015</option>
+          <option value="APERTURA 2014">APERTURA 2014</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid-container-clasification">
+      <div class="liga-mx-logo-container">
+        <div class="name">
+          <h2>Liga MX</h2>
+        </div>
+        <div class="img-container">
+          <img src="/bundles/applicationcamusassets/images/sports-statics/liga-mx-logo.png">
+        </div>
+      </div>
+      <div class="grid">
+        <table>
+          <tr>
+            <th>EQUIPOS</th>
+            <th></th>
+            <th></th>
+            <th>PTS</th>
+            <th>PG</th>
+            <th>PE</th>
+            <th>PP</th>
+            <th>DIF</th>
+          </tr>
+          {% for team in jsonData %}
+            <tr>
+              <td>{{ team.pos }}</td>
+              <td><img src="{{ team.img_small }}"/></td>
+              <td>{{ team.equipo }}</td>
+              <td>{{ team.pts }}</td>
+              <td>{{ team.jg }}</td>
+              <td>{{ team.je }}</td>
+              <td>{{ team.jp }}</td>
+              <td>{{ team.dif }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'large_results' %}
+  {% set jsonData = sportsResults() %}
+  <div class="tab-content {{ nameActive }}" id="{{ tabNameId }}" data-camus-template="{{module.templateName}}" {{ data_camus_background_color }} style="background-color: {{ module.color }}">
+    <div class="filter-date">
+      <div class="edition-filter">
+        <div class="span">
+          <span>Filtrar por edicion:</span>
+        </div>
+        <select class="editions-list">
+          <option value="option">{{ jsonData.jornada }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid-container-results">
+      <div class="liga-mx-logo-container">
+        <div class="name">
+          <h2>Liga MX</h2>
+        </div>
+        <div class="img-container">
+          <img src="/bundles/applicationcamusassets/images/sports-statics/liga-mx-logo.png">
+        </div>
+      </div>
+      <div class="grid">
+        <table>
+          <tr>
+            <th>FECHA</th>
+            <th>HORA</th>
+            <th></th>
+            <th>PARTIDO</th>
+            <th></th>
+          </tr>
+          {% for key, match in jsonData if key != 'jornada' %}
+            <tr>
+              <td class="start-date">{{ match.startdate }}</td>
+              <td class="start-time">{{ match.starttime }}</td>
+              <td class="team">{{ match.home_team }}</td>
+              <td>{{ match.home_score }}-{{ match.away_score }}</td>
+              <td class="team">{{ match.away_team }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'large_scorers' %}
+  {% set jsonData = sportsScorers() %}
+  <div class="tab-content {{ nameActive }}" id="{{ tabNameId }}" data-camus-template="{{module.templateName}}" {{ data_camus_background_color }} style="background-color: {{ module.color }}">
+    <div class="filter-date">
+      <div class="edition-filter">
+        <div class="span">
+          <span>Filtrar por edicion:</span>
+        </div>
+        <select class="editions-list">
+          <option value="APERTURA 2016">APERTURA 2016</option>
+          <option value="APERTURA 2015">APERTURA 2015</option>
+          <option value="APERTURA 2014">APERTURA 2014</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid-container-scorers">
+      <div class="liga-mx-logo-container">
+        <div class="name">
+          <h2>Liga MX</h2>
+        </div>
+        <div class="img-container">
+          <img src="/bundles/applicationcamusassets/images/sports-statics/liga-mx-logo.png">
+        </div>
+      </div>
+      <div class="grid">
+        <table>
+          <tr>
+            <th>JUGADORES</th>
+            <th></th>
+            <th></th>
+            <th>GOLES</th>
+          </tr>
+          {% for player in jsonData %}
+            <tr>
+              <td>{{ player.pos }}</td>
+              <td><img src="{{ player.img_small }}"/></td>
+              <td>{{ player.jugador }}</td>
+              <td>{{ player.goles }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'small_classification' %}
+  {% set jsonData = sportsClassification() %}
+    <table class="classification-tab tab-content {{ countLoop == 1 ? 'tab-active' }}" {{ data_camus_module_tab }} data-camus-template="{{module.templateName}}">
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>PTS</th>
+      <th>PG</th>
+      <th>PE</th>
+      <th>PP</th>
+      <th>DIF</th>
+    </tr>
+    {% for team in jsonData %}
+      <tr>
+        <td>{{ team.pos }}</td>
+        <td><img src="{{ team.img_small }}"/></td>
+        <td>{{ team.equipo }}</td>
+        <td>{{ team.pts }}</td>
+        <td>{{ team.jg }}</td>
+        <td>{{ team.je }}</td>
+        <td>{{ team.jp }}</td>
+        <td>{{ team.dif }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% elseif module.template == 'small_results' %}
+  {% set jsonData = sportsResults() %}
+    <table class="results-tab tab-content {{ countLoop == 1 ? 'tab-active' }}" {{ data_camus_module_tab }} data-camus-template="{{module.templateName}}">
+    {% for key,match in jsonData if key != 'jornada'%}
+      <tr>
+        <td class="start-date">{{ match.startdate }}</td>
+        <td class="start-time">{{ match.starttime }}</td>
+        <td class="team">{{ match.home_team }}</td>
+        <td>{{ match.home_score }}-{{ match.away_score }}</td>
+        <td class="team">{{ match.away_team }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% elseif module.template == 'small_scorers' %}
+  {% set jsonData = sportsScorers() %}
+    <table class="scorers-tab tab-content {{ countLoop == 1 ? 'tab-active' }}" {{ data_camus_module_tab }} data-camus-template="{{module.templateName}}">
+    <tr>
+      <th></th>
+      <th></th>
+      <th>JUGADORES</th>
+      <th>GOLES</th>
+    </tr>
+    {% for player in jsonData %}
+      <tr>
+        <td>{{ player.pos }}</td>
+        <td><img src="{{ player.img_small }}"/></td>
+        <td>{{ player.jugador }}</td>
+        <td>{{ player.goles }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endif %}

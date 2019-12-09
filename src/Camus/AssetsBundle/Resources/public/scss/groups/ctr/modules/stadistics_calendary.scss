@@ -1,0 +1,193 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.ctr-stadistics-calendary{
+  .body-container{
+    .going-container, .lap-container{
+      .head-going, .head-lap{
+        background-color: $color-alizarin-crimson;
+        padding-top: 5px;
+        padding-bottom: 2px;
+        text-transform: uppercase;
+        @include text-with-roboto-medium-color-white;
+        text-align: center;
+        font-size: 12px;
+        position: relative;
+      }
+      .body-going, .body-lap{
+        .going-header, .lap-header{
+          .date-separator{
+            display: flex;
+            align-items: center;
+            .going-date, .lap-date{
+              padding-top: 16px;
+              text-transform: uppercase;
+              font-size: 12px;
+              @include text-with-roboto-color-alizarin-crimson;
+            }
+            .going-separator-line, .lap-separator-line{
+              width: 335px;
+              height: 1px;
+              background-color: $color-alizarin-crimson;
+              position: relative;
+              margin-top: 14px;
+              left: 10px;
+            }
+          }
+        }
+        .going-body-container, .lap-body-container{
+          .going-data, .lap-data{
+            border-bottom: 1px solid $color-sharp-gray;
+            padding-bottom: 7px;
+            margin-bottom: 4px;
+            display: flex;
+            padding-left: 10px;
+            .title{
+              margin-right: 30px;
+              .going-hour, .lap-hour{
+                padding-top: 7px;
+                font-size: 12px;
+                @include text-with-roboto-black-color-night-gray;
+              }
+              .going-title, .lap-title{
+                padding-top: 5px;
+                font-size: 12px;
+                @include text-with-roboto-regular-color-night-gray;
+              }
+            }
+            .going-teams, .lap-teams{
+              margin-right: 35px;
+              display: flex;
+              .first-team{
+                margin-right: 8px;
+              }
+              .first-team, .second-team{
+                text-align: center;
+                img{
+                  width: 22px;
+                  height: auto;
+                }
+                .team-name{
+                  text-align: center;
+                  font-size: 12px;
+                  margin-top: 7px;
+                  @include text-with-roboto-black-color-night-gray;
+                }
+              }
+              .result-team{
+                //margin-right: 20px;
+                text-align: center;
+                font-size: 22px;
+                @include text-with-roboto-black-color-night-gray;
+              }
+            }
+            .going-type, .lap-type{
+              .recap{
+                background-color: $color-sunset-orange;
+              }
+              .previus{
+                background-color: $color-alizarin-crimson;
+              }
+              .title-type{
+                width: 60px;
+                padding-top: 2px;
+                text-align: center;
+                font-size: 11px;
+                margin-top: 15px;
+                @include text-with-roboto-regular-color-white;
+              }
+            }
+          }
+          .going-data:last-of-type, .lap-data:last-of-type{
+            border-bottom: unset;
+            margin-bottom: 20px;
+            padding-bottom: unset;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include one-column{
+  .ctr-stadistics-calendary{
+    .body-container{
+      .going-container, .lap-container{
+        .head-going, .head-lap{
+
+        }
+        .body-going, .body-lap{
+          .going-header, .lap-header{
+            margin-bottom: -5px;
+            .date-separator{
+
+              .going-date, .lap-date{
+
+              }
+              .going-separator-line, .lap-separator-line{
+                width: 288px;
+              }
+            }
+          }
+          .going-body-container, .lap-body-container{
+            .going-data, .lap-data{
+              padding-left: 0px;
+              .title{
+                margin-right: unset;
+                .going-hour, .lap-hour{
+
+                }
+                .going-title, .lap-title{
+                  position: relative;
+                  width: 80px;
+                  left: 40px;
+                }
+              }
+              .going-teams, .lap-teams{
+                margin-right: unset;
+                .first-team{
+
+                }
+                .first-team, .second-team{
+                  display: grid;
+                  img{
+                    grid-column: 2;
+                    grid-row: 1;
+                  }
+                  .team-name{
+                    width: 70px;
+                    grid-column: 1;
+                    grid-row: 1;
+                  }
+                }
+                .result-team{
+                  width: 70px;
+                  margin-right: unset;
+                }
+              }
+              .going-type, .lap-type{
+                position: relative;
+                top: 14px;
+                right: 205px;
+                .recap{
+
+                }
+                .previus{
+
+                }
+                .title-type{
+
+                }
+              }
+            }
+            .going-data:last-of-type, .lap-data:last-of-type{
+
+            }
+          }
+        }
+      }
+    }
+  }
+}

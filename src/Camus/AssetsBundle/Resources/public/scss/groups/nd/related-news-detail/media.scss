@@ -1,0 +1,34 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.nd-rnd-media{
+  margin-bottom: $global-margin-bottom;
+  overflow: hidden;
+  .related-title{
+    margin-bottom: 20px;
+    @include text-with-roboto-color-alizarin-crimson;
+    font-size: 18px;
+    line-height: 19px;
+  }
+  .notes-list{
+    padding-left: 0;
+    list-style-type: none;
+    @include text-with-roboto-regular-color-night-gray;
+    font-size: 15px;
+    line-height: 18px;
+    &:after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+}
+@include one-column{
+  .nd-rnd-media{
+    .related-title{
+      margin-bottom: 15px;
+    }
+  }
+}

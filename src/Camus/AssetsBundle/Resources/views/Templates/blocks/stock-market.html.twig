@@ -1,0 +1,105 @@
+<div class="stock-market">
+  <div class="media-container">
+    <div class="tabs">
+      <ul>
+        <a href="/markets/stock-market"><li>Bolsas</li></a>
+        <a href="/markets/bmv"><li>BMV</li></a>
+        <a href="/markets/indicators"><li>Indicadores</li></a>
+        <a href="/markets/funds"><li>Fondos</li></a>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="sections">
+        <div class="arrow">
+          <span class="fa fa-chevron-down"></span>
+        </div>
+        <select>
+          <option value="1">IPC</option>
+          <option value="2">DOW J ONES</option>
+          <option value="3">NASDAQ</option>
+          <option value="4">SP&500</option>
+        </select>
+        <h5>Elija indice</h5>
+      </div>
+      <div class="table">
+        <div class="head">
+          <h1>
+            <span class="section">ipc - índice actual (intradía)</span>
+          </h1>
+          <h5>
+            <span class="date">11.10.2016</span>
+            <span class="hour">16:30 Hrs.</span>
+          </h5>
+        </div>
+        <div class="data">
+          <div class="graphic">
+            <h5>Histórico gráfica</h5>
+            <select class="days">
+              <option value="1">1 Día</option>
+              {% for i in 2..6 %}
+                <option value="{{i}}">{{i}} Días</option>
+              {% endfor %}
+            </select>
+            <h3>
+              <b>INDU: IND  48141.42</b> |
+              Precio apertura:  <span class="precio">48141.42</span>
+            </h3>
+            <table>
+              <tr>
+                <th colspan="2" rowspan="6"><img src="/bundles/applicationcamusassets/images/graphic.jpg" alt=""></th>
+                <th>48150</th>
+              </tr>
+              <tr>
+                <td>48100</td>
+              </tr>
+              <tr>
+                <td>48050</td>
+              </tr>
+              <tr>
+                <td>48100</td>
+              </tr>
+              <tr>
+                <td>47950</td>
+              </tr>
+              <tr>
+                <td>47900</td>
+              </tr>
+              <tr>
+                <td>8.20</td>
+                <td>9.00</td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+          <div class="statistics">
+            <div class="rate">
+              <h5>índice</h5>
+              <h1>
+                <span class="number">48,023.23</span>
+              </h1>
+            </div>
+            <div class="variation">
+              <h5>Varicación</h5>
+              <h1>
+                <span class="number">+668.36</span>
+                <span class="percentage">+1.40%</span>
+              </h1>
+            </div>
+            <div class="max-of-day">
+              <h5>Máximo del día</h5>
+              <h1>
+                <span class="number">48,141.42</span>
+              </h1>
+            </div>
+            <div class="min-of-day">
+              <h5>Mínimo del día</h5>
+              <h1>
+                <span class="number">47,878.57</span>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

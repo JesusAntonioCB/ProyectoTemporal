@@ -1,0 +1,114 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.row-detail-match{
+  max-width: 100%;
+  .item-news-container{
+    margin-bottom: 10px;
+    .module-container{
+      border-left: 1px solid $color-sharp-gray;
+      .hour-social-network{
+        position: relative;
+        float: left;
+        width: 20%;
+        padding-bottom: 10px;
+        margin-right: 5%;
+        background-color: $color-white;
+        .img-container{
+          float: left;
+          width: 43px;
+          height: 43px;
+          margin-right: 20px;
+        }
+        .hour{
+          float: left;
+          @include text-with-roboto-color-alizarin-crimson;
+          font-size: 22px;
+        }
+      }
+      .title-container{
+        float: right;
+        width: 65%;
+        .summary{
+          font-size: 18px;
+          line-height: 22px;
+          @include text-with-roboto-regular-color-night-gray;
+          > iframe, > div > iframe{
+            width: 100%;
+          }
+        }
+      }
+      &:after{
+        content: '';
+        display: table;
+        clear: both;
+      }
+    }
+  }
+  .item-news-container.active{
+    background-color: $color-very-clear-gray;
+    .module-container{
+      .hour-social-network{
+        .img-container{
+          background-color: $color-very-clear-gray;
+        }
+        .hour{
+          @include text-with-roboto-black-color-dark-gray;
+        }
+      }
+    }
+  }
+}
+
+
+@include two-column{
+  .row-detail-match{
+    .item-news-container {
+      .module-container{
+        .hour-social-network{
+          .social-media{
+            padding: 0 10px;
+            border:{
+              right: 1px solid $color-silver;
+              left: 1px solid $color-silver;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include one-column{
+  .row-detail-match{
+    .item-news-container {
+      display: inline-block;
+      width: 300px;
+      padding: 0;
+      .module-container{
+        .hour-social-network{
+          width: auto;
+          margin-bottom: 10px;
+          .hour{
+            font-size: 16px;
+          }
+          .img-container{
+            margin-right: 10px;
+          }
+        }
+        .title-container{
+          width: 100%;
+          .title{
+            font-size: 16px;
+          }
+          .summary{
+            font-size: 12px;
+            line-height: 17px;
+          }
+        }
+      }
+    }
+  }
+};

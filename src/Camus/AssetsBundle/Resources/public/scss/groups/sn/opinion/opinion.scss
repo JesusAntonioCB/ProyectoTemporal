@@ -1,0 +1,67 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-opinion{
+  @include global-container-1c;
+  @include rows-height(1);
+  overflow: hidden;
+  .firms-note{
+    @include container-light-cyan;
+    height: 353px;
+    position: relative;
+    .image{
+      width: 102px;
+      height: 102px;
+      margin: 0 auto;
+      border-radius: 50%;
+    }
+    .author{
+      // @include text-container-center-top-sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      h2{
+        margin-bottom: 0px;
+      }
+    }
+    .column{
+      // @include text-container-open-sans5-nobel;
+      font-size: 13px;
+      h2{
+        margin-top: 0px;
+      }
+    }
+    .title{
+      max-height: 77px;
+      overflow: hidden;
+      // @include headline-container-center-utopia;
+      font-size: 24px;
+      line-height: 26px;
+    }
+    .bottom{
+      position: absolute;
+      left: 42%;
+      bottom: 12px;
+      height: 50px;
+      .section{
+        @include text-with-sans-serif-color-blue-gray;
+        font-size: 10px;
+        text-transform: uppercase;
+        border-bottom: 1px solid $color-blue-gray;
+        padding-bottom: 5px;
+      }
+      .social-media{
+        padding-top: 5px;
+      }
+    }
+  }
+}
+
+@include mobile-small{
+  .sn-opinion {
+    .title{
+      font-size: 20px;
+    }
+  }
+};

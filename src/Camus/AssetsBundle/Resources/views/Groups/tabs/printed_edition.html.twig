@@ -1,0 +1,188 @@
+{% if module.template == 'printed_edition' %}
+  {% set jsonData = render(controller(
+    'ApplicationCamusFrontEndBundle:Default:editions', { 'id': 1 }
+  ))|twigJsonDecode %}
+  {% if countLoop == 1 %}
+    <div class="tab-content tab-active editions-tab">
+  {% else %}
+    <div class="tab-content editions-tab">
+  {% endif %}
+    <div class="filter-date">
+      <div class="edition-filter">
+        <div class="span">
+          <span>Filtrar por edicion:</span>
+        </div>
+        <select class="editions-list">
+          <option value="EDICION NACIONAL">EDICION NACIONAL</option>
+          <option value="ESTADO DE MÉXICO">ESTADO DE MÉXICO</option>
+          <option value="MONTERREY">MONTERREY</option>
+          <option value="JALISCO">JALISCO</option>
+          <option value="LAGUNA">LAGUNA</option>
+          <option value="TAMAULIPAS">TAMAULIPAS</option>
+          <option value="LEON">LEON</option>
+          <option value="HIDALGO">HIDALGO</option>
+          <option value="PUEBLA">PUEBLA</option>
+        </select>
+        <div class="date">
+          <span>Miércoles 14 de diciembre de 2016</span>
+        </div>
+      </div>
+    </div>
+    <div class="supplement-list">
+      <!-- <div class="supplement-item">
+        <div class="img-container">
+          <a href="">
+            <img src="/bundles/applicationcamusassets/images/printed-edition/edition.jpg" />
+          </a>
+        </div>
+        <div class="choose">
+          <button type="button">Elegir</button>
+        </div>
+      </div> -->
+      {% for edition in jsonData %}
+        <div class="supplement-item">
+          <div class="img-container">
+            <a href="{{ edition.url }}">
+              <img src="{{ edition.thumbnail }}" alt="" />
+            </a>
+          </div>
+          <div class="choose">
+            <button type="button">Elegir</button>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% elseif module.template == 'printed_supplements' %}
+  {% set jsonData = render(controller(
+    'ApplicationCamusFrontEndBundle:Default:supplements', { 'id': 1 }
+  ))|twigJsonDecode %}
+  <div class="tab-content supplements-tab">
+    <div class="filter-date">
+      <div class="edition-filter">
+        <div class="span">
+          <span>Filtrar por edicion:</span>
+        </div>
+        <select class="editions-list">
+            <option value="EDICION NACIONAL">DESTACADOS</option>
+          <option value="Anuario">Anuario</option>
+          <option value="Afición">Afición</option>
+        </select>
+      </div>
+    </div>
+    <div class="supplement-list">
+      <!-- <div class="supplement-item">
+        <div class="img-container">
+          <a href="">
+            <img src="/bundles/applicationcamusassets/images/printed-edition/edition.jpg" />
+          </a>
+        </div>
+        <div class="choose">
+          <button type="button">Elegir</button>
+        </div>
+      </div> -->
+      {% for supplement in jsonData %}
+        <div class="supplement-item">
+          <div class="img-container">
+            <a href="{{ supplement.url }}">
+              <img src="{{ supplement.thumbnail }}" alt="" />
+            </a>
+          </div>
+          <div class="choose">
+            <button type="button">Elegir</button>
+          </div>
+        </div>
+      {% endfor %}
+      <div class="number-pages-container">
+        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        <div class="btn-next-page-container">
+          <button class="btn-next">SIGUIENTE<span class="fa fa-chevron-right"></span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'printed_calendar' %}
+  {% set time = "now"|date("U") %}
+  {% set daysInMonth = time|date('t') %}
+  {% set startDow = time|date('F 1\\s\\t Y')|date('w') - 1 %}
+  {% set dow = startDow %}
+  {% set today = time|date('d') %}
+  {% set totalDays = daysInMonth+(7-startDow)+1 %}
+  <div class="calendar tab-content">
+    <div class="top">
+      <div class="span">
+        <span>Elija que fecha desea consultar</span>
+      </div>
+      <div class="month-year-bar">
+        <div class="month-container">
+          <div class="left-icon">
+            <a href="">
+            </a>
+          </div>
+          <div class="month">
+              <span class="name">Mayo</span>
+          </div>
+          <div class="right-icon">
+            <a href="">
+
+            </a>
+          </div>
+        </div>
+        <div class="year-container">
+          <div class="year">
+            <span>2016</span>
+          </div>
+          <div class="down-icon">
+            <a href="#">
+
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="days-name-container">
+        <div class="name">
+          <span>LUN</span>
+        </div>
+        <div class="name">
+          <span>MAR</span>
+        </div>
+        <div class="name">
+          <span>MIE</span>
+        </div>
+        <div class="name">
+          <span>JUE</span>
+        </div>
+        <div class="name">
+          <span>VIE</span>
+        </div>
+        <div class="name">
+          <span>SAB</span>
+        </div>
+        <div class="name">
+          <span>DOM</span>
+        </div>
+      </div>
+      <div class="grid">
+        {% for day in range(1, totalDays) %}
+          {% if day > startDow %}
+            {% if (day - startDow) == today %}
+              <div class="day-item day-current">
+            {% elseif (day - startDow) > today %}
+              <div class="day-item day-future">
+            {% else %}
+              <div class="day-item">
+            {% endif %}
+              <a href=""><span>{{ day - startDow }}</span></a>
+            </div>
+          {% elseif day <= startDow %}
+            <div class="day-item day-empty">
+
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endif %}

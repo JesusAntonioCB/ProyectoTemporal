@@ -1,0 +1,218 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.eo-tv-base{
+  @include container-space-gray;
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 20px;
+  background: $color-night-gray;
+  .live-title-container{
+    position: relative;
+    float: left;
+    width: 15%;
+    .img-milenio-container{
+      margin-top: 5px;
+    }
+    .live-title{
+      h2{
+        @include text-yellow-live-title-container;
+        &:before{
+          content: '';
+          float: left;
+          margin-right: 20px;
+          font-size: 20px;
+          line-height: 2.1;
+        }
+        margin: 0;
+        font-size: 40px;
+      }
+    }
+  }
+  .media-container{
+    float: right;
+    width: 85%;
+  }
+  .news-container, .summary-container{
+    height: 415px;
+  }
+  .news-container{
+    float: left;
+    width: 63%;
+    .holder-container, .float-container{
+      height: inherit;
+    }
+    .holder-container{
+      cursor: pointer;
+      img{
+        width: 100%;
+      }
+      .btn-play{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &:hover .btn-play{
+        opacity: 0.8;
+      }
+    }
+    iframe{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .summary-container{
+    position: relative;
+    float: right;
+    width: 35%;
+    margin-left: 2%;
+    color: $color-white;
+    .title,.title-hide{
+      font-size: 24px;
+      text-transform: none;
+      line-height: 29px;
+      padding-bottom: 10px;
+      color: #FFFFFF;
+      font-family: $font-open-sans5;
+      font-weight: 600;
+    }
+    .hour,.hour-hide{
+      font-size: 11px;
+      text-transform: uppercase;
+      line-height: 15px;
+      padding-bottom: 5px;
+      color: #FFFFFF;
+      font-family: $font-open-sans5;
+      font-weight: 400;
+    }
+    .abstract,.abstract-hide{
+      font-size: 14px;
+      text-transform: none;
+      line-height: 20px;
+      color: #999999;
+      font-family: $font-open-sans5;
+      font-weight: 400;
+    }
+    .abstract-hide,.title-hide,.hour-hide{
+      display: none;
+    }
+    .social-networks-share{
+      position: absolute;
+      bottom: 0;
+    }
+  }
+  &:after{
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+@include three-column{
+  .eo-tv-base{
+    .live-title-container{
+      width: 100%;
+      margin-bottom: 15px;
+      .live-title{
+        display: inline-block;
+        h2{
+          &:before{
+            content: '\276F';
+          }
+        }
+      }
+      .img-milenio-container{
+        float: left;
+        margin-right: 25px;
+      }
+    }
+    .media-container{
+      width: 100%;
+    }
+    .news-container, .summary-container{
+      height: 370px;
+    }
+    .summary-container{
+      border-top: 1px solid;
+      padding-top: 15px;
+    }
+  }
+};
+@include two-column{
+  .eo-tv-base{
+    padding: 0;
+    .live-title-container{
+      padding: 0 15px;
+      margin-top: 15px;
+    }
+    .news-container{
+      width: 100%;
+    }
+    .summary-container{
+      width: 100%;
+      height: auto;
+      margin: 15px 0;
+      padding: 0 15px;
+      border-top: 0;
+      .headline-top{
+        float: left;
+        width: 65%;
+        padding-right: 30px;
+      }
+      .social-networks-share{
+        position: initial;
+        float: right;
+        width: 35%;
+      }
+    }
+  }
+};
+@include one-column{
+  .eo-tv-base{
+    .live-title-container{
+      .live-title{
+        h2{
+          &:before{
+            content: '';
+          }
+          font-size: 30px;
+        }
+      }
+      .img-milenio-container{
+        float: right;
+        width: 62px;
+        margin-right: 0;
+        img{
+          width: 100%;
+        }
+      }
+    }
+    .news-container{
+      height: 210px;
+      .holder-container{
+        .btn-play{
+          top: 20px;
+          right: 20px;
+          left: unset;
+          transform: none;
+        }
+      }
+    }
+    .summary-container{
+      .headline-top{
+        width: 100%;
+        padding-right: 0;
+        .title{
+          font-size: 19px;
+          line-height: 24px;
+        }
+      }
+      .abstract{
+        margin-bottom: 15px;
+        font-size: 14px;
+        line-height: 18px;
+      }
+    }
+  }
+};

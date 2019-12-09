@@ -1,0 +1,61 @@
+$one-column: 100%;
+$two-column: 618px;
+$three-column: 936px;
+$four-column: 1254px;
+
+$global-height: 352px;
+$global-padding-top: 6px;
+$global-margin-bottom: 18px;
+
+@mixin rows-height($rows) {
+  height: ($global-height * $rows) + ($global-margin-bottom * ($rows - 1));
+}
+
+@mixin prefix($declarations, $prefixes: ()) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+    #{$property}: $value;
+  }
+}
+
+@mixin global-container{
+  display: inline-block;
+  margin-bottom: $global-margin-bottom;
+  overflow: hidden;
+}
+@mixin global-container-1c{
+  @include global-container;
+  width: 300px;
+  @include one-column{
+    width: $one-column;
+  };
+}
+@mixin global-container-2c{
+  @include global-container;
+  width: $two-column;
+  @include one-column{
+    width: $one-column;
+  };
+}
+@mixin global-container-3c{
+  @include global-container;
+  width: $three-column;
+  @include one-column{
+    width: $one-column;
+  };
+}
+@mixin global-container-4c{
+  @include global-container;
+  width: $four-column;
+  @include three-column{
+    width: $three-column;
+  };
+  @include two-column{
+    width: $two-column;
+  };
+  @include one-column{
+    width: $one-column;
+  };
+}

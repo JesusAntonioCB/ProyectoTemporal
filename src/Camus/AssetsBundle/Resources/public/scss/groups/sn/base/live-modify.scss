@@ -1,0 +1,149 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-live-modify{
+  @include global-container-1c;
+  border-top: 5px solid $color-shamrock-green;
+  .media-container{
+    @include rows-height(1);
+    overflow: hidden;
+    .top{
+      width: 100%;
+      height: 46%;
+      position: relative;
+      .btn-play{
+        padding: 15px;
+        position: absolute;
+        z-index: 5;
+        left: 10px;
+        top: 10px;
+        background-color: rgba($color-dark-gray,0.5);
+        border: 2px solid $color-shamrock-green;
+        .fa-play{
+          color:$color-white;
+          font-size: 16px;
+        }
+      }
+      a{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .bottom{
+      position: relative;
+      height: 54%;
+      padding: 1px 15px 1px 15px;
+      @include text-with-roboto-black-color-dark-gray;
+      background-color: $color-shamrock-green;
+      font-size: 26px;
+      line-height: 30px;
+      a{
+        font-size: 26px;
+        @include text-with-roboto-black-color-white;
+        span{
+          max-height: 82px;
+          overflow: hidden;
+          margin-top: 10px;
+          font-size: 26px;
+          font-weight: 600;
+          line-height: 30px;
+          display: block
+        }
+      }
+      .live-container-white, .social-media{
+        position: absolute;
+        bottom: 10px;
+      }
+      .live-container-white{
+        @include live-logo-container-dark-gray;
+        margin-bottom: 0;
+        .live-logo-container{
+          display: inline-block;
+          float: left;
+          border-right: 1px solid $color-shamrock-green;
+          margin-top: -2px;
+          height: 20px;
+          padding-right: 6px;
+          margin-top: 6px;
+          a{
+            img{
+              position: relative;
+              bottom: 8px;
+            }
+          }
+        }
+        .span-live-logo-container{
+          display: inline-block;
+          margin-left: 3px;
+          position: relative;
+          bottom: 3px;
+          left: 8px;
+          .live-logo-text{
+            font-size: 14px;
+            @include text-with-roboto-black-color-white;
+          }
+        }
+      }
+      .social-media{
+        right: 15px;
+      }
+    }
+  }
+}
+
+@include one-column{
+  .sn-live-modify{
+    .media-container{
+      height: 305px;
+      .top{
+        height: 55%;
+        .btn-play{
+          height: 50px;
+        }
+      }
+      .bottom{
+        height: 45%;
+        font-size: 20px;
+        line-height: 20px;
+        a{
+          span{
+            font-size: 20px;
+            margin-top: 5px;
+            margin-bottom: -5px;
+            line-height: 30px;
+          }
+        }
+        .live-container-white{
+          .live-logo-container{
+            a{
+              img{
+                bottom: 6px;
+              }
+            }
+          }
+          .span-live-logo-container{
+            top: 5px;
+            bottom: unset;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mobile-small{
+  .sn-live .headline-container h1{
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .sn-live .fa-play{
+    font-size: 23px;
+  }
+};

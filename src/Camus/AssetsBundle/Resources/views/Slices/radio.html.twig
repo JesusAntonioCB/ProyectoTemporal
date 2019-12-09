@@ -1,0 +1,30 @@
+
+{% set stations = {
+  monterrey:{
+    'url' : 'http://17793.live.streamtheworld.com/FMTU_SC',
+    'title' : 'monterrey',
+    'city' : '103.7',
+    'frame' : 'http://www.milenio.com/radio/monterrey.html'
+  },
+  tvenvivo:{
+    'url' : 'http://15363.live.streamtheworld.com/XEAUAMMP3_SC',
+    'title' : 'en-vivo',
+    'city' : '',
+    'frame' : '/radio/tvenvivo'
+  }
+} %}
+
+<html>
+<body>
+  <div class="milenio-audio">
+    <img style="width:100%;" src="/bundles/applicationcamusassets/images/{{stations[section].title}}-milenioradio.jpg">
+    <div>
+      <audio controls style="width: 100%;">
+        <source src="{{stations[section].url}}" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.nd-md-caption{
+  width: 100%;
+  margin-bottom: $global-margin-bottom;
+  overflow: hidden;
+  .media-container{
+    .img-container{
+      @include rows-height(1);
+    }
+    .caption{
+      display: flex;
+      align-items: flex-end;
+      padding: 10px;
+      line-height: 21px;
+      background-color: $color-gray-white;
+      .title{
+        flex: 1;
+        @include text-with-open-sans-semibold-color-gray;
+        font-size: 13px;
+      }
+      .social-media{
+        font-size: 16px;
+      }
+      &:after{
+        content: '';
+        display: table;
+        clear: both;
+      }
+    }
+  }
+}
+
+@include one-column{
+  .nd-md-caption{
+    width: $one-column;
+    .media-container{
+      .img-container{
+        height: auto;
+        min-height: auto;
+      }
+      .caption{
+        display: block;
+        .social-media{
+          float: left;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}

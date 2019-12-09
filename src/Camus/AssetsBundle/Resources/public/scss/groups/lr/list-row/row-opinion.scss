@@ -1,0 +1,140 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.lr-row-opinion {
+  width: 100%;
+  height: 157px;
+  border-style: solid;
+  border-color: $color-nobel;
+  background-color: $color-gray-white;
+  border-width: 1px 0px 0px;
+  .item-opinion-container {
+    width: 830px;
+    padding: 20px 0;
+    height: 170px;
+    margin-left: auto;
+    margin-right: auto;
+    .hour-social-network {
+      width: 124px;
+      height: 22px;
+      float: left;
+      margin-right: 72px;
+      .hour {
+        @include text-with-roboto-black-color-gray-glass;
+        text-align: right;
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
+    .img-container {
+      width: 130px;
+      height: 130px;
+      float: left;
+      margin-right: 80px;
+      img {
+        width: 100%;
+        height: 100% !important;
+        border-radius: 50%;
+        /*&:after {
+          position: absolute;
+          content: "";
+          width: 130px;
+          height: 130px;
+          opacity: 0.5;
+          background: $color-yellow;
+          border-radius: 50%;
+          left: 50%;
+          transform: translateX(-50%);
+          top: 15px;
+        }*/
+      }
+    }
+    .info-container {
+      width: 352px;
+      float: left;
+      .title {
+        @include text-with-roboto-black-color-night-gray;
+        text-align: left;
+        font-size: 20px;
+        line-height: 24px;
+        overflow: hidden;
+      }
+      .author {
+        @include text-with-roboto-black-color-night-gray;
+        margin-top: 13px;
+        font-size: 13px;
+        line-height: 17px;
+        font-weight: 600;
+      }
+      .column {
+        @include text-with-roboto-regular-color-dove-gray;
+        font-size: 11px;
+        line-height: 14px;
+        padding-bottom: 3px;
+      }
+      .section {
+        @include text-with-roboto-regular-color-dove-gray;
+        font-size: 11px;
+        text-transform: uppercase;
+        line-height: 14px;
+        padding-bottom: 8px;
+      }
+    }
+  }
+}
+
+@include two-column{
+  .lr-row-opinion {
+    .item-opinion-container {
+      .hour-social-network {
+        margin-right: 14px;
+      }
+      .img-container {
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+@include one-column{
+  .lr-row-opinion {
+    width: 322px;
+    height: 151px;
+    margin: auto;
+    .item-opinion-container {
+      width: 100%;
+      height: 150px;
+      padding: 10px 0;
+      .hour-social-network {
+        float: none;
+        margin-right: 0;
+        width: 105px;
+      }
+      .img-container {
+        width: 95px;
+        height: 95px;
+        margin-right: 0;
+        margin-left: 31px;
+      }
+      .info-container {
+        float: left;
+        width: 144px;
+        transform: translateY(-25px);
+        margin-left: 40px;
+        .title {
+          font-size: 15px;
+          line-height: 17px;
+          height: 51px;
+          margin-bottom: 25px;
+        }
+        .author {
+          font-size: 12px;
+          line-height: 16px;
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}

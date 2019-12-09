@@ -1,0 +1,97 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.oo-background-image-single-notice{
+  width: 100%;
+  margin-bottom: $global-margin-bottom;
+  .sn-wrapper.primary{
+    .img-container{
+      height: 490px;
+    }
+    .headline-notice-gradient{
+      .info-container{
+        .title{
+          font-size: 90px;
+          line-height: 103px;
+          @include text-with-roboto-black-color-concrete;
+        }
+        .abstract{
+          font-size: 35px;
+        }
+      }
+    }
+  }
+}
+
+@include three-column{
+  .oo-background-image-single-notice{
+    .sn-wrapper.primary{
+      .img-container{
+        height: 375px;
+      }
+      .headline-notice-gradient{
+        .info-container{
+          .title{
+            font-size: 80px;
+            line-height: 93px;
+          }
+        }
+      }
+    }
+  }
+};
+
+@include two-column{
+  .oo-background-image-single-notice{
+    .sn-wrapper.primary{
+      .img-container{
+        height: 365px;
+      }
+      .headline-notice-gradient{
+        .info-container{
+          .title{
+            font-size: 50px;
+            line-height: 53px;
+          }
+          .abstract{
+            font-size: 22px;
+          }
+        }
+      }
+    }
+  }
+};
+
+@include one-column{
+  .oo-background-image-single-notice{
+    .sn-wrapper.primary{
+      .img-container{
+        height: 100%;
+        max-height: 205px;
+      }
+      .headline-notice-gradient{
+        .info-container{
+          .title{
+            font-size: 24px;
+            line-height: 26px;
+          }
+          .abstract{
+            font-size: 12px;
+            line-height: 14px;
+          }
+        }
+      }
+    }
+  }
+};
+.contenedor-notas-block{
+  .oo-background-image-single-notice{
+    .sn-wrapper.primary{
+      .img-container{
+        height: auto !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,184 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.filter-date{
+  .edition-filter{
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    .span{
+      display: inline-block;
+      @include text-with-open-sans-5-color-nobel;
+      line-height: 13px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 400;
+    }
+    .editions-list{
+      display: inline-block;
+      width: 160px;
+      border-radius: 0;
+      height: 40px;
+      background-color: white;
+      border: 0;
+    }
+    .date{
+      margin-top: 25px;
+      span{
+        @include text-with-open-sans-5-color-grayish-blue;
+        font-weight: 400;
+      }
+    }
+  }
+}
+.grid-container-scorers{
+  max-width: 873px;
+  border-top: 1px solid $color-green;
+  margin: 0 auto;
+  .liga-mx-logo-container{
+    display: inline-block;
+    width: 35%;
+    vertical-align: top;
+    margin-top: 4px;
+    h2{
+      @include text-with-utopia-5-color-night-gray;
+      line-height: 31px;
+      font-size: 24px;
+      font-weight: 400;
+      margin-top: 7px;
+    }
+    img{
+      width: 88px;
+    }
+  }
+  .grid{
+    display: inline-block;
+    width: 64%;
+    table{
+      tr{
+        height: 40px;
+        th{
+          @include text-with-sans-serif-color-night-gray;
+          width: 35px;
+          font-size: 9px;
+          text-align: center;
+          font-weight: 500;
+          td:first-child {
+            padding-left: 5px;
+          }
+        }
+        td {
+          border-top: 1px solid $color-super-light-gray;
+          font-size: 15px;
+        }
+        th:nth-child(n+4){
+          text-align: center;
+          width: 48px;
+        }
+        td:nth-child(2){
+          width: 25px;
+        }
+        td:nth-child(3) {
+          width: 75%;
+          font-weight: 500;
+        }
+        td:nth-child(4) {
+          font-weight: 700;
+          text-align: center;
+          background-color: $color-space-grayish-green;
+        }
+      }
+      tr:nth-child(2), tr:nth-child(3), tr:nth-child(4){
+        height: 70px;
+        td:nth-child(3), td:nth-child(4) {
+          font-size: 22px !important;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+@include two-column{
+  .grid-container-scorers{
+     width: 597px;
+    .liga-mx-logo-container{
+      display: initial;
+      .name{
+        display: inline-block;
+      }
+      .img-container{
+        display: inline-block;
+        transform: translate-x(454px);
+        img{
+          width: 50px;
+        }
+      }
+    }
+    .grid{
+      width: 100%;
+      table{
+        tr:nth-child(n+2){
+          td:nth-child(3){
+            width: 77%;
+          }
+        }
+      }
+    }
+  }
+};
+@include one-column{
+  .filter-date{
+    .edition-filter{
+      .editions-list{
+        width: 240px;
+        border: 1px solid $color-grayish-cyan;
+      }
+    }
+  }
+  .grid-container-scorers{
+     width: 280px;
+    .liga-mx-logo-container{
+      .img-container{
+        transform: translate-x(145px);
+        img{
+          width: 40px;
+        }
+      }
+    }
+    .grid{
+      table{
+        tr{
+          height: 28px;
+          td{
+            font-size: 13px;
+            border-top: 1px solid $color-white;
+          }
+          td:nth-child(2) {
+            width: 25px;
+            transform: translate-x(-30px);
+          }
+          td:nth-child(3){
+            width: 35%;
+          }
+          td:nth-child(4) {
+          background-color: transparent;
+          }
+        }
+        tr:nth-child(n+2){
+          td:nth-child(3){
+            transform: translate-x(-20px);
+          }
+        }
+        tr:nth-child(2), tr:nth-child(3), tr:nth-child(4){
+          height: 28px !important;
+          td:nth-child(3), td:nth-child(4) {
+            font-size: 13px !important;
+            font-weight: 900;
+          }
+        }
+      }
+    }
+  }
+};

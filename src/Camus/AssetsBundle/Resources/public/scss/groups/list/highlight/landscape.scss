@@ -1,0 +1,40 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.list-highlight-landscape{
+  @include global-container-2c;
+  .media-container{
+    .sn-base{
+      float: left;
+      margin-bottom: 0;
+      padding-top: 0;
+      border-top: none;
+      height: 306px;
+      .abstract{
+        display: none;
+      }
+    }
+    .lr-row-base{
+      float: right;
+      width: 300px;
+    }
+  }
+}
+
+@include one-column{
+  .list-highlight-landscape{
+    .media-container{
+      .sn-base, .lr-row-base{
+        float: none;
+        width: auto !important;
+      }
+      .lr-row-base{
+        .social-media{
+          padding-right: 20px;
+        }
+      }
+    }
+  }
+}

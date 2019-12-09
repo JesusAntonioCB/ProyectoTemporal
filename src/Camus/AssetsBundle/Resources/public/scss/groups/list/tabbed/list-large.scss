@@ -1,0 +1,75 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.tabs-large{
+  width: 100%;
+  margin-bottom: $global-margin-bottom;
+  .tabs{
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow: auto;
+    *{
+      flex: none;
+    }
+    .tab-name{
+      flex-grow: 1;
+      padding: 13px 20px;
+      font-family: $font-open-sans-semibold;
+      font-size: 15px;
+      color: $color-night-gray;
+      cursor: pointer;
+      outline: none;
+      transition: padding-top .2s ease;
+    }
+  }
+  .content{
+    width: 100%;
+    height: auto;
+    position: relative;
+    float: none;
+    padding: 0;
+    .tab-content{
+      display: none;
+      padding: 25px 0;
+    }
+    .tab-active{
+      display: block;
+    }
+  }
+  &.sports-stats{ // sports-stats style
+    .tabs{
+      .tab-name{
+        border-style: solid;
+        border-width: 1px 0 0 1px;
+        border-color: $color-green;
+        &.tab-title-active{
+          background: $color-light-green;
+        }
+        &:hover{
+          padding-top: 8px;
+          background-color: $color-light-green;
+        }
+      }
+    }
+    .content{
+      background-color: $color-light-green;
+    }
+  }
+}
+
+@include one-column{
+  .tabs-large{
+    &.sports-stats{ // sports-stats style
+      .tabs{
+        .tab-name{
+          padding: 10px;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+};

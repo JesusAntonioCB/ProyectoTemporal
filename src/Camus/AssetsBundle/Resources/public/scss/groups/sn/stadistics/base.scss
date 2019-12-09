@@ -1,0 +1,173 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-league-stadistics, .sn-stadistics {
+  &.club {
+    overflow-x: auto;
+    width: 100%;
+    margin-bottom: 72px;
+    .media-container {
+      .content {
+        .stadistics-header {
+          border-width: 2px 0px;
+          border-style: solid;
+          border-color: $color-yellow;
+          .title {
+            @include text-with-roboto-black-color-dark-gray;
+            line-height: 34px;
+            font-size: 26px;
+          }
+        }
+        .table-content {
+          tr {
+            td:nth-of-type(2) {
+              text-align: left;
+            }
+            .both {
+              border-left: 1px solid $color-gray-white;
+              border-right: 1px solid $color-gray-white;
+              padding-left: 10px;
+            }
+            .center {
+              padding: 0 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .media-container {
+    .content {
+      padding: 0;
+      .table-content.header {
+        tr:first-child {
+          background: transparent !important;
+        }
+      }
+      .table-content {
+        width: 100%;
+        tr {
+          @include text-with-roboto-black-color-night-gray;
+          th {
+            line-height: 23px;
+            font-size: 12px;
+            text-transform: uppercase;
+          }
+          th:first-of-type, td:first-of-type{
+            padding-left: 10px;
+          }
+          th:nth-of-type(2){
+            padding-right: 27px;
+          }
+          th:last-of-type, td:last-of-type{
+            text-align: right;
+            padding-right: 10px;
+          }
+          th:not(:first-of-type):not(:last-of-type) {
+            text-align: center;
+          }
+          td {
+            line-height: 30px;
+            font-size: 12px;
+          }
+          th, td {
+            .team-name {
+              line-height: 30px;
+              font-size: 12px;
+            }
+          }
+          td:nth-of-type(2) {
+            text-align: center;
+          }
+          .table-bold{
+            @include text-with-roboto-black-color-night-gray;
+          }
+          .player_img {
+            border-left: 1px solid $color-silver;
+            text-align: center;
+            img {
+              border-radius: 50%;
+            }
+          }
+          .unhighlight {
+            @include text-with-roboto-regular-color-night-gray;
+          }
+          .center {
+            text-align: center !important;
+          }
+          .only-left {
+            text-align: left !important;
+            border-left: 1px solid $color-gray-white;
+            padding-left: 10px;
+          }
+        }
+        tr:nth-child(even) {
+            background-color: $color-very-clear-gray;
+        }
+      }
+    }
+  }
+}
+.sn-league-stadistics.footer {
+  width: 100%;
+  margin-top: 20px;
+}
+.footer-stadistics-container{
+  margin-bottom: 20px;
+  width: 100%;
+  .content{
+    min-height: 31px;
+    background-color: $color-gray-white;
+    font-size: 13px;
+    padding: 8px 10px 13px !important;
+    line-height: 22px;
+    @include text-with-roboto-regular-color-night-gray;
+    p{
+      margin: 0;
+      span{
+        @include text-with-roboto-black-color-night-gray;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.sn-stadistics:empty {
+ width: 0px !important;
+ display: none;
+}
+
+@include three-column{
+  .sn-stadistics{
+    &.club {
+      margin-bottom: 63px;
+    }
+  }
+}
+
+@include two-column{
+  .sn-stadistics{
+    &.club {
+      .media-container {
+        .content {
+          .stadistics-header {
+            width: 600px;
+          }
+          .table-content {
+            width: 600px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include one-column{
+  .sn-stadistics{
+    &.club {
+      margin-bottom: 23px;
+    }
+  }
+}

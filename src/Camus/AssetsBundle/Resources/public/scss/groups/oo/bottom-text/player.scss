@@ -1,0 +1,159 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.oo-player{
+  @include global-container-4c;
+  border: none;
+  background-color: $color-space-gray;
+  .headerContainer{
+    padding: 10px 0;
+    font-family: $font-utopia-bold;
+    font-size: 36px;
+    text-align: center;
+    .red{
+      color: $color-red-dark;
+    }
+    .white{
+      color: $color-white;
+    }
+  }
+  video{
+    width: 100%;
+  }
+  .video-container{
+    height: 420px;
+    video{
+      display: none;
+    }
+    img{
+      width: 100%;
+    }
+    .hidden{
+      display:none;
+    }
+    iframe{
+      border: none;
+    }
+  }
+  .bottom{
+    padding: 15px;
+    &:after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+  .text-container{
+    float: left;
+    width: 75%;
+    color: $color-white;
+  }
+  .title{
+    margin-bottom: 10px;
+    font-family: "---utopia-5";
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 36px;
+  }
+  .abstract{
+    font-family: "---open -sans-5";
+    line-height: 20px;
+    padding-bottom: 12px;
+    font-weight: 400;
+  }
+  .date{
+    font-size: 11px;
+    text-transform: uppercase;
+    line-height: 15px;
+    @include text-with-open-serif-color-white;
+    font-weight: 400;
+  }
+  .social-networks-share{
+    float: right;
+    width: 210px;
+    .span-share{
+      margin-bottom: 10px;
+      color: $color-nobel;
+    }
+    .share-container{
+      margin-bottom: 2px;
+      min-height: 40px;
+      padding: 11px 20px;
+      i{
+        width: 35px;
+        vertical-align: middle;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@include two-column{
+  .oo-player{
+    .text-container{
+      width: 62%;
+    }
+  }
+}
+
+@include one-column{
+  .oo-player{
+    .headerContainer{
+      font-size: 24px;
+    }
+    .text-container{
+      width: 100%;
+    }
+    .title{
+      font-size: 18px;
+      line-height: 22px;
+    }
+    .abstract{
+      font-size: 12px;
+    }
+    .date{
+      font-size: 12px;
+    }
+    .social-networks-share{
+      margin-top: 15px;
+      .share-container{
+        text-align: center;
+        i{
+          width: auto;
+        }
+      }
+      .facebook-share-modules{
+        width: 22%;
+        float: left;
+        margin: 0 3px;
+        span{
+          display: none;
+        }
+      }
+      .twitter-share-modules{
+        width: 22%;
+        float: left;
+        margin: 0 3px;
+        span{
+          display: none;
+        }
+      }
+      .whats-app-share-module{
+        width: 22%;
+        display: block;
+        float: left;
+        margin: 0 3px;
+      }
+      .more{
+        width: 22%;
+        float: left;
+        margin: 0 3px;
+        span{
+          display: none;
+        }
+      }
+    }
+  }
+};

@@ -1,0 +1,35 @@
+<div id="{{ name|default('menu') }}">
+	<div class="center">
+		{% for item in jsonData.sections %}
+				<div class="item">
+					{% if name == "menu-mobile" %}
+						<li class="father"><a href="{{ item.url }}">{{ item.title }}</a>
+							{% if item.identifier != "menuUltimaHora" %}
+								{% if item.data|length > 0 %}
+									<span class="fa fa-chevron-right"></span>
+								{% endif %}
+							{% endif %}
+						</li>
+					{% else %}
+						<a href="{{ item.url }}">
+							<li class="father">{{ item.title }}
+							</li>
+						</a>
+					{% endif %}
+					{% if item.identifier != "menuUltimaHora" %}
+						{% if item.data|length > 0 %}
+							<div class="child-list">
+								{% for children in item.data %}
+									{% if children.slug.slug is defined %}
+										<li class="child"><a href="{{ children.slug.slug }}">{{ children.title }}</a></li>
+									{% else %}
+										<li class="child"><a href="{{ item.url~children.url }}">{{ children.title }}</a></li>
+									{% endif %}
+								{% endfor %}
+							</div>
+						{% endif %}
+					{% endif %}
+				</div>
+		{% endfor %}
+	</div>
+</div>

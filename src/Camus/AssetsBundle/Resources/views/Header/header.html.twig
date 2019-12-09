@@ -1,0 +1,96 @@
+{% if error is not defined %}
+  {% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+{% else %}
+  {% set currentPath = "/" %}
+{% endif %}
+
+<header id="main-header" class="header">
+  {#<div class="container-editions">
+    <div class="content">
+      <span class="title-edition">EDICIONES:</span>
+      <ul class="list-editions">
+        {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:places',{section: currentPath})) }}
+      </ul>
+    </div>
+  </div>#}
+  <div class="container-menu">
+    <div class="content">
+      {# <div class="container-left-desktop">
+        <div class="container-hamburguer">
+          <span class="icon fa fa-bars homepage"></span>
+          <span class="title-menu">Secciones</span>
+        </div>
+      </div>
+      <div class="container-left-mobile">
+        <span class="fa fa-bars"></span>
+      </div> #}
+      <a href="/"><img src="/bundles/applicationcamusassets/images/logo_fam.png" alt="Revista FAMA" class="main-logo"/></a>
+      {# <div class="container-right">
+        <div class="pase-container right-action-item">
+          <span class="btn-login pase-btn"><span class="sign">Ingresar</span><i class="fa fa-user"></i></span>
+          <span class="btn-exit pase-btn">Salir</span>
+        </div>
+        <div id="search-container" class="right-action-item">
+          <form class="search-form search-item inner-addon right-addon" action="/buscador" method="GET">
+            <input type="text" class="search-input search-hidden" name="text" placeholder="Buscar"/>
+            <span id="search-open" class="search-icon fa fa-search"></span>
+          </form>
+          <span id="search-close" class="search-item search-icon search-hidden fa fa-times"></span>
+        </div>
+      </div> #}
+      <div class="container-right">
+        <ul>
+          <li class="btn-login">Ingresar</li>
+          <li class="btn-register">Regístrate</li>
+        </ul>
+        <div id="search-container">
+          <form class="search-form search-item" action="/buscador" method="GET">
+            <input type="text" class="search-input search-hidden" name="text" placeholder="Buscar" />
+            <span id="search-open" class="search-icon fa fa-search"></span>
+          </form>
+          <span id="search-close" class="search-item search-icon search-hidden fa fa-times"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-submenu">
+    <div class="content">
+      <div class="container-hamburguer">
+        <span class="fa fa-bars homepage"></span>
+      </div>
+      {#<div class="fixed-sections">
+        <a href="/opinion">Opinión</a>
+        <!--a href="/nexos">Nexos</a-->
+      </div>#}
+      <ul class="container-list-sections">
+        {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:breadcrumbs', {headerType: headerType, section: currentSection, part: 1, currentPath: currentPath})) }}
+      </ul>
+    </div>
+  </div>
+  {% if headerType == 2 %}
+    <div class="container-title-note">
+      <div class="content">
+        <div class="breadcrumbs-container">
+          <span class="fa fa-map-marker"></span>
+          <span class="fa fa-close"></span>
+          {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:breadcrumbs', {headerType: headerType, section: currentSection, part: 2, currentPath: currentPath})) }}
+        </div>
+        <div class="note-title">
+          <div class="bg-content">
+            <span>Estás leyendo: {{ titleNote|filterEnt }}</span>
+          </div>
+          <div class="sm-content">Comparte esta noticia</div>
+          <div id="share-icons-container-title" class="logos"></div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  <div id="container-redband"></div>
+  {#<div class="container-today">
+    <div class="content">
+      <span class="date">{{ "now"|date("l \\, d.m.Y \\/ H:i")|localDate }}</span>
+      {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:topiclist')) }}
+    </div>
+  </div>#}
+  {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:menu')) }}
+</header>

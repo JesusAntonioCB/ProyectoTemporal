@@ -1,0 +1,67 @@
+<div class="block-contact-us">
+  <span class="info-contact-us">
+    Si necesitas alguna información sobre cualquiera de nuestros productos y servicios, o
+    tienes una duda en general, envíanos tus comentarios y con gusto nos comunicaremos
+    contigo. Estamos para servirte.
+  </span>
+  <div class="form-contact-us">
+    <script type="text/javascript">
+    var RecaptchaOptions = {
+      theme : 'theme_name'
+    };
+    </script>
+    <form id="contact-form">
+    <input id="cName"type="text" name="name" placeholder="Nombre" required>
+    <input id="cEmail" type="text" name="email" placeholder="Correo electrónico" required>
+    <div class="drop-down departure">
+      <div class="left">
+        <select id="cDepartament" name="departament" required>
+          {#<option value="default">Departamento</option>#}
+          <option value="ventas">Ventas</option>
+          {#<option value="rhdf">Admon./Recursos Humanos</option>
+          <option value="redaccion">Redacción</option>
+          <option value="mileniotv">MilenioTV</option>
+          <option value="susc">Suscripciones</option>
+          <option value="moviles">Aplicaciones Móviles</option>#}
+        <select>
+      </div>
+    </div>
+    <div class="drop-down place">
+      <div class="left">
+        <select id="cPlace" name="place" required>
+          <option value="default">Plaza (seleccione una opción)</option>
+          <option value="Distrito Federal">Distrito Federal</option>
+          <option value="Estado de México">Estado de México</option>
+          <option value="Hidalgo">Hidalgo</option>
+          <option value="Jalisco">Jalisco</option>
+          <option value="Coahuila">Coahuila</option>
+          <option value="Guanajuato">Guanajuato</option>
+          <option value="Puebla">Puebla</option>
+          <option value="Tamaulipas">Tamaulipas</option>
+          <option value="Nuevo León">Nuevo León</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+    </div>
+    <textarea id="cMessage" name="message" placeholder="Mensaje" required></textarea>
+
+    <div class="g-recaptcha" data-sitekey="6Lfk2aAUAAAAAN86-ADddSp4yXB4lTF2l0IdvXuU"></div>
+
+    <!-- <noscript>
+      <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LeJ_sUSAAAAABjmvIHFCjojd-lPqNr88NUyfX5-"
+      height="300" width="500" frameborder="0"></iframe><br>
+      <textarea name="recaptcha_challenge_field" rows="3" cols="40">
+      </textarea>
+      <input type="hidden" name="recaptcha_response_field"
+      value="manual_challenge">
+    </noscript> -->
+
+    <input type="submit" value="ENVIAR" id="cSend" class="send">
+  </form>
+  <div class="alert-contact" hidden>
+    <div class="closebtn" onclick="this.parentElement.style.display='none';">&times;</div>
+    <div class="advice">El correo se envió correctamente</div>
+    <div class="btnAccept"><button id="cAccept">Aceptar</button></div>
+  </div>
+  </div>
+</div>

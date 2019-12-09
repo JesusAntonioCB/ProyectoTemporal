@@ -1,0 +1,20 @@
+services:
+    module.twig_extension:
+        class: Application\Camus\AssetsBundle\Twig\ModelModuleExtension
+        public: false
+        arguments: [@service_container]
+        tags:
+            - { name: twig.extension }
+    attribute.twig_extension:
+        class: Application\Camus\AssetsBundle\Twig\ModelAttributeExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+    sites.twig_extension:
+        class: Camus\AssetsBundle\Twig\ModelSitesExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+#    md_assets.example:
+#        class: Camus\AssetsBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

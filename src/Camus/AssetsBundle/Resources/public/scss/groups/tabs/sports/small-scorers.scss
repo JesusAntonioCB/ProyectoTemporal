@@ -1,0 +1,47 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.tabs-small{
+  table.scorers-tab{
+    line-height: 27px;
+    font-family: $font-sans-serif;
+    th{
+      width: 35px;
+      font-size: 9px;
+      text-align: left;
+      font-weight: 500;
+    }
+    td{
+      border-top: 1px solid $color-white;
+    }
+    th:first-child{
+      padding-left: 10px;
+    }
+    td:first-child{
+      padding-left: 5px;
+    }
+    td:nth-child(2){
+      width: 26px;
+    }
+    td:nth-child(3){
+      width: 180px;
+    }
+    td:nth-child(4){
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+  .btn-full-table-container{
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: $color-gray;
+    button{
+      background: transparent;
+      border: 1px solid $color-light-gray;
+      padding: 6px 10px 6px 10px;
+    }
+  }
+}

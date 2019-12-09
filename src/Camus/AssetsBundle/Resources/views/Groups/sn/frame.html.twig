@@ -1,0 +1,10 @@
+<div class="sn-frame" {{ data_camus_type["sn_frame"] }} data-camus-template="{{module.templateName}}" {{data_camus_allow_empty_module["1"]}}>
+  <div class="media-container">
+    
+      <div class="headline" {{ data_camus_title }}>{{ module.title }}</div>
+
+    <div class="content" data-camus-module-free-html>
+        {{ module.body|parserHtml|raw }}
+    </div>
+  </div>
+</div>

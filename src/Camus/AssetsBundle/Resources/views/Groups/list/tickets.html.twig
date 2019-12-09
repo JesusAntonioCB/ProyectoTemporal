@@ -1,0 +1,47 @@
+{% if module.template == 'sports' %}
+  {% set jsonDataSports = sportsTickets('soccer') %}
+  {% set sportsEvents = jsonDataSports.content.705 %}
+  <div class="list-tickets" {{ data_camus_module_type["list"] }} data-camus-template="{{module.templateName}}" {{ data_camus_type["list_small"] }} {{ data_camus_toolbar_position["br"] }} {{data_camus_allow_empty_module["1"]}} >
+    <div class="media-container">
+      <div class="section-see-more-container-transparent" >
+        <div class="section-title-container-transparent">
+          <img src='/bundles/applicationcamusassets/images/stubhub.png' alt="" />
+        </div>
+        <select class="eventSelect" name="">
+          <option value="soccer">Futbol</option>
+          <option value="sports">Deportes</option>
+        </select>
+      </div>
+      <div class="list">
+        {% include 'Application\Camus\AssetsBundle:Slices:tickets-block.html.twig' with {'sportsEvents': sportsEvents, 'type': 'row'} %}
+      </div>
+      <div class="foot">
+          <span><a href="/deportes/boletos">VER MÁS</a></span>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'shows' %}
+  {% set jsonDataShows = sportsTickets('shows', 4) %}
+  {% set showsEvents = jsonDataShows.content.160 %}
+  <div class="list-tickets spectacles" {{ data_camus_module_type["list"] }} data-camus-template="{{module.templateName}}" {{ data_camus_type["list_small"] }} {{ data_camus_toolbar_position["br"] }} {{data_camus_allow_empty_module["1"]}} >
+    <div class="media-container">
+      <div class="section-see-more-container-transparent" >
+        <div class="section-title-container-transparent">
+          <img src='/bundles/applicationcamusassets/images/stubhub-white.png' alt="" />
+        </div>
+        <select class="eventSelect" name="">
+          <option value="shows">Conciertos</option>
+          <option value="teather">Cine y teatro</option>
+        </select>
+      </div>
+      <div class="list">
+        {% include 'Application\Camus\AssetsBundle:Slices:tickets-block.html.twig' with {'sportsEvents': showsEvents, 'type': 'row'} %}
+      </div>
+      <div class="foot">
+        <a href="/espectaculos/boletos">
+          <span>Ver más</span>
+        </a>
+      </div>
+    </div>
+  </div>
+{% endif %}

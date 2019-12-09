@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" prefix="op: http://media.facebook.com/op#">
+    <head>
+        <meta property="fb:use_automatic_ad_placement" content="true">
+        <meta charset="utf-8">
+        <link rel="canonical" href="{{ domain~content.slugs.0.slug }}">
+        <link rel="stylesheet" title="default" href="#">
+        <title>{{ content.publishedVersion.title }}</title>
+        <meta property="fb:article_style" content="Fotogalerías">
+    </head>
+    <body>
+        <article>
+            <header>
+                {{ include('ApplicationCamusAssetsBundle:InstantArticles:ads.html.twig') }}
+        		<h1>{{ content.publishedVersion.title }}</h1>
+        		<h2>{{ content.publishedVersion.summary|striptags }}</h2>
+        		<h3 class="op-kicker">
+        			{{ signature }}
+        		</h3>
+            	<time class="op-published" dateTime="{{ content.publishedDate|date('Y-m-d\TH:i') }}">{{ content.publishedDate|date('Y-m-d\TH:i') }}</time>
+            </header>
+            {{ include('ApplicationCamusAssetsBundle:InstantArticles:chartbeat.html.twig') }}
+            {{ include('ApplicationCamusAssetsBundle:InstantArticles:comscore.html.twig') }}
+            {{ include('ApplicationCamusAssetsBundle:InstantArticles:google-analytics.html.twig') }}
+            {% if mediaHeader.imagenes %}
+                {% for media in mediaHeader.imagenes %}
+                    <figure data-feedback="fb:likes, fb:comments">
+                        <img src="{{ media|media_slug([], false, null, null, true) }}" />
+                       <figcaption class="op-vertical-below">
+                           {{media.publishedVersion.title}}
+                      </figcaption>
+                    </figure>
+                {% endfor %}
+            {% endif %}
+            {{ include('ApplicationCamusAssetsBundle:InstantArticles:footer.html.twig') }}
+        </article>
+    </body>
+</html>

@@ -1,0 +1,208 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.ctr-stadistics-lineup{
+  .lineup-component {
+    display: table;
+    margin: 0 auto;
+    .card-event.cards {
+      float: left;
+    }
+    .card-event.autogoal {
+      color: $color-red-light;
+    }
+    .cards {
+      margin: 0 3px;
+      display: block;
+      height: 18px;
+      .card {
+        width: 10.5px;
+        height: 13px;
+        position: relative;
+        left: 5.9px;
+        display: block;
+        top: -18px;
+      }
+      .yellow {
+        background-color: $color-supernova;
+      }
+      .red {
+        background-color: $color-red-ribbon;
+      }
+      img {
+        height: 100%;
+        position: relative;
+        z-index: 1;
+      }
+    }
+    .home-lineup, .wrapper-general-info, .away-lineup {
+      width: 301px;
+      float: left;
+    }
+    .home-lineup, .away-lineup {
+      .wrapper-team-name {
+        font-family: $font-black;
+        min-height: 25px;
+        text-align: center;
+        position: relative;
+        h4 {
+          margin: 0;
+          text-transform: uppercase;
+          font-size: 12px;
+          line-height: 22px;
+        }
+      }
+      .formation-wrapper {
+        @include text-with-roboto-regular-color-dark-gray;
+        height: 25px;
+        background-color: $color-light-shadow-gray;
+        text-align: center;
+        font-size: 12px;
+        line-height: 22px;
+        position: relative;
+        text-transform: capitalize;
+      }
+      .bench {
+        margin-top: 15px;
+      }
+      .wrapper-lineup, .bench {
+        .name-wrapper {
+          text-decoration: none;
+          color: $color-night-gray;
+        }
+        table {
+          width: 100%;
+          tr {
+            list-style-type: none;
+            .shirt-number {
+              @include text-with-roboto-black-color-night-gray;
+              background-color: transparent;
+              line-height: 32px;
+              font-size: 12px;
+              position: relative;
+              text-align: center;
+            }
+            .name-player {
+              @include text-with-roboto-black-color-night-gray;
+              font-size: 12px;
+            }
+            .position-wrapper {
+              @include text-with-roboto-black-color-night-gray;
+              background-color: transparent;
+              text-align: left;
+              line-height: 32px;
+              font-size: 12px;
+              position: relative;
+              text-transform: uppercase;
+            }
+          }
+          tr:nth-child(2n){
+            background-color: $color-concrete;
+          }
+          tr.active {
+            background-color: $color-yellow;
+          }
+        }
+      }
+    }
+    .home-lineup {
+      margin-right: 18px;
+      .wrapper-team-name {
+        background-color: $color-yellow;
+        color: $color-black;
+      }
+    }
+    .wrapper-general-info {
+      margin-right: 18px;
+      .field {
+        padding: 10px;
+        overflow: hidden;
+        background: url('/bundles/applicationcamusassets/images/field.jpg') center center no-repeat;
+      }
+      .referee-wrapper {
+        background: $color-light-shadow-gray;
+        padding: 10px;
+        .referee-name-wrapper {
+          @include text-with-roboto-regular-color-black;
+          font-size: 12px;
+        }
+      }
+    }
+    .away-lineup {
+      .wrapper-team-name {
+        background-color: $color-dark-gray;
+        color: $color-white;
+      }
+    }
+    .bench {
+        .wrapper-team-name {
+          @include text-with-roboto-black-color-dark-gray;
+          background-color: $color-light-shadow-gray;
+          text-align: center;
+          font-size: 12px;
+          line-height: 22px;
+          margin-top: 13px;
+          position: relative;
+          height: 25px;
+        }
+        .events-lineup {
+          tr {
+            background-color: $color-white !important;
+          }
+          tr.gray {
+            background-color: $color-concrete !important;
+          }
+          .wrapper-events-bench {
+            .min-wrapper {
+              width: 25px;
+              float: left;
+            }
+            .triangle {
+                right: 5px;
+            }
+            .triangle.in {
+              color: $color-chateau-green;
+            }
+            .player-wrapper {
+              table {
+                tr{
+                  background: transparent;
+                }
+              }
+            }
+          }
+          .player-items.outs {
+            .name-player, .position-wrapper {
+              @include text-with-roboto-regular-color-black;
+              font-size: 11px;
+              line-height: 17px;
+            }
+            .triangle.out {
+              color: $color-red-ribbon;
+            }
+          }
+        }
+      }
+      &:after{
+        content: '';
+        display: table;
+        clear: both;
+      }
+  }
+}
+
+@media only screen and (max-width: 968px) {
+  .ctr-stadistics-lineup{
+    .lineup-component > div:not(last-child) {
+      margin-bottom: 28px !important;
+    }
+    .lineup-component {
+      .home-lineup, .wrapper-general-info, .away-lineup {
+        float: none;
+        margin: 0 auto;
+      }
+    }
+  }
+}

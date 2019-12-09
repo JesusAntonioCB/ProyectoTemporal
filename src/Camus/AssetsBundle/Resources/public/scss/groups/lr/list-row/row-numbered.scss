@@ -1,0 +1,25 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.lr-row-numbered{
+  margin: 10px 0;
+  font-family: $font-open-sans-semibold;
+}
+.lr-row-base~.lr-row-numbered{
+  color: $color-red-dark;
+  list-style: none;
+  &:before{
+    content: "\e080";
+    font-family: 'Glyphicons Halflings';
+    font-size: 9px;
+    float: left;
+    margin-top: 4px;
+    margin-right: 10px;
+  }
+  a{
+    display: list-item;
+    overflow: hidden;
+  }
+}

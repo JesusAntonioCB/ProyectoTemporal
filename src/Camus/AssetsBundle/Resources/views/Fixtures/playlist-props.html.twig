@@ -1,0 +1,51 @@
+<div class="playlist-container">
+  <div class="playlist-next next-hidden">
+    {#<p class="playlist-title">Noticias Más Vistas</p>
+    {% for new in news %}
+    <a href="{{ new.url }}">
+    <div class="playlist-prop">
+    <img src="{{ new.imagen }}" class="prop-img">
+    <span class="prop-title">{{ new.titulo }}</span>
+  </div>
+</a>
+{% endfor %}#}
+<p class="playlist-title">Siguiente video en <span class="playlist-counter"></span></p>
+<a href="/mileniotv/{{ videos[0].seccionNormalizado }}/{{ videos[0].tituloNormalizado }}" class="next-link">
+  <div class="prop-media">
+    <img src="{{ videos[0].urlImagenFondo }}" class="prop-img next-img">
+    <span class="prop-time next-time">{{ videos[0].duracion }}</span>
+    <span class="prop-icon fa fa-play"></span>
+  </div>
+  <div class="prop-info">
+    <span class="prop-title next-title">{{ videos[0].titulo }}</span>
+    <span class="prop-desc next-desc">{{ videos[0].descripcion }}</span>
+  </div>
+</a>
+</div>
+<div class="playlist-catalog">
+  <div class="playlist-column">
+    <p class="playlist-title">Noticias más vistas</p>
+    {% for new in news %}
+    <a href="{{ new.url }}">
+      <div class="playlist-prop">
+        <img src="{{ new.imagen }}" class="prop-img">
+        <span class="prop-title">{{ new.titulo }}</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  <div class="playlist-column">
+    <p class="playlist-title">Videos destacados</p>
+    {% for video in videos %}
+    <a href="/mileniotv/{{ video.seccionNormalizado }}/{{ video.tituloNormalizado }}">
+      <div class="playlist-prop">
+        <img src="{{ video.urlImagenFondo }}" class="prop-img">
+        <span class="prop-time">{{ video.duracion }}</span>
+        <span class="prop-icon fa fa-play"></span>
+        <span class="prop-title">{{ video.titulo }}</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+</div>

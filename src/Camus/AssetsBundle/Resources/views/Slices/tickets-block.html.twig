@@ -1,0 +1,119 @@
+{% if type == 'block' %}
+  {% for month in jsonDataTickets.content %}
+    <div class="last-month" data-pages="{{ jsonDataTickets.pages }}" >
+      Eventos de {{ month.month|localMonth }}
+    </div>
+    <div class="last-month-separator"></div>
+    <div class="events-container">
+      {% for event in month.categories %}
+      <div class="event">
+        <div class="event-container">
+          <img src="{{ event.imageUrl }}" alt="" />
+          <div class="event-info-container">
+            <p>
+              <span class="event-name">{{ event.categoryName }}</span>
+              <span class="date">{{ event.date|gentleDate }}</span>
+              <span class="city">{{ event.city }}</span>
+            </p>
+            <span class="view">
+              <div class="view-more">
+                VER
+              </div>
+            </span>
+          </div>
+        </div>
+        <ul class="child-items">
+          {% for child in event.items %}
+          <li>
+            <span class="event-catName">{{ child.merchantCategoryName }}</span>
+            <span class="event-name">{{ child.name }}</span>
+            <span class="event-buy">
+              <a href="{{ child.productUrl }}" class="ticketbis-buy" target="_blank">Comprar</a>
+            </span>
+            <span class="event-address">{{ child.address }}</span>
+            <span class="event-city">{{ child.city }}</span>
+            <span class="event-date">{{ child.date }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="last-month-separator"></div>
+  {% endfor %}
+{% elseif type == 'row' %}
+  {% for event in sportsEvents %}
+    <div class="row-tickets">
+      <div class="img-container">
+        <a href="{{ event.productUrl }}" target="_blank">
+          <img src="{{ event.imageUrl }}" alt="" />
+        </a>
+      </div>
+      <div class="title-container">
+        <div class="title">
+          <a href="{{ event.productUrl }}" target="_blank">
+            <span>{{ event.category }}</span>
+          </a>
+          <div class="place">
+            <span>{{ event.city }}</span>
+          </div>
+          <div class="date">
+            <span>{{ event.date|gentleDate }}</span>
+          </div>
+        </div>
+        <div class="buy-button">
+          <a href="{{ event.productUrl }}" target="_blank"><span class="sports">Boletos Aqui</span></a>
+          <a href="{{ event.productUrl }}" target="_blank"><span class="spectacles">Comprar</span></a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% elseif type == 'search' %}
+  <div class="last-month-separator"></div>
+  <div class="events-container search">
+    <div class="last-month">
+      Resultados de la búsqueda
+    </div>
+    {% if jsonDataTickets.total > 0 %}
+      {% for category in jsonDataTickets.content %}
+        {% for result in category %}
+          <div class="event">
+            <div class="event-container">
+              <img src="{{ result.imageUrl }}" alt="" />
+              <div class="event-info-container">
+                <p>
+                  {#<span class="event-name">{{ result.categoryName }}</span>#}
+                  <span class="date">{{ result.date|gentleDate }}</span>
+                  <span class="city">{{ result.city }}</span>
+                </p>
+                <span class="view">
+                  <div class="view-more search">
+                    <a href="{{ result.productUrl }}" target="_blank">COMPRAR</a>
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endfor %}
+    {% else %}
+    <div class="category-no-result">
+      <div class="">
+        Categorias 0
+      </div>
+      <div class="">
+        No se encontraron resultados para su búsqueda
+      </div>
+    </div>
+    <div class="event-no-result">
+      <div class="">
+        Eventos 0
+      </div>
+      <div class="">
+        No se encontraron resultados para su búsqueda
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  <div class="last-month-separator"></div>
+{% endif %}

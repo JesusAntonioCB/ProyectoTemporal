@@ -1,0 +1,22 @@
+.sponsored-content{
+  float: left;
+  .hint{
+    float: left;
+    width: 70px;
+    margin-top: 5px;
+    margin-right: 5px;
+    @include text-with-open-sans-5-color-nobel;
+    font-size: 11px;
+    line-height: 13px;
+  }
+  .img-container{
+    float: left;
+    width: 120px;
+    height: 35px;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

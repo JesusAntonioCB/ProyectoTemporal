@@ -1,0 +1,1877 @@
+{% if module.template == 'base' or module.template == 'twelve' %}
+  {% if module.modules != null %}
+    {% set parentId = module.id %}
+    {% for module in module.modules if module != null%}
+      {% set type = module.type|splitTemplate %}
+        {% if type[0] is not empty and type[1] is not empty %}
+            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule, parentId: parentId} %}
+        {% endif %}
+    {% endfor %}
+  {% endif %}
+{% elseif module.template == 'opinion' %}
+  <div class="ctr-opinion" data-camus-id="{{ module.id }}" {{ data_camus_module_type["list"] }} data-camus-template="{{module.templateName}}" {{ data_camus_type["list_small"] }} {{ data_camus_toolbar_position["br"] }}>
+    <div class="head-container">
+      <h2 class="headline" {{ data_camus_title }} {{ data_camus_color }} style="color: {{ module.color }}">{{ module.title }}</h2>
+      <div class="buttons-container">
+        <div class="ctr-btn date-button" id="sort-date-container">
+          <span class="fa fa-calendar"></span>
+          <span {{ data_camus_author_button }}>ELEGIR FECHA</span>
+        </div>
+        <div class="ctr-btn sort-button" id="sort-author-container">
+          <span {{ data_camus_date_button }}>A-Z ELEGIR AUTOR</span>
+        </div>
+      </div>
+    </div>
+    <div {{ data_camus_modules }} class="list">
+      {% for module in module.modules %}
+        {% set type = module.type|splitTemplate %}
+        {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+      {% endfor %}
+    </div>
+  </div>
+{% elseif module.template == 'stadistics_league' %}
+  {% if 'admin' in app.request.getSchemeAndHttpHost() %}
+    <div class="ctr-stadistics-league" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}} >
+      <div class="head-contianer">
+        <div class="head-items">
+          <div class="title">
+            <span {{ data_camus_title }}>{{ module.title }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <div class="ctr-stadistics-league" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}} >
+      <div class="head-contianer">
+        <div class="head-items">
+          <div class="title">
+            <span {{ data_camus_title }}>{{ module.title }}</span>
+          </div>
+          {% set leagueId = "" %}
+          {% if module.leagueId is defined %}
+            {% set leagueId = module.leagueId %}
+          {% endif %}
+          {% set dataLeague = getDataLeague(leagueId) %}
+          {% if dataLeague.seasons is defined %}
+            <div class="select-items" league-id="{{ leagueId }}">
+              <div class="apertura-select">
+                <div class="select-box select-seasons">
+                  <div class="title-box">
+                    {% if dataLeague.config.0 is defined %}
+                      <button season-id="{{ dataLeague.seasons.0.id }}" class="dropbtn">
+                        {{ dataLeague.config.0 }}
+                      </button>
+                    {% elseif dataLeague.seasons is defined %}
+                      <button season-id="{{ dataLeague.seasons.0.id }}" class="dropbtn">
+                        {{ dataLeague.seasons.0.name }}
+                      </button>
+                    {% else %}
+                      <button class="dropbtn">
+                        TEMPORADA
+                      </button>
+                    {% endif %}
+                    <div class="dropdown-content">
+                      {% if dataLeague.seasons is defined %}
+                        {% for league in dataLeague.seasons %}
+                          {% if league.name != 'Promoción por el no descenso' %}
+                            <a type="season" value='{{ league.id }}'>{{ league.name }}</a>
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="arrow-box">
+                    <span>▼</span>
+                  </div>
+                </div>
+              </div>
+              <div class="fases-select">
+                <div class="select-box select-fases">
+                  <div class="title-box">
+                    {% if dataLeague.config.2 is defined %}
+                      <button class="dropbtn">
+                        {{ dataLeague.config.2 }}
+                      </button>
+                    {% elseif dataLeague.seasonRounds is defined %}
+                      <button class="dropbtn">
+                        {{ dataLeague.seasonRounds.0.label }}
+                      </button>
+                    {% else %}
+                      <button class="dropbtn">
+                        Fase
+                      </button>
+                    {% endif %}
+                    <div class="dropdown-content">
+                      {% if dataLeague.seasonRounds is defined %}
+                        {% for round in dataLeague.seasonRounds %}
+                          {% if round.label != 'Totales' %}
+                            <a type="seasonRound" value='{{ round.id }}'>{{ round.label }}</a>
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="arrow-box">
+                    <span>▼</span>
+                  </div>
+                </div>
+              </div>
+              <div class="jornada-select">
+                <div class="select-box select-rounds">
+                  <div class="title-box">
+                    {% if dataLeague.config.1 is defined %}
+                      <button class="dropbtn">
+                        {{ dataLeague.config.1 }}
+                      </button>
+                    {% elseif dataLeague.rounds is defined %}
+                      <button class="dropbtn">
+                        {{ dataLeague.rounds.0.label }}
+                      </button>
+                    {% else %}
+                      <button class="dropbtn">
+                        Jornada
+                      </button>
+                    {% endif %}
+                    <div class="dropdown-content">
+                      {% if dataLeague.rounds is defined %}
+                        {% for round in dataLeague.rounds %}
+                            <a type="round" value='{{ round.id }}'>{{ round.label }}</a>
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="arrow-box">
+                    <span>▼</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% elseif module.template == 'stadistics_header' %}
+  {% if 'admin' in app.request.getSchemeAndHttpHost() %}
+    <div class="ctr_stadistics_header" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+      <div class="head-contianer">
+        <div class="head-items">
+          <div class="league-content">
+            <div class="title">
+              <span>Titulo automatico</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <div class="ctr_stadistics_header" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+      <div class="head-contianer">
+        <div class="head-items">
+          <div class="league-content">
+            {% set leagueId = "" %}
+            {% if module.leagueId is defined %}
+              {% set leagueId = module.leagueId %}
+            {% endif %}
+            {% set dataLeague = getDataLeague(leagueId) %}
+            {% set urlHref = getUrlStadistics() %}
+            {% set seasonRounds = getSeasonRoundData(leagueId, season) %}
+            {% set roundsData = getRoundData(leagueId, season, round, seasonRound) %}
+            {% if roundsData[0] is defined %}
+              {% set rounds = roundsData[0] %}
+            {% endif %}
+            {% if roundsData[1] is defined %}
+              {% set roundName = roundsData[1] %}
+            {% endif %}
+            {% set leagueName = dataLeague.league.name|replace(' ', '-')|lower %}
+            {% set seasonUrl = season|replace(' ', '-')|lower %}
+
+            {% if seasonUrl == null %}
+              {% set seasonUrl = dataLeague.seasons.0.name|replace(' ', '-')|lower %}
+            {% endif %}
+
+            {% set seasonRoundUrl = seasonRound|replace(' ', '-')|lower %}
+
+            {% if seasonRoundUrl == null %}
+              {% if seasonRounds.0.label is defined %}
+                {% set seasonRoundUrl = seasonRounds.0.label|replace(' ', '-')|lower %}
+              {% else %}
+                {% set seasonRoundUrl = 'regular' %}
+              {% endif %}
+            {% endif %}
+
+            <div class="title">
+              <span>{{dataLeague.league.name|upper}}</span>
+            </div>
+            <div class="league-logo">
+              <div class="image">
+                <img src="https://static.mediotiempo.com/{{dataLeague.league.urlImg}}">
+              </div>
+            </div>
+          </div>
+          <div class="select-items">
+            <div class="apertura-select">
+              <div class="select-box select-seasons">
+                <div class="title-box">
+                  {% if season != null %}
+                    <button class="dropbtn">
+                      {{ season|replace('-', ' ') }}
+                    </button>
+                  {% elseif dataLeague.seasons is defined %}
+                    <button season-id="{{ dataLeague.seasons.0.id }}" class="dropbtn">
+                      {{ dataLeague.seasons.0.name }}
+                    </button>
+                  {% else %}
+                    <button class="dropbtn">
+                      TEMPORADA
+                    </button>
+                  {% endif %}
+                  <div class="dropdown-content">
+                    {% if typeStat != null %}
+                      {% for league in dataLeague.seasons %}
+                        {% set urlSeason = league.name|replace(' ', '-')|lower %}
+                        <!-- <a href="/liga/futbol/{{leagueName}}/{{statName}}/{{season}}/{{urlSeason}}/{{typeStat}}" type="season" value='{{ league.id }}'>{{ league.name }}</a> -->
+                      {% endfor %}
+                    {% else %}
+                      {% if dataLeague.seasons is defined %}
+                        {% for league in dataLeague.seasons %}
+                          {% if league.name != 'Promoción por el no descenso' %}
+                            {% set urlSeason = league.name|replace(' ', '-')|lower %}
+                            <a href="/{{urlHref}}/{{urlSeason}}" type="season" value='{{ league.id }}'>{{ league.name }}</a>
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="arrow-box">
+                  <span>▼</span>
+                </div>
+              </div>
+            </div>
+            {% for m in modules %}
+              {% if m.modules[0].template == 'automatic_calendar' %}
+                <div class="fase-select">
+                <div class="select-box select-seasonRound">
+                  <div class="title-box">
+                    {% if seasonRounds != null %}
+                      {% if seasonRound != null %}
+                        <button class="dropbtn">
+                          {{ seasonRound|replace('-', ' ') }}
+                        </button>
+                      {% else %}
+                        {% set lastSeasonRounds = seasonRounds|first %}
+                        <button class="dropbtn">
+                          {{lastSeasonRounds.label}}
+                        </button>
+                      {% endif %}
+                      <div class="dropdown-content">
+                        {% if seasonRounds is defined %}
+                          {% for seasonRoundValue in seasonRounds %}
+                            {% if seasonRoundValue.label != 'Totales' %}
+                              {% set urlRound = seasonRoundValue.label|replace(' ', '-')|lower %}
+                              <a href="/{{urlHref}}/{{seasonUrl}}/{{urlRound}}" type="season" value='{{ seasonRoundValue.id }}'>{{ seasonRoundValue.label}}</a>
+                            {% endif %}
+                          {% endfor %}
+                        {% endif %}
+                      </div>
+                    {% else %}
+                      <button class="dropbtn">
+                        Regular
+                      </button>
+                    {% endif %}
+                  </div>
+                  <div class="arrow-box">
+                    <span>▼</span>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              {% if m.modules[0].template == 'automatic_standings' or m.modules[0].template == 'automatic_calendar' %}
+                {% if seasonRound is not empty %}
+                  {% if roundName is defined and 'jornada' in roundName|lower %}
+                  {# {% if seasonRound == 'regular' or lastSeasonRounds.label is defined and lastSeasonRounds.label == 'Regular' %} #}
+                    <div class="jornada-select">
+                    <div class="select-box select-rounds">
+                      <div class="title-box">
+                        {% if rounds != null %}
+                          {% if m.modules[0].template == 'automatic_standings' %}
+                            {% if roundName is defined %}
+                              <button class="dropbtn">
+                                {{roundName}}
+                              </button>
+                            {% endif %}
+                          {% else %}
+                            {% if round != null %}
+                              <button class="dropbtn">
+                                {{ round|replace('-', ' ') }}
+                              </button>
+                            {% elseif roundName is defined %}
+                              <button class="dropbtn">
+                                {{roundName}}
+                              </button>
+                            {% endif %}
+                          {% endif %}
+                          <div class="dropdown-content">
+                            {% if dataLeague.rounds is defined %}
+                              {% for roundValue in rounds %}
+                                {% set urlRound = roundValue.label|replace(' ', '-')|lower %}
+                                  {% if m.modules[0].template == 'automatic_standings' %}
+                                    <a href="/{{urlHref}}/{{seasonUrl}}/{{urlRound}}" type="season" value='{{ roundValue.id }}'>{{ roundValue.label}}</a>
+                                  {% elseif m.modules[0].template == 'automatic_calendar' %}
+                                    <a href="/{{urlHref}}/{{seasonUrl}}/{{seasonRoundUrl}}/{{urlRound}}" type="season" value='{{ roundValue.id }}'>{{ roundValue.label}}</a>
+                                  {% endif %}
+                              {% endfor %}
+                            {% endif %}
+                          </div>
+                        {% endif %}
+                      </div>
+                      <div class="arrow-box">
+                        <span>▼</span>
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+                  {% else %}
+                  <div class="jornada-select">
+                  <div class="select-box select-rounds">
+                    <div class="title-box">
+                      {% if rounds != null %}
+                        {% if m.modules[0].template == 'automatic_standings' %}
+                          {% if roundName is defined %}
+                            <button class="dropbtn">
+                              {{roundName}}
+                            </button>
+                          {% endif %}
+                        {% else %}
+                          {% if round != null %}
+                            <button class="dropbtn">
+                              {{ round|replace('-', ' ') }}
+                            </button>
+                          {% elseif roundName is defined %}
+                            <button class="dropbtn">
+                              {{roundName}}
+                            </button>
+                          {% endif %}
+                        {% endif %}
+                        <div class="dropdown-content">
+                          {% if dataLeague.rounds is defined %}
+                            {% for roundValue in rounds %}
+                              {% set urlRound = roundValue.label|replace(' ', '-')|lower %}
+                                {% if m.modules[0].template == 'automatic_standings' %}
+                                  <a href="/{{urlHref}}/{{seasonUrl}}/{{urlRound}}" type="season" value='{{ roundValue.id }}'>{{ roundValue.label}}</a>
+                                {% elseif m.modules[0].template == 'automatic_calendar' %}
+                                  <a href="/{{urlHref}}/{{seasonUrl}}/{{seasonRoundUrl}}/{{urlRound}}" type="season" value='{{ roundValue.id }}'>{{ roundValue.label}}</a>
+                                {% endif %}
+                            {% endfor %}
+                          {% endif %}
+                        </div>
+                      {% endif %}
+                    </div>
+                    <div class="arrow-box">
+                      <span>▼</span>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <!-- <div class="sponsor">
+            <div class="sponsor-text">
+              <span>Patrocinado por:</span>
+            </div>
+            <div class="sponsor-img">
+              <img src="http://logowiki.net/wp-content/uploads/imgp/Bancomer-SA-Logo-1-7760.png">
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% elseif module.template == 'stadistics_team_header' %}
+  {% if 'admin' in app.request.getSchemeAndHttpHost() %}
+    <div class="ctr-stadistics-team-header" {{ data_camus_module_type["club"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}} >
+      <div class="head-contianer">
+        <div class="head-items">
+          <div class="team-main-info">
+            <div class="title">
+              <span>Titulo automatico</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% else %}
+  {% set imageMictlan = 'https://static.mediotiempo.com/' %}
+{% set idTeam = "" %}
+{% if module.idTeam is defined %}
+  {% set idTeam = module.idTeam %}
+{% endif %}
+  {% set dataTeam = getDataTeamHeader(idTeam) %}
+  {% set urlImage = '/bs/mt/sports/production/soccer/teams/' %}
+  {% set competitionId = dataTeam.dimensions.configuration.competition %}
+  {% set seasonId = dataTeam.dimensions.configuration.season %}
+  {% set urlTeamName = dataTeam.0.data.team.name|replace(' ', '-')|lower %}
+  {% set thisLeague = '' %}
+  {% set oldUrl = dataTeam.1.oldPath %}
+    <div class="ctr-stadistics-team-header" {{ data_camus_module_type["club"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}} >
+      <div class="head-contianer">
+        <div class="head-items">
+          <div class="team-main-info">
+            <div class="logo-team">
+              <img src="{{imageMictlan}}{{urlImage}}{{dataTeam.0.data.team.id}}.png" alt="">
+            </div>
+            <div class="title">
+              <span>{{dataTeam.0.data.team.name}}</span>
+            </div>
+          </div>
+          <div class="select-items">
+            <div class="apertura-select">
+              <div class="select-box select-seasons">
+                <div class="title-box">
+                  {% set leagues = dataTeam.dimensions.bundle.0.values %}
+                  {% for leagueValues in leagues %}
+                    {% if leagueValues.id == competitionId %}
+                      {% set thisLeague = leagueValues %}
+                      <button class="dropbtn">
+                        {{leagueValues.label}}
+                      </button>
+                    {% endif %}
+                  {% endfor %}
+                  <div class="dropdown-content">
+                    {% set leagues = dataTeam.dimensions.bundle.0.values %}
+                    {% for leagueValues in leagues %}
+                      {% set leagueName = leagueValues.label|replace(' ', '-')|lower %}
+                      <a href="{{oldUrl}}/{{leagueName}}">{{leagueValues.label}}</a>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="arrow-box">
+                  <span>▼</span>
+                </div>
+              </div>
+            </div>
+            {% if dataTeam.dimensions.bundle.1 is defined %}
+              <div class="jornada-select">
+                <div class="select-box select-rounds">
+                  <div class="title-box">
+                    {% set seasons = dataTeam.dimensions.bundle.1.values %}
+                    {% for seasonsValues in seasons %}
+                      {% if seasonsValues.id == seasonId %}
+                        <button class="dropbtn">
+                          {{seasonsValues.label}}
+                        </button>
+                      {% endif %}
+                    {% endfor %}
+                    <div class="dropdown-content">
+                      {% set seasons = dataTeam.dimensions.bundle.1.values %}
+                      {% set thisLeagueUrl = thisLeague.label|replace(' ', '-')|lower %}
+                      {% for seasonsValues in seasons %}
+                        {% set seasonName = seasonsValues.label|replace(' ', '-')|lower %}
+                          <a href="{{oldUrl}}/{{thisLeagueUrl}}/{{seasonName}}">{{seasonsValues.label}}</a>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="arrow-box">
+                    <span>▼</span>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% elseif module.template == 'stadistics_team' or module.template == 'stadistics_' %}
+  <div class="ctr-stadistics-team">
+    <div class="head-contianer">
+      <div class="head-items">
+        <div class="league-content">
+          <div class="title">
+            <span>LIGA MX</span>
+          </div>
+          <div class="league-logo">
+            <div class="image">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/MX_logo.png">
+            </div>
+          </div>
+        </div>
+        <div class="select-items">
+          <div class="apertura-select">
+            <select>
+              <option value="">Valor 1</option>
+              <option value="">Valor 2</option>
+              <option value="">Valor 3</option>
+            </select>
+          </div>
+          <div class="jornada-select">
+            <select>
+              <option value="">Valor 1</option>
+              <option value="">Valor 2</option>
+              <option value="">Valor 3</option>
+            </select>
+          </div>
+        </div>
+        <div class="sponsor">
+          <div class="sponsor-text">
+            <span>Patrocinado por:</span>
+          </div>
+          <div class="sponsor-img">
+            <img src="http://logowiki.net/wp-content/uploads/imgp/Bancomer-SA-Logo-1-7760.png">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="info-league">
+      <div class="container">
+        <p>
+          <span> Goles /</span>
+          <span> En contra /</span>
+          <span> Llegadas /</span>
+          <span> Tiros /</span>
+          <span> Permitidos /</span>
+          <span> Bloqueos /</span>
+          <span> Pases /</span>
+          <span> interceptados /</span>
+          <span> Centros /</span>
+          <span> Fuera de lugar /</span>
+          <span> Faltas /</span>
+          <span> Tarjetas /</span>
+          <span> Pases /</span>
+         </p>
+      </div>
+    </div>
+    <div class="body-container">
+      <div class="media-container">
+        <div class="section-see-more-container-transparent">
+          <div class="section-title-container-transparent">
+            <span {{ data_camus_title }}>Equipos</span>
+          </div>
+        </div>
+        <div class="content">
+            <table class="classification-tab tab-active table-content">
+            <tr class="table-head">
+              <th class="pos">POS</th>
+              <th class="image"></th>
+              <th class="team">EQUIPOS</th>
+              <th class="pts">TT</th>
+              <th class="jj">TG</th>
+              <th class="dg">GF</th>
+              <th class="jg">%ARCO</th>
+              <th class="je">INT</th>
+              <th class="jp">1/3</th>
+              <th class="gf">AREA</th>
+              <th class="gc">FL</th>
+            </tr>
+            <tr>
+              <td class="pos table-bold">01</td>
+              <td class="image"><img src="https://seeklogo.com/images/P/Pumas_UNAM-logo-890265ED9A-seeklogo.com.png"/></td>
+              <td class="team table-bold">Pumas</td>
+              <td class="pts table-bold">28</td>
+              <td class="jj">9</td>
+              <td class="dg">16</td>
+              <td class="jg">3</td>
+              <td class="je">16</td>
+              <td class="jp">7</td>
+              <td class="gf">17</td>
+              <td class="gc">7</td>
+            </tr>
+            <tr>
+              <td class="pos table-bold">01</td>
+              <td class="image"><img src="https://seeklogo.com/images/P/Pumas_UNAM-logo-890265ED9A-seeklogo.com.png"/></td>
+              <td class="team table-bold">Pumas</td>
+              <td class="pts table-bold">28</td>
+              <td class="jj">9</td>
+              <td class="dg">16</td>
+              <td class="jg">3</td>
+              <td class="je">16</td>
+              <td class="jp">7</td>
+              <td class="gf">17</td>
+              <td class="gc">7</td>
+            </tr>
+            <tr>
+              <td class="pos table-bold">01</td>
+              <td class="image"><img src="https://seeklogo.com/images/P/Pumas_UNAM-logo-890265ED9A-seeklogo.com.png"/></td>
+              <td class="team table-bold">Pumas</td>
+              <td class="pts table-bold">28</td>
+              <td class="jj">9</td>
+              <td class="dg">16</td>
+              <td class="jg">3</td>
+              <td class="je">16</td>
+              <td class="jp">7</td>
+              <td class="gf">17</td>
+              <td class="gc">7</td>
+            </tr>
+            <tr>
+              <td class="pos table-bold">01</td>
+              <td class="image"><img src="https://seeklogo.com/images/P/Pumas_UNAM-logo-890265ED9A-seeklogo.com.png"/></td>
+              <td class="team table-bold">Pumas</td>
+              <td class="pts table-bold">28</td>
+              <td class="jj">9</td>
+              <td class="dg">16</td>
+              <td class="jg">3</td>
+              <td class="je">16</td>
+              <td class="jp">7</td>
+              <td class="gf">17</td>
+              <td class="gc">7</td>
+            </tr>
+            <tr>
+              <td class="pos table-bold">01</td>
+              <td class="image"><img src="https://seeklogo.com/images/P/Pumas_UNAM-logo-890265ED9A-seeklogo.com.png"/></td>
+              <td class="team table-bold">Pumas</td>
+              <td class="pts table-bold">28</td>
+              <td class="jj">9</td>
+              <td class="dg">16</td>
+              <td class="jg">3</td>
+              <td class="je">16</td>
+              <td class="jp">7</td>
+              <td class="gf">17</td>
+              <td class="gc">7</td>
+            </tr>
+            <tr>
+              <td class="pos table-bold">01</td>
+              <td class="image"><img src="https://seeklogo.com/images/P/Pumas_UNAM-logo-890265ED9A-seeklogo.com.png"/></td>
+              <td class="team table-bold">Pumas</td>
+              <td class="pts table-bold">28</td>
+              <td class="jj">9</td>
+              <td class="dg">16</td>
+              <td class="jg">3</td>
+              <td class="je">16</td>
+              <td class="jp">7</td>
+              <td class="gf">17</td>
+              <td class="gc">7</td>
+            </tr>
+            <tr>
+              <td class="pos table-bold">01</td>
+              <td class="image"><img src="https://seeklogo.com/images/P/Pumas_UNAM-logo-890265ED9A-seeklogo.com.png"/></td>
+              <td class="team table-bold">Pumas</td>
+              <td class="pts table-bold">28</td>
+              <td class="jj">9</td>
+              <td class="dg">16</td>
+              <td class="jg">3</td>
+              <td class="je">16</td>
+              <td class="jp">7</td>
+              <td class="gf">17</td>
+              <td class="gc">7</td>
+            </tr>
+            <tr>
+              <td class="pos table-bold">01</td>
+              <td class="image"><img src="https://seeklogo.com/images/P/Pumas_UNAM-logo-890265ED9A-seeklogo.com.png"/></td>
+              <td class="team table-bold">Pumas</td>
+              <td class="pts table-bold">28</td>
+              <td class="jj">9</td>
+              <td class="dg">16</td>
+              <td class="jg">3</td>
+              <td class="je">16</td>
+              <td class="jp">7</td>
+              <td class="gf">17</td>
+              <td class="gc">7</td>
+            </tr>
+            <tr>
+              <td class="pos table-bold">01</td>
+              <td class="image"><img src="https://seeklogo.com/images/P/Pumas_UNAM-logo-890265ED9A-seeklogo.com.png"/></td>
+              <td class="team table-bold">Pumas</td>
+              <td class="pts table-bold">28</td>
+              <td class="jj">9</td>
+              <td class="dg">16</td>
+              <td class="jg">3</td>
+              <td class="je">16</td>
+              <td class="jp">7</td>
+              <td class="gf">17</td>
+              <td class="gc">7</td>
+            </tr>
+            <tr>
+              <td class="pos table-bold">01</td>
+              <td class="image"><img src="https://seeklogo.com/images/P/Pumas_UNAM-logo-890265ED9A-seeklogo.com.png"/></td>
+              <td class="team table-bold">Pumas</td>
+              <td class="pts table-bold">28</td>
+              <td class="jj">9</td>
+              <td class="dg">16</td>
+              <td class="jg">3</td>
+              <td class="je">16</td>
+              <td class="jp">7</td>
+              <td class="gf">17</td>
+              <td class="gc">7</td>
+            </tr>
+            <tr>
+              <td class="pos table-bold">01</td>
+              <td class="image"><img src="https://seeklogo.com/images/P/Pumas_UNAM-logo-890265ED9A-seeklogo.com.png"/></td>
+              <td class="team table-bold">Pumas</td>
+              <td class="pts table-bold">28</td>
+              <td class="jj">9</td>
+              <td class="dg">16</td>
+              <td class="jg">3</td>
+              <td class="je">16</td>
+              <td class="jp">7</td>
+              <td class="gf">17</td>
+              <td class="gc">7</td>
+            </tr>
+            <tr>
+              <td class="pos table-bold">01</td>
+              <td class="image"><img src="https://seeklogo.com/images/P/Pumas_UNAM-logo-890265ED9A-seeklogo.com.png"/></td>
+              <td class="team table-bold">Pumas</td>
+              <td class="pts table-bold">28</td>
+              <td class="jj">9</td>
+              <td class="dg">16</td>
+              <td class="jg">3</td>
+              <td class="je">16</td>
+              <td class="jp">7</td>
+              <td class="gf">17</td>
+              <td class="gc">7</td>
+            </tr>
+            <tr>
+              <td class="pos table-bold">01</td>
+              <td class="image"><img src="https://seeklogo.com/images/P/Pumas_UNAM-logo-890265ED9A-seeklogo.com.png"/></td>
+              <td class="team table-bold">Pumas</td>
+              <td class="pts table-bold">28</td>
+              <td class="jj">9</td>
+              <td class="dg">16</td>
+              <td class="jg">3</td>
+              <td class="je">16</td>
+              <td class="jp">7</td>
+              <td class="gf">17</td>
+              <td class="gc">7</td>
+            </tr>
+            <tr>
+              <td class="pos table-bold">01</td>
+              <td class="image"><img src="https://seeklogo.com/images/P/Pumas_UNAM-logo-890265ED9A-seeklogo.com.png"/></td>
+              <td class="team table-bold">Pumas</td>
+              <td class="pts table-bold">28</td>
+              <td class="jj">9</td>
+              <td class="dg">16</td>
+              <td class="jg">3</td>
+              <td class="je">16</td>
+              <td class="jp">7</td>
+              <td class="gf">17</td>
+              <td class="gc">7</td>
+            </tr>
+            <tr>
+              <td class="pos table-bold">01</td>
+              <td class="image"><img src="https://seeklogo.com/images/P/Pumas_UNAM-logo-890265ED9A-seeklogo.com.png"/></td>
+              <td class="team table-bold">Pumas</td>
+              <td class="pts table-bold">28</td>
+              <td class="jj">9</td>
+              <td class="dg">16</td>
+              <td class="jg">3</td>
+              <td class="je">16</td>
+              <td class="jp">7</td>
+              <td class="gf">17</td>
+              <td class="gc">7</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="footer-container">
+      <div class="content">
+        <p>
+          <span>(POS)</span> Posición,
+          <span>(P)</span> Puntos,
+          <span>(JJ)</span> Juegos jugados,
+          <span>(DG)</span> Diferencia de goles,
+          <span>(JG)</span> Juegos ganados,
+          <span>(JE)</span> Juegos empatados,
+          <span>(JP)</span> Juegos perdidos,
+          <span>(GF)</span> Goles a favor,
+          <span>(GC)</span> Goles en contra.
+        </p>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'stadistics_player' %}
+  {% set idPlayer = "" %}
+  {% if module.idPlayer is defined %}
+    {% set idPlayer = module.idPlayer %}
+  {% endif %}
+  {% set playerBio = getPlayerBio(idPlayer) %}
+  {% if playerBio != null %}
+      {% set imagesMictlan = 'https://static.mediotiempo.com/' %}
+    <div class="ctr-stadistics-player">
+      <div class="head-container">
+        <div class="title">
+          <span>FICHA</span>
+        </div>
+      </div>
+      <div class="body-container">
+        <div class="content">
+          <div class="player-stadistic">
+            <div class="img-player">
+              <div class="img">
+                <img src="{{imagesMictlan}}{{playerBio.image}}" alt="">
+              </div>
+            </div>
+            <div class="info-player">
+              <div class="info-content">
+                <div class="name">
+                  <span>{{playerBio.firstName}} {{playerBio.lastName}}</span>
+                  <script>
+                    document.title = "{{playerBio.firstName}} {{playerBio.lastName}} | Ficha | Mediotiempo";
+                  </script>
+                </div>
+                <div class="description">
+                  <div class="personal-info">
+                    <p><span>Posición: </span>{{playerBio.position}} </p>
+                    <p><span>Número: </span>{{playerBio.shirtNumber}} </p>
+                    <p><span>Equipo: </span>{{playerBio.team.label}} </p>
+                    <p><span>Fecha de nacimiento: </span>{{playerBio.birthDate}} </p>
+                    <p><span>Nacionalidad: </span>{{playerBio.nationality}} </p>
+                    <p><span>Altura: </span>{{playerBio.heightInCentimeters|number_format(1, '.')}} m</p>
+                    <p><span>Peso: </span>{{playerBio.weightInKilograms|number_format(1, '.')}} kg</p>
+                  </div>
+                  <div class="debut-info">
+                    <div class="title">
+                      <span>Fecha de debut</span>
+                    </div>
+                    <div class="date">
+                      <span>
+                        {{
+                          playerBio.debut_date|date(" l d \\d\\e\\ F, o ")|replace({
+                              'January'  : 'Enero',
+                              'February'  : 'Febrero',
+                              'March'  : 'Marzo',
+                              'April'  : 'Abril',
+                              'May'  : 'Mayo',
+                              'June'  : 'Junio',
+                              'July'  : 'Julio',
+                              'August'  : 'Agosto',
+                              'September'  : 'Septiembre',
+                              'October'  : 'Octubre',
+                              'November'  : 'Noviembre',
+                              'December' : 'Diciembre',
+                              'Monday'   : 'Lunes',
+                              'Tuesday'   : 'Martes',
+                              'Wednesday'   : 'Miércoles',
+                              'Thursday'   : 'Jueves',
+                              'Friday'   : 'Viernes',
+                              'Saturday'   : 'Sábado',
+                              'Sunday'   : 'Domingo'
+                          })
+                        }}
+                      </span>
+                    </div>
+                    <div class="place">
+                      <span>{{playerBio.debut_text}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% if playerBio.playerMainLeagueStats != null %}
+            <div class="stadistics">
+              <div class="opening-stadistics">
+                <div class="content">
+                  <div class="title">
+                    <span>Estadísticas {{playerBio.playerMainLeagueStats.0.lastseason.label}}</span>
+                  </div>
+                  <div class="info">
+                    <div class="games-played">
+                      <div class="title-player">
+                        <span>PARTIDOS JUGADOS</span>
+                      </div>
+                      <div class="number-player">
+                        <span>{{playerBio.playerMainLeagueStats.0.playedGames}}</span>
+                      </div>
+                    </div>
+                    <div class="minutes-played">
+                      <div class="title-player">
+                        <span>MINUTOS JUGADOS</span>
+                      </div>
+                      <div class="number-player">
+                        <span>{{playerBio.playerMainLeagueStats.0.minutes}}</span>
+                      </div>
+                    </div>
+                    <div class="cards">
+                      <div class="title-player">
+                        <span>TARJETAS</span>
+                      </div>
+                      <div class="total-cards">
+                        <div class="red-card">
+                          <span>{{playerBio.playerMainLeagueStats.0.redCards}}</span>
+                        </div>
+                        <div class="yellow-card">
+                          <span>{{playerBio.playerMainLeagueStats.0.yellowCards}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="history-stadistics">
+                <div class="content">
+                  <div class="title">
+                    <span>Estadísticas históricas</span>
+                  </div>
+                  <div class="info">
+                    <div class="games-played">
+                      <div class="title-player">
+                        <span>PARTIDOS JUGADOS</span>
+                      </div>
+                      <div class="number-player">
+                        <span>{{playerBio.playerStats.0.playedGames}}</span>
+                      </div>
+                    </div>
+                    <div class="minutes-played">
+                      <div class="title-player">
+                        <span>MINUTOS JUGADOS</span>
+                      </div>
+                      <div class="number-player">
+                        <span>{{playerBio.playerStats.0.minutes}}</span>
+                      </div>
+                    </div>
+                    <div class="cards">
+                      <div class="title-player">
+                        <span>TARJETAS</span>
+                      </div>
+                      <div class="total-cards">
+                        <div class="red-card">
+                          <span>{{playerBio.playerStats.0.redCards}}</span>
+                        </div>
+                        <div class="yellow-card">
+                          <span>{{playerBio.playerStats.0.yellowCards}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% elseif module.template == 'stadistics_player_scores' %}
+  {% set idPlayer = "" %}
+  {% if module.idPlayer is defined %}
+    {% set idPlayer = module.idPlayer %}
+  {% endif %}
+  {% set playerStats = getPlayerStats(idPlayer) %}
+  {% if playerStats != null %}
+    <div class="ctr-stadistics-player-scores">
+      <div class="body-container">
+        <div class="content">
+          <div class="stadistics-table">
+            <div class="content">
+              <!-- <div class="select-container">
+                <div class="league-select">
+                  <div class="select-box select-rounds">
+                    <div class="title-box">
+                      {# set actualLigue = playerStats.dimensions.configuration.competition #}
+                      {# set league = playerStats.dimensions.bundle.0.values #}
+                      {# for leagueVal in league #}
+                        {# if leagueVal.id == actualLigue #}
+                          <button class="dropbtn">
+                            {#leagueVal.label#}
+                          </button>
+                        {# endif #}
+                      {# endfor #}
+                      <div class="dropdown-content">
+                        {# set league = playerStats.dimensions.bundle.0.values #}
+                        {# for leagueVal in league #}
+                          <a type="round" class="changeLeaguePlayer" idPlayer='{#idPlayer#}' idLeague='{#leagueVal.id#}'>{#leagueVal.label#}</a>
+                        {# endfor #}
+                      </div>
+                    </div>
+                    <div class="arrow-box">
+                      <span>▼</span>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <div class="table">
+                {% if playerStats.statsTable.data.rows != null %}
+                  <table>
+                    <thead>
+                      <tr>
+                        {% set cols = playerStats.statsTable.metadata.headers %}
+                        {% for colName in cols %}
+                          <th name="{{colName.name}}">{{colName.label}}</th>
+                        {% endfor %}
+                      </tr>
+                    </thead>
+                    <tbody class="scorersPlayerData">
+                        {% set rows = playerStats.statsTable.data.rows %}
+                        {% for rowVal in rows %}
+                          <tr>
+                            <td class="season" idSeason='{{rowVal.season.id}}'>{{rowVal.season.label}}</td>
+                            <td class="team" idSeason='{{rowVal.team.id}}'>{{rowVal.team.label}}</td>
+                            <!-- <td idSeason='{{rowVal.competition.id}}'>{{rowVal.competition.name}}</td> -->
+                            {% for rowValue in rowVal %}
+                              {% if not (rowValue is iterable) %}
+                                <td class="scoresData">{{rowValue}}</td>
+                              {% endif %}
+                            {% endfor %}
+                          </tr>
+                        {% endfor %}
+                        {% set jjTotal = 0 %}
+                        {% set titTotal = 0 %}
+                        {% set jcTotal = 0 %}
+                        {% set ecTotal = 0 %}
+                        {% set scTotal = 0 %}
+                        {% set minTotal = 0 %}
+                        {% set golTotal = 0 %}
+                        {% set ppgTotal = 0 %}
+                        {% set taTotal = 0 %}
+                        {% set trTotal = 0 %}
+                        {% for rowVal in rows %}
+                          {% set jjTotal = jjTotal + rowVal.jj %}
+                          {% set titTotal = titTotal + rowVal.tit %}
+                          {% set jcTotal = jcTotal + rowVal.jc %}
+                          {% set ecTotal = ecTotal + rowVal.ec %}
+                          {% set scTotal = scTotal + rowVal.sc %}
+                          {% set minTotal = minTotal + rowVal.min %}
+                          {% set golTotal = golTotal + rowVal.gol %}
+                          {% set ppgTotal = ppgTotal + rowVal.ppg %}
+                          {% set taTotal = taTotal + rowVal.ta %}
+                          {% set trTotal = trTotal + rowVal.tr %}
+                        {% endfor %}
+                      <tr class="table-results">
+                        <td></td>
+                        <td>TOTALES</td>
+                        <td></td>
+                        <td></td>
+                        <td>{{jjTotal}}</td>
+                        <td>{{titTotal}}</td>
+                        <td>{{jcTotal}}</td>
+                        <td>{{ecTotal}}</td>
+                        <td>{{scTotal}}</td>
+                        <td>{{minTotal}}</td>
+                        <td>{{golTotal}}</td>
+                        <td>{{ppgTotal}}</td>
+                        <td>{{taTotal}}</td>
+                        <td>{{trTotal}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-container">
+        <div class="content">
+          <div class="means">
+            <p>
+              <span>POS: </span>Posición
+              <span>PTS: </span>Puntos
+              <span>JJ: </span>Juegos jugados
+              <span>JG: </span>Juegos ganados
+              <span>JE: </span>Juegos empatados
+              <span>JP: </span>Juegos perdidos
+              <span>TG: </span>Tiros a gol
+              <span>TPTS: </span>Total de puntos
+              <span>TJJ: </span>Total de juegos jugados
+              <span>DIF: </span>Diferencia de goles
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% elseif module.template == 'stadistics_calendary' %}
+  <div class="ctr-stadistics-calendary">
+    <div class="head-contianer">
+      <div class="head-items">
+        <div class="title">
+          <span>LIGA MX</span>
+        </div>
+        <div class="league-logo">
+          <div class="image">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/MX_logo.png">
+          </div>
+        </div>
+        <div class="select-items">
+          <div class="apertura-select">
+            <select>
+              <option value="">Valor 1</option>
+              <option value="">Valor 2</option>
+              <option value="">Valor 3</option>
+            </select>
+          </div>
+          <div class="jornada-select">
+            <select>
+              <option value="">Valor 1</option>
+              <option value="">Valor 2</option>
+              <option value="">Valor 3</option>
+            </select>
+          </div>
+        </div>
+        <div class="sponsor">
+          <div class="sponsor-text">
+            <span>Patrocinado por:</span>
+          </div>
+          <div class="sponsor-img">
+            <img src="http://logowiki.net/wp-content/uploads/imgp/Bancomer-SA-Logo-1-7760.png">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="body-container">
+      <div class="media-container">
+        <div class="section-see-more-container-transparent">
+          <div class="section-title-container-transparent">
+            <span {{ data_camus_title }}>Calendario</span>
+          </div>
+        </div>
+      </div>
+      <div class="going-container">
+        <div class="head-going">
+          <span>IDA</span>
+        </div>
+        <div class="body-going">
+          <div class="going-header">
+            <div class="date-separator">
+              <div class="going-date">
+                <span>SAB 05 SEP</span>
+              </div>
+              <div class="going-separator-line">
+              </div>
+            </div>
+          </div>
+          <div class='going-body-container'>
+            <div class="going-data">
+              <div class="title">
+                <div class="going-hour">
+                  <span>21:00</span>
+                </div>
+                <div class="going-title">
+                  <span>La Corregidora</span>
+                </div>
+              </div>
+              <div class="going-teams">
+                <div class="first-team">
+                  <img src="http://as00.epimg.net/img/comunes/fotos/fichas/equipos/large/3828.png" alt="">
+                  <div class="team-name">
+                    <span>Club Tijuana</span>
+                  </div>
+                </div>
+                <div class="result-team">
+                  <span>0 - 1</span>
+                </div>
+                <div class="second-team">
+                  <img src="https://vignette.wikia.nocookie.net/fifa/images/0/04/Atlas.png/revision/latest?cb=20140505021417&path-prefix=es" alt="">
+                  <div class="team-name">
+                    <span>Club Atlas</span>
+                  </div>
+                </div>
+              </div>
+              <div class="going-type">
+                <div class="title-type recap">
+                  <span>RESUMEN</span>
+                </div>
+              </div>
+            </div>
+            <div class="going-data">
+              <div class="title">
+                <div class="going-hour">
+                  <span>21:00</span>
+                </div>
+                <div class="going-title">
+                  <span>La Corregidora</span>
+                </div>
+              </div>
+              <div class="going-teams">
+                <div class="first-team">
+                  <img src="http://as00.epimg.net/img/comunes/fotos/fichas/equipos/large/3828.png" alt="">
+                  <div class="team-name">
+                    <span>Club Tijuana</span>
+                  </div>
+                </div>
+                <div class="result-team">
+                  <span>0 - 1</span>
+                </div>
+                <div class="second-team">
+                  <img src="https://vignette.wikia.nocookie.net/fifa/images/0/04/Atlas.png/revision/latest?cb=20140505021417&path-prefix=es" alt="">
+                  <div class="team-name">
+                    <span>Club Atlas</span>
+                  </div>
+                </div>
+              </div>
+              <div class="going-type">
+                <div class="title-type recap">
+                  <span>RESUMEN</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lap-container">
+        <div class="head-lap">
+          <span>IDA</span>
+        </div>
+        <div class="body-lap">
+          <div class="lap-header">
+            <div class="date-separator">
+              <div class="lap-date">
+                <span>SAB 05 SEP</span>
+              </div>
+              <div class="lap-separator-line">
+              </div>
+            </div>
+          </div>
+          <div class='lap-body-container'>
+            <div class="lap-data">
+              <div class="title">
+                <div class="lap-hour">
+                  <span>21:00</span>
+                </div>
+                <div class="lap-title">
+                  <span>La Corregidora</span>
+                </div>
+              </div>
+              <div class="lap-teams">
+                <div class="first-team">
+                  <img src="http://as00.epimg.net/img/comunes/fotos/fichas/equipos/large/3828.png" alt="">
+                  <div class="team-name">
+                    <span>Club Tijuana</span>
+                  </div>
+                </div>
+                <div class="result-team">
+                  <span>0 - 1</span>
+                </div>
+                <div class="second-team">
+                  <img src="https://vignette.wikia.nocookie.net/fifa/images/0/04/Atlas.png/revision/latest?cb=20140505021417&path-prefix=es" alt="">
+                  <div class="team-name">
+                    <span>Club Atlas</span>
+                  </div>
+                </div>
+              </div>
+              <div class="lap-type">
+                <div class="title-type previus">
+                  <span>PREVIO</span>
+                </div>
+              </div>
+            </div>
+            <div class="lap-data">
+              <div class="title">
+                <div class="lap-hour">
+                  <span>21:00</span>
+                </div>
+                <div class="lap-title">
+                  <span>La Corregidora</span>
+                </div>
+              </div>
+              <div class="lap-teams">
+                <div class="first-team">
+                  <img src="http://as00.epimg.net/img/comunes/fotos/fichas/equipos/large/3828.png" alt="">
+                  <div class="team-name">
+                    <span>Club Tijuana</span>
+                  </div>
+                </div>
+                <div class="result-team">
+                  <span>0 - 1</span>
+                </div>
+                <div class="second-team">
+                  <img src="https://vignette.wikia.nocookie.net/fifa/images/0/04/Atlas.png/revision/latest?cb=20140505021417&path-prefix=es" alt="">
+                  <div class="team-name">
+                    <span>Club Atlas</span>
+                  </div>
+                </div>
+              </div>
+              <div class="lap-type">
+                <div class="title-type previus">
+                  <span>PREVIO</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'stadistics_past' %}
+  <div class="ctr-stadistics-past">
+    <div class="module-container">
+      <div class="stadistics-head">
+        <div class="head-container">
+          <div class="title">
+            <span>Partidos Anteriores</span>
+          </div>
+        </div>
+      </div>
+      <div class="stadistics-body">
+        <div class="body-container">
+          <div class="body-table-row">
+            <div class="number-game">
+              <span>J 1</span>
+            </div>
+            <div class="date-game">
+              <span>VIE 30 AGO /  21:00</span>
+            </div>
+            <div class="wrap-stadistics">
+              <div class="score-game">
+                <div class="first-team-name">
+                  <span>Brasil</span>
+                </div>
+                <div class="first-team-logo">
+                  <img src="http://flags.fmcdn.net/data/flags/w580/br.png" alt="">
+                </div>
+                <div class="score">
+                  <span>0 - 1</span>
+                </div>
+                <div class="second-team-logo">
+                  <img src="http://flags.fmcdn.net/data/flags/w580/fr.png" alt="">
+                </div>
+                <div class="second-team-name">
+                  <span>Francia</span>
+                </div>
+              </div>
+              <div class="stadistics-summary">
+                <div class="text">
+                  <span>David Patiño</span>
+                </div>
+                <div class="recap">
+                  <span>RESUMEN</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="body-table-row">
+            <div class="number-game">
+              <span>J 1</span>
+            </div>
+            <div class="date-game">
+              <span>VIE 30 AGO /  21:00</span>
+            </div>
+            <div class="wrap-stadistics">
+              <div class="score-game">
+                <div class="first-team-name">
+                  <span>Brasil</span>
+                </div>
+                <div class="first-team-logo">
+                  <img src="http://flags.fmcdn.net/data/flags/w580/br.png" alt="">
+                </div>
+                <div class="score">
+                  <span>0 - 1</span>
+                </div>
+                <div class="second-team-logo">
+                  <img src="http://flags.fmcdn.net/data/flags/w580/fr.png" alt="">
+                </div>
+                <div class="second-team-name">
+                  <span>Francia</span>
+                </div>
+              </div>
+              <div class="stadistics-summary">
+                <div class="text">
+                  <span>David Patiño</span>
+                </div>
+                <div class="recap">
+                  <span>RESUMEN</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="body-table-row">
+            <div class="number-game">
+              <span>J 1</span>
+            </div>
+            <div class="date-game">
+              <span>VIE 30 AGO /  21:00</span>
+            </div>
+            <div class="wrap-stadistics">
+              <div class="score-game">
+                <div class="first-team-name">
+                  <span>Brasil</span>
+                </div>
+                <div class="first-team-logo">
+                  <img src="http://flags.fmcdn.net/data/flags/w580/br.png" alt="">
+                </div>
+                <div class="score">
+                  <span>0 - 1</span>
+                </div>
+                <div class="second-team-logo">
+                  <img src="http://flags.fmcdn.net/data/flags/w580/fr.png" alt="">
+                </div>
+                <div class="second-team-name">
+                  <span>Francia</span>
+                </div>
+              </div>
+              <div class="stadistics-summary">
+                <div class="text">
+                  <span>David Patiño</span>
+                </div>
+                <div class="recap">
+                  <span>RESUMEN</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'stadistics_games' %}
+  <div class="ctr-stadistics-games">
+    <div class="module-container">
+      <div class="stadistics-head">
+        <div class="head-container">
+          <div class="title">
+            <span>Partidos Anteriores</span>
+          </div>
+        </div>
+      </div>
+      <div class="stadistics-body">
+        <div class="stadistics-body-container">
+          <div class="teams-scores">
+            <div class="team-name">
+              <span>BRASIL</span>
+            </div>
+            <div class="table-scores">
+              <div class="table-score-row">
+                <div class="first-team">
+                  <div class="team-logo">
+                    <img src="http://flags.fmcdn.net/data/flags/w580/br.png" alt="">
+                  </div>
+                  <div class="name">
+                    <span>Brasil</span>
+                  </div>
+                </div>
+                <div class="game-score">
+                  <div class="score">
+                    <span>1 - 0</span>
+                  </div>
+                  <div class="game-status win">
+                    <span>GANADO</span>
+                  </div>
+                </div>
+                <div class="second-team">
+                  <div class="team-logo">
+                    <img src="http://flags.fmcdn.net/data/flags/w580/fr.png" alt="">
+                  </div>
+                  <div class="name">
+                    <span>Francia</span>
+                  </div>
+                </div>
+              </div>
+              <div class="table-score-row">
+                <div class="first-team">
+                  <div class="team-logo">
+                    <img src="http://flags.fmcdn.net/data/flags/w580/br.png" alt="">
+                  </div>
+                  <div class="name">
+                    <span>Brasil</span>
+                  </div>
+                </div>
+                <div class="game-score">
+                  <div class="score">
+                    <span>1 - 0</span>
+                  </div>
+                  <div class="game-status tie">
+                    <span>EMPATADO</span>
+                  </div>
+                </div>
+                <div class="second-team">
+                  <div class="team-logo">
+                    <img src="http://flags.fmcdn.net/data/flags/w580/fr.png" alt="">
+                  </div>
+                  <div class="name">
+                    <span>Francia</span>
+                  </div>
+                </div>
+              </div>
+              <div class="table-score-row">
+                <div class="first-team">
+                  <div class="team-logo">
+                    <img src="http://flags.fmcdn.net/data/flags/w580/br.png" alt="">
+                  </div>
+                  <div class="name">
+                    <span>Brasil</span>
+                  </div>
+                </div>
+                <div class="game-score">
+                  <div class="score">
+                    <span>1 - 0</span>
+                  </div>
+                  <div class="game-status lose">
+                    <span>PERDIDO</span>
+                  </div>
+                </div>
+                <div class="second-team">
+                  <div class="team-logo">
+                    <img src="http://flags.fmcdn.net/data/flags/w580/fr.png" alt="">
+                  </div>
+                  <div class="name">
+                    <span>Francia</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="teams-scores">
+            <div class="team-name">
+              <span>FRANCIA</span>
+            </div>
+            <div class="table-scores">
+              <div class="table-score-row">
+                <div class="first-team">
+                  <div class="team-logo">
+                    <img src="http://flags.fmcdn.net/data/flags/w580/br.png" alt="">
+                  </div>
+                  <div class="name">
+                    <span>Brasil</span>
+                  </div>
+                </div>
+                <div class="game-score">
+                  <div class="score">
+                    <span>1 - 0</span>
+                  </div>
+                  <div class="game-status win">
+                    <span>GANADO</span>
+                  </div>
+                </div>
+                <div class="second-team">
+                  <div class="team-logo">
+                    <img src="http://flags.fmcdn.net/data/flags/w580/fr.png" alt="">
+                  </div>
+                  <div class="name">
+                    <span>Francia</span>
+                  </div>
+                </div>
+              </div>
+              <div class="table-score-row">
+                <div class="first-team">
+                  <div class="team-logo">
+                    <img src="http://flags.fmcdn.net/data/flags/w580/br.png" alt="">
+                  </div>
+                  <div class="name">
+                    <span>Brasil</span>
+                  </div>
+                </div>
+                <div class="game-score">
+                  <div class="score">
+                    <span>1 - 0</span>
+                  </div>
+                  <div class="game-status tie">
+                    <span>EMPATADO</span>
+                  </div>
+                </div>
+                <div class="second-team">
+                  <div class="team-logo">
+                    <img src="http://flags.fmcdn.net/data/flags/w580/fr.png" alt="">
+                  </div>
+                  <div class="name">
+                    <span>Francia</span>
+                  </div>
+                </div>
+              </div>
+              <div class="table-score-row">
+                <div class="first-team">
+                  <div class="team-logo">
+                    <img src="http://flags.fmcdn.net/data/flags/w580/br.png" alt="">
+                  </div>
+                  <div class="name">
+                    <span>Brasil</span>
+                  </div>
+                </div>
+                <div class="game-score">
+                  <div class="score">
+                    <span>1 - 0</span>
+                  </div>
+                  <div class="game-status lose">
+                    <span>PERDIDO</span>
+                  </div>
+                </div>
+                <div class="second-team">
+                  <div class="team-logo">
+                    <img src="http://flags.fmcdn.net/data/flags/w580/fr.png" alt="">
+                  </div>
+                  <div class="name">
+                    <span>Francia</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="stadistics-footer">
+        <div class="head-container">
+          <div class="title">
+            <span>Partidos Totales</span>
+          </div>
+        </div>
+        <div class="results-games">
+          <div class="teams-logos">
+            <div class="first-team-logo">
+              <img src="http://flags.fmcdn.net/data/flags/w580/br.png" alt="">
+            </div>
+            <div class="second-team-logo">
+              <img src="http://flags.fmcdn.net/data/flags/w580/fr.png" alt="">
+            </div>
+          </div>
+          <div class="wined">
+            <div class="first-team">
+              <span>42</span>
+            </div>
+            <div class="title">
+              <span>GANADOS</span>
+            </div>
+            <div class="second-team">
+              <span>20</span>
+            </div>
+          </div>
+          <div class="losed">
+            <div class="first-team">
+              <span>20</span>
+            </div>
+            <div class="title">
+              <span>GANADOS</span>
+            </div>
+            <div class="second-team">
+              <span>41</span>
+            </div>
+          </div>
+          <div class="tied">
+            <div class="first-team">
+              <span>20</span>
+            </div>
+            <div class="title">
+              <span>GANADOS</span>
+            </div>
+            <div class="second-team">
+              <span>41</span>
+            </div>
+          </div>
+        </div>
+        <div class="total-results">
+          <div class="results">
+            <span class="number">81</span> Partidos Jugados
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'stadistics_plots' %}
+<div class="ctr-stadistics-plots">
+  <div class="module-container">
+    <div class="stadistics-head">
+      <div class="head-container">
+        <div class="title">
+          <span>ESTADÍSTICAS</span>
+        </div>
+      </div>
+    </div>
+    <div class="plot-row">
+      <div class="head-plot">
+        <div class="title">
+          <span>TIROS A GOL</span>
+        </div>
+      </div>
+      <div class="show-plot">
+        <div class="plot-team-a">
+          <div class="team-score">
+            <span>16</span>
+          </div>
+          <div class="team-plot">
+            <div class="plot" style="width: 59%">
+            </div>
+          </div>
+        </div>
+        <div class="plot-team-b">
+          <div class="team-plot">
+            <div class="plot" style="width: 41%">
+            </div>
+          </div>
+          <div class="team-score">
+            <span>11</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="plot-row">
+      <div class="head-plot">
+        <div class="title">
+          <span>TIROS DESVIADOS</span>
+        </div>
+      </div>
+      <div class="show-plot">
+        <div class="plot-team-a">
+          <div class="team-score">
+            <span>5</span>
+          </div>
+          <div class="team-plot">
+            <div class="plot" style="width: 50%">
+            </div>
+          </div>
+        </div>
+        <div class="plot-team-b">
+          <div class="team-plot">
+            <div class="plot" style="width: 50%">
+            </div>
+          </div>
+          <div class="team-score">
+            <span>5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="plot-row">
+      <div class="head-plot">
+        <div class="title">
+          <span>TIROS DE ESQUINA</span>
+        </div>
+      </div>
+      <div class="show-plot">
+        <div class="plot-team-a">
+          <div class="team-score">
+            <span>6</span>
+          </div>
+          <div class="team-plot">
+            <div class="plot" style="width: 60%">
+            </div>
+          </div>
+        </div>
+        <div class="plot-team-b">
+          <div class="team-plot">
+            <div class="plot" style="width: 40%">
+            </div>
+          </div>
+          <div class="team-score">
+            <span>4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="plot-row">
+      <div class="head-plot">
+        <div class="title">
+          <span>CENTROS</span>
+        </div>
+      </div>
+      <div class="show-plot">
+        <div class="plot-team-a">
+          <div class="team-score">
+            <span>4</span>
+          </div>
+          <div class="team-plot">
+            <div class="plot" style="width: 67%">
+            </div>
+          </div>
+        </div>
+        <div class="plot-team-b">
+          <div class="team-plot">
+            <div class="plot" style="width: 33%">
+            </div>
+          </div>
+          <div class="team-score">
+            <span>2</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="plot-row">
+      <div class="head-plot">
+        <div class="title">
+          <span>FUERA DE LUGAR</span>
+        </div>
+      </div>
+      <div class="show-plot">
+        <div class="plot-team-a">
+          <div class="team-score">
+            <span>1</span>
+          </div>
+          <div class="team-plot">
+            <div class="plot" style="width: 20%">
+            </div>
+          </div>
+        </div>
+        <div class="plot-team-b">
+          <div class="team-plot">
+            <div class="plot" style="width: 80%">
+            </div>
+          </div>
+          <div class="team-score">
+            <span>4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="plot-row">
+      <div class="head-plot">
+        <div class="title">
+          <span>FALTAS</span>
+        </div>
+      </div>
+      <div class="show-plot">
+        <div class="plot-team-a">
+          <div class="team-score">
+            <span>16</span>
+          </div>
+          <div class="team-plot">
+            <div class="plot" style="width: 64%">
+            </div>
+          </div>
+        </div>
+        <div class="plot-team-b">
+          <div class="team-plot">
+            <div class="plot" style="width: 36%">
+            </div>
+          </div>
+          <div class="team-score">
+            <span>9</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="plot-row">
+      <div class="head-plot">
+        <div class="title">
+          <span>TARJETAS AMARILLAS</span>
+        </div>
+      </div>
+      <div class="show-plot">
+        <div class="plot-team-a">
+          <div class="team-score">
+            <span>2</span>
+          </div>
+          <div class="team-plot">
+            <div class="plot" style="width: 67%">
+            </div>
+          </div>
+        </div>
+        <div class="plot-team-b">
+          <div class="team-plot">
+            <div class="plot" style="width: 33%">
+            </div>
+          </div>
+          <div class="team-score">
+            <span>1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="plot-row">
+      <div class="head-plot">
+        <div class="title">
+          <span>TARJETAS ROJAS</span>
+        </div>
+      </div>
+      <div class="show-plot">
+        <div class="plot-team-a">
+          <div class="team-score">
+            <span>0</span>
+          </div>
+          <div class="team-plot">
+            <div class="plot" style="width: 0%">
+            </div>
+          </div>
+        </div>
+        <div class="plot-team-b">
+          <div class="team-plot">
+            <div class="plot" style="width: 0%">
+            </div>
+          </div>
+          <div class="team-score">
+            <span>0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

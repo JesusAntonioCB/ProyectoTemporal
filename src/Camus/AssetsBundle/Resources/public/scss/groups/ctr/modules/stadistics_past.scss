@@ -1,0 +1,265 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.ctr-stadistics-past{
+  .module-container{
+    .stadistics-head{
+      .head-container{
+        .title{
+          border-style: solid;
+          border-color: $color-yellow;
+          padding-top: 3px;
+          font-size: 26px;
+          padding-bottom: 4px;
+          border-width: 5px 0px 1px;
+          @include text-with-roboto-black-color-dark-gray;
+        }
+      }
+    }
+    .stadistics-body{
+      .body-container{
+        .body-table-row{
+          display: flex;
+          align-items: center;
+          border-bottom: 1px solid $color-sharp-gray;
+          .number-game{
+            width: 43px;
+            padding-top: 28px;
+            padding-bottom: 25px;
+            text-transform: uppercase;
+            font-size: 16px;
+            border-right: 1px solid $color-sharp-gray;
+            @include text-with-roboto-black-color-dark-gray;
+          }
+          .date-game{
+            width: 225px;
+            padding-top: 30px;
+            padding-bottom: 27px;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 12px;
+            border-right: 1px solid $color-sharp-gray;
+            @include text-with-roboto-regular-color-night-gray;
+          }
+          .wrap-stadistics{
+            display: flex;
+            align-items: center;
+            .score-game{
+              width: 465px;
+              position: relative;
+              padding-left: 45px;
+              display: flex;
+              align-items: center;
+              padding-top: 15px;
+              padding-bottom: 14px;
+              border-right: 1px solid $color-sharp-gray;
+              .first-team-name{
+                //margin-right: 45px;
+              }
+              .second-team-name{
+                //margin-left: 23px;
+              }
+              .first-team-name, .second-team-name{
+                text-align: center;
+                font-size: 14px;
+                width: 100px;
+                @include text-with-roboto-medium-color-night-gray;
+              }
+              .first-team-logo, .second-team-logo{
+                width: 46px;
+                img{
+                  width: 100%;
+                  height: 46px;
+                  object-fit: cover;
+                  border-radius: 62px;
+                }
+              }
+              .score{
+                margin: 0px 12px 0 12px;
+                text-align: center;
+                font-size: 30px;
+                @include text-with-roboto-black-color-night-gray;
+              }
+            }
+            .stadistics-summary{
+              display: flex;
+              align-items: center;
+              width: 203px;
+              .text{
+                text-align: center;
+                width: 80px;
+                margin-left: 15px;
+                padding-top: 4px;
+                font-size: 12px;
+                @include text-with-roboto-regular-color-dark-gray;
+              }
+              .recap{
+                margin-left: 36px;
+                width: 87px;
+                background-color: $color-sunset-orange;
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: center;
+                font-size: 11px;
+                @include text-with-roboto-regular-color-white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include three-column{
+  .ctr-stadistics-past{
+
+  }
+}
+
+@include two-column{
+  .ctr-stadistics-past{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .module-container{
+      .stadistics-body{
+        .body-container{
+          .body-table-row{
+            .number-game{
+              width: 35px;
+              font-size: 14px;
+            }
+            .date-game{
+              width: 70px;
+              padding-top: 12px;
+              padding-bottom: 9px;
+              padding-right: 5px;
+              padding-left: 5px;
+            }
+            .wrap-stadistics{
+              .score-game{
+                width: 410px;
+                //padding-left: 45px;
+                padding-left: 10px;
+                .first-team-name{
+                  text-align: center;
+                  font-size: 14px;
+                  width: 100px;
+                  margin-right: unset;
+                }
+                .second-team-name{
+                  text-align: center;
+                  font-size: 14px;
+                  width: 100px;
+                  margin-left: unset;
+                }
+              }
+              .stadistics-summary{
+                display: block;
+                width: 100px;
+                .text{
+                  text-align: center;
+                  width: unset;
+                }
+                .recap{
+                  margin-left: 11px;
+                  padding-top: 7px;
+                  padding-bottom: 4px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include one-column{
+  .ctr-stadistics-past{
+    .module-container{
+      .stadistics-head{
+        .head-container{
+          .title{
+            padding-left: 10px;
+            font-size: 14px;
+            padding-top: 14px;
+            padding-bottom: 12px;
+          }
+        }
+      }
+      .stadistics-body{
+        .body-container{
+          .body-table-row{
+
+            .number-game{
+              font-size: 10px;
+              width: 30px;
+              padding-top: 25px;
+              padding-bottom: 25px;
+            }
+            .date-game{
+              font-size: 10px;
+              width: 85px;
+              padding-top: 18px;
+              padding-bottom: 18px;
+            }
+            .wrap-stadistics{
+              width: 230px;
+              display: block;
+              .score-game{
+                padding-top: 0px;
+                padding-bottom: 2px;
+                padding-left: 10px;
+                width: 230px;
+                border-right: unset;
+                .first-team-name{
+                  //margin-right: 6px;
+                  margin-right: unset;
+                }
+                .second-team-name{
+                  //margin-left: 5px;
+                  margin-left: unset;
+                }
+                .first-team-name, .second-team-name{
+                  text-align: center;
+                  font-size: 12px;
+                  width: 65px;
+                }
+                .first-team-logo, .second-team-logo{
+                  width: 17px;
+                  img{
+                    height: 17px;
+                  }
+                }
+                .score{
+                  font-size: 18px;
+                  margin: 0px 5px 0 5px;
+                }
+              }
+              .stadistics-summary{
+                padding-top: 5px;
+                display: inline-flex;
+                width: 237px;
+                position: relative;
+                left: 5px;
+                border-top: 1px solid $color-sharp-gray;
+                .text{
+                  font-size: 11px;
+                  margin-left: 40px;
+                }
+                .recap{
+                  padding-top: 2px;
+                  padding-bottom: 1px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

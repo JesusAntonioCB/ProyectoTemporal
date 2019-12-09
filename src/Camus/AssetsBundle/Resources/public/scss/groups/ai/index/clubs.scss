@@ -1,0 +1,99 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.ai-index-clubs{
+  @include global-container-4c;
+  padding-top: 15px;
+  margin-bottom: $global-margin-bottom;
+  border-top: 1px solid $color-green;
+  .media-container{
+    .list-name{
+      float: left;
+      width: 30%;
+      margin: 0 0 30px;
+      @include text-with-open-sans-5-color-blue-gray;
+      font-weight: 400;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+    .list{
+      float: left;
+      width: 70%;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      li{
+        float: left;
+        width: 33.33%;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $color-very-light-gray;
+        &:last-child{
+          border: none;
+        }
+        h1{
+          margin: 0;
+          @include text-with-utopia-5-color-night-gray;
+          font-size: 24px;
+          font-weight: 400;
+        }
+        h5{
+          margin: 0;
+          font-family: $font-open-sans5;
+          font-weight: 400;
+          font-size: 12px;
+          text-transform: uppercase;
+          color: $color-space-silver;
+        }
+      }
+      &:after{
+        content: '';
+        display: table;
+        clear: both;
+      }
+    }
+    &:after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+}
+@include three-column{
+  .ai-index-clubs{
+    .media-container{
+      .list-name{
+        width: 100%;
+      }
+      .list{
+        width: 100%;
+      }
+    }
+  }
+};
+
+@include two-column{
+  .ai-index-clubs{
+    .media-container{
+      .list{
+        li{
+          width: 50%;
+        }
+      }
+    }
+  }
+};
+
+@include one-column{
+  .ai-index-clubs{
+    .media-container{
+      .list{
+        li{
+          width: 100%;
+        }
+      }
+    }
+  }
+};

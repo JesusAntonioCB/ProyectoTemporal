@@ -1,0 +1,112 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+@import "../content-columns/base.scss";
+
+.nd-content-body{
+  .author{
+    @include text-with-roboto-black-color-night-gray;
+    font-size: 12px;
+    line-height: 18px;
+    text-transform: uppercase;
+  }
+  .content-date{
+    margin-bottom: 20px;
+    @include text-with-roboto-black-color-gray;
+    font-size: 12px;
+    line-height: 17px;
+  }
+  iframe{
+    @include one-column{
+      min-width: 280px !important;
+    }
+  }
+}
+#content-body{
+  @include text-with-sans-pro-light-color-military-gray;
+  font-size: 18px;
+  line-height: 27px;
+  b, strong{
+    font-family: $font-black, sans-serif;
+  }
+  > p, > div{
+    // a{
+    //   color: #337ab7;
+    //   text-decoration: underline;
+    // }
+    img{
+      display: block;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    > iframe{
+      width: 100%;
+      min-height: 160px;
+    }
+    > b{
+      font-family: $font-black, sans-serif;
+    }
+  }
+  > p > a, > div > a, > div > p > a{
+    color: #337ab7;
+    text-decoration: underline;
+  }
+  p{
+    padding-top: $global-padding-top;
+  }
+  p:empty{
+    display: none;
+    padding-top: 0;
+    margin-bottom: 0;
+  }
+  u{
+    text-decoration: underline;
+  }
+  .twitter-tweet, .fb-post, .fb-video{
+    display: block;
+    width: 500px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  & ::selection{
+    background-color: $color-alizarin-crimson;                                  //modificado
+  }
+  &.opinion{
+    p:nth-child(1)::first-letter{
+      float: left;
+      font-size: 75px;
+      line-height: 60px;
+      padding-top: 4px;
+      padding-right: 8px;
+      padding-left: 3px;
+    }
+  }
+  .opinion{
+    @include text-with-roboto-regular-color-night-gray;
+  }
+  .eo-free{
+    #fan-player-fox-ratio iframe{
+      height: 465px;
+    }
+  }
+}
+@include two-column{
+  #content-body{
+    .eo-free{
+      #fan-player-fox-ratio iframe{
+        height: 465px;
+      }
+    }
+  }
+};
+@include two-column{
+  #content-body{
+    .eo-free{
+      #fan-player-fox-ratio iframe{
+        height: 285px;
+      }
+    }
+  }
+};

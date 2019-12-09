@@ -1,0 +1,54 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.foot-text-note{
+  display: inline-block;
+  //width: $one-column;
+  height: 238px;
+  background-color: $color-black;
+  .sphere{
+    border: none;
+    border-radius: 50%;
+    background-color: $color-white;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    opacity: 0.5;
+    outline: none;
+    width: 50px;
+    height: 50px;
+    &:hover{
+      opacity: 0.75;
+    }
+    span{
+      width: 100%;
+      padding: 0;
+      font-size: 25px;
+    }
+  }
+  .image{
+    // height: 169px;
+    height: 149px;
+  }
+  .title-container{
+    // height: 43px;
+    height: 63px;
+    margin-top: 8px;
+    padding: 0 10px;
+    @include text-with-roboto-black-color-white;
+    font-size: 20px;
+    line-height: 21px;
+    overflow: hidden;
+  }
+  .section, .title{
+    display: inline;
+  }
+  .section{
+    color: $color-red-alizarin-crimison;
+  }
+  .social-media{
+    padding-right: 15px;
+  }
+}

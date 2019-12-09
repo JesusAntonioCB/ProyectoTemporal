@@ -1,0 +1,16 @@
+<div class="contenedor-notas-block">
+  <div class="nd-error404">
+    <div class="advert">
+      <img class="background-img" src="/bundles/applicationcamusassets/images/background-error-404.jpg"/>
+      <div class="sign">
+        <div class="logo-milenio-container">
+          <img class="logo-milenio" src="/bundles/applicationcamusassets/images/icon-milenio.png" alt="Icon Milenio">
+        </div>
+        <span class="title-error">¡Algo pasó!</span>
+        <span class="title-sorry">Lo sentimos, pero no logramos ubicar el recurso que buscas. Por favor sigue navegando con nosotros.</span>
+      </div>
+    </div>
+  </div>
+  {% set type = slider.type|splitTemplate %}
+  {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: slider|getModelModule} %}
+</div>

@@ -1,0 +1,184 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.calendar{
+  width: 377px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 30px;
+  .top{
+    .span{
+      @include text-with-open-sans-5-color-grayish-blue;
+      text-align: center;
+      font-weight: 900;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+    .month-year-bar{
+      width: 100%;
+      height: 100%;
+      margin-bottom: 15px;
+      .month-container{
+        width: 257px;
+        min-height: 31px;
+        border: 1px solid $color-light-blue;
+        background-color: $color-white;
+        padding-top: 9px;
+        display: inline-block;
+        float: left;
+        .left-icon{
+          color: black;
+          display: inline-block;
+          text-align: left;
+          float: left;
+          padding-left: 20px;
+          span{
+            font-size: 14px;
+            color: black;
+            font-weight: 900;
+          }
+        }
+        .month{
+          display: inline-block;
+          span{
+            @include text-with-open-sans-5-color-black;
+            font-size: 15px;
+          }
+        }
+        .right-icon{
+          color: black;
+          display: inline-block;
+          text-align: left;
+          float: right;
+          padding-right: 20px;
+          span{
+            font-size: 14px;
+            color: black;
+            font-weight: 900;
+            text-decoration: none;
+          }
+        }
+      }
+      .year-container{
+        width: 115px;
+        min-height: 31px;
+        display: inline-block;
+        padding-top: 9px;
+        border: 1px solid $color-light-blue;
+        background-color: $color-white;
+      }
+    }
+  }
+  .bottom{
+    .days-name-container{
+      display: inline-block;
+      > div{
+        margin-right: 10px;
+        width: 40px;
+        height: 21px;
+        display: inline-block;
+      }
+      .name{
+        span{
+          font-size: 12px;
+          line-height: 15px;
+          @include text-with-open-sans-5-color-nobel;
+        }
+      }
+    }
+    .grid{
+      display: inline-block;
+      width: 377px;
+      text-align: center;
+      > div{
+        // width: 39px;
+        width: 43px;
+        height: 31px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        display: inline-block;
+        vertical-align: middle;
+        span{
+          @include text-with-open-sans-5-color-nobel;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: 0px;
+          font-weight: 900;
+        }
+      }
+      .day-item{
+        background-color: $color-white;
+        float: left;
+        &.day-empty{
+            border: 1px solid white !important;
+            background-color: transparent !important;
+        }
+        &.day-current{
+          background-color: $color-dark-grayish-blue;
+            span{
+              color: $color-white !important;
+            }
+        }
+        &.day-future{
+          background-color: $color-very-light-gray;
+        }
+      }
+    }
+  }
+}
+
+@include two-column{
+  .tabs-calendar{
+    .tab-container{
+      > div{
+        width: 173px;
+      }
+    }
+  }
+};
+@include one-column{
+  .calendar{
+    width: 290px;
+    .top{
+      .month-year-bar{
+        .month-container{
+          width: 157px;
+          .month{
+            span{
+              font-size: 12px;
+            }
+          }
+        }
+        .year-container{
+          .year{
+            span{
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+    .bottom{
+      .days-name-container{
+        > div{
+          width: 26px;
+          span{
+            font-size: 11px;
+          }
+        }
+      }
+      .grid{
+        width: 290px;
+        > div{
+          width: 31px;
+          height: 26px;
+          span{
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+};

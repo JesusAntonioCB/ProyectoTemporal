@@ -1,0 +1,85 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sli-large{
+  width: 100%;
+  position: relative;
+  padding: 18px 0;
+  margin-bottom: $global-margin-bottom;
+  background-color: $color-plantation; //modificado antes amarillo
+  border-radius: 10px;
+  overflow: hidden;
+  .media-container{
+    .headline{
+      position: relative;
+      text-align: center;
+      margin-bottom: 15px;
+      .title{
+        min-height: 43px;
+        @include text-with-YanoneKaffeesatz-color-white;
+        font-size: 45px;
+        line-height: 50px;
+        margin: 0 auto;
+        max-width: 80%;
+        text-transform: uppercase;
+      }
+    }
+    .arrows{
+      right: 10px;
+      .left, .right{
+        height: 35px;
+        width: 35px;
+        font-size: 14px;
+        line-height: 35px;
+        background-color: $color-white;
+        &:hover .fa{
+          opacity: 0.7;
+        }
+      }
+    }
+    .firms{
+      width: 100%;
+      position: relative;
+      .sn-bottom-text-growable-left{
+        vertical-align: top;
+        margin-right: 2px;
+        border-top: none;
+      }
+      .slick-dots li button:before{
+        color: $color-white !important;
+      }
+    }
+  }
+}
+
+@include two-column{
+  .sli-large{
+    .media-container{
+      .arrows{
+        display: none;
+      }
+    }
+  }
+};
+
+@include one-column{
+  .sli-large{
+    padding: 12px 0;
+    .media-container{
+      .headline{
+        margin-bottom: 5px;
+        .title{
+          font-size: 32px;
+          line-height: 40px;
+        }
+      }
+      .firms{
+        .sn-bottom-text-growable-left{
+          width: 300px;
+        }
+      }
+    }
+  }
+};

@@ -1,0 +1,33 @@
+{% import "Application\Camus\AssetsBundle:Fixtures:see-more.html.twig" as seeMore %}
+
+{% if module.template == 'base' %}
+  <div class="sn-poll-base">
+    <div class="media-container">
+      {{ seeMore.img(module, "", false) }}
+      <div class="container-info">
+        <div class="phrase">
+          <span {{ data_camus_title }}>{{ module.title }}</span>
+        </div>
+        <div class="options" {{ data_camus_poll_options }}>
+          <input type="radio" name="quiz" value="1">La Volpe
+          <br>
+          <input type="radio" name="quiz" value="2" checked="">Ambriz
+          <br>
+          <input type="radio" name="quiz" value="3">Caixinha
+          <br>
+          <input type="radio" name="quiz" value="4" checked="">Cardozo
+          {% for options in module.modules %}
+            <input type="radio" name="name" value="{{ loop.index }}">{{ option.title }}
+            <br>
+          {% endfor %}
+        </div>
+        <div class="results-vote-container">
+          <div class="see-results-container">
+            <span><a href="">Ver Resultados</a></span>
+          </div>
+          <button class="vote-container">Votar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

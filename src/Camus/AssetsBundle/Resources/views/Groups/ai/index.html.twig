@@ -1,0 +1,464 @@
+{% if module.template == 'themes'%}
+  <div class="alphabet-topic" {{data_camus_allow_empty_module["1"]}} >
+    <div class="media-container">
+      <div class="head">
+        <div class="text">
+          <h6>Seleccione una letra para ver los temas</h6>
+        </div>
+        <div class="black-bar">
+          <div class="letter">
+            <span>A</span>
+          </div>
+          <div class="arrow">
+            <span class="fa fa-chevron-up"></span>
+          </div>
+        </div>
+      </div>
+      <div class="content" id="alphabet-container">
+        <div class="letters">
+          <div class="letter-container">
+            <div class="letter">
+              <span>A</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>B</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>C</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>D</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>E</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>F</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>G</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>H</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>I</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>J</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>K</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>L</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>M</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>N</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>O</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>P</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>Q</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>R</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>S</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>T</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>U</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>V</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>W</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>X</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>Y</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>Z</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+        </div>
+        <div class="result">
+        </div>
+      </div>
+      <div class="result">
+        <ul>
+          {% if boardColor is defined %}
+            {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:themes')) }}
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'authors' %}
+  {% if boardColor is defined %}
+    {% set jsonDataAuthors = render(controller(
+      'ApplicationCamusFrontEndBundle:Default:letter'
+    ))|twigJsonDecode %}
+  {% endif %}
+  <div class="alphabet-autor">
+    <div class="media-container">
+      <div class="head">
+        <div class="text">
+          <h6>Seleccione una letra para ver los utores</h6>
+        </div>
+        <div class="black-bar">
+          <div class="letter">
+            <span>A</span>
+          </div>
+          <div class="arrow">
+            <span class="fa fa-chevron-up"></span>
+          </div>
+        </div>
+      </div>
+      <div class="content" id="alphabet-container">
+        <div class="letters">
+          <div class="text">
+            <span>Seleccione una letra</span>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>A</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>B</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>C</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>D</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>E</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>F</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>G</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>H</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>I</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>J</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>K</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>L</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>M</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>N</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>O</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>P</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>Q</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>R</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>S</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>T</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>U</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>V</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>W</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>X</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>Y</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+          <div class="letter-container">
+            <div class="letter">
+              <span>Z</span>
+            </div>
+            <div class="tail">
+            </div>
+          </div>
+        </div>
+        <div class="result">
+        </div>
+      </div>
+      <div class="result">
+        <ul>
+          {% if boardColor is defined %}
+            {% for author in jsonDataAuthors %}
+              <li><a href="{{ author.slug }}">{{ author.authorName }}</a></li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+      </div>
+      <!-- <div class="autor">
+        <div class="name">
+          <span>Carlos Marín</span>
+        </div>
+        <div class="image">
+          <img src="/bundles/applicationcamusassets/images/autor.png" alt="">
+        </div>
+        <div class="description">
+          <span>Investigador del Colmex. Doctorado en Historia. University of Cambridge. Miembro del Sistema Nacional de Investigadores (SNI), Nivel III</span>
+        </div>
+      </div> -->
+    </div>
+  </div>
+{% elseif module.template == 'clubs' %}
+  <div class="ai-index-clubs" {{ data_camus_module_type["list"] }}>
+    <div class="media-container">
+      <span class="list-name" {{ data_camus_title }}>{{ module.title }}</span>
+      <ul class="list" {{ data_camus_modules }}>
+        {% for module in module.modules if module != null %}
+          {% set type = module.type|splitTemplate %}
+          {#{% if module.id is defined and module.id != null %}
+            {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:modulerender', {module: module.id })) }}
+          {% else %}#}
+            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+          {#{% endif %}#}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endif %}

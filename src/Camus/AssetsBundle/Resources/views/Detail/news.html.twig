@@ -1,0 +1,36 @@
+{% set noteType = 'news' %}
+{% for module in modules.head %}
+  {% if module.type is defined %}
+    {% set type = module.type|splitTemplate %}
+    {% if type[1] == "leaderboard" %}
+      {% include 'Application\Camus\AssetsBundle:Groups:ad/pleca.html.twig' ignore missing with {} %}
+    {% endif %}
+    {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+
+  {% endif %}
+{% endfor %}
+ <div class="content-columns">
+   <div class="column-left">
+     {% for module in modules.sidebar %}
+       {% set type = module.type|splitTemplate %}
+       {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+     {% endfor %}
+   </div>
+   <div class="column-right">
+     {% for module in modules.body if 'title-headline' not in module.type %}
+       {% set type = module.type|splitTemplate %}
+       {% set embedBodyModulesData = [] %}
+       {% if modules.embedBodyModules is defined %}
+          {% set embedBodyModulesData = modules.embedBodyModules %}
+       {% endif %}
+       {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule, noteType: noteType, embedBodyModules: embedBodyModulesData} %}
+     {% endfor %}
+   </div>
+ </div>
+
+{% for module in modules.bottom %}
+    {% set type = module.type|splitTemplate %}
+    {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule, id: contentId} %}
+{% endfor %}
+
+{{ include ('Application\Camus\AssetsBundle:Groups:list/taboola.html.twig') }}

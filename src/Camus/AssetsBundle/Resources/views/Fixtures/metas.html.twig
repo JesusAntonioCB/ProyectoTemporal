@@ -1,0 +1,41 @@
+{% macro data(url, title, description, keywords, image = "/bundles/applicationcamusassets/images/placeholder.jpg", contentType = "",playerId = "") %}
+  {% if image is empty %}
+    {% set image = "/bundles/applicationcamusassets/images/placeholder.jpg" %}
+  {% endif %}
+  {% set urlOf = site_domain ~ app.request.pathinfo %}
+  <meta property="fb:app_id" content="604118326773630" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="{{ urlOf }}" />
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:description" content="{{ description }}" />
+  <meta property="og:image" content="{{ image }}" />
+  {% if contentType is not empty %}
+    {% if contentType != "VID" %}
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:site" content="@revistafama">
+      <meta name="twitter:image" content="{{ image }}" />
+      <meta name="twitter:title" content="{{ title }}" />
+    {% else %}
+      <meta name="twitter:card" content="player">
+      <meta name="twitter:site" content="@fama_revista">
+      <meta name="twitter:player" content="https://players.brightcove.net/57828478001/SyoL14kBx_default/index.html?videoId={{ playerId }}" />
+      <meta name="twitter:player:width" content="480" />
+      <meta name="twitter:player:height" content="270" />
+      <meta name="twitter:image" content="{{ image }}" />
+    {% endif %}
+  {% else %}
+    <meta name="twitter:domain" content="{{ site_short_domain }}" />
+    <meta name="twitter:url" content="{{ urlOf }}" />
+    <meta name="twitter:title" content="{{ title }}" />
+    <meta name="twitter:description" content="{{ description }}" />
+    <meta name="twitter:image" content="{{ image }}" />
+  {% endif %}
+
+  <meta name="title" content="{{ title }}" />
+  <meta name="description" content="{{ description }}" />
+  <meta name="p:domain_verify" content="cf2d2830d813ad425a190aa8eb117bf0" />
+  {% if keywords is not empty %}
+  <meta name="keywords" content="{{ keywords|join(',') }}" />
+  {% endif %}
+  <title>{{ title|filterEnt|nl2br }}</title>
+{% endmacro %}

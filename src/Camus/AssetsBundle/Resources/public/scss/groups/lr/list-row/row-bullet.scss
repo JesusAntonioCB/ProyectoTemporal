@@ -1,0 +1,33 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.lr-row-bullet{
+  &:before{
+    content: '';
+    @include circle-border;
+  }
+  width: 300px;
+  min-height: 75px;
+  @include text-with-utopia-5-color-black;
+  border-left: 1px solid $color-silver;
+  .title{
+    padding: 3px 15px 0;
+    height: 43px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    font-family: $font-medium;
+    font-size: 17px;
+    line-height: 20px;
+  }
+  .author{
+    @include text-container-uppercase-blue-gray;
+    padding-left: 15px;
+  }
+  &:after{
+    content: '';
+    display: table;
+    clear: both;
+  }
+}

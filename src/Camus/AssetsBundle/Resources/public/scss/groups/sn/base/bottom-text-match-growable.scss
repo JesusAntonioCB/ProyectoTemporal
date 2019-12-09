@@ -1,0 +1,34 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-bottom-text-match-growable, .sn-bottom-text-match-final-growable, .sn-bottom-text-match-penalty-growable, .sn-bottom-text-match-penalty-final-growable, .sn-bottom-text-match-preview-growable{
+  @include global-container-2c;
+  .media-container{
+    @include rows-height(1);
+    .img-container{
+      height: inherit;
+    }
+    .game-summary-container{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(to top, $color-night-gray, rgba($color-night-gray, 0) 100%);
+      .summary{
+        margin: 25px 0 5px;
+        @include text-with-roboto-black-color-white;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+      }
+      .social-media{
+        float: none;
+        display: table;
+        margin: 0 auto;
+        color: $color-white;
+      }
+    }
+  }
+}

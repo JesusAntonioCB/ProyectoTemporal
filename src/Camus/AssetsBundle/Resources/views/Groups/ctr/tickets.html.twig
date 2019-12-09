@@ -1,0 +1,68 @@
+{% if module.template == 'sports' %}
+  {% set jsonDataTickets = sportsTickets('soccer', 9,'category') %}
+  <div class="ctr-tickets sports" {{data_camus_allow_empty_module["1"]}} {{data_camus_modal_tools["1"]}} >
+    <div class="title-container">
+      <img src="/bundles/applicationcamusassets/images/stubhub_header_afi.jpg" alt="" />
+      <div class="search-tickets-container">
+        <input type="text" name="tickets-search-term" value="" placeholder="¿Qué buscas?">
+        <span class="fa fa-search"></span>
+      </div>
+    </div>
+    <select class="eventBlockSelect" name="">
+      <option value="soccer"> Futbol </option>
+      <option value="sports"> Deportes </option>
+    </select>
+    {% include 'Application\Camus\AssetsBundle:Slices:tickets-block.html.twig' with {'jsonDataTickets': jsonDataTickets, 'type': 'block', 'blockType': 'sports'} %}
+    {#% set currentPath = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %#}
+    <div class="pager">
+      <div class="previous">
+        <span class="fa fa-chevron-left"></span>
+      </div>
+      {% for i in 1..jsonDataTickets.pages %}
+        {% if i < 11 %}
+          {% if i == 1 %}
+            <span class="page selected" camus-page="{{ i }}">{{ i }}</span>
+          {% else %}
+            <span class="page" camus-page="{{ i }}">{{ i }}</span>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      <div class="next">
+        <span class="fa fa-chevron-right"></span>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'shows' %}
+{% set jsonDataTickets = sportsTickets('teather', 9,'category') %}
+<div class="ctr-tickets sports" {{data_camus_allow_empty_module["1"]}} {{data_camus_modal_tools["1"]}} >
+  <div class="title-container">
+    <img src="/bundles/applicationcamusassets/images/stubhub_header_afi.jpg" alt="" />
+    <div class="search-tickets-container">
+      <input type="text" name="tickets-search-term" value="" placeholder="¿Qué buscas?">
+      <span class="fa fa-search"></span>
+    </div>
+  </div>
+    <select class="eventBlockSelect" name="">
+      <option value="shows" selected> Conciertos </option>
+      <option value="teather"> Cine y Teatro </option>
+    </select>
+    {# Aqui va el combo para seleccionar la categoria #}
+  {% include 'Application\Camus\AssetsBundle:Slices:tickets-block.html.twig' with {'jsonDataTickets': jsonDataTickets, 'type': 'block', 'blockType': 'shows'} %}
+  {#% set currentPath = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %#}
+  <div class="pager shows">
+    <div class="previous">
+      <span class="fa fa-chevron-left"></span>
+    </div>
+    {% for i in 1..10 %}
+      {% if i == 1 %}
+        <span class="page selected" camus-page="{{ i }}">{{ i }}</span>
+      {% else %}
+        <span class="page" camus-page="{{ i }}">{{ i }}</span>
+      {% endif %}
+    {% endfor %}
+    <div class="next">
+      <span class="fa fa-chevron-right"></span>
+    </div>
+  </div>
+</div>
+{% endif %}

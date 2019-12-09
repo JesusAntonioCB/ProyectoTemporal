@@ -1,0 +1,18 @@
+<div class="inside-other-notes">
+  <div class="media-container">
+    <div class="list-name">
+      <h1>{{listName}}</h1>
+    </div>
+    {% for element in list %}
+      <div class="element">
+        <div class="image">
+          <img src="{{element.image}}" alt="">
+        </div>
+        <div class="text">
+          <h1 class="title">{{element.title}}</h1>
+          <h2 class="subtitle">{{element.subtitle}}</h2>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

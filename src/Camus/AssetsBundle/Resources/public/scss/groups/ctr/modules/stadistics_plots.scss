@@ -1,0 +1,97 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.ctr-stadistics-plots{
+  .module-container{
+    .stadistics-head{
+      margin-bottom: 6px;
+      .head-container{
+        background-color: $color-yellow;
+        padding: 3px 0 3px 0;
+        .title{
+          text-align: center;
+          font-size: 12px;
+          @include text-with-roboto-black-color-black;
+        }
+      }
+    }
+    .plots-list{
+      display: table;
+      margin: 0 auto;
+    }
+    .plot-row{
+      margin-bottom: 5px;
+      .head-plot{
+        .title{
+          text-align: center;
+          font-size: 10px;
+          @include text-with-roboto-regular-color-black;
+        }
+      }
+      .show-plot{
+        display: flex;
+        .plot-team-a, .plot-team-b{
+          display: flex;
+          .team-score{
+            font-size: 12px;
+            width: 40px;
+            text-align: center;
+            @include text-with-roboto-regular-color-black;
+          }
+          .team-plot{
+            width: 175px;
+            background-color: $color-sharp-gray;
+            .plot{
+              height: 100%;
+            }
+          }
+        }
+        .plot-team-a{
+          .team-plot{
+            .plot{
+              background-color:$color-vivid-cyan;
+              float:right;
+            }
+          }
+        }
+        .plot-team-b{
+          .team-plot{
+            .plot{
+              background-color: $color-navy-blue;
+              float:left;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@include two-column{
+  .ctr-stadistics-plots{
+    .module-container{
+      width: $two-column;
+    }
+  }
+}
+@include one-column{
+  .ctr-stadistics-plots{
+    .module-container{
+      width: $one-column;
+      .plot-row{
+        .head-plot{
+          width: $one-column;
+        }
+        .show-plot{
+          width: $one-column;
+          .plot-team-a, .plot-team-b{
+            .team-plot{
+              width: 110px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

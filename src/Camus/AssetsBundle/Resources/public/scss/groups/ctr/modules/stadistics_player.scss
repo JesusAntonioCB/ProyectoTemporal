@@ -1,0 +1,301 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.ctr-stadistics-player{
+  .head-container{
+    border-bottom: 1px solid $color-sharp-gray;
+    .title{
+      @include text-with-roboto-color-alizarin-crimson;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      font-size: 50px;
+      font-style: italic;
+      margin-left: 12px;
+      position: relative;
+    }
+  }
+  .body-container{
+    margin-top: 10px;
+    .content{
+      .player-stadistic{
+        display: inline-flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+        .img-player{
+          margin-right: 15px;
+          overflow: hidden;
+          .img{
+            display: block;
+            height: 410px;
+            img{
+              width: 395px;
+              height: auto;
+            }
+          }
+        }
+        .info-player{
+          margin-left: 15px;
+          border-top: 5px solid $color-yellow;
+          width: 400px;
+          padding-top: 20px;
+          .info-content{
+            .name{
+              width: 300px;
+              font-size: 32px;
+              line-height: 37px;
+              padding-bottom: 37px;
+              @include text-with-roboto-black-color-dark-gray;
+            }
+            .description{
+              margin-top: 10px;
+              border-top: 1px solid $color-sharp-gray;
+              padding-top: 13px;
+              .personal-info{
+                font-size: 16px;
+                margin-bottom: 25px;
+                @include text-with-roboto-regular-color-dark-gray;
+                p{
+                  margin: 0 0 0 0;
+                  span{
+                    @include text-with-roboto-black-color-dark-gray;
+                  }
+                }
+              }
+              .debut-info{
+                font-size: 16px;
+                .title{
+                  @include text-with-roboto-black-color-dark-gray;
+                }
+              }
+            }
+          }
+        }
+      }
+      .stadistics{
+        display: inline-flex;
+        flex-wrap: wrap;
+        margin-top: 55px;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 30px;
+        .opening-stadistics{
+          margin-right: 12px;
+          padding-right: 7px;
+        }
+        .opening-stadistics, .history-stadistics{
+          width: 400px;
+          overflow: hidden;
+          .content{
+            padding: 0;
+            .title{
+              border-top: 2px solid $color-yellow;
+              border-bottom: 2px solid $color-yellow;
+              padding-top: 2px;
+              font-size: 26px;
+              @include text-with-roboto-black-color-dark-gray;
+            }
+            .info{
+              display: flex;
+              width: 100%;
+              .games-played, .minutes-played, .cards{
+                width: 100%;
+                .title-player{
+                  padding-top: 15px;
+                  padding-bottom: 12px;
+                }
+                .title-player, .number-player{
+                  @include text-with-roboto-black-color-night-gray;
+                  text-align: center;
+                  text-transform: uppercase;
+                  font-size: 11px;
+                }
+                .number-player{
+                  border-style: solid;
+                  border-color: $color-sharp-gray;
+                  font-size: 40px;
+                  margin-top: 1px;
+                  border-width: 1px 1px 1px 0px;
+                  padding-top: 10px;
+                  padding-bottom: 9px;
+                }
+              }
+              .cards{
+                .total-cards{
+                  @include text-with-roboto-black-color-night-gray;
+                  text-align: center;
+                  text-transform: uppercase;
+                  border-style: solid;
+                  border-color: $color-sharp-gray;
+                  font-size: 40px;
+                  margin-top: 1px;
+                  display: flex;
+                  border-width: 1px 0px 1px 0px;
+                  padding-top: 18px;
+                  padding-bottom: 16px;
+                  padding-left: 10px;
+                  .red-card{
+                    @include text-with-roboto-black-color-white;
+                    span{
+                      background-color: $color-sunset-orange;
+                      padding: 13px 13px 12px 13px;
+                    }
+                    padding-right: 4px;
+                    font-size: 30px;
+                  }
+                  .yellow-card{
+                    @include text-with-roboto-black-color-white;
+                    span{
+                      background-color: $color-yellow;
+                      padding: 13px 13px 12px 13px;
+                    }
+                    padding-left: 4px;
+                    font-size: 30px;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .history-stadistics{
+          padding-left: 10px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+@include two-column{
+  .ctr-stadistics-player{
+    .head-container{
+      .title{
+        margin-bottom: -5px;
+        margin-left: unset;
+      }
+    }
+    .body-container{
+      .content{
+        .player-stadistic{
+          .img-player{
+            margin-right: unset;
+            margin-bottom: 15px;
+            .img{
+              height: 420px;
+            }
+          }
+          .info-player{
+            margin-left: unset;
+            width: 395px;
+            padding-top: 25px;
+            .info-content{
+              .name{
+                padding-bottom: 10px;
+              }
+            }
+          }
+        }
+        .stadistics{
+          margin-top: 35px;
+          margin-bottom: 70px;
+          .opening-stadistics{
+            margin-right: unset;
+            padding-right: 2px;
+            margin-bottom: 40px;
+          }
+          .history-stadistics{
+            padding-left: unset;
+            margin-right: unset;
+          }
+        }
+        .stadistics-table{
+          .content{
+            padding-left: unset;
+            padding-right: unset;
+          }
+        }
+      }
+    }
+  }
+}
+@include one-column{
+  .ctr-stadistics-player{
+    width: 100%;
+    .head-container{
+      border-bottom: unset;
+      .title{
+        letter-spacing: 0px;
+        text-transform: uppercase;
+        font-size: 18px;
+        margin-left: unset;
+        font-style: unset;
+      }
+    }
+    .body-container{
+      margin-top: 15px;
+      .content{
+        padding-left: 0;
+        padding-right: 0;
+        .player-stadistic{
+          .info-player{
+            padding-top: 10px;
+            .info-content{
+              .name{
+                font-size: 24px;
+                padding-bottom: unset;
+              }
+              .description{
+                padding-top: 10px;
+                .personal-info{
+                  font-size: 13px;
+                  margin-bottom: 20px;
+                }
+                .debut-info{
+                  font-size: 13px;
+                }
+              }
+            }
+          }
+        }
+        .stadistics{
+          margin-bottom: 40px;
+          .opening-stadistics, .history-stadistics{
+            .content{
+              .title{
+                padding-top: 10px;
+                padding-bottom: 13px;
+                font-size: 18px;
+              }
+              .info{
+                .games-played, .minutes-played, .cards{
+                  .number-player{
+                    font-size: 32px;
+                  }
+                }
+                .cards{
+                  .total-cards{
+                    .red-card{
+                      font-size: 21px;
+                    }
+                    .yellow-card{
+                      font-size: 21px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        .stadistics-table{
+          .content{
+            .table{
+              margin-bottom: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

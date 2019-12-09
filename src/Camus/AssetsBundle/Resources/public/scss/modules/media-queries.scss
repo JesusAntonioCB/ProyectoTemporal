@@ -1,0 +1,68 @@
+$no-width: 0px;
+$extra-small-width: 321px;
+$small-width: 720px;
+$large-width: 1024px;
+$extra-large-width: 1254px;
+
+// -grid -system -widths
+@mixin mobile-small{
+  @media (min-width: #{$no-width}) and (max-width: #{$extra-small-width - 1px}) {
+    @content;
+  }
+}
+@mixin mobile-large{
+  @media (min-width: #{$extra-small-width}) and (max-width: #{$small-width - 1px}) {
+    @content;
+  }
+}
+@mixin tablet{
+  @media (min-width: #{$small-width}) and (max-width: #{$large-width - 1px}) {
+    @content;
+  }
+}
+@mixin desktop{
+  @media (min-width: #{$large-width}) and (max-width: #{$extra-large-width}) {
+    @content;
+  }
+}
+
+@mixin one-column{
+  @media only screen and (max-width: 648px) {
+    @content;
+  }
+}
+@mixin two-column{
+  @media only screen and (max-width: 968px) {
+    @content;
+  }
+}
+@mixin three-column{
+  @media only screen and (max-width: 1604px) {
+    @content;
+  }
+}
+@mixin skyscraper-media{
+  @media only screen and (max-width: 1260px) {
+    @content;
+  }
+}
+
+@mixin sidebar-small {
+  @media only screen and (max-width: 344px){
+    @content;
+  }
+}
+
+@mixin header-flow {
+  @media only screen and (max-width: #{$small-width - 1px}){
+    @content;
+  }
+}
+
+@mixin skyscrapers-hide {
+  @media only screen and (max-width: 1024px){
+    .skyscraper{
+      display: none;
+    }
+  }
+}

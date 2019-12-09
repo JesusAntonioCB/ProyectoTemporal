@@ -1,0 +1,75 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-quote-base{
+  @include global-container-1c;
+  .media-container{
+    @include rows-height(1);
+    .quote-note{
+      @include container-light-cyan;
+      height: 306px;
+      padding: 10px;
+      .author-container{
+        position: relative;
+        height: 78px;
+        .author-description-container, .img-container{
+          width: 50%;
+          height: 100%;
+        }
+        .author-description-container{
+          background-color: $color-white;
+          padding: 10px 5px 10px 10px;
+          float: left;
+          overflow: hidden;
+          .author-name{
+            font-family: open-sans, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 18px;
+            color: $color-night-gray;
+          }
+          .profession-name{
+            font-family: '---open -sans-5';
+            font-size: 11px;
+            line-height: 15px;
+            color: $color-gray;
+          }
+        }
+        .img-container{
+          float: right;
+        }
+        &:after{
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 15px;
+          margin: auto;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 10px 8.5px 0;
+          border-color: $color-white transparent transparent;
+        }
+      }
+      .text-container-open-sans-left-top{
+        max-height: 78px;
+        overflow: hidden;
+        margin-top: 15px;
+        @include text-with-utopia-5-color-night-gray;
+        font-size: 24px;
+        line-height: 26px;
+      }
+      .summary-container{
+        max-height: 57px;
+        overflow: hidden;
+        margin-top: 30px;
+        font-family: $font-sans-serif;
+        font-size: 15px;
+        line-height: 19px;
+        color: $color-gray;
+      }
+    }
+  }
+}

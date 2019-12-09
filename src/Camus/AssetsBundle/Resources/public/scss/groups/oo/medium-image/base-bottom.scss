@@ -1,0 +1,76 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.oo-base-bottom{
+  @include global-container-2c;
+  .media-container-light-cyan{
+    height: 721px;
+    .summary-container{
+      position: relative;
+      height: 50%;
+    }
+    .text{
+      .title{
+        max-height: 141px;
+        font-size: 43px;
+        line-height: 47px;
+      }
+      .abstract{
+        max-height: 95px;
+        margin-top: 25px;
+      }
+    }
+    .image{
+      height: 50%;
+    }
+    .head + .summary-container, .head[style*="block"] + .summary-container{
+      height: 45%;
+    }
+    .head[style*="none"] + .summary-container{
+      height: 50%;
+    }
+  }
+}
+
+@include one-column{
+  .oo-base-bottom{
+    .media-container-light-cyan{
+      @include rows-height(1);
+      .head{
+        position: absolute;
+        top: 41%;
+        left: 5%;
+        width: 90%;
+      }
+      .image{
+        position: absolute;
+        top: 0;
+        height: 45%;
+      }
+      .summary-container{
+        position: absolute;
+        bottom: 0;
+        height: 55% !important;
+        .text{
+          padding-top: 20px;
+          .title{
+            max-height: 66px;
+            font-size: 20px;
+            line-height: 22px;
+          }
+          .abstract{
+            max-height: 51px;
+            margin-top: 10px;
+          }
+        }
+        .footer{
+          .section{
+            float: left;
+          }
+        }
+      }
+    }
+  }
+};

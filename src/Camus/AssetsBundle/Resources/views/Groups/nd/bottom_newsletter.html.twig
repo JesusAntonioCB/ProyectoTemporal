@@ -1,0 +1,51 @@
+{% if module.template == 'red' %}
+  <div class="nd-newsletter">
+    <div class="left-col">
+      <img src="/bundles/applicationcamusassets/images/icon-milenio2.png" alt="" />
+      <i class="fa fa-clock-o"></i>
+      {# <span class="fa fa-clock-o"></span> #}
+    </div>
+    <div class="right-col">
+      <span> Recibe las últimas noticias en tu correo.</span>
+      <span> Mantente informado las 24 hs del dia.</span>
+      <span> Escribe tu mail para recibirlo.</span>
+      <span class="main-text">NEWSLETTER MILENIO</span>
+      <div class="checkboxes">
+        <span> Elige el/los Newsletter que desearia recibir</span>
+        <div class="checkbox">
+          <input type="checkbox" name="matutino" value="">
+          <span class="label-check"><span class="fa fa-check"></span></span>
+          <span class="label">Matutino</span>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" name="al-cierre" value="">
+          <span class="label-check"><span class="fa fa-check"></span></span>
+          <span class="label">Al Cierre</span>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" name="firmas" value="">
+          <span class="label-check"><span class="fa fa-check"></span></span>
+          <span class="label">Firmas</span>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" name="laberinto" value="">
+          <span class="label-check"><span class="fa fa-check"></span></span>
+          <span class="label">Laberinto</span>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" name="dominical" value="">
+          <span class="label-check"><span class="fa fa-check"></span></span>
+          <span class="label">Dominical</span>
+        </div>
+      </div>
+      <div class="emailContainer">
+        <input type="text" placeholder="Escriba su correo electrónico" name="email" value="">
+        <button type="button" name="sendmail">SUSCRÍBETE</button>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'white' %}
+<div class="">
+  hola blanco
+</div>
+{% endif %}

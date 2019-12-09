@@ -1,0 +1,19 @@
+{% set moduleId = (module.id != null) ? module.id : module.adId %}
+<div class="ad pleca">
+  <div data-camus-module-ad-div="true" id="div-gpt-ad-pleca-{{moduleId}}">
+    <script>
+      googletag.cmd.push(function() {
+        var mappingPleca = googletag.sizeMapping()
+        .addSize([980, 0], [936, 30])
+        .addSize([0, 0], [320, 30])
+        .build();
+        googletag.defineSlot('/93357320/New_Mediotiempo/Home_Page/Portada/Top_sponsor', [[936,30], [320, 30]], "div-gpt-ad-pleca-{{moduleId}}")
+         .defineSizeMapping(mappingPleca)
+         .setTargeting('AdType', ["Pleca"])
+         .setCollapseEmptyDiv(true)
+         .addService(googletag.pubads());
+         googletag.display("div-gpt-ad-pleca-{{moduleId}}");
+      });
+    </script>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-live{
+  @include global-container-1c;
+  border-top: 5px solid $color-shamrock-green;
+  .media-container{
+    @include rows-height(1);
+    background-color: $color-shamrock-green;
+    .img-container{
+      height: 170px;
+      position: relative;
+      .btn-play{
+        padding: 15px;
+        position: absolute;
+        z-index: 5;
+        left: 10px;
+        top: 10px;
+        background-color: rgba($color-dark-gray,0.5);
+        border: 2px solid $color-shamrock-green;
+        .fa-play{
+          color:$color-white;
+          font-size: 16px;
+        }
+      }
+    }
+    .info-container{
+      position: relative;
+      padding: 10px 15px 0;
+      .section, .title{
+        font-size: 26px;
+        line-height: 30px;
+      }
+      .section{
+        @include text-with-roboto-black-color-white;
+      }
+      .title{
+        @include text-with-roboto-black-color-dark-gray;
+        height: 90px;
+        overflow: hidden;
+      }
+    }
+    .live-container-white, .social-media{
+      position: absolute;
+      bottom: 10px;
+      left: 15px;
+    }
+    .live-container-white{
+      padding: 2px 5px;
+      background-color: $color-dark-gray;
+      .live-logo-container, .span-live-logo-container{
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .span-live-logo-container{
+        padding-left: 6px;
+        @include text-with-roboto-black-color-white;
+        font-size: 14px;
+        border-left: 1px solid $color-shamrock-green;
+      }
+    }
+    // .social-media{
+    //   right: 15px;
+    // }
+  }
+}
+
+@include one-column{
+  .sn-live{
+    .media-container{
+      height: 305px;
+      .img-container{
+        .btn-play{
+          height: 50px;
+        }
+      }
+      .info-container{
+        padding: 9px 9px 0;
+        .section, .title{
+          font-size: 20px;
+          line-height: 21px;
+        }
+        .title{
+          height: 42px;
+        }
+      }
+      .live-container-white{
+        left: 9px;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{% import "Application\Camus\AssetsBundle:Fixtures:see-more.html.twig" as seeMore %}
+
+{% if module.template == 'printed' %}
+  <div class="sn-printed">
+    <div class="media-container">
+      {{ seeMore.text(module, true, false, "heading", "EDICIÓN IMPRESA") }}
+      <div class="printed-info">
+        <div class="edition-description-container">
+          <div class="printed-edition-headline-container-left">
+            <a target="_blank" href="{{ module.slug }}">
+              <span {{ data_camus_title }}>{{module.title}}</span>
+            </a>
+          </div>
+          <div class="printed-edition-date-container-left">
+            <span>{{ "now"|date("m/d/Y") }}</span>
+          </div>
+        </div>
+        <div class="edition-print">
+          <a target="_blank" href="{{ module.slug }}">
+            {{ module.thumbnail|asImage(module.alt)|raw }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

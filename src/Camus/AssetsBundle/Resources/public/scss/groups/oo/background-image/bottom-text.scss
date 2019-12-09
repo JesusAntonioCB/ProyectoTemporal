@@ -1,0 +1,121 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.oo-bottom-text{
+  @include global-container-2c;
+  border-radius: 10px;
+  .media-container{
+    @include rows-height(1);
+  }
+  .img-container{
+    height: inherit;
+  }
+  .btn-play{
+    top: 20px;
+    right: 20px;
+    .fa-play{
+      font-size: 30px;
+    }
+  }
+  .headtitle-top-container{
+    margin-bottom: 0px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: $color-tuna;        //modificado
+    height: 45px;
+    .section-top{
+      @include text-with-YanoneKaffeesatz-color-white;
+      font-size: 24px;
+      margin: 7px;
+      margin-left: 10px;
+      text-transform: uppercase;
+      // line-height: 36px;
+    }
+    &:before{
+      content: "";
+      position: absolute;
+      top: 45px;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #383839;
+    }
+  }
+  .headline-bottom-container-gradient{
+      margin-bottom: 0px;
+      right: 0;
+      width: 58%;
+      padding: 5px 15px;
+      border-radius: 0 0 10px 0;
+      background: $color-hollywood-cerise;
+    .title{
+      font-size: 20px;
+      line-height: 25px;
+    }
+    .section{
+      font-size: 24px;
+      line-height: 26px;
+    }
+    .sponsor{
+      font-size: 10px;
+      position: relative;
+      height: 25px;
+      margin-top: 6px;
+      @include text-with-roboto-regular-color-white;
+      .caption{
+        margin-right: 7px;
+        width: 82px;
+      }
+      a{
+        img{
+          width: 130px;
+          height: auto;
+          max-width: unset;
+        }
+      }
+    }
+    .social-media{
+      display: none;
+    }
+    &:before{
+      content: "";
+      position: absolute;
+      right: 82.5%;
+      top: -12px;
+      width: 0;
+      height: 0;
+      border-left: 13px solid transparent;
+      border-right: 13px solid transparent;
+      border-bottom: 12px solid $color-hollywood-cerise;
+    }
+  }
+}
+
+@include one-column{
+  .oo-bottom-text{
+    .btn-play{
+      .fa-play{
+        font-size: 16px;
+      }
+    }
+    .headline-bottom-container-gradient{
+      width: 100%;
+      padding-top: 10px;
+      .section{
+        display: none;
+      }
+      .title, .section{
+        font-size: 20px;
+        line-height: 22px;
+      }
+      .social-media{
+        display: block;
+        color: $color-white;
+      }
+    }
+  }
+};

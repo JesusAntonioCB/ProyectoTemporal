@@ -1,0 +1,346 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.lo-anwsers, .tribune-milenio-content-inside{
+  width: 100%;
+  max-width: 100%;
+  min-width: $one-column;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: $global-margin-bottom;
+  padding-top: $global-padding-top;
+  .media-container{
+    width: 100%;
+    height: auto;
+    position: relative;
+    float: none;
+    background-color: $color-light-cyan;
+    .outstanding-topic{
+      width: 100%;
+      height: auto;
+      display: flex;
+      position: relative;
+      float: none;
+      border-bottom: 1px solid $color-black;
+      .text, .image{
+        flex: none;
+        width: 50%;
+        max-width: 50%;
+        overflow: hidden;
+        float: none;
+        position: relative;
+        padding: 10px;
+      }
+      .text{
+        .title{
+          width: 100%;
+          max-width: 100%;
+          overflow: hidden;
+          h1{
+            @include text-with-utopia-5-color-night-gray;
+            font-size: 30px;
+            margin: 0;
+            padding: 0;
+          }
+        }
+        .content{
+          width: 100%;
+          max-width: 100%;
+          height: auto;
+          overflow: hidden;
+          padding: 0;
+          span{
+            @include text-with-sans-serif-color-blue-gray;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+          }
+        }
+      }
+      .image{
+        img{
+          width: auto;
+          height: auto;
+          max-width: 100%;
+        }
+      }
+    }
+    .debate{
+      width: 100%;
+      height: auto;
+      position: relative;
+      float: none;
+      padding: 10px;
+      .text{
+        width: 100%;
+        overflow: hidden;
+        text-align: left;
+        h1{
+          @include text-with-utopia-5-color-night-gray;
+          font-size: 14px;
+          text-transform: uppercase;
+        }
+      }
+      .list{
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        overflow: hidden;
+        position: relative;
+        float: none;
+        ul{
+          padding: 0;
+          margin: 0;
+          position: relative;
+          float: none;
+          li{
+            list-style: none;
+            width: 100%;
+            height: auto;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            border-top: 1px solid $color-nobel;
+            position: relative;
+            float: none;
+            >*{
+              flex: none;
+              display: flex;
+              align-items: center;
+            }
+            .social-networks{
+              width: 10%;
+            }
+            .image{
+              width: 60px;
+              height: 60px;
+              border: 1px;
+              border-radius: 50%;
+              overflow: hidden;
+              img{
+                width: auto;
+                height: auto;
+                max-height: 100%;
+              }
+            }
+            .text{
+              width: 20%;
+              padding: 0 10px;
+              flex-wrap: wrap;
+              .name{
+                width: 100%;
+                max-width: 100%;
+                overflow: hidden;
+                flex: none;
+                h1{
+                  @include text-with-sans-serif-color-night-gray;
+                  font-size: 13px;
+                  font-weight: 700;
+                  margin: 0;
+                  text-transform: capitalize;
+                }
+              }
+              .title{
+                width: 100%;
+                max-width: 100%;
+                overflow: hidden;
+                flex: none;
+                h1{
+                  @include text-with-open-sans-5-color-nobel;
+                  font-size: 10px;
+                  font-weight: 300;
+                  margin: 0;
+                  text-transform: capitalize;
+                }
+              }
+            }
+            .opinion{
+              width: auto;
+              max-width: 64%;
+              height: 100%;
+              padding: 0 10px;
+              overflow: hidden;
+              h1{
+                @include text-with-utopia-5-color-night-gray;
+                font-size: 18px;
+                margin: 0;
+                padding: 0;
+                overflow:hidden;
+              }
+              .content{
+                height: auto;
+                p{
+                  height: auto;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.tribune-milenio-content-inside{
+  .media-container{
+    .debate{
+      .list{
+        ul{
+          li{
+            align-items: flex-start;
+            .opinion{
+              display: flex;
+              flex-wrap: wrap;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@include two-column{
+  .lo-anwsers, .tribune-milenio-content-inside{
+    .media-container{
+      .outstanding-topic{
+        padding: 10px;
+        flex-wrap: wrap;
+        .text{
+          width: 100%;
+          max-width: 100%;
+          order: 2;
+          padding: 0;
+        }
+        .image{
+          width: 100%;
+          max-width: 100%;
+          order: 1;
+          padding: 0;
+          margin-bottom: $global-margin-bottom;
+          img{
+            min-width: 100%;
+          }
+        }
+      }
+      .debate{
+        .list{
+          ul{
+            li{
+              .text{
+                width: 30%;
+              }
+              .opinion{
+                max-width: 54%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@include one-column{
+  .lo-anwsers, .tribune-milenio-content-inside{
+    .media-container{
+      .outstanding-topic{
+        .text{
+          .title{
+            h1{
+              font-size: 22px;
+            }
+          }
+        }
+      }
+      .debate{
+        .list{
+          ul{
+            li{
+              display: block;
+              .social-networks{
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+              }
+              .image{
+                display: inline-block;
+                float: left;
+              }
+              .text, .opinion{
+                width: 75%;
+                max-width: 75%;
+              }
+              .opinion{
+                height: auto;
+                margin-top: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/*@include three-column{
+  .lo-anwsers{
+    .media-container{
+      .debate{
+        .list{
+          ul{
+            li{
+              .user{
+                width: 30%;
+                max-width: 30%;
+              }
+              .opinion{
+                max-width: 70%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@include two-column{
+  .lo-anwsers{
+    .media-container{
+      .debate{
+        .list{
+          ul{
+            li{
+              .user{
+                width: 40%;
+                max-width: 40%;
+              }
+              .opinion{
+                max-width: 60%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@include one-column{
+  .lo-anwsers{
+    .media-container{
+      .debate{
+        .list{
+          ul{
+            li{
+              .user{
+                width: 40%;
+                max-width: 40%;
+              }
+              .opinion{
+                max-width: 60%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+*/

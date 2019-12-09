@@ -1,0 +1,65 @@
+{% set stations = [
+  {
+    'url' : 'http://17793.live.streamtheworld.com/FMTU_SC',
+    'title' : 'Monterrey',
+    'city' : '103.7',
+    'frame' : '/radio/monterrey'
+  },
+  {
+    'url' : 'http://14083.live.streamtheworld.com/XEAUAMMP3_SC',
+    'title' : 'En vivo',
+    'city' : '',
+    'frame' : '/radio/tvenvivo'
+  }
+] %}
+{% if module.template == 'large' or module.template == 'large_tab' or module.template == 'large_tab_tab' %}
+  {% set tabNameId = '' %}
+  {% set nameActive = '' %}
+  {% if count is defined %}
+    {% set tabNameId = 'tab-content-'~ count %}
+    {% if count == 1 %}
+      {% set nameActive = 'tab-active' %}
+    {% endif %}
+  {% elseif module.count is defined %}
+    {% set count = module.count %}
+    {% set tabNameId = 'tab-content-'~ count %}
+    {% if count == 1 %}
+      {% set nameActive = 'tab-active' %}
+    {% endif %}
+  {% endif %}
+  {% if stations[count - 1] is defined%}
+    <div class="tab-content tab-radio {{ nameActive }}" id="{{ tabNameId }}" data-camus-template="{{module.templateName}}">
+  <div class="tab-container">
+    <div class="player">
+      <audio class="audio-container" src="{{  stations[count - 1].url }}" data-link="{{ stations[count - 1].frame }}"></audio>
+      {#<div class="loaded">
+        <span class="actual">03:25</span> - <span  class="final">30:00</span>
+      </div>#}
+      <div class="seen">
+        <span class="hint">EN VIVO</span>
+        <button class="sphere">
+          <span class="fa fa-play"></span>
+          <span class="fa fa-pause"></span>
+        </button>
+      </div>
+    </div>
+    <div class="under-player">
+      <div class="data">
+        <h1>{{ module.title }}</h1>
+        <div class="collaborator">
+          <span class="name" {{ data_camus_author }}>{{ module.author }} - </span><span class="date">{{ "now"|date("m.d.Y") }}</span>
+        </div>
+      </div>
+      <div class="social-networks-share">
+        <div class="span-share">
+          <span>Compartir</span>
+        </div>
+        {% set slugUrl = app.request.requestUri %}
+        {{ slugUrl|socialTag(module.title, module.thumbnail)|raw }}
+        <div class="social-media-large"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  {% endif %}
+{% endif %}

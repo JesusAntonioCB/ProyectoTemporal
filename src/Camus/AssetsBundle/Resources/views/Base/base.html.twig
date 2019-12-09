@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Preloading Main JS & CSS -->
+    <link rel="preload" href="{{ asset('/bundles/applicationcamusassets/scss/main/main.css') }}" as="style">
+    <link rel="preload" href="{{ asset('/bundles/applicationcamusassets/js/bundle/mainbundle.js') }}" as="script">
+    {% block GTM %}
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-NZ2KQ2J');
+    </script>
+    {% endblock %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <meta property="fb:pages" content="125622527473117" />
+    {% block metas %}
+    {% endblock %}
+    <link rel="icon" sizes="32x32" href="/bundles/applicationcamusassets/images/FAMA.png">
+    <link rel="icon" sizes="152x152" href="/bundles/applicationcamusassets/images/FAMA.png">
+    <link rel="icon" sizes="192x192" href="/bundles/applicationcamusassets/images/FAMA.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/bundles/applicationcamusassets/images/192x192-apple.png">
+    <link rel="stylesheet" href="{{ asset('/bundles/applicationcamusassets/scss/main/main.css') }}">
+    {% if fileCSS is defined %}
+      <style type="text/css">
+        {% for file in fileCSS %}
+          {% if existFile('./bundles/applicationcamusassets/scss/main/groups/'~file) %}
+            {{ includeFile('./bundles/applicationcamusassets/scss/main/groups/'~file)|raw }}
+          {% endif %}
+        {% endfor %}
+      </style>
+    {% endif %}
+
+    <link rel="stylesheet" href="{{ asset('/bundles/applicationcamusassets/node_modules/slick-carousel/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('/bundles/applicationcamusassets/node_modules/share-this/dist/share-this.css') }}">
+    {% if currentSection is defined %}
+      {% if currentSection != "contactanos" %}
+        {% if error is not defined %}
+          {% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+          {% if currentPath != "/" and '/page/' not in currentPath and "/buscador" not in currentPath %}
+            <link rel="amphtml" href="{{ amp_domain ~ currentPath}}">
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+    <script>
+      var googletag = googletag || {};
+      googletag.cmd = googletag.cmd || [];
+      googletag.cmd.push(function() {
+        googletag.pubads().set("adsense_background_color", "FFFFFF");
+        googletag.pubads().enableAsyncRendering();
+        var mappingPleca = googletag.sizeMapping()
+        .addSize([980, 0], [936, 30])
+        .addSize([0, 0], [320, 30])
+        .build();
+        googletag.defineSlot('/7198/Fama/Home_Page/Portada/Top_sponsor', [[936,30], [320, 30]], "div-gpt-ad-pleca-1")
+         .defineSizeMapping(mappingPleca)
+         .setTargeting('AdType', ["Pleca"])
+         .setCollapseEmptyDiv(true)
+         .addService(googletag.pubads());
+
+        {% if ads is defined %}
+          {% for ad in ads if ad is defined %}
+            {% set module = ad|getModelModule %}
+            {% set moduleId = (module.id != null) ? module.id : module.adId %}
+            {% if module.type == 'ad_medium_rectangle' and module.adCode %}
+              {% set types = ["PGL", "CRT", "EDT", "MAM"] %}
+              {% set size = "[300, 250]" %}
+              {% if contentLayer.type is defined %}
+                {% if contentLayer.type is not empty and contentLayer.type not in types %}
+                  {% set size = "[[300, 250], [300, 600]]" %}
+                {% endif %}
+              {% endif %}
+              googletag.defineSlot("{{ module.adCode }}", {{ size }}, "div-gpt-ad-block-{{ moduleId }}")
+              .setTargeting('AdType', ["{{ module.adTarget }}"])
+              .addService(googletag.pubads());
+            {% elseif module.type == 'ad_skyscraper' and module.type %}
+              googletag.defineSlot('{{ module.adCode }}', [160, 600],  "div-gpt-ad-skyn-{{ moduleId }}")
+              .setTargeting('AdType', ['{{ module.adTarget }}'])
+              .addService(googletag.pubads());
+            {% elseif module.type == 'ad_layer' and module.type %}
+              googletag.defineOutOfPageSlot('{{ module.adCode }}',"div-layer")
+              .setTargeting('AdType',['{{ module.adTarget }}'])
+              .addService(googletag.pubads());
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        googletag.enableServices();
+      });
+    </script>
+  </head>
+  <body class="noJs">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-NZ2KQ2J"
+              height="0"
+              width="0"
+              style="display:none;visibility:hidden">
+      </iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Header -->
+    {{ include ('Application\Camus\AssetsBundle:Header:header.html.twig') }}
+    <!-- Content -->
+    <div class="body-content">
+      <div class="content">
+        {% block body %}
+        {% endblock %}
+      </div>
+      {{ include ('Application\Camus\AssetsBundle:Footer:footer.html.twig') }}
+    </div>
+    <!-- Sidebar -->
+    {{ include ('Application\Camus\AssetsBundle:Sidebar:sidebar.html.twig') }}
+    <!-- Modal -->
+    <div class="container-loader">
+      <div class="loader-milenio">Loading...</div>
+    </div>
+    <div class="front-modal"></div>
+    <!-- charbeat -->
+    {% block chartbeat %}
+    {% endblock %}
+    <!-- comscore -->
+    {% block comscore %}
+    {% endblock %}
+    <!-- playing -->
+    {% block ping %}
+    {% endblock %}
+
+    <script type="application/javascript" src="{{ asset('/bundles/applicationcamusassets/js/bundle/mainbundle.js') }}" defer></script>
+
+    <!-- BrightCove -->
+    <script type="text/javascript">
+      var limitSecs = 5;
+      var iSec = 0;
+      function removecssfile(id){
+        var elem = document.querySelector(id);
+        if(elem != null){
+          elem.parentNode.removeChild(elem);
+        }else{
+          setTimeout(function(){
+            if(iSec <= limitSecs){
+              removecssfile('#myFontAwesome');
+              iSec++;
+            }
+          },1000);
+        }
+      }
+      removecssfile('#myFontAwesome');
+    </script>
+
+    <!-- Google -->
+    <script>
+      function cargarGoogleTagServices() {
+        var e = document.createElement('script');
+        e.setAttribute('language', 'javascript');
+        e.setAttribute('async', '');
+        e.setAttribute('type', 'text/javascript');
+        e.setAttribute('src','https://www.googletagservices.com/tag/js/gpt.js');
+        document.body.appendChild(e);
+      }
+      var oldonloadGpt = window.onload;
+      window.onload = (typeof window.onload != "function") ? cargarGoogleTagServices(): function() { oldonloadGpt(); cargarGoogleTagServices(); };
+    </script>
+
+    <!-- Piano -->
+    <script>
+        (function(src){
+            var a=document.createElement("script");
+            a.type="text/javascript";
+            a.async=true;
+            a.src=src;
+            var b=document.getElementsByTagName("script")[0];
+            b.parentNode.insertBefore(a,b)
+        })("{{ piano_domain }}");
+        tp = window.tp || [];
+    </script>
+
+    <!-- Facebook -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v4.0"></script>
+  </body>
+</html>

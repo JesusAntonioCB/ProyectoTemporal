@@ -1,0 +1,159 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sli-opinion{
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: $global-margin-bottom;
+  background: $color-white;
+  //padding-top: $global-padding-top;
+  .media-container{
+    .headline{
+      @include container-sli-headline;
+      border-bottom: 1px solid $color-lighter-silver;
+      margin-bottom: 0;
+      .title{
+        @include sli-title("base");
+        @include text-with-YanoneKaffeesatz-color-hollywood-cerise;
+        font-style: normal;
+        text-align: center;
+        font-size: 40px;
+      }
+      .arrows{
+        display: none;
+        .left, .right{
+          color: $color-hollywood-cerise;
+          height: 30px;
+          width: 30px;
+        }
+        i{
+          width: 30px;
+          height: 30px;
+          border: 1px solid $color-lighter-silver;
+        }
+        i:before{
+          position: relative;
+          top: -15px;
+        }
+      }
+    }
+    .firms{
+      //position: relative;
+      white-space: nowrap;
+      .firms-note{
+        border-right: 1px solid $color-lighter-silver;
+        background: $color-white;
+        display: inline-block;
+        vertical-align: top;
+        width: 155px;
+        height: 228px;
+        margin-right: 2px;
+        padding: 15px 8px 0;
+        @include container-gray-white;
+        text-align: center;
+        white-space: normal;
+      }
+      .slick-dots{
+        height: 25px;
+      }
+    }
+    .firms-note{
+      .author{
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 10px;
+        @include text-with-YanoneKaffeesatz-color-hollywood-cerise;
+        font-size: 20px;
+        line-height: 20px;
+      }
+      .image{
+        width: 52px;
+        height: 52px;
+        margin: 0 auto;
+        border-radius: 50%;
+        /*&:after {
+          position: absolute;
+          content: "";
+          width: 52px;
+          height: 52px;
+          opacity: 0.5;
+          background: $color-yellow;
+          border-radius: 50%;
+          left: 50%;
+          transform: translateX(-50%);
+          top: 39px;
+        }*/
+      }
+      .title{
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 73px;
+        margin-top: 10px;
+        @include text-with-sans-pro-color-black;
+        font-size: 16px;
+        line-height: 18px;
+      }
+      .footer{
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      &.first-firm{
+        width: 312px;
+        .title{
+          font-size: 23px;
+          line-height: 25px;
+        }
+      }
+    }
+  }
+}
+
+@include two-column{
+  .sli-opinion{
+    .media-container{
+      .arrows{
+        display: none;
+      }
+    }
+  }
+}
+
+@include one-column{
+  .sli-opinion{
+    .media-container{
+      .headline{
+        .title{
+          font-size: 30px;
+          line-height: 36px;
+        }
+      }
+      .firms-note{
+        .author{
+          line-height: 16px;
+        }
+        .title{
+          font-size: 16px;
+          line-height: 18px;
+        }
+        &.first-firm{
+          width: 155px;
+          .title{
+            font-size: 16px;
+            line-height: 18px;
+          }
+        }
+      }
+    }
+  }
+}

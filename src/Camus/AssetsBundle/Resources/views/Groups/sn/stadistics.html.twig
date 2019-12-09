@@ -1,0 +1,1867 @@
+{% import "Application\Camus\AssetsBundle:Fixtures:see-more.html.twig" as seeMore %}
+
+{% if module.template == 'general' %}
+  <div class="sn-stadistics" {{data_camus_allow_empty_module["1"]}}>
+    <div class="media-container">
+      {#
+        {{ seeMore.text(module, true, false, "title", "ver tabla completa") }}
+      #}
+      <div class="content">
+          <table class="classification-tab tab-active table-content">
+          <tr class="table-head">
+            <th>POS</th>
+            <th></th>
+            <th>EQUIPOS</th>
+            <th>PTS</th>
+            <th></th>
+            <th>JG</th>
+            <th>JE</th>
+            <th>JP</th>
+          </tr>
+          {% if classifData is defined %}
+            {% for team in classifData|slice(0, 9) %}
+              <tr>
+                <td class="table-bold">{{ team.pos }}</td>
+                <td><img src="{{ team.img_small }}"/></td>
+                <td class="table-bold">{{ team.equipo }}</td>
+                <td class="table-bold">{{ team.pts }}</td>
+                <td></td>
+                <td>{{ team.jg }}</td>
+                <td>{{ team.je }}</td>
+                <td>{{ team.jp }}</td>
+              </tr>
+            {% endfor %}
+          {% endif %}
+        </table>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'teams_scorer' or module.template == 'teams_cards' or module.template == 'teams_expelled' or module.template == 'teams_successful_passes' or module.template == 'teams_least_scored' or module.template == 'players_scorer' or module.template == 'players_cards' or module.template == 'players_expelled' or module.template == 'players_successful_passes' or module.template == 'players_least_scored' %}
+  {% set title_t = 'EQUIPO' %}
+  {% set title_p = 'JUGADOR <span class="team-name">(Equipo)</span>' %}
+  {% if module.template == 'teams_scorer' %}
+    {% set info_key = ['', '', '', '', ''] %}
+    {% set stat_title = title_t %}
+    {% set col_name = 'GOLES' %}
+    {% set data_array = '' %}
+    {% set validation = false %}
+  {% elseif module.template == 'teams_cards' %}
+    {% set info_key = ['', '', '', '', ''] %}
+    {% set stat_title = title_t %}
+    {% set col_name = 'TARJETAS' %}
+    {% set data_array = '' %}
+    {% set validation = false %}
+  {% elseif module.template == 'teams_expelled' %}
+    {% set info_key = ['', '', '', '', ''] %}
+    {% set stat_title = title_t %}
+    {% set col_name = 'TARJETAS ROJAS' %}
+    {% set data_array = '' %}
+    {% set validation = false %}
+  {% elseif module.template == 'teams_successful_passes' %}
+    {% set info_key = ['', '', '', '', ''] %}
+    {% set stat_title = title_t %}
+    {% set col_name = 'PASES ACERTADOS' %}
+    {% set data_array = '' %}
+    {% set validation = false %}
+  {% elseif module.template == 'teams_least_scored' %}
+    {% set info_key = ['', '', '', '', ''] %}
+    {% set stat_title = title_t %}
+    {% set col_name = 'GOLES EN CONTRA' %}
+    {% set data_array = '' %}
+    {% set validation = false %}
+  {% elseif module.template == 'players_scorer' %}
+    {% set info_key = ['pos', 'img_small', 'jugador', 'equipo', 'goles'] %}
+    {% set stat_title = title_p %}
+    {% set col_name = 'GOLES' %}
+    {% set data_array = '' %}
+    {% set validation = true %}
+  {% elseif module.template == 'players_cards' %}
+    {% set info_key = ['', '', '', '', ''] %}
+    {% set stat_title = title_p %}
+    {% set col_name = 'TARJETAS' %}
+    {% set data_array = '' %}
+    {% set validation = true %}
+  {% elseif module.template == 'players_expelled' %}
+    {% set info_key = ['', '', '', '', ''] %}
+    {% set stat_title = title_p %}
+    {% set col_name = 'TARJETAS ROJAS' %}
+    {% set data_array = '' %}
+    {% set validation = true %}
+  {% elseif module.template == 'players_successful_passes' %}
+    {% set info_key = ['', '', '', '', ''] %}
+    {% set stat_title = title_p %}
+    {% set col_name = 'PASES' %}
+    {% set data_array = '' %}
+    {% set validation = true %}
+  {% elseif module.template == 'players_least_scored' %}
+    {% set info_key = ['', '', '', '', ''] %}
+    {% set stat_title = title_p %}
+    {% set col_name = 'GOLES ENCAJADOS' %}
+    {% set data_array = '' %}
+    {% set validation = true %}
+  {% endif %}
+  <div class="sn-stadistics" {{data_camus_allow_empty_module["1"]}}>
+    <div class="media-container">
+      {#
+        {{ seeMore.text(module, true, false, "title", "ver tabla completa") }}
+      #}
+      <div class="content">
+        <table class="stadistics-table table-content">
+          <tr>
+            <th colspan="2">POS</th>
+            <th colspan="1">{{ stat_title|raw }}</th>
+            <th colspan="3">{{ col_name }}</th>
+          </tr>
+          {% for player in data_array|slice(0,9) %}
+            {% set i = 0 %}
+            <tr>
+              <td colspan="1">0{{ attribute(player, info_key[i]) }}</td>
+              {% set i = i + 1 %}
+              <td colspan="1"><img src="{{ attribute(player, info_key[i]) }}"/></td>
+              {% set i = i + 1 %}
+              <td colspan="3">{{ attribute(player, info_key[i]) }}
+              {% set i = i + 1 %}
+              {% if validation %}
+                <span class="team-name"> ({{ attribute(player, info_key[i]) }})</span>
+                {% set i = i + 1 %}
+              {% endif %}
+              </td>
+              <td></td>
+              <td></td>
+              <td>{{ attribute(player, info_key[i]) }}</td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'league_standings' or module.template == 'league_players_scorer' or module.template == 'league_players_defender' or module.template == 'league_goal_keeper_saves' or module.template == 'league_players_successful_passes' or module.template == 'league_teams_percentage' or module.template == 'league_players_expelled' or module.template == 'league_players_cards' or module.template == 'league_teams_scorer' or module.template == 'league_teams_defender' or module.template == 'league_teams_expelled' or module.template == 'league_teams_cards' or module.template == 'league_calendar' or module.template == 'league_footer' %}
+  {% set season = "" %}
+  {% if module.season is defined %}
+    {% set season = module.season %}
+  {% endif %}
+  {% set round = "" %}
+  {% if module.round is defined %}
+    {% set round = module.round %}
+  {% endif %}
+  {% set seasonRound = "" %}
+  {% if module.seasonRound is defined %}
+    {% set seasonRound = module.seasonRound %}
+  {% endif %}
+  {% set limit = 6 %}
+  {% if module.template == 'league_standings' %}
+    {% set limit = 18 %}
+  {% endif %}
+  {% set leagueId = "" %}
+  {% if module.leagueId is defined %}
+    {% set leagueId = module.leagueId %}
+  {% endif %}
+  {% if 'admin' in app.request.getSchemeAndHttpHost() %}
+    {% if module.template == 'league_calendar' %}
+      <div class="sn-stadistics-calendar small" {{ data_camus_module_type["league"] }} template="{{ module.template }}">
+        <div class="body-container">
+          <div class="stadistics-header">
+            <div class="title" {{ data_camus_title }}>
+              <span>
+                {% if module.title is not empty %}
+                  {{ module.title|striptags }}
+                {% else %}
+                  {{ "Calendario" }}
+                {% endif %}
+              </span>
+            </div>
+          </div>
+          <div class="stadistics-footer">
+            <a {{ module.slug|linkConstruct|raw }} {{ data_camus_link }}>Ver tabla completa <span class="gold">&gt;</span></a>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="sn-league-stadistics" {{ data_camus_module_type["league"] }} template="{{ module.template }}">
+        <div class="media-container">
+          <div class="content">
+            <div class="stadistics-header">
+              <div class="title" {{ data_camus_title }}>
+                <span>
+                  {% if module.title is not empty %}
+                    {{ module.title|striptags }}
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+            <div class="stadistics-footer">
+              <a {{ module.slug|linkConstruct|raw }} {{ data_camus_link }}>Ver tabla completa <span class="gold">&gt;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% else %}
+    {% if module.template == 'league_footer' %}
+      <div class="sn-league-stadistics footer" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+        <div class="media-container">
+          <div class="content">
+            <div class="footer-stadistics-container">
+              <div class="content">
+                <p>
+                  <span>(POS)</span> Posición,
+                  <span>(JJ)</span> Juegos jugados,
+                  <span>(JG)</span> Juegos ganados,
+                  <span>(JE)</span> Juegos empatados,
+                  <span>(JP)</span> Juegos perdidos,
+                  <span>(PTS)</span> Puntos,
+                  <span>(GF)</span> Goles a favor,
+                  <span>(GA)</span> Goles anotados,
+                  <span>(TA)</span> Tarjetas Amarillas,
+                  <span>(TR)</span> Tarjetas Rojas (directas o por segunda amarilla),
+                  <span>(T BLQ)</span> Tiros Bloqueados al rival,
+                  <span>(PA)</span> Pases Acertados,
+                  <span>(AT)</span> Atajadas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      {% set statsServiceData = statsService(leagueId,module.template,season,seasonRound,round,limit) %}
+      {% if statsServiceData[0] is defined %}
+        {% set title_t = 'EQUIPO' %}
+        {% set title_p = 'JUGADOR' %}
+        {% if module.template == 'league_standings' %}
+          {% set info_key = [['team','logo'], ['team','short_name'],'jj','jg','je','jp','pts'] %}
+          {% set stat_title = title_t ~ 'S' %}
+          {% set col_name = ['JJ','JG','JE','JP','PTS'] %}
+          {% set data_array = statsServiceData[0] %}
+          {% set validation = false %}
+        {% elseif module.template == 'league_players_scorer' %}
+          {% set info_key = [['team','logo'], ['player','image'], ['player','first_name','last_name'], 'total_goals'] %}
+          {% set stat_title = title_p %}
+          {% set col_name = 'GA' %}
+          {% set data_array = statsServiceData[0] %}
+          {% set validation = true %}
+        {% elseif module.template == 'league_players_defender' %}
+          {% set info_key = [['team','logo'], ['player','image'], ['player','first_name','last_name'], 'outfielder_block'] %}
+          {% set stat_title = title_p %}
+          {% set col_name = 'T BLQ' %}
+          {% set data_array = statsServiceData[0] %}
+          {% set validation = true %}
+        {% elseif module.template == 'league_teams_percentage' %}
+          {% set info_key = ['pos', ['team','imageUrl'], ['team','label'], 'tpts','tjj','tdif','quotient'] %}
+          {% set stat_title = title_t %}
+          {% set col_name = ['TPTS','TJJ','DIF','COCIENTE'] %}
+          {% set data_array = statsServiceData[0] %}
+          {% set validation = false %}
+        {% elseif module.template == 'league_players_successful_passes' %}
+          {% set info_key = [['team','logo'], ['player','image'], ['player','first_name','last_name'], 'successful_passes'] %}
+          {% set stat_title = title_p %}
+          {% set col_name = 'PA' %}
+          {% set data_array = statsServiceData[0] %}
+          {% set validation = true %}
+        {% elseif module.template == 'league_goal_keeper_saves' %}
+          {% set info_key = [['team','logo'], ['player','image'], ['player','first_name','last_name'], 'saves'] %}
+          {% set stat_title = title_p %}
+          {% set col_name = 'AT' %}
+          {% set data_array = statsServiceData[0] %}
+          {% set validation = true %}
+        {% elseif module.template == 'league_players_expelled' %}
+          {% set table_title = 'EXPULSADOS' %}
+          {% set info_key = [['team','logo'], ['player','image'], ['player','first_name','last_name'], 'total_red_card'] %}
+          {% set stat_title = title_p %}
+          {% set col_name = 'TR' %}
+          {% set data_array = statsServiceData[0] %}
+          {% set validation = true %}
+        {% elseif module.template == 'league_players_cards' %}
+          {% set info_key = [['team','logo'], ['player','image'], ['player','first_name','last_name'], 'yellow_cards'] %}
+          {% set stat_title = title_p %}
+          {% set col_name = 'TA' %}
+          {% set data_array = statsServiceData[0] %}
+          {% set validation = true %}
+        {% elseif module.template == 'league_teams_scorer' %}
+          {% set info_key = [['team','logo'], ['team','short_name'], 'goals'] %}
+          {% set stat_title = title_t %}
+          {% set col_name = 'GF' %}
+          {% set data_array = statsServiceData[0] %}
+          {% set validation = false %}
+        {% elseif module.template == 'league_teams_defender' %}
+          {% set info_key = [['team','logo'], ['team','short_name'], 'locks'] %}
+          {% set stat_title = title_t %}
+          {% set col_name = 'T BLQ' %}
+          {% set data_array = statsServiceData[0] %}
+          {% set validation = false %}
+        {% elseif module.template == 'league_teams_expelled' %}
+          {% set info_key = [['team','logo'], ['team','short_name'], 'total_red_card'] %}
+          {% set stat_title = title_t %}
+          {% set col_name = 'TR' %}
+          {% set data_array = statsServiceData[0] %}
+          {% set validation = false %}
+        {% elseif module.template == 'league_teams_cards' %}
+          {% set info_key = [['team','logo'], ['team','short_name'], 'total_yellow_cards'] %}
+          {% set stat_title = title_t %}
+          {% set col_name = 'TA' %}
+          {% set data_array = statsServiceData[0] %}
+          {% set validation = false %}
+        {% elseif module.template == 'league_calendar' %}
+          {% set data_array = statsServiceData[0] %}
+          {% set headings_array = statsServiceData[1] %}
+          {% set days = ['','LUN','MAR','MIÉ','JUE','VIE','SÁB','DOM'] %}
+          {% set months = ['','ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'] %}
+          {% if statsServiceData[2] is defined %}
+            {% set validation = true %}
+            {% set data_array_two = statsServiceData[2] %}
+          {% else %}
+            {% set validation = false %}
+          {% endif %}
+        {% endif %}
+        {% if module.template == 'league_calendar' %}
+          <div class="sn-league-stadistics calendar small" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+            <div class="body-container">
+              <div class="stadistics-header">
+                <div class="title" {{ data_camus_title }}>
+                  <span>
+                    {% if module.title is not empty %}
+                      {{ module.title|striptags }}
+                    {% else %}
+                      {{ "Calendario" }}
+                    {% endif %}
+                  </span>
+                </div>
+              </div>
+              <div class="head-going">
+                <span>{% if validation == false %} {{ data_array[0]['rows'][0]['round']['name'] }} {% else %} IDA {% endif %}</span>
+              </div>
+              {% if data_array is not empty %}
+                <div class="going-container">
+                  <div class="stadistics-headers">
+                    <div class="title" data-camus-title="">
+                      <span>HORA / ESTADIO</span>
+                    </div>
+                    <div class="title" data-camus-title="">
+                      <span>PARTIDO</span>
+                    </div>
+                    <div class="title" data-camus-title="">
+                      <span>ESTADO</span>
+                    </div>
+                  </div>
+                  {% for match in data_array %}
+                    <div class="body-going">
+                      <div class="going-header">
+                        <div class="date-separator">
+                          <div class="going-date">
+                            {% set dateFormat = match['rows'][0]['match']['date']|date("N d n Y")|split(' ') %}
+                            <span>{{ days[dateFormat[0]] ~ ' ' ~ dateFormat[1] ~ ' ' ~ months[dateFormat[2]] ~ ' ' ~ dateFormat[3] }}</span>
+                          </div>
+                          <div class="going-separator-line">
+                          </div>
+                        </div>
+                      </div>
+                      <div class='going-body-container'>
+                        {% for matchData in match['rows'] %}
+                          <div class="going-data">
+                            <div class="title">
+                              <div class="going-hour">
+                                <span>{{ matchData['match']['date']|date('H:i') }}</span>
+                              </div>
+                              <div class="going-title">
+                                <span>{{ matchData['venue']['name'] }}</span>
+                              </div>
+                            </div>
+                            <div class="going-teams">
+                              <div class="first-team">
+                                <img src="{{ 'https://static.mediotiempo.com/0x30/' ~ matchData['home_team']['logo'] }}" alt="">
+                                <div class="team-name">
+                                  <span>{{ matchData['home_team']['short_name'] }}</span>
+                                </div>
+                              </div>
+                              <div class="result-team">
+                                {% if matchData['status']|lower == "programado" %}
+                                  <span> - </span>
+                                {% else %}
+                                  <span>{{ matchData['score']['home'] }} - {{ matchData['score']['away'] }}</span>
+                                {% endif %}
+
+                              </div>
+                              <div class="second-team">
+                                <img src="{{ 'https://static.mediotiempo.com/0x30/' ~ matchData['away_team']['logo'] }}" alt="">
+                                <div class="team-name">
+                                  <span>{{ matchData['away_team']['short_name'] }}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="going-type">
+                                {% if matchData['status']|lower == 'terminado' %}
+                                  <a href="/external/ulama/{{ matchData['match']['id'] }}/resumen">
+                                    <div class="title-type recap">
+                                      <span>RESUMEN</span>
+                                    </div>
+                                  </a>
+                                {% elseif matchData['status']|lower == 'jugando' %}
+                                  <a href="/external/ulama/{{ matchData['match']['id'] }}/en-vivo">
+                                    <div class="title-type live">
+                                      <span>EN VIVO</span>
+                                    </div>
+                                  </a>
+                                {% elseif matchData['status']|lower == 'programado' %}
+                                  <a href="/external/ulama/{{ matchData['match']['id'] }}/previo">
+                                    <div class="title-type previus">
+                                      <span>PREVIO</span>
+                                    </div>
+                                  </a>
+                                {% endif %}
+                              </div>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+              {% if validation %}
+                <div class="lap-container">
+                  <div class="head-lap">
+                    <span>VUELTA</span>
+                  </div>
+                  {% for match in data_array_two %}
+                    <div class="body-lap">
+                      <div class="lap-header">
+                        <div class="date-separator">
+                          <div class="lap-date">
+                            {% set dateFormat = match['rows'][0]['match']['date']|date("N d n")|split(' ') %}
+                            <span>{{ days[dateFormat[0]] ~ ' ' ~ dateFormat[1] ~ ' ' ~ months[dateFormat[2]] }}</span>
+                          </div>
+                          <div class="lap-separator-line">
+                          </div>
+                        </div>
+                      </div>
+                      <div class='lap-body-container'>
+                        <div class="stadistics-headers">
+                          <div class="title" data-camus-title="">
+                            <span>HORA / ESTADIO</span>
+                          </div>
+                          <div class="title" data-camus-title="">
+                            <span>PARTIDO</span>
+                          </div>
+                          <div class="title" data-camus-title="">
+                            <span>ESTADO</span>
+                          </div>
+                        </div>
+                        {% for matchData in match['rows'] %}
+                          <div class="lap-data">
+                            <div class="title">
+                              <div class="lap-hour">
+                                <span>{{ matchData['match']['date']|date('H:i') }}</span>
+                              </div>
+                              <div class="lap-title">
+                                <span>{{ matchData['venue']['name'] }}</span>
+                              </div>
+                            </div>
+                            <div class="lap-teams">
+                              <div class="first-team">
+                                <img src="{{ 'https://static.mediotiempo.com/0x30/' ~ matchData['home_team']['logo'] }}" alt="">
+                                <div class="team-name">
+                                  <span>{{ matchData['home_team']['short_name'] }}</span>
+                                </div>
+                              </div>
+                              <div class="result-team">
+                                <span>{{ matchData['score']['home'] }} - {{ matchData['score']['away'] }}</span>
+                              </div>
+                              <div class="second-team">
+                                <img src="{{ 'https://static.mediotiempo.com/0x30/' ~ matchData['away_team']['logo'] }}" alt="">
+                                <div class="team-name">
+                                  <span>{{ matchData['away_team']['short_name'] }}</span>
+                                </div>
+                            <div class="lap-type">
+                              {% if matchData['status']|lower == 'terminado' %}
+                                <a href="/external/ulama/{{ matchData['match']['id'] }}">
+                                  <div class="title-type recap">
+                                    <span>RESUMEN</span>
+                                  </div>
+                                </a>
+                              {% elseif matchData['status']|lower == 'jugando' %}
+                                <a href="/external/ulama/{{ matchData['match']['id'] }}">
+                                  <div class="title-type live">
+                                    <span>EN VIVO</span>
+                                  </div>
+                                </a>
+                              {% elseif matchData['status']|lower == 'programado' %}
+                                <a href="/external/ulama/{{ matchData['match']['id'] }}">
+                                  <div class="title-type previus">
+                                    <span>PREVIO</span>
+                                  </div>
+                                </a>
+                              {% endif %}
+                            </div>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+              <div class="stadistics-footer">
+                {% if module.slug is defined %}
+                  <a {{ module.slug|linkConstruct|raw }} {{ data_camus_link }}>Ver tabla completa <span class="gold">&gt;</span></a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% else %}
+          {% if data_array is empty %}
+            <div class="sn-league-stadistics" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}></div>
+          {% else %}
+            {% set groupName = '' %}
+            {% set topNumber = 1 %}
+            {% if data_array is not empty %}
+              {% for player in data_array %}
+                {% if loop.first %}
+                  <div class="sn-league-stadistics" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+                    <div class="media-container">
+                      <div class="content">
+                        <div class="stadistics-header">
+                          <div class="title" {{ data_camus_title }}>
+                            <span>
+                              {% if module.title is not empty %}
+                                {{ module.title|striptags }}
+                              {% else %}
+                                {{ statsServiceData[1] }}
+                              {% endif %}
+                            </span>
+                          </div>
+                        </div>
+                        {% if player.group.name is defined %}
+                          {% set groupName = player.group.name %}
+                          <div class="head-group">
+                            <span>{{ groupName }}</span>
+                          </div>
+                        {% endif %}
+                        <table class="stadistics-table table-content">
+                          <tr>
+                            <th colspan="2">POS</th>
+                            {% if validation %}
+                              <th colspan="4">{{ stat_title|raw }}</th>
+                            {% else %}
+                              <th>{{ stat_title|raw }}</th>
+                            {% endif %}
+                            {% if col_name is iterable %}
+                              {% for col in col_name %}
+                                  <th>{{ col }}</th>
+                              {% endfor %}
+                            {% else %}
+                                <th>{{ col_name }}</th>
+                            {% endif %}
+                          </tr>
+                         {% set i = 0 %}
+                          <tr>
+                            <td>
+                              {% if topNumber < 10 %}
+                                {{ '0' ~ topNumber }}
+                              {% elseif topNumber >= 10 %}
+                                {{ topNumber }}
+                              {% endif %}
+                              {% set topNumber = topNumber + 1 %}
+                              {# {% if loop.index < 10 %}
+                                {{ '0' ~ loop.index }}
+                              {% elseif loop.index >= 10 %}
+                                {{ loop.index }}
+                              {% endif %} #}
+                            </td>
+                            <td><img src="{{ 'https://static.mediotiempo.com/0x16/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                            {% set i = i + 1 %}
+                            {% if validation %}
+                              <td class="player_img"><img src="{{ 'https://static.mediotiempo.com/0x21/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                              {% set i = i + 1 %}
+                              <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]]|split(' ')[0] ~ ' ' ~ player[info_key[i][0]][info_key[i][2]] }} </td>
+                              {% set i = i + 1 %}
+                            {% else %}
+                              <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]] }} </td>
+                              {% set i = i + 1 %}
+                            {% endif %}
+                            {% if col_name is iterable %}
+                              {% for col in col_name %}
+                                <td class="{% if not loop.last %} center {% endif %} {% if col != 'PTS' and col != 'COCIENTE' %} unhighlight {% endif %}">
+                                {% if player[info_key[i]] is defined or player[info_key[i]] is null %}
+                                  {{ player[info_key[i]] }}
+                                {% else %}
+                                  0
+                                {% endif %}
+                                </td>
+                                {% set i = i + 1 %}
+                              {% endfor %}
+                            {% else %}
+                              <td>
+                                {% if player[info_key[i]] is defined %}
+                                  {{ player[info_key[i]] }}
+                                {% else %}
+                                  0
+                                {% endif %}
+                              </td>
+                            {% endif %}
+                          </tr>
+                {% elseif groupName|length > 0 and player.group.name is defined and  groupName != player.group.name %}
+                  {% set topNumber = 1 %}
+                        </table>
+                        {% if player.group.name is defined %}
+                          {% set groupName = player.group.name %}
+                          <div class="head-group">
+                            <span>{{ groupName }}</span>
+                          </div>
+                        {% endif %}
+                        <table class="stadistics-table table-content">
+                          <tr>
+                            <th colspan="2">POS</th>
+                            {% if validation %}
+                              <th colspan="4">{{ stat_title|raw }}</th>
+                            {% else %}
+                              <th>{{ stat_title|raw }}</th>
+                            {% endif %}
+                            {% if col_name is iterable %}
+                              {% for col in col_name %}
+                                  <th>{{ col }}</th>
+                              {% endfor %}
+                            {% else %}
+                                <th>{{ col_name }}</th>
+                            {% endif %}
+                          </tr>
+                          {% set i = 0 %}
+                          <tr>
+                            <td>
+                              {% if topNumber < 10 %}
+                                {{ '0' ~ topNumber }}
+                              {% elseif topNumber >= 10 %}
+                                {{ topNumber }}
+                              {% endif %}
+                              {% set topNumber = topNumber + 1 %}
+                              {# {% if loop.index < 10 %}
+                                {{ '0' ~ loop.index }}
+                              {% elseif loop.index >= 10 %}
+                                {{ loop.index }}
+                              {% endif %} #}
+                            </td>
+                            <td><img src="{{ 'https://static.mediotiempo.com/0x16/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                            {% set i = i + 1 %}
+                            {% if validation %}
+                              <td class="player_img"><img src="{{ 'https://static.mediotiempo.com/0x21/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                              {% set i = i + 1 %}
+                              <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]]|split(' ')[0] ~ ' ' ~ player[info_key[i][0]][info_key[i][2]] }} </td>
+                              {% set i = i + 1 %}
+                            {% else %}
+                              <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]] }} </td>
+                              {% set i = i + 1 %}
+                            {% endif %}
+                            {% if col_name is iterable %}
+                              {% for col in col_name %}
+                                <td class="{% if not loop.last %} center {% endif %} {% if col != 'PTS' and col != 'COCIENTE' %} unhighlight {% endif %}">
+                                {% if player[info_key[i]] is defined or player[info_key[i]] is null %}
+                                  {{ player[info_key[i]] }}
+                                {% else %}
+                                  0
+                                {% endif %}
+                                </td>
+                                {% set i = i + 1 %}
+                              {% endfor %}
+                            {% else %}
+                              <td>
+                                {% if player[info_key[i]] is defined %}
+                                  {{ player[info_key[i]] }}
+                                {% else %}
+                                  0
+                                {% endif %}
+                              </td>
+                            {% endif %}
+                          </tr>
+                {% elseif loop.last %}
+                  {% set i = 0 %}
+                          <tr>
+                            <td>
+                              {% if topNumber < 10 %}
+                                {{ '0' ~ topNumber }}
+                              {% elseif topNumber >= 10 %}
+                                {{ topNumber }}
+                              {% endif %}
+                              {% set topNumber = topNumber + 1 %}
+                              {# {% if loop.index < 10 %}
+                                {{ '0' ~ loop.index }}
+                              {% elseif loop.index >= 10 %}
+                                {{ loop.index }}
+                              {% endif %} #}
+                            </td>
+                            <td><img src="{{ 'https://static.mediotiempo.com/0x16/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                            {% set i = i + 1 %}
+                            {% if validation %}
+                              <td class="player_img"><img src="{{ 'https://static.mediotiempo.com/0x21/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                              {% set i = i + 1 %}
+                              <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]]|split(' ')[0] ~ ' ' ~ player[info_key[i][0]][info_key[i][2]] }} </td>
+                              {% set i = i + 1 %}
+                            {% else %}
+                              <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]] }} </td>
+                              {% set i = i + 1 %}
+                            {% endif %}
+                            {% if col_name is iterable %}
+                              {% for col in col_name %}
+                                <td class="{% if not loop.last %} center {% endif %} {% if col != 'PTS' and col != 'COCIENTE' %} unhighlight {% endif %}">
+                                {% if player[info_key[i]] is defined or player[info_key[i]] is null %}
+                                  {{ player[info_key[i]] }}
+                                {% else %}
+                                  0
+                                {% endif %}
+                                </td>
+                                {% set i = i + 1 %}
+                              {% endfor %}
+                            {% else %}
+                              <td>
+                                {% if player[info_key[i]] is defined %}
+                                  {{ player[info_key[i]] }}
+                                {% else %}
+                                  0
+                                {% endif %}
+                              </td>
+                            {% endif %}
+                          </tr>
+                        </table>
+                        <div class="stadistics-footer">
+                          {% if module.slug is defined %}
+                            <a {{ module.slug|linkConstruct|raw }} {{ data_camus_link }}>Ver tabla completa <span class="gold">&gt;</span></a>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% else %}
+                  {% set i = 0 %}
+                  <tr>
+                    <td>
+                      {% if topNumber < 10 %}
+                        {{ '0' ~ topNumber }}
+                      {% elseif topNumber >= 10 %}
+                        {{ topNumber }}
+                      {% endif %}
+                      {% set topNumber = topNumber + 1 %}
+                      {# {% if loop.index < 10 %}
+                        {{ '0' ~ loop.index }}
+                      {% elseif loop.index >= 10 %}
+                        {{ loop.index }}
+                      {% endif %} #}
+                    </td>
+                    <td><img src="{{ 'https://static.mediotiempo.com/0x16/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                    {% set i = i + 1 %}
+                    {% if validation %}
+                      <td class="player_img"><img src="{{ 'https://static.mediotiempo.com/0x21/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                      {% set i = i + 1 %}
+                      <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]]|split(' ')[0] ~ ' ' ~ player[info_key[i][0]][info_key[i][2]] }} </td>
+                      {% set i = i + 1 %}
+                    {% else %}
+                      <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]] }} </td>
+                      {% set i = i + 1 %}
+                    {% endif %}
+                    {% if col_name is iterable %}
+                      {% for col in col_name %}
+                        <td class="{% if not loop.last %} center {% endif %} {% if col != 'PTS' and col != 'COCIENTE' %} unhighlight {% endif %}">
+                        {% if player[info_key[i]] is defined or player[info_key[i]] is null %}
+                          {{ player[info_key[i]] }}
+                        {% else %}
+                          0
+                        {% endif %}
+                        </td>
+                        {% set i = i + 1 %}
+                      {% endfor %}
+                    {% else %}
+                      <td>
+                        {% if player[info_key[i]] is defined %}
+                          {{ player[info_key[i]] }}
+                        {% else %}
+                          0
+                        {% endif %}
+                      </td>
+                    {% endif %}
+                  </tr>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% elseif module.template == 'automatic_standings' or module.template == 'automatic_players_offensive' or module.template == 'automatic_players_defensive' or module.template == 'automatic_players_successful_passes' or module.template == 'automatic_goal_keeper_saves' or module.template == 'automatic_players_expulsions' or module.template == 'automatic_players_amonstations' or module.template == 'automatic_teams_offensive' or module.template == 'automatic_teams_defensive' or module.template == 'automatic_teams_expulsions' or module.template == 'automatic_teams_amonstations' or module.template == 'automatic_calendar' %}
+  {% if module.leagueId is defined %}
+    {% set leagueId = module.leagueId %}
+    {% set template = module.template %}
+  {% endif %}
+  {% if 'admin' in app.request.getSchemeAndHttpHost() %}
+    {% if module.template == 'automatic_calendar' %}
+      <div class="sn-stadistics-calendar" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+        <div class="body-container">
+          <div class="media-container">
+            <div class="section-see-more-container-transparent">
+              <div class="section-title-container-transparent">
+                <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="sn-league-stadistics large" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+        <div class="media-container">
+          <div class="content">
+            <div class="stadistics-header">
+              <div class="title">
+                <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% else %}
+    {% set statsServiceData = getStatsURL(leagueId,template) %}
+    {% if statsServiceData[0] is defined %}
+      {% if module.template == 'automatic_standings' %}
+        {% set info_key = [['team','logo'], ['team','short_name']] %}
+        {% set title_ending = 's' %}
+        {% set validation = false %}
+      {% elseif module.template == 'automatic_players_offensive' %}
+        {% set info_key = [['team','logo'], ['player','image'], ['player','first_name','last_name']] %}
+        {% set title_ending = 'es' %}
+        {% set validation = true %}
+      {% elseif module.template == 'automatic_players_defensive' %}
+        {% set info_key = [['team','logo'], ['player','image'], ['player','first_name','last_name']] %}
+        {% set title_ending = 'es' %}
+        {% set validation = true %}
+      {% elseif module.template == 'league_teams_percentage' %}
+        {% set info_key = ['pos', ['team','imageUrl'], ['team','label'], 'tpts','tjj','tdif','quotient'] %}
+        {% set stat_title = title_t %}
+        {% set col_name = ['TPTS','TJJ','DIF','COCIENTE'] %}
+        {% set validation = false %}
+      {% elseif module.template == 'automatic_players_successful_passes' %}
+        {% set info_key = [['team','logo'], ['player','image'], ['player','first_name','last_name']] %}
+        {% set title_ending = 'es' %}
+        {% set validation = true %}
+      {% elseif module.template == 'automatic_goal_keeper_saves' %}
+        {% set info_key = [['team','logo'], ['player','image'], ['player','first_name','last_name']] %}
+        {% set title_ending = 's' %}
+        {% set validation = true %}
+      {% elseif module.template == 'automatic_players_expulsions' %}
+        {% set info_key = [['team','logo'], ['player','image'], ['player','first_name','last_name']] %}
+        {% set title_ending = 'es' %}
+        {% set validation = true %}
+      {% elseif module.template == 'automatic_players_amonstations' %}
+        {% set info_key = [['team','logo'], ['player','image'], ['player','first_name','last_name']] %}
+        {% set title_ending = 'es' %}
+        {% set validation = true %}
+      {% elseif module.template == 'automatic_teams_offensive' %}
+        {% set info_key = [['team','logo'], ['team','short_name']] %}
+        {% set title_ending = 's' %}
+        {% set validation = false %}
+      {% elseif module.template == 'automatic_teams_defensive' %}
+        {% set info_key = [['team','logo'], ['team','short_name']] %}
+        {% set title_ending = 's' %}
+        {% set validation = false %}
+      {% elseif module.template == 'automatic_teams_expulsions' %}
+        {% set info_key = [['team','logo'], ['team','short_name']] %}
+        {% set title_ending = 's' %}
+        {% set validation = false %}
+      {% elseif module.template == 'automatic_teams_amonstations' %}
+        {% set info_key = [['team','logo'], ['team','short_name']] %}
+        {% set title_ending = 's' %}
+        {% set validation = false %}
+      {% elseif module.template == 'automatic_calendar' %}
+        {% set headings_array = statsServiceData[1] %}
+        {% set title_ending = 's' %}
+        {% set days = ['','LUN','MAR','MIÉ','JUE','VIE','SÁB','DOM'] %}
+        {% set months = ['','ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'] %}
+        {% if statsServiceData[2] is defined %}
+          {% set validation = true %}
+          {% set data_array_two = statsServiceData[2] %}
+        {% else %}
+          {% set validation = false %}
+        {% endif %}
+      {% endif %}
+      {% set data_array = statsServiceData[0] %}
+      {% if module.template == 'automatic_calendar' %}
+        <div class="sn-stadistics-calendar">
+          <div class="body-container">
+            <div class="stadistics-header automatic">
+              <div class="title" {{ data_camus_title }}>
+                <span>
+                  {% if module.title is not empty %}
+                    {{ module.title|striptags }}
+                  {% else %}
+                    {{ "Calendario" }}
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+            {% if data_array is not empty %}
+              <div class="going-container">
+                <div class="head-going">
+                  <span>{% if validation == false %} {{ data_array[0]['rows'][0]['round']['name'] }} {% else %} IDA {% endif %}</span>
+                </div>
+                {% for match in data_array %}
+                  <div class="body-going">
+                    <div class="going-header">
+                      <div class="date-separator">
+                        <div class="going-date">
+                          {% set dateFormat = match['rows'][0]['match']['date']|date("N d n Y")|split(' ') %}
+                          <span>{{ days[dateFormat[0]] ~ ' ' ~ dateFormat[1] ~ ' ' ~ months[dateFormat[2]] ~ ' ' ~ dateFormat[3] }}</span>
+                        </div>
+                        <div class="going-separator-line">
+                        </div>
+                      </div>
+                    </div>
+                    <div class='going-body-container'>
+                      {% for matchData in match['rows'] %}
+                        <div class="going-data">
+                          <div class="title">
+                            <div class="going-hour">
+                              <span>{{ matchData['match']['date']|date('H:i') }}</span>
+                            </div>
+                            <div class="going-title">
+                              <span>{{ matchData['venue']['name'] }}</span>
+                            </div>
+                          </div>
+                          <div class="going-teams">
+                            <div class="first-team">
+                              <img src="{{ 'https://static.mediotiempo.com/0x30/' ~ matchData['home_team']['logo'] }}" alt="">
+                              <div class="team-name">
+                                <span>{{ matchData['home_team']['short_name'] }}</span>
+                              </div>
+                            </div>
+                            <div class="result-team">
+                              <span>{{ matchData['score']['home'] }} - {{ matchData['score']['away'] }}</span>
+                            </div>
+                            <div class="second-team">
+                              <img src="{{ 'https://static.mediotiempo.com/0x30/' ~ matchData['away_team']['logo'] }}" alt="">
+                              <div class="team-name">
+                                <span>{{ matchData['away_team']['short_name'] }}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="going-type">
+                            {% if matchData['status']|lower == 'terminado' %}
+                              <a href="/external/ulama/{{ matchData['match']['id'] }}/resumen">
+                                <div class="title-type recap">
+                                  <span>RESUMEN</span>
+                                </div>
+                              </a>
+                            {% elseif matchData['status']|lower == 'jugando' %}
+                              <a href="/external/ulama/{{ matchData['match']['id'] }}/en-vivo">
+                                <div class="title-type live">
+                                  <span>EN VIVO</span>
+                                </div>
+                              </a>
+                            {% elseif matchData['status']|lower == 'programado' %}
+                              <a href="/external/ulama/{{ matchData['match']['id'] }}/previo">
+                                <div class="title-type previus">
+                                  <span>PREVIO</span>
+                                </div>
+                              </a>
+                            {% endif %}
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+            {% if validation %}
+              <div class="lap-container">
+                <div class="head-lap">
+                  <span>VUELTA</span>
+                </div>
+                {% for match in data_array_two %}
+                  <div class="body-lap">
+                    <div class="lap-header">
+                      <div class="date-separator">
+                        <div class="lap-date">
+                          {% set dateFormat = match['rows'][0]['match']['date']|date("N d n Y")|split(' ') %}
+                          <span>{{ days[dateFormat[0]] ~ ' ' ~ dateFormat[1] ~ ' ' ~ months[dateFormat[2]] ~ ' ' ~ dateFormat[3] }}</span>
+                        </div>
+                        <div class="lap-separator-line">
+                        </div>
+                      </div>
+                    </div>
+                    <div class='lap-body-container'>
+                      {% for matchData in match['rows'] %}
+                        <div class="lap-data">
+                          <div class="title">
+                            <div class="lap-hour">
+                              <span>{{ matchData['match']['date']|date('H:i') }}</span>
+                            </div>
+                            <div class="lap-title">
+                              <span>{{ matchData['venue']['name'] }}</span>
+                            </div>
+                          </div>
+                          <div class="lap-teams">
+                            <div class="first-team">
+                              <img src="{{ 'https://static.mediotiempo.com/0x30/' ~ matchData['home_team']['logo'] }}" alt="">
+                              <div class="team-name">
+                                <span>{{ matchData['home_team']['short_name'] }}</span>
+                              </div>
+                            </div>
+                            <div class="result-team">
+                              <span>{{ matchData['score']['home'] }} - {{ matchData['score']['away'] }}</span>
+                            </div>
+                            <div class="second-team">
+                              <img src="{{ 'https://static.mediotiempo.com/0x30/' ~ matchData['away_team']['logo'] }}" alt="">
+                              <div class="team-name">
+                                <span>{{ matchData['away_team']['short_name'] }}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="lap-type">
+                            {% if matchData['status']|lower == 'terminado' %}
+                              <a href="/external/ulama/{{ matchData['match']['id'] }}/resumen">
+                                <div class="title-type recap">
+                                  <span>RESUMEN</span>
+                                </div>
+                              </a>
+                            {% elseif matchData['status']|lower == 'jugando' %}
+                              <a href="/external/ulama/{{ matchData['match']['id'] }}/en-vivo">
+                                <div class="title-type live">
+                                  <span>EN VIVO</span>
+                                </div>
+                              </a>
+                            {% elseif matchData['status']|lower == 'programado' %}
+                              <a href="/external/ulama/{{ matchData['match']['id'] }}/previo">
+                                <div class="title-type previus">
+                                  <span>PREVIO</span>
+                                </div>
+                              </a>
+                            {% endif %}
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% else %}
+        {% if module.template == 'automatic_standings' %}
+          {% set index = 1 %}
+          {% set colOrder = ['jj','jg','je','jp','gf','gc','dif','pts'] %}
+        {% elseif module.template == 'automatic_players_offensive'or module.template == 'automatic_players_defensive'or module.template == 'automatic_players_successful_passes'or module.template == 'automatic_players_expulsions'or module.template == 'automatic_players_amonstations' %}
+          {% set index = 1 %}
+        {% else %}
+          {% set index = 0 %}
+        {% endif %}
+        {% set headings_array = statsServiceData[1]["statsTable"]["metadata"]["headers"] %}
+        {% set stat_title = headings_array[index]['label'] %}
+        {% set groupName = '' %}
+        {% set topNumber = 1 %}
+        {% if data_array is not empty %}
+          {% for player in data_array %}
+            {% if loop.first %}
+              <div class="sn-league-stadistics large" template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+               <div class="media-container">
+                 <div class="content">
+                   {% set w = 205 + (30 * headings_array|length) %}
+                   <div class="stadistics-header" style="width: {{ w + 50 }}px;">
+                     <div class="title" {{ data_camus_title }}>
+                      {% if player.group.name is defined %}
+                        {% set groupName = player.group.name %}
+                        <span>{{ groupName }}</span>
+                      {% elseif module.title is not empty %}
+                        {{ module.title|striptags }}
+                      {% else %}
+                        {{ stat_title|title ~ title_ending }}
+                      {% endif %}
+                     </div>
+                   </div>
+                   <table class="stadistics-table table-content" style="width: {{ w }}px;">
+                     <tr>
+                       <th class="fixed-side" colspan="2">POS</th>
+                       {% if validation %}
+                         <th colspan="4">{{ stat_title|raw }}</th>
+                       {% else %}
+                         <th>{{ stat_title|raw }}</th>
+                       {% endif %}
+                       {% if module.template == 'automatic_standings' %}
+                         {% if headings_array is iterable %}
+                           {% for order in colOrder %}
+                             {% for col in headings_array %}
+                               {% if col["label"]|lower != "pos" and col["label"]|lower != "jugador" and col["label"]|lower != "equipo" and col["name"] == order %}
+                                 <th class="center">{{ col["label"] }}</th>
+                               {% endif %}
+                             {% endfor %}
+                           {% endfor %}
+                         {% endif %}
+                       {% else %}
+                         {% if headings_array is iterable %}
+                           {% for col in headings_array %}
+                             {% if col["label"]|lower != "pos" and col["label"]|lower != "jugador" and col["label"]|lower != "equipo" %}
+                               <th class="center">{{ col["label"] }}</th>
+                             {% endif %}
+                           {% endfor %}
+                         {% endif %}
+                       {% endif %}
+                     </tr>
+                     {% set i = 0 %}
+                      <tr>
+                               <td class="fixed-side {% if loop.index is odd %} gray {% endif %}">
+                                 {% if topNumber < 10 %}
+                                   {{ '0' ~ topNumber }}
+                                 {% elseif topNumber >= 10 %}
+                                   {{ topNumber }}
+                                 {% endif %}
+                                 {% set topNumber = topNumber + 1 %}
+                               </td>
+                               <td class="fixed-side {% if loop.index is odd %} gray {% endif %}"><img src="{{ 'https://static.mediotiempo.com/0x16/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                               {% set i = i + 1 %}
+                               {% if validation %}
+                                 <td class="player_img"><img src="{{ 'https://static.mediotiempo.com/0x21/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                                 {% set i = i + 1 %}
+                                 <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]]|split(' ')[0] ~ ' ' ~ player[info_key[i][0]][info_key[i][2]] }} </td>
+                                 {% set i = i + 1 %}
+                               {% else %}
+                                 <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]] }} </td>
+                                 {% set i = i + 1 %}
+                               {% endif %}
+                               {% if module.template == 'automatic_standings' %}
+                                 {% if headings_array is iterable %}
+                                   {% for order in colOrder %}
+                                     {% for col in headings_array %}
+                                       {% if col["label"]|lower != "jugador" and col["label"]|lower != "equipo" and col["label"]|lower != "pos" and col["name"] == order %}
+                                         <td class="center {% if col != 'PTS' and col != 'COCIENTE' %} unhighlight {% endif %}">
+                                           {% if col["label"]|lower == "prec" or col["label"]|lower == "g/c" or col["label"]|lower == "% cc" or col["label"]|lower == "efec" %}
+                                             {{ (player[col["name"]])|number_format(2, '.', ',') }}
+                                           {% else %}
+                                             {{ player[col["name"]] }}
+                                           {% endif %}
+                                         </td>
+                                       {% endif %}
+                                       {% set i = i + 1 %}
+                                     {% endfor %}
+                                   {% endfor %}
+                                 {% endif %}
+                               {% else %}
+                                 {% if headings_array is iterable %}
+                                   {% for col in headings_array %}
+                                     {% if col["label"]|lower != "jugador" and col["label"]|lower != "equipo" and col["label"]|lower != "pos" %}
+                                       <td class="center {% if col != 'PTS' and col != 'COCIENTE' %} unhighlight {% endif %}">
+                                         {% if col["label"]|lower == "prec" or col["label"]|lower == "g/c" or col["label"]|lower == "% cc" or col["label"]|lower == "efec" %}
+                                           {{ (player[col["name"]])|number_format(2, '.', ',') }}
+                                         {% else %}
+                                           {{ player[col["name"]] }}
+                                         {% endif %}
+                                       </td>
+                                     {% endif %}
+                                     {% set i = i + 1 %}
+                                   {% endfor %}
+                                 {% endif %}
+                               {% endif %}
+                             </tr>
+            {% elseif groupName|length > 0 and player.group.name is defined and  groupName != player.group.name %}
+              {% set topNumber = 1 %}
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="sn-league-stadistics large" template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+                <div class="media-container">
+                  <div class="content">
+                    {% set w = 205 + (30 * headings_array|length) %}
+                    <div class="stadistics-header" style="width: {{ w + 50 }}px;">
+                      <div class="title" {{ data_camus_title }}>
+                        {% if player.group.name is defined %}
+                          {% set groupName = player.group.name %}
+                          <span>{{ groupName }}</span>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <table class="stadistics-table table-content" style="width: {{ w }}px;">
+                      <tr>
+                        <th class="fixed-side" colspan="2">POS</th>
+                        {% if validation %}
+                          <th colspan="4">{{ stat_title|raw }}</th>
+                        {% else %}
+                          <th>{{ stat_title|raw }}</th>
+                        {% endif %}
+                        {% if module.template == 'automatic_standings' %}
+                          {% if headings_array is iterable %}
+                            {% for order in colOrder %}
+                              {% for col in headings_array %}
+                                {% if col["label"]|lower != "pos" and col["label"]|lower != "jugador" and col["label"]|lower != "equipo" and col["name"] == order %}
+                                  <th class="center">{{ col["label"] }}</th>
+                                {% endif %}
+                              {% endfor %}
+                            {% endfor %}
+                          {% endif %}
+                        {% else %}
+                          {% if headings_array is iterable %}
+                            {% for col in headings_array %}
+                              {% if col["label"]|lower != "pos" and col["label"]|lower != "jugador" and col["label"]|lower != "equipo" %}
+                                <th class="center">{{ col["label"] }}</th>
+                              {% endif %}
+                            {% endfor %}
+                          {% endif %}
+                        {% endif %}
+                      </tr>
+                      {% set i = 0 %}
+                      <tr>
+                        <td class="fixed-side {% if loop.index is odd %} gray {% endif %}">
+                          {% if topNumber < 10 %}
+                            {{ '0' ~ topNumber }}
+                          {% elseif topNumber >= 10 %}
+                            {{ topNumber }}
+                          {% endif %}
+                          {% set topNumber = topNumber + 1 %}
+                        </td>
+                        <td class="fixed-side {% if loop.index is odd %} gray {% endif %}"><img src="{{ 'https://static.mediotiempo.com/0x16/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                        {% set i = i + 1 %}
+                        {% if validation %}
+                                  <td class="player_img"><img src="{{ 'https://static.mediotiempo.com/0x21/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                                  {% set i = i + 1 %}
+                                  <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]]|split(' ')[0] ~ ' ' ~ player[info_key[i][0]][info_key[i][2]] }} </td>
+                                  {% set i = i + 1 %}
+                        {% else %}
+                                  <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]] }} </td>
+                                  {% set i = i + 1 %}
+                        {% endif %}
+                        {% if module.template == 'automatic_standings' %}
+                          {% if headings_array is iterable %}
+                            {% for order in colOrder %}
+                              {% for col in headings_array %}
+                                {% if col["label"]|lower != "jugador" and col["label"]|lower != "equipo" and col["label"]|lower != "pos" and col["name"] == order %}
+                                  <td class="center {% if col != 'PTS' and col != 'COCIENTE' %} unhighlight {% endif %}">
+                                    {% if col["label"]|lower == "prec" or col["label"]|lower == "g/c" or col["label"]|lower == "% cc" or col["label"]|lower == "efec" %}
+                                      {{ (player[col["name"]])|number_format(2, '.', ',') }}
+                                    {% else %}
+                                      {{ player[col["name"]] }}
+                                    {% endif %}
+                                  </td>
+                                {% endif %}
+                                {% set i = i + 1 %}
+                              {% endfor %}
+                            {% endfor %}
+                          {% endif %}
+                        {% else %}
+                          {% if headings_array is iterable %}
+                            {% for col in headings_array %}
+                              {% if col["label"]|lower != "jugador" and col["label"]|lower != "equipo" and col["label"]|lower != "pos" %}
+                                <td class="center {% if col != 'PTS' and col != 'COCIENTE' %} unhighlight {% endif %}">
+                                  {% if col["label"]|lower == "prec" or col["label"]|lower == "g/c" or col["label"]|lower == "% cc" or col["label"]|lower == "efec" %}
+                                    {{ (player[col["name"]])|number_format(2, '.', ',') }}
+                                  {% else %}
+                                    {{ player[col["name"]] }}
+                                  {% endif %}
+                                </td>
+                              {% endif %}
+                              {% set i = i + 1 %}
+                            {% endfor %}
+                          {% endif %}
+                        {% endif %}
+                      </tr>
+            {% elseif loop.last %}
+              {% set i = 0 %}
+                      <tr>
+                        <td class="fixed-side {% if loop.index is odd %} gray {% endif %}">
+                          {% if topNumber < 10 %}
+                            {{ '0' ~ topNumber }}
+                          {% elseif topNumber >= 10 %}
+                            {{ topNumber }}
+                          {% endif %}
+                          {% set topNumber = topNumber + 1 %}
+                        </td>
+                        <td class="fixed-side {% if loop.index is odd %} gray {% endif %}"><img src="{{ 'https://static.mediotiempo.com/0x16/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                        {% set i = i + 1 %}
+                        {% if validation %}
+                          <td class="player_img"><img src="{{ 'https://static.mediotiempo.com/0x21/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                          {% set i = i + 1 %}
+                          <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]]|split(' ')[0] ~ ' ' ~ player[info_key[i][0]][info_key[i][2]] }} </td>
+                          {% set i = i + 1 %}
+                        {% else %}
+                          <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]] }} </td>
+                          {% set i = i + 1 %}
+                        {% endif %}
+                        {% if module.template == 'automatic_standings' %}
+                          {% if headings_array is iterable %}
+                            {% for order in colOrder %}
+                              {% for col in headings_array %}
+                                {% if col["label"]|lower != "jugador" and col["label"]|lower != "equipo" and col["label"]|lower != "pos" and col["name"] == order %}
+                                  <td class="center {% if col != 'PTS' and col != 'COCIENTE' %} unhighlight {% endif %}">
+                                    {% if col["label"]|lower == "prec" or col["label"]|lower == "g/c" or col["label"]|lower == "% cc" or col["label"]|lower == "efec" %}
+                                      {{ (player[col["name"]])|number_format(2, '.', ',') }}
+                                    {% else %}
+                                      {{ player[col["name"]] }}
+                                    {% endif %}
+                                  </td>
+                                {% endif %}
+                                {% set i = i + 1 %}
+                              {% endfor %}
+                            {% endfor %}
+                          {% endif %}
+                        {% else %}
+                          {% if headings_array is iterable %}
+                            {% for col in headings_array %}
+                              {% if col["label"]|lower != "jugador" and col["label"]|lower != "equipo" and col["label"]|lower != "pos" %}
+                                <td class="center {% if col != 'PTS' and col != 'COCIENTE' %} unhighlight {% endif %}">
+                                  {% if col["label"]|lower == "prec" or col["label"]|lower == "g/c" or col["label"]|lower == "% cc" or col["label"]|lower == "efec" %}
+                                    {{ (player[col["name"]])|number_format(2, '.', ',') }}
+                                  {% else %}
+                                    {{ player[col["name"]] }}
+                                  {% endif %}
+                                </td>
+                              {% endif %}
+                              {% set i = i + 1 %}
+                            {% endfor %}
+                          {% endif %}
+                        {% endif %}
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            {% else %}
+              {% set i = 0 %}
+              <tr>
+                <td class="fixed-side {% if loop.index is odd %} gray {% endif %}">
+                  {% if topNumber < 10 %}
+                    {{ '0' ~ topNumber }}
+                  {% elseif topNumber >= 10 %}
+                    {{ topNumber }}
+                  {% endif %}
+                  {% set topNumber = topNumber + 1 %}
+                </td>
+                <td class="fixed-side {% if loop.index is odd %} gray {% endif %}"><img src="{{ 'https://static.mediotiempo.com/0x16/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                {% set i = i + 1 %}
+                {% if validation %}
+                  <td class="player_img"><img src="{{ 'https://static.mediotiempo.com/0x21/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                  {% set i = i + 1 %}
+                  <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]]|split(' ')[0] ~ ' ' ~ player[info_key[i][0]][info_key[i][2]] }} </td>
+                  {% set i = i + 1 %}
+                {% else %}
+                  <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]] }} </td>
+                  {% set i = i + 1 %}
+                {% endif %}
+                {% if module.template == 'automatic_standings' %}
+                  {% if headings_array is iterable %}
+                    {% for order in colOrder %}
+                      {% for col in headings_array %}
+                        {% if col["label"]|lower != "jugador" and col["label"]|lower != "equipo" and col["label"]|lower != "pos" and col["name"] == order %}
+                          <td class="center {% if col != 'PTS' and col != 'COCIENTE' %} unhighlight {% endif %}">
+                            {% if col["label"]|lower == "prec" or col["label"]|lower == "g/c" or col["label"]|lower == "% cc" or col["label"]|lower == "efec" %}
+                              {{ (player[col["name"]])|number_format(2, '.', ',') }}
+                            {% else %}
+                              {{ player[col["name"]] }}
+                            {% endif %}
+                          </td>
+                        {% endif %}
+                        {% set i = i + 1 %}
+                      {% endfor %}
+                    {% endfor %}
+                  {% endif %}
+                {% else %}
+                  {% if headings_array is iterable %}
+                    {% for col in headings_array %}
+                      {% if col["label"]|lower != "jugador" and col["label"]|lower != "equipo" and col["label"]|lower != "pos" %}
+                        <td class="center {% if col != 'PTS' and col != 'COCIENTE' %} unhighlight {% endif %}">
+                          {% if col["label"]|lower == "prec" or col["label"]|lower == "g/c" or col["label"]|lower == "% cc" or col["label"]|lower == "efec" %}
+                            {{ (player[col["name"]])|number_format(2, '.', ',') }}
+                          {% else %}
+                            {{ player[col["name"]] }}
+                          {% endif %}
+                        </td>
+                      {% endif %}
+                      {% set i = i + 1 %}
+                    {% endfor %}
+                  {% endif %}
+                {% endif %}
+              </tr>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        <div class="footer-stadistics-container">
+          <div class="content">
+            <p>
+              {% set pass = true %}
+              {% if module.template == 'automatic_standings' %}
+                {% spaceless %}
+                  <span>(Pos)</span> Posición,
+                  {% for order in colOrder %}
+                    {% for col in headings_array %}
+                      {% if col["name"] == order %}
+                        <span>({{ col["label"] }})</span> {{ col["tooltip"] }}{% if not loop.parent.loop.last %}{{- "," -}}{% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  {% endfor %}
+                {% endspaceless %}
+              {% else %}
+                {% spaceless %}
+                  <span>(Pos)</span> Posición,
+                  {% for col in headings_array %}
+                    {% if col["name"] != "team" and col["name"] != "posicion" and col["name"] != "player" %}
+                      <span>({{ col["label"] }})</span> {{ col["tooltip"] }}{% if not loop.last %}{{- "," -}}{% endif %}
+                    {% endif %}
+                  {% endfor %}
+                {% endspaceless %}
+              {% endif %}
+            </p>
+          </div>
+        </div>
+        {# <div class="sn-league-stadistics large" template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+          <div class="media-container">
+            <div class="content">
+              {% set w = 205 + (30 * headings_array|length) %}
+              <div class="stadistics-header" style="width: {{ w + 50 }}px;">
+                <div class="title" {{ data_camus_title }}>
+                  <span>
+                    {% if module.title is not empty %}
+                      {{ module.title|striptags }}
+                    {% else %}
+                      {{ stat_title|title ~ title_ending }}
+                    {% endif %}
+                  </span>
+                </div>
+              </div>
+              {% if data_array is not empty %}
+                <table class="stadistics-table table-content" style="width: {{ w }}px;">
+                  <tr>
+                      <th class="fixed-side" colspan="2">POS</th>
+                      {% if validation %}
+                        <th colspan="4">{{ stat_title|raw }}</th>
+                      {% else %}
+                        <th>{{ stat_title|raw }}</th>
+                      {% endif %}
+                      {% if headings_array is iterable %}
+                        {% for col in headings_array %}
+                          {% if col["label"]|lower != "pos" and col["label"]|lower != "jugador" and col["label"]|lower != "equipo" %}
+                            <th class="center">{{ col["label"] }}</th>
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                  </tr>
+                  {% for player in data_array %}
+                    {% set i = 0 %}
+                    <tr>
+                      <td class="fixed-side {% if loop.index is odd %} gray {% endif %}">
+                        {% if loop.index < 10 %}
+                          {{ '0' ~ loop.index }}
+                        {% elseif loop.index >= 10 %}
+                          {{ loop.index }}
+                        {% endif %}
+                      </td>
+                      <td class="fixed-side {% if loop.index is odd %} gray {% endif %}"><img src="{{ 'https://static.mediotiempo.com/0x16/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                      {% set i = i + 1 %}
+                      {% if validation %}
+                        <td class="player_img"><img src="{{ 'https://static.mediotiempo.com/0x21/' ~ player[info_key[i][0]][info_key[i][1]] }}"/></td>
+                        {% set i = i + 1 %}
+                        <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]]|split(' ')[0] ~ ' ' ~ player[info_key[i][0]][info_key[i][2]] }} </td>
+                        {% set i = i + 1 %}
+                      {% else %}
+                        <td colspan="{% if validation == true %}3{% endif %}">{{ player[info_key[i][0]][info_key[i][1]] }} </td>
+                        {% set i = i + 1 %}
+                      {% endif %}
+                      {% if headings_array is iterable %}
+                        {% for col in headings_array %}
+                          {% if col["label"]|lower != "jugador" and col["label"]|lower != "equipo" and col["label"]|lower != "pos" %}
+                            <td class="center {% if col != 'PTS' and col != 'COCIENTE' %} unhighlight {% endif %}">
+                              {% if col["label"]|lower == "prec" or col["label"]|lower == "g/c" or col["label"]|lower == "% cc" or col["label"]|lower == "efec" %}
+                                {{ (player[col["name"]])|number_format(2, '.', ',') }}
+                              {% else %}
+                                {{ player[col["name"]] }}
+                              {% endif %}
+                            </td>
+                          {% endif %}
+                          {% set i = i + 1 %}
+                        {% endfor %}
+                      {% endif %}
+                    </tr>
+                  {% endfor %}
+                </table>
+              {% endif %}
+            </div>
+          </div>
+        </div> #}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% elseif module.template == 'club_calendary' or module.template == 'club_roster' or module.template == 'club_player_most_goaler' or module.template == 'club_player_most_blocking' or module.template == 'club_player_passes_most_successful' or module.template == 'club_player_most_saves' or module.template == 'club_player_most_expulsions' or module.template == 'club_player_most_amonstations' or module.template == 'club_team_most_goalers' or module.template == 'club_team_most_defensive' or module.template == 'club_team_expulsions' or module.template == 'club_team_amonestations' %}
+  {% set idTeam = "" %}
+  {% if module.idTeam is defined %}
+    {% set idTeam = module.idTeam %}
+  {% endif %}
+  {% if 'admin' in app.request.getSchemeAndHttpHost() %}
+    {% if module.template == 'club_calendary' %}
+      <div class="sn-stadistics-club-calendary" {{ data_camus_module_type["club"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+        <div class="module-container">
+          <div class="stadistics-head">
+            <div class="head-container">
+              <div class="title">
+                <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% elseif module.template == 'club_roster' %}
+        <div class="sn-stadistics club" {{ data_camus_module_type["club"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+          <div class="media-container">
+            <div class="content">
+              <div class="stadistics-header">
+                <div class="title" {{ data_camus_title }}>
+                  <span>
+                    {% if module.title is not empty %}
+                      {{ module.title|striptags }}
+                    {% else %}
+                      {{ 'Estadísticas' }}
+                    {% endif %}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    {% else %}
+      <div class="sn-league-stadistics" {{ data_camus_module_type["club"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+        <div class="media-container">
+          <div class="content">
+            <div class="stadistics-header">
+              <div class="title" {{ data_camus_title }}>
+                <span>
+                  {% if module.title is not empty %}
+                    {{ module.title|striptags }}
+                  {% else %}
+                    {{ 'Estadísticas' }}
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% else %}
+    {% set teamData = getDataTeam(module.template,idTeam) %}
+    {% if module.template == 'club_calendary' %}
+      {% set teamCalendaryData = teamData %}
+      {% if teamCalendaryData.calendar.data is defined %}
+        {% set rowsCalendary = teamCalendaryData.calendar.data %}
+        {% set imageMictlan = 'http://static.mediotiempo.com/' %}
+        <div class="sn-stadistics-club-calendary" {{ data_camus_module_type["club"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+          <div class="module-container">
+            <div class="stadistics-head">
+              <div class="head-container">
+                <div class="title">
+                  <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="stadistics-body">
+              <div class="body-container">
+                {% for rowsVal in rowsCalendary %}
+                  {% set thisLoop = loop.index %}
+                  {% for itemRow in rowsVal.rows %}
+                    <div class="body-table-row">
+                      <div class="number-game">
+                        <span>J {{thisLoop}}</span>
+                      </div>
+                      <div class="date-game">
+                        {% set date = itemRow.match.date %}
+                        <span>
+                          {{
+                            date|date("l j F \\/\\ g:i")|replace({
+                            'January'  : 'Enero',
+                            'February'  : 'Febrero',
+                            'March'  : 'Marzo',
+                            'April'  : 'Abril',
+                            'May'  : 'Mayo',
+                            'June'  : 'Junio',
+                            'July'  : 'Julio',
+                            'August'  : 'Agosto',
+                            'September'  : 'Septiembre',
+                            'October'  : 'Octubre',
+                            'November'  : 'Noviembre',
+                            'December' : 'Diciembre',
+                            'Monday'   : 'Lun',
+                            'Tuesday'   : 'Mar',
+                            'Wednesday'   : 'Mié',
+                            'Thursday'   : 'Jue',
+                            'Friday'   : 'Vie',
+                            'Saturday'   : 'Sáb',
+                            'Sunday'   : 'Dom'
+                            })
+                          }}
+                        </span>
+                      </div>
+                      <div class="wrap-stadistics">
+                        <div class="score-game">
+                          <div class="first-team-name">
+                            <span>{{itemRow.home_team.short_name}}</span>
+                          </div>
+                          <div class="first-team-logo">
+                            <img src="{{imageMictlan}}{{itemRow.home_team.logo}}" alt="">
+                          </div>
+                          <div class="score">
+                            {% set home_penalty = 0 %}
+                            {% set away_penalty = 0 %}
+                            {% if itemRow.score.home_penalty != 0 %}
+                              {% set home_penalty = itemRow.score.home_penalty %}
+                            {% endif %}
+                            {% if itemRow.score.away_penalty != 0 %}
+                              {% set away_penalty = itemRow.score.away_penalty %}
+                            {% endif %}
+                            {% if itemRow.status == "Programado" or itemRow.status == "Previo" %}
+                              <span> - </span>
+                            {% else %}
+                              {% if home_penalty != 0 or away_penalty != 0 %}
+                                <span>{{itemRow.score.home}}({{home_penalty}}) - ({{away_penalty}}){{itemRow.score.away}}</span>
+                              {% else %}
+                                <span>{{itemRow.score.home}} - {{itemRow.score.away}}</span>
+                              {% endif %}
+                            {% endif %}
+                          </div>
+                          <div class="second-team-logo">
+                            <img src="{{imageMictlan}}{{itemRow.away_team.logo}}" alt="">
+                          </div>
+                          <div class="second-team-name">
+                            <span>{{itemRow.away_team.short_name}}</span>
+                          </div>
+                        </div>
+                        <div class="stadistics-summary">
+                          <!-- <div class="text">
+                            <span>David Patiño</span>
+                          </div> -->
+                          {% if itemRow.status == 'Terminado' %}
+                            <div class="recap resume">
+                              <a href="/external/ulama/{{itemRow.match.id}}/resumen" ><span>RESUMEN</span></a>
+                            </div>
+                          {% elseif itemRow.status == 'Programado' %}
+                            <div class="recap prevGame">
+                              <a href="/external/ulama/{{itemRow.match.id}}/previo" ><span>PREVIO</span></a>
+                            </div>
+                          {% else %}
+                            <div class="recap liveGame">
+                              <a href="/external/ulama/{{itemRow.match.id}}/en-vivo" ><span>{{itemRow.status}}</span></a>
+                            </div>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% elseif module.template == 'club_roster' %}
+      {% if teamData.players is defined %}
+        {% if teamData.players is not empty %}
+          {% set players_g = [] %}
+          {% set players_d = [] %}
+          {% set players_m = [] %}
+          {% set players_f = [] %}
+          {% set players = [] %}
+          {% for player in teamData.players %}
+            {% if player.position|lower == 'delantero' %}
+              {% set players_f = players_f|merge([loop.index0]) %}
+            {% elseif player.position|lower == 'medio' %}
+              {% set players_m = players_m|merge([loop.index0]) %}
+            {% elseif player.position|lower == 'defensa' %}
+              {% set players_d = players_d|merge([loop.index0]) %}
+            {% elseif player.position|lower == 'portero' %}
+              {% set players_g = players_g|merge([loop.index0]) %}
+            {% endif %}
+          {% endfor %}
+          {% set players = players|merge(players_g) %}
+          {% set players = players|merge(players_d) %}
+          {% set players = players|merge(players_m) %}
+          {% set players = players|merge(players_f) %}
+          <div class="sn-stadistics club" {{ data_camus_module_type["club"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+            <div class="media-container">
+              <div class="content">
+                {# {% set w = 205 + (30 * teamData.metadata.headers|length) %} #}
+                <div class="stadistics-header">
+                  <div class="title" {{ data_camus_title }}>
+                    <span>
+                      {% if module.title is not empty %}
+                        {{ module.title|striptags }}
+                      {% else %}
+                        {{ 'Estadísticas' }}
+                      {% endif %}
+                    </span>
+                  </div>
+                </div>
+                {% if teamData.players is not empty %}
+                  {% set colNames = [] %}
+                  <table class="stadistics-table table-content">
+                    <tr>
+                      <th class="fixed-side">NUM</th>
+                      {% if teamData.metadata.headers is iterable %}
+                        {% for col in teamData.metadata.headers %}
+                          {% if col["label"]|lower != "#" %}
+                            <th class="center">{{ col["label"] }}</th>
+                          {% endif %}
+                          {% if col["name"] == 'goalPases' %}
+                            {% set colNames = colNames|merge(['goalPasses']) %}
+                          {% else %}
+                              {% set colNames = colNames|merge([col["name"]]) %}
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </tr>
+                    {% if teamData.players is iterable %}
+                      {% for i in players %}
+                        {% if teamData.players[i].playedGames is not null %}
+                          <tr>
+                            {% for col in colNames %}
+                              {% if col == 'player' %}
+                                <td class="fixed-side both">
+                                  <img src="{{ getImageMictlan("0x30/" ~ teamData.players[i].playerOverview.imageUrl) }}" alt="">
+                                  <a style="color:#4183C4;" href="/external/ulama/{{teamData.players[i].playerOverview.id}}">
+                                    {{ teamData.players[i].playerOverview.label }}
+                                  </a>
+                                </td>
+                              {% elseif col == 'position' %}
+                                <td class="center">
+                                   {{ teamData.players[i][col]|slice(0, 3) }}
+                                </td>
+                              {% else %}
+                                <td class="{% if col != 'playerNumber' %} unhighlight center {% endif %}">
+                                 {% if teamData.players[i][col] == null %}
+                                  {{ 0 }}
+                                 {% else %}
+                                   {{ teamData.players[i][col] }}
+                                 {% endif %}
+                                </td>
+                              {% endif %}
+                            {% endfor %}
+                          </tr>
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  </table>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% else %}
+      {% if teamData.statsTable.data.rows is defined %}
+        {% set title_p = 'JUGADOR' %}
+        {% set title_t = 'EQUIPO' %}
+        {% if module.template == 'club_player_most_goaler' %}
+          {% set info_key = [['player','first_name','last_name'], 'total_goals'] %}
+          {% set stat_title = title_p %}
+          {% set col_name = 'GA' %}
+          {% set data_array = teamData %}
+          {% set tableTitle = 'Más goleadores' %}
+        {% elseif module.template == 'club_player_most_blocking' %}
+          {% set info_key = [['player','first_name','last_name'], 'outfielder_block'] %}
+          {% set stat_title = title_p %}
+          {% set col_name = 'T BLQ' %}
+          {% set data_array = teamData %}
+          {% set tableTitle = 'Más defensas' %}
+        {% elseif module.template == 'club_player_passes_most_successful' %}
+          {% set info_key = [['player','first_name','last_name'], 'successful_passes'] %}
+          {% set stat_title = title_p %}
+          {% set col_name = 'PA' %}
+          {% set data_array = teamData %}
+          {% set tableTitle = 'Más pases' %}
+        {% elseif module.template == 'club_player_most_saves' %}
+          {% set info_key = [['player','first_name','last_name'], 'saves'] %}
+          {% set stat_title = title_p %}
+          {% set col_name = 'AT' %}
+          {% set data_array = teamData %}
+          {% set tableTitle = 'Más porteros' %}
+        {% elseif module.template == 'club_player_most_expulsions' %}
+          {% set info_key = [['player','first_name','last_name'], 'fk_foul_lost'] %}
+          {% set stat_title = title_p %}
+          {% set col_name = 'FC' %}
+          {% set data_array = teamData %}
+          {% set tableTitle = 'Más expulsiones' %}
+        {% elseif module.template == 'club_player_most_amonstations' %}
+          {% set info_key = [['player','first_name','last_name'], 'fk_foul_lost'] %}
+          {% set stat_title = title_p %}
+          {% set col_name = 'FC' %}
+          {% set data_array = teamData %}
+          {% set tableTitle = 'Más amonestaciones' %}
+        {# {% elseif module.template == 'club_team_most_goalers' %}
+          {% set info_key = [['team','short_name'], 'goals'] %}
+          {% set stat_title = title_t %}
+          {% set col_name = 'GF' %}
+          {% set data_array = teamData %}
+          {% set tableTitle = 'Más goleadores' %}
+        {% elseif module.template == 'club_team_most_defensive' %}
+          {% set info_key = [['team','logo'], ['team','short_name'], 'locks'] %}
+          {% set stat_title = title_t %}
+          {% set col_name = 'BLQ' %}
+          {% set data_array = statsServiceData[0] %}
+          {% set validation = false %}
+        {% elseif module.template == 'club_team_expulsions' %}
+          {% set info_key = [['team','logo'], ['team','short_name'], 'fk_foul_lost'] %}
+          {% set stat_title = title_t %}
+          {% set col_name = 'FC' %}
+          {% set data_array = statsServiceData[0] %}
+          {% set validation = false %}
+        {% elseif module.template == 'club_team_amonestations' %}
+          {% set info_key = [['team','logo'], ['team','short_name'], 'fk_foul_lost'] %}
+          {% set stat_title = title_t %}
+          {% set col_name = 'FC' %}
+          {% set data_array = statsServiceData[0] %}
+          {% set validation = false %} #}
+        {% endif %}
+        {% if data_array is iterable %}
+          {% if data_array.statsTable.data.rows is not empty %}
+            <div class="sn-league-stadistics" {{ data_camus_module_type["club"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+              <div class="media-container">
+                <div class="content">
+                  <div class="stadistics-header">
+                    <div class="title" {{ data_camus_title }}>
+                      <span>
+                        {% if module.title is not empty %}
+                          {{ module.title|striptags }}
+                        {% else %}
+                          {{ tableTitle }}
+                        {% endif %}
+                      </span>
+                    </div>
+                  </div>
+                  <table class="stadistics-table table-content">
+                    <tr>
+                      <th>POS</th>
+                      <th>{{ stat_title }}</th>
+                      <th>{{ col_name }}</th>
+                    </tr>
+                    {% for player in data_array.statsTable.data.rows|slice(0,5) %}
+                      {% set i = 0 %}
+                      <tr>
+                        <td>
+                          {% if loop.index < 10 %}
+                            {{ '0' ~ loop.index }}
+                          {% elseif loop.index >= 10 %}
+                            {{ loop.index }}
+                          {% endif %}
+                          <img src="{{ getImageMictlan("0x30/" ~ player.player.image) }}" alt="">
+                        </td>
+                        <td class="only-left">
+                          <a style="color:#4183C4;" href="/external/ulama/{{player.player.id}}">
+                            {{ player[info_key[i][0]][info_key[i][1]]|split(' ')[0] ~ ' ' ~ player[info_key[i][0]][info_key[i][2]] }}
+                          </a>
+                         </td>
+                        {% set i = i + 1 %}
+                        <td>
+                          {% if player[info_key[i]] is defined %}
+                            {{ player[info_key[i]] }}
+                          {% else %}
+                            0
+                          {% endif %}
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </table>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endif %}

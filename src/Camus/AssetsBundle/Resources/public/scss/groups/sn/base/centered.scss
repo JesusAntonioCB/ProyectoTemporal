@@ -1,0 +1,55 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sn-centered{
+  @include global-container-1c;
+  .media-container{
+    @include rows-height(1);
+    .section-see-more-container-transparent ~ .img-container, .section-see-more-container-transparent ~ .content-container, .section-see-more-container-transparent[style*="block"] ~ .img-container, .section-see-more-container-transparent[style*="block"] ~ .content-container{
+      height: 44%;
+    }
+    .section-see-more-container-transparent[style*="none"] ~ .img-container, .section-see-more-container-transparent[style*="none"] ~ .content-container{
+      height: 50%;
+    }
+    .img-container{
+      height: 50%;
+    }
+    .content-container{
+      height: 50%;
+      padding: 10px 5px 0;
+      @include container-super-light-gray;
+      text-align: center;
+      .title{
+        max-height: 79px;
+        min-height: 26px;
+        margin-bottom: 10px;
+        @include text-with-roboto-black-color-dark-gray;
+        font-size: 24px;
+        line-height: 26px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+      .blog-name{
+        min-height: 20px;
+        @include text-with-roboto-medium-color-night-gray;
+        font-weight: 600;
+      }
+      .author{
+        @include text-with-roboto-regular-color-gray;
+        font-size: 11px;
+        line-height: 12px;
+      }
+      .social-media{
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}

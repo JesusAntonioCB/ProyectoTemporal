@@ -1,0 +1,1 @@
+.skyscraper{width:160px;height:600px;position:fixed !important;z-index:0}.skyscraper.left{left:0}.skyscraper.right{right:0}@media only screen and (max-width: 1260px){.skyscraper{z-index:-1}}@media only screen and (max-width: 1024px){.skyscraper{display:none}}

@@ -1,0 +1,98 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.row-numbered-red{
+  position: relative;
+  padding: 10px 0;
+  .count-container{
+    position: absolute;
+    top: 25%;
+    left: -26px;
+    margin: 25px 0;
+    display: block;
+    width: 0px;
+    height: 0px;
+    border-right: 25px solid transparent;
+    border-bottom: 16px solid var(--border-color);
+    border-left: 25px solid transparent;
+    transform: rotate(35deg);
+    span{
+      color: $color-white;
+      font-size: 20px;
+      z-index: 1;
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      transform: rotate(-36deg);
+    }
+    &:before{
+      border-bottom: 25px solid var(--border-color);
+      border-left: 7.5px solid transparent;
+      border-right: 7.5px solid transparent;
+      position: absolute;
+      height: 0;
+      width: 0;
+      top: -14.5px;
+      left: -16.5px;
+      display: block;
+      content: '';
+      transform: rotate(-35deg);
+    }
+    &:after{
+      position: absolute;
+      display: block;
+      top: 2px;
+      left: -26px;
+      width: 0px;
+      height: 0px;
+      border-right: 25px solid transparent;
+      border-bottom: 16px solid var(--border-color);
+      border-left: 25px solid transparent;
+      transform: rotate(-70deg);
+      content: '';
+    }
+  }
+  .thumbnail-container{
+    float: left;
+    width: 82px;
+    height: 95px;
+    margin-right: 10px;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .title-container{
+    padding-right: 5px;
+    overflow: hidden;
+    .title{
+      @include text-with-YanoneKaffeesatz-color-black;
+      font-size: 18px;
+      line-height: 18px;
+    }
+    // .author{
+    //   float: left;
+    //   h2{
+    //     height: 13px;
+    //     max-width: 174px;
+    //     overflow: hidden;
+    //     font-size: 11px;
+    //     font-weight: 600;
+    //     margin: 5px 0 0;
+    //   }
+    // }
+  }
+  .headline-container{
+    .headline{
+      @include text-with-sans-pro-color-tuna;
+    }
+  }
+  &:after{
+    content: '';
+    display: table;
+    clear: both;
+  }
+}

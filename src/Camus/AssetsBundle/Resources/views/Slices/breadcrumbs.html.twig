@@ -1,0 +1,71 @@
+{% if part == 1 %}
+  {% if headerType == 0 %}
+    {% for section in jsonData.sections %}
+      {% if section.visible is defined and section.visible == true %}
+        <li><a href="{{ section.url }}">{{section.title}}</a></li>
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    {% if jsonData.breadcrumb|length > 0 %}
+      <li class="breadcrumbs">
+        <a href="/">Fama</a>
+        {% set urlAnchor = '' %}
+        {% for item in jsonData.breadcrumb %}
+          {% set urlAnchor = urlAnchor ~ item.url %}
+          {% if item.identifier == "opinion" %}
+            <span class="icon"></span>
+            <a href="{{ urlAnchor }}">Opinión {{ item.title }}</a>
+          {% else %}
+            {% if jsonData.breadcrumb.1 is defined %}
+              {% if jsonData.breadcrumb.1.identifier == "opinion" %}
+              {% else %}
+                <span class="icon"></span>
+                <a href="{{ urlAnchor }}">{{ item.title }}</a>
+              {% endif %}
+            {% else %}
+              <span class="icon"></span>
+              <a href="{{ urlAnchor }}">{{ item.title }}</a>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </li>
+      {% set currentSub = jsonData.breadcrumb|last %}
+      {% for subsection in jsonData.selectedSection.data %}
+        {% if subsection.title != currentSub.title %}
+          {% if subsection.slug.id is defined %}
+            {% if subsection.visible is defined and subsection.visible == true %}
+              <li class="subsection"><a href="{{ subsection.slug.slug }}">{{ subsection.title }}</a></li>
+            {% endif %}
+          {% else %}
+            {% if jsonData.selectedSectionFather.url is defined %}
+              {% if subsection.visible is defined and subsection.visible == true %}
+                <li class="subsection"><a href="{{ jsonData.selectedSectionFather.url~jsonData.selectedSection.url~subsection.url }}">{{ subsection.title }}</a></li>
+              {% endif %}
+            {% else %}
+              {% if subsection.visible is defined and subsection.visible == true %}
+                <li class="subsection"><a href="{{ jsonData.selectedSection.url~subsection.url }}">{{ subsection.title }}</a></li>
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% for section in jsonData.sections %}
+        {% if section.visible is defined and section.visible == true %}
+          <li><a href="{{ section.url }}">{{section.title}}</a></li>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+{% elseif part == 2 %}
+  {% if jsonData.breadcrumb|length > 0 %}
+    <div class="breadcrumbs">
+      <div><a href="/">Fama</a></div>
+      {% set urlAnchor = '' %}
+      {% for item in jsonData.breadcrumb %}
+        {% set urlAnchor = urlAnchor ~ item.url %}
+        <div><a href="{{ urlAnchor }}">{{ item.title }}</a></div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endif %}

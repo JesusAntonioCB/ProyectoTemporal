@@ -1,0 +1,99 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.nd-rnd-media{
+  margin-bottom: $global-margin-bottom;
+  overflow: hidden;
+  .related-title{
+    margin-bottom: 20px;
+    @include text-with-roboto-color-alizarin-crimson;
+    font-size: 18px;
+    line-height: 19px;
+  }
+  .notes-list{
+    padding-left: 0;
+    list-style-type: none;
+    @include text-with-roboto-regular-color-night-gray;
+    font-size: 15px;
+    line-height: 18px;
+    .notes-item-dual{
+      float: left;
+      width: 49%;
+      height: 80px;
+      background-color: $color-white;
+      .title, .img-container{
+        float: left;
+        width: 50%;
+      }
+      .title{
+        padding-right: 5px;
+      }
+      .img-container{
+        height: 100%;
+      }
+      &:after{
+        content: '';
+        display: table;
+        clear: both;
+      }
+      &:first-child{
+        margin-right: 2%;
+      }
+    }
+    .notes-item-core{
+      float: left;
+      width: 23.75%;
+      .img-container{
+        height: 80px;
+        margin-bottom: 20px;
+      }
+      &:nth-last-child(1n + 2){
+        margin-right: 10px;
+      }
+    }
+    &:after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+}
+@include one-column{
+  .nd-rnd-media{
+    .related-title{
+      margin-bottom: 15px;
+    }
+    .notes-list{
+      .notes-item-dual{
+        width: 100%;
+        &:first-child{
+          margin: {
+            right: 0;
+            bottom: 10px;
+          }
+        }
+      }
+      .notes-item-core{
+        width: 100%;
+        .img-container, .title{
+          float: right;
+          width: 50%;
+        }
+        .img-container{
+          margin-bottom: 0;
+        }
+        .title{
+          padding-right: 5px;
+        }
+        &:nth-last-child(1n + 2){
+          margin: {
+            right: 0;
+            bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+}

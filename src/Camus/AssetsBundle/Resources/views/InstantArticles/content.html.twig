@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" prefix="op: http://media.facebook.com/op#">
+    <head>
+        <meta property="fb:use_automatic_ad_placement" content="true">
+        <meta charset="utf-8">
+        <link rel="canonical" href="{{ domain~content.slugs.0.slug }}">
+        <link rel="stylesheet" title="default" href="#">
+        <title>{{ content.publishedVersion.title }}</title>
+        <meta property="fb:article_style" content="Noticias">
+    </head>
+    <body>
+      	<article>
+    		<header>
+                {{ include('ApplicationCamusAssetsBundle:InstantArticles:ads.html.twig') }}
+    			{% if mediaHeader.imagenes %}
+    					{% if mediaHeader.imagenes|length == 1 %}
+    						<figure data-mode=aspect-fit>
+                                <img src="{{ mediaHeader.imagenes.0|media_slug([], false, null, null, true) }}" />
+    		       				<figcaption>{{ mediaHeader.imagenes.0.publishedVersion.title }}</figcaption>
+    		       			</figure>
+    	       			{% else %}
+    		       			<figure class="op-slideshow">
+    						{% for imagen in mediaHeader.imagenes %}
+    							<figure data-mode=aspect-fit>
+                                    <img src="{{ imagen|media_slug([], false, null, null, true) }}" />
+    		       					<figcaption>{{ imagen.publishedVersion.title }}</figcaption>
+    		       				</figure>
+    		       			{% endfor %}
+    						</figure>
+    	       			{% endif %}
+    			{% else %}
+    				<figure data-mode=aspect-fit>
+    					<img src="{{domain}}/bundles/applicationcamusassets/images/placeholder.jpg" />
+    				</figure>
+    			{% endif %}
+    				<h1>{{ content.publishedVersion.title }}</h1>
+    				<h2>{{ content.publishedVersion.summary|striptags }}</h2>
+    				<h3 class="op-kicker">
+            			{{ signature }}
+    				</h3>
+    			<time class="op-published" dateTime="{{ content.publishedDate|date('Y-m-d\TH:i') }}">{{ content.publishedDate|date('Y-m-d\TH:i') }}</time>
+    		</header>
+    		{{ include('ApplicationCamusAssetsBundle:InstantArticles:chartbeat.html.twig') }}
+    		{{ include('ApplicationCamusAssetsBundle:InstantArticles:comscore.html.twig') }}
+    		{{ include('ApplicationCamusAssetsBundle:InstantArticles:google-analytics.html.twig') }}
+    		{% if mediaHeader.videos %}
+                {% if  mediaHeader.videos.0.providerName == "camus.media.brigthcove_provider" %}
+                    {% if mediaHeader.videos.0.publishedVersion.idYouTube|length > 0 %}
+                        <figure class="op-interactive">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{mediaHeader.videos.0.publishedVersion.idYouTube}}"></iframe>
+                        </figure>
+                    {% else %}
+                        {% if bcAccountId and bcPlayerId and  bcDataEmbed %}
+                            <figure class="op-interactive">
+                                <iframe src="https://players.brightcove.net/{{bcAccountId}}/{{bcPlayerId}}_{{bcDataEmbed}}/index.html?videoId={{ mediaHeader.videos.0.publishedVersion.providerReference }}" allowfullscreen webkitallowfullscreen mozallowfullscreen width="16" height="9"></iframe>
+                            </figure>
+                        {% endif %}
+                    {% endif %}
+                {% elseif mediaHeader.videos.0.providerName == "camus.media.youtube_provider" %}
+                    <figure class="op-interactive">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{mediaHeader.videos.0.publishedVersion.providerReference}}"></iframe>
+                    </figure>
+                {% endif %}
+    		{% endif %}
+            {% if content.contentType.shortName == "CRT" %}
+                <p>{{ content.publishedVersion.title }}</p>
+            {% endif %}
+    		{{ body | raw }}
+            {% for newsEventRel in content.getNewsEvents() %}
+                {% set newsEvent = newsEventRel.newsEvent %}
+                <br>
+                <br>
+                {% if newsEvent.title | length > 0 %}
+                    <p><b>{{ newsEvent.title }}</b></p>
+                {% endif %}
+                {% set newsEventBody = newsEvents[loop.index0] %}
+                {% if newsEventBody | length > 0 %}
+                    {{ newsEventBody | raw }}
+                {% endif %}
+            {% endfor %}
+    		{{ include('ApplicationCamusAssetsBundle:InstantArticles:footer.html.twig') }}
+        </article>
+    </body>
+ </html>

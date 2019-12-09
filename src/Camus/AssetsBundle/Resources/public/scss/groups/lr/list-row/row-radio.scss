@@ -1,0 +1,54 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.lr-row-radio{
+  height: 75px;
+  width: 100%;
+  display: flex;
+  flex: none;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 2px;
+  background-color: $color-light-cyan;
+  .plaza-broadcaster{
+    max-width: 120px;
+    padding-left: 12px;
+    @include text-with-sans-serif-color-night-gray;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .player{
+    width: 175px;
+    height: 70%;
+    margin-right: 10px;
+    .seen{
+      width: 60% !important;
+      .sphere{
+        width: 52px;
+        .fa{
+          font-size: 16px;
+        }
+        .fa-pause{
+          display: none;
+        }
+        &.playing{
+          .fa-play{
+            display: none;
+          }
+          .fa-pause{
+            display: block;
+          }
+        }
+      }
+    }
+    .loaded{
+      right: 0;
+      width: 70%;
+      font-size: 11px;
+      font-weight: 400;
+    }
+  }
+}

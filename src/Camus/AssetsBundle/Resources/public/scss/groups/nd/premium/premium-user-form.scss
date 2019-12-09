@@ -1,0 +1,1021 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.block-subscriptions{
+  //@include grid-dynamic-full();
+  width: 100%;
+  #milenio_premium{
+    &:after{
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+  .active-susc{
+    color: $color-red-dark;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 18px;
+    width: 200px;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+  .info-container{
+    .susc-texto-log{
+      font-size: 18px;
+      width: 430px;
+      margin: 15px 0 10px 20px;
+      letter-spacing: .1px;
+      line-height: 21px;
+    }
+  }
+  .vip_centerContainer{
+    width: 100%;
+    .tabla_suscripciones{
+      width: 100%;
+      #tb_subs_hist{
+        width: 100%;
+        .barra_susc_gris{
+          width: 100%;
+          th{
+            width: 20%;
+            &:first-child{
+              width: 60%;
+            }
+          }
+        }
+        .datos_susc{
+          width: 100%;
+          td{
+            width: 20%;
+            &:first-child{
+              width: 60%;
+            }
+          }
+        }
+      }
+    }
+    .impreso_digital{
+      width: 100%;
+      padding: 4px;
+      .susc_descripcion_logueado, .susc_descripcion{
+        .vip_suscripciones_tarjetas{
+          width: 100%;
+          img{
+            width: 100%;
+            max-width: 435px;
+          }
+        }
+      }
+      @include two-column{
+        .susc_descripcion_logueado, .susc_descripcion{
+          width: 100%;
+          float: none;
+          height: 470px;
+          .susc_texto_log, .susc_texto{
+            width: 100%;
+          }
+          .oferta_2pesos_txt{
+            font-size: 29px;
+          }
+          // .vip_suscripciones_tarjetas{
+          //   width: 100%;
+          //   max-width: 430px;
+          //   img{
+          //     width: 100%;
+          //   }
+          // }
+        }
+        .susc_imagen_logueado, .susc_imagen{
+          float: none;
+          margin: 0 auto;
+        }
+        .susc_descripcion{
+          height: 350px;
+        }
+      }
+      @include one-column{
+        .susc_imagen_logueado, .susc_imagen{
+          width: 100%;
+          background-position-x: 89%;
+          padding-top: 5px;
+        }
+        .susc_descripcion{
+          height: auto;
+          .subtitulo{
+            width: 100%;
+          }
+        }
+      }
+    }
+    .selecciona_impreso{
+      .box{
+      	border: 1px solid #ccc;
+        // heigh t: 18px;
+        cursor: pointer;
+        padding: 6px;
+        background-image: url("http://cdn.premium.milenio.com/images/bg_select2.png");
+        background-position: 50px 2px;
+        background-repeat: no-repeat;
+        width:400px;
+      }
+      @include one-column{
+        margin: 60px 0 0 0;
+        width: 100%;
+        .selectBoxNew{
+          .box{
+            width: 100%;
+          }
+          select{
+            width: 100%;
+          }
+        }
+        .bannerpaypalsus, .bannermercadosus{
+          width: 100%;
+          background-size: contain;
+        }
+        #btn_regresar2sus{
+          margin-left: 0;
+        }
+        #btn_step2sus{
+          margin-right: 0;
+        }
+      };
+    }
+    .right_column_step1{
+      @include one-column{
+        width: 100%;
+        img{
+          width: 100%;
+        }
+      }
+    }
+    #contact_form{
+      #contact_pais, #contact_estado, .select_sexo, #sexo_porsus, #anio_porsus, #contact_sexo{
+        position: relative;
+        left: auto;
+        margin-left: 0;
+        opacity: 1;
+      }
+      @include one-column{
+        margin-left: 0;
+        .tablaFac_contact{
+          table-layout: fixed;
+          width: 100%;
+          margin-left: 0;
+          td{
+            display: block;
+            &.cp_estados_billing{
+              position: relative;
+            }
+          }
+          tr:nth-child(11){
+            td{
+              display: flex;
+            }
+          }
+        }
+        .box_imgn_slectdbyuser{
+          img{
+            margin: 0;
+          }
+        }
+      }
+    }
+    button, #btnCompra_conCuenta, #btnCompra_sinCuenta, #btn_regresar2sus, #btn_step2sus, .botonFac, .btnFact, .btnTokenStep2{
+      background: none;
+      background-color: $color-red-dark;
+    }
+    #verinfo_contact{
+      padding: 5px;
+      @include one-column{
+        .tablaEnv{
+          margin-left: 5px;
+          width: 100%;
+          td:first-child div{
+            width: 130px;
+          }
+        }
+        .img_portada_verif{
+          img{
+            width: 100%;
+            margin: 0;
+          }
+        }
+      }
+    }
+    .pasos_suscripciones{
+      display: flex;
+      width: 100%;
+      @include two-column{
+        height: 75px;
+      }
+      &>div{
+        width: 25%;
+        @include one-column{
+          width: auto;
+          .paso_gray, .paso_green{
+            display: none;
+          }
+        }
+        .menupasos_text{
+          width: 70%;
+        }
+      }
+    }
+  }
+  .profile-container{
+    margin-top: 20px;
+    .main-info{
+      display: flex;
+      flex-wrap: wrap;
+      .img-container{
+        float: left;
+        width: 50%;
+        img{
+          width: 215px;
+        }
+      }
+      .info-container{
+        width: 50%;
+        #user-firstname, #user-lastname{
+          width: 100%;
+          float: right;
+          color: $color-red-dark;
+          font-weight: 800;
+          font-size: 22px;
+        }
+        .profile-buttons-container{
+          display: block;
+          @include one-column{
+            display: none;
+          }
+        }
+        @include one-column{
+          padding-left: 15px;
+        }
+      }
+    }
+    .profile-buttons-container{
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      height: 61px;
+      float: right;
+      display: none;
+      @include one-column{
+        display: flex;
+        height: 40px;
+        margin-top: 30px;
+      }
+      button{
+        background-color: $color-pencil-gray;
+        padding: 10px;
+        color: $color-white;
+      }
+    }
+    .profile-info-container{
+      display: flex;
+      flex-wrap: wrap;
+      .personal-data-tag{
+        display: block;
+        padding-top: 8px;
+        margin-top: 21px;
+        border-top: 1px solid $color-red-dark;
+        color: $color-red-dark;
+        font-size: 14px;
+        width: 100%;
+      }
+      .user-info{
+        margin-top: 5px;
+        width: 100%;
+        span{
+          display: block;
+          color: $color-black;
+        }
+        input[type="text"]{
+          width: 100%;
+          border: none;
+          padding: 5px;
+          background-color: rgba($color-light-cyan,0.5);
+        }
+        select{
+          width: 100%;
+        }
+        &.user-year-container, &.user-sex-container{
+          width: 50%;
+        }
+      }
+      .first-column, .second-column{
+        display: flex;
+        flex-wrap: wrap;
+        width: 50%;
+        @include one-column{
+          width: 100%;
+        }
+      }
+    }
+    .profile-devices-container{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      .interest-data-tag{
+        display: block;
+        padding-top: 8px;
+        margin-top: 21px;
+        border-top: 1px solid $color-red-dark;
+        color: $color-red-dark;
+        font-size: 14px;
+        width: 100%;
+      }
+      .list-device-container{
+        width: 100%;
+        .device-container{
+          width: 100%;
+          padding: 5px 4px;
+          background-color: rgba($color-light-cyan, 0.5);
+          margin: 2px 0;
+          font-size: 11px;
+          .device-date{
+            float: right;
+            margin: 0 10px;
+          }
+          .fa-times{
+            float: right;
+            padding: 2px;
+          }
+        }
+      }
+      .info-device-container{
+        width: 100%;
+        font-size: 10px;
+      }
+    }
+    .profile-newsletter-container{
+      .personal-data-tag{
+        display: block;
+        padding-top: 8px;
+        margin-top: 21px;
+        border-top: 1px solid $color-red-dark;
+        color: $color-red-dark;
+        font-size: 14px;
+      }
+      .newsletter-container{
+        .mewsletter-tag{
+          float: left;
+          margin-bottom: 10px;
+        }
+        .newsletter-checker{
+          float: left;
+          width: 15%;
+          input[type="checkbox"]{
+            width: 40px;
+            height: 40px;
+            opacity: 0;
+            position: absolute;
+            &:checked ~ .show-checked{
+              .fa-check{
+                display: block;
+              }
+            }
+          }
+          .show-checked{
+            width: 40px;
+            height: 40px;
+            pointer-events: none;
+            background-color: rgba($color-light-cyan, 0.5);
+            .fa-check{
+              display: none;
+              font-size: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.suscripciones-epaper.apply-grid-full{
+  width: 103%;
+  .left-col{
+    .premium-menu{
+      cursor: pointer;
+    }
+  }
+  .right-col{
+    .principal.suscripciones-perfil, .principal.suscripciones-editar-perfil{
+      .mis-datos{
+        border-bottom: 1px solid $color-red-dark;
+        font-size: 12px;
+        padding-bottom: 20px;
+        color: $color-red-dark;
+        text-transform: uppercase;
+        .btnEditarPerfil, .btnGuardarPerfil{
+          background-color: $color-pencil-gray;
+          padding: 7px 30px;
+          float: right;
+          color: $color-white;
+          text-align: center;
+          font-size: 900;
+          margin: 0 5px;
+          cursor: pointer;
+        }
+        .btnCerrarSesion{
+          background-color: $color-pencil-gray;
+          padding: 7px 30px;
+          float: right;
+          color: $color-white;
+          text-align: center;
+          font-size: 900;
+          margin: 0 5px;
+          cursor: pointer;
+        }
+      }
+      .datos-photo{
+        height: 210px;
+        background-color: $color-white;
+        padding: 5px;
+        margin-bottom: 25px;
+        position: relative;
+        >img{
+          float: left;
+          margin-right: 15px;
+          max-width: 200px;
+        }
+        >div{
+          float: left;
+          width: 50%;
+          font-size: 20px;
+          color: $color-red-dark;
+          font-weight: 900;
+        }
+        .mis-datos{
+          display: none;
+        }
+        .btnCambiarFoto{
+          padding: 2px 10px;
+          position: absolute;
+          bottom: 5px;
+          left: 220px;
+          cursor: pointer;
+          border: 2px solid $color-pencil-gray;
+        }
+      }
+      >.mis-datos:nth-child(3){
+        display: none;
+        padding-bottom: 10px;
+        a{
+          display: none;
+        }
+      }
+      .datos-generales{
+        /*display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;*/
+        max-height: 360px;
+        padding-left: 0;
+        width: 100%;
+        li{
+          list-style: none;
+          width: 48%;
+          margin-bottom: 10px;
+          margin-left: 10px;
+          display: inline-block;
+          vertical-align: top;
+          .label-desc{
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+            i{
+              display: inline;
+              position: relative;
+              color: $color-black;
+              font-weight: 700;
+              opacity: 1;
+              padding: 3px 6px;
+              background-color: $color-ivory;
+              border-radius: 40px;
+              margin-left: 5px;
+              top: -3px
+            }
+          }
+          .label-value{
+            min-height: 40px;
+            background-color: $color-ivory;
+            padding: 10px;
+          }
+        }
+      }
+      .disposivos-moviles{
+        font-size: 12px;
+        line-height: 22px;
+        font-weight: 700;
+        padding-bottom: 10px;
+        color: $color-red-dark;
+        border-bottom: 1px solid $color-red-dark;
+        text-transform: uppercase;
+      }
+      .sesiones{
+        padding-left: 0;
+        li{
+          list-style: none;
+          width: 100%;
+          padding: 10px;
+          display: flex;
+          .dispositivo{
+            border: none;
+            font-size: 11px;
+            line-height: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            width: 40%;
+            height: auto;
+            margin: 0;
+            line-height: initial;
+            background-color: transparent;
+          }
+          .acceso{
+            width: 40%;
+            background-color: transparent;
+            line-height: 14px;
+            font-size: 11px;
+            font-weight: 400;
+            text-transform: uppercase;
+          }
+          .eliminar{
+            width: 10%;
+            background-color: transparent;
+            color: $color-black;
+            span{
+              color: $color-black;
+              opacity: .9;
+              font-size: 12px;
+            }
+          }
+        }
+        li:nth-child(even){
+          background-color: $color-white;
+        }
+        li:first-child{
+          background-color: $color-light-cyan;
+          .dispositivo{
+            font-weight: 700;
+          }
+          .acceso{
+            font-weight: 700;
+          }
+        }
+      }
+      .newsletter{
+        font-size: 12px;
+        line-height: 22px;
+        font-weight: 700;
+        padding-bottom: 10px;
+        color: $color-red-dark;
+        border-bottom: 1px solid $color-red-dark;
+        text-transform: uppercase;
+      }
+    }
+    .principal.suscripciones-editar-perfil{
+      .datos-generales{
+        max-height: 374px;
+        li{
+          .label-value{
+            select{
+              margin-bottom: 0;
+              background-color: transparent;
+              padding: 0;
+            }
+            input[type="text"]{
+              padding: 0;
+              width: 100%;
+              border: none;
+              background-color: transparent;
+            }
+          }
+        }
+      }
+    }
+    .principal.suscripciones-datos{
+      .center-subcol{
+        >img{
+          display: none;
+        }
+      }
+    }
+    .principal.suscripciones-confirma{
+      .left-subcol{
+        .values{
+          height: auto;
+        }
+      }
+    }
+    .center-subcol{
+      .steps{
+        display: none !important;
+      }
+    }
+    .btnAnterior, .btnSiguiente, .btnRestablecer, .btnComprar{
+      cursor: pointer;
+    }
+    // >.steps{
+    //   display: block !important;
+    // }
+  }
+}
+
+@include three-column{
+  .suscripciones-epaper.apply-grid-full{
+    .left-col{
+      width: 35%;
+    }
+    .right-col{
+      width: 65%;
+    }
+  }
+}
+
+@include two-column{
+  .suscripciones-epaper.apply-grid-full{
+    .left-col{
+      width: 100%;
+      >img{
+        float: left;
+      }
+      >p{
+        width: 50%;
+        margin-left: 50%;
+      }
+      >h3{
+        display: none;
+      }
+      >.ingreso{
+        width: 50%;
+        margin-left: 50%;
+        padding: 10px;
+        color: $color-white;
+        text-align: center;
+        background-color: $color-pencil-gray;
+        .suscripciones-text-small{
+          font-size: 13px;
+          color: $color-white;
+          display: inline;
+          margin-right: 5px;
+        }
+        .btn-login-gigya{
+          background-color: transparent;
+          padding: 0;
+          display: inline;
+          font-size: 13px;
+        }
+      }
+      .premium-menu{
+        width: 50%;
+        &.active{
+          background-color: $color-white;
+        }
+        &[data-opt="perfil"]{
+          float: right;
+        }
+        &[data-opt="suscripciones"]{
+          float: left;
+        }
+      }
+    }
+    .right-col{
+      width: 100%;
+      background-color: $color-white;
+      .center-subcol{
+        .steps{
+          display: block !important;
+          margin-top: 15px;
+          li{
+            display: none;
+          }
+          li.active{
+            width: 100%;
+            display: block;
+          }
+        }
+      }
+      >.steps{
+        display: none !important;
+      }
+      .left-subcol{
+        .selectEdicion{
+          background-color: $color-light-cyan;
+        }
+      }
+      .right-subcol{
+        .cr{
+          background-color: $color-light-cyan;
+        }
+      }
+      .principal.suscripciones-datos{
+        .center-subcol{
+          >img{
+            display: block;
+          }
+        }
+        .left-subcol{
+          width: 100%;
+          display: flex;
+          flex-flow: column;
+          flex-wrap: wrap;
+          max-height: 680px;
+          input[type="text"].mandatory, input[type="password"].mandatory{
+            background-color: $color-light-cyan;
+            width: 50%;
+            float: left;
+          }
+          input[name="telefono"]{
+            width: 50%;
+            margin-left: 0;
+            background-color: $color-light-cyan;
+          }
+          select.mandatory{
+            width: 50%;
+            float: left;
+            background-color: $color-light-cyan;
+            height: 35px;
+            margin-left: 0;
+          }
+          .error-mandatory{
+            width: 50%;
+            float: left;
+          }
+          .checkbox{
+            float: right;
+            // width: 50%;
+            margin-left: 5px;
+            margin-right: 5px;
+            .cr{
+              background-color: $color-light-cyan;
+            }
+          }
+          .datos-facturacion{
+            width: 48%;
+            input[type="text"].mandatory{
+              width: 100%;
+            }
+            select{
+              background-color: $color-light-cyan;
+            }
+          }
+        }
+        .right-subcol{
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: row-reverse;
+          .btnSiguiente{
+            width: 33%;
+            transform: translateX(0);
+          }
+          .btnAnterior{
+            width: 33%;
+          }
+          .btnRestablecer{
+            width: 33%;
+            background-color: $color-red-dark;
+          }
+          .aviso-legal{
+            width: 100%;
+            transform: translateX(0);
+          }
+        }
+      }
+      .principal.suscripciones-confirma{
+        .left-subcol{
+          width: 100%;
+          margin-bottom: 30px;
+          .suscripciones-text-small{
+            margin: 20px 0;
+          }
+          .lbl-confirma{
+            width: 25%;
+            margin: 5px 0;
+          }
+          .values{
+            width: 70%;
+            margin: 5px 0;
+          }
+        }
+        .right-subcol{
+          width: 100%;
+          .btnComprar{
+            width: 49%;
+            float: right;
+          }
+          .btnAnterior{
+            width: 49%;
+          }
+          .aviso-legal{
+            width: 100%;
+            transform: translateX(0);
+          }
+        }
+      }
+      .principal.suscripciones-perfil, .principal.suscripciones-editar-perfil{
+        >.mis-datos{
+          a{
+            display: none;
+          }
+        }
+        >.mis-datos:first-child{
+          display: none;
+        }
+        .datos-photo{
+          .mis-datos{
+            display: block;
+            float: right;
+            margin-top: 70px;
+            border: none;
+            a{
+              padding: 10px 30px;
+            }
+          }
+          .btnCambiarFoto{
+            padding: 15px 30px;
+            bottom: 40%;
+            left: 32px;
+            color: $color-white;
+            border: 2px solid $color-white;
+          }
+        }
+        .sesiones{
+          li{
+            width: 98%;
+            margin: 2px auto;
+            background-color: $color-light-cyan;
+          }
+          li:nth-child(odd), li:nth-child(even){
+            background-color: $color-light-cyan;
+          }
+        }
+        >.mis-datos:nth-child(3){
+          display: block;
+        }
+      }
+      .principal.suscripciones-editar-perfil{
+        .datos-photo{
+          >img{
+            filter: brightness(50%) blur(1px);
+          }
+        }
+      }
+      .btnSiguiente{
+        width: 200%;
+        transform: translateX(-50%);
+      }
+      .aviso-legal{
+        width: 200%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
+
+@include one-column{
+  .suscripciones-epaper.apply-grid-full{
+    .left-col{
+      >img{
+        float: none;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+      }
+      >p{
+        display: none;
+      }
+      >.ingreso{
+        width: 100%;
+        margin-left: 0;
+        font-size: 11px;
+        padding: 15px;
+        text-align: center;
+        .suscripciones-text-small{
+          font-size: 11px;
+          font-weight: normal;
+        }
+        >a{
+          font-weight: bolder;
+        }
+      }
+    }
+    .right-col{
+      .principal.suscripciones-elige{
+        .center-subcol{
+          >img{
+            width: 100%;
+          }
+        }
+        .left-subcol{
+          width: 100%;
+          margin-bottom: 20px;
+        }
+        .right-subcol{
+          width: 100%;
+          .btnSiguiente{
+            width: 100%;
+            transform: translateX(0);
+          }
+        }
+      }
+      .principal.suscripciones-datos{
+        .center-subcol{
+          margin-bottom: 20px;
+          img{
+            width: 100%;
+          }
+        }
+        .left-subcol{
+          max-height: initial;
+          input[type="text"].mandatory, input[type="password"].mandatory{
+            width: 100%;
+          }
+          select.mandatory{
+            width: 100%;
+          }
+          .datos-facturacion{
+            width: 100%;
+          }
+        }
+        .right-subcol{
+          flex-direction: column-reverse;
+          .btnSiguiente{
+            width: 100%;
+            order: 2;
+          }
+          .btnAnterior{
+            width: 100%;
+            order: 3;
+          }
+          .btnRestablecer{
+            width: 100%;
+            order: 4;
+          }
+          .aviso-legal{
+            order: 1;
+          }
+        }
+      }
+      .principal.suscripciones-confirma{
+        .left-subcol{
+          .lbl-confirma{
+            width: 48%;
+          }
+          .values{
+            width: 52%;
+          }
+        }
+      }
+      .principal.suscripciones-perfil, .principal.suscripciones-editar-perfil{
+        .mis-datos{
+          display: none;
+        }
+        .datos-photo{
+          img{
+            width: 50%;
+          }
+          >div{
+            width: 42% !important;
+          }
+          .mis-datos{
+            a{
+              padding: 10px 20px;
+            }
+          }
+        }
+        .datos-generales{
+          max-height: max-content;
+          li{
+            width: 96%;
+            margin: 0 auto;
+          }
+        }
+        .sesiones{
+          .dispositivo{
+            width: 60%;
+          }
+        }
+      }
+      .principal.suscripciones-editar-perfil{
+        .datos-photo{
+          .mis-datos{
+            a{
+              padding: 10px 17px;
+            }
+          }
+          .btnCambiarFoto{
+            padding: 10px 15px;
+            bottom: 53%;
+            left: 19px;
+          }
+        }
+      }
+    }
+  }
+}

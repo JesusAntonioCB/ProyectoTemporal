@@ -1,0 +1,19 @@
+<div id="sidebar">
+  <span class="close fa fa-times camus_mobile"></span>
+  <div id="piano-user"></div>
+  <div id="social-login">
+    <span class="close fa fa-times"></span>
+    <span class="btn-register">REGÍSTRATE</span>
+    <span class="btn-login">INGRESAR</span>
+  </div>
+  <div id="search-bar">
+    <form class="search-form search-item search-active" action="/buscador" method="GET">
+      <input type="text" class="search-input search-hidden" name="text" placeholder="¿Qué buscas?">
+      <span id="search-open" class="search-icon fa fa-search"><a href=""></a></span>
+    </form>
+  </div>
+  {#<div class="container-today">
+    {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:topiclist')) }}
+  </div>#}
+  {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:menu', {name: 'menu-mobile'})) }}
+</div>

@@ -1,0 +1,111 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.nd-sd-ranking{
+  width: $two-column;
+  margin-bottom: $global-margin-bottom;
+  overflow: hidden;
+  .media-container{
+    p{
+      @include text-with-utopia-5-color-night-gray;
+      font-size: 17px;
+      line-height: 24px;
+    }
+    .news-elements-ranking-table{
+      background-color: $color-very-light-gray;
+      padding: 10px 20px 10px 55px;
+      .title-container{
+        @include text-with-roboto-black-color-night-gray;
+        font-size: 24px;
+        line-height: 36px;
+      }
+      .dni{
+        float: left;
+        margin-right: 5px;
+        color: $color-yellow;
+      }
+      .table{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        border-top: 1px solid $color-white;
+        .lr-ranking-cell{
+          width: 50%;
+          padding: 15px 15px 10px 15px;
+          border-bottom: 1px solid $color-white;
+          .position, .img-container, .description{
+            float: left;
+          }
+          .position{
+            max-width: 65px;
+            font-size: 15px;
+            @include text-with-roboto-black-color-night-gray;
+          }
+          .img-container, .description{
+            margin-left: 7px;
+          }
+          .img-container{
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            img{
+              height: 100%;
+              max-width: initial;
+            }
+          }
+          .description {
+            max-width: 110px;
+            .name{
+              font-size: 14px;
+              line-height: 18px;
+              @include text-with-roboto-black-color-night-gray;
+            }
+            .age{
+              margin-bottom: 5px;
+              font-size: 11px;
+              text-transform: uppercase;
+              line-height: 14px;
+              padding-bottom: 5px;
+              @include text-with-roboto-medium-color-night-gray;
+            }
+            .amount-money{
+              font-size: 14px;
+              text-transform: uppercase;
+              line-height: 18px;
+              @include text-with-roboto-regular-color-night-gray;
+            }
+          }
+          &:after{
+            content: '';
+            display: table;
+            clear: both;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include one-column{
+  .nd-sd-ranking{
+    width: $one-column;
+    margin: 14px 0;
+    .media-container{
+      .news-elements-ranking-table{
+        padding: 15px 5px 20px 35px;
+        .title-container{
+          font-size: 18px;
+          line-height: 22px;
+        }
+        .table{
+          .lr-ranking-cell{
+            width: 100%;
+            padding: 15px 0 10px;
+          }
+        }
+      }
+    }
+  }
+};
