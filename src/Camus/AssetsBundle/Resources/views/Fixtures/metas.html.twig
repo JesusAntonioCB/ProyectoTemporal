@@ -1,6 +1,6 @@
-{% macro data(url, title, description, keywords, image = "/bundles/applicationcamusassets/images/placeholder.jpg", contentType = "",playerId = "") %}
+{% macro data(url, title, description, keywords, image = "/bundles/camusassets/images/placeholder.jpg", contentType = "",playerId = "") %}
   {% if image is empty %}
-    {% set image = "/bundles/applicationcamusassets/images/placeholder.jpg" %}
+    {% set image = "/bundles/camusassets/images/placeholder.jpg" %}
   {% endif %}
   {% set urlOf = site_domain ~ app.request.pathinfo %}
   <meta property="fb:app_id" content="604118326773630" />

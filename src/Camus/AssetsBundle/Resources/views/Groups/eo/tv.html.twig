@@ -25,17 +25,17 @@
           <div class="img-milenio">
             <a href="">
               {#
-                <img src="/bundles/applicationcamusassets/images/extraordinary-openings/milenio-television.png" alt="" />
+                <img src="/bundles/camusassets/images/extraordinary-openings/milenio-television.png" alt="" />
               #}
             </a>
           </div>
         </div>
         <div class="detail-container" {{ data_camus_modules }}>
-          {{ include ('Application\Camus\AssetsBundle:Groups:lo/base.html.twig', {father: module}) }}
+          {{ include ('@CamusAssets/Groups/lo/base.html.twig', {father: module}) }}
           {% if module.modules|length > 0 %}
             {% for listElement in module.modules %}
               {% set type = listElement.type|splitTemplate %}
-              {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+              {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
             {% endfor %}
           {% endif %}
         </div>
@@ -56,7 +56,7 @@
         <div class="img-milenio-container">
           <a href="">
             {#
-              <img src="/bundles/applicationcamusassets/images/extraordinary-openings/milenio-television.png" alt="">
+              <img src="/bundles/camusassets/images/extraordinary-openings/milenio-television.png" alt="">
             #}
 
           </a>
@@ -110,7 +110,7 @@
         </div>
         {#<div class="img-milenio-container">
           <a href="">
-            <img src="/bundles/applicationcamusassets/images/extraordinary-openings/milenio-television.png" alt="">
+            <img src="/bundles/camusassets/images/extraordinary-openings/milenio-television.png" alt="">
           </a>
         </div>#}
       </div>

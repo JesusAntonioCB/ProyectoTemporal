@@ -109,14 +109,14 @@ class TickerCaliente extends React.Component {
         '+ titleStatus +'\
       </div>\
       <div class="team-first">\
-        <img class="team-image" onerror="this.onerror=null;this.src=\'/bundles/applicationcamusassets/images/mt_placeholder_team.png\';" src="https://static.mediotiempo.com/0x30/'+data["home_team_logo"]+'" alt="'+data["home_team_name"]+'">\
+        <img class="team-image" onerror="this.onerror=null;this.src=\'/bundles/camusassets/images/mt_placeholder_team.png\';" src="https://static.mediotiempo.com/0x30/'+data["home_team_logo"]+'" alt="'+data["home_team_name"]+'">\
         <span class="team-name"><a href="/external/ulama/'+data["match_id"]+'">'+data["home_team_name"]+'</a></span>\
         <span class="team-score">\
           '+htmlTeamHomeScore+'\
         </span>\
       </div>\
       <div class="team-second">\
-        <img class="team-image" onerror="this.onerror=null;this.src=\'/bundles/applicationcamusassets/images/mt_placeholder_team.png\';" src="https://static.mediotiempo.com/0x30/'+data["away_team_logo"]+'" alt="'+data["away_team_name"]+'">\
+        <img class="team-image" onerror="this.onerror=null;this.src=\'/bundles/camusassets/images/mt_placeholder_team.png\';" src="https://static.mediotiempo.com/0x30/'+data["away_team_logo"]+'" alt="'+data["away_team_name"]+'">\
         <span class="team-name"><a href="/external/ulama/'+data["match_id"]+'">'+data["away_team_name"]+'</a></span>\
         <span class="team-score">\
           '+htmlTeamAwayScore+'\
@@ -189,7 +189,7 @@ class TickerCaliente extends React.Component {
           var countAd = 1;
           var adLoaded = false;
           $.each(data,function(key,value){
-            elSliTicker.find(".items-league").append("<img class='img-league' onerror='this.onerror=null;this.src=\"/bundles/applicationcamusassets/images/mt_placeholder_team.png\";' src="+value["logo"]+" alt='Liga'>");
+            elSliTicker.find(".items-league").append("<img class='img-league' onerror='this.onerror=null;this.src=\"/bundles/camusassets/images/mt_placeholder_team.png\";' src="+value["logo"]+" alt='Liga'>");
             if(value["matches"]["jugando"] != undefined ){
               $.each(value["matches"]["jugando"],function(keyT,valueT){
                 var htmlLrTicker = oThis.renderlrTicker(valueT);

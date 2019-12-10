@@ -9,7 +9,7 @@
     <div class="content">
       <span class="title-edition">EDICIONES:</span>
       <ul class="list-editions">
-        {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:places',{section: currentPath})) }}
+        {{ render_esi(controller('@CamusFrontEnd/Default/places',{section: currentPath})) }}
       </ul>
     </div>
   </div>#}
@@ -24,7 +24,7 @@
       <div class="container-left-mobile">
         <span class="fa fa-bars"></span>
       </div> #}
-      <a href="/"><img src="/bundles/applicationcamusassets/images/logo_fam.png" alt="Revista FAMA" class="main-logo"/></a>
+      <a href="/"><img src="/bundles/camusassets/images/logo_fam.png" alt="Revista FAMA" class="main-logo"/></a>
       {# <div class="container-right">
         <div class="pase-container right-action-item">
           <span class="btn-login pase-btn"><span class="sign">Ingresar</span><i class="fa fa-user"></i></span>
@@ -63,7 +63,7 @@
         <!--a href="/nexos">Nexos</a-->
       </div>#}
       <ul class="container-list-sections">
-        {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:breadcrumbs', {headerType: headerType, section: currentSection, part: 1, currentPath: currentPath})) }}
+        {# {{ render_esi(controller('@CamusFrontEnd/Default/breadcrumbs', {headerType: headerType, section: currentSection, part: 1, currentPath: currentPath})) }} #}
       </ul>
     </div>
   </div>
@@ -73,7 +73,7 @@
         <div class="breadcrumbs-container">
           <span class="fa fa-map-marker"></span>
           <span class="fa fa-close"></span>
-          {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:breadcrumbs', {headerType: headerType, section: currentSection, part: 2, currentPath: currentPath})) }}
+          {# {{ render_esi(controller('@CamusFrontEnd/Default/breadcrumbs', {headerType: headerType, section: currentSection, part: 2, currentPath: currentPath})) }} #}
         </div>
         <div class="note-title">
           <div class="bg-content">
@@ -89,8 +89,8 @@
   {#<div class="container-today">
     <div class="content">
       <span class="date">{{ "now"|date("l \\, d.m.Y \\/ H:i")|localDate }}</span>
-      {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:topiclist')) }}
+      {{ render_esi(controller('@CamusFrontEnd/Default/topiclist')) }}
     </div>
   </div>#}
-  {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:menu')) }}
+  {# {{ render_esi(controller('@CamusFrontEnd/Default/menu')) }} #}
 </header>

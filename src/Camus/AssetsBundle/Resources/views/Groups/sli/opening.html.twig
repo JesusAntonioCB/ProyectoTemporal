@@ -28,7 +28,7 @@
             {{ listElement.src|imageSize(module.template)|raw }}
             <span class="detail">{{ listElement.publishedVersion.title }}</span>
           </div>
-          {#{{ include ('Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig', {module: listElement|getModelModule}) }}#}
+          {#{{ include ('@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig', {module: listElement|getModelModule}) }}#}
           {% endif %}
         {% endfor %}
       </div>
@@ -38,8 +38,8 @@
           <div class="arrow-buttons">
 
             {#MODIFICACION DE LAS FLECHAS#}
-            <button class="left"> <span> <img src="/bundles/applicationcamusassets/images/flecha_cartones_atras.jpg" alt="Flecha atras"/></button> </span>
-            <button class="right"> <span> <img src="/bundles/applicationcamusassets/images/flecha_cartones_adelante.jpg" alt="Flecha adelante"/></button> </span>
+            <button class="left"> <span> <img src="/bundles/camusassets/images/flecha_cartones_atras.jpg" alt="Flecha atras"/></button> </span>
+            <button class="right"> <span> <img src="/bundles/camusassets/images/flecha_cartones_adelante.jpg" alt="Flecha adelante"/></button> </span>
 
             {#  FLECHAS ANTERIORES
             <button class="left"><span class="fa fa-chevron-left"></span></button>

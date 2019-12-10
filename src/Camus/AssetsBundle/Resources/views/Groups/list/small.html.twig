@@ -1,4 +1,4 @@
-{% import "Application\Camus\AssetsBundle:Fixtures:see-more.html.twig" as seeMore %}
+{% import "@CamusAssets/Fixtures/see-more.html.twig" as seeMore %}
 
 {% if module.template == 'base' or module.template == 'base_media' or module.template == 'base_opinions' %}
   {% if module.modules is defined and module.modules is not empty %}
@@ -17,7 +17,7 @@
         <div class="list" {{ data_camus_modules }}>
           {% for listElement in module.modules %}
           {% set type = listElement.type|splitTemplate %}
-          {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule, index: loop.index} %}
+          {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule, index: loop.index} %}
           {% endfor %}
         </div>
       </div>
@@ -29,7 +29,7 @@
     <div class="media-container" {{ data_camus_modules }}>
       {% for listElement in module.modules %}
         {% set type = listElement.type|splitTemplate %}
-        {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+        {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
       {% endfor %}
     </div>
   </div>
@@ -39,7 +39,7 @@
     <div class="media-container" {{ data_camus_modules }}>
       {% for listElement in module.modules %}
         {% set type = listElement.type|splitTemplate %}
-        {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+        {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
       {% endfor %}
     </div>
   </div>
@@ -57,7 +57,7 @@
       <div class="list" {{ data_camus_modules }}>
         {% for listElement in module.modules %}
         {% set type = listElement.type|splitTemplate %}
-        {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule, index: loop.index} %}
+        {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule, index: loop.index} %}
         {% endfor %}
       </div>
     </div>
@@ -79,10 +79,10 @@
         <div class="list" {{ data_camus_modules }}>
           {% for listElement in module.modules %}
             {% set type = listElement.type|splitTemplate %}
-            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+            {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
           {% endfor %}
         </div>
-          {{ include ('Application\Camus\AssetsBundle:Groups:list/pagination.html.twig', { 'paging': module.paging}) }}
+          {{ include ('@CamusAssets/Groups/list/pagination.html.twig', { 'paging': module.paging}) }}
       </div>
       </div>
   </div>
@@ -100,7 +100,7 @@
             <span class="chose-section">Elije sección:</span>
             <select id="selectLastHour" name="section" class="select-last-news">
               <option selected link="" value="-1">Todas</option>
-              {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:sections', {sectionUrl : urlSection })) }}
+              {{ render_esi(controller('@CamusFrontEnd/Default/sections', {sectionUrl : urlSection })) }}
             </select>
           </div>
         {% else %}
@@ -111,10 +111,10 @@
         <div class="list" {{ data_camus_modules }}>
           {% for listElement in module.modules %}
             {% set type = listElement.type|splitTemplate %}
-            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+            {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
           {% endfor %}
         </div>
-          {{ include ('Application\Camus\AssetsBundle:Groups:list/pagination.html.twig', { 'paging': module.paging, "isLastNews": "true" }) }}
+          {{ include ('@CamusAssets/Groups/list/pagination.html.twig', { 'paging': module.paging, "isLastNews": "true" }) }}
       </div>
       </div>
   </div>
@@ -129,7 +129,7 @@
         <div class="list" {{ data_camus_modules }}>
           {% for listElement in module.modules %}
             {% set type = listElement.type|splitTemplate %}
-            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+            {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
           {% endfor %}
         </div>
       </div>
@@ -153,7 +153,7 @@
       <div class="list" {{ data_camus_modules }}>
         {% for listElement in module.modules %}
           {% set type = listElement.type|splitTemplate %}
-          {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+          {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
         {% endfor %}
       </div>
     </div>

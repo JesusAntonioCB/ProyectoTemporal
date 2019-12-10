@@ -1,9 +1,13 @@
 <?php
 // src/AppBundle/Twig/AppExtension.php
-namespace Application\Camus\AssetsBundle\Twig;
+namespace App\Camus\AssetsBundle\Twig;
 
-class ModelAttributeExtension extends \Twig_Extension implements \Twig_Extension_GlobalsInterface
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\GlobalsInterface;
+
+class ModelAttributeExtension extends AbstractExtension implements GlobalsInterface
 {
+
   public function getGlobals()
   {
     $dataCamusTemplate = "data-camus-template=";

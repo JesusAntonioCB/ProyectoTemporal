@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Camus\FrontEndBundle\Controller;
+namespace App\Camus\FrontEndBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session;
@@ -9,8 +9,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Camus\FrontEndBundle\Fixture\MDResponse;
 use Camus\AssetsBundle\Twig\ModelModuleExtension;
-use GuzzleHttp\Client;
-use DrewM\MailChimp\MailChimp;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -22,49 +20,53 @@ class DefaultController extends Controller
   */
   public function indexAction(){
     $dynamic = '/';
+    $number = random_int(0, 100);
 
-    $service = $this->postFromApi($dynamic, array());
-    $metas = (isset($service->data->meta)) ? $service->data->meta : "";
-    $keywords = (isset($service->data->keywords)) ? $service->data->keywords : "";
-    $boardColor = (isset($service->data->headerBackground)) ? $service->data->headerBackground : '#b10b1f';
-    if($service != false){
-      $modules = $this->getBoardFromApi($service);
-
-      if($modules == null){
-        throw $this->createNotFoundException();
-      }
-      $response = $this->countAds($modules);
-      $modules = $response['modules'];
-      $ads = $response['ads'];
-      $tagContainer = array(
-        'section' => '/',
-        'subsection' => '',
-        'subsubsection' => ''
-      );
-      $arrayCss = array();
-      $resultFileCss = array();
-      $this->getListModules($modules,$arrayCss);
-      if(count($arrayCss)){
-        $resultFileCss = array_values(array_unique($arrayCss));
-      }
-      $response = $this->render('ApplicationCamusAssetsBundle:Content:content.html.twig', array(
-        'meta' => $metas,
-        'keywords' => $keywords,
-        'modules' => $modules,
-        'headerType' => 0,
-        'currentSection' => 'Home',
-        'ads' => $ads,
-        'gtm' => $tagContainer,
-        'boardColor' => $boardColor,
-        'contentLayer' => $service->data,
-        'fileCSS' => $resultFileCss,
-      ));
-      $response->setSharedMaxAge(60);
-      return $response;
-    }
-    else{
-      throw $this->createNotFoundException();
-    }
+    return $this -> render ( 'base/base.html.twig' , [
+        'number' => $number ,
+    ]);
+    // $service = $this->postFromApi($dynamic, array());
+    // $metas = (isset($service->data->meta)) ? $service->data->meta : "";
+    // $keywords = (isset($service->data->keywords)) ? $service->data->keywords : "";
+    // $boardColor = (isset($service->data->headerBackground)) ? $service->data->headerBackground : '#b10b1f';
+    // if($service != false){
+    //   $modules = $this->getBoardFromApi($service);
+    //
+    //   if($modules == null){
+    //     throw $this->createNotFoundException();
+    //   }
+    //   $response = $this->countAds($modules);
+    //   $modules = $response['modules'];
+    //   $ads = $response['ads'];
+    //   $tagContainer = array(
+    //     'section' => '/',
+    //     'subsection' => '',
+    //     'subsubsection' => ''
+    //   );
+    //   $arrayCss = array();
+    //   $resultFileCss = array();
+    //   $this->getListModules($modules,$arrayCss);
+    //   if(count($arrayCss)){
+    //     $resultFileCss = array_values(array_unique($arrayCss));
+    //   }
+    //   $response = $this->render('ApplicationCamusAssetsBundle:Content:content.html.twig', array(
+    //     'meta' => $metas,
+    //     'keywords' => $keywords,
+    //     'modules' => $modules,
+    //     'headerType' => 0,
+    //     'currentSection' => 'Home',
+    //     'ads' => $ads,
+    //     'gtm' => $tagContainer,
+    //     'boardColor' => $boardColor,
+    //     'contentLayer' => $service->data,
+    //     'fileCSS' => $resultFileCss,
+    //   ));
+    //   $response->setSharedMaxAge(60);
+    //   return $response;
+    // }
+    // else{
+    //   throw $this->createNotFoundException();
+    // }
   }
 
   /**

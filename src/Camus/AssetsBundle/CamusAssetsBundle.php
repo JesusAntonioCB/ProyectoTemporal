@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Camus\AssetsBundle;
+namespace App\Camus\AssetsBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  * References:
  * @link http://symfony.com/doc/current/book/bundles.html
  */
-class ApplicationCamusAssetsBundle extends Bundle
+class CamusAssetsBundle extends Bundle
 {
     /**
      * {@inheritdoc}

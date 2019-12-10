@@ -7,7 +7,7 @@ class Author extends React.Component {
   }
 
   render() {
-    var authorImage = (this.props.author.authorThumb == null) ? '/bundles/applicationcamusassets/images/placeholder.jpg' : this.props.author.authorThumb;
+    var authorImage = (this.props.author.authorThumb == null) ? '/bundles/camusassets/images/placeholder.jpg' : this.props.author.authorThumb;
     return (
       <div className="author">
         <a href={this.props.author.slug}>

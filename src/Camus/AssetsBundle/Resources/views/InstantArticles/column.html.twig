@@ -13,7 +13,7 @@
             <header>
                 {{ include('ApplicationCamusAssetsBundle:InstantArticles:ads.html.twig') }}
             	<figure data-mode=aspect-fit>
-                    <img src="{{ authorImage is null ? domain~'/bundles/applicationcamusassets/images/placeholder.jpg' : authorImage|media_slug([], false, null, null, true) }}" />
+                    <img src="{{ authorImage is null ? domain~'/bundles/camusassets/images/placeholder.jpg' : authorImage|media_slug([], false, null, null, true) }}" />
             	</figure>
             	<h1>{{ content.publishedVersion.title }}</h1>
             	<h3 class="op-kicker">

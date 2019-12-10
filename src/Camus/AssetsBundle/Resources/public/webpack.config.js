@@ -8,7 +8,7 @@ const config = {
   watch: true,
   output: {
     path: __dirname,
-    publicPath: '/bundles/applicationcamusassets/js/bundle/',
+    publicPath: '/bundles/camusassets/js/bundle/',
     chunkFilename: '[name]Chunk.js',
     filename: "./[name]bundle.js"
   },

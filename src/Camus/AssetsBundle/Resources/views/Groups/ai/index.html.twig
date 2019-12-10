@@ -205,7 +205,7 @@
       <div class="result">
         <ul>
           {% if boardColor is defined %}
-            {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:themes')) }}
+            {{ render_esi(controller('@CamusFrontEnd/Default/themes')) }}
           {% endif %}
         </ul>
       </div>
@@ -214,7 +214,7 @@
 {% elseif module.template == 'authors' %}
   {% if boardColor is defined %}
     {% set jsonDataAuthors = render(controller(
-      'ApplicationCamusFrontEndBundle:Default:letter'
+      '@CamusFrontEnd/Default/letter'
     ))|twigJsonDecode %}
   {% endif %}
   <div class="alphabet-autor">
@@ -437,7 +437,7 @@
           <span>Carlos Marín</span>
         </div>
         <div class="image">
-          <img src="/bundles/applicationcamusassets/images/autor.png" alt="">
+          <img src="/bundles/camusassets/images/autor.png" alt="">
         </div>
         <div class="description">
           <span>Investigador del Colmex. Doctorado en Historia. University of Cambridge. Miembro del Sistema Nacional de Investigadores (SNI), Nivel III</span>
@@ -453,9 +453,9 @@
         {% for module in module.modules if module != null %}
           {% set type = module.type|splitTemplate %}
           {#{% if module.id is defined and module.id != null %}
-            {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:modulerender', {module: module.id })) }}
+            {{ render_esi(controller('@CamusFrontEnd/Default/modulerender', {module: module.id })) }}
           {% else %}#}
-            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+            {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
           {#{% endif %}#}
         {% endfor %}
       </ul>

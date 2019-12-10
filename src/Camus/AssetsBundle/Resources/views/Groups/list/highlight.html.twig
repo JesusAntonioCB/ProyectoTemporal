@@ -1,4 +1,4 @@
-{% import "Application\Camus\AssetsBundle:Fixtures:see-more.html.twig" as seeMore %}
+{% import "@CamusAssets/Fixtures/see-more.html.twig" as seeMore %}
 
 {% if module.template == 'landscape' %}
   <div class="list-highlight-landscape" {{ data_camus_module_type["list"] }} data-camus-id="{{ module.id }}">
@@ -6,7 +6,7 @@
     <div class="media-container" {{ data_camus_modules }}>
       {% for listElement in module.modules %}
         {% set type = listElement.type|splitTemplate %}
-        {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+        {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
       {% endfor %}
     </div>
   </div>
@@ -16,7 +16,7 @@
     <div class="media-container" {{ data_camus_modules }}>
       {% for listElement in module.modules %}
         {% set type = listElement.type|splitTemplate %}
-        {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+        {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
       {% endfor %}
     </div>
   </div>

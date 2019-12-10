@@ -4,7 +4,7 @@
     <div class="notes-list" {{ data_camus_modules }}>
       {% for listElement in module.modules %}
         {% set type = listElement.type|splitTemplate %}
-        {{ include ('Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig', {module: listElement|getModelModule, exep: "1"}) }}
+        {{ include ('@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig', {module: listElement|getModelModule, exep: "1"}) }}
       {% endfor %}
     </div>
   </div>
@@ -14,7 +14,7 @@
     <ul class="notes-list" {{ data_camus_modules }}>
       {% for listElement in module.modules %}
         {% set type = listElement.type|splitTemplate %}
-        {{ include ('Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig', {module: listElement|getModelModule, template: module.template}) }}
+        {{ include ('@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig', {module: listElement|getModelModule, template: module.template}) }}
       {% endfor %}
     </ul>
   </div>

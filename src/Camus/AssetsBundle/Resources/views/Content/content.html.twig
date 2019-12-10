@@ -1,4 +1,4 @@
-{% extends 'Application\Camus\AssetsBundle:Base:base.html.twig' %}
+{% extends '@CamusAssets/Base/base.html.twig' %}
 {% block GTM %}
   {% if gtm is defined %}
     {% set plaza = 'Nacional' %}
@@ -66,7 +66,7 @@
         {% endif %}
       {% endif %}
     {% endif %}
-    {% import "Application\Camus\AssetsBundle:Fixtures:metas.html.twig" as metas %}
+    {% import "@CamusAssets/Fixtures/metas.html.twig" as metas %}
     {{ metas.data(app.request.uri, title, description, keywords,image,contentType,playerId) }}
   {% else %}
     <title>{{ site_name }}</title>
@@ -101,19 +101,19 @@
   <div class="contenedor-notas-block">
     {% if modules|length > 0 %}
       {% set moduleSli = { 'template': 'ticker_caliente' } %}
-      {% include 'Application\Camus\AssetsBundle:Groups:sli/base.html.twig' ignore missing with {module: moduleSli} %}
+      {% include '@CamusAssets/Groups/sli/base.html.twig' ignore missing with {module: moduleSli} %}
       {% for module in modules %}
         {% if module.type is defined %}
           {% set type = module.type|splitTemplate %}
           {% if type[0] is not empty and type[1] is not empty %}
-              {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule, boardColor: boardColor} %}
+              {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule, boardColor: boardColor} %}
           {% endif %}
         {% endif %}
       {% endfor %}
     {% endif %}
   </div>
   {% if currentSection is defined and currentSection == 'premium' %}
-    <script type="text/javascript" src="/bundles/applicationcamusassets/node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/bundles/camusassets/node_modules/jquery/dist/jquery.min.js"></script>
     <script class="premiumScriptNoLoad"></script>
   {% endif %}
   <script type="text/javascript">

@@ -1,11 +1,13 @@
 <?php
 // src/AppBundle/Twig/AppExtension.php
-namespace Application\Camus\AssetsBundle\Twig;
+namespace App\Camus\AssetsBundle\Twig;
 
-use Graze\Gigya\Gigya;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+use Twig\TwigFilter;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class ModelModuleExtension extends \Twig_Extension
+class ModelModuleExtension extends AbstractExtension
 {
   protected $container;
   private $loadedFacebook = false;
@@ -15,65 +17,65 @@ class ModelModuleExtension extends \Twig_Extension
   public function getFunctions()
   {
     return array(
-      new \Twig_SimpleFunction('getProfileUser', array($this, 'getProfileUser')),
-      new \Twig_SimpleFunction('setEmbedModules', array($this, 'setEmbedModules')),
-      new \Twig_SimpleFunction('getMatchSrv', array($this, 'getMatchSrv')),
-      new \Twig_SimpleFunction('sportsScorers', array($this, 'sportsScorers')),
-      new \Twig_SimpleFunction('sportsResults', array($this, 'sportsResults')),
-      new \Twig_SimpleFunction('sportsClassification', array($this, 'sportsClassification')),
-      new \Twig_SimpleFunction('sportsTickets', array($this, 'sportsTickets')),
-      new \Twig_SimpleFunction('getPathUrl', array($this, 'getPathUrl')),
-      new \Twig_SimpleFunction('getDataLeague', array($this, 'getDataLeague')),
-      new \Twig_SimpleFunction('getUrlStadistics', array($this, 'getUrlStadistics')),
-      new \Twig_SimpleFunction('getDataTeamHeader', array($this, 'getDataTeamHeader')),
-      new \Twig_SimpleFunction('getRoundData', array($this, 'getRoundData')),
-      new \Twig_SimpleFunction('getSeasonRoundData', array($this, 'getSeasonRoundData')),
-      new \Twig_SimpleFunction('statsService', array($this, 'statsService')),
-      new \Twig_SimpleFunction('getStatsURL', array($this, 'getStatsURL')),
-      new \Twig_SimpleFunction('getTickerCaliente', array($this, 'getTickerCaliente')),
-      new \Twig_SimpleFunction('getAutomaticMam', array($this, 'getAutomaticMam')),
-      new \Twig_SimpleFunction('dateConvert', array($this, 'dateConvert')),
-      new \Twig_SimpleFunction('getUrlResumen', array($this, 'getUrlResumen')),
-      new \Twig_SimpleFunction('getMatchData', array($this, 'getMatchData')),
-      new \Twig_SimpleFunction('getDataTeam', array($this, 'getDataTeam')),
-      new \Twig_SimpleFunction('getPlayerBio', array($this, 'getPlayerBio')),
-      new \Twig_SimpleFunction('getPlayerStats', array($this, 'getPlayerStats')),
-      new \Twig_SimpleFunction('getImageMictlan', array($this, 'getImageMictlan')),
-      new \Twig_SimpleFunction('error404', array($this, 'error404'),['needs_environment' => true]),
-      new \Twig_SimpleFunction('existFile', array($this, 'existFile')),
-      new \Twig_SimpleFunction('includeFile', array($this, 'includeFile')),
+      new TwigFunction('getProfileUser', array($this, 'getProfileUser')),
+      new TwigFunction('setEmbedModules', array($this, 'setEmbedModules')),
+      new TwigFunction('getMatchSrv', array($this, 'getMatchSrv')),
+      new TwigFunction('sportsScorers', array($this, 'sportsScorers')),
+      new TwigFunction('sportsResults', array($this, 'sportsResults')),
+      new TwigFunction('sportsClassification', array($this, 'sportsClassification')),
+      new TwigFunction('sportsTickets', array($this, 'sportsTickets')),
+      new TwigFunction('getPathUrl', array($this, 'getPathUrl')),
+      new TwigFunction('getDataLeague', array($this, 'getDataLeague')),
+      new TwigFunction('getUrlStadistics', array($this, 'getUrlStadistics')),
+      new TwigFunction('getDataTeamHeader', array($this, 'getDataTeamHeader')),
+      new TwigFunction('getRoundData', array($this, 'getRoundData')),
+      new TwigFunction('getSeasonRoundData', array($this, 'getSeasonRoundData')),
+      new TwigFunction('statsService', array($this, 'statsService')),
+      new TwigFunction('getStatsURL', array($this, 'getStatsURL')),
+      new TwigFunction('getTickerCaliente', array($this, 'getTickerCaliente')),
+      new TwigFunction('getAutomaticMam', array($this, 'getAutomaticMam')),
+      new TwigFunction('dateConvert', array($this, 'dateConvert')),
+      new TwigFunction('getUrlResumen', array($this, 'getUrlResumen')),
+      new TwigFunction('getMatchData', array($this, 'getMatchData')),
+      new TwigFunction('getDataTeam', array($this, 'getDataTeam')),
+      new TwigFunction('getPlayerBio', array($this, 'getPlayerBio')),
+      new TwigFunction('getPlayerStats', array($this, 'getPlayerStats')),
+      new TwigFunction('getImageMictlan', array($this, 'getImageMictlan')),
+      new TwigFunction('error404', array($this, 'error404'),['needs_environment' => true]),
+      new TwigFunction('existFile', array($this, 'existFile')),
+      new TwigFunction('includeFile', array($this, 'includeFile')),
     );
   }
   public function getFilters()
   {
     return array(
-      new \Twig_SimpleFilter('getModelModule', array($this, 'getModelModule')),
-      new \Twig_SimpleFilter('asImage', array($this, 'asImage')),
-      new \Twig_SimpleFilter('asImageHeading', array($this, 'asImageHeading')),
-      new \Twig_SimpleFilter('asImageTeam', array($this, 'asImageTeam')),
-      new \Twig_SimpleFilter('asImageClip', array($this, 'asImageClip')),
-      new \Twig_SimpleFilter('asSponsor', array($this, 'asSponsor')),
-      new \Twig_SimpleFilter('twigJsonDecode', array($this, 'twigJsonDecode')),
-      new \Twig_SimpleFilter('socialTag', array($this, 'socialTag')),
-      new \Twig_SimpleFilter('pregReplace', array($this, 'pregReplace')),
-      new \Twig_SimpleFilter('normalize', array($this, 'normalize')),
-      new \Twig_SimpleFilter('localDate', array($this, 'localDate')),
-      new \Twig_SimpleFilter('localMonth', array($this, 'localMonth')),
-      new \Twig_SimpleFilter('gentleDate', array($this, 'gentleDate')),
-      new \Twig_SimpleFilter('splitTemplate', array($this, 'splitTemplate')),
-      new \Twig_SimpleFilter('asImageAuthor', array($this, 'asImageAuthor')),
-      new \Twig_SimpleFilter('parseRGB', array($this, 'parseRGB')),
-      new \Twig_SimpleFilter('decodeText', array($this, 'decodeText')),
-      new \Twig_SimpleFilter('linkConstruct', array($this, 'linkConstruct')),
-      new \Twig_SimpleFilter('charsDecode', array($this, 'charsDecode')),
-      new \Twig_SimpleFilter('filterEnt', array($this, 'filterEnt')),
-      new \Twig_SimpleFilter('parserHtml', array($this, 'parserHtml')),
-      new \Twig_SimpleFilter('asHost', array($this, 'asHost')),
-      new \Twig_SimpleFilter('urlToRelative', array($this, 'urlToRelative')),
-      new \Twig_SimpleFilter('imageSize', array($this, 'imageSize')),
-      new \Twig_SimpleFilter('transformDate', array($this, 'transformDate')),
-      new \Twig_SimpleFilter('getCalienteUrl', array($this, 'getCalienteUrl')),
-      new \Twig_SimpleFilter('extImage', array($this, 'extImage'))
+      new TwigFilter('getModelModule', array($this, 'getModelModule')),
+      new TwigFilter('asImage', array($this, 'asImage')),
+      new TwigFilter('asImageHeading', array($this, 'asImageHeading')),
+      new TwigFilter('asImageTeam', array($this, 'asImageTeam')),
+      new TwigFilter('asImageClip', array($this, 'asImageClip')),
+      new TwigFilter('asSponsor', array($this, 'asSponsor')),
+      new TwigFilter('twigJsonDecode', array($this, 'twigJsonDecode')),
+      new TwigFilter('socialTag', array($this, 'socialTag')),
+      new TwigFilter('pregReplace', array($this, 'pregReplace')),
+      new TwigFilter('normalize', array($this, 'normalize')),
+      new TwigFilter('localDate', array($this, 'localDate')),
+      new TwigFilter('localMonth', array($this, 'localMonth')),
+      new TwigFilter('gentleDate', array($this, 'gentleDate')),
+      new TwigFilter('splitTemplate', array($this, 'splitTemplate')),
+      new TwigFilter('asImageAuthor', array($this, 'asImageAuthor')),
+      new TwigFilter('parseRGB', array($this, 'parseRGB')),
+      new TwigFilter('decodeText', array($this, 'decodeText')),
+      new TwigFilter('linkConstruct', array($this, 'linkConstruct')),
+      new TwigFilter('charsDecode', array($this, 'charsDecode')),
+      new TwigFilter('filterEnt', array($this, 'filterEnt')),
+      new TwigFilter('parserHtml', array($this, 'parserHtml')),
+      new TwigFilter('asHost', array($this, 'asHost')),
+      new TwigFilter('urlToRelative', array($this, 'urlToRelative')),
+      new TwigFilter('imageSize', array($this, 'imageSize')),
+      new TwigFilter('transformDate', array($this, 'transformDate')),
+      new TwigFilter('getCalienteUrl', array($this, 'getCalienteUrl')),
+      new TwigFilter('extImage', array($this, 'extImage'))
     );
   }
 
@@ -283,10 +285,10 @@ class ModelModuleExtension extends \Twig_Extension
       "abstract" => '',
       "signaturePlace" => '',
       "tags" => array(),
-      'thumbnail' => '/bundles/applicationcamusassets/images/placeholder.jpg',
+      'thumbnail' => '/bundles/camusassets/images/placeholder.jpg',
       'thumbnailClip' => '',
       'hasThumbnailClip' => false,
-      'media' => '/bundles/applicationcamusassets/images/placeholder.jpg',
+      'media' => '/bundles/camusassets/images/placeholder.jpg',
       "alt" => "",
       'teamHome' => '',
       'teamHomeMedia' => '',
@@ -617,7 +619,7 @@ class ModelModuleExtension extends \Twig_Extension
             if($css[0] != 'ad'){
               $css[1] = (isset($css[2])) ? $css[1].'-'.$css[2] : $css[1];
               $css = $css[0].'/'.str_replace("_","-",$css[1]).'/'.str_replace("_","-",$value->template).".css";
-              if( !file_exists('./bundles/applicationcamusassets/scss/main/groups/'.$css) ){
+              if( !file_exists('./bundles/camusassets/scss/main/groups/'.$css) ){
                 unset($modelData->modules[$key]);
               }
             }
@@ -688,16 +690,16 @@ class ModelModuleExtension extends \Twig_Extension
     $tag = '<img
     data-src="'.$media.'"
     data-lazy="'.$media.'"
-    src="/bundles/applicationcamusassets/images/placeholder.jpg"
+    src="/bundles/camusassets/images/placeholder.jpg"
     class="b-lazy"
     alt="'.$alt.'"
     data-camus-toolbar-position="'.$position.'"
-    onerror="this.onerror=null;this.src=\'/bundles/applicationcamusassets/images/placeholder.jpg\'"
+    onerror="this.onerror=null;this.src=\'/bundles/camusassets/images/placeholder.jpg\'"
     data-camus-image>
     <noscript>
       <img
       src="'.$media.'"
-      onerror="this.onerror=null;this.src=\'/bundles/applicationcamusassets/images/placeholder.jpg\'">
+      onerror="this.onerror=null;this.src=\'/bundles/camusassets/images/placeholder.jpg\'">
     </noscript>';
 
     return $tag;
@@ -706,7 +708,7 @@ class ModelModuleExtension extends \Twig_Extension
     $media = $this->urlToRelative($media);
     $tag = '<img
     src="'.$media.'"
-    onerror="this.onerror=null;this.src=\'/bundles/applicationcamusassets/images/extraordinary-openings/m-logo.png\'"
+    onerror="this.onerror=null;this.src=\'/bundles/camusassets/images/extraordinary-openings/m-logo.png\'"
     data-camus-heading-media/>';
 
     return $tag;
@@ -715,7 +717,7 @@ class ModelModuleExtension extends \Twig_Extension
     $media = $this->urlToRelative($media);
     $tag = '<img
     src="'.$media.'"
-    onerror="this.onerror=null;this.src=\'/bundles/applicationcamusassets/images/extraordinary-openings/m-logo.png\'"
+    onerror="this.onerror=null;this.src=\'/bundles/camusassets/images/extraordinary-openings/m-logo.png\'"
     '.$type.'
     />';
 
@@ -727,13 +729,13 @@ class ModelModuleExtension extends \Twig_Extension
     $tag = '<picture>
     <source media="(max-width: '.$maxWidth.'px)" data-srcset="'.$media.'">
     <source data-srcset="'.$largeMedia.'">
-    <img data-src="'.$media.'" data-lazy="'.$media.'" src="/bundles/applicationcamusassets/images/placeholder.jpg" class="b-lazy" alt="'.$alt.'" data-camus-image data-camus-toolbar-position="'.$position.'" onerror="this.onerror=null;this.src=\'/bundles/applicationcamusassets/images/placeholder.jpg\'">
+    <img data-src="'.$media.'" data-lazy="'.$media.'" src="/bundles/camusassets/images/placeholder.jpg" class="b-lazy" alt="'.$alt.'" data-camus-image data-camus-toolbar-position="'.$position.'" onerror="this.onerror=null;this.src=\'/bundles/camusassets/images/placeholder.jpg\'">
     </picture>
     <noscript>
       <picture>
       <source media="(max-width: '.$maxWidth.'px)" srcset="'.$media.'">
       <source srcset="'.$largeMedia.'">
-        <img src="'.$media.'" onerror="this.onerror=null;this.src=\'/bundles/applicationcamusassets/images/placeholder.jpg\'">
+        <img src="'.$media.'" onerror="this.onerror=null;this.src=\'/bundles/camusassets/images/placeholder.jpg\'">
       </picture>
     </noscript>';
 
@@ -742,7 +744,7 @@ class ModelModuleExtension extends \Twig_Extension
   public function asSponsor($sponsor){
     $tag = '<div class="sponsor" data-camus-removable="Patrocinador"><span class="caption">Patrocinado Por</span><a href="'.$sponsor["url"].'" target="_blank" class="img-link"><img
     src="'.$sponsor["media"].'"
-    onerror="this.onerror=null;this.src=\'/bundles/applicationcamusassets/images/placeholder.jpg\'"
+    onerror="this.onerror=null;this.src=\'/bundles/camusassets/images/placeholder.jpg\'"
     data-camus-sponsor /></a></div>';
 
     return $tag;
@@ -751,7 +753,7 @@ class ModelModuleExtension extends \Twig_Extension
   public function asHost($presenter, $name){
     $tag = '<div class="host"><div class="img-link"><img
     src="'.$presenter.'"
-    onerror="this.onerror=null;this.src=\'/bundles/applicationcamusassets/images/placeholder.jpg\'"
+    onerror="this.onerror=null;this.src=\'/bundles/camusassets/images/placeholder.jpg\'"
     /></div></div>';
 
     return $tag;
@@ -948,7 +950,7 @@ class ModelModuleExtension extends \Twig_Extension
     $headerType = 0;
     $notFound = '404 Not Found';
 
-    return $environment->render("ApplicationCamusAssetsBundle:Groups:error404/error404.html.twig", array(
+    return $environment->render("@CamusAssets/Groups/error404/error404.html.twig", array(
       'type' => '',
       'headerType' => $headerType,
       'error' => true,
@@ -966,7 +968,7 @@ class ModelModuleExtension extends \Twig_Extension
         $splitTemplate = $this->splitTemplate($moduleModel['type']);
         $bodyEmbed = str_replace(
           'm{'.$moduleModel['id'].'}',
-          $this->container->get('templating')->render('ApplicationCamusAssetsBundle:Groups:'.$splitTemplate[0].'/'.$splitTemplate[1].'.html.twig', array('module' => $moduleModel)),
+          $this->container->get('templating')->render('@CamusAssets/Groups/'.$splitTemplate[0].'/'.$splitTemplate[1].'.html.twig', array('module' => $moduleModel)),
           $bodyEmbed
         );
       }
@@ -1076,12 +1078,12 @@ class ModelModuleExtension extends \Twig_Extension
   public function asImageAuthor($media){
     // $tag = '<img
     // data-lazy="'.$media.'"
-    // onerror="this.onerror=null;this.src=\'/bundles/applicationcamusassets/images/placeholder.jpg\'"
+    // onerror="this.onerror=null;this.src=\'/bundles/camusassets/images/placeholder.jpg\'"
     // data-camus-image/>';
 
     $tag = '<img
-    src="/bundles/applicationcamusassets/images/autores/'.$media.'.jpg"
-    onerror="this.onerror=null;this.src=\'/bundles/applicationcamusassets/images/placeholder.jpg\'"
+    src="/bundles/camusassets/images/autores/'.$media.'.jpg"
+    onerror="this.onerror=null;this.src=\'/bundles/camusassets/images/placeholder.jpg\'"
     data-camus-image/>';
 
     return $tag;
@@ -1240,7 +1242,7 @@ class ModelModuleExtension extends \Twig_Extension
     src="'.$url.'"
     data-camus-toolbar-position="'.$position.'"
     alt="'.$alt.'"
-    onerror="this.onerror=null;this.src=\'/bundles/applicationcamusassets/images/placeholder.jpg\'"
+    onerror="this.onerror=null;this.src=\'/bundles/camusassets/images/placeholder.jpg\'"
     data-camus-image /> ';
 
     return $tag;

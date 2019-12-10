@@ -1,4 +1,4 @@
-{% import "Application\Camus\AssetsBundle:Fixtures:see-more.html.twig" as seeMore %}
+{% import "@CamusAssets/Fixtures/see-more.html.twig" as seeMore %}
 
 {% if module.template == 'base' %}
   <div class="sn-base"  data-camus-template="{{module.templateName}}" {{ data_camus_type["sn_base"] }}>
@@ -163,7 +163,7 @@
       <div class="live-container-white">
         <a href="{{ module.slug }}">
           <div class="live-logo-container">
-            <img src="/bundles/applicationcamusassets/images/mt-crop-black.jpg">
+            <img src="/bundles/camusassets/images/mt-crop-black.jpg">
           </div>
           <div class="span-live-logo-container">
             <span>EN VIVO</span>
@@ -200,7 +200,7 @@
         <div class="live-container-white">
           <a href="{{ module.slug }}">
             <div class="live-logo-container">
-              <img src="/bundles/applicationcamusassets/images/mt-crop.png">
+              <img src="/bundles/camusassets/images/mt-crop.png">
             </div>
             <div class="span-live-logo-container">
               <span>EN VIVO</span>
@@ -290,7 +290,7 @@
         <div {{ data_camus_modules }} class="news-container">
           <div class="live-logo-container">
             <div class="image">
-              <img src="/bundles/applicationcamusassets/images/special-modules\m-live-logo.png" alt="">
+              <img src="/bundles/camusassets/images/special-modules\m-live-logo.png" alt="">
             </div>
             <div class="text">
               <span>EN VIVO</span>
@@ -312,7 +312,7 @@
         {% for listElement in module.modules %}
           {% if loop.index < 4 %}
             {% set type = listElement.type|splitTemplate %}
-            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+            {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
           {% endif %}
         {% endfor %}
       </div>
@@ -333,7 +333,7 @@
         <div {{ data_camus_modules }} class="news-container">
           <div class="live-logo-container">
             <div class="image">
-              <img src="/bundles/applicationcamusassets/images/special-modules\m-live-logo.png" alt="">
+              <img src="/bundles/camusassets/images/special-modules\m-live-logo.png" alt="">
             </div>
             <div class="text">
               <span>EN VIVO</span>
@@ -354,7 +354,7 @@
       <div {{ data_camus_modules }} class="container-bottom">
         {% for listElement in module.modules %}
           {% set type = listElement.type|splitTemplate %}
-          {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+          {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
         {% endfor %}
       </div>
     </div>

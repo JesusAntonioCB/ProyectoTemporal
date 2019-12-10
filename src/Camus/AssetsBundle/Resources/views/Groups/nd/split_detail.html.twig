@@ -48,7 +48,7 @@
         <div class="description" {{ data_camus_modules }} >
           {% for module in module.modules if module != null %}
             {% set type = module.type|splitTemplate %}
-              {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+              {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
           {% endfor %}
         </div>
         <div class="text-container">
@@ -105,7 +105,7 @@
         <div class="table" {{ data_camus_modules }}>
           {% for module in module.modules if module != null %}
             {% set type = module.type|splitTemplate %}
-              {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+              {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
           {% endfor %}
         </div>
       </div>

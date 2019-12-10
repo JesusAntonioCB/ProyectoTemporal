@@ -1,14 +1,18 @@
 {% if module.template == 'base' or module.template == 'twelve' %}
   {% if module.modules != null %}
     {% set parentId = module.id %}
-    {% for module in module.modules if module != null%}
-      {% set type = module.type|splitTemplate %}
+    {% for module in module.modules %}
+      {% if module != null %}
+        {% set type = module.type|splitTemplate %}
+        {% dump(module) %}
         {% if type[0] is not empty and type[1] is not empty %}
-            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule, parentId: parentId} %}
+            {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule, parentId: parentId} %}
         {% endif %}
+      {% endif %}
     {% endfor %}
   {% endif %}
 {% elseif module.template == 'opinion' %}
+{% dump(module) %}
   <div class="ctr-opinion" data-camus-id="{{ module.id }}" {{ data_camus_module_type["list"] }} data-camus-template="{{module.templateName}}" {{ data_camus_type["list_small"] }} {{ data_camus_toolbar_position["br"] }}>
     <div class="head-container">
       <h2 class="headline" {{ data_camus_title }} {{ data_camus_color }} style="color: {{ module.color }}">{{ module.title }}</h2>
@@ -25,7 +29,7 @@
     <div {{ data_camus_modules }} class="list">
       {% for module in module.modules %}
         {% set type = module.type|splitTemplate %}
-        {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+        {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
       {% endfor %}
     </div>
   </div>

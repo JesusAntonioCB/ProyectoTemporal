@@ -1,4 +1,4 @@
 {% for module in module.modules %}
   {% set type = module.type|splitTemplate %}
-  {{ include ('Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig', {module: module|getModelModule}) }}
+  {{ include ('@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig', {module: module|getModelModule}) }}
 {% endfor %}

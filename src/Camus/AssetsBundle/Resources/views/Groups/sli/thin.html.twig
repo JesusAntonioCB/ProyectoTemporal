@@ -55,7 +55,7 @@
           <span class="fa fa-caret-left"></span>
         </div>
         {% if boardColor is defined %}
-          {{ render_esi(controller('ApplicationCamusFrontEndBundle:Default:latestTopics')) }}
+          {{ render_esi(controller('@CamusFrontEnd/Default/latestTopics')) }}
         {% endif %}
         <div class="right">
           <span class="fa fa-caret-right"></span>
@@ -78,7 +78,7 @@
       <ul {{ data_camus_modules }} class="thin-data">
         {% for module in module.modules if module != null %}
           {% set type = module.type|splitTemplate %}
-            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+            {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
         {% endfor %}
       </ul>
     </div>
@@ -118,7 +118,7 @@
       <div {{ data_camus_modules }} class="thin-data container-games-slider">
         {% for module in module.modules if module != null %}
           {% set type = module.type|splitTemplate %}
-            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+            {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
         {% endfor %}
       </div>
     </div>

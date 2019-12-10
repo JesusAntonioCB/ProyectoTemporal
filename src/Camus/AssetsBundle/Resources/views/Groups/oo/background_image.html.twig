@@ -138,9 +138,9 @@
       {% for listElement in module.modules %}
         {% set type = listElement.type|splitTemplate %}
         {% if loop.index0 == 0 %}
-          {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule, orderClass: "primary"} %}
+          {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule, orderClass: "primary"} %}
         {% else %}
-          {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule, orderClass: "secondary"} %}
+          {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule, orderClass: "secondary"} %}
         {% endif %}
       {% endfor %}
     </div>
@@ -156,9 +156,9 @@
       {% for listElement in module.modules %}
         {% set type = listElement.type|splitTemplate %}
         {% if loop.index0 == 0 %}
-          {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule, orderClass: "primary"} %}
+          {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule, orderClass: "primary"} %}
         {% else %}
-          {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule, orderClass: "secondary"} %}
+          {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule, orderClass: "secondary"} %}
         {% endif %}
       {% endfor %}
     </div>

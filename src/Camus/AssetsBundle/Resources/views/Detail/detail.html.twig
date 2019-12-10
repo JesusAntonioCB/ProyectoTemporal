@@ -1,5 +1,5 @@
-{% extends 'Application\Camus\AssetsBundle:Base:base.html.twig' %}
-{% set image = "/bundles/applicationcamusassets/images/placeholder.jpg" %}
+{% extends '@CamusAssets/Base/base.html.twig' %}
+{% set image = "/bundles/camusassets/images/placeholder.jpg" %}
 {% set layerPublishedDate = contentLayer.publishedDate|default("")|replace({'/': "-"}) %}
 {% set layerColumn = "" %}
 {% if contentType == 'NWS' or contentType == 'ENT' or contentType == 'CHR' %}
@@ -71,7 +71,7 @@
 
 {% block metas %}
   {% if modules.meta is not empty %}
-    {% import "Application\Camus\AssetsBundle:Fixtures:metas.html.twig" as metas %}
+    {% import "@CamusAssets/Fixtures/metas.html.twig" as metas %}
     {{ metas.data(app.request.uri, title, description, keywords, image, contentType) }}
   {% else %}
     <title>{{ site_name }}</title>
@@ -102,7 +102,7 @@
     {% include 'Application\Camus\AssetsBundle:Detail:'~detailType~'.html.twig' ignore missing with {modules: modules, id: contentId, urlStats : urlStadistics, tabStats : tabStadistics} %}
     <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization" style="display: none;">
       <meta itemprop="name" content="{{ site_name }}">
-		  <meta itemprop="logo" content="{{ site_domain }}/bundles/applicationcamusassets/images/logo_fam.png">
+		  <meta itemprop="logo" content="{{ site_domain }}/bundles/camusassets/images/logo_fam.png">
 		</div>
     <meta itemprop="mainEntityofPage" content="{{ app.request.pathinfo }}">
   </article>

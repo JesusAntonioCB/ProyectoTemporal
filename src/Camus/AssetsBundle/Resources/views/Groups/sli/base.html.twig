@@ -28,7 +28,7 @@
        <div {{ data_camus_modules }} class="firms">
          {% for slide in module.modules %}
            {% set type = slide.type|splitTemplate %}
-           {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: slide|getModelModule, parentId: module.id } %}
+           {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: slide|getModelModule, parentId: module.id } %}
          {% endfor %}
        </div>
      </div>
@@ -65,9 +65,11 @@
         </div>#}
       </div>
       <div {{ data_camus_modules }} class="firms">
-        {% for list in module.modules if list != null %}
-          {% set type = list.type|splitTemplate %}
-          {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: list|getModelModule, parentId: module.id } %}
+        {% for list in module.modules %}
+          {% if list != null %}
+            {% set type = list.type|splitTemplate %}
+            {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: list|getModelModule, parentId: module.id } %}
+          {% endif %}
         {% endfor %}
       </div>
     </div>
@@ -91,9 +93,11 @@
           </div>
         </div>
         <div {{ data_camus_modules }} class="firms">
-          {% for list in module.modules if list != null %}
-            {% set type = list.type|splitTemplate %}
-            {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: list|getModelModule, parentId: module.id } %}
+          {% for list in module.modules %}
+            {% if list != null %}
+              {% set type = list.type|splitTemplate %}
+              {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: list|getModelModule, parentId: module.id } %}
+            {% endif %}
           {% endfor %}
         </div>
       </div>
@@ -118,7 +122,7 @@
       <div {{ data_camus_modules }} class="firms">
         {% for list in module.modules %}
           {% set type = list.type|splitTemplate %}
-          {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: list|getModelModule, parentId: module.id } %}
+          {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: list|getModelModule, parentId: module.id } %}
         {% endfor %}
       </div>
     </div>
@@ -146,16 +150,18 @@
       </div>
     </div>
     <div {{ data_camus_modules }} class="firms">
-      {% for list in module.modules if list != null %}
-        {% set type = list.type|splitTemplate %}
-        {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: list|getModelModule, parentId: module.id } %}
+      {% for list in module.modules %}
+        {% if list != null %}
+          {% set type = list.type|splitTemplate %}
+          {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: list|getModelModule, parentId: module.id } %}
+        {% endif %}
       {% endfor %}
     </div>
   </div>
 {# {% elseif module.template == "ticker_caliente" %}
   <div class="sli-ticker-caliente" {{data_camus_allow_empty_module["1"]}}>
     <div class="img-container">
-      <img src="/bundles/applicationcamusassets/images/caliente.png" alt="caliente.mx">
+      <img src="/bundles/camusassets/images/caliente.png" alt="caliente.mx">
     </div>
     <div class="item-wrapper">
       <button class="left"><i class="fa fa-caret-left"></i></button>
@@ -164,5 +170,5 @@
       <button class="right"><i class="fa fa-caret-right"></i></button>
     </div>
   </div>
-  {% include 'Application\Camus\AssetsBundle:Groups:ad/pleca.html.twig' ignore missing with {} %} #}
+  {% include '@CamusAssets/Groups/ad/pleca.html.twig' ignore missing with {} %} #}
 {% endif %}

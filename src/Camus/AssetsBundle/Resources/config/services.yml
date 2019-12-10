@@ -6,7 +6,7 @@ services:
         tags:
             - { name: twig.extension }
     attribute.twig_extension:
-        class: Application\Camus\AssetsBundle\Twig\ModelAttributeExtension
+        class: @CamusAssets/Twig/ModelAttributeExtension
         public: false
         tags:
             - { name: twig.extension }

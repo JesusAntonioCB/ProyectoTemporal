@@ -56,9 +56,9 @@
       {% set embedBodyModulesData = modules.embedBodyModules %}
     {% endif %}
     {% if type[1] == "leaderboard" %}
-      {% include 'Application\Camus\AssetsBundle:Groups:ad/pleca.html.twig' ignore missing with {} %}
+      {% include '@CamusAssets/Groups/ad/pleca.html.twig' ignore missing with {} %}
     {% endif %}
-    {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule, embedBodyModules: embedBodyModulesData,automatic: automaticHead} %}
+    {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule, embedBodyModules: embedBodyModulesData,automatic: automaticHead} %}
   {% endif %}
 {% endfor %}
 {% if matchId is not empty and automatic == true %}
@@ -101,7 +101,7 @@
       {% if cnt.module is defined and cnt.module is not empty %}
         {% for mdl in cnt.module %}
           {% set type = mdl.type|splitTemplate %}
-          {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: mdl|getModelModule} %}
+          {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: mdl|getModelModule} %}
         {% endfor %}
       {% endif %}
     {% endif %}
@@ -191,7 +191,7 @@
   <div class="main-container">
     {% for index, tab in tabs %}
       {% if index == tabStats %}
-        {% include 'Application\Camus\AssetsBundle:Fixtures:match/'~tab.template~'.html.twig' ignore missing with {data: matchSrv} %}
+        {% include '@CamusAssets/Fixtures/match/'~tab.template~'.html.twig' ignore missing with {data: matchSrv} %}
       {% endif %}
     {% endfor %}
   </div>

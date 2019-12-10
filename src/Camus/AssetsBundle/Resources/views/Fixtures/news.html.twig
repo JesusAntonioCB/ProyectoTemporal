@@ -3,10 +3,10 @@
   {% if module.type is defined %}
     {% set type = module.type|splitTemplate %}
     {% if module.type == "ad_leaderboard" %}
-      {% include 'Application\Camus\AssetsBundle:Fixtures:ad/pleca.html.twig' ignore missing with {module: module|getModelModule} %}
-      {% include 'Application\Camus\AssetsBundle:Fixtures:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+      {% include '@CamusAssets/Fixtures/ad/pleca.html.twig' ignore missing with {module: module|getModelModule} %}
+      {% include '@CamusAssets/Fixtures/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
     {% else %}
-      {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+      {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
     {% endif %}
   {% endif %}
 {% endfor %}
@@ -16,11 +16,11 @@
     {% for module in modules.sidebar %}
     {% set type = module.type|splitTemplate %}
     {% if module.type == "ad_medium_rectangle" %}
-      {% include 'Application\Camus\AssetsBundle:Fixtures:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+      {% include '@CamusAssets/Fixtures/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
     {% else %}
-      {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
+      {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
       {% if loop.index == 4 %}
-      {{ include ('Application\Camus\AssetsBundle:Groups:list/taboola.html.twig') }}
+      {{ include ('@CamusAssets/Groups/list/taboola.html.twig') }}
       {% endif %}
     {% endif %}
     {% endfor %}
@@ -32,11 +32,11 @@
     {% if modules.embedBodyModules is defined %}
     {% set embedBodyModulesData = modules.embedBodyModules %}
     {% endif %}
-    {% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule, noteType: noteType, embedBodyModules: embedBodyModulesData} %}
+    {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule, noteType: noteType, embedBodyModules: embedBodyModulesData} %}
     {% endfor %}
   </div>
 </div>
 {% for module in modules.bottom %}
 {% set type = module.type|splitTemplate %}
-{% include 'Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule, id: contentId} %}
+{% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule, id: contentId} %}
 {% endfor %}

@@ -12,4 +12,6 @@ return [
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
+    App\Camus\AssetsBundle\CamusAssetsBundle::class => ['all' => true],
+    App\Camus\FrontEndBundle\CamusFrontEndBundle::class => ['all' => true],
 ];

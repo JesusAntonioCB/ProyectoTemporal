@@ -2,8 +2,8 @@
 <html lang="es">
   <head>
     <!-- Preloading Main JS & CSS -->
-    <link rel="preload" href="{{ asset('/bundles/applicationcamusassets/scss/main/main.css') }}" as="style">
-    <link rel="preload" href="{{ asset('/bundles/applicationcamusassets/js/bundle/mainbundle.js') }}" as="script">
+    <link rel="preload" href="{{ asset('/bundles/camusassets/scss/main/main.css') }}" as="style">
+    <link rel="preload" href="{{ asset('/bundles/camusassets/js/bundle/mainbundle.js') }}" as="script">
     {% block GTM %}
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -19,23 +19,23 @@
     <meta property="fb:pages" content="125622527473117" />
     {% block metas %}
     {% endblock %}
-    <link rel="icon" sizes="32x32" href="/bundles/applicationcamusassets/images/FAMA.png">
-    <link rel="icon" sizes="152x152" href="/bundles/applicationcamusassets/images/FAMA.png">
-    <link rel="icon" sizes="192x192" href="/bundles/applicationcamusassets/images/FAMA.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="/bundles/applicationcamusassets/images/192x192-apple.png">
-    <link rel="stylesheet" href="{{ asset('/bundles/applicationcamusassets/scss/main/main.css') }}">
+    <link rel="icon" sizes="32x32" href="/bundles/camusassets/images/FAMA.png">
+    <link rel="icon" sizes="152x152" href="/bundles/camusassets/images/FAMA.png">
+    <link rel="icon" sizes="192x192" href="/bundles/camusassets/images/FAMA.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/bundles/camusassets/images/192x192-apple.png">
+    <link rel="stylesheet" href="{{ asset('/bundles/camusassets/scss/main/main.css') }}">
     {% if fileCSS is defined %}
       <style type="text/css">
         {% for file in fileCSS %}
-          {% if existFile('./bundles/applicationcamusassets/scss/main/groups/'~file) %}
-            {{ includeFile('./bundles/applicationcamusassets/scss/main/groups/'~file)|raw }}
+          {% if existFile('./bundles/camusassets/scss/main/groups/'~file) %}
+            {{ includeFile('./bundles/camusassets/scss/main/groups/'~file)|raw }}
           {% endif %}
         {% endfor %}
       </style>
     {% endif %}
 
-    <link rel="stylesheet" href="{{ asset('/bundles/applicationcamusassets/node_modules/slick-carousel/slick/slick-theme.css') }}">
-    <link rel="stylesheet" href="{{ asset('/bundles/applicationcamusassets/node_modules/share-this/dist/share-this.css') }}">
+    <link rel="stylesheet" href="{{ asset('/bundles/camusassets/node_modules/slick-carousel/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('/bundles/camusassets/node_modules/share-this/dist/share-this.css') }}">
     {% if currentSection is defined %}
       {% if currentSection != "contactanos" %}
         {% if error is not defined %}
@@ -62,8 +62,8 @@
          .setCollapseEmptyDiv(true)
          .addService(googletag.pubads());
 
-        {% if ads is defined %}
-          {% for ad in ads if ad is defined %}
+        {% if ads is defined and ad is defined %}
+          {% for ad in ads %}
             {% set module = ad|getModelModule %}
             {% set moduleId = (module.id != null) ? module.id : module.adId %}
             {% if module.type == 'ad_medium_rectangle' and module.adCode %}
@@ -106,17 +106,17 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Header -->
-    {{ include ('Application\Camus\AssetsBundle:Header:header.html.twig') }}
+    {{ include ('@CamusAssets/Header/header.html.twig') }}
     <!-- Content -->
     <div class="body-content">
       <div class="content">
         {% block body %}
         {% endblock %}
       </div>
-      {{ include ('Application\Camus\AssetsBundle:Footer:footer.html.twig') }}
+      {{ include ('@CamusAssets/Footer/footer.html.twig') }}
     </div>
     <!-- Sidebar -->
-    {{ include ('Application\Camus\AssetsBundle:Sidebar:sidebar.html.twig') }}
+    {{ include ('@CamusAssets/Sidebar/sidebar.html.twig') }}
     <!-- Modal -->
     <div class="container-loader">
       <div class="loader-milenio">Loading...</div>
@@ -132,7 +132,7 @@
     {% block ping %}
     {% endblock %}
 
-    <script type="application/javascript" src="{{ asset('/bundles/applicationcamusassets/js/bundle/mainbundle.js') }}" defer></script>
+    <script type="application/javascript" src="{{ asset('/bundles/camusassets/js/bundle/mainbundle.js') }}" defer></script>
 
     <!-- BrightCove -->
     <script type="text/javascript">

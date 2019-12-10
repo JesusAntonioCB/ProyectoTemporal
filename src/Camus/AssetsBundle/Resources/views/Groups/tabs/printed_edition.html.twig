@@ -1,6 +1,6 @@
 {% if module.template == 'printed_edition' %}
   {% set jsonData = render(controller(
-    'ApplicationCamusFrontEndBundle:Default:editions', { 'id': 1 }
+    '@CamusFrontEnd/Default/editions', { 'id': 1 }
   ))|twigJsonDecode %}
   {% if countLoop == 1 %}
     <div class="tab-content tab-active editions-tab">
@@ -32,7 +32,7 @@
       <!-- <div class="supplement-item">
         <div class="img-container">
           <a href="">
-            <img src="/bundles/applicationcamusassets/images/printed-edition/edition.jpg" />
+            <img src="/bundles/camusassets/images/printed-edition/edition.jpg" />
           </a>
         </div>
         <div class="choose">
@@ -55,7 +55,7 @@
   </div>
 {% elseif module.template == 'printed_supplements' %}
   {% set jsonData = render(controller(
-    'ApplicationCamusFrontEndBundle:Default:supplements', { 'id': 1 }
+    '@CamusFrontEnd/Default/supplements', { 'id': 1 }
   ))|twigJsonDecode %}
   <div class="tab-content supplements-tab">
     <div class="filter-date">
@@ -74,7 +74,7 @@
       <!-- <div class="supplement-item">
         <div class="img-container">
           <a href="">
-            <img src="/bundles/applicationcamusassets/images/printed-edition/edition.jpg" />
+            <img src="/bundles/camusassets/images/printed-edition/edition.jpg" />
           </a>
         </div>
         <div class="choose">

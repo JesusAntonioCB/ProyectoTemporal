@@ -1,8 +1,8 @@
 <article class="contenedor-detail-block {{ detailType }}" itemscope itemtype="http://schema.org/Article">
-  {% include 'Application\Camus\AssetsBundle:Fixtures:'~detailType~'.html.twig' ignore missing with {modules: modules, id: contentId} %}
+  {% include '@CamusAssets/Fixtures/'~detailType~'.html.twig' ignore missing with {modules: modules, id: contentId} %}
   <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization" style="display: none;">
     <meta itemprop="name" content="{{ site_name }}">
-    <meta itemprop="logo" content="{{ site_domain }}/bundles/applicationcamusassets/images/md-logo.png">
+    <meta itemprop="logo" content="{{ site_domain }}/bundles/camusassets/images/md-logo.png">
   </div>
   <meta itemprop="mainEntityofPage" content="{{ url }}">
 </article>

@@ -45,7 +45,7 @@
 {% elseif module.template == 'markets' %}
   <div class="eo-markets tabs">
     {% set jsonData = render(controller(
-      'ApplicationCamusFrontEndBundle:Default:newmarkets'
+      '@CamusFrontEnd/Default/newmarkets'
     ))|twigJsonDecode %}
     <div class="head-container">
       Mercados
