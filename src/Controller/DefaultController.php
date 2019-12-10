@@ -86,26 +86,7 @@ class DefaultController extends AbstractController
             ]
           ],
           "modules" => []
-        ],
-        [
-          "type" => "ad_medium_rectangle",
-          "template" => "base",
-          "id" => 130,
-          "is_ad" => true,
-          "show" => [
-            "board" => true,
-            "content" => false,
-            "inner" => false
-          ],
-          "width" => 300,
-          "height" => 250,
-          "extraData" => [
-            "target" => "Bloques1"
-          ],
-          "codes" => [
-            "web" => "/7198/Fama/Home_Page/Portada/Bloques"
-          ]
-        ],
+        ]
       ];
         // $modules = array(
         //     array(

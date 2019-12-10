@@ -5,7 +5,7 @@ namespace App\Camus\AssetsBundle\Twig;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;
 
-class ModelAttributeExtension extends AbstractExtension implements GlobalsInterface
+class ModelAttributeExtension extends AbstractExtension 
 {
 
   public function getGlobals()
