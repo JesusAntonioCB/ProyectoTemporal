@@ -1,22 +1,22 @@
 {% if module.template == 'gallery' %}
-  <div {{ data_camus_module_type["sli"] }} class="sli-opening slider" data-camus-id="{{ module.id }}">
+  <div  class="sli-opening slider" data-camus-id="{{ module.id }}">
     {% if module.subtitle != '' %}
       <h2 class="heading">{{ module.subtitle|striptags }}</h2>
     {% endif %}
     <div class="media-container">
       <div class="description-cartoon">
-        <h1 class="title" {{ data_camus_title }}>{{ module.title|striptags }}</h1>
+        <h1 class="title" >{{ module.title|striptags }}</h1>
         <div class="summary">
-          <span {{ data_camus_abstract }}>{{ module.abstract|raw }}</span>
+          <span >{{ module.abstract|raw }}</span>
         </div>
         <div class="section">
-          <span {{ data_camus_section }}>{{ module.section }}</span>
+          <span >{{ module.section }}</span>
         </div>
         <div class="date">
           <span></span>
         </div>
       </div>
-      <div class="gallery-container" {{ data_camus_modules }}>
+      <div class="gallery-container" >
         {% for listElement in module.media %}
         {% if listElement is not empty %}
           {#{% set type = listElement.type|splitTemplate %}#}

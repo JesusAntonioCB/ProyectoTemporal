@@ -1,16 +1,16 @@
 {% if module.template == 'opinion' %}
  {% if module.modules is defined and module.modules is not empty %}
-   <div class="sli-opinion" {{ data_camus_toolbar_position["tl"] }} {{ data_camus_module_type["sli"] }} >
+   <div class="sli-opinion"   >
      <div class="media-container">
-        <div class="headline" {{ data_camus_border_color }}>
+        <div class="headline" >
           {% if module.hasThumbnail == true %}
-            <div class="img-container" {{ data_camus_removable["image"] }}>
+            <div class="img-container" >
               {{ module.thumbnail|asImage(module.alt)|raw }}
             </div>
           {% endif %}
           {% if module.title != '' %}
-         <div class="title" {{ data_camus_removable["title"] }} {{ data_camus_color }}>
-           <span {{ data_camus_title }}>{{ module.title }}</span>
+         <div class="title"  >
+           <span >{{ module.title }}</span>
          </div>
          {% endif %}
          {% if module.hasSponsor is defined and module.hasSponsor == true %}
@@ -25,7 +25,7 @@
            </div>
          </div>
        </div>
-       <div {{ data_camus_modules }} class="firms">
+       <div  class="firms">
          {% for slide in module.modules %}
            {% set type = slide.type|splitTemplate %}
            {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: slide|getModelModule, parentId: module.id } %}
@@ -35,17 +35,17 @@
    </div>
  {% endif %}
 {% elseif module.template == 'base' %}
-  <div class="sli-base" {{ data_camus_toolbar_position["tl"] }} {{ data_camus_module_type["sli"] }} >
+  <div class="sli-base"   >
     <div class="media-container">
-      <div class="headline" {{ data_camus_border_color }}>
+      <div class="headline" >
         {% if module.hasThumbnail == true %}
-          <div class="img-container" {{ data_camus_removable["image"] }}>
+          <div class="img-container" >
             {{ module.thumbnail|asImage(module.alt)|raw }}
           </div>
         {% endif %}
         {% if module.title != '' %}
-        <div class="title" {{ data_camus_removable["title"] }}>
-          <span {{ data_camus_color }} {{ data_camus_title }}>{{ module.title }}</span>
+        <div class="title" >
+          <span  >{{ module.title }}</span>
         </div>
         {% endif %}
         {% if module.hasSponsor is defined and module.hasSponsor == true %}
@@ -64,7 +64,7 @@
           </div>
         </div>#}
       </div>
-      <div {{ data_camus_modules }} class="firms">
+      <div  class="firms">
         {% for list in module.modules %}
           {% if list != null %}
             {% set type = list.type|splitTemplate %}
@@ -76,10 +76,10 @@
   </div>
 {% elseif module.template == 'left_title' %}
   {% if module.modules is defined and module.modules is not empty %}
-    <div class="sli-base-left-title" {{ data_camus_toolbar_position["tl"] }} {{ data_camus_module_type["sli"] }} >
+    <div class="sli-base-left-title"   >
       <div class="media-container">
         <div class="headline">
-          <h2 class="title" {{ data_camus_title }}>{{ module.title }}</h2>
+          <h2 class="title" >{{ module.title }}</h2>
           {% if module.heading.media != '' %}
             {{ module.heading.media|asHost(module.author)|raw }}
           {% endif %}
@@ -92,7 +92,7 @@
             </div>
           </div>
         </div>
-        <div {{ data_camus_modules }} class="firms">
+        <div  class="firms">
           {% for list in module.modules %}
             {% if list != null %}
               {% set type = list.type|splitTemplate %}
@@ -104,13 +104,13 @@
     </div>
   {% endif %}
 {% elseif module.template == 'large' %}
-  <div class="sli-large" {{ data_camus_module_type["sli"] }} {{ data_camus_background_color }} style="background-color: {{ module.color }}" >
+  <div class="sli-large"   style="background-color: {{ module.color }}" >
     <div class="media-container">
       <div class="headline">
         <div class="title">
-          <span {{ data_camus_title }} {{ data_camus_module_color_contrast }}>{{ module.title }}</span>
+          <span  >{{ module.title }}</span>
         </div>
-        <div class="arrows"  {{ data_camus_color }} style="color: {{ module.color }}">
+        <div class="arrows"   style="color: {{ module.color }}">
           <div class="left">
             <i class="fa fa-chevron-left" aria-hidden="true"></i>
           </div>
@@ -119,7 +119,7 @@
           </div>
         </div>
       </div>
-      <div {{ data_camus_modules }} class="firms">
+      <div  class="firms">
         {% for list in module.modules %}
           {% set type = list.type|splitTemplate %}
           {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: list|getModelModule, parentId: module.id } %}
@@ -128,16 +128,16 @@
     </div>
   </div>
 {% elseif module.template == 'left_title_sortable'%}
-  <div class="sli-left-title-sortable" {{ data_camus_module_type["sli"] }} >
-    <div class="head-container" {{ data_camus_border_color }} style="border-color: {{ module.color }}">
-      <h1 class="headline" {{ data_camus_title }} {{ data_camus_color }} style="color: {{ module.color }}">{{ module.title }}</h1>
+  <div class="sli-left-title-sortable"  >
+    <div class="head-container"  style="border-color: {{ module.color }}">
+      <h1 class="headline"   style="color: {{ module.color }}">{{ module.title }}</h1>
       <div class="buttons-container">
         <div class="ctr-btn date-button">
           <span class="fa fa-calendar"></span>
-          <span {{ data_camus_author_button }}>Seleccionar Fecha</span>
+          <span >Seleccionar Fecha</span>
         </div>
         <div class="ctr-btn sort-button">
-          <span {{ data_camus_date_button }}>A-Z Elegir Autor</span>
+          <span >A-Z Elegir Autor</span>
         </div>
         <div class="arrows">
           <div class="left">
@@ -149,7 +149,7 @@
         </div>
       </div>
     </div>
-    <div {{ data_camus_modules }} class="firms">
+    <div  class="firms">
       {% for list in module.modules %}
         {% if list != null %}
           {% set type = list.type|splitTemplate %}

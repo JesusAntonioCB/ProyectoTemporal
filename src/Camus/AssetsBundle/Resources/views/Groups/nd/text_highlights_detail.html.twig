@@ -3,19 +3,19 @@
     <div class="media-container">
       <div class="phrase-container">
         {% if module.hasThumbnail == true %}
-          <div class="img-container" {{ data_camus_removable["image"] }}>
+          <div class="img-container" >
             {{ module.thumbnail|asImage(module.alt)|raw }}
           </div>
         {% endif %}
         <div class="text-container">
           <div class="phrase">
-            <span {{ data_camus_title }}>{{ module.title }}</span>
+            <span >{{ module.title }}</span>
           </div>
           <div class="description">
-            <p class="author" {{ data_camus_author }}>
+            <p class="author" >
               {{module.author|striptags}}
             </p>
-            <p class="position" {{ data_camus_body }}>
+            <p class="position" >
               {{module.body|striptags}}
             </p>
           </div>
@@ -29,7 +29,7 @@
       <div class="text">
         <span class="dni">Te recomendamos:</span>
         <a {{ module.slug|linkConstruct|raw }}>
-          <span {{ data_camus_title }}>{{ module.title }}</span>
+          <span >{{ module.title }}</span>
         </a>
       </div>
     </div>

@@ -1,7 +1,7 @@
 {% if module.template == 'base' %}
-  <div class="nd-rnd-base" {{ data_camus_module_type["list"] }}>
-    <h4 class="related-title" {{ data_camus_title }}>{{ module.title }}</h4>
-    <div class="notes-list" {{ data_camus_modules }}>
+  <div class="nd-rnd-base" >
+    <h4 class="related-title" >{{ module.title }}</h4>
+    <div class="notes-list" >
       {% for listElement in module.modules %}
         {% set type = listElement.type|splitTemplate %}
         {{ include ('@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig', {module: listElement|getModelModule, exep: "1"}) }}
@@ -9,9 +9,9 @@
     </div>
   </div>
 {% elseif module.template == 'media_dual' or module.template == 'media_core' and module.modules is not empty %}
-  <div class="nd-rnd-media" {{ data_camus_module_type["list"] }}>
-    <h4 class="related-title" {{ data_camus_title }}>{{ module.title }}</h4>
-    <ul class="notes-list" {{ data_camus_modules }}>
+  <div class="nd-rnd-media" >
+    <h4 class="related-title" >{{ module.title }}</h4>
+    <ul class="notes-list" >
       {% for listElement in module.modules %}
         {% set type = listElement.type|splitTemplate %}
         {{ include ('@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig', {module: listElement|getModelModule, template: module.template}) }}

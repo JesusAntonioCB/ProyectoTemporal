@@ -11,18 +11,18 @@
         </a>
       </div>
       {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == "default" %}
-        <a {{ module.slug|linkConstruct|raw }} class="sphere" {{ data_camus_extra_media_icon }} {{ data_camus_removable["icon"] }}>
+        <a {{ module.slug|linkConstruct|raw }} class="sphere"  >
           <span class="fa fa-camera"></span>
         </a>
       {% endif %}
       <div class="headline-top-container-gradient">
         <div class="title ">
           <a {{ module.slug|linkConstruct|raw }}>
-            <span {{ data_camus_title }}> {{ module.title }} </span>
+            <span > {{ module.title }} </span>
           </a>
         </div>
         <div class="author">
-          <span {{ data_camus_author }}>{{ module.author }}</span>
+          <span >{{ module.author }}</span>
         </div>
         {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
         <!-- <div class="social-media"></div> -->
@@ -42,31 +42,31 @@
         </a>
       </div>
       {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == "default" %}
-        <a {{ module.slug|linkConstruct|raw }} class="btn-play" {{ data_camus_extra_media_icon }} {{ data_camus_removable["icon"] }}>
+        <a {{ module.slug|linkConstruct|raw }} class="btn-play"  >
           <span class="fa fa-play"></span>
         </a>
       {% endif %}
       {% if module.heading.title != '' %}
         <div class="headtitle-top-container">                                                {#AGREGADO#}
-          <div class="section-top" {{ data_camus_removable["header"] }}>
-            <span {{ data_camus_heading_title }}>{{ module.heading.title }}</span>
+          <div class="section-top" >
+            <span >{{ module.heading.title }}</span>
           </div>
         </div>
       {% endif %}
       <div class="headline-bottom-container-gradient">
         <div class="title">
           <a {{ module.slug|linkConstruct|raw }}>
-            <span {{ data_camus_title }}>{{ module.title }}</span>
+            <span >{{ module.title }}</span>
           </a>
         </div>
         {% if module.section != '' %}
-        <div class="section" {{ data_camus_removable["section"] }} {{ data_camus_module_show_just_one["section"] }}>
-          <span {{ data_camus_section }}>{{ module.section }}</span>
+        <div class="section"  >
+          <span >{{ module.section }}</span>
         </div>
         {% endif %}
         {% if module.author != '' %}
-        <div class="author" {{ data_camus_removable["author"] }} {{ data_camus_module_show_just_one["author"] }}>
-          <span {{ data_camus_author }}>{{ module.author }}</span>
+        <div class="author"  >
+          <span >{{ module.author }}</span>
         </div>
         {% endif %}
         {% if module.sponsor.media|length > 0 %}
@@ -81,7 +81,7 @@
   <div class="oo-top-text-large">
     <div class="media-container">
       {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == "default" %}
-        <button type="button" class="sphere" {{ data_camus_extra_media_icon }} {{ data_camus_removable["icon"] }}>
+        <button type="button" class="sphere"  >
           <span class="fa fa-camera"></span>
         </button>
       {% endif %}
@@ -93,11 +93,11 @@
       <div class="headline-top-container-gradient">
         <div class="title">
           <a {{ module.slug|linkConstruct|raw }}>
-            <span {{ data_camus_title }}> {{ module.title }} </span>
+            <span > {{ module.title }} </span>
           </a>
         </div>
         <div class="author">
-          <span {{ data_camus_author }}>{{ module.author }}</span>
+          <span >{{ module.author }}</span>
         </div>
         {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
         <!-- <div class="social-media"></div> -->
@@ -108,7 +108,7 @@
   <div class="oo-bottom-text-large">
     <div class="media-container">
       {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == "default" %}
-        <button type="button" class="sphere" {{ data_camus_extra_media_icon }} {{ data_camus_removable["icon"] }}>
+        <button type="button" class="sphere"  >
           <span class="fa fa-camera"></span>
         </button>
       {% endif %}
@@ -120,11 +120,11 @@
       <div class="headline-bottom-container-gradient">
         <div class="title ">
           <a {{ module.slug|linkConstruct|raw }}>
-            <span {{ data_camus_title }}>{{ module.title }}</span>
+            <span >{{ module.title }}</span>
           </a>
         </div>
         <div class="author">
-          <span {{ data_camus_author }}>{{ module.author }}</span>
+          <span >{{ module.author }}</span>
         </div>
         {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
         <!-- <div class="social-media"></div> -->
@@ -133,8 +133,8 @@
   </div>
 {% elseif module.template == 'single_notice' or 'multi_notice' %}
   {% set className = module.template|replace({'_': '-' }) %}
-  <div class="oo-background-image-{{className}}" data-camus-module-type="ctr" {{ data_camus_toolbar_position["br"] }} {{ data_camus_allow_empty_module["1"] }}>
-    <div class="media-container" {{ data_camus_modules }}>
+  <div class="oo-background-image-{{className}}" data-camus-module-type="ctr"  >
+    <div class="media-container" >
       {% for listElement in module.modules %}
         {% set type = listElement.type|splitTemplate %}
         {% if loop.index0 == 0 %}
@@ -151,8 +151,8 @@
 {#MODIFICACION SEPTIMA ENTRADA#}
 {# {% elseif module.template == 'single_notice' or 'multi_notice' %}
   {% set className = module.template|replace({'_': '-' }) %}
-  <div class="oo-background-image-{{className}}" data-camus-module-type="ctr" {{ data_camus_toolbar_position["br"] }} {{ data_camus_allow_empty_module["1"] }} style="width:100%;">
-    <div class="media-container" {{ data_camus_modules }}>
+  <div class="oo-background-image-{{className}}" data-camus-module-type="ctr"   style="width:100%;">
+    <div class="media-container" >
       {% for listElement in module.modules %}
         {% set type = listElement.type|splitTemplate %}
         {% if loop.index0 == 0 %}

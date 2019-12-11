@@ -58,7 +58,7 @@
         {{ module.thumbnail|asImage(module.alt)|raw }}
       </div>
       <div class="caption">
-        <div class="title" {{ data_camus_title }}>{{ module.title }}</div>
+        <div class="title" >{{ module.title }}</div>
         {{ app.request.getPathInfo|socialTag(module.title, module.thumbnail)|raw }}
         <!-- <div class="social-media"></div> -->
       </div>

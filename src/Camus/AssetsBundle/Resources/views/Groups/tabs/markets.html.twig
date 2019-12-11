@@ -2,7 +2,7 @@
   {% set jsonData = render(controller(
     '@CamusFrontEnd/Default/stocks'
   ))|twigJsonDecode %}
-  <div class="market-stocks" {{ data_camus_module_tab }}
+  <div class="market-stocks" 
     <div class="media-container">
       <div class="content">
         <div class="sections">
@@ -211,7 +211,7 @@
   {% set jsonData = render(controller(
     '@CamusFrontEnd/Default/bmv'
   ))|twigJsonDecode %}
-  <div class="market-bmv" {{ data_camus_module_tab }}>
+  <div class="market-bmv" >
     <div class="media-container">
       <div class="content">
         <div class="sections">
@@ -275,7 +275,7 @@
   {% set jsonData = render(controller(
     '@CamusFrontEnd/Default/indicators'
   ))|twigJsonDecode %}
-  <div class="market-indicators" {{ data_camus_module_tab }}>
+  <div class="market-indicators" >
     <div class="media-container">
       <div class="content">
         <div class="sections">
@@ -362,7 +362,7 @@
   {% set jsonData = render(controller(
     '@CamusFrontEnd/Default/funds'
   ))|twigJsonDecode %}
-  <div class="market-funds" {{ data_camus_module_tab }}>
+  <div class="market-funds" >
     <div class="media-container">
       <div class="content">
         <div class="tables">

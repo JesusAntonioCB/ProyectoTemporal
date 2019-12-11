@@ -1,5 +1,5 @@
 <div class="themes">
-  <ul {{ data_camus_modules }} class="thin-data">
+  <ul  class="thin-data">
     {% for topic in jsonDataTopics %}
       <li><span><a href="/temas/{{ topic.nameNormalized }}">{{ topic.name|upper }}</a></span></li>
     {% endfor %}

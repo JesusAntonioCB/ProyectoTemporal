@@ -4,7 +4,7 @@
 {% if module.template == 'small' %}
   <div class="tabs-small" {{data_camus_allow_empty_module["1"]}}>
     <div class="title">
-      <span {{ data_camus_title }}>{{ module.title }}</span>
+      <span >{{ module.title }}</span>
     </div>
     <div class="media-container">
       <div class="tabs">
@@ -15,19 +15,19 @@
         </ul>
       </div>
       <div class="content">
-        <div {{ data_camus_modules }} class="classification-tab tab-active tab-content">
+        <div  class="classification-tab tab-active tab-content">
           {# {% for slide in module.modules %}
             {% set type = slide.type|splitTemplate %}
             {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: slide|getModelModule, parentId: module.id } %}
           {% endfor %} #}
         </div>
-        <div {{ data_camus_modules }} class="results-tab tab-content">
+        <div  class="results-tab tab-content">
           {# {% for slide in module.modules %}
             {% set type = slide.type|splitTemplate %}
             {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: slide|getModelModule, parentId: module.id } %}
           {% endfor %} #}
         </div>
-        <div {{ data_camus_modules }} class="scorers-tab tab-content">
+        <div  class="scorers-tab tab-content">
           {# {% for slide in module.modules %}
             {% set type = slide.type|splitTemplate %}
             {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: slide|getModelModule, parentId: module.id } %}
@@ -38,7 +38,7 @@
   </div>
   {# <div class="tabs-small" {{data_camus_allow_empty_module["1"]}}>
     <div class="title">
-      <span {{ data_camus_title }}>{{ module.title }}</span>
+      <span >{{ module.title }}</span>
     </div>
     <div class="media-container">
       <div class="tabs">

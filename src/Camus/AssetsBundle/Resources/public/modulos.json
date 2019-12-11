@@ -1,0 +1,152 @@
+{
+  "modules": [
+      {
+          "type": "sn_base",
+          "template": "bottom_text_growable",
+          "id": 110,
+          "title": "Yuridia se casó y así de guapa lució vestida de novia",
+          "abstract": "",
+          "body": "",
+          "thumbnailClippingLarger": {
+              "width": 600,
+              "height": 341,
+              "x": 0,
+              "y": 13,
+              "quality": 100,
+              "id": 1989,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 8385,
+                  "title": "Yuridia se casó y así de guapa lució vestida de novia",
+                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
+              },
+              "src": "https://cdn.revistafama.com/uploads/media/2019/12/10/yuridia-caso-guapa-lucio-vestida_0_13_600_341.jpg"
+          },
+          "media": [],
+          "heading": [],
+          "extraData": {
+              "mediaTitle": "",
+              "headingTitle": "",
+              "mediaIconVisible": "hidden"
+          },
+          "thumbnail": {
+              "width": 318,
+              "height": 373,
+              "x": 251,
+              "y": 0,
+              "quality": 100,
+              "id": 1988,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 8385,
+                  "title": "Yuridia se casó y así de guapa lució vestida de novia",
+                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
+              },
+              "src": "https://cdn.revistafama.com/uploads/media/2019/12/10/yuridia-caso-guapa-lucio-vestida_251_0_318_373.jpg"
+          },
+          "content": {
+              "id": 2260,
+              "slug": "/celebridades/yuridia-caso-guapa-lucio-vestida-novia",
+              "xalokId": null,
+              "author": null
+          },
+          "clippings": {
+              "default": {
+                  "window_width": 320,
+                  "width": 300
+              },
+              "size_1272": {
+                  "window_width": 638,
+                  "width": 618
+              }
+          },
+          "modules": []
+      },
+      {
+          "type": "sn_base",
+          "template": "top_text",
+          "id": 131,
+          "title": "¿Qué es un suero o sérum facial y cómo usarlo?",
+          "abstract": "",
+          "body": "",
+          "thumbnailClippingLarger": [],
+          "media": [],
+          "heading": [],
+          "extraData": {
+              "mediaTitle": "",
+              "headingTitle": "",
+              "mediaIconVisible": "hidden"
+          },
+          "thumbnail": {
+              "width": 416,
+              "height": 487,
+              "x": 179,
+              "y": 0,
+              "quality": 100,
+              "id": 1922,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 7693,
+                  "title": "Suero o sérum facial",
+                  "providerReference": "suero-o-serum-facial.jpg"
+              },
+              "src": "https://cdn.revistafama.com/uploads/media/2019/12/03/suero-o-serum-facial_179_0_416_487.jpg"
+          },
+          "content": {
+              "id": 2181,
+              "slug": "/salud-y-belleza/que-es-un-suero-o-serum-facial-y-como-usarlo",
+              "xalokId": null,
+              "column": "",
+              "publishedHour": "16:33",
+              "publishedDate": "02.12.2019",
+              "author": null
+          },
+          "modules": []
+      },
+      {
+          "type": "sn_base",
+          "template": "base",
+          "id": 136,
+          "title": "20 ideas de maquillaje para Navidad",
+          "abstract": "",
+          "body": "",
+          "thumbnailClippingLarger": [],
+          "media": [],
+          "heading": {
+              "title": "Consejo",
+              "media": []
+          },
+          "extraData": {
+              "mediaTitle": "",
+              "headingTitle": "",
+              "mediaIconVisible": "hidden"
+          },
+          "thumbnail": {
+              "width": 564,
+              "height": 367,
+              "x": 0,
+              "y": 172,
+              "quality": 80,
+              "id": 1954,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 7881,
+                  "title": "Makeup en tono oro gold.",
+                  "providerReference": "makeup-en-tono-oro-gold.jpg"
+              },
+              "src": "https://cdn.revistafama.com/uploads/media/2019/12/05/makeup-en-tono-oro-gold_0_172_564_367.jpg"
+          },
+          "content": {
+              "id": 2192,
+              "slug": "/moda/outfits/20-ideas-de-maquillaje-para-navidad",
+              "xalokId": null,
+              "column": "",
+              "publishedHour": "14:23",
+              "publishedDate": "03.12.2019",
+              "author": null
+          },
+          "sectionName": "Outfits",
+          "modules": []
+      }
+  ]
+}

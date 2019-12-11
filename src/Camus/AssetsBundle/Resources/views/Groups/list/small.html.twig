@@ -2,7 +2,7 @@
 
 {% if module.template == 'base' or module.template == 'base_media' or module.template == 'base_opinions' %}
   {% if module.modules is defined and module.modules is not empty %}
-    <div class="list-base" {{ data_camus_module_type["list"] }} data-camus-template="{{module.templateName}}" {{ data_camus_type["list_small"] }} {{ data_camus_toolbar_position["br"] }} data-camus-id="{{ module.id }}">
+    <div class="list-base"  data-camus-template="{{module.templateName}}"   data-camus-id="{{ module.id }}">
       <div class="media-container">
         {% if module.title != '' %}
           {% if module.template != 'base' %}
@@ -14,7 +14,7 @@
           {% endif %}
           {{ seeMore.text(module, more, removable) }}
         {% endif %}
-        <div class="list" {{ data_camus_modules }}>
+        <div class="list" >
           {% for listElement in module.modules %}
           {% set type = listElement.type|splitTemplate %}
           {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule, index: loop.index} %}
@@ -24,9 +24,9 @@
     </div>
   {% endif %}
 {% elseif  module.template == 'small_hour' %}
-  <div class="list-small-hour" {{ data_camus_module_type["list"] }} data-camus-id="{{ module.id }}">
+  <div class="list-small-hour"  data-camus-id="{{ module.id }}">
     {{ seeMore.text(module, true, false) }}
-    <div class="media-container" {{ data_camus_modules }}>
+    <div class="media-container" >
       {% for listElement in module.modules %}
         {% set type = listElement.type|splitTemplate %}
         {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
@@ -34,9 +34,9 @@
     </div>
   </div>
 {% elseif  module.template == 'medium' %}
-  <div class="list-medium" {{ data_camus_module_type["list"] }} data-camus-id="{{ module.id }}">
+  <div class="list-medium"  data-camus-id="{{ module.id }}">
     {{ seeMore.text(module, true, false) }}
-    <div class="media-container" {{ data_camus_modules }}>
+    <div class="media-container" >
       {% for listElement in module.modules %}
         {% set type = listElement.type|splitTemplate %}
         {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
@@ -45,16 +45,16 @@
   </div>
                                                                                                              COMENTADA LA SECCION VER MAS
 {% elseif module.template == 'findings' or module.template == 'tribune' %}
-  {#}<div class="list-base-{{ module.template }}" {{ data_camus_module_type["list"] }} data-camus-template="{{module.templateName}}" {{ data_camus_type["list_small"] }} {{ data_camus_toolbar_position["br"] }} data-camus-id="{{ module.id }}">
+  {#}<div class="list-base-{{ module.template }}"  data-camus-template="{{module.templateName}}"   data-camus-id="{{ module.id }}">
     <div class="media-container">
       {% if module.title != '' %}
       <div class="section-see-more-container-transparent">
         <div class="section-title-container-transparent">
-          <span {{ data_camus_title }}>{{ module.title }}</span>
+          <span >{{ module.title }}</span>
         </div>
       </div>
       {% endif %}
-      <div class="list" {{ data_camus_modules }}>
+      <div class="list" >
         {% for listElement in module.modules %}
         {% set type = listElement.type|splitTemplate %}
         {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule, index: loop.index} %}
@@ -64,19 +64,19 @@
   </div>#}
 
 {% elseif module.template == 'large_news' or module.template == 'large_news_photo' %}
-  <div class="list-large-news" {{ data_camus_toolbar_position["tl"] }} {{ data_camus_module_type["list"] }} {{ data_camus_background_color }} data-camus-id="{{ module.id }}">
+  <div class="list-large-news"    data-camus-id="{{ module.id }}">
     <div class="news-container">
       {% if module.title != '' %}
-        <div class="headline" {{ data_camus_removable["header"] }}>
+        <div class="headline" >
           {% if module.template == 'large_news_photo' %}
-            <h2 class="title" {{ data_camus_title }}>{{ module.title }}</h2>
+            <h2 class="title" >{{ module.title }}</h2>
           {% else %}
-            <h1 class="title" {{ data_camus_title }}>{{ module.title }}</h1>
+            <h1 class="title" >{{ module.title }}</h1>
           {% endif %}
         </div>
       {% endif %}
       <div class="list-news-container">
-        <div class="list" {{ data_camus_modules }}>
+        <div class="list" >
           {% for listElement in module.modules %}
             {% set type = listElement.type|splitTemplate %}
             {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
@@ -87,7 +87,7 @@
       </div>
   </div>
 {% elseif module.template == "large_last_news" %}
-  <div class="list-large-last-news" {{ data_camus_toolbar_position["tl"] }} {{ data_camus_module_type["list"] }} {{ data_camus_background_color }} data-camus-id="{{ module.id }}">
+  <div class="list-large-last-news"    data-camus-id="{{ module.id }}">
     <div class="news-container">
       {% set urlSection = "" %}
       {% if app.request.cookies.has("sectionLink") %}
@@ -108,7 +108,7 @@
         {% endif %}
       </div>
       <div class="list-news-container">
-        <div class="list" {{ data_camus_modules }}>
+        <div class="list" >
           {% for listElement in module.modules %}
             {% set type = listElement.type|splitTemplate %}
             {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
@@ -119,14 +119,14 @@
       </div>
   </div>
 {% elseif module.template == 'large_news_linked' %}
-  <div class="list-large-news" {{ data_camus_toolbar_position["tl"] }} {{ data_camus_module_type["list"] }} {{ data_camus_background_color }} style="background-color: {{ module.color }}" data-camus-id="{{ module.id }}">
+  <div class="list-large-news"    style="background-color: {{ module.color }}" data-camus-id="{{ module.id }}">
     <div class="news-container">
-      <div class="headline photo" {{ data_camus_removable["header"] }}>
-        <span {{ data_camus_title }}>{{ module.title }}</span>
+      <div class="headline photo" >
+        <span >{{ module.title }}</span>
         <a href="/opinion/moneros" class="type-home-link">IR A MONEROS</a>
       </div>
       <div class="list-news-container">
-        <div class="list" {{ data_camus_modules }}>
+        <div class="list" >
           {% for listElement in module.modules %}
             {% set type = listElement.type|splitTemplate %}
             {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
@@ -136,21 +136,21 @@
       </div>
   </div>
 {% elseif module.template == 'large_news_cartoons' %}
-  <div class="list-large-news-cartoons" {{ data_camus_toolbar_position["tl"] }} {{ data_camus_module_type["list"] }} {{ data_camus_background_color }} data-camus-id="{{ module.id }}">
-    <div class="head-container" {{ data_camus_removable["header"] }}>
-      <h1 class="headline" {{ data_camus_title }}>{{ module.title }}</h1>
+  <div class="list-large-news-cartoons"    data-camus-id="{{ module.id }}">
+    <div class="head-container" >
+      <h1 class="headline" >{{ module.title }}</h1>
       <div class="buttons-container">
         <div class="ctr-btn date-button-cartoon">
           <span class="fa fa-calendar"></span>
-          <span {{ data_camus_author_button }}>ELEGIR FECHA</span>
+          <span >ELEGIR FECHA</span>
         </div>
         <div class="ctr-btn sort-button-cartoon">
-          <span {{ data_camus_date_button }}>TODOS LOS MONEROS</span>
+          <span >TODOS LOS MONEROS</span>
         </div>
       </div>
     </div>
     <div class="list-news-container">
-      <div class="list" {{ data_camus_modules }}>
+      <div class="list" >
         {% for listElement in module.modules %}
           {% set type = listElement.type|splitTemplate %}
           {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
@@ -159,7 +159,7 @@
     </div>
   </div>
 {% elseif module.template == 'large_topics' %}
-  <div class="list-large-news topics" {{ data_camus_toolbar_position["tl"] }} {{ data_camus_module_type["list"] }} {{data_camus_allow_empty_module["1"]}} data-camus-id="{{ module.id }}">
+  <div class="list-large-news topics"   {{data_camus_allow_empty_module["1"]}} data-camus-id="{{ module.id }}">
     <div class="block author-modal">
       <div class="close-modal">
         <i class="fa fa-times" aria-hidden="true"></i>

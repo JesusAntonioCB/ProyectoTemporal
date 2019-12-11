@@ -1,0 +1,9 @@
+
+Resources/public/node_modules/*
+Resources/public/js/bundle/*
+Resources/public/scss/main/main.css
+Resources/public/scss/main/main.css.map
+Resources/public/scss/print/print.css
+Resources/public/scss/print/print.css.map
+Resources/public/mainbundle.js
+Resources/public/socialbundle.js

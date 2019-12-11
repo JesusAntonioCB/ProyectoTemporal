@@ -1,7 +1,7 @@
 {% if module.template == 'sports' %}
   {% set jsonDataSports = sportsTickets('soccer') %}
   {% set sportsEvents = jsonDataSports.content.705 %}
-  <div class="list-tickets" {{ data_camus_module_type["list"] }} data-camus-template="{{module.templateName}}" {{ data_camus_type["list_small"] }} {{ data_camus_toolbar_position["br"] }} {{data_camus_allow_empty_module["1"]}} >
+  <div class="list-tickets"  data-camus-template="{{module.templateName}}"   {{data_camus_allow_empty_module["1"]}} >
     <div class="media-container">
       <div class="section-see-more-container-transparent" >
         <div class="section-title-container-transparent">
@@ -23,7 +23,7 @@
 {% elseif module.template == 'shows' %}
   {% set jsonDataShows = sportsTickets('shows', 4) %}
   {% set showsEvents = jsonDataShows.content.160 %}
-  <div class="list-tickets spectacles" {{ data_camus_module_type["list"] }} data-camus-template="{{module.templateName}}" {{ data_camus_type["list_small"] }} {{ data_camus_toolbar_position["br"] }} {{data_camus_allow_empty_module["1"]}} >
+  <div class="list-tickets spectacles"  data-camus-template="{{module.templateName}}"   {{data_camus_allow_empty_module["1"]}} >
     <div class="media-container">
       <div class="section-see-more-container-transparent" >
         <div class="section-title-container-transparent">

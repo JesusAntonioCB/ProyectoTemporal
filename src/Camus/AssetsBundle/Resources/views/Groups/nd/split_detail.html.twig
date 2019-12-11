@@ -24,10 +24,10 @@
           <span class="fa fa-arrow-right"></span>
         </div>
         <div class="title-container">
-          <div class="dni" {{ data_camus_heading_title }}>{{ module.heading.title }}</div>
-          <div class="title" {{ data_camus_title }}>{{ module.title }}</div>
+          <div class="dni" >{{ module.heading.title }}</div>
+          <div class="title" >{{ module.title }}</div>
         </div>
-        <div class="text" {{ data_camus_body }}>
+        <div class="text" >
           {{ module.body|charsDecode|raw }}
         </div>
       </div>
@@ -35,17 +35,17 @@
   </div>
 {% elseif module.template == 'highlights' %}
 {% elseif module.template == 'profile' %}
-  <div class="nd-sd-profile" {{ data_camus_module_type["list"] }}>
+  <div class="nd-sd-profile" >
     <div class="media-container">
       <div class="news-elements-dni-text">
         <div class="circle-container-white">
           <span class="fa fa-arrow-right"></span>
         </div>
         <div class="title-container">
-          <span class="dni" {{ data_camus_heading_title }}>{{ module.heading.title }}</span>
-          <span class="title" {{ data_camus_title }}>{{ module.title }}</span>
+          <span class="dni" >{{ module.heading.title }}</span>
+          <span class="title" >{{ module.title }}</span>
         </div>
-        <div class="description" {{ data_camus_modules }} >
+        <div class="description"  >
           {% for module in module.modules if module != null %}
             {% set type = module.type|splitTemplate %}
               {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
@@ -55,7 +55,7 @@
           <div class="img-container">
             {{ module.thumbnail|asImage(module.alt)|raw }}
           </div>
-          <div class="text" {{ data_camus_abstract }}>
+          <div class="text" >
             {{ module.abstract|raw }}
           </div>
         </div>
@@ -71,11 +71,11 @@
         </div>
         <div class="headline-top-container-gradient">
           <div class="title-container">
-            <span class="dni" {{ data_camus_heading_title }}>{{ module.heading.title }}</span>
+            <span class="dni" >{{ module.heading.title }}</span>
             {% if module.slug == "" %}
-              <span class="title" {{ data_camus_title }}>{{ module.title }}</span>
+              <span class="title" >{{ module.title }}</span>
             {% else %}
-              <a {{ module.slug|linkConstruct|raw }}><span class="title" {{ data_camus_title }}>{{ module.title }}</span></a>
+              <a {{ module.slug|linkConstruct|raw }}><span class="title" >{{ module.title }}</span></a>
             {% endif %}
           </div>
         </div>
@@ -92,7 +92,7 @@
     </div>
   </div>
 {% elseif module.template == 'ranking' %}
-  <div class="nd-sd-ranking" {{ data_camus_module_type["list"] }}>
+  <div class="nd-sd-ranking" >
     <div class="media-container">
       <div class="news-elements-ranking-table">
         <div class="circle-container-white">
@@ -100,9 +100,9 @@
         </div>
         <div class="title-container">
           <div class="dni">Ranking.</div>
-          <div class="title" {{ data_camus_title }}>{{ module.title }}</div>
+          <div class="title" >{{ module.title }}</div>
         </div>
-        <div class="table" {{ data_camus_modules }}>
+        <div class="table" >
           {% for module in module.modules if module != null %}
             {% set type = module.type|splitTemplate %}
               {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
@@ -116,11 +116,11 @@
     <div class="media-container">
       <div class="quartering-text">
         <div class="title-container">
-          <div class="header" {{ data_camus_heading_title }}>{{ module.heading.title }}</div>
-          <div class="title" {{ data_camus_title }}>{{ module.title }}</h1>
+          <div class="header" >{{ module.heading.title }}</div>
+          <div class="title" >{{ module.title }}</h1>
           </div>
         </div>
-        <div class="text" {{ data_camus_abstract }}>
+        <div class="text" >
           {{ module.abstract }}
         </div>
       </div>

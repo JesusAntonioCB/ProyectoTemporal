@@ -158,10 +158,10 @@
   {% endif %}
   {% if 'admin' in app.request.getSchemeAndHttpHost() %}
     {% if module.template == 'league_calendar' %}
-      <div class="sn-stadistics-calendar small" {{ data_camus_module_type["league"] }} template="{{ module.template }}">
+      <div class="sn-stadistics-calendar small"  template="{{ module.template }}">
         <div class="body-container">
           <div class="stadistics-header">
-            <div class="title" {{ data_camus_title }}>
+            <div class="title" >
               <span>
                 {% if module.title is not empty %}
                   {{ module.title|striptags }}
@@ -172,16 +172,16 @@
             </div>
           </div>
           <div class="stadistics-footer">
-            <a {{ module.slug|linkConstruct|raw }} {{ data_camus_link }}>Ver tabla completa <span class="gold">&gt;</span></a>
+            <a {{ module.slug|linkConstruct|raw }} >Ver tabla completa <span class="gold">&gt;</span></a>
           </div>
         </div>
       </div>
     {% else %}
-      <div class="sn-league-stadistics" {{ data_camus_module_type["league"] }} template="{{ module.template }}">
+      <div class="sn-league-stadistics"  template="{{ module.template }}">
         <div class="media-container">
           <div class="content">
             <div class="stadistics-header">
-              <div class="title" {{ data_camus_title }}>
+              <div class="title" >
                 <span>
                   {% if module.title is not empty %}
                     {{ module.title|striptags }}
@@ -190,7 +190,7 @@
               </div>
             </div>
             <div class="stadistics-footer">
-              <a {{ module.slug|linkConstruct|raw }} {{ data_camus_link }}>Ver tabla completa <span class="gold">&gt;</span></a>
+              <a {{ module.slug|linkConstruct|raw }} >Ver tabla completa <span class="gold">&gt;</span></a>
             </div>
           </div>
         </div>
@@ -198,7 +198,7 @@
     {% endif %}
   {% else %}
     {% if module.template == 'league_footer' %}
-      <div class="sn-league-stadistics footer" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+      <div class="sn-league-stadistics footer"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
         <div class="media-container">
           <div class="content">
             <div class="footer-stadistics-container">
@@ -314,10 +314,10 @@
           {% endif %}
         {% endif %}
         {% if module.template == 'league_calendar' %}
-          <div class="sn-league-stadistics calendar small" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+          <div class="sn-league-stadistics calendar small"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
             <div class="body-container">
               <div class="stadistics-header">
-                <div class="title" {{ data_camus_title }}>
+                <div class="title" >
                   <span>
                     {% if module.title is not empty %}
                       {{ module.title|striptags }}
@@ -500,25 +500,25 @@
               {% endif %}
               <div class="stadistics-footer">
                 {% if module.slug is defined %}
-                  <a {{ module.slug|linkConstruct|raw }} {{ data_camus_link }}>Ver tabla completa <span class="gold">&gt;</span></a>
+                  <a {{ module.slug|linkConstruct|raw }} >Ver tabla completa <span class="gold">&gt;</span></a>
                 {% endif %}
               </div>
             </div>
           </div>
         {% else %}
           {% if data_array is empty %}
-            <div class="sn-league-stadistics" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}></div>
+            <div class="sn-league-stadistics"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}></div>
           {% else %}
             {% set groupName = '' %}
             {% set topNumber = 1 %}
             {% if data_array is not empty %}
               {% for player in data_array %}
                 {% if loop.first %}
-                  <div class="sn-league-stadistics" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+                  <div class="sn-league-stadistics"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
                     <div class="media-container">
                       <div class="content">
                         <div class="stadistics-header">
-                          <div class="title" {{ data_camus_title }}>
+                          <div class="title" >
                             <span>
                               {% if module.title is not empty %}
                                 {{ module.title|striptags }}
@@ -720,7 +720,7 @@
                         </table>
                         <div class="stadistics-footer">
                           {% if module.slug is defined %}
-                            <a {{ module.slug|linkConstruct|raw }} {{ data_camus_link }}>Ver tabla completa <span class="gold">&gt;</span></a>
+                            <a {{ module.slug|linkConstruct|raw }} >Ver tabla completa <span class="gold">&gt;</span></a>
                           {% endif %}
                         </div>
                       </div>
@@ -789,24 +789,24 @@
   {% endif %}
   {% if 'admin' in app.request.getSchemeAndHttpHost() %}
     {% if module.template == 'automatic_calendar' %}
-      <div class="sn-stadistics-calendar" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+      <div class="sn-stadistics-calendar"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
         <div class="body-container">
           <div class="media-container">
             <div class="section-see-more-container-transparent">
               <div class="section-title-container-transparent">
-                <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+                <span >{{ module.title|striptags }}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     {% else %}
-      <div class="sn-league-stadistics large" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+      <div class="sn-league-stadistics large"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
         <div class="media-container">
           <div class="content">
             <div class="stadistics-header">
               <div class="title">
-                <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+                <span >{{ module.title|striptags }}</span>
               </div>
             </div>
           </div>
@@ -882,7 +882,7 @@
         <div class="sn-stadistics-calendar">
           <div class="body-container">
             <div class="stadistics-header automatic">
-              <div class="title" {{ data_camus_title }}>
+              <div class="title" >
                 <span>
                   {% if module.title is not empty %}
                     {{ module.title|striptags }}
@@ -1061,7 +1061,7 @@
                  <div class="content">
                    {% set w = 205 + (30 * headings_array|length) %}
                    <div class="stadistics-header" style="width: {{ w + 50 }}px;">
-                     <div class="title" {{ data_camus_title }}>
+                     <div class="title" >
                       {% if player.group.name is defined %}
                         {% set groupName = player.group.name %}
                         <span>{{ groupName }}</span>
@@ -1166,7 +1166,7 @@
                   <div class="content">
                     {% set w = 205 + (30 * headings_array|length) %}
                     <div class="stadistics-header" style="width: {{ w + 50 }}px;">
-                      <div class="title" {{ data_camus_title }}>
+                      <div class="title" >
                         {% if player.group.name is defined %}
                           {% set groupName = player.group.name %}
                           <span>{{ groupName }}</span>
@@ -1408,7 +1408,7 @@
             <div class="content">
               {% set w = 205 + (30 * headings_array|length) %}
               <div class="stadistics-header" style="width: {{ w + 50 }}px;">
-                <div class="title" {{ data_camus_title }}>
+                <div class="title" >
                   <span>
                     {% if module.title is not empty %}
                       {{ module.title|striptags }}
@@ -1487,23 +1487,23 @@
   {% endif %}
   {% if 'admin' in app.request.getSchemeAndHttpHost() %}
     {% if module.template == 'club_calendary' %}
-      <div class="sn-stadistics-club-calendary" {{ data_camus_module_type["club"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+      <div class="sn-stadistics-club-calendary"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
         <div class="module-container">
           <div class="stadistics-head">
             <div class="head-container">
               <div class="title">
-                <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+                <span >{{ module.title|striptags }}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     {% elseif module.template == 'club_roster' %}
-        <div class="sn-stadistics club" {{ data_camus_module_type["club"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+        <div class="sn-stadistics club"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
           <div class="media-container">
             <div class="content">
               <div class="stadistics-header">
-                <div class="title" {{ data_camus_title }}>
+                <div class="title" >
                   <span>
                     {% if module.title is not empty %}
                       {{ module.title|striptags }}
@@ -1517,11 +1517,11 @@
           </div>
         </div>
     {% else %}
-      <div class="sn-league-stadistics" {{ data_camus_module_type["club"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+      <div class="sn-league-stadistics"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
         <div class="media-container">
           <div class="content">
             <div class="stadistics-header">
-              <div class="title" {{ data_camus_title }}>
+              <div class="title" >
                 <span>
                   {% if module.title is not empty %}
                     {{ module.title|striptags }}
@@ -1542,12 +1542,12 @@
       {% if teamCalendaryData.calendar.data is defined %}
         {% set rowsCalendary = teamCalendaryData.calendar.data %}
         {% set imageMictlan = 'http://static.mediotiempo.com/' %}
-        <div class="sn-stadistics-club-calendary" {{ data_camus_module_type["club"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+        <div class="sn-stadistics-club-calendary"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
           <div class="module-container">
             <div class="stadistics-head">
               <div class="head-container">
                 <div class="title">
-                  <span {{ data_camus_title }}>{{ module.title|striptags }}</span>
+                  <span >{{ module.title|striptags }}</span>
                 </div>
               </div>
             </div>
@@ -1672,12 +1672,12 @@
           {% set players = players|merge(players_d) %}
           {% set players = players|merge(players_m) %}
           {% set players = players|merge(players_f) %}
-          <div class="sn-stadistics club" {{ data_camus_module_type["club"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+          <div class="sn-stadistics club"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
             <div class="media-container">
               <div class="content">
                 {# {% set w = 205 + (30 * teamData.metadata.headers|length) %} #}
                 <div class="stadistics-header">
-                  <div class="title" {{ data_camus_title }}>
+                  <div class="title" >
                     <span>
                       {% if module.title is not empty %}
                         {{ module.title|striptags }}
@@ -1809,11 +1809,11 @@
         {% endif %}
         {% if data_array is iterable %}
           {% if data_array.statsTable.data.rows is not empty %}
-            <div class="sn-league-stadistics" {{ data_camus_module_type["club"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+            <div class="sn-league-stadistics"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
               <div class="media-container">
                 <div class="content">
                   <div class="stadistics-header">
-                    <div class="title" {{ data_camus_title }}>
+                    <div class="title" >
                       <span>
                         {% if module.title is not empty %}
                           {{ module.title|striptags }}

@@ -6,10 +6,10 @@
       </div>
       <div class="text-container">
         <div class="date">
-          <span {{ data_camus_title }}>{{ module.title }}</span>
+          <span >{{ module.title }}</span>
         </div>
         <div class="title">
-          <span {{ data_camus_abstract }}>{{ module.abstract }}</span>
+          <span >{{ module.abstract }}</span>
         </div>
       </div>
       {% if module.hasSponsor is defined and module.hasSponsor == true %}
@@ -18,20 +18,20 @@
     </div>
   </div>
 {% elseif module.template == 'section_image' or module.template == 'section_image_nexos' or module.template == 'section_image_secondary' %}
-  <div class="eo-section-image {{ module.template == 'section_image_nexos' ? 'aside' }}" {{ data_camus_toolbar_position["tl"] }} {{ data_camus_border_color }}>
+  <div class="eo-section-image {{ module.template == 'section_image_nexos' ? 'aside' }}"  >
     {% if module.hasThumbnail == true %}
-    <div class="img-container" {{ data_camus_removable["image"] }} {{ data_camus_color }} style="background-color: {{ module.color|parseRGB }}">
+    <div class="img-container"   style="background-color: {{ module.color|parseRGB }}">
       <div class="img">
         {{ module.thumbnail|asImage(module.alt)|raw }}
       </div>
     </div>
     {% endif %}
     {% if module.title != "" %}
-    <div class="title-container" {{ data_camus_removable["title"] }} {{ data_camus_color }} style="color:{{ module.color }}">
+    <div class="title-container"   style="color:{{ module.color }}">
       {% if module.template == 'section_image' or module.template == 'section_image_nexos' %}
-        <h1 class="title" {{ data_camus_title }}>{{ module.title }}</h1>
+        <h1 class="title" >{{ module.title }}</h1>
       {% elseif module.template == 'section_image_secondary' %}
-        <h2 class="title" {{ data_camus_title }}>{{ module.title }}</h2>
+        <h2 class="title" >{{ module.title }}</h2>
       {% endif %}
     </div>
     {% endif %}

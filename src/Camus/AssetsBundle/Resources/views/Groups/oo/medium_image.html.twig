@@ -14,31 +14,31 @@
         {% if module.heading.title|length > 0 %}
           {#{% if module.heading.title|lower == 'cinepolis' or module.heading.title|lower == 'sport-city' %}#}
           {% if module.hasSponsor == true %}
-            <div class="head" {{ data_camus_removable["header"] }}>
+            <div class="head" >
               {{ module.sponsor|asSponsor|raw }}
-              <span {{ data_camus_heading_title }}>{{ module.heading.title }}</span>
+              <span >{{ module.heading.title }}</span>
             </div>
 
           {% else %}
-          <div class="head" {{ data_camus_removable["header"] }}>
-            <span {{ data_camus_heading_title }}>{{ module.heading.title }}</span>
+          <div class="head" >
+            <span >{{ module.heading.title }}</span>
           </div>
           {% endif %}
         {% endif %}
         <div class="text">
           <div class="title">
             <a {{ module.slug|linkConstruct|raw }}>
-              <span {{ data_camus_title }}>{{ module.title }}</span>
+              <span >{{ module.title }}</span>
             </a>
           </div>
           <div class="abstract">
-            <span {{ data_camus_abstract }}>{{ module.abstract|raw }}</span>
+            <span >{{ module.abstract|raw }}</span>
           </div>
         </div>
         <div class="footer">
           {% if module.section != '' %}
-            <div class="section" {{ data_camus_removable["section"] }} {{ data_camus_module_show_just_one["section"] }}>
-              <span {{ data_camus_section }}>{{ module.section }}</span>
+            <div class="section"  >
+              <span >{{ module.section }}</span>
             </div>
           {% endif %}
             {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
@@ -48,27 +48,27 @@
     </div>
   </div>
 {% elseif module.template == 'base_bottom' %}
-  <div class="oo-base-bottom" {{ data_camus_toolbar_position["br"] }}>
+  <div class="oo-base-bottom" >
     <div class="media-container-light-cyan">
       {% if module.heading.title|length > 0 %}
-      <div class="head" {{ data_camus_removable["header"] }}>
-        <span {{ data_camus_heading_title }}>{{ module.heading.title }}</span>
+      <div class="head" >
+        <span >{{ module.heading.title }}</span>
       </div>
       {% endif %}
       <div class="summary-container">
         <div class="text">
           <div class="title">
             <a {{ module.slug|linkConstruct|raw }}>
-              <span {{ data_camus_title }}> {{ module.title }} </span>
+              <span > {{ module.title }} </span>
             </a>
           </div>
           <div class="abstract">
-            <span {{ data_camus_abstract }}>{{ module.abstract|raw }}</span>
+            <span >{{ module.abstract|raw }}</span>
           </div>
         </div>
         <div class="footer">
           <div class="author">
-            <span {{ data_camus_author }}>{{ module.author }}</span>
+            <span >{{ module.author }}</span>
           </div>
           {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
           <!-- <div class="social-media"></div> -->

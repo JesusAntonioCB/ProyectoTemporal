@@ -1,0 +1,790 @@
+{% import "@CamusAssets/Fixtures/see-more.html.twig" as seeMore %}
+
+{% if module.template == 'base' %}
+  <div class="sn-base"  data-camus-template="{{module.templateName}}" >
+    <div class="media-container">
+      <div class="image">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+          {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == 'default' %}
+            <span class="item-icon"  >
+              <span class="fa fa-camera"></span>
+            </span>
+          {% endif %}
+        </a>
+      </div>
+      {% if module.heading.title|length == 0 %}
+      <div class="info-container">
+        <div class="section">
+          <span >{{ module.section|raw }}</span>
+        </div>
+        <div class="title">
+          <a {{ module.slug|linkConstruct|raw }}>
+            <span >{{ module.title }}</span>
+          </a>
+        </div>
+        {% if module.sponsor.media|length > 0 %}
+          {{ module.sponsor|asSponsor|raw }}
+        {% endif %}
+        {% if module.author != '' %}
+          <div class="author"  >
+            <span >{{ module.author }}</span>
+          </div>
+        {% endif %}
+        {#{{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        <div class="social-media"></div>#}
+      </div>
+      {% elseif module.heading.title|length > 0 %}
+      <div class="news-container">
+        <div class="headline-container">
+          {#
+          <div class="m-logo-container">
+            {{ module.heading.media|asImageHeading|raw }}                                                                //COMENTADO
+          </div>
+          #}
+          <div class="headline" >
+            {{ module.heading.title }}
+          </div>
+          <div class="headline-border-color" style="{% if module.color %} --border-color: {{ module.color }}; {% else %} --border-color: #D61F2E; {% endif %} " >
+          </div>
+        </div>
+        <div class="title">
+          <a {{ module.slug|linkConstruct|raw }}>
+            <span >{{ module.title }}</span>
+          </a>
+        </div>
+        {% if module.sponsor.media|length > 0 %}
+          {{ module.sponsor|asSponsor|raw }}
+        {% endif %}
+        {% if module.section is not empty %}
+          <div class="section">
+            <span > {{ module.section|raw }}</span>
+          </div>
+        {% endif %}
+        {% if module.author != '' %}
+          <div class="author"  >
+            <span >{{ module.author }}</span>
+          </div>
+        {% endif %}
+        {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        <div class="social-media"></div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+{% elseif module.template == 'top_text' %}
+  <div class="sn-top-text">
+    <div class="media-container">
+      <div class="image">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+        </a>
+      </div>
+      {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == 'default' %}
+        <a {{ module.slug|linkConstruct|raw }} class="item-icon"  >
+          <span class="fa fa-camera"></span>
+        </a>
+      {% endif %}
+      <div class="headline-top-container-gradient">
+        {% if module.heading.title != '' %}
+        <div class="section-top" >
+          <span >{{ module.heading.title }}</span>
+        </div>
+        {% endif %}
+        <div class="title">
+          <a {{ module.slug|linkConstruct|raw }}>
+            <span >{{ module.title }}</span>
+          </a>
+        </div>
+        {% if module.sponsor.media|length > 0 %}
+          {{ module.sponsor|asSponsor|raw }}
+        {% endif %}
+        {#{% if module.author != '' %}
+          <div class="author"  >
+            <span >{{ module.author }}</span>
+          </div>
+        {% endif %}
+        {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        <div class="social-media"></div>#}
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'centered' %}
+  <div class="sn-centered"  data-camus-template="{{module.templateName}}" >
+    <div class="media-container">
+      {% if module.heading.title != '' %}
+        {{ seeMore.text(module, true, true, "heading") }}
+      {% endif %}
+      <div class="img-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+        </a>
+      </div>
+      <div class="content-container"   style="background-color: {{ module.color|parseRGB }}">
+        <div class="title">
+          <a {{ module.slug|linkConstruct|raw }}>
+            <span >{{ module.title }}</span>
+          </a>
+        </div>
+        <div class="blog-name">
+          <span >{{ module.section }}</span>
+        </div>
+        <div class="author">
+          <span >{{ module.author }}</span>
+        </div>
+        {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        <!-- <div class="social-media"></div> -->
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'live' %}
+  <div class="sn-live"  data-camus-template="{{module.templateName}}"   >
+    <div class="media-container">
+      <div class="img-container">
+        <a href="{{ module.slug }}" class="btn-play">
+          <span class="fa fa-play"></span>
+        </a>
+        <a href="{{ module.slug }}">
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+        </a>
+      </div>
+      <div class="info-container">
+        <div class="section">
+          <span >{{ module.section }}</span>
+        </div>
+        <div class="title">
+          <a href="{{ module.slug }}">
+            <span >{{ module.title }}</span>
+          </a>
+        </div>
+        {#{{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        <div class="social-media"></div>#}
+      </div>
+      <div class="live-container-white">
+        <a href="{{ module.slug }}">
+          <div class="live-logo-container">
+            <img src="/bundles/camusassets/images/mt-crop-black.jpg">
+          </div>
+          <div class="span-live-logo-container">
+            <span>EN VIVO</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'live_large' %}
+  <div class="sn-live-large"  data-camus-template="{{module.templateName}}"   >
+    <div class="media-container">
+      <div class="img-container">
+        <a href="{{ module.slug }}">
+          {% if module.hasThumbnailClip == true %}
+            {{ module.thumbnail|asImageClip(module.thumbnailClip, module.alt)|raw }}
+          {% else %}
+            {{ module.thumbnail|asImage(module.alt)|raw }}
+          {% endif %}
+        </a>
+      </div>
+      <a href="{{ module.slug }}" class="btn-play">
+        <span class="fa fa-play"></span>
+      </a>
+      <div class="headline-bottom-container-gradient">
+        <div class="section">
+          <span >{{ module.section }}/</span>
+        </div>
+        <div class="title">
+          <a href="{{ module.slug }}">
+            <span >{{ module.title }}</span>
+          </a>
+        </div>
+        {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        <div class="live-container-white">
+          <a href="{{ module.slug }}">
+            <div class="live-logo-container">
+              <img src="/bundles/camusassets/images/mt-crop.png">
+            </div>
+            <div class="span-live-logo-container">
+              <span>EN VIVO</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'foot_text' %}
+  <div class="foot-text-note"  data-camus-template="{{module.templateName}}" >
+    <!-- <button type="button" class="sphere">
+      <span class="fa fa-play"></span>
+    </button> -->
+    <div class="image">
+      <a {{ module.slug|linkConstruct|raw }}>
+        {{ module.thumbnail|asImage(module.alt)|raw }}
+      </a>
+    </div>
+    <div class="title-container">
+      <div class="section">
+        <span >{{ module.section }}</span>
+      </div>
+      <div class="title">
+        <a {{ module.slug|linkConstruct|raw }}>
+          <span >{{ module.title }}</span>
+        </a>
+      </div>
+    </div>
+    {#{{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+    <div class="social-media"></div>#}
+  </div>
+{% elseif module.template == 'bottom_text' %}
+  <div class="sn-bottom-text-note" data-camus-template="{{module.templateName}}" >
+    <div class="media-container">
+      <div class="img-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {{ module.thumbnail|asImage(module.alt)|raw }}
+        </a>
+      </div>
+      {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == 'default' %}
+        <a {{ module.slug|linkConstruct|raw }} class="item-icon"  >
+          <span class="fa fa-camera"></span>
+        </a>
+      {% endif %}
+    <div class="headline-bottom-container-gradient">
+      {% if module.heading.title != '' %}
+      <div class="section-top" >
+        <span >{{ module.heading.title }}</span>
+      </div>
+      {% endif %}
+      <div class="title">
+        <a {{ module.slug|linkConstruct|raw }}>
+          <span  >{{ module.title }}</span>
+        </a>
+      </div>
+      {% if module.sponsor.media|length > 0 %}
+        {{ module.sponsor|asSponsor|raw }}
+      {% endif %}
+      {#{% if module.section != '' %}
+        <div class="section-bottom"  >
+          <span >{{ module.section }}</span>
+        </div>
+      {% endif %}
+      {% if module.author != '' %}
+        <div class="author"  >
+          <span >{{ module.author }}</span>
+        </div>
+      {% endif %}
+      {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+      <div class="social-media"></div>#}
+    </div>
+  </div>
+  </div>
+{% elseif module.template == 'composed_tv' %}
+  <div class="sn-composed-tv" data-camus-module-type="ctr">
+    <div class="media-container">
+      {{ seeMore.text(module, true, false, "heading") }}
+      <div class="main-preview-container">
+        <div class="video-preview-container">
+          <button type="button" class="btn-play-top-gray"><span class="fa fa-play"></span>
+          </button>
+          <a href="/mileniotv">
+            {{ module.thumbnail|asImage(module.alt)|raw }}
+          </a>
+        </div>
+        <div  class="news-container">
+          <div class="live-logo-container">
+            <div class="image">
+              <img src="/bundles/camusassets/images/special-modules\m-live-logo.png" alt="">
+            </div>
+            <div class="text">
+              <span>EN VIVO</span>
+            </div>
+          </div>
+          <div class="section-container">
+            <a href="/mileniotv">
+              <span >{{ module.title }}</span>
+            </a>
+          </div>
+          <div class="description-container">
+            <span  >{{ module.abstract|raw }}</span>
+          </div>
+          {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+          <!-- <div class="social-media"></div> -->
+        </div>
+      </div>
+      <div  class="container-bottom">
+        {% for listElement in module.modules %}
+          {% if loop.index < 4 %}
+            {% set type = listElement.type|splitTemplate %}
+            {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'composed_tv_portrait' %}
+  <div class="sn-composed-tv-portrait" data-camus-module-type="ctr" >
+    <div class="media-container">
+      {{ seeMore.text(module, true, false, "heading") }}
+      <div class="main-preview-container">
+        <div class="video-preview-container">
+          <button type="button" class="btn-play-top-gray"><span class="fa fa-play"></span>
+          </button>
+          <a href="/mileniotv">
+            {{ module.thumbnail|asImage(module.alt)|raw }}
+          </a>
+        </div>
+        <div  class="news-container">
+          <div class="live-logo-container">
+            <div class="image">
+              <img src="/bundles/camusassets/images/special-modules\m-live-logo.png" alt="">
+            </div>
+            <div class="text">
+              <span>EN VIVO</span>
+            </div>
+          </div>
+          <div class="section-container">
+            <a href="/mileniotv">
+              <span >{{ module.title }}</span>
+            </a>
+          </div>
+          <div class="description-container">
+            <span  >{{ module.abstract|raw }}</span>
+          </div>
+          {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+          <!-- <div class="social-media"></div> -->
+        </div>
+      </div>
+      <div  class="container-bottom">
+        {% for listElement in module.modules %}
+          {% set type = listElement.type|splitTemplate %}
+          {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: listElement|getModelModule} %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'bottom_text_match_preview' or module.template == 'bottom_text_match_preview_growable' %}
+  {% set className = module.template|replace({'_': '-' }) %}
+  <div class="sn-{{className}}" >
+    <div class="media-container">
+      <div class="img-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {% set picture = (module.hasThumbnailClip == true) ? module.thumbnailClip : module.thumbnail %}
+          {{ module.hasThumbnailClip == true ? module.thumbnail|asImageClip(module.thumbnailClip)|raw : module.thumbnail|asImage(module.alt)|raw }}
+        </a>
+      </div>
+      <div class="game-summary-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+        <div class="teams-info-container">
+          <div class="name-logo-container">
+            <div class="local-team">
+              <div class="name">
+                <span >{{ module.teamHome }}</span>
+              </div>
+              <div class="local-logo">
+                {{ module.teamHomeMedia|asImageTeam("data-camus-media-home")|raw }}
+              </div>
+            </div>
+            <div class="visit-team">
+              <div class="name">
+                <span >{{ module.teamAway }}</span>
+              </div>
+              <div class="visit-logo">
+                {{ module.teamAwayMedia|asImageTeam("data-camus-media-away")|raw }}
+              </div>
+            </div>
+          </div>
+            <div class="description-game">
+              <div class="container-left in-game">
+                {# <span >{{ module.scoreHome|number_format }}</span> #}
+              </div>
+              <div class="container-right in-game">
+                {# <span >{{ module.scoreAway|number_format }}</span> #}
+              </div>
+              <div class="time preview">
+                <span >{{ module.periodMatch }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="summary">
+            <span >{{ module.title }}</span>
+          </div>
+        </a>
+        {#{{ module.slug|socialTag(module.title, picture)|raw }}
+        <div class="social-media"></div>#}
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'bottom_text_match' or module.template == 'bottom_text_match_growable' %}
+  {% set className = module.template|replace({'_': '-' }) %}
+  <div class="sn-{{className}}" >
+    <div class="media-container">
+      <div class="img-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {% set picture = (module.hasThumbnailClip == true) ? module.thumbnailClip : module.thumbnail %}
+          {{ module.hasThumbnailClip == true ? module.thumbnail|asImageClip(module.thumbnailClip)|raw : module.thumbnail|asImage(module.alt)|raw }}
+        </a>
+      </div>
+      <div class="game-summary-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+        <div class="teams-info-container">
+          <div class="name-logo-container">
+            <div class="local-team">
+              <div class="name">
+                <span >{{ module.teamHome }}</span>
+              </div>
+              <div class="local-logo">
+                {{ module.teamHomeMedia|asImageTeam("data-camus-media-home")|raw }}
+              </div>
+            </div>
+            <div class="visit-team">
+              <div class="name">
+                <span >{{ module.teamAway }}</span>
+              </div>
+              <div class="visit-logo">
+                {{ module.teamAwayMedia|asImageTeam("data-camus-media-away")|raw }}
+              </div>
+            </div>
+          </div>
+            <div class="description-game">
+              <div class="container-left in-game">
+                <span >{{ module.scoreHome|number_format }}</span>
+              </div>
+              <div class="container-right in-game">
+                <span >{{ module.scoreAway|number_format }}</span>
+              </div>
+              <div class="time">
+                {# <span >{{ module.periodMatch }}</span> #}
+              </div>
+            </div>
+          </div>
+          <div class="summary">
+            <span >{{ module.title }}</span>
+          </div>
+        </a>
+        {#{{ module.slug|socialTag(module.title, picture)|raw }}
+        <div class="social-media"></div>#}
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'bottom_text_match_penalty' or module.template == 'bottom_text_match_penalty_growable' %}
+  {% set className = module.template|replace({'_': '-' }) %}
+  <div class="sn-{{className}}" >
+    <div class="media-container">
+      <div class="img-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {% set picture = (module.hasThumbnailClip == true) ? module.thumbnailClip : module.thumbnail %}
+          {{ module.hasThumbnailClip == true ? module.thumbnail|asImageClip(module.thumbnailClip)|raw : module.thumbnail|asImage(module.alt)|raw }}
+        </a>
+      </div>
+      <div class="game-summary-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+        <div class="teams-info-container">
+          <div class="name-logo-container">
+            <div class="local-team">
+              <div class="name">
+                <span >{{ module.teamHome }}</span>
+              </div>
+              <div class="local-penalties">
+                <span >{{ module.teamHomePenalty }}</span>
+              </div>
+            </div>
+            <div class="visit-team">
+              <div class="name">
+                <span >{{ module.teamAway }}</span>
+              </div>
+              <div class="visit-penalties">
+                <span >{{ module.teamAwayPenalty }}</span>
+              </div>
+            </div>
+          </div>
+            <div class="description-game">
+              <div class="container-left penalties">
+                <span >{{ module.scoreHome|number_format }}</span>
+              </div>
+              <div class="container-right penalties">
+                <span >{{ module.scoreAway|number_format }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="summary">
+            <span >{{ module.title }}</span>
+          </div>
+        </a>
+        {#{{ module.slug|socialTag(module.title, picture)|raw }}
+        <div class="social-media"></div>#}
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'bottom_text_match_final' or module.template == 'bottom_text_match_final_growable' or module.template == 'bottom_text_match_penalty_final' or module.template == 'bottom_text_match_penalty_final_growable' %}
+  {% set className = module.template|replace({'_': '-' }) %}
+  <div class="sn-{{className}}" >
+    <div class="media-container">
+      <div class="img-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {% set picture = (module.hasThumbnailClip == true) ? module.thumbnailClip : module.thumbnail %}
+          {{ module.hasThumbnailClip == true ? module.thumbnail|asImageClip(module.thumbnailClip)|raw : module.thumbnail|asImage(module.alt)|raw }}
+        </a>
+      </div>
+      <div class="game-summary-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+        <div class="teams-info-container">
+          <div class="name-logo-container">
+            <div class="local-team">
+              <div class="name">
+                <span >{{ module.teamHome }}</span>
+              </div>
+              <div class="local-logo">
+                {% if className == "bottom-text-match-final" or className == "bottom-text-match-final-growable" %}
+                  {{ module.teamHomeMedia|asImageTeam("data-camus-media-home")|raw }}
+                {% elseif className == "bottom-text-match-penalty-final" or className == "bottom-text-match-penalty-final-growable" %}
+                <div class="local-final-penalties">
+                  <span >{{ module.teamHomePenalty }}</span>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            <div class="visit-team">
+              <div class="name">
+                <span >{{ module.teamAway }}</span>
+              </div>
+              <div class="visit-logo">
+                {% if className == "bottom-text-match-final" or className == "bottom-text-match-final-growable" %}
+                  {{ module.teamAwayMedia|asImageTeam("data-camus-media-away")|raw }}
+                {% elseif className == "bottom-text-match-penalty-final" or className == "bottom-text-match-penalty-final-growable" %}
+                <div class="visit-final-penalties">
+                  <span >{{ module.teamAwayPenalty }}</span>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+            <div class="description-game">
+              <div class="container-left final">
+                <span >{{ module.scoreHome|number_format }}</span>
+              </div>
+              <div class="container-right final">
+                <span >{{ module.scoreAway|number_format }}</span>
+              </div>
+              <div class="time final">
+                <span>F</span>
+              </div>
+            </div>
+          </div>
+          <div class="summary">
+            <span >{{ module.title }}</span>
+          </div>
+        </a>
+        {#{{ module.slug|socialTag(module.title, picture)|raw }}
+        <div class="social-media"></div>#}
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'bottom_text_growable' %}
+  <div class="sn-bottom-text-growable"  data-camus-template="{{module.templateName}}" >
+    <div class="media-container">
+      <div class="img-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {% if module.hasThumbnailClip == true %}
+            {{ module.thumbnail|asImageClip(module.thumbnailClip, module.alt)|raw }}
+          {% else %}
+            {{ module.thumbnail|asImage(module.alt)|raw }}
+          {% endif %}
+        </a>
+      </div>
+      {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == 'default' %}
+        <a {{ module.slug|linkConstruct|raw }} class="item-icon"  >
+          <span class="fa fa-play"></span>
+        </a>
+      {% endif %}
+      <div class="headline-bottom-container-gradient">
+        {% if module.heading.title != '' %}
+        <div class="section-top" >
+          <span >{{ module.heading.title }}</span>
+        </div>
+        {% endif %}
+        <div class="title">
+          <a {{ module.slug|linkConstruct|raw }}>
+            <span >{{ module.title }}</span>
+          </a>
+        </div>
+        {#{% if module.section != '' %}
+          <div class="section"  >
+            <span >{{ module.section }}</span>
+          </div>
+        {% endif %}
+        {% if module.sponsor.media|length > 0 %}
+          {{ module.sponsor|asSponsor|raw }}
+        {% endif %}
+        {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        <div class="social-media"></div>#}
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'top_text_growable' %}
+  <div class="sn-top-text-growable">
+    <div class="media-container">
+      <div class="image">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {% if module.hasThumbnailClip == true %}
+            {{ module.thumbnail|asImageClip(module.thumbnailClip, module.alt)|raw }}
+          {% else %}
+            {{ module.thumbnail|asImage(module.alt)|raw }}
+          {% endif %}
+        </a>
+      </div>
+      {% if module.extraMedia.indicator == 'visible' %}
+        <a {{ module.slug|linkConstruct|raw }} class="item-icon"  >
+          <span class="fa fa-camera"></span>
+        </a>
+      {% endif %}
+      {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == 'default' %}
+        <div class="description-btn-container"  >
+          <div class="span-btn-play-container">
+            <span  >{{ module.extraMedia.title }}</span>
+          </div>
+          <button type="button" class="btn-play-description-top-white" ><span class="fa fa-play"></span></button>
+        </div>
+      {% endif %}
+      <div class="headline-top-container-gradient">
+        {% if module.heading.title != '' %}
+        <div class="section-top" >
+          <span >{{ module.heading.title }}</span>
+        </div>
+        {% endif %}
+        <div class="title ">
+          <a {{ module.slug|linkConstruct|raw }}>
+            <span >{{ module.title }}</span>
+          </a>
+        </div>
+        {% if module.sponsor.media|length > 0 %}
+          {{ module.sponsor|asSponsor|raw }}
+        {% endif %}
+        {#{% if module.author != '' %}
+          <div class="author"  >
+            <span >{{ module.author }}</span>
+          </div>
+        {% endif %}
+        {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        <div class="social-media"></div>#}
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'bottom_text_growable_left' %}
+  <div class="sn-bottom-text-growable-left"  data-camus-template="{{module.templateName}}" >
+    <div class="media-container">
+      <div class="img-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {% if module.hasThumbnailClip == true %}
+            {{ module.thumbnail|asImageClip(module.thumbnailClip, module.alt)|raw }}
+          {% else %}
+            {{ module.thumbnail|asImage(module.alt)|raw }}
+          {% endif %}
+        </a>
+      </div>
+      <div class="headline-bottom-container-gradient">
+        {# {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == 'default' %}
+          <a {{ module.slug|linkConstruct|raw }}>
+            <button type="button" class="item-icon"  >
+                <span class="fa fa-play"></span>
+            </button>
+          </a>
+        {% endif %} #}
+        <div class="text">
+          {% if module.section is not empty %}
+          <div class="section-container-left">
+            {#<div class="section-container"  style="background-color: {{ module.color }}; color: {{ module.color }}">#}
+            <div class="section-container" >
+              <span >{{ module.section }}</span>
+            </div>
+          </div>
+          {% endif %}
+          <div class="title-container">
+            <a {{ module.slug|linkConstruct|raw }}>
+              <span >{{ module.title }}</span>
+            </a>
+          </div>
+        </div>
+        {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        <div class="social-media"></div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'wrapper' %}
+  <div class="sn-wrapper {{orderClass}}" data-camus-template="{{module.templateName}}" >
+    <div class="media-container">
+      <div class="headline-container" >
+        <div class="headline" >
+          {{ module.heading.title }}
+        </div>
+      </div>
+      <div class="img-container">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {% if module.hasThumbnailClip == true %}
+            {{ module.thumbnail|asImageClip(module.thumbnailClip, module.alt)|raw }}
+          {% else %}
+            {{ module.thumbnail|asImage(module.alt)|raw }}
+          {% endif %}
+        </a>
+      </div>
+      {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == "default" %}
+        <a {{ module.slug|linkConstruct|raw }} class="item-icon"  >
+          <span class="fa fa-play"></span>
+        </a>
+      {% endif %}
+      <div class="headline-notice-gradient">
+        <div class="info-container">
+          <div class="title" >
+            <a {{ module.slug|linkConstruct|raw }}>
+              <span >{{ module.title }}</span>
+            </a>
+          </div>
+          <div class="abstract" >
+            <span >{{ module.abstract|striptags|filterEnt|decodeText }}</span>
+          </div>
+          <div class="footer">
+            {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+            <div class="social-media"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'tournament' %}
+  <div class="sn_tournament">
+    <div class="container">
+      <div class="img-logo">
+        <div class="img">
+          <img src="https://upload.wikimedia.org/wikipedia/ro/thumb/6/6c/Copa_del_Rey_logo_since_2012.png/280px-Copa_del_Rey_logo_since_2012.png">
+        </div>
+      </div>
+      <div class="info-container">
+        <div class="text">
+          <table>
+            <tr>
+              <td class="text-bold">TORNEO</td>
+              <td>2018 - 2019</td>
+            </tr>
+            <tr>
+              <td class="text-bold">INICIO</td>
+              <td>05/09/2018</td>
+            </tr>
+            <tr>
+              <td class="text-bold">FINAL</td>
+              <td>25/05/2019</td>
+            </tr>
+            <tr>
+              <td class="text-bold">JORNADA</td>
+              <td>11 de 18</td>
+            </tr>
+            <tr>
+              <td class="text-bold">PRÓXIMO PARTIDO</td>
+              <td>10/10/2019</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="see-more">
+        <div class="content">
+          <a href="#"><span>Ver más</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

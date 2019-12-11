@@ -14,7 +14,7 @@
 {% endif %}
 {% if module.template == 'large_classification' %}
   {% set jsonData = sportsClassification() %}
-  <div class="tab-content {{ nameActive }}" id="{{ tabNameId }}" data-camus-template="{{module.templateName}}" {{ data_camus_background_color }} style="background-color: {{ module.color }}">
+  <div class="tab-content {{ nameActive }}" id="{{ tabNameId }}" data-camus-template="{{module.templateName}}"  style="background-color: {{ module.color }}">
     <div class="filter-date">
       <div class="edition-filter">
         <div class="span">
@@ -66,7 +66,7 @@
   </div>
 {% elseif module.template == 'large_results' %}
   {% set jsonData = sportsResults() %}
-  <div class="tab-content {{ nameActive }}" id="{{ tabNameId }}" data-camus-template="{{module.templateName}}" {{ data_camus_background_color }} style="background-color: {{ module.color }}">
+  <div class="tab-content {{ nameActive }}" id="{{ tabNameId }}" data-camus-template="{{module.templateName}}"  style="background-color: {{ module.color }}">
     <div class="filter-date">
       <div class="edition-filter">
         <div class="span">
@@ -110,7 +110,7 @@
   </div>
 {% elseif module.template == 'large_scorers' %}
   {% set jsonData = sportsScorers() %}
-  <div class="tab-content {{ nameActive }}" id="{{ tabNameId }}" data-camus-template="{{module.templateName}}" {{ data_camus_background_color }} style="background-color: {{ module.color }}">
+  <div class="tab-content {{ nameActive }}" id="{{ tabNameId }}" data-camus-template="{{module.templateName}}"  style="background-color: {{ module.color }}">
     <div class="filter-date">
       <div class="edition-filter">
         <div class="span">
@@ -154,7 +154,7 @@
   </div>
 {% elseif module.template == 'small_classification' %}
   {% set jsonData = sportsClassification() %}
-    <table class="classification-tab tab-content {{ countLoop == 1 ? 'tab-active' }}" {{ data_camus_module_tab }} data-camus-template="{{module.templateName}}">
+    <table class="classification-tab tab-content {{ countLoop == 1 ? 'tab-active' }}"  data-camus-template="{{module.templateName}}">
     <tr>
       <th></th>
       <th></th>
@@ -180,7 +180,7 @@
   </table>
 {% elseif module.template == 'small_results' %}
   {% set jsonData = sportsResults() %}
-    <table class="results-tab tab-content {{ countLoop == 1 ? 'tab-active' }}" {{ data_camus_module_tab }} data-camus-template="{{module.templateName}}">
+    <table class="results-tab tab-content {{ countLoop == 1 ? 'tab-active' }}"  data-camus-template="{{module.templateName}}">
     {% for key,match in jsonData if key != 'jornada'%}
       <tr>
         <td class="start-date">{{ match.startdate }}</td>
@@ -193,7 +193,7 @@
   </table>
 {% elseif module.template == 'small_scorers' %}
   {% set jsonData = sportsScorers() %}
-    <table class="scorers-tab tab-content {{ countLoop == 1 ? 'tab-active' }}" {{ data_camus_module_tab }} data-camus-template="{{module.templateName}}">
+    <table class="scorers-tab tab-content {{ countLoop == 1 ? 'tab-active' }}"  data-camus-template="{{module.templateName}}">
     <tr>
       <th></th>
       <th></th>

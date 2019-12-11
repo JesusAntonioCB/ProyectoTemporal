@@ -78,7 +78,7 @@
       #}
     {% endif %}
   {% endif %}
-  <div {{ data_camus_module_type["match"] }} class="title-headline-sports" style="{{ hideMAM }}">
+  <div  class="title-headline-sports" style="{{ hideMAM }}">
     {% if automatic is defined %}
       {% if automatic.home_team_name is defined %}
         {% set module = module|merge({ teamHome : automatic.home_team_name }) %}
@@ -116,7 +116,7 @@
         {% endif %}
         <div class="middle">
           <div class="team-local">
-            <div class="name" {{ data_camus_team_home }}>
+            <div class="name" >
               {{ module.teamHome }}
             </div>
             <div class="logo">
@@ -125,15 +125,15 @@
           </div>
             <div class="score">
             <div class="number">
-              <span {{ data_camus_score_home }}>{{ module.scoreHome|number_format }}</span>
+              <span >{{ module.scoreHome|number_format }}</span>
               <span class="home-mobile">
                 {{ module.teamHome }}
               </span>
             </div>
-            <div class="time"><p {{ data_camus_period_match }}>{{ module.periodMatch }}</p> <p {{ data_camus_minute_match }}>{{ module.minuteMatch }}</p>
+            <div class="time"><p >{{ module.periodMatch }}</p> <p >{{ module.minuteMatch }}</p>
             </div>
             <div class="number">
-              <span {{ data_camus_score_away }}>{{ module.scoreAway|number_format }}</span>
+              <span >{{ module.scoreAway|number_format }}</span>
               <span class="away-mobile">
                 {{ module.teamAway }}
               </span>
@@ -143,7 +143,7 @@
             <div class="logo">
               {{ module.teamAwayMedia|asImageTeam("data-camus-media-away")|raw }}
             </div>
-            <div class="name" {{ data_camus_team_away }}>
+            <div class="name" >
               {{ module.teamAway }}
             </div>
           </div>
@@ -178,9 +178,9 @@
               {% endif %}
             </div>
           <div class="number_penal">
-            <span class="penal_score_home home" {{ data_camus_penalties_home }}>{{module.teamHomePenalty}}</span>
+            <span class="penal_score_home home" >{{module.teamHomePenalty}}</span>
             <span> - </span>
-            <span class="penal_score_away away" {{ data_camus_penalties_away }}>{{module.teamAwayPenalty}}</span>
+            <span class="penal_score_away away" >{{module.teamAwayPenalty}}</span>
           </div>
           <div class="points away">
             {% if module.penaltiesPoints is defined and module.penaltiesPoints.away is defined %}
@@ -224,7 +224,7 @@
             <div class="name">
               <div class="author">
                 {% if contentLayer is defined %}
-                  <span itemprop="author" {{ data_camus_author }}>{{ contentLayer.author|default(module.author) }}</span>
+                  <span itemprop="author" >{{ contentLayer.author|default(module.author) }}</span>
                 {% endif %}
               </div>
             </div>
@@ -235,11 +235,11 @@
             </div>
           </div>
           <div class="league-description">
-            <div class="name" {{ data_camus_title }}>
+            <div class="name" >
               {{ module.title|raw }}
             </div>
             <div class="matchweek">
-              {#<span {{ data_camus_abstract }}>{{ module.abstract|raw }}</span>#}
+              {#<span >{{ module.abstract|raw }}</span>#}
             </div>
           </div>
           <!-- <div class="refresh-time">
@@ -272,8 +272,8 @@
 {% elseif module.template == 'title_headline_live' %}
   <div class="nd-th-live">
     <div class="media-container">
-      <h3 class="heading" {{ data_camus_body }}>{{ module.body|raw }}</h3>
-      <h1 class="title" {{ data_camus_title }}>{{ module.title|raw }}</h1>
+      <h3 class="heading" >{{ module.body|raw }}</h3>
+      <h1 class="title" >{{ module.title|raw }}</h1>
       <div class="extras">
         <div class="social-network">
           <span class="hint">Comparte esta noticia</span>
@@ -295,7 +295,7 @@
       </div>
     </div>
     <div class="content">
-      <div class="summary" {{ data_camus_abstract }}>{{ module.abstract|raw }}</div>
+      <div class="summary" >{{ module.abstract|raw }}</div>
       {% if module.sponsor.media_id is defined and module.sponsor_id != null %}
         <div class="sponsored-content">
           <span class="hint">Patrocinado por </span>
@@ -305,7 +305,7 @@
         </div>
       {% endif %}
       <div class="author">
-        <span {{ data_camus_author }}> {{ module.author }}</span>
+        <span > {{ module.author }}</span>
       </div>
       <div class="place-date-container">
         <span class="content-date">{{ module.signaturePlace }} / {{ module.date }}</span>

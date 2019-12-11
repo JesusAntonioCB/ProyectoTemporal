@@ -3,29 +3,29 @@
     <div class="media-container">
       <div class="news-container">
         <div class="headline-small-container">
-          <div class="headline-container-space-gray" {{ data_camus_background_color }} style="background-color: {{ module.color }}">
-            <span {{ data_camus_extra_heading_title }}>{{ module.extraHeading.title }}</span>
+          <div class="headline-container-space-gray"  style="background-color: {{ module.color }}">
+            <span >{{ module.extraHeading.title }}</span>
           </div>
           <div class="section-container-yellow">
             <div class="m-logo-container">
               {{ module.heading.media|asImageHeading|raw }}
             </div>
-            <div class="extra" {{ data_camus_module_color_contrast }} {{ data_camus_heading_title }}>{{ module.heading.title }}</div>
+            <div class="extra"  >{{ module.heading.title }}</div>
           </div>
         </div>
         <div class="headline-big-container">
           <div class="title">
             <a {{ module.slug|linkConstruct|raw }}>
-              <span {{ data_camus_title }} {{ data_camus_text_limit["70"] }}>{{ module.title }}</span>
+              <span  >{{ module.title }}</span>
             </a>
           </div>
         </div>
         <div class="summary-container">
           <div class="abstract">
-            <span {{ data_camus_abstract }} {{ data_camus_text_limit["160"] }}>{{ module.abstract|raw }}</span>
+            <span  >{{ module.abstract|raw }}</span>
           </div>
           <div class="author">
-            <span {{ data_camus_author }}>{{ module.author }}</span>
+            <span >{{ module.author }}</span>
           </div>
           {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
           <!-- <div class="social-media"></div> -->
@@ -40,22 +40,22 @@
           {% endif %}
         </a>
         {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == 'default' %}
-          <div class="description-btn-container" {{ data_camus_removable["icon"] }} {{ data_camus_extra_media_icon }}>
+          <div class="description-btn-container"  >
             <div class="span-btn-play-container">
-              <span {{ data_camus_extra_media_title }} {{ data_camus_text_limit["45"] }}>{{ module.extraMedia.title }}</span>
+              <span  >{{ module.extraMedia.title }}</span>
             </div>
             <button type="button" data-provider="{{ module.provider }}" data-reference="{{ module.providerReference }}" class="btn-play-description-top-white" ><span class="fa fa-play"></span></button>
           </div>
         {% endif %}
       </div>
-      <div class="player-live" {{ data_camus_media }} style="display:none;"></div>
+      <div class="player-live"  style="display:none;"></div>
       <div class="news-container bottom">
         <div class="summary-container">
           <div class="abstract">
-            <span {{ data_camus_abstract }} {{ data_camus_text_limit["160"] }}>{{ module.abstract }}</span>
+            <span  >{{ module.abstract }}</span>
           </div>
           <div class="author">
-            <span {{ data_camus_author }}>{{ module.author }}</span>
+            <span >{{ module.author }}</span>
           </div>
           {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
           <!-- <div class="social-media"></div> -->
@@ -68,24 +68,24 @@
     <div class="media-container">
       <div class="news-container">
         <div class="headline-small-container">
-          <div class="headline-container-space-gray" {{ data_camus_background_color }} style="background-color: {{ module.color }}">
-            <span {{ data_camus_extra_heading_title }}>{{ module.extraHeading.title }}</span>
+          <div class="headline-container-space-gray"  style="background-color: {{ module.color }}">
+            <span >{{ module.extraHeading.title }}</span>
           </div>
           <div class="section-container-yellow">
             <div class="m-logo-container">
               {{ module.heading.media|asImageHeading|raw }}
             </div>
-            <div class="extra" {{ data_camus_module_color_contrast }} {{ data_camus_heading_title }}>{{ module.heading.title }}</div>
+            <div class="extra"  >{{ module.heading.title }}</div>
           </div>
         </div>
         <div class="headline-big-container">
           <div class="title">
             <a {{ module.slug|linkConstruct|raw }}>
-              <span {{ data_camus_title }} {{ data_camus_text_limit["45"] }}>{{ module.title }}</span>
+              <span  >{{ module.title }}</span>
             </a>
           </div>
           <div class="author">
-            <span {{ data_camus_author }}>{{ module.author }}</span>
+            <span >{{ module.author }}</span>
           </div>
           {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
           <!-- <div class="social-media"></div> -->
@@ -100,15 +100,15 @@
           {% endif %}
         </a>
         {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == 'default' %}
-           <div class="description-btn-container" {{ data_camus_removable["icon"] }} {{ data_camus_extra_media_icon }}>
+           <div class="description-btn-container"  >
             <div class="span-btn-play-container">
-              <span {{ data_camus_extra_media_title }} {{ data_camus_text_limit["45"] }}>{{ module.extraMedia.title }}</span>
+              <span  >{{ module.extraMedia.title }}</span>
             </div>
             <button type="button" data-provider="{{ module.provider }}" data-reference="{{ module.providerReference }}" class="btn-play-description-top-white" ><span class="fa fa-play"></span></button>
           </div>
         {% endif %}
       </div>
-      <div class="player-live" {{ data_camus_media }} style="display:none;">
+      <div class="player-live"  style="display:none;">
       </div>
       <div class="related-container">
         {% for listElement in module.modules %}
@@ -122,28 +122,28 @@
   <div class="eo-medium-list" data-camus-module-type="ctr">
     <div class="media-container">
       <div class="headboarder-container">
-        <div class="headline-container-space-gray" {{ data_camus_background_color }} style="background-color: {{ module.color }}">
-          <span {{ data_camus_extra_heading_title }}>{{ module.extraHeading.title }}</span>
+        <div class="headline-container-space-gray"  style="background-color: {{ module.color }}">
+          <span >{{ module.extraHeading.title }}</span>
         </div>
         <div class="section-container-yellow">
           <div class="m-logo-container">
             {{ module.heading.media|asImageHeading|raw }}
           </div>
-          <div class="extra" {{ data_camus_module_color_contrast }} {{ data_camus_heading_title }}>{{ module.heading.title }}</div>
+          <div class="extra"  >{{ module.heading.title }}</div>
         </div>
       </div>
       <div class="headline-container-transparent">
         <a {{ module.slug|linkConstruct|raw }}>
-          <span {{ data_camus_title }} {{ data_camus_text_limit["70"] }}>{{ module.title }}</span>
+          <span  >{{ module.title }}</span>
         </a>
       </div>
       <div class="news-container top">
         <div class="summary-container">
           <div class="abstract">
-            <span {{ data_camus_abstract }}>{{ module.abstract|raw }}</span>
+            <span >{{ module.abstract|raw }}</span>
           </div>
           <div class="author">
-            <span {{ data_camus_author }}>{{ module.author }}</span>
+            <span >{{ module.author }}</span>
           </div>
           {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
           <!-- <div class="social-media"></div> -->
@@ -158,24 +158,24 @@
           {% endif %}
         </a>
         {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == 'default' %}
-          <div class="description-btn-container" {{ data_camus_removable["icon"] }} {{ data_camus_extra_media_icon }}>
+          <div class="description-btn-container"  >
             <div class="span-btn-play-container">
-              <span {{ data_camus_extra_media_title }} {{ data_camus_text_limit["45"] }}>{{ module.extraMedia.title }}</span>
+              <span  >{{ module.extraMedia.title }}</span>
             </div>
             <button type="button" data-provider="{{ module.provider }}" data-reference="{{ module.providerReference }}" class="btn-play-description-top-white" ><span class="fa fa-play"></span></button>
           </div>
         {% endif %}
       </div>
-      <div class="player-live" {{ data_camus_media }} style="display:none;">
+      <div class="player-live"  style="display:none;">
       </div>
       <div class="news-container">
-        <div class="summary-container" {{ data_camus_modules }}>
+        <div class="summary-container" >
           <div class="circle-border"></div>
           <div class="abstract">
-            <span {{ data_camus_abstract }} {{ data_camus_text_limit["160"] }}>{{ module.abstract }}</span>
+            <span  >{{ module.abstract }}</span>
           </div>
           <div class="author">
-            <span {{ data_camus_author }}>{{ module.author }}</span>
+            <span >{{ module.author }}</span>
           </div>
           {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
           <!-- <div class="social-media"></div> -->
@@ -191,27 +191,27 @@
   <div class="eo-full-list" data-camus-module-type="ctr">
     <div class="media-container">
       <div class="headboarder-container">
-        <div class="headline-container-space-gray" {{ data_camus_background_color }} style="background-color: {{ module.color }}">
-          <span {{ data_camus_extra_heading_title }}>{{ module.extraHeading.title }}</span>
+        <div class="headline-container-space-gray"  style="background-color: {{ module.color }}">
+          <span >{{ module.extraHeading.title }}</span>
         </div>
         <div class="section-container-yellow">
           <div class="m-logo-container">
             {{ module.heading.media|asImageHeading|raw }}
           </div>
-          <div class="extra" {{ data_camus_module_color_contrast }} {{ data_camus_heading_title }}>{{ module.heading.title }}</div>
+          <div class="extra"  >{{ module.heading.title }}</div>
         </div>
       </div>
       <div class="headline-container-transparent top">
         <div class="title">
           <a {{ module.slug|linkConstruct|raw }}>
-            <span {{ data_camus_title }} {{ data_camus_text_limit["70"] }}>{{ module.title }}</span>
+            <span  >{{ module.title }}</span>
           </a>
         </div>
         <div class="summary-container">
-          <span {{ data_camus_abstract }} {{ data_camus_text_limit["160"] }}>{{ module.abstract|raw }}</span>
+          <span  >{{ module.abstract|raw }}</span>
         </div>
         <div class="author">
-          <span {{ data_camus_author }}>{{ module.author }}</span>
+          <span >{{ module.author }}</span>
         </div>
         {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
         <!-- <div class="social-media"></div> -->
@@ -229,28 +229,28 @@
           <div class="circle-border"></div>
           <div class="title">
             <a {{ module.slug|linkConstruct|raw }}>
-              <span {{ data_camus_title }} {{ data_camus_text_limit["70"] }}>{{ module.title }}</span>
+              <span  >{{ module.title }}</span>
             </a>
           </div>
           <div class="summary-container">
-            <span {{ data_camus_abstract }} {{ data_camus_text_limit["160"] }}>{{ module.abstract }}</span>
+            <span  >{{ module.abstract }}</span>
           </div>
           <div class="author">
-            <span {{ data_camus_author }}>{{ module.author }}</span>
+            <span >{{ module.author }}</span>
           </div>
           {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
           <!-- <div class="social-media"></div> -->
         </div>
         {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == 'default' %}
-          <div class="description-btn-container" {{ data_camus_removable["icon"] }} {{ data_camus_extra_media_icon }}>
+          <div class="description-btn-container"  >
             <div class="span-btn-play-container">
-              <span {{ data_camus_extra_media_title }} {{ data_camus_text_limit["45"] }}>{{ module.extraMedia.title }}</span>
+              <span  >{{ module.extraMedia.title }}</span>
             </div>
             <button type="button" class="btn-play-description-top-white" ><span class="fa fa-play"></span></button>
           </div>
         {% endif %}
       </div>
-      <div class="player-live" {{ data_camus_media }} style="display:none;">
+      <div class="player-live"  style="display:none;">
       </div>
       <div class="news-container">
         {% for listElement in module.modules %}

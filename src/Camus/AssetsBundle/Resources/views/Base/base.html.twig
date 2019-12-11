@@ -24,6 +24,7 @@
     <link rel="icon" sizes="192x192" href="/bundles/camusassets/images/FAMA.png">
     <link rel="apple-touch-icon" sizes="192x192" href="/bundles/camusassets/images/192x192-apple.png">
     <link rel="stylesheet" href="{{ asset('/bundles/camusassets/scss/main/main.css') }}">
+    {% dump(fileCSS) %}
     {% if fileCSS is defined %}
       <style type="text/css">
         {% for file in fileCSS %}

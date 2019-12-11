@@ -13,20 +13,20 @@
   {% endif %}
 {% elseif module.template == 'opinion' %}
 {% dump(module) %}
-  <div class="ctr-opinion" data-camus-id="{{ module.id }}" {{ data_camus_module_type["list"] }} data-camus-template="{{module.templateName}}" {{ data_camus_type["list_small"] }} {{ data_camus_toolbar_position["br"] }}>
+  <div class="ctr-opinion" data-camus-id="{{ module.id }}"  data-camus-template="{{module.templateName}}"  >
     <div class="head-container">
-      <h2 class="headline" {{ data_camus_title }} {{ data_camus_color }} style="color: {{ module.color }}">{{ module.title }}</h2>
+      <h2 class="headline"   style="color: {{ module.color }}">{{ module.title }}</h2>
       <div class="buttons-container">
         <div class="ctr-btn date-button" id="sort-date-container">
           <span class="fa fa-calendar"></span>
-          <span {{ data_camus_author_button }}>ELEGIR FECHA</span>
+          <span >ELEGIR FECHA</span>
         </div>
         <div class="ctr-btn sort-button" id="sort-author-container">
-          <span {{ data_camus_date_button }}>A-Z ELEGIR AUTOR</span>
+          <span >A-Z ELEGIR AUTOR</span>
         </div>
       </div>
     </div>
-    <div {{ data_camus_modules }} class="list">
+    <div  class="list">
       {% for module in module.modules %}
         {% set type = module.type|splitTemplate %}
         {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: module|getModelModule} %}
@@ -35,21 +35,21 @@
   </div>
 {% elseif module.template == 'stadistics_league' %}
   {% if 'admin' in app.request.getSchemeAndHttpHost() %}
-    <div class="ctr-stadistics-league" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}} >
+    <div class="ctr-stadistics-league"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}} >
       <div class="head-contianer">
         <div class="head-items">
           <div class="title">
-            <span {{ data_camus_title }}>{{ module.title }}</span>
+            <span >{{ module.title }}</span>
           </div>
         </div>
       </div>
     </div>
   {% else %}
-    <div class="ctr-stadistics-league" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}} >
+    <div class="ctr-stadistics-league"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}} >
       <div class="head-contianer">
         <div class="head-items">
           <div class="title">
-            <span {{ data_camus_title }}>{{ module.title }}</span>
+            <span >{{ module.title }}</span>
           </div>
           {% set leagueId = "" %}
           {% if module.leagueId is defined %}
@@ -157,7 +157,7 @@
   {% endif %}
 {% elseif module.template == 'stadistics_header' %}
   {% if 'admin' in app.request.getSchemeAndHttpHost() %}
-    <div class="ctr_stadistics_header" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+    <div class="ctr_stadistics_header"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
       <div class="head-contianer">
         <div class="head-items">
           <div class="league-content">
@@ -169,7 +169,7 @@
       </div>
     </div>
   {% else %}
-    <div class="ctr_stadistics_header" {{ data_camus_module_type["league"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
+    <div class="ctr_stadistics_header"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}}>
       <div class="head-contianer">
         <div class="head-items">
           <div class="league-content">
@@ -395,7 +395,7 @@
   {% endif %}
 {% elseif module.template == 'stadistics_team_header' %}
   {% if 'admin' in app.request.getSchemeAndHttpHost() %}
-    <div class="ctr-stadistics-team-header" {{ data_camus_module_type["club"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}} >
+    <div class="ctr-stadistics-team-header"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}} >
       <div class="head-contianer">
         <div class="head-items">
           <div class="team-main-info">
@@ -419,7 +419,7 @@
   {% set urlTeamName = dataTeam.0.data.team.name|replace(' ', '-')|lower %}
   {% set thisLeague = '' %}
   {% set oldUrl = dataTeam.1.oldPath %}
-    <div class="ctr-stadistics-team-header" {{ data_camus_module_type["club"] }} template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}} >
+    <div class="ctr-stadistics-team-header"  template="{{ module.template }}" {{data_camus_allow_empty_module["1"]}} >
       <div class="head-contianer">
         <div class="head-items">
           <div class="team-main-info">
@@ -551,7 +551,7 @@
       <div class="media-container">
         <div class="section-see-more-container-transparent">
           <div class="section-title-container-transparent">
-            <span {{ data_camus_title }}>Equipos</span>
+            <span >Equipos</span>
           </div>
         </div>
         <div class="content">
@@ -1118,7 +1118,7 @@
       <div class="media-container">
         <div class="section-see-more-container-transparent">
           <div class="section-title-container-transparent">
-            <span {{ data_camus_title }}>Calendario</span>
+            <span >Calendario</span>
           </div>
         </div>
       </div>

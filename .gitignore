@@ -1,4 +1,11 @@
-
+src/Camus/AssetsBundle/Resources/public/node_modules/*
+src/Camus/AssetsBundle/Resources/public/js/bundle/*
+src/Camus/AssetsBundle/Resources/public/scss/main/main.css
+src/Camus/AssetsBundle/Resources/public/scss/main/main.css.map
+src/Camus/AssetsBundle/Resources/public/scss/print/print.css
+src/Camus/AssetsBundle/Resources/public/scss/print/print.css.map
+src/Camus/AssetsBundle/Resources/public/mainbundle.js
+src/Camus/AssetsBundle/Resources/public/socialbundle.js
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php

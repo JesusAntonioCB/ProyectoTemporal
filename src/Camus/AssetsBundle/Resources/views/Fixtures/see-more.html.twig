@@ -2,14 +2,14 @@
 <div class="section-see-more-container-transparent" {{ removable is not same as(false) ? data_camus_removable["header"] }}>
   {% if more is not same as(false) %}
   <div class="see-more-container">
-  {#  <a href="{{ module.extraLink }}" {{ data_camus_module_linked_elem }}>&gt; {{ msg }}</a>    #}                 {#COMENTADO#}
+  {#  <a href="{{ module.extraLink }}" >&gt; {{ msg }}</a>    #}                 {#COMENTADO#}
   </div>
   {% endif %}
   <div class="section-title-container-transparent-black">
     {% if retrieve == "title" %}
-    <span {{ data_camus_title }}>{{ module.title }}</span>
+    <span >{{ module.title }}</span>
     {% elseif retrieve == "heading" %}
-    <span {{ data_camus_heading_title }}>{{ module.heading.title }}</span>
+    <span >{{ module.heading.title }}</span>
     {% endif %}
   </div>
 </div>
@@ -18,7 +18,7 @@
 {% macro img(module, url = "", removable = true, msg = "ver más") %}
 <div class="section-see-more-container-transparent">
   <div class="see-more-container">
-    <a href="{{ module.extraLink }}" {{ data_camus_module_linked_elem }}>&gt; {{ msg }}</a>
+    <a href="{{ module.extraLink }}" >&gt; {{ msg }}</a>
   </div>
   <div class="section-title-container-transparent">
     <a {{ url|linkConstruct|raw }}>

@@ -1,0 +1,380 @@
+{
+  "modules": [
+      {
+          "type": "sli_base",
+          "template": "large",
+          "headingColorTheme": "rgba(214,31,46,1)",
+          "id": 140,
+          "title": "Salud y Belleza",
+          "abstract": "",
+          "body": "",
+          "link": "",
+          "modules": [
+              {
+                  "listName": "2x1 imagen full con cintillo",
+                  "type": "sn_base",
+                  "template": "bottom_text_growable_left",
+                  "title": "Beneficios del té de manzanilla con limón",
+                  "media": {
+                      "id": 6085,
+                      "providerName": "camus.media.image_provider",
+                      "fileType": "image/jpeg",
+                      "publishedVersion": {
+                          "id": 8565,
+                          "title": "Té de manzanilla con limón",
+                          "providerReference": "te-de-manzanilla-con-limon.jpg"
+                      },
+                      "src": "https://cdn.revistafama.com/uploads/media/2019/12/10/te-de-manzanilla-con-limon.jpg"
+                  },
+                  "thumbnail": {
+                      "id": 6085,
+                      "providerName": "camus.media.image_provider",
+                      "publishedVersion": {
+                          "id": 8565,
+                          "title": "Té de manzanilla con limón",
+                          "providerReference": "te-de-manzanilla-con-limon.jpg"
+                      },
+                      "src": "https://cdn.revistafama.com/uploads/media/2019/12/10/te-de-manzanilla-con-limon.jpg"
+                  },
+                  "heading": {
+                      "background": null,
+                      "title": null
+                  },
+                  "content": {
+                      "id": 2274,
+                      "slug": "/salud-y-belleza/beneficios-del-te-de-manzanilla-con-limon",
+                      "xalokId": null,
+                      "column": "",
+                      "publishedHour": "17:39",
+                      "publishedDate": "10.12.2019",
+                      "author": {
+                          "id": 1,
+                          "name": ""
+                      }
+                  },
+                  "extra": {
+                      "leagueId": null,
+                      "media": {
+                          "icon": null,
+                          "title": null
+                      },
+                      "heading": {
+                          "title": null
+                      }
+                  },
+                  "show": {
+                      "board": true,
+                      "content": false,
+                      "inner": false
+                  },
+                  "clippings": {
+                      "default": {
+                          "window_width": 320,
+                          "width": 300
+                      },
+                      "size_1272": {
+                          "window_width": 638,
+                          "width": 618
+                      }
+                  },
+                  "extraData": {
+                      "mediaTitle": "",
+                      "headingTitle": "",
+                      "mediaIconVisible": "hidden"
+                  }
+              },
+              {
+                  "listName": "2x1 imagen full con cintillo",
+                  "type": "sn_base",
+                  "template": "bottom_text_growable_left",
+                  "title": "Beneficios del té de bugambilia",
+                  "media": {
+                      "id": 6084,
+                      "providerName": "camus.media.image_provider",
+                      "fileType": "image/jpeg",
+                      "publishedVersion": {
+                          "id": 8564,
+                          "title": "Té de bugambilia",
+                          "providerReference": "te-de-bugambilia.jpg"
+                      },
+                      "src": "https://cdn.revistafama.com/uploads/media/2019/12/10/te-de-bugambilia.jpg"
+                  },
+                  "thumbnail": {
+                      "id": 6084,
+                      "providerName": "camus.media.image_provider",
+                      "publishedVersion": {
+                          "id": 8564,
+                          "title": "Té de bugambilia",
+                          "providerReference": "te-de-bugambilia.jpg"
+                      },
+                      "src": "https://cdn.revistafama.com/uploads/media/2019/12/10/te-de-bugambilia.jpg"
+                  },
+                  "heading": {
+                      "background": null,
+                      "title": null
+                  },
+                  "content": {
+                      "id": 2272,
+                      "slug": "/salud-y-belleza/bugambilia-para-que-sirve-y-sus-beneficios",
+                      "xalokId": null,
+                      "column": "",
+                      "publishedHour": "16:16",
+                      "publishedDate": "10.12.2019",
+                      "author": {
+                          "id": 1,
+                          "name": ""
+                      }
+                  },
+                  "extra": {
+                      "leagueId": null,
+                      "media": {
+                          "icon": null,
+                          "title": null
+                      },
+                      "heading": {
+                          "title": null
+                      }
+                  },
+                  "show": {
+                      "board": true,
+                      "content": false,
+                      "inner": false
+                  },
+                  "clippings": {
+                      "default": {
+                          "window_width": 320,
+                          "width": 300
+                      },
+                      "size_1272": {
+                          "window_width": 638,
+                          "width": 618
+                      }
+                  },
+                  "extraData": {
+                      "mediaTitle": "",
+                      "headingTitle": "",
+                      "mediaIconVisible": "hidden"
+                  }
+              },
+              {
+                  "listName": "2x1 imagen full con cintillo",
+                  "type": "sn_base",
+                  "template": "bottom_text_growable_left",
+                  "title": "Beneficios del té de manzanilla en ayunas",
+                  "media": {
+                      "width": 632,
+                      "height": 393,
+                      "x": 0,
+                      "y": 75,
+                      "quality": 80,
+                      "id": 1996,
+                      "fileType": "image/jpeg",
+                      "publishedVersion": {
+                          "id": 8563,
+                          "title": "Té de manzanilla",
+                          "providerReference": "te-de-manzanilla-1.jpg"
+                      },
+                      "src": "https://cdn.revistafama.com/uploads/media/2019/12/10/te-de-manzanilla-1_0_75_632_393.jpg"
+                  },
+                  "thumbnail": {
+                      "id": 6083,
+                      "providerName": "camus.media.image_provider",
+                      "publishedVersion": {
+                          "id": 8563,
+                          "title": "Té de manzanilla",
+                          "providerReference": "te-de-manzanilla-1.jpg"
+                      },
+                      "src": "https://cdn.revistafama.com/uploads/media/2019/12/10/te-de-manzanilla-1.jpg"
+                  },
+                  "heading": {
+                      "background": null,
+                      "title": null
+                  },
+                  "content": {
+                      "id": 2271,
+                      "slug": "/salud-y-belleza/beneficios-del-te-de-manzanilla-en-ayunas",
+                      "xalokId": null,
+                      "column": "",
+                      "publishedHour": "15:32",
+                      "publishedDate": "10.12.2019",
+                      "author": {
+                          "id": 1,
+                          "name": ""
+                      }
+                  },
+                  "extra": {
+                      "leagueId": null,
+                      "media": {
+                          "icon": null,
+                          "title": null
+                      },
+                      "heading": {
+                          "title": null
+                      }
+                  },
+                  "show": {
+                      "board": true,
+                      "content": false,
+                      "inner": false
+                  },
+                  "clippings": {
+                      "default": {
+                          "window_width": 320,
+                          "width": 300
+                      },
+                      "size_1272": {
+                          "window_width": 638,
+                          "width": 618
+                      }
+                  }
+              },
+              {
+                  "listName": "2x1 imagen full con cintillo",
+                  "type": "sn_base",
+                  "template": "bottom_text_growable_left",
+                  "title": "Para qué sirve el té de menta",
+                  "media": {
+                      "id": 6064,
+                      "providerName": "camus.media.image_provider",
+                      "fileType": "image/jpeg",
+                      "publishedVersion": {
+                          "id": 8527,
+                          "title": "Para qué sirve el té de menta",
+                          "providerReference": "para-que-sirve-el-te.jpg"
+                      },
+                      "src": "https://cdn.revistafama.com/uploads/media/2019/12/10/para-que-sirve-el-te.jpg"
+                  },
+                  "thumbnail": {
+                      "id": 6064,
+                      "providerName": "camus.media.image_provider",
+                      "publishedVersion": {
+                          "id": 8527,
+                          "title": "Para qué sirve el té de menta",
+                          "providerReference": "para-que-sirve-el-te.jpg"
+                      },
+                      "src": "https://cdn.revistafama.com/uploads/media/2019/12/10/para-que-sirve-el-te.jpg"
+                  },
+                  "heading": {
+                      "background": null,
+                      "title": null
+                  },
+                  "content": {
+                      "id": 2266,
+                      "slug": "/salud-y-belleza/para-que-sirve-el-te-de-menta",
+                      "xalokId": null,
+                      "column": "",
+                      "publishedHour": "11:40",
+                      "publishedDate": "10.12.2019",
+                      "author": {
+                          "id": 1,
+                          "name": ""
+                      }
+                  },
+                  "extra": {
+                      "leagueId": null,
+                      "media": {
+                          "icon": null,
+                          "title": null
+                      },
+                      "heading": {
+                          "title": null
+                      }
+                  },
+                  "show": {
+                      "board": true,
+                      "content": false,
+                      "inner": false
+                  },
+                  "clippings": {
+                      "default": {
+                          "window_width": 320,
+                          "width": 300
+                      },
+                      "size_1272": {
+                          "window_width": 638,
+                          "width": 618
+                      }
+                  },
+                  "extraData": {
+                      "mediaTitle": "",
+                      "headingTitle": "",
+                      "mediaIconVisible": "hidden"
+                  }
+              },
+              {
+                  "listName": "2x1 imagen full con cintillo",
+                  "type": "sn_base",
+                  "template": "bottom_text_growable_left",
+                  "title": "¿Para qué sirve el té de hierbabuena?",
+                  "media": {
+                      "id": 6039,
+                      "providerName": "camus.media.image_provider",
+                      "fileType": "image/jpeg",
+                      "publishedVersion": {
+                          "id": 8383,
+                          "title": "Té de hierbabuena",
+                          "providerReference": "te-de-hierbabuena.jpg"
+                      },
+                      "src": "https://cdn.revistafama.com/uploads/media/2019/12/09/te-de-hierbabuena.jpg"
+                  },
+                  "thumbnail": {
+                      "id": 6039,
+                      "providerName": "camus.media.image_provider",
+                      "publishedVersion": {
+                          "id": 8383,
+                          "title": "Té de hierbabuena",
+                          "providerReference": "te-de-hierbabuena.jpg"
+                      },
+                      "src": "https://cdn.revistafama.com/uploads/media/2019/12/09/te-de-hierbabuena.jpg"
+                  },
+                  "heading": {
+                      "background": null,
+                      "title": null
+                  },
+                  "content": {
+                      "id": 2257,
+                      "slug": "/salud-y-belleza/para-que-sirve-el-te-de-hierbabuena",
+                      "xalokId": null,
+                      "column": "",
+                      "publishedHour": "16:16",
+                      "publishedDate": "09.12.2019",
+                      "author": {
+                          "id": 1,
+                          "name": ""
+                      }
+                  },
+                  "extra": {
+                      "leagueId": null,
+                      "media": {
+                          "icon": null,
+                          "title": null
+                      },
+                      "heading": {
+                          "title": null
+                      }
+                  },
+                  "show": {
+                      "board": true,
+                      "content": false,
+                      "inner": false
+                  },
+                  "clippings": {
+                      "default": {
+                          "window_width": 320,
+                          "width": 300
+                      },
+                      "size_1272": {
+                          "window_width": 638,
+                          "width": 618
+                      }
+                  },
+                  "extraData": {
+                      "mediaTitle": "",
+                      "headingTitle": "",
+                      "mediaIconVisible": "hidden"
+                  }
+              }
+          ]
+      }
+  ]
+}

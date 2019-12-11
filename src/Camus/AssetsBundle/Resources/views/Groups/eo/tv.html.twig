@@ -2,19 +2,19 @@
   <div class="eo-composed" data-camus-module-type="ctr">
     <div class="media-container">
       <div class="headboarder-container">
-        <div class="headline-container-space-gray" {{ data_camus_background_color }} style="background-color: {{ module.color }}">
-          <span {{ data_camus_extra_heading_title }}>{{ module.extraHeading.title }}</span>
+        <div class="headline-container-space-gray"  style="background-color: {{ module.color }}">
+          <span >{{ module.extraHeading.title }}</span>
         </div>
         <div class="section-container-yellow">
           <div class="m-logo-container">
             {{ module.heading.media|asImageHeading|raw }}
           </div>
-          <div class="extra" {{ data_camus_module_color_contrast }} {{ data_camus_heading_title }}>{{ module.heading.title }}</div>
+          <div class="extra"  >{{ module.heading.title }}</div>
         </div>
       </div>
       <div class="headline-container-transparent">
         <a {{ module.slug|linkConstruct|raw }}>
-          <span {{ data_camus_title }}>{{ module.title }}</span>
+          <span >{{ module.title }}</span>
         </a>
       </div>
       <div class="container-space-gray">
@@ -30,7 +30,7 @@
             </a>
           </div>
         </div>
-        <div class="detail-container" {{ data_camus_modules }}>
+        <div class="detail-container" >
           {{ include ('@CamusAssets/Groups/lo/base.html.twig', {father: module}) }}
           {% if module.modules|length > 0 %}
             {% for listElement in module.modules %}
@@ -48,9 +48,9 @@
       <div class="live-title-container">
         <div class="live-title">
           {% if module.content == '' %}
-            <h2 style="color: rgb(252,236,63);" {{ data_camus_heading_title }}>{{ module.heading.title }}</h2>
+            <h2 style="color: rgb(252,236,63);" >{{ module.heading.title }}</h2>
           {% else %}
-            <h2 {{ data_camus_heading_title }}>{{ module.heading.title }}</h2>
+            <h2 >{{ module.heading.title }}</h2>
           {% endif %}
         </div>
         <div class="img-milenio-container">
@@ -67,7 +67,7 @@
       <div class="news-container">
         <div class="holder-container" data-provider="{{ module.provider }}" data-reference="{{ module.providerReference }}" preload="true">
           {{ module.thumbnail|asImage(module.alt)|raw }}
-          <button type="button" class="btn-play" {{ data_camus_extra_media_icon }}>
+          <button type="button" class="btn-play" >
             <span class="fa fa-play"></span>
           </button>
         </div>
@@ -76,10 +76,10 @@
         <div class="headline-top">
           <div class="title">
             {% if module.slug == '' %}
-              <span {{ data_camus_title }}>{{ module.title }}</span>
+              <span >{{ module.title }}</span>
             {% else %}
               <a {{ module.slug|linkConstruct|raw }}>
-                <span {{ data_camus_title }}>{{ module.title }}</span>
+                <span >{{ module.title }}</span>
               </a>
             {% endif %}
           </div>
@@ -87,7 +87,7 @@
             <span>{{ module.publishedDate }}{{ module.publishedHour }}</span>
           </div>
           <div class="abstract">
-            <span {{ data_camus_abstract }}>{{ module.abstract }}</span>
+            <span >{{ module.abstract }}</span>
           </div>
         </div>
         <div class="social-networks-share">
@@ -106,7 +106,7 @@
     {% if module.heading.title != '' %}
       <div class="live-title-container">
         <div class="live-title">
-          <h2 {{ data_camus_heading_title }}>{{ module.heading.title }}</h2>
+          <h2 >{{ module.heading.title }}</h2>
         </div>
         {#<div class="img-milenio-container">
           <a href="">
@@ -119,7 +119,7 @@
       <div class="news-container">
         <div class="holder-container" data-provider="{{ module.provider }}" data-reference="{{ module.providerReference }}" preload="true">
           {{ module.thumbnail|asImage(module.alt)|raw }}
-          <button type="button" class="btn-play" {{ data_camus_extra_media_icon }}>
+          <button type="button" class="btn-play" >
             <span class="fa fa-play"></span>
           </button>
         </div>
@@ -128,17 +128,17 @@
         <div class="headline-top">
           <div class="title">
             {% if module.slug == '' %}
-              <span {{ data_camus_title }} {{ data_camus_text_limit["70"] }}>{{ module.title }}</span>
+              <span  >{{ module.title }}</span>
             {% else %}
               <a {{ module.slug|linkConstruct|raw }}>
-                <span {{ data_camus_title }} {{ data_camus_text_limit["70"] }}>{{ module.title }}</span>
+                <span  >{{ module.title }}</span>
               </a>
             {% endif %}
           </div>
           <!--div class="host">
-            CON <span {{ data_camus_author }}>{{ module.author }}</span>
+            CON <span >{{ module.author }}</span>
           </div-->
-          <div class="abstract" {{ data_camus_abstract }} {{ data_camus_text_limit["160"] }}>
+          <div class="abstract"  >
             {{ module.abstract|raw }}
           </div>
           <div class="hour">

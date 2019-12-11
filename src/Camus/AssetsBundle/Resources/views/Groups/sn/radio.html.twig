@@ -1,9 +1,9 @@
 {% if module.template == 'base' %}
-  <div class="sn-radio" data-camus-template="{{module.templateName}}" {{ data_camus_type["sn_radio"] }} {{ data_camus_background_color }} style="background-color: {{ module.color }}">
+  <div class="sn-radio" data-camus-template="{{module.templateName}}"   style="background-color: {{ module.color }}">
     <div class="media-container">
       <div class="data">
         <div class="titulo">
-          <span {{ data_camus_title }}>{{ module.title }}</span>
+          <span >{{ module.title }}</span>
         </div>
         <h5>
           <span class="section">{{ module.section }}</span>
@@ -17,7 +17,7 @@
            -
           <span class="duration">20 min.</span>
         </div>
-        <div class="sphere" {{ data_camus_module_audio_elem }}>
+        <div class="sphere" >
           <span class="fa fa-play"></span>
         </div>
       </div>

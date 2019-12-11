@@ -446,10 +446,10 @@
     </div>
   </div>
 {% elseif module.template == 'clubs' %}
-  <div class="ai-index-clubs" {{ data_camus_module_type["list"] }}>
+  <div class="ai-index-clubs" >
     <div class="media-container">
-      <span class="list-name" {{ data_camus_title }}>{{ module.title }}</span>
-      <ul class="list" {{ data_camus_modules }}>
+      <span class="list-name" >{{ module.title }}</span>
+      <ul class="list" >
         {% for module in module.modules if module != null %}
           {% set type = module.type|splitTemplate %}
           {#{% if module.id is defined and module.id != null %}

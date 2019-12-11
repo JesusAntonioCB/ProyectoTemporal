@@ -1,11 +1,11 @@
 {% if module.template == 'base' or module.template == 'base_aficion' or module.template == 'base_hey' %}
-<div class="in-the-networks tabs tabs-small" {{ data_camus_type["sn_social_widget"] }} {{data_camus_allow_empty_module["1"]}} {{data_camus_modal_tools["1"]}}>
+<div class="in-the-networks tabs tabs-small"  {{data_camus_allow_empty_module["1"]}} {{data_camus_modal_tools["1"]}}>
   {% set facebookUrl = 'https://www.facebook.com/RevistaFamaMx/' %}
   {% set twitterUrl = 'https://twitter.com/fama_revista' %}
   {% set youtubeUrl = 'https://www.youtube.com/user/FamaRevista' %}
   <div class="media-container">
     <div class="headline">
-      <span {{ data_camus_title }}>{{ module.title }}</span>
+      <span >{{ module.title }}</span>
       {% if module.template == 'base' or module.template == 'base_aficion' %}
         <a href="{{ youtubeUrl }}" target="_blank"><i class="fa fa-youtube"></i></a>
       {% endif %}
