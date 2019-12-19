@@ -5,7 +5,6 @@
 @import "../../../modules/main-containers-mixin.scss";
 .sn-bottom-text-note{
   @include global-container-1c;
-  border-radius: 10px;
   .media-container{
     @include rows-height(1);
     .img-container{
@@ -17,8 +16,15 @@
     .headline-bottom-container-gradient{
       margin-bottom: 0px;
       .section-top, .title{
-        font-size: 26px;
-        line-height: 27px;
+        color: rgb(240,240,240);
+        font-family: Verdana,Geneva,Tahoma,sans-serif;
+        font-size: 13px;
+        font-weight: 900;
+        font-style: normal;
+        text-transform: none;
+        letter-spacing: 1px;
+        text-shadow: rgba( 0, 0, 0, 0) 0px 0px 0px;
+        transform: translate(10px,-10px);
       }
       .section-top{                                                   //SECCION AGREGADA
         display: inline-block;

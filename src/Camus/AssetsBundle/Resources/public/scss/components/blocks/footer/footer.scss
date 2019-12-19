@@ -1,14 +1,16 @@
 #main-footer{
   position: relative;
-  background-color: $color-red-light;
+  // position: fixed;
+  // bottom: 0;
+  // width: 100%;
+  background-color: $color-gray-white;
   @include one-column{
     height: 440px;
     max-height: 440px;
   }
   .head, .content{
-    max-width: 1284px;
+    max-width: 966px;
     padding: 9px 15px;
-    margin: 0 auto;
     @include three-column{
       max-width: 966px;
     }
@@ -19,9 +21,22 @@
   .head{
     .notas-block{
       position: relative;
+      height: 29px;
+      .footer-link{
+        line-height: 20px;
+        height: 20px;
+        padding: 5px 12px;
+        font-size: 13px;
+        display: inline-block;
+        text-decoration: none;
+      }
+      .footer-item{
+        opacity: 0.3;
+      }
       .logo-container{
         float: left;
         height: 100%;
+        transform: translate(58px, -36px);
         .img-container, .double-img{
           display: inline-block;
           text-align: center;
@@ -41,7 +56,7 @@
         }
         .img-container.sup{
           img{
-            max-width: 160px;
+            max-width: 260px;max-height: 65px;
             @include two-column{
               max-width: 140px;
             }
@@ -61,8 +76,9 @@
       }
       .sections{
         float: right;
-        @include text-with-YanoneKaffeesatz-color-white;
+        @include text-with-open-sans-5-color-military-gray;
         font-size: 13px;
+        transform: translate(90px, 13px);
         .option-container{
           display: inline-block;
           padding: 12px 0px;
@@ -78,6 +94,10 @@
         content: '';
         display: table;
         clear: both;
+      }
+      .footer-red-social{
+        .icon-face{
+        }
       }
     }
     .right{
@@ -103,13 +123,14 @@
   .content{
     .rights-reserved{
       float: left;
+      transform: translateY(-20px);
       .copyright, .comscore{
         display: inline-block;
         vertical-align: middle;
       }
       .copyright{
-        @include text-with-YanoneKaffeesatz-color-white;
-        font-size: 18px;
+        @include text-with-open-sans-5-color-military-gray;
+        font-size: 12px;
       }
     }
     .sections{
@@ -142,12 +163,17 @@
       }
     }
     .social-network{
-      float: right;
+      position: absolute;
+      left: 48%;
       .text{
         float: left;
         margin-right: 20px;
-        @include text-with-YanoneKaffeesatz-color-white;
+        @include text-with-open-sans-5-color-military-gray;
         font-size: 14px;
+        .agreement{
+          font-size: 11px;
+          opacity: 0.4;
+        }
       }
       .networks{
         float: right;

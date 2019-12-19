@@ -195,12 +195,19 @@ $circle-white-ratio-small: 24px;
   top: 0;
   background: $gradient-black-transparent;
 }
+
+.media-container:hover .headline-bottom-container-gradient{
+  opacity: 1;
+}
+
 .headline-bottom-container-gradient{
   bottom: 0;
-  background: $gradient-transparent-black;
+  background-color: rgba(64,64,64,0.6);
+  opacity: 0;
+  transition: opacity ease-in 0.3s;
 }
 .headline-top-container-gradient, .headline-bottom-container-gradient{
-  padding: 20px;
+  height: 32px;
   position: absolute;
   width: 100%;
   //.section-top{

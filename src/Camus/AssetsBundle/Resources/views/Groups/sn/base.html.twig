@@ -254,24 +254,12 @@
       {% endif %}
       <div class="title">
         <a {{ module.slug|linkConstruct|raw }}>
-          <span  >{{ module.title }}</span>
+          <h4 class="title-notes" >{{ module.title }}</span>
         </a>
       </div>
       {% if module.sponsor.media|length > 0 %}
         {{ module.sponsor|asSponsor|raw }}
       {% endif %}
-      {#{% if module.section != '' %}
-        <div class="section-bottom"  >
-          <span >{{ module.section }}</span>
-        </div>
-      {% endif %}
-      {% if module.author != '' %}
-        <div class="author"  >
-          <span >{{ module.author }}</span>
-        </div>
-      {% endif %}
-      {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
-      <div class="social-media"></div>#}
     </div>
   </div>
   </div>

@@ -1,10 +1,10 @@
 {
   "modules": [
       {
-          "type": "sn_base",
-          "template": "bottom_text_growable",
+        "type": "sn_base",
+        "template": "bottom_text",
           "id": 110,
-          "title": "Yuridia se casó y así de guapa lució vestida de novia",
+          "title": "Bodas",
           "abstract": "",
           "body": "",
           "thumbnailClippingLarger": {
@@ -17,10 +17,10 @@
               "fileType": "image/jpeg",
               "publishedVersion": {
                   "id": 8385,
-                  "title": "Yuridia se casó y así de guapa lució vestida de novia",
+                  "title": "Bodas",
                   "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
               },
-              "src": "https://cdn.revistafama.com/uploads/media/2019/12/10/yuridia-caso-guapa-lucio-vestida_0_13_600_341.jpg"
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
           },
           "media": [],
           "heading": [],
@@ -39,10 +39,10 @@
               "fileType": "image/jpeg",
               "publishedVersion": {
                   "id": 8385,
-                  "title": "Yuridia se casó y así de guapa lució vestida de novia",
+                  "title": "Bodas",
                   "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
               },
-              "src": "https://cdn.revistafama.com/uploads/media/2019/12/10/yuridia-caso-guapa-lucio-vestida_251_0_318_373.jpg"
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
           },
           "content": {
               "id": 2260,
@@ -64,9 +64,9 @@
       },
       {
           "type": "sn_base",
-          "template": "top_text",
+          "template": "bottom_text",
           "id": 131,
-          "title": "¿Qué es un suero o sérum facial y cómo usarlo?",
+          "title": "Cumpleaños",
           "abstract": "",
           "body": "",
           "thumbnailClippingLarger": [],
@@ -87,10 +87,10 @@
               "fileType": "image/jpeg",
               "publishedVersion": {
                   "id": 7693,
-                  "title": "Suero o sérum facial",
+                  "title": "Cumpleaños",
                   "providerReference": "suero-o-serum-facial.jpg"
               },
-              "src": "https://cdn.revistafama.com/uploads/media/2019/12/03/suero-o-serum-facial_179_0_416_487.jpg"
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/d3lkeqnwn1ccqox0kiqf/s/v-10/p3579154794-2.jpg?ts=8U1&tk=Vjnn7BGM1mcnn4JdA3y7FXW6UgVJUlTXBGfUyV0IJjY=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
           },
           "content": {
               "id": 2181,
@@ -104,48 +104,415 @@
           "modules": []
       },
       {
-          "type": "sn_base",
-          "template": "base",
-          "id": 136,
-          "title": "20 ideas de maquillaje para Navidad",
+        "type": "sn_base",
+        "template": "bottom_text",
+          "id": 110,
+          "title": "Despedidas",
           "abstract": "",
           "body": "",
-          "thumbnailClippingLarger": [],
-          "media": [],
-          "heading": {
-              "title": "Consejo",
-              "media": []
+          "thumbnailClippingLarger": {
+              "width": 600,
+              "height": 341,
+              "x": 0,
+              "y": 13,
+              "quality": 100,
+              "id": 1989,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 8385,
+                  "title": "Despedidas",
+                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
+              },
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1rv1fodkewiahftlw7sc/s/v-10/p3579213760-2.jpg?ts=8U1&tk=4U2l4zVrfj0E9zBpWgMpa5SPUlNrC-BffQJwBBf9e0w=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
           },
+          "media": [],
+          "heading": [],
           "extraData": {
               "mediaTitle": "",
               "headingTitle": "",
               "mediaIconVisible": "hidden"
           },
           "thumbnail": {
-              "width": 564,
-              "height": 367,
-              "x": 0,
-              "y": 172,
-              "quality": 80,
-              "id": 1954,
+              "width": 318,
+              "height": 373,
+              "x": 251,
+              "y": 0,
+              "quality": 100,
+              "id": 1988,
               "fileType": "image/jpeg",
               "publishedVersion": {
-                  "id": 7881,
-                  "title": "Makeup en tono oro gold.",
-                  "providerReference": "makeup-en-tono-oro-gold.jpg"
+                  "id": 8385,
+                  "title": "Despedidas",
+                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
               },
-              "src": "https://cdn.revistafama.com/uploads/media/2019/12/05/makeup-en-tono-oro-gold_0_172_564_367.jpg"
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1rv1fodkewiahftlw7sc/s/v-10/p3579213760-2.jpg?ts=8U1&tk=4U2l4zVrfj0E9zBpWgMpa5SPUlNrC-BffQJwBBf9e0w=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
           },
           "content": {
-              "id": 2192,
-              "slug": "/moda/outfits/20-ideas-de-maquillaje-para-navidad",
+              "id": 2260,
+              "slug": "/celebridades/yuridia-caso-guapa-lucio-vestida-novia",
               "xalokId": null,
-              "column": "",
-              "publishedHour": "14:23",
-              "publishedDate": "03.12.2019",
               "author": null
           },
-          "sectionName": "Outfits",
+          "clippings": {
+              "default": {
+                  "window_width": 320,
+                  "width": 300
+              },
+              "size_1272": {
+                  "window_width": 638,
+                  "width": 618
+              }
+          },
+          "modules": []
+      },
+      {
+          "type": "sn_base",
+          "template": "bottom_text",
+          "id": 131,
+          "title": "Exposiciones",
+          "abstract": "",
+          "body": "",
+          "thumbnailClippingLarger": [],
+          "media": [],
+          "heading": [],
+          "extraData": {
+              "mediaTitle": "",
+              "headingTitle": "",
+              "mediaIconVisible": "hidden"
+          },
+          "thumbnail": {
+              "width": 416,
+              "height": 487,
+              "x": 179,
+              "y": 0,
+              "quality": 100,
+              "id": 1922,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 7693,
+                  "title": "Exposiciones",
+                  "providerReference": "suero-o-serum-facial.jpg"
+              },
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/t9soi9_oatxjko8ny_ek/s/v-10/p3618927932-2.jpg?ts=8U1&tk=2tMkzMltPY4Fprocm0aJgX1TE_M2u0Xk5ZgGDtjgBl4=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
+          },
+          "content": {
+              "id": 2181,
+              "slug": "/salud-y-belleza/que-es-un-suero-o-serum-facial-y-como-usarlo",
+              "xalokId": null,
+              "column": "",
+              "publishedHour": "16:33",
+              "publishedDate": "02.12.2019",
+              "author": null
+          },
+          "modules": []
+      },
+      {
+        "type": "sn_base",
+        "template": "bottom_text",
+          "id": 110,
+          "title": "Inauguraciones",
+          "abstract": "",
+          "body": "",
+          "thumbnailClippingLarger": {
+              "width": 600,
+              "height": 341,
+              "x": 0,
+              "y": 13,
+              "quality": 100,
+              "id": 1989,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 8385,
+                  "title": "Inauguraciones",
+                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
+              },
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/eu3m6k1pyzzznd0ocsu2/s/v-10/p3619513196-2.jpg?ts=8U1&tk=3fhELZuYNHWpXHvJ_86GEh-lj975Xzzqs6XGHO8HqQc=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
+          },
+          "media": [],
+          "heading": [],
+          "extraData": {
+              "mediaTitle": "",
+              "headingTitle": "",
+              "mediaIconVisible": "hidden"
+          },
+          "thumbnail": {
+              "width": 318,
+              "height": 373,
+              "x": 251,
+              "y": 0,
+              "quality": 100,
+              "id": 1988,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 8385,
+                  "title": "Inauguraciones",
+                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
+              },
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/eu3m6k1pyzzznd0ocsu2/s/v-10/p3619513196-2.jpg?ts=8U1&tk=3fhELZuYNHWpXHvJ_86GEh-lj975Xzzqs6XGHO8HqQc=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
+          },
+          "content": {
+              "id": 2260,
+              "slug": "/celebridades/yuridia-caso-guapa-lucio-vestida-novia",
+              "xalokId": null,
+              "author": null
+          },
+          "clippings": {
+              "default": {
+                  "window_width": 320,
+                  "width": 300
+              },
+              "size_1272": {
+                  "window_width": 638,
+                  "width": 618
+              }
+          },
+          "modules": []
+      },
+      {
+          "type": "sn_base",
+          "template": "bottom_text",
+          "id": 131,
+          "title": "Eventos Varios",
+          "abstract": "",
+          "body": "",
+          "thumbnailClippingLarger": [],
+          "media": [],
+          "heading": [],
+          "extraData": {
+              "mediaTitle": "",
+              "headingTitle": "",
+              "mediaIconVisible": "hidden"
+          },
+          "thumbnail": {
+              "width": 416,
+              "height": 487,
+              "x": 179,
+              "y": 0,
+              "quality": 100,
+              "id": 1922,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 7693,
+                  "title": "Evento Varios",
+                  "providerReference": "suero-o-serum-facial.jpg"
+              },
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/jnmynvn-lf1teei6pp5q/s/v-10/p3579538177-2.jpg?ts=8U1&tk=Ogj9sRBWZa9yQr2vRaEmBJJy1Qzx_JQyQvTGasemrDQ=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
+          },
+          "content": {
+              "id": 2181,
+              "slug": "/salud-y-belleza/que-es-un-suero-o-serum-facial-y-como-usarlo",
+              "xalokId": null,
+              "column": "",
+              "publishedHour": "16:33",
+              "publishedDate": "02.12.2019",
+              "author": null
+          },
+          "modules": []
+      },
+      {
+        "type": "sn_base",
+        "template": "bottom_text",
+          "id": 110,
+          "title": "Bares",
+          "abstract": "",
+          "body": "",
+          "thumbnailClippingLarger": {
+              "width": 600,
+              "height": 341,
+              "x": 0,
+              "y": 13,
+              "quality": 100,
+              "id": 1989,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 8385,
+                  "title": "Bares",
+                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
+              },
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/jppy-gg3dek2sfgjjsgz/s/v-10/p3579569216-2.jpg?ts=8U1&tk=chaYf8-Vpnd21MQgeYugaW5l0xNXCjYZGq8TgVUc-WA=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
+          },
+          "media": [],
+          "heading": [],
+          "extraData": {
+              "mediaTitle": "",
+              "headingTitle": "",
+              "mediaIconVisible": "hidden"
+          },
+          "thumbnail": {
+              "width": 318,
+              "height": 373,
+              "x": 251,
+              "y": 0,
+              "quality": 100,
+              "id": 1988,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 8385,
+                  "title": "Bares",
+                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
+              },
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/jppy-gg3dek2sfgjjsgz/s/v-10/p3579569216-2.jpg?ts=8U1&tk=chaYf8-Vpnd21MQgeYugaW5l0xNXCjYZGq8TgVUc-WA=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
+          },
+          "content": {
+              "id": 2260,
+              "slug": "/celebridades/yuridia-caso-guapa-lucio-vestida-novia",
+              "xalokId": null,
+              "author": null
+          },
+          "clippings": {
+              "default": {
+                  "window_width": 320,
+                  "width": 300
+              },
+              "size_1272": {
+                  "window_width": 638,
+                  "width": 618
+              }
+          },
+          "modules": []
+      },
+      {
+          "type": "sn_base",
+          "template": "bottom_text",
+          "id": 131,
+          "title": "Posadas",
+          "abstract": "",
+          "body": "",
+          "thumbnailClippingLarger": [],
+          "media": [],
+          "heading": [],
+          "extraData": {
+              "mediaTitle": "",
+              "headingTitle": "",
+              "mediaIconVisible": "hidden"
+          },
+          "thumbnail": {
+              "width": 416,
+              "height": 487,
+              "x": 179,
+              "y": 0,
+              "quality": 100,
+              "id": 1922,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 7693,
+                  "title": "Posadas",
+                  "providerReference": "suero-o-serum-facial.jpg"
+              },
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/edyqwfjphn1rxssrmgrp/s/v-10/p3579583927-2.jpg?ts=8U1&tk=OOyuGMFYsDPpNkJuj96HCofE_VBX3CciJSL7h4lzOzs=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
+          },
+          "content": {
+              "id": 2181,
+              "slug": "/salud-y-belleza/que-es-un-suero-o-serum-facial-y-como-usarlo",
+              "xalokId": null,
+              "column": "",
+              "publishedHour": "16:33",
+              "publishedDate": "02.12.2019",
+              "author": null
+          },
+          "modules": []
+      },
+      {
+        "type": "sn_base",
+        "template": "bottom_text",
+          "id": 110,
+          "title": "Conciertos",
+          "abstract": "",
+          "body": "",
+          "thumbnailClippingLarger": {
+              "width": 600,
+              "height": 341,
+              "x": 0,
+              "y": 13,
+              "quality": 100,
+              "id": 1989,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 8385,
+                  "title": "Conciertos",
+                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
+              },
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/vnfnesltpehlq3n08gks/s/v-10/p3579609878-2.jpg?ts=8U1&tk=tlyO2PbjJ284A6p-nTO3s46AC1NevpgexmvWAuBnZHI=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
+          },
+          "media": [],
+          "heading": [],
+          "extraData": {
+              "mediaTitle": "",
+              "headingTitle": "",
+              "mediaIconVisible": "hidden"
+          },
+          "thumbnail": {
+              "width": 318,
+              "height": 373,
+              "x": 251,
+              "y": 0,
+              "quality": 100,
+              "id": 1988,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 8385,
+                  "title": "Conciertos",
+                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
+              },
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/vnfnesltpehlq3n08gks/s/v-10/p3579609878-2.jpg?ts=8U1&tk=tlyO2PbjJ284A6p-nTO3s46AC1NevpgexmvWAuBnZHI=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
+          },
+          "content": {
+              "id": 2260,
+              "slug": "/celebridades/yuridia-caso-guapa-lucio-vestida-novia",
+              "xalokId": null,
+              "author": null
+          },
+          "clippings": {
+              "default": {
+                  "window_width": 320,
+                  "width": 300
+              },
+              "size_1272": {
+                  "window_width": 638,
+                  "width": 618
+              }
+          },
+          "modules": []
+      },
+      {
+          "type": "sn_base",
+          "template": "bottom_text",
+          "id": 131,
+          "title": "Baby Shower",
+          "abstract": "",
+          "body": "",
+          "thumbnailClippingLarger": [],
+          "media": [],
+          "heading": [],
+          "extraData": {
+              "mediaTitle": "",
+              "headingTitle": "",
+              "mediaIconVisible": "hidden"
+          },
+          "thumbnail": {
+              "width": 416,
+              "height": 487,
+              "x": 179,
+              "y": 0,
+              "quality": 100,
+              "id": 1922,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 7693,
+                  "title": "Baby Shower",
+                  "providerReference": "suero-o-serum-facial.jpg"
+              },
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/qencc5ucdhgznasp1l4z/s/v-10/p3579621029-2.jpg?ts=8U5&tk=aTeKb5pmpwO0qCfrtz8OHDdTDW0Kju_XW8mRmIYWfX4=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
+          },
+          "content": {
+              "id": 2181,
+              "slug": "/salud-y-belleza/que-es-un-suero-o-serum-facial-y-como-usarlo",
+              "xalokId": null,
+              "column": "",
+              "publishedHour": "16:33",
+              "publishedDate": "02.12.2019",
+              "author": null
+          },
           "modules": []
       }
   ]

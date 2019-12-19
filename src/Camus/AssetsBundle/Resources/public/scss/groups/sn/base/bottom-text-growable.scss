@@ -17,8 +17,15 @@
   }
   .headline-bottom-container-gradient{
     .section-top, .title{
-      font-size: 26px;
-      line-height: 27px;
+      color: rgb(240, 240, 240);
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 13px;
+      font-weight: bold;
+      font-style: normal;
+      text-transform: none;
+      letter-spacing: 1px;
+      text-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;
+      transform: translate(10px, -10px);
     }
     .sponsor{
       font-size: 10px;

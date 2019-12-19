@@ -11,7 +11,7 @@ html{
 }
 body, html{
   overflow-x: hidden;
-  background-color: $color-gray-white !important;
+  background-color: $color-white !important;
   margin: 0;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 14px;
@@ -134,54 +134,7 @@ ol,ul {
   }
 };
 
-#search-container{
-  float: right;
-  .search-active{
-    padding: 5px;
-    background-color: $transparent;
-    .search-icon{
-      position: absolute;
-      right: 0;
-      padding: 4px 18px 5px 0;
-      color: $color-black;
-    }
-  }
-  .search-item{
-    float: left;
-    position: relative;
-  }
-  .search-icon{
-    font-size: 21px;
-    color: $color-white;
-  }
-  .search-hidden{
-    display: none;
-  }
-}
 
-.search-input{
-  border: 0;
-  outline: none;
-  padding-left: 15px;
-  border-radius: 50px;
-  background-color: $color-white;
-  opacity: 1;
-  height: 30px;
-  width: 250px;
-  font: inherit;
-  color: $color-black !important;
-}
-
-@include one-column{
-  .search-input{
-    width: 200px;
-  }
-}
-
-.search-input::placeholder{
-  opacity: 1;
-  color: $color-black !important;
-}
 
 .inner-addon .fa {
   position: absolute;
@@ -189,11 +142,7 @@ ol,ul {
 }
 .right-addon .fa { right: 10px;}
 
-#search-close{
-  background-color: $color-red-vino;
-  padding: 5px 7.25px;
-  margin: 4px 0;
-}
+
 
 #sidebar{
   display: none;
@@ -231,23 +180,7 @@ ol,ul {
       margin-top: 15px;
     }
   }
-  #search-bar{
-    .search-form{
-      background-color: $color-space-silver;
-      padding: 10px 10px 10px 15px;
-      .search-input{
-        width: 92%;
-        font-size: 11px;
-        line-height: 14px;
-        background-color: $color-space-silver;
-      }
-      .search-icon{
-        float: right;
-        font-size: 20px;
-        color: $color-black;
-      }
-    }
-  }
+
   .container-today{
     padding: 0 10px 0 20px;
     .today{
@@ -326,6 +259,7 @@ ol,ul {
   position: fixed;
   top: 0;
   width: 100%;
+  height: 100px;
   z-index: 100;
   background-color: $color-white;
   .btn-login, .btn-register, .btn-exit{
@@ -333,9 +267,8 @@ ol,ul {
   }
   .container-menu{
     height: 65px;
-    background: url('/bundles/camusassets/images/h_bg_img2.png');
     background-size: 100% 65px;
-    background-color: $color-red-light;
+    background-color: $color-white;
     @include three-column{
       background-size: auto;
     }
@@ -345,7 +278,7 @@ ol,ul {
     }
     .content{
       position: relative;
-      max-width: 1284px;
+      max-width: 100%;
       height: 100%;
       padding: 0 15px;
       margin: 0 auto;
@@ -392,68 +325,111 @@ ol,ul {
         height: 85%;
         position: absolute;
         top: 50%;
-        transform: translateY(-50%);
+        transform: translate(-15px, 0px);
       }
+      .search-container {
+        position: relative;
+        float: right;
+        top: 43%;
+      }
+
+      input[type=text] {
+        padding: 3px 0px 3px 10px;
+        margin-top: 8px;
+        font-size: 12px;
+        border: none;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.5) inset;
+        font-weight: bold;
+        background-color: #ffffff;
+        color: #999;
+        border-radius: 16px 16px 16px 16px;
+        display: block;
+        line-height: 16px;
+      }
+
+      .search-container button {
+        float: right;
+        padding: 6px 10px;
+        margin-top: 8px;
+        margin-right: 16px;
+        background: #ddd;
+        font-size: 17px;
+        border: none;
+        cursor: pointer;
+      }
+
       .container-right{
-        position: absolute;
+        position: relative;
         top: 50%;
-        right: 10px;
-        transform: translateY(-50%);
-        @include header-flow{
-          display: none;
+        left: 390px;
+
+        .header-link{
+          line-height: 20px;
+          height: 20px;
+          padding: 5px 12px;
+          font-size: 13px;
+          font-weight: 900;
+          display: inline-block;
+          text-decoration: none;
+
+          .header-item{
+            padding-left: 3px;
+            font-size: 8px;
+            position: relative;
+            bottom: 1px;
+          }
         }
+
+        .header-link:hover{
+          color:$color-gray-sky;
+        }
+
+        .header-link:hover .sub-header-link{
+          display: block;
+        }
+
+        .header-link:hover .sub-menu{
+          opacity: 1;
+        }
+
+        .sub-menu{
+          display:grid;
+          position:absolute;
+          left: 185px;
+          top:20px;
+          opacity: 0;
+          transition: opacity ease-in 0.6s;
+
+          .sub-header-link{
+            display: none;
+            background-color: $color-white;
+            line-height: 46px;
+            height: 34px;
+            padding: 0px 14px;
+            font-size: 14px;
+            font-weight: 900;
+          }
+
+          .sub-header-link:hover{
+           color:$color-gray-sky;
+          }
+
+        }
+
         ul{
           float: left;
           margin: 0px;
           padding: 0px;
           list-style-type: none;
-          @include text-with-open-serif-color-white;
+          @include text-with-open-serif-color-pencil-gray;
+
           li{
             float: left;
             margin-right: 25px;
+
           }
         }
       }
-      // .container-right{
-      //   position: absolute;
-      //   top: 50%;
-      //   right: 10px;
-      //   transform: translateY(-50%);
-      //   .right-action-item{
-      //     display: inline-block;
-      //     vertical-align: middle;
-      //   }
-      //   .pase-container{
-      //     @include text-with-open-serif-color-white;
-      //     font-size: 11px;
-      //     line-height: 14px;
-      //     .pase-btn{
-      //       display: inline-block;
-      //       vertical-align: middle;
-      //       margin-right: 25px;
-      //     }
-      //     .btn-exit{
-      //       display: none;
-      //     }
-      //     .fa{
-      //       display: none;
-      //       font-size: 22px;
-      //     }
-      //   }
-      //   @include header-flow{
-      //     #search-container{
-      //       // display: none;
-      //     }
-      //     .pase-container{
-      //       .sign{
-      //         display: none;
-      //       }
-      //       .fa{
-      //         display: block;
-      //       }
-      //     }
-      //   }
-      // }
     }
   }
 
@@ -494,7 +470,7 @@ ol,ul {
   }
   .container-submenu{
     height: $submenus-height;
-    background-color: $color-red-vino;
+    background-color: $color-white;
     //transition: $transition-header;
     //overflow: hidden;
     .content{
@@ -692,12 +668,12 @@ ol,ul {
   #main-header{
     .container-menu{
       .content{
-        max-width: 966px;
+        max-width: 100%;
       }
     }
     .container-submenu{
       .content{
-        max-width: 966px;
+        max-width: 100%;
       }
     }
   }
@@ -707,13 +683,13 @@ ol,ul {
   #main-header{
     .container-menu{
       .content{
-        max-width: 618px;
+        max-width: 100%;
         padding: 0;
       }
     }
     .container-submenu{
       .content{
-        max-width: 618px;
+        max-width: 100%;
         padding: 0;
       }
     }
@@ -724,7 +700,7 @@ ol,ul {
   #main-header{
     .container-menu{
       .content{
-        max-width: 375px;
+        max-width: 100%;
         padding: 0 15px;
         .main-logo{
           left: 50%;
@@ -734,7 +710,7 @@ ol,ul {
     }
     .container-submenu{
       .content{
-        max-width: 375px;
+        max-width: 100%;
         padding: 0 15px;
       }
     }
@@ -743,30 +719,28 @@ ol,ul {
 
 .body-content{
   position: relative;
-  margin-top: 105px;
+  margin-top: 100px;
   transition: $transition-milenio;
   width: 100%;
   >.content{
     padding: 0;
-    margin-bottom:20px;
     .contenedor-notas-block{
+      .sn-bottom-text-note {
+        margin: 10px !important;
+      }
     	position: relative;
     	width: 100%;
-    	max-width: 1284px;
-      padding: 0 15px;
-    	margin: 0px auto;
     	background-color: transparent;
       display: flex;
       display: -webkit-flex;
       display: -moz-flex;
       flex-wrap: wrap;
       -webkit-flex-wrap: wrap;
-      justify-content: space-between;
       & > *{
         transition: max-width 0.5s, width 0.5s, max-height 0.5s, height 2s;
       }
       @include three-column{
-      	max-width: 966px;
+      	max-width: 100%;
       }
       @include two-column{
       	max-width: 618px;
