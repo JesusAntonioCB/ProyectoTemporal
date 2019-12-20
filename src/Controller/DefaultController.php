@@ -2,16 +2,47 @@
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Camus\AssetsBundle\Twig\ModelModuleExtension;
+use App\lib\MDZenfolioConnection;
 
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/lucky/number")
+     * @Route("/")
      */
     public function indexAction()
+    {
+      $string = file_get_contents("./bundles/camusassets/modulos.json");
+      $modules = json_decode($string, true)["modules"];
+      $arrayCss = array();
+      $resultFileCss = array();
+      $this->getListModules($modules,$arrayCss);
+      if(count($arrayCss)){
+        $resultFileCss = array_values(array_unique($arrayCss));
+      }
+      $responseRender = $this->render('@CamusAssets/Content/content.html.twig', array(
+        'meta' => "",
+        'site_name' => "Milenio",
+        'site_short_domain' => "Milo",
+        'modules' => $modules,
+        'headerType' => 1,
+        'currentSection' => "",
+        'page' => 1,
+        'boardColor' => "#b10b1f",
+        'amp_domain' => "none",
+        'piano_domain' => "none",
+        'fileCSS' => $resultFileCss,
+        'number' => 100
+      ));
+      return $responseRender;
+    }
+    /**
+     * @Route("/lucky/number")
+     */
+    public function luckyAction()
     {
         $number = random_int(0, 100);
 
@@ -19,136 +50,11 @@ class DefaultController extends AbstractController
             'number' => $number ,
         ]);
     }
+
     /**
      * @Route("/prueba-modulos-estadisticos")
      */
-    public function getPruebaModulos(){
-        // $modules = [
-        //   [
-        //     "type" => "sn_base",
-        //     "template" => "bottom_text_growable",
-        //     "id" => 110,
-        //     "title" => "Dulce María presumió su figura en bikini y sorprendió a sus seguidores",
-        //     "abstract" => "",
-        //     "body" => "",
-        //     "thumbnailClippingLarger" => [
-        //           "width" => 978,
-        //           "height" => 557,
-        //           "x" => 6,
-        //           "y" => 0,
-        //           "quality" => 93,
-        //           "id" => 1975,
-        //           "fileType" => "image/jpeg",
-        //           "publishedVersion" => [
-        //             "id" => 5457,
-        //             "title" => "Dulce María",
-        //             "providerReference" => "dulce-maria.jpg"
-        //           ],
-        //           "src" => "https://cdn.revistafama.com/uploads/media/2019/12/09/dulce-maria_6_0_978_557.jpg"
-        //     ],
-        //     "media" => [],
-        //     "heading" => [],
-        //     "extraData" => [
-        //       "mediaTitle" => "",
-        //       "headingTitle" => "",
-        //       "mediaIconVisible" => "hidden"
-        //     ],
-        //     "thumbnail" => [
-        //       "width" => 474,
-        //       "height" => 557,
-        //       "x" => 258,
-        //       "y" => 0,
-        //       "quality" => 93,
-        //       "id" => 1974,
-        //       "fileType" => "image/jpeg",
-        //       "publishedVersion" => [
-        //         "id" => 5457,
-        //         "title" => "Dulce María",
-        //         "providerReference" => "dulce-maria.jpg"
-        //       ],
-        //       "src" => "https://cdn.revistafama.com/uploads/media/2019/12/09/dulce-maria_258_0_474_557.jpg"
-        //     ],
-        //     "content" => [
-        //       "id" => 2251,
-        //       "slug" => "/celebridades/dulce-maria-presumio-figura-bikini-sorprendio-seguidores",
-        //       "xalokId" => null,
-        //       "author" => null
-        //     ],
-        //     "clippings" => [
-        //       "default" => [
-        //         "window_width" => 320,
-        //         "width" => 300
-        //       ],
-        //       "size_1272" => [
-        //         "window_width" => 638,
-        //         "width" => 618
-        //       ]
-        //     ],
-        //     "modules" => []
-        //   ],
-        //   [
-        //     "type" => "sn_base",
-        //     "template" => "top_text",
-        //     "id" => 110,
-        //     "title" => "Dulce María presumió su figura en bikini y sorprendió a sus seguidores",
-        //     "abstract" => "",
-        //     "body" => "",
-        //     "thumbnailClippingLarger" => [
-        //           "width" => 978,
-        //           "height" => 557,
-        //           "x" => 6,
-        //           "y" => 0,
-        //           "quality" => 93,
-        //           "id" => 1975,
-        //           "fileType" => "image/jpeg",
-        //           "publishedVersion" => [
-        //             "id" => 5457,
-        //             "title" => "Dulce María",
-        //             "providerReference" => "dulce-maria.jpg"
-        //           ],
-        //           "src" => "https://cdn.revistafama.com/uploads/media/2019/12/09/dulce-maria_6_0_978_557.jpg"
-        //     ],
-        //     "media" => [],
-        //     "heading" => [],
-        //     "extraData" => [
-        //       "mediaTitle" => "",
-        //       "headingTitle" => "",
-        //       "mediaIconVisible" => "hidden"
-        //     ],
-        //     "thumbnail" => [
-        //       "width" => 474,
-        //       "height" => 557,
-        //       "x" => 258,
-        //       "y" => 0,
-        //       "quality" => 93,
-        //       "id" => 1974,
-        //       "fileType" => "image/jpeg",
-        //       "publishedVersion" => [
-        //         "id" => 5457,
-        //         "title" => "Dulce María",
-        //         "providerReference" => "dulce-maria.jpg"
-        //       ],
-        //       "src" => "https://cdn.revistafama.com/uploads/media/2019/12/09/dulce-maria_258_0_474_557.jpg"
-        //     ],
-        //     "content" => [
-        //       "id" => 2251,
-        //       "slug" => "/celebridades/dulce-maria-presumio-figura-bikini-sorprendio-seguidores",
-        //       "xalokId" => null,
-        //       "author" => null
-        //     ],
-        //     "clippings" => [
-        //       "default" => [
-        //         "window_width" => 320,
-        //         "width" => 300
-        //       ],
-        //       "size_1272" => [
-        //         "window_width" => 638,
-        //         "width" => 618
-        //       ]
-        //     ],
-        //     "modules" => []
-        //   ]
-        // ];
+    public function getPruebaModulosAction(){
         $string = file_get_contents("./bundles/camusassets/modulos.json");
         $modules = json_decode($string, true)["modules"];
         $arrayCss = array();
@@ -172,6 +78,155 @@ class DefaultController extends AbstractController
           'number' => 100
         ));
         return $responseRender;
+    }
+
+    /**
+      * @Route("/{galery}")
+     */
+    public function showGaleryAction($galery){
+      // dump($galery);
+      $galeria= $this->getGalery($galery);
+      $modules = [];
+      // dump($galeria);
+      // die;
+      foreach ($galeria["Photos"]["Photo"] as $value) {
+        $r = "";
+        $imagenes=[
+          "type"=> "sn_base",
+          "template"=> "bottom_text",
+            "id"=> 110,
+            "title"=> (isset($value["Title"])) ? $value["Title"]: '',
+            "abstract"=> "",
+            "body"=> "",
+            "thumbnailClippingLarger"=> [
+              "width"=> 600,
+              "height"=> 341,
+              "x"=> 0,
+              "y"=> 13,
+              "quality"=> 100,
+              "id"=> 1989,
+              "fileType"=> "image/jpeg",
+              "publishedVersion"=> [
+                "id"=> 8385,
+                "title"=> "Bodas",
+                "providerReference"=> "yuridia-caso-guapa-lucio-vestida.jpg"
+              ],
+              "src"=> "http://".$value['UrlHost']."".$value['UrlCore']."-2.jpg?sn=".$value['Sequence']."&tk=".$value['UrlToken']
+            ],
+            "media"=> [],
+            "heading"=> [],
+            "extraData"=> [
+              "mediaTitle"=> "",
+              "headingTitle"=> "",
+              "mediaIconVisible"=> "hidden"
+            ],
+            "thumbnail"=> [
+              "width"=> 318,
+              "height"=> 373,
+              "x"=> 251,
+              "y"=> 0,
+              "quality"=> 100,
+              "id"=> 1988,
+              "fileType"=> "image/jpeg",
+              "publishedVersion"=> [
+                "id"=> 8385,
+                "title"=> "Bodas",
+                "providerReference"=> "yuridia-caso-guapa-lucio-vestida.jpg"
+              ],
+              "src"=> "http://".$value['UrlHost']."".$value['UrlCore']."-2.jpg?sn=".$value['Sequence']."&tk=".$value['UrlToken']
+            ],
+            "content"=> [
+              "id"=> 2260,
+              "slug"=> $value["PageUrl"],
+              "xalokId"=> null,
+              "author"=> null
+            ],
+            "clippings"=> [
+              "default"=> [
+                "window_width"=> 320,
+                "width"=> 300
+              ],
+              "size_1272"=> [
+                "window_width"=> 638,
+                "width"=> 618
+              ]
+            ],
+            "modules"=> []
+        ];
+        array_push($modules,$imagenes);
+      }
+      $arrayCss = array();
+      $resultFileCss = array();
+      $this->getListModules($modules,$arrayCss);
+      if(count($arrayCss)){
+        $resultFileCss = array_values(array_unique($arrayCss));
+      }
+
+      $responseRender = $this->render('@CamusAssets/Content/content.html.twig', array(
+        'meta' => "",
+        'site_name' => $galeria["Title"],
+        'site_short_domain' => "Milo",
+        'modules' => $modules,
+        'headerType' => 1,
+        'currentSection' => "",
+        'page' => 1,
+        'boardColor' => "#b10b1f",
+        'amp_domain' => "none",
+        'piano_domain' => "none",
+        'fileCSS' => $resultFileCss,
+        'number' => 100
+      ));
+      return $responseRender;
+    }
+
+    public function getGalery($galery){
+      $myXMLData = new MDZenfolioConnection;
+      $prueba= $myXMLData->getPhotoSetById($galery);
+      $xml   = simplexml_load_string($prueba, 'SimpleXMLElement', LIBXML_NOCDATA);
+      $photos = $xml->Photos->Photo;
+
+      // dump($photos);
+      // foreach ($photos as $value) {
+      //   dump($value);
+      // }
+  		$xml = json_decode(json_encode((array)$xml), TRUE);
+      // dump($xml);
+      // die;
+      return $xml;
+      // dump($xml["Photos"]["Photo"]);
+      // $photos = $xml["Photos"]["Photo"];
+
+
+      //id de la galeria
+      //4041378296509351132
+
+      //equivalente en la pagina
+      //p107594972
+      $myXMLData = $myXMLData->getPhotoSetById("4041378296509351132");
+      dump($myXMLData);
+      $xml = simplexml_load_string($myXMLData) or die("Error: Cannot create object");
+      dump($xml);
+      $photos = $xml -> Photos -> Photo;
+      die;
+      // if ($xml === false) {
+      //   echo "Failed loading XML: ";
+      //   foreach(libxml_get_errors() as $error) {
+      //       echo "<br>", $error -> message;
+      //   }
+      // } else {
+      // $photos = $xml -> Photos -> Photo;
+      // $dir = $xml -> Id . '-' . $xml -> Title;
+      // if (!file_exists($dir)) {
+      //   mkdir($dir, 0777, true);
+      // }
+      // echo $dir . PHP_EOL;
+      // for ($i = 0; $i < count($photos); $i++) {
+      //   $name = $photos[$i] -> Id . '-' . $photos[$i] -> FileName;
+      //   file_put_contents($dir . '/' . $photos[$i] -> FileName, file_get_contents($photos[$i] -> OriginalUrl));
+      //   echo PHP_EOL . 'downloaded--> '. $photos[$i] -> Title;// . PHP_EOL;
+      // }
+      // echo PHP_EOL . '------------ terminado ------------';
+      // }
     }
     public function splitTemplate($template){
       $type = explode("_",$template);

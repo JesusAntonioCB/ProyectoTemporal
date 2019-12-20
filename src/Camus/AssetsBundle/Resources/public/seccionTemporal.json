@@ -1,0 +1,66 @@
+{
+  "modules": [
+      {
+        "type": "sn_base",
+        "template": "bottom_text",
+          "id": 110,
+          "title": "Bodas",
+          "abstract": "",
+          "body": "",
+          "thumbnailClippingLarger": {
+              "width": 600,
+              "height": 341,
+              "x": 0,
+              "y": 13,
+              "quality": 100,
+              "id": 1989,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 8385,
+                  "title": "Bodas",
+                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
+              },
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
+          },
+          "media": [],
+          "heading": [],
+          "extraData": {
+              "mediaTitle": "",
+              "headingTitle": "",
+              "mediaIconVisible": "hidden"
+          },
+          "thumbnail": {
+              "width": 318,
+              "height": 373,
+              "x": 251,
+              "y": 0,
+              "quality": 100,
+              "id": 1988,
+              "fileType": "image/jpeg",
+              "publishedVersion": {
+                  "id": 8385,
+                  "title": "Bodas",
+                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
+              },
+              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1576799999~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=409bbbd22e81a04fc7dd10ec6a1df984"
+          },
+          "content": {
+              "id": 2260,
+              "slug": "/celebridades/yuridia-caso-guapa-lucio-vestida-novia",
+              "xalokId": null,
+              "author": null
+          },
+          "clippings": {
+              "default": {
+                  "window_width": 320,
+                  "width": 300
+              },
+              "size_1272": {
+                  "window_width": 638,
+                  "width": 618
+              }
+          },
+          "modules": []
+      }
+  ]
+}
