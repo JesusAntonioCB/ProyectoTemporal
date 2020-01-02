@@ -4,7 +4,7 @@
 @import "../../../modules/main-fonts-mixin.scss";
 @import "../../../modules/main-containers-mixin.scss";
 .bcontent{
-  column-count: 6;
+  column-count: 5;
   @include three-column{
     column-count: 5;
   }
@@ -23,7 +23,7 @@
 }
 .oo-top-text{
   width: 100%;
-  max-width: 290px;
+  max-width: 350px;
   height: auto;
   margin: auto;
   margin-bottom: 15px;
