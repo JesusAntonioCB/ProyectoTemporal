@@ -4,9 +4,55 @@
 @import "../../../modules/main-fonts-mixin.scss";
 @import "../../../modules/main-containers-mixin.scss";
 .sn-bottom-text-note{
-  @include global-container-1c;
+  display: block;
+  margin: 10px;
+  @include three-column{
+    margin: auto;
+    .media-container{
+      width: 440px !important;
+      height: 293px!important;
+      margin-bottom: 15px;
+    }
+  }
+  @include three-media{
+    margin: auto;
+    .media-container{
+      width: 401px !important;
+      height: 267px !important;
+    }
+  }
+  @include skyscraper-media{
+    margin: auto;
+    .media-container{
+      width: 548px !important;
+      height: 364px !important;
+    }
+  }
+  @include two-max{
+    margin: auto;
+    .media-container{
+      width: 482px !important;
+      height: 321px !important;
+    }
+  }
+  @include two-column{
+    margin: auto;
+    .media-container{
+      width: 640px !important;
+      height: 426px !important;
+    }
+  }
+  @include one-column{
+    margin: auto;
+    .media-container{
+      width: 372px !important;
+      height: 247px !important;
+    }
+  }
   .media-container{
-    @include rows-height(1);
+    position: relative;
+    width: 460px;
+    height: 306px;
     .img-container{
       height: inherit;
     }

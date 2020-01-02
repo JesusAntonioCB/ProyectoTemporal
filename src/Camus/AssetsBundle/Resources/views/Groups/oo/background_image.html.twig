@@ -15,16 +15,26 @@
           <span class="fa fa-camera"></span>
         </a>
       {% endif %}
+      <a {{ module.slug|linkConstruct|raw }}>
       <div class="headline-top-container-gradient">
         <div class="title ">
-          <a {{ module.slug|linkConstruct|raw }}>
-            <span > {{ module.title }} </span>
-          </a>
+            <div class="text-title"> {{ module.title }} </div>
         </div>
-        <div class="author">
+        <div class="buy-gallery">
+          <span href="#" class="buy-icon-facebook"></span>
+          <span href="#" class="buy-icon-twitter"></span>
+          <span href="#" class="buy-icon-pinterest"></span>
+        </div>
+        <div class="button-buy">
+          <div class="text-buy">
+            Comprar
+          </div>
+        </div>
+        </a>
+        <!-- <div class="author">
           <span >{{ module.author }}</span>
-        </div>
-        {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        </div> -->
+        <!-- {{ module.slug|socialTag(module.title, module.thumbnail)|raw }} -->
         <!-- <div class="social-media"></div> -->
       </div>
     </div>

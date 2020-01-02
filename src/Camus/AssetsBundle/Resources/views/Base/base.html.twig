@@ -109,10 +109,60 @@
     <!-- Header -->
     {{ include ('@CamusAssets/Header/header.html.twig') }}
     <!-- Content -->
+    <div class="top-content">
+        <div class="buttons-top-content">
+          <div class="subbuttons">
+            <div class="letras">
+              SELECCIONAR FOTOS
+            </div>
+          </div>
+
+          <div class="subbuttons">
+            <div class="letras">
+              COMPRAR<span class="downbutton">&nbsp;▼</span>
+            </div>
+            <div class="div-top-content">
+              <div class="div-top-buy">
+                <a href="#">Seleccionar fotos que comprar</a>
+              </div>
+              <div class="div-top-separator"></div>
+              <div class="div-top-buy">
+                <a href="#">Comprar todas las fotos</a>
+              </div>
+              <div class="div-top-buy">
+                <a href="#">Ver cesta</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="subbuttons">
+            <div class="letras">
+              COMPARTIR
+            </div>
+          </div>
+
+          <div class="subbuttons">
+            <div class="letras">
+              PASE DE DIAPOSITIVAS
+            </div>
+          </div>
+        </div>
+
+        <div class="title-top-content">
+            <span>FOTOCHIC</span>
+          </h1>
+      </div>
+    </div>
     <div class="body-content">
-      <div class="content">
+      <div class="content bcontent">
         {% block body %}
         {% endblock %}
+        <!-- <div class="copyright-content">
+
+        </div> -->
+      </div>
+      <div class="copyrightG">
+        <span>Derechos Reservados © Grupo Milenio 2019</span>
       </div>
       {{ include ('@CamusAssets/Footer/footer.html.twig') }}
     </div>

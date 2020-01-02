@@ -189,8 +189,8 @@ class DefaultController extends AbstractController
           foreach ($galeria["Elements"]["Group"] as $value) {
             $r = "";
             $imagenes=[
-              "type"=> "sn_base",
-              "template"=> "bottom_text",
+              "type"=> "oo_background_image",
+              "template"=> "top_text",
                 "id"=> 110,
                 "title"=> (isset($value["Title"])) ? $value["Title"]: '',
                 "abstract"=> "",
@@ -244,8 +244,8 @@ class DefaultController extends AbstractController
             dump($value);
             $r = "";
             $imagenes=[
-              "type"=> "sn_base",
-              "template"=> "bottom_text",
+              "type"=> "oo_background_image",
+              "template"=> "top_text",
                 "id"=> 110,
                 "title"=> (isset($value["Title"])) ? $value["Title"]: '',
                 "abstract"=> "",

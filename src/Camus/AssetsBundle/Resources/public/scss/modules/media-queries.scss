@@ -36,8 +36,8 @@ $extra-large-width: 1254px;
     @content;
   }
 }
-@mixin three-column{
-  @media only screen and (max-width: 1604px) {
+@mixin two-max{
+  @media only screen and (max-width: 1100px) {
     @content;
   }
 }
@@ -46,7 +46,21 @@ $extra-large-width: 1254px;
     @content;
   }
 }
-
+@mixin three-media{
+  @media only screen and (max-width: 1340px) {
+    @content;
+  }
+}
+@mixin three-column{
+  @media only screen and (max-width: 1440px) {
+    @content;
+  }
+}
+@mixin min-screen{
+  @media only screen and (min-width: 1441px) {
+    @content;
+  }
+}
 @mixin sidebar-small {
   @media only screen and (max-width: 344px){
     @content;

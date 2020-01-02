@@ -3,80 +3,143 @@
 @import "../../../modules/global-containers-mixin.scss";
 @import "../../../modules/main-fonts-mixin.scss";
 @import "../../../modules/main-containers-mixin.scss";
+.bcontent{
+  column-count: 6;
+  @include three-column{
+    column-count: 5;
+  }
+  @include skyscraper-media{
+    column-count: 4;
+  }
+  @include two-column{
+    column-count: 3;
+  }
+  @include one-column{
+    column-count: 2;
+  }
+  .contenedor-notas-block{
+    display: block !important;
+  }
+}
 .oo-top-text{
-  @include global-container-2c;
-  border-radius: 10px;
+  width: 100%;
+  max-width: 290px;
+  height: auto;
+  margin: auto;
+  margin-bottom: 15px;
   .media-container{
-    @include rows-height(1);
+    position: relative;
     .image{
       height: inherit;
     }
-    .sphere{
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      padding: 19px;
-      line-height: 0;
-      border-radius: 50%;
-      opacity: 0.5;
-      background-color: $color-white;
-      &:hover{
-        opacity: 0.8;
-      }
-      >span{
-        font-size: 30px;
-      }
-    }
     .headline-top-container-gradient{
+      position: absolute;
+      width: 100%;
+      height: auto;
+      bottom: 5px;
+      background-color: rgba(64,64,64,0.6);
+      opacity: 0; //CAMBIAR PARA OCULATAR
+      transition: opacity ease-in 0.3s;
+      padding: 0 8px;
       .title{
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-size: 30px;
-        line-height: 36px;
-      }
-      .sponsor{
-        font-size: 10px;
-        position: relative;
-        height: 25px;
-        margin-top: 6px;
-        @include text-with-roboto-regular-color-night-gray;
-        color:$color-gray-glass;
-        .caption{
-          width: 82px;
-          margin-right: 7px;
+        color: $color-white;
+        font-family: Verdana,Geneva,Tahoma,sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        font-style: normal;
+        text-transform: none;
+        letter-spacing: 1px;
+        text-shadow: rgba(0,0,0,0) 0px 0px 0px;
+        .text-title{
+          height: auto;
+          max-height: 35px;
+          overflow: hidden;
         }
-        a{
-          img{
-            width: 130px;
-            height: auto;
-            max-width: unset;
-          }
+      }
+      .buy-gallery{
+        position: relative;
+        bottom: 5px;
+        margin-top: 15px;
+        height: 0px;
+        .buy-icon-facebook{
+          display: block;
+          background-image: url(bundles/camusassets/images/social-buy.png);
+          background-position: -51px 0px;
+          width: 16px;
+          height: 16px;
+        }
+        .buy-icon-twitter{
+          display: block;
+          background-image: url(bundles/camusassets/images/social-buy.png);
+          background-position: -68px 0px;
+          width: 16px;
+          height: 16px;
+          transform: translate(20px, -16px);
+        }
+        .buy-icon-pinterest{
+          display: block;
+          background-image: url(bundles/camusassets/images/social-buy.png);
+          background-position: -85px 0px;
+          width: 16px;
+          height: 16px;
+          transform: translate(40px, -32px);
+        }
+        .buy-icon-facebook:hover {
+          background-position: 0px 0px;
+        }
+        .buy-icon-twitter:hover {
+          background-position: -17px 0px;
+        }
+        .buy-icon-pinterest:hover {
+          background-position: -34px 0px;
+        }
+      }
+      .button-buy:hover {
+        background-color: #bcbcbc;
+      }
+      .button-buy{
+        background-color: #ebebeb;
+        height: 24px;
+        float: right;
+        vertical-align: top;
+        -moz-transition: opacity ease-out 0.2s;
+        -webkit-transition: opacity ease-out 0.2s;
+        -o-transition: opacity ease-out 0.2s;
+        transition: opacity ease-out 0.2s;
+        position: relative;
+        bottom: 10px;
+        .text-buy{
+          color: #575757;
+          font-size: 14px;
+          font-family: Helvetica,'Helvetica Neue',Arial,sans-serif;
+          font-weight: normal;
+          font-style: normal;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          padding-left: 18px;
+          padding-right: 18px;
+          padding-top: 2px;
         }
       }
     }
   }
 }
 
-@include one-column{
-  .oo-top-text{
-    .media-container{
-      .sphere{
-        span{
-          font-size: 16px;
-        }
-      }
-      .headline-top-container-gradient{
-        .title{
-          font-size: 20px;
-          line-height: 22px;
-        }
-        .sponsor{
-          //bottom: 40px;
-        }
-      }
-    }
+.media-container:hover .headline-top-container-gradient{
+  opacity: 1;
+}
+
+.copyrightG{
+  display: block !important;
+}
+
+.top-content{
+  // display: block !important;
+}
+
+.body-content{
+  margin-top: 100px !important;
+  .content{
+    padding: 30px!important;
   }
 }
