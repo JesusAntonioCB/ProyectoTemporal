@@ -90,23 +90,36 @@ class MDZenfolioConnection {
 		return json_encode($output);
 	}
 
-	private static function sendRequest($method) {
-		$urlCon = self::$urlBase . '/' . $method;
-		//$token = str_replace(' ', '', self::getToken());
+	private static function sendRequest($method,$urlId="") {
+
 		$token = self::getTokenXML();
 		$token   = simplexml_load_string($token, 'SimpleXMLElement', LIBXML_NOCDATA);
 		$token = json_decode(json_encode((array)$token), TRUE);
-		// return $token[0];
 		$token = $token[0];
-//		$token = 'UtO1nqsbdmuM1lX81k3RJ93Olzaivxcy-8BBHNAAiDylbcLWQTwZiP4aN4-PI5_qPHkE_EjuUKM9XOJYLNzTQWNk0eovEP1xQoaAFfEHU5HJ4RqQmzJlLw3F-8mQb-kpn7LcWL_Mqo8PxbKtY-xiKp1YrwlQB0Si7INA4kRwOK3y_oiQ_Nc9LljRpGOI9DU_2CVpjrqRC0OSKCbK17XXptG0fJPwVwx2EAQx_FIJqio=';
-//		$token = trim(self::getToken());
-//		echo $token;
-//		return;
-		$headers = array('X-Zenfolio-Token: '.$token, 'Content-Length: 0');
-		//print_r($headers);
-		//return;
+		if ($urlId != "") {
+			//parametros para los url de la pagina
+			$params = array(
+				'groupId' => $urlId,
+				'level' => "Full",
+				'includeChildren' => "true"
+			);
+		}
+		else {
+			// parametros para GetPopularSets
+			$params = array(
+				'type' => "Collection",
+				'offset' => 0,
+				'limit' => 15
+			);
+		}
+		// https://api.zenfolio.com/api/1.8/zfapi.asmx/LoadGroup?groupId=847382622&level=full&includeChildren=1
+		// https://api.zenfolio.com/api/1.8/zfapi.asmx/LoadGroup?groupId=847382622&level=full&includeChildren=string
+		//otro codigo con el header y usuario
+		//$headers = array('X-Zenfolio-Token: '.$token, 'Content-Type: text/xml; charset=utf-8', 'Content-Length: 0');
+		$postString = http_build_query($params, '', '&');
+		$headers = array('Content-Type: text/xml; charset=utf-8', 'Content-Length: 0');
+		$urlCon = self::$urlBase . '/' . $method . '?' . $postString;
 		$ch = curl_init($urlCon);
-		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_USERAGENT, self::$userAgent);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
@@ -115,9 +128,27 @@ class MDZenfolioConnection {
 		return $output;
 	}
 
-	public static function getCategories() {
+	public static function loadGroup($idGroup){
+		$params = array(
+			'groupId' => $idGroup,
+			'level' => "Full",
+			'includeChildren' => "true"
+		);
+		$postString = http_build_query($params, '', '&');
+		$headers = array('Content-Type: text/xml; charset=utf-8', 'Content-Length: 0');
+		$urlCon = self::$urlBase . '/LoadGroup?' . $postString;
+		$ch = curl_init($urlCon);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_USERAGENT, self::$userAgent);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+		$output = curl_exec($ch);
+		curl_close($ch);
+		return $output;
+	}
+
+	public static function getCategories($method,$urlId="") {
 //		echo 'entrando-->';
-		return self::sendRequest('GetRecentSets');
+		return self::sendRequest($method,$urlId);
 	}
 }
 

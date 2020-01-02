@@ -15,18 +15,89 @@ class DefaultController extends AbstractController
      */
     public function indexAction()
     {
-      $string = file_get_contents("./bundles/camusassets/modulos.json");
-      $modules = json_decode($string, true)["modules"];
+      $urlId= "847382622";
+      $galeria= $this->getGroup($urlId);
+      $modules = [];
       $arrayCss = array();
       $resultFileCss = array();
+      // dump($galeria);
+      // die;
+      if (!empty($galeria["Elements"]["Group"])) {
+        foreach ($galeria["Elements"]["Group"] as $value) {
+          $r = "";
+          $imagenes=[
+            "type"=> "sn_base",
+            "template"=> "bottom_text",
+              "id"=> 110,
+              "title"=> (isset($value["Title"])) ? $value["Title"]: '',
+              "abstract"=> "",
+              "body"=> "",
+              "thumbnailClippingLarger"=> [
+                "width"=> 600,
+                "height"=> 341,
+                "x"=> 0,
+                "y"=> 13,
+                "quality"=> 100,
+                "id"=> 1989,
+                "fileType"=> "image/jpeg",
+                "publishedVersion"=> [
+                  "id"=> 8385,
+                  "title"=> "Bodas",
+                  "providerReference"=> "yuridia-caso-guapa-lucio-vestida.jpg"
+                ],
+                "src"=> "http://".$value['TitlePhoto']['UrlHost']."".$value['TitlePhoto']['UrlCore']."-2.jpg"
+              ],
+              "media"=> [],
+              "heading"=> [],
+              "extraData"=> [
+                "mediaTitle"=> "",
+                "headingTitle"=> "",
+                "mediaIconVisible"=> "hidden"
+              ],
+              "thumbnail"=> [
+                "width"=> 318,
+                "height"=> 373,
+                "x"=> 251,
+                "y"=> 0,
+                "quality"=> 100,
+                "id"=> 1988,
+                "fileType"=> "image/jpeg",
+                "publishedVersion"=> [
+                  "id"=> 8385,
+                  "title"=> "Bodas",
+                  "providerReference"=> "yuridia-caso-guapa-lucio-vestida.jpg"
+                ],
+                "src"=> "http://".$value['TitlePhoto']['UrlHost']."".$value['TitlePhoto']['UrlCore']."-2.jpg"
+              ],
+              "content"=> [
+                "id"=> 2260,
+                "slug"=> "/".str_replace("https://fotos.chicmagazine.com.mx/f","",$value["PageUrl"]),
+                "xalokId"=> null,
+                "author"=> null
+              ],
+              "clippings"=> [
+                "default"=> [
+                  "window_width"=> 320,
+                  "width"=> 300
+                ],
+                "size_1272"=> [
+                  "window_width"=> 638,
+                  "width"=> 618
+                ]
+              ],
+              "modules"=> []
+          ];
+          array_push($modules,$imagenes);
+        }
+      }
       $this->getListModules($modules,$arrayCss);
       if(count($arrayCss)){
         $resultFileCss = array_values(array_unique($arrayCss));
       }
       $responseRender = $this->render('@CamusAssets/Content/content.html.twig', array(
         'meta' => "",
-        'site_name' => "Milenio",
-        'site_short_domain' => "Milo",
+        'site_name' => "FotoChic by chic Magazine",
+        'site_short_domain' => "FotoChic",
         'modules' => $modules,
         'headerType' => 1,
         'currentSection' => "",
@@ -81,90 +152,155 @@ class DefaultController extends AbstractController
     }
 
     /**
+      * @Route("/prueba")
+     */
+    public function pruebaApi(){
+      $myXMLData = new MDZenfolioConnection;
+      $method= "LoadGroup";
+      $urlId= "847382622";
+      $prueba= $myXMLData->getCategories($method,$urlId);
+      // dump($prueba);
+      // die;
+      $xml   = simplexml_load_string($prueba, 'SimpleXMLElement', LIBXML_NOCDATA);
+      $photos = $xml->Photos->Photo;
+
+  		$xml = json_decode(json_encode((array)$xml), TRUE);
+      dump($xml);
+      die;
+      return $xml;
+    }
+
+    /**
       * @Route("/{galery}")
      */
     public function showGaleryAction($galery){
       // dump($galery);
-      $galeria= $this->getGalery($galery);
+      $galeria= $this->getGroup($galery);
       $modules = [];
-      // dump($galeria);
-      // die;
-      foreach ($galeria["Photos"]["Photo"] as $value) {
-        $r = "";
-        $imagenes=[
-          "type"=> "sn_base",
-          "template"=> "bottom_text",
-            "id"=> 110,
-            "title"=> (isset($value["Title"])) ? $value["Title"]: '',
-            "abstract"=> "",
-            "body"=> "",
-            "thumbnailClippingLarger"=> [
-              "width"=> 600,
-              "height"=> 341,
-              "x"=> 0,
-              "y"=> 13,
-              "quality"=> 100,
-              "id"=> 1989,
-              "fileType"=> "image/jpeg",
-              "publishedVersion"=> [
-                "id"=> 8385,
-                "title"=> "Bodas",
-                "providerReference"=> "yuridia-caso-guapa-lucio-vestida.jpg"
-              ],
-              "src"=> "http://".$value['UrlHost']."".$value['UrlCore']."-2.jpg?sn=".$value['Sequence']."&tk=".$value['UrlToken']
-            ],
-            "media"=> [],
-            "heading"=> [],
-            "extraData"=> [
-              "mediaTitle"=> "",
-              "headingTitle"=> "",
-              "mediaIconVisible"=> "hidden"
-            ],
-            "thumbnail"=> [
-              "width"=> 318,
-              "height"=> 373,
-              "x"=> 251,
-              "y"=> 0,
-              "quality"=> 100,
-              "id"=> 1988,
-              "fileType"=> "image/jpeg",
-              "publishedVersion"=> [
-                "id"=> 8385,
-                "title"=> "Bodas",
-                "providerReference"=> "yuridia-caso-guapa-lucio-vestida.jpg"
-              ],
-              "src"=> "http://".$value['UrlHost']."".$value['UrlCore']."-2.jpg?sn=".$value['Sequence']."&tk=".$value['UrlToken']
-            ],
-            "content"=> [
-              "id"=> 2260,
-              "slug"=> $value["PageUrl"],
-              "xalokId"=> null,
-              "author"=> null
-            ],
-            "clippings"=> [
-              "default"=> [
-                "window_width"=> 320,
-                "width"=> 300
-              ],
-              "size_1272"=> [
-                "window_width"=> 638,
-                "width"=> 618
-              ]
-            ],
-            "modules"=> []
-        ];
-        array_push($modules,$imagenes);
-      }
       $arrayCss = array();
       $resultFileCss = array();
+
+      // ?sn=".$value['Sequence']."&tk=".$value['UrlToken']
+      // ?sn=".$value['Sequence']."&tk=".$value['UrlToken']
+      // dump($galeria);
+      // die;
+      if (!empty($galeria["Elements"])) {
+        if (!empty($galeria["Elements"]["Group"])) {
+          foreach ($galeria["Elements"]["Group"] as $value) {
+            $r = "";
+            $imagenes=[
+              "type"=> "sn_base",
+              "template"=> "bottom_text",
+                "id"=> 110,
+                "title"=> (isset($value["Title"])) ? $value["Title"]: '',
+                "abstract"=> "",
+                "body"=> "",
+                "media"=> [],
+                "heading"=> [],
+                "extraData"=> [
+                  "mediaTitle"=> "",
+                  "headingTitle"=> "",
+                  "mediaIconVisible"=> "hidden"
+                ],
+                "thumbnail"=> [
+                  "width"=> 318,
+                  "height"=> 373,
+                  "x"=> 251,
+                  "y"=> 0,
+                  "quality"=> 100,
+                  "id"=> 1988,
+                  "fileType"=> "image/jpeg",
+                  "publishedVersion"=> [
+                    "id"=> 8385,
+                    "title"=> "Bodas",
+                    "providerReference"=> "yuridia-caso-guapa-lucio-vestida.jpg"
+                  ],
+                  "src"=> "http://".$value['TitlePhoto']['UrlHost']."".$value['TitlePhoto']['UrlCore']."-2.jpg"
+                ],
+                "content"=> [
+                  "id"=> 2260,
+                  "slug"=> "/".str_replace("https://fotos.chicmagazine.com.mx/f","",$value["PageUrl"]),
+                  "xalokId"=> null,
+                  "author"=> null
+                ],
+                "clippings"=> [
+                  "default"=> [
+                    "window_width"=> 320,
+                    "width"=> 300
+                  ],
+                  "size_1272"=> [
+                    "window_width"=> 638,
+                    "width"=> 618
+                  ]
+                ],
+                "modules"=> []
+            ];
+            array_push($modules,$imagenes);
+          }
+        }elseif (!empty($galeria["Elements"]["PhotoSet"])) {
+          // dump($galeria["Elements"]["PhotoSet"]);
+          // die;
+          foreach ($galeria["Elements"]["PhotoSet"] as $value) {
+            dump($value);
+            $r = "";
+            $imagenes=[
+              "type"=> "sn_base",
+              "template"=> "bottom_text",
+                "id"=> 110,
+                "title"=> (isset($value["Title"])) ? $value["Title"]: '',
+                "abstract"=> "",
+                "body"=> "",
+                "media"=> [],
+                "heading"=> [],
+                "extraData"=> [
+                  "mediaTitle"=> "",
+                  "headingTitle"=> "",
+                  "mediaIconVisible"=> "hidden"
+                ],
+                "thumbnail"=> [
+                  "width"=> 318,
+                  "height"=> 373,
+                  "x"=> 251,
+                  "y"=> 0,
+                  "quality"=> 100,
+                  "id"=> 1988,
+                  "fileType"=> "image/jpeg",
+                  "publishedVersion"=> [
+                    "id"=> 8385,
+                    "title"=> "Bodas",
+                    "providerReference"=> "yuridia-caso-guapa-lucio-vestida.jpg"
+                  ],
+                  "src"=> (isset($value["TitlePhoto"])) ? "http://".$value['TitlePhoto']['UrlHost']."".$value['TitlePhoto']['UrlCore']."-2.jpg": ''
+                ],
+                "content"=> [
+                  "id"=> 2260,
+                  "slug"=> "/".str_replace("https://fotos.chicmagazine.com.mx/","",$value["PageUrl"]),
+                  "xalokId"=> null,
+                  "author"=> null
+                ],
+                "clippings"=> [
+                  "default"=> [
+                    "window_width"=> 320,
+                    "width"=> 300
+                  ],
+                  "size_1272"=> [
+                    "window_width"=> 638,
+                    "width"=> 618
+                  ]
+                ],
+                "modules"=> []
+            ];
+            array_push($modules,$imagenes);
+          }
+        }
+      }
       $this->getListModules($modules,$arrayCss);
       if(count($arrayCss)){
         $resultFileCss = array_values(array_unique($arrayCss));
       }
-
       $responseRender = $this->render('@CamusAssets/Content/content.html.twig', array(
         'meta' => "",
-        'site_name' => $galeria["Title"],
+        'site_name' => "FotoChic by chic Magazine | ".$galeria["Title"],
         'site_short_domain' => "Milo",
         'modules' => $modules,
         'headerType' => 1,
@@ -227,6 +363,14 @@ class DefaultController extends AbstractController
       // }
       // echo PHP_EOL . '------------ terminado ------------';
       // }
+    }
+
+    public function getGroup($urlId){
+      $myXMLData = new MDZenfolioConnection;
+      $resultGroup= $myXMLData->loadGroup($urlId);
+      $xml   = simplexml_load_string($resultGroup, 'SimpleXMLElement', LIBXML_NOCDATA);
+  		$group = json_decode(json_encode((array)$xml), TRUE);
+      return $group;
     }
     public function splitTemplate($template){
       $type = explode("_",$template);
