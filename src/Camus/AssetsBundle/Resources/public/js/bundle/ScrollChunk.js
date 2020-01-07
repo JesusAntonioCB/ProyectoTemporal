@@ -1,1 +1,116 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{133:function(t,e,n){"use strict";n.r(e);var r=n(1),o=n.n(r),c=n(18),a=n.n(c),i=n(0),l=n.n(i),u=n(123),f=n.n(u),p=n(132);function s(t){return(s="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t})(t)}function y(t,e){for(var n=0;n<e.length;n++){var r=e[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(t,r.key,r)}}function d(t){return(d=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)})(t)}function b(t){if(void 0===t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return t}function h(t,e){return(h=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t})(t,e)}function m(t){return l()(".contenedor-notas-block, .nd-error404, #md-profile, .block-terms-conditions").length?null:o.a.createElement(p.a,{percent:t.perc,strokeLinecap:"square",strokeColor:"#E51B3F",style:{width:"100%",height:"5px"}})}var w=function(t){function e(){var t,n,r;return function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,e),n=this,(t=!(r=d(e).call(this))||"object"!==s(r)&&"function"!=typeof r?b(n):r).state={perc:0},t.myScrollStartHandler=t.myScrollStartHandler.bind(b(t)),t}var n,r,c;return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),e&&h(t,e)}(e,t),n=e,(r=[{key:"myScrollStartHandler",value:function(t){var e=t.target,n=100*Math.max(0,Math.min(1,l()(window).scrollTop()/(l()(e).height()-l()(window).height())));n>=1?this.setState({perc:n}):this.setState({perc:0})}},{key:"componentDidMount",value:function(){(new f.a).addScrollHandler("redband",this.myScrollStartHandler)}},{key:"render",value:function(){return o.a.createElement(m,{perc:this.state.perc})}}])&&y(n.prototype,r),c&&y(n,c),e}(o.a.Component);a.a.render(o.a.createElement(w,null),document.getElementById("container-redband")),e.default=w}}]);
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[1],{
+
+/***/ 189:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_scroll_listener__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(190);
+/* harmony import */ var react_scroll_listener__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_scroll_listener__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var rc_progress__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(199);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+function ProgressBarRender(props) {
+  var containerNewsBlock = jquery__WEBPACK_IMPORTED_MODULE_2___default()(".contenedor-notas-block, .nd-error404, #md-profile, .block-terms-conditions");
+
+  if (containerNewsBlock.length) {
+    return null;
+  } else {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(rc_progress__WEBPACK_IMPORTED_MODULE_4__["Line"], {
+      percent: props.perc,
+      strokeLinecap: "square",
+      strokeColor: "#E51B3F",
+      style: {
+        width: '100%',
+        height: '5px'
+      }
+    });
+  }
+}
+
+var Scroll =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Scroll, _React$Component);
+
+  function Scroll() {
+    var _this;
+
+    _classCallCheck(this, Scroll);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Scroll).call(this));
+    _this.state = {
+      perc: 0
+    };
+    _this.myScrollStartHandler = _this.myScrollStartHandler.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Scroll, [{
+    key: "myScrollStartHandler",
+    value: function myScrollStartHandler(event) {
+      var documentDOM = event.target;
+      var perc = Math.max(0, Math.min(1, jquery__WEBPACK_IMPORTED_MODULE_2___default()(window).scrollTop() / (jquery__WEBPACK_IMPORTED_MODULE_2___default()(documentDOM).height() - jquery__WEBPACK_IMPORTED_MODULE_2___default()(window).height()))) * 100;
+
+      if (perc >= 1) {
+        this.setState({
+          perc: perc
+        });
+      } else {
+        this.setState({
+          perc: 0
+        });
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var scrollListener = new react_scroll_listener__WEBPACK_IMPORTED_MODULE_3___default.a();
+      scrollListener.addScrollHandler('redband', this.myScrollStartHandler);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProgressBarRender, {
+        perc: this.state.perc
+      });
+    }
+  }]);
+
+  return Scroll;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Scroll, null), document.getElementById("container-redband"));
+/* harmony default export */ __webpack_exports__["default"] = (Scroll);
+
+/***/ })
+
+}]);

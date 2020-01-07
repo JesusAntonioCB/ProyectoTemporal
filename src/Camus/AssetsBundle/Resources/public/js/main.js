@@ -12,6 +12,7 @@ import "./CamusGlobalComponents/piano/PianoRegister.js";
 import "./CamusGlobalComponents/piano/PianoProfile.js";
 import ModuleShareButtons from "./CamusGlobalComponents/ModuleShareButtons.jsx";
 
+
 $.fn.placeholderWarn = function (textWarn, modal) {
     var settings = $.extend({
         active: false,

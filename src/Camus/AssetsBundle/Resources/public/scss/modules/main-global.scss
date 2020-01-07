@@ -47,11 +47,6 @@ ol,ul {
   -moz-box-sizing: border-box;
   box-sizing: border-box
 }
-.noJs{
-  .b-lazy{
-    display: none;
-  }
-}
 .text-hide {
   color: transparent;
   text-shadow: none;
@@ -233,9 +228,6 @@ ol,ul {
   }
 }
 
-.content{
-  padding: 0 10px;
-}
 .contenedor-back-layer{
   position: absolute;
   width: 100%;
@@ -282,50 +274,12 @@ ol,ul {
       height: 100%;
       padding: 0 15px;
       margin: 0 auto;
-      .container-left-desktop{
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        @include text-with-open-serif-color-white;
-        font-size: 13px;
-        line-height: 17px;
-        text-transform: uppercase;
-        .ed-selected{
-          color: $color-yellow;
-        }
-        @include header-flow{
-          display: none;
-        }
-        &.hidden{
-          display: none;
-        }
-        &.display{
-          display: block;
-        }
-      }
-      .container-hamburguer{
-        color: $color-white;
-        display: none;
-        margin-top: 0;
-        border-right: none;
-      }
-      .container-left-mobile{
-        display: none;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 22px;
-        color: $color-white;
-        cursor: pointer;
-        @include header-flow{
-          display: block;
-        }
-      }
       .main-logo{
-        height: 85%;
         position: absolute;
-        top: 50%;
         transform: translate(-15px, 0px);
+        width: 100%;
+        height: auto;
+        max-width: 384px;
       }
       .search-container {
         position: relative;
@@ -678,19 +632,37 @@ ol,ul {
     }
   }
 };
-
+@include skyscraper-media{
+  .container-right ul{
+    width: 600px;
+  }
+  .search-container{
+    top: 73%;
+  }
+};
 @include two-column{
+  .body-content>.content{
+    padding: 0px !important;
+  }
   #main-header{
     .container-menu{
       .content{
         max-width: 968px;
         padding: 0;
-      }
-    }
-    .container-submenu{
-      .content{
-        max-width: 968px;
-        padding: 0;
+        .main-logo{
+          max-width: 200px;
+          transform: translate(-10px, 20px);
+        }
+        .container-right{
+          display: flex;
+          top: 40%;
+          left: 200px;
+          width: 500px;
+        }
+        .search-container{
+          top: 0%;
+          right: 20px;
+        }
       }
     }
   }
@@ -703,15 +675,24 @@ ol,ul {
         max-width: 648px;
         padding: 0;
         .main-logo{
-          left: 50%;
-          transform: translate(-50%, -50%);
+          max-width: 150px;
         }
-      }
-    }
-    .container-submenu{
-      .content{
-        max-width: 648px;
-        padding: 0;
+        .container-right{
+          top: 0%;
+          left: 143px;
+          width: 243px;
+          .sub-menu{
+            left: 0px;
+            top: 40px;
+          }
+        }
+        .search-container{
+          top: -100%;
+          right: 15px;
+          .search-input {
+            width: 100px;
+          }
+        }
       }
     }
   }
@@ -737,9 +718,6 @@ ol,ul {
       display: -moz-flex;
       flex-wrap: wrap;
       -webkit-flex-wrap: wrap;
-      & > *{
-        transition: max-width 0.5s, width 0.5s, max-height 0.5s, height 2s;
-      }
       @include three-column{
       	max-width: 1604px;
       }
@@ -859,6 +837,27 @@ ol,ul {
           font-size: 9px;
           cursor: pointer;
         }
+      }
+      .icon-car{
+        background-image: url(../../images/icon-car.png);
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        transform: translate(11px, 3px);
+      }
+      .icon-book{
+        background-image: url(../../images/icon-book.png);
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        transform: translate(11px, 3px);
+      }
+      .icon-arrow{
+        background-image: url(../../images/icon-arrow.png);
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        transform: translate(11px, 3px);
       }
     }
     .subbuttons:hover{
@@ -1040,10 +1039,6 @@ ol,ul {
   font-size: 10px !important;
 }
 
-.b-lazy{
-  opacity: 0;
-  transition: opacity 250ms ease-in-out 100ms;
-}
 img.b-loaded,img.b-error{
   opacity: 1;
 }

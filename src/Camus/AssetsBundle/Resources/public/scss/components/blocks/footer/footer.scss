@@ -4,10 +4,6 @@
   // bottom: 0;
   // width: 100%;
   background-color: $color-gray-white;
-  @include one-column{
-    height: 440px;
-    max-height: 440px;
-  }
   .head, .content{
     max-width: 966px;
     padding: 9px 15px;
@@ -16,6 +12,9 @@
     }
     @include two-column{
       max-width: 648px;
+    }
+    @include one-column{
+      max-width: 465px;
     }
   }
   .head{
@@ -97,6 +96,28 @@
       }
       .footer-red-social{
         .icon-face{
+        }
+      }
+      @include skyscraper-media{
+        .sections{
+          transform: translate(-83px, 13px);
+        }
+        .logo-container{
+          transform: translate(-24px, -36px);
+        }
+      }
+      @include two-column{
+        .sections{
+          transform: translate(19px, 13px);
+          width: 500px;
+        }
+        .logo-container{
+          transform: translate(-18px, -51px);
+        }
+      }
+      @include one-column{
+        .sections{
+          width: 300px;
         }
       }
     }
@@ -200,114 +221,9 @@
       clear: both;
     }
   }
-
-  @include two-column{
-    .head{
-      .logo-container{
-        display: flex;
-        .double-img{
-          height: 60px;
-          .img-container{
-            display: block;
-            height: 20px;
-            height: 24px;
-            margin-bottom: 12px;
-          }
-        }
-        .img-container{
-          img{
-            max-width: 100px;
-            margin-right: 10px;
-          }
-          img.square{
-            height: 55px;
-          }
-        }
-      }
-
-      .content{
-        .images{
-          float: left;
-          width: 60%;
-          margin-top: 10px;
-          .image-right{
-            float: left;
-          }
-        }
-      }
-    }
-  };
-
   @include one-column{
-    .head{
-      .notas-block{
-        display: block;
-        .logo-container{
-          width: 100%;
-          display: block;
-          float: none;
-          text-align: center;
-          height: auto;
-          .img-container{
-            width: 100%;
-            height: 65px;
-            display: block;
-            img{
-              margin: 0;
-            }
-          }
-          img.square{
-            max-height: 40px;
-            max-width: 40px;
-          }
-          img{
-            max-width: 140px;
-          }
-        }
-        .rights-reserved{
-          display: block;
-        }
-        .sections{
-          width: 100%;
-          text-align: center;
-          .option-container{
-            display: block;
-            height: 60px;
-            margin: 0;
-          }
-        }
-      }
-    }
-    .content{
-      width: 100%;
-      padding: 0;
-      .rights-reserved{
-        width: 100%;
-        padding-top: 10px;
-        margin-top: 10px;
-        text-align: center;
-      }
-      .social-network{
-        display: none;
-        .text{
-          width: 100px;
-          margin-right: 0;
-        }
-        .network{
-          margin-bottom: 3px;
-        }
-      }
-      .images{
-        width: 100%;
-        padding-top: 10px;
-        border-top: 1px solid $color-red-light;
-        .image-left{
-          height: 20px;
-        }
-        .image-right{
-          height: 30px;
-        }
-      }
+    .footer-red-social{
+      bottom: 69% !important;
     }
   }
 }
