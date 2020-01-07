@@ -35620,7 +35620,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
                 });
             }
         };
-        scope.destroy = function() {
+        scope.destroy = function() {            
             var util = scope._util;
             if (scope.options.container) {
                 each(scope.options.container, function(object) {
@@ -35725,15 +35725,15 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
                     return false;
                 }
             }
-        }
+        }      
         return inView(rect, _viewport);
     }
 
     function inView(rect, viewport){
         // Intersection
         return rect.right >= viewport.left &&
-               rect.bottom >= viewport.top &&
-               rect.left <= viewport.right &&
+               rect.bottom >= viewport.top && 
+               rect.left <= viewport.right && 
                rect.top <= viewport.bottom;
     }
 
@@ -35752,7 +35752,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
                 if (isImage || ele.src === undefined) {
                     var img = new Image();
                     // using EventListener instead of onerror and onload
-                    // due to bug introduced in chrome v50
+                    // due to bug introduced in chrome v50 
                     // (https://productforums.google.com/forum/#!topic/chrome/p51Lk7vnP2o)
                     var onErrorHandler = function() {
                         if (options.error) options.error(ele, "invalid");
@@ -35774,7 +35774,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
                         unbindEvent(img, 'load', onLoadHandler);
                         unbindEvent(img, 'error', onErrorHandler);
                     };
-
+                    
                     // Picture element
                     if (isPicture) {
                         img = ele; // Image tag inside picture element wont get preloaded
@@ -35829,7 +35829,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
         if(srcset) {
             setAttr(ele, _attrSrcset, srcset); //srcset
         }
-        ele.src = src; //src
+        ele.src = src; //src 
     }
 
     function setAttr(ele, attr, value){
@@ -35841,7 +35841,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
     }
 
     function removeAttr(ele, attr){
-        ele.removeAttribute(attr);
+        ele.removeAttribute(attr); 
     }
 
     function equal(ele, str) {

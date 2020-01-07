@@ -261,7 +261,8 @@ class ModelModuleExtension extends AbstractExtension
 
   public function getModelModule($modelData){
     $modelDataArray = $modelData;
-    $modelData = $this->convertArrayToObject($modelData);
+    // $modelData = $this->convertArrayToObject($modelData);
+    $modelData = (object)$modelData;
     $modelDataFilter = array(
       'type' => $modelData->type,
       'template' => $modelData->template,
@@ -375,14 +376,14 @@ class ModelModuleExtension extends AbstractExtension
     if(isset($modelData->id) && $modelData->id != null){
       $modelDataFilter['id'] = $modelData->id;
     }
-    if(isset($modelData->extraData->leagueId) && $modelData->extraData->leagueId != null){
-      $modelDataFilter['leagueId'] = $modelData->extraData->leagueId;
+    if(isset($modelData->extraData["leagueId"]) && $modelData->extraData["leagueId"] != null){
+      $modelDataFilter['leagueId'] = $modelData->extraData["leagueId"];
     }
     if(isset($modelData->idPlayer) && $modelData->idPlayer != null){
       $modelDataFilter['idPlayer'] = $modelData->idPlayer;
     }
-    if(isset($modelData->extraData->clubId) && $modelData->extraData->clubId != null){
-      $modelDataFilter['idTeam'] = $modelData->extraData->clubId;
+    if(isset($modelData->extraData["clubId"]) && $modelData->extraData["clubId"] != null){
+      $modelDataFilter['idTeam'] = $modelData->extraData["clubId"];
     }
     if(isset($modelData->title) && $modelData->title != null){
       $modelDataFilter['title'] = $this->filterEnt($modelData->title);
@@ -395,21 +396,21 @@ class ModelModuleExtension extends AbstractExtension
 
     if(isset($modelData->heading) && $modelData->heading != null && is_string($modelData->heading)){
       $modelDataFilter['heading']["title"] = $this->filterEnt(strip_tags($modelData->heading));
-    }else if(isset($modelData->heading->title) && $modelData->heading->title != null){
-      $modelDataFilter['heading']["title"] = $this->filterEnt(strip_tags($modelData->heading->title));
+    }else if(isset($modelData->heading["title"]) && $modelData->heading["title"] != null){
+      $modelDataFilter['heading']["title"] = $this->filterEnt(strip_tags($modelData->heading["title"]));
     }
     // $modelDataFilter['heading']["title"] = 'cinepolis';
 
-    if(isset($modelData->extraData->headingTitle) && $modelData->extraData->headingTitle != null){
-      $modelDataFilter['extraHeading']["title"] = strip_tags($modelData->extraData->headingTitle);
+    if(isset($modelData->extraData["headingTitle"]) && $modelData->extraData["headingTitle"] != null){
+      $modelDataFilter['extraHeading']["title"] = strip_tags($modelData->extraData["headingTitle"]);
     }
 
-    if(isset($modelData->extraData->mediaTitle) && $modelData->extraData->mediaTitle != null){
-      $modelDataFilter['extraMedia']["title"] = $modelData->extraData->mediaTitle;
+    if(isset($modelData->extraData["mediaTitle"]) && $modelData->extraData["mediaTitle"] != null){
+      $modelDataFilter['extraMedia']["title"] = $modelData->extraData["mediaTitle"];
     }
 
-    if(isset($modelData->extraData->linkedElements)){
-      $modelDataFilter['extraLink'] = $modelData->extraData->linkedElements[0];
+    if(isset($modelData->extraData["linkedElements"])){
+      $modelDataFilter['extraLink'] = $modelData->extraData["linkedElements"][0];
     }
 
     if(isset($modelData->summary) && $modelData->summary != null && is_string($modelData->summary)){
@@ -426,14 +427,14 @@ class ModelModuleExtension extends AbstractExtension
       }
     }
 
-    if(isset($modelData->extraData->mediaIconVisible) && $modelData->extraData->mediaIconVisible != null){
-      $modelDataFilter['extraMedia']["icon"] = $modelData->extraData->mediaIconVisible;
+    if(isset($modelData->extraData["mediaIconVisible"]) && $modelData->extraData["mediaIconVisible"] != null){
+      $modelDataFilter['extraMedia']["icon"] = $modelData->extraData["mediaIconVisible"];
     }
-    if(isset($modelData->extraData->mediaIndicatorVisible) && $modelData->extraData->mediaIndicatorVisible != null){
-      $modelDataFilter['extraMedia']["indicator"] = $modelData->extraData->mediaIndicatorVisible;
+    if(isset($modelData->extraData["mediaIndicatorVisible"]) && $modelData->extraData["mediaIndicatorVisible"] != null){
+      $modelDataFilter['extraMedia']["indicator"] = $modelData->extraData["mediaIndicatorVisible"];
     }
-    if(isset($modelData->extraData->penaltiesPoints) && $modelData->extraData->penaltiesPoints != null){
-      $modelDataFilter['penaltiesPoints'] = $modelData->extraData->penaltiesPoints;
+    if(isset($modelData->extraData["penaltiesPoints"]) && $modelData->extraData["penaltiesPoints"] != null){
+      $modelDataFilter['penaltiesPoints'] = $modelData->extraData["penaltiesPoints"];
 	  }
     if(isset($modelData->teamHome) && $modelData->teamHome != null){
       $modelDataFilter["teamHome"] = $modelData->teamHome;
@@ -466,39 +467,39 @@ class ModelModuleExtension extends AbstractExtension
       $modelDataFilter["teamAwayPenalty"] = $modelData->teamAwayPenalty;
     }
 
-    if(isset($modelData->heading->media) && $modelData->heading->media != null){
-      $modelDataFilter['heading']["media"] = $modelData->heading->media;
-    }else if(isset($modelData->heading->src) && $modelData->heading->src != null){
-      $modelDataFilter['heading']["media"] = $modelData->heading->src;
+    if(isset($modelData->heading["media"]) && $modelData->heading["media"] != null){
+      $modelDataFilter['heading']["media"] = $modelData->heading["media"];
+    }else if(isset($modelData->heading["src"]) && $modelData->heading["src"] != null){
+      $modelDataFilter['heading']["media"] = $modelData->heading["src"];
     }
-    if(isset($modelData->media) && $modelData->media != null && !is_array($modelData->media)){
-      if (isset($modelData->media->src)) {
-        $modelDataFilter['media'] = $modelData->media->src;
+    if(isset($modelData->media) && $modelData->media != null && !is_array($modelData->media) && !is_object($modelData->media)){
+      if (isset($modelData->media["src"])) {
+        $modelDataFilter['media'] = $modelData->media["src"];
       }else if(is_string($modelData->media)) {
         $modelDataFilter['media'] = $modelData->media;
       }
-      if (isset($modelData->media->providerName)){
-        $modelDataFilter['provider'] = $modelData->media->providerName;
+      if (isset($modelData->media["providerName"])){
+        $modelDataFilter['provider'] = $modelData->media["providerName"];
       }
-      if (isset($modelData->media->publishedVersion->providerReference)){
-        $modelDataFilter['providerReference'] = $modelData->media->publishedVersion->providerReference;
+      if (isset($modelData->media["publishedVersion"]["providerReference"])){
+        $modelDataFilter['providerReference'] = $modelData->media["publishedVersion"]["providerReference"];
       }
-      // $modelDataFilter['mediaAlt'] = $modelData->media[0]->publishedVersion->title;
+      // $modelDataFilter['mediaAlt'] = $modelData->media[0]["publishedVersion"]["title"];
       $modelDataFilter['hasMedia'] = true;
-    }elseif(isset($modelData->media) && $modelData->media != null && is_array($modelData->media)) {
+    }elseif(isset($modelData->media) && $modelData->media != null && is_array($modelData->media) || is_object($modelData->media)) {
       $modelDataFilter['media'] = $modelData->media;
       $modelDataFilter['hasMedia'] = true;
     }
 
-    if(isset($modelData->thumbnail) && $modelData->thumbnail != null && !is_array($modelData->thumbnail)){
-      if (isset($modelData->thumbnail->src)) {
-        $modelDataFilter['thumbnail'] = $modelData->thumbnail->src;
+    if(isset($modelData->thumbnail) && $modelData->thumbnail != null && !is_array($modelData->thumbnail) ){
+      if (isset($modelData->thumbnail["src"])) {
+        $modelDataFilter['thumbnail'] = $modelData->thumbnail["src"];
       }else if(is_string($modelData->thumbnail)) {
         $modelDataFilter['thumbnail'] = $modelData->thumbnail;
       }
 
-      if(isset($modelData->thumbnail->publishedVersion->title)){
-        $modelDataFilter['alt'] = $modelData->thumbnail->publishedVersion->title;
+      if(isset($modelData->thumbnail["publishedVersion"]["title"])){
+        $modelDataFilter['alt'] = $modelData->thumbnail["publishedVersion"]["title"];
       }
 
       $modelDataFilter['hasThumbnail'] = true;
@@ -508,8 +509,8 @@ class ModelModuleExtension extends AbstractExtension
     }
 
     if(isset($modelData->thumbnailClippingLarger) && $modelData->thumbnailClippingLarger != null){
-      if (isset($modelData->thumbnailClippingLarger->src)) {
-        $modelDataFilter['thumbnailClip'] = $modelData->thumbnailClippingLarger->src;
+      if (isset($modelData->thumbnailClippingLarger["src"])) {
+        $modelDataFilter['thumbnailClip'] = $modelData->thumbnailClippingLarger["src"];
         $modelDataFilter['hasThumbnailClip'] = true;
       }
     }
@@ -517,17 +518,17 @@ class ModelModuleExtension extends AbstractExtension
     if(isset($modelData->content) && $modelData->content != null){
       $modelDataFilter['content'] = $modelData->content;
     }
-    if(isset($modelData->content->slug) && $modelData->content->slug != null){
-      $modelDataFilter['slug'] = $modelData->content->slug;
+    if(isset($modelData->content["slug"]) && $modelData->content["slug"] != null){
+      $modelDataFilter['slug'] = $modelData->content["slug"];
     }
-    if(isset($modelData->content->publishedHour) && $modelData->content->publishedHour != null){
-      $modelDataFilter['publishedHour'] = $modelData->content->publishedHour;
+    if(isset($modelData->content["publishedHour"]) && $modelData->content["publishedHour"] != null){
+      $modelDataFilter['publishedHour'] = $modelData->content["publishedHour"];
     }else if(isset($modelData->publishedHour) && $modelData->publishedHour != null){
       $modelDataFilter['publishedHour'] = $modelData->publishedHour;
     }
-    if(isset($modelData->content->publishedDate) && $modelData->content->publishedDate != null){
-      $publishedDate = $modelData->content->publishedDate;
-      if(!empty($modelData->content->publishedHour)) $publishedDate.='/';
+    if(isset($modelData->conten["publishedDate"]) && $modelData->conten["publishedDate"] != null){
+      $publishedDate = $modelData->conten["publishedDate"];
+      if(!empty($modelData->content["publishedHour"])) $publishedDate.='/';
       $modelDataFilter['publishedDate'] = $publishedDate;
     }else if(isset($modelData->publishedDate) && $modelData->publishedDate != null){
       $publishedDate = $modelData->publishedDate;
@@ -565,28 +566,28 @@ class ModelModuleExtension extends AbstractExtension
 
     if(isset($modelData->author) && $modelData->author != null && is_string($modelData->author)){
       $modelDataFilter['author'] = strip_tags($modelData->author);
-    }else if (isset($modelData->content->author->name) && $modelData->content->author->name != null) {
-      $modelDataFilter['author'] = strip_tags($modelData->content->author->name);
-    }else if (isset($modelData->author->name) && $modelData->author->name != null) {
-      $modelDataFilter['author'] = strip_tags($modelData->author->name);
+    }else if (isset($modelData->content["author"]["name"]) && $modelData->content["author"]["name"] != null) {
+      $modelDataFilter['author'] = strip_tags($modelData->content["author"]["name"]);
+    }else if (isset($modelData->author["name"]) && $modelData->author["name"] != null) {
+      $modelDataFilter['author'] = strip_tags($modelData->author["name"]);
     }
 
-    if(isset($modelData->content->author->id) && $modelData->content->author->id != null){
-      $modelDataFilter['authorMedia'] = $modelData->content->author->id;
+    if(isset($modelData->content["author"]["id"]) && $modelData->content["author"]["id"] != null){
+      $modelDataFilter['authorMedia'] = $modelData->content["author"]["id"];
     }
-    if(isset($modelData->content->author->slug) && $modelData->content->author->slug != null) {
-      $modelDataFilter['authorSlug'] = $modelData->content->author->slug;
+    if(isset($modelData->content["author"]["slug"]) && $modelData->content["author"]["slug"] != null) {
+      $modelDataFilter['authorSlug'] = $modelData->content["author"]["slug"];
     }
-    if(isset($modelData->content->section) && $modelData->content->section != null){
-      $modelDataFilter['section'] = $modelData->content->section;
+    if(isset($modelData->content["section"]) && $modelData->content["section"] != null){
+      $modelDataFilter['section'] = $modelData->content["section"];
     }
     if(isset($modelData->sectionName) && $modelData->sectionName != null){
       $modelDataFilter['section'] = $modelData->sectionName;
     }
     if(isset($modelData->columnName) && $modelData->columnName != null){
       $modelDataFilter['column'] = $modelData->columnName;
-    }elseif(isset($modelData->content->column) && $modelData->content->column != null){
-      $modelDataFilter['column'] = $modelData->content->column;
+    }elseif(isset($modelData->content["column"]) && $modelData->content["column"] != null){
+      $modelDataFilter['column'] = $modelData->content["column"];
     }
     // if(isset($modelData->content->column) && $modelData->content->column != null){
     //   $modelDataFilter['columnTitle'] = $modelData->content->column;
@@ -601,19 +602,19 @@ class ModelModuleExtension extends AbstractExtension
       $modelDataFilter['paging'] = $modelData->paging;
     }
     if(isset($modelData->sponsor) && $modelData->sponsor != null){
-      if(isset($modelData->sponsor->media) && $modelData->sponsor->media != null){
-        $modelDataFilter['sponsor']["media"] = $modelData->sponsor->media;
+      if(isset($modelData->sponsor["media"]) && $modelData->sponsor["media"] != null){
+        $modelDataFilter['sponsor']["media"] = $modelData->sponsor["media"];
         $modelDataFilter['hasSponsor'] = true;
       }
-      if(isset($modelData->sponsor->url) && $modelData->sponsor->url != null){
-        $modelDataFilter['sponsor']["url"] = $modelData->sponsor->url;
+      if(isset($modelData->sponsor["url"]) && $modelData->sponsor["url"] != null){
+        $modelDataFilter['sponsor']["url"] = $modelData->sponsor["url"];
       }
     }
     if(isset($modelData->modules) && $modelData->modules != null){
-      if(is_array($modelDataArray)){
+      if(is_array($modelDataArray) || is_object($modelDataArray)){
         $modelDataFilter['modules'] = $modelDataArray["modules"];
       }else{
-        if ( is_array($modelData->modules) && count($modelData->modules)>0 ) {
+        if (is_object($modelData->modules) || is_array($modelData->modules) && count($modelData->modules)>0 ) {
           foreach ($modelData->modules as $key => $value) {
             $css = explode('_',$value->type);
             if($css[0] != 'ad'){
@@ -661,6 +662,8 @@ class ModelModuleExtension extends AbstractExtension
     // if ($modelDataFilter['type'] == 'list_small') {
     //   $modelDataFilter['title'] = 'Title';
     // }
+    // $modelDataFilter = json_decode(json_encode((array)$modelDataFilter), TRUE);
+    // dump($modelDataFilter);
     return $modelDataFilter;
   }
   public function urlToRelative($media){
@@ -1164,9 +1167,10 @@ class ModelModuleExtension extends AbstractExtension
   }
 
   public function imageSize($media, $template, $alt = '', $position = 'tl'){
-
+dump($this->container);
     $host = $this->container->getParameter('thumbor_host');
     $key = $this->container->getParameter('thumbor_key');
+
 
     switch ($template) {
       case 'lr_list_row_row_numbered_red':

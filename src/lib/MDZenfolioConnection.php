@@ -26,6 +26,22 @@ class MDZenfolioConnection {
 		return $output;
 	}
 
+	public static function LoadPhotoId($idPhotoSet) {
+		$urlCon = self::$urlBase;
+		$params = '{"method": "LoadGroup","params": ['.$idPhotoSet.',"full",true],"id": 1}';
+		dump($params);
+		$headers = array('Content-Type: application/json', 'Content-Length: 75');
+		// $postString = http_build_query($params, '', '&');
+		$ch = curl_init($urlCon);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_USERAGENT, self::$userAgent);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+		$output = curl_exec($ch);
+		return $output;
+	}
+
 	public static function getDownloadOriginalKey($photos) {
 		$urlCon = self::$urlBase . '/GetDownloadOriginalKey';
 		$params = array(
@@ -131,12 +147,31 @@ class MDZenfolioConnection {
 	public static function loadGroup($idGroup){
 		$params = array(
 			'groupId' => $idGroup,
-			'level' => "Full",
+			'level' => "full",
 			'includeChildren' => "true"
 		);
 		$postString = http_build_query($params, '', '&');
 		$headers = array('Content-Type: text/xml; charset=utf-8', 'Content-Length: 0');
 		$urlCon = self::$urlBase . '/LoadGroup?' . $postString;
+		$ch = curl_init($urlCon);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_USERAGENT, self::$userAgent);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+		$output = curl_exec($ch);
+		curl_close($ch);
+		return $output;
+	}
+
+	public static function loadGalery($idGalery){
+		$params = array(
+			'groupId' => $idGalery,
+			'level' => "Full",
+			'includeChildren' => "true"
+		);
+		$postString = http_build_query($params, '', '&');
+		$headers = array('Content-Type: text/xml; charset=utf-8', 'Content-Length: 0');
+		$urlCon = self::$urlBase . '/LoadPhotoSet?' . $postString;
+
 		$ch = curl_init($urlCon);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_USERAGENT, self::$userAgent);

@@ -1,519 +1,210 @@
 {
-  "modules": [
-      {
-        "type": "sn_base",
-        "template": "bottom_text",
-          "id": 110,
-          "title": "Bodas",
-          "abstract": "",
-          "body": "",
-          "thumbnailClippingLarger": {
-              "width": 600,
-              "height": 341,
-              "x": 0,
-              "y": 13,
-              "quality": 100,
-              "id": 1989,
-              "fileType": "image/jpeg",
-              "publishedVersion": {
-                  "id": 8385,
-                  "title": "Bodas",
-                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
-              },
-              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1577491199~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=9f0d5fb6a01a2e9eb5a26e51a9862ec0"
-          },
-          "media": [],
-          "heading": [],
-          "extraData": {
-              "mediaTitle": "",
-              "headingTitle": "",
-              "mediaIconVisible": "hidden"
-          },
-          "thumbnail": {
-              "width": 318,
-              "height": 373,
-              "x": 251,
-              "y": 0,
-              "quality": 100,
-              "id": 1988,
-              "fileType": "image/jpeg",
-              "publishedVersion": {
-                  "id": 8385,
-                  "title": "Bodas",
-                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
-              },
-              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1577491199~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=9f0d5fb6a01a2e9eb5a26e51a9862ec0"
-          },
-          "content": {
-              "id": 2260,
-              "slug": "/celebridades/yuridia-caso-guapa-lucio-vestida-novia",
-              "xalokId": null,
-              "author": null
-          },
-          "clippings": {
-              "default": {
-                  "window_width": 320,
-                  "width": 300
-              },
-              "size_1272": {
-                  "window_width": 638,
-                  "width": 618
-              }
-          },
-          "modules": []
-      },
-      {
-          "type": "sn_base",
-          "template": "bottom_text",
-          "id": 131,
-          "title": "Cumpleaños",
-          "abstract": "",
-          "body": "",
-          "thumbnailClippingLarger": [],
-          "media": [],
-          "heading": [],
-          "extraData": {
-              "mediaTitle": "",
-              "headingTitle": "",
-              "mediaIconVisible": "hidden"
-          },
-          "thumbnail": {
-              "width": 416,
-              "height": 487,
-              "x": 179,
-              "y": 0,
-              "quality": 100,
-              "id": 1922,
-              "fileType": "image/jpeg",
-              "publishedVersion": {
-                  "id": 7693,
-                  "title": "Cumpleaños",
-                  "providerReference": "suero-o-serum-facial.jpg"
-              },
-              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1577491199~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=9f0d5fb6a01a2e9eb5a26e51a9862ec0"
-          },
-          "content": {
-              "id": 2181,
-              "slug": "/salud-y-belleza/que-es-un-suero-o-serum-facial-y-como-usarlo",
-              "xalokId": null,
-              "column": "",
-              "publishedHour": "16:33",
-              "publishedDate": "02.12.2019",
-              "author": null
-          },
-          "modules": []
-      },
-      {
-        "type": "sn_base",
-        "template": "bottom_text",
-          "id": 110,
-          "title": "Despedidas",
-          "abstract": "",
-          "body": "",
-          "thumbnailClippingLarger": {
-              "width": 600,
-              "height": 341,
-              "x": 0,
-              "y": 13,
-              "quality": 100,
-              "id": 1989,
-              "fileType": "image/jpeg",
-              "publishedVersion": {
-                  "id": 8385,
-                  "title": "Despedidas",
-                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
-              },
-              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1577491199~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=9f0d5fb6a01a2e9eb5a26e51a9862ec0"
-          },
-          "media": [],
-          "heading": [],
-          "extraData": {
-              "mediaTitle": "",
-              "headingTitle": "",
-              "mediaIconVisible": "hidden"
-          },
-          "thumbnail": {
-              "width": 318,
-              "height": 373,
-              "x": 251,
-              "y": 0,
-              "quality": 100,
-              "id": 1988,
-              "fileType": "image/jpeg",
-              "publishedVersion": {
-                  "id": 8385,
-                  "title": "Despedidas",
-                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
-              },
-              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1577491199~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=9f0d5fb6a01a2e9eb5a26e51a9862ec0"
-          },
-          "content": {
-              "id": 2260,
-              "slug": "/celebridades/yuridia-caso-guapa-lucio-vestida-novia",
-              "xalokId": null,
-              "author": null
-          },
-          "clippings": {
-              "default": {
-                  "window_width": 320,
-                  "width": 300
-              },
-              "size_1272": {
-                  "window_width": 638,
-                  "width": 618
-              }
-          },
-          "modules": []
-      },
-      {
-          "type": "sn_base",
-          "template": "bottom_text",
-          "id": 131,
-          "title": "Exposiciones",
-          "abstract": "",
-          "body": "",
-          "thumbnailClippingLarger": [],
-          "media": [],
-          "heading": [],
-          "extraData": {
-              "mediaTitle": "",
-              "headingTitle": "",
-              "mediaIconVisible": "hidden"
-          },
-          "thumbnail": {
-              "width": 416,
-              "height": 487,
-              "x": 179,
-              "y": 0,
-              "quality": 100,
-              "id": 1922,
-              "fileType": "image/jpeg",
-              "publishedVersion": {
-                  "id": 7693,
-                  "title": "Exposiciones",
-                  "providerReference": "suero-o-serum-facial.jpg"
-              },
-              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1577491199~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=9f0d5fb6a01a2e9eb5a26e51a9862ec0"
-          },
-          "content": {
-              "id": 2181,
-              "slug": "/salud-y-belleza/que-es-un-suero-o-serum-facial-y-como-usarlo",
-              "xalokId": null,
-              "column": "",
-              "publishedHour": "16:33",
-              "publishedDate": "02.12.2019",
-              "author": null
-          },
-          "modules": []
-      },
-      {
-        "type": "sn_base",
-        "template": "bottom_text",
-          "id": 110,
-          "title": "Inauguraciones",
-          "abstract": "",
-          "body": "",
-          "thumbnailClippingLarger": {
-              "width": 600,
-              "height": 341,
-              "x": 0,
-              "y": 13,
-              "quality": 100,
-              "id": 1989,
-              "fileType": "image/jpeg",
-              "publishedVersion": {
-                  "id": 8385,
-                  "title": "Inauguraciones",
-                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
-              },
-              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1577491199~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=9f0d5fb6a01a2e9eb5a26e51a9862ec0"
-          },
-          "media": [],
-          "heading": [],
-          "extraData": {
-              "mediaTitle": "",
-              "headingTitle": "",
-              "mediaIconVisible": "hidden"
-          },
-          "thumbnail": {
-              "width": 318,
-              "height": 373,
-              "x": 251,
-              "y": 0,
-              "quality": 100,
-              "id": 1988,
-              "fileType": "image/jpeg",
-              "publishedVersion": {
-                  "id": 8385,
-                  "title": "Inauguraciones",
-                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
-              },
-              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1577491199~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=9f0d5fb6a01a2e9eb5a26e51a9862ec0"
-          },
-          "content": {
-              "id": 2260,
-              "slug": "/celebridades/yuridia-caso-guapa-lucio-vestida-novia",
-              "xalokId": null,
-              "author": null
-          },
-          "clippings": {
-              "default": {
-                  "window_width": 320,
-                  "width": 300
-              },
-              "size_1272": {
-                  "window_width": 638,
-                  "width": 618
-              }
-          },
-          "modules": []
-      },
-      {
-          "type": "sn_base",
-          "template": "bottom_text",
-          "id": 131,
-          "title": "Eventos Varios",
-          "abstract": "",
-          "body": "",
-          "thumbnailClippingLarger": [],
-          "media": [],
-          "heading": [],
-          "extraData": {
-              "mediaTitle": "",
-              "headingTitle": "",
-              "mediaIconVisible": "hidden"
-          },
-          "thumbnail": {
-              "width": 416,
-              "height": 487,
-              "x": 179,
-              "y": 0,
-              "quality": 100,
-              "id": 1922,
-              "fileType": "image/jpeg",
-              "publishedVersion": {
-                  "id": 7693,
-                  "title": "Evento Varios",
-                  "providerReference": "suero-o-serum-facial.jpg"
-              },
-              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1577491199~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=9f0d5fb6a01a2e9eb5a26e51a9862ec0"
-          },
-          "content": {
-              "id": 2181,
-              "slug": "/salud-y-belleza/que-es-un-suero-o-serum-facial-y-como-usarlo",
-              "xalokId": null,
-              "column": "",
-              "publishedHour": "16:33",
-              "publishedDate": "02.12.2019",
-              "author": null
-          },
-          "modules": []
-      },
-      {
-        "type": "sn_base",
-        "template": "bottom_text",
-          "id": 110,
-          "title": "Bares",
-          "abstract": "",
-          "body": "",
-          "thumbnailClippingLarger": {
-              "width": 600,
-              "height": 341,
-              "x": 0,
-              "y": 13,
-              "quality": 100,
-              "id": 1989,
-              "fileType": "image/jpeg",
-              "publishedVersion": {
-                  "id": 8385,
-                  "title": "Bares",
-                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
-              },
-              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1577491199~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=9f0d5fb6a01a2e9eb5a26e51a9862ec0"
-          },
-          "media": [],
-          "heading": [],
-          "extraData": {
-              "mediaTitle": "",
-              "headingTitle": "",
-              "mediaIconVisible": "hidden"
-          },
-          "thumbnail": {
-              "width": 318,
-              "height": 373,
-              "x": 251,
-              "y": 0,
-              "quality": 100,
-              "id": 1988,
-              "fileType": "image/jpeg",
-              "publishedVersion": {
-                  "id": 8385,
-                  "title": "Bares",
-                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
-              },
-              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1577491199~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=9f0d5fb6a01a2e9eb5a26e51a9862ec0"
-          },
-          "content": {
-              "id": 2260,
-              "slug": "/celebridades/yuridia-caso-guapa-lucio-vestida-novia",
-              "xalokId": null,
-              "author": null
-          },
-          "clippings": {
-              "default": {
-                  "window_width": 320,
-                  "width": 300
-              },
-              "size_1272": {
-                  "window_width": 638,
-                  "width": 618
-              }
-          },
-          "modules": []
-      },
-      {
-          "type": "sn_base",
-          "template": "bottom_text",
-          "id": 131,
-          "title": "Posadas",
-          "abstract": "",
-          "body": "",
-          "thumbnailClippingLarger": [],
-          "media": [],
-          "heading": [],
-          "extraData": {
-              "mediaTitle": "",
-              "headingTitle": "",
-              "mediaIconVisible": "hidden"
-          },
-          "thumbnail": {
-              "width": 416,
-              "height": 487,
-              "x": 179,
-              "y": 0,
-              "quality": 100,
-              "id": 1922,
-              "fileType": "image/jpeg",
-              "publishedVersion": {
-                  "id": 7693,
-                  "title": "Posadas",
-                  "providerReference": "suero-o-serum-facial.jpg"
-              },
-              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1577491199~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=9f0d5fb6a01a2e9eb5a26e51a9862ec0"
-          },
-          "content": {
-              "id": 2181,
-              "slug": "/salud-y-belleza/que-es-un-suero-o-serum-facial-y-como-usarlo",
-              "xalokId": null,
-              "column": "",
-              "publishedHour": "16:33",
-              "publishedDate": "02.12.2019",
-              "author": null
-          },
-          "modules": []
-      },
-      {
-        "type": "sn_base",
-        "template": "bottom_text",
-          "id": 110,
-          "title": "Conciertos",
-          "abstract": "",
-          "body": "",
-          "thumbnailClippingLarger": {
-              "width": 600,
-              "height": 341,
-              "x": 0,
-              "y": 13,
-              "quality": 100,
-              "id": 1989,
-              "fileType": "image/jpeg",
-              "publishedVersion": {
-                  "id": 8385,
-                  "title": "Conciertos",
-                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
-              },
-              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1577491199~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=9f0d5fb6a01a2e9eb5a26e51a9862ec0"
-          },
-          "media": [],
-          "heading": [],
-          "extraData": {
-              "mediaTitle": "",
-              "headingTitle": "",
-              "mediaIconVisible": "hidden"
-          },
-          "thumbnail": {
-              "width": 318,
-              "height": 373,
-              "x": 251,
-              "y": 0,
-              "quality": 100,
-              "id": 1988,
-              "fileType": "image/jpeg",
-              "publishedVersion": {
-                  "id": 8385,
-                  "title": "Conciertos",
-                  "providerReference": "yuridia-caso-guapa-lucio-vestida.jpg"
-              },
-              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1577491199~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=9f0d5fb6a01a2e9eb5a26e51a9862ec0"
-          },
-          "content": {
-              "id": 2260,
-              "slug": "/celebridades/yuridia-caso-guapa-lucio-vestida-novia",
-              "xalokId": null,
-              "author": null
-          },
-          "clippings": {
-              "default": {
-                  "window_width": 320,
-                  "width": 300
-              },
-              "size_1272": {
-                  "window_width": 638,
-                  "width": 618
-              }
-          },
-          "modules": []
-      },
-      {
-          "type": "sn_base",
-          "template": "bottom_text",
-          "id": 131,
-          "title": "Baby Shower",
-          "abstract": "",
-          "body": "",
-          "thumbnailClippingLarger": [],
-          "media": [],
-          "heading": [],
-          "extraData": {
-              "mediaTitle": "",
-              "headingTitle": "",
-              "mediaIconVisible": "hidden"
-          },
-          "thumbnail": {
-              "width": 416,
-              "height": 487,
-              "x": 179,
-              "y": 0,
-              "quality": 100,
-              "id": 1922,
-              "fileType": "image/jpeg",
-              "publishedVersion": {
-                  "id": 7693,
-                  "title": "Baby Shower",
-                  "providerReference": "suero-o-serum-facial.jpg"
-              },
-              "src": "https://cdn.zenfolio.net/cdn2/pub/-6vb-jmwkc5u/0/null/m51h/1ailx_scmyqpxm3x-e61/s/v-10/p3579116623-2.jpg?ts=8U7&tk=4RSB1va7aO_4Vz_bneDQQIxEktF0vtWKTOu80ng0lyU=&v=2&visitor=NVDUib4FAPulQfiZlpHOVEExfsQAAAAAjbHdo6ahxqbJ&auth=exp=1577491199~acl=%2Fcdn2%2Fpub%2F-6vb-jmwkc5u%2F%2A~hmac=9f0d5fb6a01a2e9eb5a26e51a9862ec0"
-          },
-          "content": {
-              "id": 2181,
-              "slug": "/salud-y-belleza/que-es-un-suero-o-serum-facial-y-como-usarlo",
-              "xalokId": null,
-              "column": "",
-              "publishedHour": "16:33",
-              "publishedDate": "02.12.2019",
-              "author": null
-          },
-          "modules": []
-      }
-  ]
+  "modules": {
+    "sli_opening_gallery": {
+        "type": "sli_opening",
+        "template": "gallery",
+        "title": "Vacía y con mala calidad del aire, así recibe la CdMx año",
+        "abstract": "El Sistema de Monitoreo Atmosférico informó que la calidad del aire en la Ciudad de México hoy va de regular a mala.",
+        "sizes": {
+            "template_1254": {
+                "width": 4,
+                "height": 1
+            },
+            "template_1024": {
+                "width": 3,
+                "height": 1
+            },
+            "template_720": {
+                "width": 2,
+                "height": 1
+            },
+            "template_320": {
+                "width": 1,
+                "height": 1
+            }
+        },
+        "content": {
+            "id": null,
+            "slug": null,
+            "xalokId": null,
+            "column": null,
+            "publishedHour": null,
+            "publishedDate": "01-01-2020",
+            "author": {
+                "id": null,
+                "name": "Milenio Digital",
+                "media": {
+                    "src": null
+                },
+                "slug": null
+            }
+        },
+        "modules": null,
+        "heading": {
+            "background": "rgb(51,51,51)",
+            "title": null
+        },
+        "extra": {
+            "media": {
+                "icon": null,
+                "title": null
+            },
+            "heading": {
+                "title": null
+            }
+        },
+        "show": {
+            "board": false,
+            "content": false,
+            "inner": false
+        },
+        "subtitle": "",
+        "media": [
+            {
+                "id": 1313548,
+                "xalokId": "",
+                "providerName": "camus.media.image_provider",
+                "fileType": "",
+                "publishedVersion": {
+                    "id": 1364611,
+                    "title": "Calidad del aire en CdMx./ Héctor Téllez",
+                    "providerReference": "calidad-del-aire-en-cdmx-1.jpg"
+                },
+                "src": "https://www.milenio.com/uploads/media/2020/01/01/calidad-del-aire-en-cdmx-1.jpg"
+            },
+            {
+                "id": 1313595,
+                "xalokId": "",
+                "providerName": "camus.media.image_provider",
+                "fileType": "",
+                "publishedVersion": {
+                    "id": 1364612,
+                    "title": "En algunas zonas se registraron 104 puntos de contaminantes./ Héctor Téllez",
+                    "providerReference": "zonas-registraron-puntos-contaminantes-hector.jpg"
+                },
+                "src": "https://www.milenio.com/uploads/media/2020/01/01/zonas-registraron-puntos-contaminantes-hector.jpg"
+            },
+            {
+                "id": 1313600,
+                "xalokId": "",
+                "providerName": "camus.media.image_provider",
+                "fileType": "image/jpeg",
+                "publishedVersion": {
+                    "id": 1364613,
+                    "title": "Las autoridades recomendaron no salir a actividades al aire en caso de no ser necesario./ Héctor Téllez",
+                    "providerReference": "autoridades-recomendaron-salir-actividades-aire.jpeg"
+                },
+                "src": "https://www.milenio.com/uploads/media/2020/01/01/autoridades-recomendaron-salir-actividades-aire.jpeg"
+            },
+            {
+                "id": 1313602,
+                "xalokId": "",
+                "providerName": "camus.media.image_provider",
+                "fileType": "image/jpeg",
+                "publishedVersion": {
+                    "id": 1364614,
+                    "title": "La circulación vehicular en avenidas principales  fue de poca afluencia./ Héctor Téllez",
+                    "providerReference": "circulacion-vehicular-avenidas-principales-afluencia.jpeg"
+                },
+                "src": "https://www.milenio.com/uploads/media/2020/01/01/circulacion-vehicular-avenidas-principales-afluencia.jpeg"
+            },
+            {
+                "id": 1313603,
+                "xalokId": "",
+                "providerName": "camus.media.image_provider",
+                "fileType": "image/jpeg",
+                "publishedVersion": {
+                    "id": 1364615,
+                    "title": "La policía capitalina reforzó el operativo de seguridad decembrino./ Héctor Téllez",
+                    "providerReference": "policia-capitalina-reforzo-operativo-seguridad.jpeg"
+                },
+                "src": "https://www.milenio.com/uploads/media/2020/01/01/policia-capitalina-reforzo-operativo-seguridad.jpeg"
+            },
+            {
+                "id": 1313605,
+                "xalokId": "",
+                "providerName": "camus.media.image_provider",
+                "fileType": "image/jpeg",
+                "publishedVersion": {
+                    "id": 1364616,
+                    "title": "A partir de hoy entra en operación el uso de la nueva tarjeta para el transporte público./ Héctor Téllez",
+                    "providerReference": "entra-operacion-tarjeta-transporte-publico.jpeg"
+                },
+                "src": "https://www.milenio.com/uploads/media/2020/01/01/entra-operacion-tarjeta-transporte-publico.jpeg"
+            },
+            {
+                "id": 1313608,
+                "xalokId": "",
+                "providerName": "camus.media.image_provider",
+                "fileType": "image/jpeg",
+                "publishedVersion": {
+                    "id": 1364617,
+                    "title": "Lugares como la Alameda y el Palacio de Bellas Artes lucieron vacíos./ Héctor Téllez",
+                    "providerReference": "lugares-alameda-palacio-bellas-artes.jpeg"
+                },
+                "src": "https://www.milenio.com/uploads/media/2020/01/01/lugares-alameda-palacio-bellas-artes.jpeg"
+            },
+            {
+                "id": 1313609,
+                "xalokId": "",
+                "providerName": "camus.media.image_provider",
+                "fileType": "image/jpeg",
+                "publishedVersion": {
+                    "id": 1364618,
+                    "title": "Pista de patinaje en el Zócalo de CdMx./ Araceli López",
+                    "providerReference": "pista-patinaje-zocalo-cdmx-hector.jpeg"
+                },
+                "src": "https://www.milenio.com/uploads/media/2020/01/01/pista-patinaje-zocalo-cdmx-hector.jpeg"
+            },
+            {
+                "id": 1313612,
+                "xalokId": "",
+                "providerName": "camus.media.image_provider",
+                "fileType": "image/jpeg",
+                "publishedVersion": {
+                    "id": 1364619,
+                    "title": "Algunas personas decidieron festejar el Año Nuevo en el Zócalo./ Araceli López",
+                    "providerReference": "personas-decidieron-festejar-ano-zocalo.jpeg"
+                },
+                "src": "https://www.milenio.com/uploads/media/2020/01/01/personas-decidieron-festejar-ano-zocalo.jpeg"
+            },
+            {
+                "id": 1313617,
+                "xalokId": "",
+                "providerName": "camus.media.image_provider",
+                "fileType": "",
+                "publishedVersion": {
+                    "id": 1364620,
+                    "title": "Tras los festejos de fin de año, el gobierno desplegó brigadas de limpieza./ Héctor Téllez",
+                    "providerReference": "festejos-ano-gobierno-desplego-brigadas.jpg"
+                },
+                "src": "https://www.milenio.com/uploads/media/2020/01/01/festejos-ano-gobierno-desplego-brigadas.jpg"
+            },
+            {
+                "id": 1313636,
+                "xalokId": "",
+                "providerName": "camus.media.image_provider",
+                "fileType": "image/jpeg",
+                "publishedVersion": {
+                    "id": 1364621,
+                    "title": "Avenida Insurgentes en el día uno del año 2020./ Héctor Téllez",
+                    "providerReference": "avenida-insurgentes-en-el-dia.jpeg"
+                },
+                "src": "https://www.milenio.com/uploads/media/2020/01/01/avenida-insurgentes-en-el-dia.jpeg"
+            },
+            {
+                "id": 1313638,
+                "xalokId": "",
+                "providerName": "camus.media.image_provider",
+                "fileType": "image/jpeg",
+                "publishedVersion": {
+                    "id": 1364610,
+                    "title": "Autoridades capitalinas reportaron que 19 personas fueron sancionadas por no pasar la prueba del alcoholímetro./ Héctor Téllez",
+                    "providerReference": "autoridades-capitalinas-reportaron-personas-sancionadas.jpeg"
+                },
+                "src": "https://www.milenio.com/uploads/media/2020/01/01/autoridades-capitalinas-reportaron-personas-sancionadas.jpeg"
+            }
+        ]
+    }
+  }
 }

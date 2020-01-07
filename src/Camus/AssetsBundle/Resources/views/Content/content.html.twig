@@ -74,7 +74,7 @@
 
 
   {#  TABOOLA  #}
-  <script type="text/javascript">
+  {# <script type="text/javascript">
     window._taboola = window._taboola || [];
     _taboola.push({home:'auto'});
     !function (e, f, u, i) {
@@ -90,7 +90,7 @@
     'tb_loader_script');
     if(window.performance && typeof window.performance.mark == 'function')
       {window.performance.mark('tbl_ic');}
-  </script>
+  </script> #}
   {#  TABOOLA  #}
 
 
@@ -102,6 +102,7 @@
     {% if modules|length > 0 %}
       {% set moduleSli = { 'template': 'ticker_caliente' } %}
       {% include '@CamusAssets/Groups/sli/base.html.twig' ignore missing with {module: moduleSli} %}
+
       {% for module in modules %}
         {% if module.type is defined %}
           {% set type = module.type|splitTemplate %}

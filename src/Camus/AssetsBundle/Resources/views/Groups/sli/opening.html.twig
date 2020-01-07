@@ -18,10 +18,11 @@
       </div>
       <div class="gallery-container" >
         {% for listElement in module.media %}
+        {% dump(listElement) %}
         {% if listElement is not empty %}
           {#{% set type = listElement.type|splitTemplate %}#}
           {% set infografiaClass = "" %}
-          {% if contentLayer.type == "INF" %}
+          {% if contentLayer is defined and contentLayer.type == "INF" %}
             {% set infografiaClass = "infografia" %}
           {% endif %}
           <div class="img-item {{ infografiaClass }}">
@@ -57,7 +58,7 @@
               <span>{{ module.media|length }}</span>
             </div>
           </div>
-          <span class="img-detail">{{ module.media.0.publishedVersion.title }}</span>
+          <span class="img-detail">{{ module.media.1.publishedVersion.title }}</span>
         </div>
 
         <div class="social-networks-share">
@@ -65,14 +66,14 @@
             {# <span>Compartir</span> #}                                                                {#COMENTADO#}
           </div>
           {% set slugUrl = app.request.requestUri %}
-          {{ slugUrl|socialTag(module.title, module.media.0.src)|raw }}
+          {{ slugUrl|socialTag(module.title, module.media.1.src)|raw }}
           <div class="social-media-large"></div>
         </div>
 
       </div>
       <div class="detail-container">
         <span class="img-index">1</span>
-        <span class="img-detail">{{ module.media.0.publishedVersion.title }}</span>
+        <span class="img-detail">{{ module.media.1.publishedVersion.title }}</span>
       </div>
     </div>
   </div>
