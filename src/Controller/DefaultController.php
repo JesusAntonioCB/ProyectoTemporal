@@ -109,8 +109,9 @@ class DefaultController extends AbstractController
     * @Route("/{gallery}", name="gallery")
     * @Route("/{gallery}/{year}", name="gallery_year")
     * @Route("/{gallery}/{year}/{fullGalery}", name="gallery_year_gallery")
+    * @Route("/{gallery}/{year}/{fullGalery}/{openGalery}", name="gallery_year_gallery_intoGalery")
      */
-    public function showGaleryAction($gallery,$year="",$fullGalery="",Request $request){
+    public function showGaleryAction($gallery,$year="",$fullGalery="",$openGalery="",Request $request){
       $slug = $request->getPathInfo();
       $pushGrupo = [];
       $modules = [];
@@ -119,7 +120,7 @@ class DefaultController extends AbstractController
       $pageTitle="";
       $grupos = file_get_contents("./bundles/camusassets/grupos.json");
       $json_grupos= json_decode($grupos, true);
-      dump($json_grupos);
+      // dump($json_grupos);
       // die;
       if (!empty($json_grupos)) {
         if (isset($json_grupos[$gallery])) {
@@ -127,19 +128,35 @@ class DefaultController extends AbstractController
             //si el año es definido
             if (!empty($fullGalery)) {
               // si una galeria es definida
-              if (isset($json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery])) {
-                $codeId=$json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["codeId"];
-                $type= $json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["type"];
-                $pageTitle= $json_grupos[$gallery]["titulo"]." | ".$json_grupos[$gallery]["year"][$year]["titulo"]." | ".$json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["titulo"];
-                if ($type==1) {
-                  $modules= $this->getGaleryElements($codeId,2,$slug);
-                  dump($modules);
+              if (!empty($openGalery)) {
+                // si se abrio una imagen
+                if (isset($json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery])) {
+                  $codeId=$json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["codeId"];
+                  $type= $json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["type"];
+                  $pageTitle= $json_grupos[$gallery]["titulo"]." | ".$json_grupos[$gallery]["year"][$year]["titulo"]." | ".$json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["titulo"];
+                  if ($type==1) {
+                    $modules= $this->getGaleryElements($codeId, 3, $slug, "full", "true", $openGalery);
+                  }else {
+                    $modules= $this->getGroupElements($codeId,2,$slug);
+                  }
                 }else {
-                  $modules= $this->getGroupElements($codeId,2,$slug);
+                  $this->addCategori($json_grupos,$gallery,3,$year,$fullGalery);
+                  exit;
                 }
               }else {
-                $this->addCategori($json_grupos,$gallery,3,$year,$fullGalery);
-                exit;
+                if (isset($json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery])) {
+                  $codeId=$json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["codeId"];
+                  $type= $json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["type"];
+                  $pageTitle= $json_grupos[$gallery]["titulo"]." | ".$json_grupos[$gallery]["year"][$year]["titulo"]." | ".$json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["titulo"];
+                  if ($type==1) {
+                    $modules= $this->getGaleryElements($codeId,2,$slug);
+                  }else {
+                    $modules= $this->getGroupElements($codeId,2,$slug);
+                  }
+                }else {
+                  $this->addCategori($json_grupos,$gallery,3,$year,$fullGalery);
+                  exit;
+                }
               }
             }else {
               if (isset($json_grupos[$gallery]["year"][$year])) {
@@ -252,6 +269,7 @@ class DefaultController extends AbstractController
     public function getGroupElements($groupId, $type=1, $slug="", $level="full", $includeChildren="true"){
       $client= new Client('fotoChic App/1.0 (https://fotos.chicmagazine.com.mx/)');
       $modules = [];
+      dump($groupId);
       $resultGroup = $client->LoadGroup($groupId, $level, $includeChildren);
       // $xml   = simplexml_load_string($resultGroup, 'SimpleXMLElement', LIBXML_NOCDATA);
   		// $group = json_decode(json_encode((array)$xml), TRUE);
@@ -329,7 +347,7 @@ class DefaultController extends AbstractController
       }
     }
 
-    public function getGaleryElements($groupId, $type=1, $slug="", $level="full", $includeChildren="true"){
+    public function getGaleryElements($groupId, $type=1, $slug="", $level="full", $includeChildren="true", $comparateString=""){
       $client= new Client('fotoChic App/1.0 (https://fotos.chicmagazine.com.mx/)');
       $modules = [];
       $resultGroup = $client->LoadPhotoSet($groupId, $level, $includeChildren);
@@ -337,8 +355,8 @@ class DefaultController extends AbstractController
   		// $group = json_decode(json_encode((array)$xml), TRUE);
       if ($type == 1) {
         return $resultGroup;
-      }else {
-        dump($resultGroup);
+      }elseif ($type == 2) {
+        // dump($resultGroup);
         if (!empty($resultGroup->Photos)) {
           foreach ($resultGroup->Photos as $value) {
             $r = "";
@@ -373,7 +391,7 @@ class DefaultController extends AbstractController
                 ],
                 "content"=> [
                   "id"=> 2260,
-                  "slug"=> $slug."/".str_replace("https://fotos.chicmagazine.com.mx/","",$value->PageUrl),
+                  "slug"=> $slug."/".str_replace($resultGroup->PageUrl."/","",$value->PageUrl),
                   "xalokId"=> null,
                   "author"=> null
                 ],
@@ -391,6 +409,96 @@ class DefaultController extends AbstractController
             ];
             array_push($modules,$imagenes);
           }
+        }
+        return $modules;
+      }else {
+        if (!empty($resultGroup->Photos)) {
+          $media=[];
+          $imageActual= "active";
+          foreach ($resultGroup->Photos as $value) {
+            if (!empty($comparateString)) {
+              if (strpos($value->PageUrl, $comparateString)) {
+                $imageActual = "active";
+              }
+            }
+            $tempoMedia=[
+              "id"=> $value->Id,
+              "xalokId"=> "",
+              "providerName"=> "camus.media.image_provider",
+              "fileType"=> (isset($value->MimeType)) ? $value->MimeType: '',
+              "publishedVersion"=> [
+                "id"=> $value->Id,
+                "title"=> (isset($value->Title)) ? $value->Title: '',
+                "providerReference"=> (isset($value->FileName)) ? $value->FileName: '',
+                "isActual"=> $imageActual,
+              ],
+              "src"=> "http://".$value->UrlHost."".$value->UrlCore."-2.jpg"
+            ];
+            array_push($media,$tempoMedia);
+            $imageActual=false;
+          }
+          $carrusel= [
+            "type"=> "sli_opening",
+            "template"=> "gallery",
+            "title"=> "Vacía y con mala calidad del aire, así recibe la CdMx año",
+            "abstract"=> "El Sistema de Monitoreo Atmosférico informó que la calidad del aire en la Ciudad de México hoy va de regular a mala.",
+            "sizes"=> [
+              "template_1254"=> [
+                "width"=> 4,
+                "height"=> 1
+              ],
+              "template_1024"=> [
+                "width"=> 3,
+                "height"=> 1
+              ],
+              "template_720"=> [
+                "width"=> 2,
+                "height"=> 1
+              ],
+              "template_320"=> [
+                "width"=> 1,
+                "height"=> 1
+              ]
+            ],
+            "content"=> [
+              "id"=> null,
+              "slug"=> null,
+              "xalokId"=> null,
+              "column"=> null,
+              "publishedHour"=> null,
+              "publishedDate"=> "01-01-2020",
+              "author"=> [
+                "id"=> null,
+                "name"=> "Milenio Digital",
+                "media"=> [
+                  "src"=> "http://fotos.chicmagazine.com.mx/img/s/v-10/p3754851953-2.jpg"
+                ],
+                "slug"=> null
+              ]
+            ],
+            "modules"=> null,
+            "heading"=> [
+              "background"=> "rgb(51,51,51)",
+              "title"=> null
+            ],
+            "extra"=> [
+              "media"=> [
+                "icon"=> null,
+                "title"=> null
+              ],
+              "heading"=> [
+                "title"=> null
+              ]
+            ],
+            "show"=> [
+              "board"=> false,
+              "content"=> false,
+              "inner"=> false
+            ],
+            "subtitle"=> "",
+            "media"=> $media
+          ];
+          array_push($modules,$carrusel);
         }
         return $modules;
       }

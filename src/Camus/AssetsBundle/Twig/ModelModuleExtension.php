@@ -491,7 +491,7 @@ class ModelModuleExtension extends AbstractExtension
       $modelDataFilter['hasMedia'] = true;
     }
 
-    if(isset($modelData->thumbnail) && $modelData->thumbnail != null && !is_array($modelData->thumbnail) ){
+    if(isset($modelData->thumbnail) && $modelData->thumbnail != null && is_object($modelData->thumbnail)){
       if (isset($modelData->thumbnail["src"])) {
         $modelDataFilter['thumbnail'] = $modelData->thumbnail["src"];
       }else if(is_string($modelData->thumbnail)) {
@@ -503,7 +503,7 @@ class ModelModuleExtension extends AbstractExtension
       }
 
       $modelDataFilter['hasThumbnail'] = true;
-    }elseif(isset($modelData->thumbnail) && $modelData->thumbnail != null && is_array($modelData->thumbnail)) {
+    }elseif(isset($modelData->thumbnail) && $modelData->thumbnail != null && !is_object($modelData->thumbnail)) {
       $modelDataFilter['thumbnail'] = $modelData->thumbnail;
       $modelDataFilter['hasThumbnail'] = true;
     }
@@ -1167,80 +1167,81 @@ class ModelModuleExtension extends AbstractExtension
   }
 
   public function imageSize($media, $template, $alt = '', $position = 'tl'){
-dump($this->container);
+
     $host = $this->container->getParameter('thumbor_host');
     $key = $this->container->getParameter('thumbor_key');
 
+    $url=$media;
 
-    switch ($template) {
-      case 'lr_list_row_row_numbered_red':
-        $width = 82;
-        $height = 95;
-        break;
-
-      case 'media':
-      case 'caption':
-        $width = 618;
-        $height = 348;
-        break;
-
-      case 'base':
-        $width = 958;
-        $height = 596;
-        break;
-
-      case 'profile':
-        $width = 121;
-        $height = 140;
-        break;
-
-      case 'gallery':
-          $width = 0;
-          $height = 530;
-        break;
-
-      case 'row_related_new':
-        $width = 152;
-        $height = 80;
-        break;
-
-      case 'top_text':
-        $width = 300;
-        $height = 348;
-        break;
-
-      default:
-        break;
-    }
-
-    if($this->container->hasParameter('thumbor_cdn')){
-      if(!empty($this->container->getParameter('thumbor_cdn'))){
-        $media = str_replace($this->container->getParameter('thumbor_cdn'),"",$media);
-      }
-    }
-
-    $meta =  "meta/".$width."x".$height."/smart/".$media;
-    $meta_hash = $this->getHash($meta, $key);
-    $meta_url = $host.$meta_hash."/"."meta/".$width."x".$height."/smart/".$media;
-
-    $metaImage = file_get_contents($meta_url);
-    $jsonMetaImage = json_decode($metaImage,true);
-
-    if(isset($jsonMetaImage["thumbor"]) && isset($jsonMetaImage["thumbor"]["focal_points"])){
-      if(in_array("Face Detection", array_column($jsonMetaImage["thumbor"]["focal_points"], 'origin'))) {
-        $result = $width."x".$height."/smart/".$media;
-        $res_hash = $this->getHash($result, $key);
-        $url = $host.$res_hash."/".$width."x".$height."/smart/".$media;
-      }else{
-        $result = $width."x".$height."/".$media;
-        $res_hash = $this->getHash($result, $key);
-        $url = $host.$res_hash."/".$width."x".$height."/".$media;
-      }
-    }else{
-      $result = $width."x".$height."/".$media;
-      $res_hash = $this->getHash($result, $key);
-      $url = $host.$res_hash."/".$width."x".$height."/".$media;
-    }
+    // switch ($template) {
+    //   case 'lr_list_row_row_numbered_red':
+    //     $width = 82;
+    //     $height = 95;
+    //     break;
+    //
+    //   case 'media':
+    //   case 'caption':
+    //     $width = 618;
+    //     $height = 348;
+    //     break;
+    //
+    //   case 'base':
+    //     $width = 958;
+    //     $height = 596;
+    //     break;
+    //
+    //   case 'profile':
+    //     $width = 121;
+    //     $height = 140;
+    //     break;
+    //
+    //   case 'gallery':
+    //       $width = 0;
+    //       $height = 530;
+    //     break;
+    //
+    //   case 'row_related_new':
+    //     $width = 152;
+    //     $height = 80;
+    //     break;
+    //
+    //   case 'top_text':
+    //     $width = 300;
+    //     $height = 348;
+    //     break;
+    //
+    //   default:
+    //     break;
+    // }
+    //
+    // if($this->container->hasParameter('thumbor_cdn')){
+    //   if(!empty($this->container->getParameter('thumbor_cdn'))){
+    //     $media = str_replace($this->container->getParameter('thumbor_cdn'),"",$media);
+    //   }
+    // }
+    //
+    // $meta =  "meta/".$width."x".$height."/smart/".$media;
+    // $meta_hash = $this->getHash($meta, $key);
+    // $meta_url = $host.$meta_hash."/"."meta/".$width."x".$height."/smart/".$media;
+    //
+    // $metaImage = file_get_contents($meta_url);
+    // $jsonMetaImage = json_decode($metaImage,true);
+    //
+    // if(isset($jsonMetaImage["thumbor"]) && isset($jsonMetaImage["thumbor"]["focal_points"])){
+    //   if(in_array("Face Detection", array_column($jsonMetaImage["thumbor"]["focal_points"], 'origin'))) {
+    //     $result = $width."x".$height."/smart/".$media;
+    //     $res_hash = $this->getHash($result, $key);
+    //     $url = $host.$res_hash."/".$width."x".$height."/smart/".$media;
+    //   }else{
+    //     $result = $width."x".$height."/".$media;
+    //     $res_hash = $this->getHash($result, $key);
+    //     $url = $host.$res_hash."/".$width."x".$height."/".$media;
+    //   }
+    // }else{
+    //   $result = $width."x".$height."/".$media;
+    //   $res_hash = $this->getHash($result, $key);
+    //   $url = $host.$res_hash."/".$width."x".$height."/".$media;
+    // }
 
     $tag = '<img
     src="'.$url.'"
