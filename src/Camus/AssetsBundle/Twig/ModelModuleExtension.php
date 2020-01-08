@@ -491,7 +491,7 @@ class ModelModuleExtension extends AbstractExtension
       $modelDataFilter['hasMedia'] = true;
     }
 
-    if(isset($modelData->thumbnail) && $modelData->thumbnail != null && is_object($modelData->thumbnail)){
+    if(isset($modelData->thumbnail) && $modelData->thumbnail != null && is_array($modelData->thumbnail)){
       if (isset($modelData->thumbnail["src"])) {
         $modelDataFilter['thumbnail'] = $modelData->thumbnail["src"];
       }else if(is_string($modelData->thumbnail)) {
@@ -503,7 +503,7 @@ class ModelModuleExtension extends AbstractExtension
       }
 
       $modelDataFilter['hasThumbnail'] = true;
-    }elseif(isset($modelData->thumbnail) && $modelData->thumbnail != null && !is_object($modelData->thumbnail)) {
+    }elseif(isset($modelData->thumbnail) && $modelData->thumbnail != null && !is_array($modelData->thumbnail)) {
       $modelDataFilter['thumbnail'] = $modelData->thumbnail;
       $modelDataFilter['hasThumbnail'] = true;
     }
