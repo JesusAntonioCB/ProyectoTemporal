@@ -63,11 +63,11 @@ function (_React$Component) {
         asNavFor: '.gallery-nav'
       });
       jquery__WEBPACK_IMPORTED_MODULE_1___default()('.gallery-nav').slick({
-        slidesToShow: 3,
+        slidesToShow: 20,
         slidesToScroll: 1,
         asNavFor: '.gallery-container',
         dots: false,
-        centerMode: true,
+        centerMode: false,
         focusOnSelect: true
       });
     }

@@ -471,7 +471,7 @@ class DefaultController extends AbstractController
                 "id"=> null,
                 "name"=> "Milenio Digital",
                 "media"=> [
-                  "src"=> "http://fotos.chicmagazine.com.mx/img/s/v-10/p3754851953-2.jpg"
+                  "src"=> "http://fotos.chicmagazine.com.mx/img/s/v-10/p3754851953-4.jpg"
                 ],
                 "slug"=> null
               ]
