@@ -3,65 +3,40 @@
 @import "../../../modules/global-containers-mixin.scss";
 @import "../../../modules/main-fonts-mixin.scss";
 @import "../../../modules/main-containers-mixin.scss";
-.sn-bottom-text-note{
-  display: block;
-  margin: 10px;
+body, html{
+  line-height: 12px!important;
+}
+.bcontent{
+  column-count: 4;
   @include three-column{
-    margin: auto;
-    .media-container{
-      width: 434px !important;
-      height: 289px!important;
-      margin-bottom: 15px;
-    }
-  }
-  @include three-media{
-    margin: auto;
-    .media-container{
-      width: 401px !important;
-      height: 267px !important;
-    }
+    column-count: 4;
   }
   @include skyscraper-media{
-    margin: auto;
-    .media-container{
-      width: 524px !important;
-      height: 348px !important;
-    }
-  }
-  @include two-max{
-    margin: auto;
-    .media-container{
-      width: 482px !important;
-      height: 321px !important;
-    }
+    column-count: 2;
   }
   @include two-column{
-    margin: auto;
-    .media-container{
-      width: 640px !important;
-      height: 426px !important;
-    }
+    column-count: 2;
   }
   @include one-column{
-    margin: auto;
-    .media-container{
-      width: 372px !important;
-      height: 247px !important;
-    }
+    column-count: 1;
   }
+  .contenedor-notas-block{
+    display: block !important;
+  }
+}
+.sn-bottom-text-note{
+  display: block;
+  margin: auto;
+  width: 100%;
+  height: auto;
+  max-width: 460px;
   .media-container{
     position: relative;
-    width: 460px;
-    height: 306px;
     .img-container{
-      height: inherit;
-    }
-    .item-icon{
-      @include item-icon("medium");
     }
     .headline-bottom-container-gradient{
       margin-bottom: 0px;
-      .section-top, .title{
+      .title{
         color: rgb(240,240,240);
         font-family: Verdana,Geneva,Tahoma,sans-serif;
         font-size: 13px;
@@ -71,34 +46,6 @@
         letter-spacing: 1px;
         text-shadow: rgba( 0, 0, 0, 0) 0px 0px 0px;
         transform: translate(10px,-10px);
-      }
-      .section-top{                                                   //SECCION AGREGADA
-        display: inline-block;
-        font-size: 14px;
-        height: 30px;
-        padding: 0 15px;
-        line-height: 30px;
-        min-height: 5px;
-        background-color: $color-alizarin-crimson;
-        color: white;
-      }
-      .sponsor{
-        font-size: 10px;
-        position: relative;
-        height: 25px;
-        margin-top: unset;
-        @include text-with-roboto-regular-color-white;
-        .caption{
-          width: 82px;
-          margin-right: 7px;
-        }
-        a{
-          img{
-            width: 130px;
-            height: auto;
-            max-width: unset;
-          }
-        }
       }
     }
   }

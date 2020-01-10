@@ -13,6 +13,8 @@ import "./CamusGlobalComponents/piano/PianoProfile.js";
 import ModuleShareButtons from "./CamusGlobalComponents/ModuleShareButtons.jsx";
 
 
+
+
 $.fn.placeholderWarn = function (textWarn, modal) {
     var settings = $.extend({
         active: false,
@@ -210,7 +212,6 @@ class Main extends React.Component {
                 });
             }
         }
-
         let camusYoutube = $(".camus-youtube");
         if (camusYoutube.length) {
             let arrayVideosYoutube = [];
