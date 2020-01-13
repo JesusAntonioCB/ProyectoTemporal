@@ -17,28 +17,31 @@ class DefaultController extends AbstractController
     public function indexAction()
     {
       $urlId= "847382622";
-      $modules = $this->getGroupElements($urlId,2,null,"level1");
+      $parameters=$this->getListParameters();
+      $dataGrup= $this->getGroupElements($urlId,2,null,"level1");
+      // array_push($parameters,$dataGrup);
+      foreach ($dataGrup as $key => $data) {
+        $parameters[$key]=$data;
+      }
+      $parameters["site_name"]="FotoChic by chic Magazine";
+      $parameters["isRuteContentHiden"]="none";
+      $parameters["isFolderContentHiden"]="none";
+      $parameters["ruteInfo"]=[
+        [
+          'titulo'=>"FotoChic by chic Magazine",
+          'slug'=>"/"
+        ]
+      ];
+      // $parameters["modules"] = $dataGrup["modules"];
       $arrayCss = array();
       $resultFileCss = array();
-      $this->getListModules($modules,$arrayCss);
+      $this->getListModules($parameters["modules"],$arrayCss);
       if(count($arrayCss)){
-        $resultFileCss = array_values(array_unique($arrayCss));
+        $parameters["fileCSS"] = array_values(array_unique($arrayCss));
       }
-      $responseRender = $this->render('@CamusAssets/Content/content.html.twig', array(
-        'meta' => "",
-        'site_name' => "FotoChic by chic Magazine",
-        'topContenDisplay' => "block",
-        'site_short_domain' => "FotoChic",
-        'modules' => $modules,
-        'headerType' => 1,
-        'currentSection' => "",
-        'page' => 1,
-        'boardColor' => "#b10b1f",
-        'amp_domain' => "none",
-        'piano_domain' => "none",
-        'fileCSS' => $resultFileCss,
-        'number' => 100
-      ));
+      // dump($parameters);
+      // die;
+      $responseRender = $this->render('@CamusAssets/Content/content.html.twig', $parameters);
       return $responseRender;
     }
     /**
@@ -117,60 +120,208 @@ class DefaultController extends AbstractController
       $modules = [];
       $arrayCss = [];
       $resultFileCss = [];
+      $ruteInfo = [];
       $pageTitle="";
       $grupos = file_get_contents("./bundles/camusassets/grupos.json");
       $json_grupos= json_decode($grupos, true);
+      $parameters=$this->getListParameters();
       // dump($json_grupos);
+      // dump($gallery);
+      // dump(isset($json_grupos[$gallery]));
       // die;
       if (!empty($json_grupos)) {
-        if (isset($json_grupos[$gallery])) {
-          if (!empty($year)) {
-            //si el año es definido
-            if (!empty($fullGalery)) {
-              // si una galeria es definida
-              if (!empty($openGalery)) {
-                // si se abrio una imagen
-                if (isset($json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery])) {
-                  $codeId=$json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["codeId"];
-                  $type= $json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["type"];
-                  $pageTitle= $json_grupos[$gallery]["titulo"]." | ".$json_grupos[$gallery]["year"][$year]["titulo"]." | ".$json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["titulo"];
-                  if ($type==1) {
-                    $modules= $this->getGaleryElements($codeId, 3, $slug, "full", "true", $openGalery);
+        $ComparateCodeId=substr($gallery, 1, 100);
+        //comprobar si ya existe
+        if (!isset($json_grupos[$gallery])) {
+          foreach ($json_grupos as $category) {
+            $respuesta= in_array($ComparateCodeId, $category, true);
+            // dump($respuesta);
+            // dump($ComparateCodeId);
+            // dump($category);
+            if (!$respuesta) {
+              if (isset($category["year"])) {
+                foreach ($category["year"] as $arrYear) {
+                  $respuesta= in_array($ComparateCodeId, $arrYear, true);
+                  // dump($respuesta);
+                  // dump($arrYear);
+                  if (!$respuesta) {
+                    if (isset($arrYear["gallery"])) {
+                      foreach ($arrYear["gallery"] as $intoGallery) {
+                        $respuesta= in_array($ComparateCodeId, $intoGallery, true);
+                        // dump($respuesta);
+                        // dump($intoGallery);
+                        if ($respuesta) {
+                          // dump("es galeria");
+                          $gallery= $category["titulo"];
+                          $year= $arrYear["titulo"];
+                          $fullGalery= $intoGallery["titulo"];
+                          header("Status: 301 Moved Permanently");
+                          header("Location: /".$gallery."/".$year."/".$fullGalery);
+                          exit;
+                        }
+                      }
+                    }
                   }else {
-                    $modules= $this->getGroupElements($codeId,2,$slug);
+                    // dump("es año");
+                    $gallery= $category["titulo"];
+                    $year= $arrYear["titulo"];
+                    header("Status: 301 Moved Permanently");
+                    header("Location: /".$gallery."/".$year);
+                    exit;
+                    // dump($gallery);
+                    // dump($year);
                   }
-                }else {
-                  $this->addCategori($json_grupos,$gallery,3,$year,$fullGalery);
-                  exit;
-                }
-              }else {
-                if (isset($json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery])) {
-                  $codeId=$json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["codeId"];
-                  $type= $json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["type"];
-                  $pageTitle= $json_grupos[$gallery]["titulo"]." | ".$json_grupos[$gallery]["year"][$year]["titulo"]." | ".$json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["titulo"];
-                  if ($type==1) {
-                    $modules= $this->getGaleryElements($codeId,2,$slug);
-                  }else {
-                    $modules= $this->getGroupElements($codeId,2,$slug);
-                  }
-                }else {
-                  $this->addCategori($json_grupos,$gallery,3,$year,$fullGalery);
-                  exit;
                 }
               }
             }else {
-              if (isset($json_grupos[$gallery]["year"][$year])) {
-                $codeId=$json_grupos[$gallery]["year"][$year]["codeId"];
-                $type= $json_grupos[$gallery]["year"][$year]["type"];
-                $pageTitle= $json_grupos[$gallery]["titulo"]." | ".$json_grupos[$gallery]["year"][$year]["titulo"];
-                if ($type==1) {
-                  $modules= $this->getGaleryElements($codeId,2,$slug);
+              // dump("es categoria");
+              $gallery= $category["titulo"];
+              header("Status: 301 Moved Permanently");
+              header("Location: /".$gallery);
+              exit;
+              // dump($gallery);
+            }
+          }
+        }
+        if (isset($json_grupos[$gallery])) {
+          if (!empty($year)) {
+            //si el año es definido
+            if ($json_grupos[$gallery]["type"]==1) {
+              // dump("okey ahora que????");
+              // dump("piensa hijo de tu mama");
+              $codeId=$json_grupos[$gallery]["codeId"];
+              $ruteInfo= [
+                [
+                  'titulo'=>"INICIO",
+                  'slug'=>"/"
+                ],[
+                  'titulo'=>$json_grupos[$gallery]["titulo"],
+                  'slug'=>"#"
+                ]
+              ];
+              $dataGallery= $this->getGaleryElements($codeId, 3, $slug, "full", "true", $year);
+              // dump($dataGallery);
+              // die;
+            }else {
+              if (!empty($fullGalery)) {
+                // si una galeria es definida
+                if ($json_grupos[$gallery]["year"][$year]["type"]==1) {
+                  // dump("okey ahora que????");
+                  // dump("piensa hijo de tu mama");
+                  $codeId=$json_grupos[$gallery]["year"][$year]["codeId"];
+                  $ruteInfo= [
+                    [
+                      'titulo'=>"INICIO",
+                      'slug'=>"/"
+                    ],[
+                      'titulo'=>$json_grupos[$gallery]["titulo"],
+                      'slug'=>"/".$json_grupos[$gallery]["titulo"]
+                    ],[
+                      'titulo'=>$json_grupos[$gallery]["year"][$year]["titulo"],
+                      'slug'=>"#"
+                    ]
+                  ];
+                  $dataGallery= $this->getGaleryElements($codeId, 3, $slug, "full", "true", $fullGalery);
+                  // dump($codeId);
+                  // die;
                 }else {
-                  $modules= $this->getGroupElements($codeId,2,$slug);
+                  if (!empty($openGalery)) {
+                    // si se abrio una imagen
+                    if (isset($json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery])) {
+                      $codeId=$json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["codeId"];
+                      $type= $json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["type"];
+                      $pageTitle= $json_grupos[$gallery]["titulo"]." | ".$json_grupos[$gallery]["year"][$year]["titulo"]." | ".$json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["titulo"];
+                      $ruteInfo= [
+                        [
+                          'titulo'=>$json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["titulo"],
+                          'slug'=>"#"
+                        ]
+                      ];
+                      if ($type==1) {
+                        $dataGallery= $this->getGaleryElements($codeId, 3, $slug, "full", "true", $openGalery);
+                      }else {
+                        $dataGallery= $this->getGroupElements($codeId,2,$slug);
+                      }
+                    }else {
+                      $this->addCategori($json_grupos,$gallery,3,$year,$fullGalery);
+                      exit;
+                    }
+                  }else {
+                    if (!isset($json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery])) {
+                      if (isset($json_grupos[$gallery]["year"][$year]["gallery"])) {
+                        $comparateCodeId=substr($fullGalery, 1, 100);
+                        foreach ($json_grupos[$gallery]["year"][$year]["gallery"] as $intoGallery) {
+                          $respuesta= in_array($comparateCodeId, $intoGallery, true);
+                          if ($respuesta) {
+                            $fullGalery= $intoGallery["titulo"];
+                            header("Status: 301 Moved Permanently");
+                            header("Location: /".$gallery."/".$year."/".$fullGalery);
+                            exit;
+                          }
+                        }
+                      }
+                    }
+                    if (isset($json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery])) {
+                      $codeId=$json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["codeId"];
+                      $type= $json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["type"];
+                      $pageTitle= $json_grupos[$gallery]["titulo"]." | ".$json_grupos[$gallery]["year"][$year]["titulo"]." | ".$json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["titulo"];
+                      $ruteInfo= [
+                        [
+                          'titulo'=>$json_grupos[$gallery]["year"][$year]["gallery"][$fullGalery]["titulo"],
+                          'slug'=>"#"
+                        ]
+                      ];
+                      if ($type==1) {
+                        $dataGallery= $this->getGaleryElements($codeId,2,$slug);
+                      }else {
+                        $dataGallery= $this->getGroupElements($codeId,2,$slug);
+                      }
+                    }else {
+                      $this->addCategori($json_grupos,$gallery,3,$year,$fullGalery);
+                      exit;
+                    }
+                  }
                 }
               }else {
-                $this->addCategori($json_grupos,$gallery,2,$year);
-                exit;
+                if (!isset($json_grupos[$gallery]["year"][$year])) {
+                  if (isset($json_grupos[$gallery]["year"])) {
+                    $comparateCodeId=substr($year, 1, 100);
+                    foreach ($json_grupos[$gallery]["year"] as $arrYear) {
+                      $respuesta= in_array($comparateCodeId, $arrYear, true);
+                      if ($respuesta) {
+                        $year= $arrYear["titulo"];
+                        header("Status: 301 Moved Permanently");
+                        header("Location: /".$gallery."/".$year);
+                        exit;
+                      }
+                    }
+                  }
+                }
+                if (isset($json_grupos[$gallery]["year"][$year])) {
+                  $codeId=$json_grupos[$gallery]["year"][$year]["codeId"];
+                  $type= $json_grupos[$gallery]["year"][$year]["type"];
+                  $pageTitle= $json_grupos[$gallery]["titulo"]." | ".$json_grupos[$gallery]["year"][$year]["titulo"];
+                  $ruteInfo= [
+                    [
+                      'titulo'=>"INICIO",
+                      'slug'=>"/"
+                    ],[
+                      'titulo'=>$json_grupos[$gallery]["titulo"],
+                      'slug'=>"/".$json_grupos[$gallery]["titulo"]
+                    ],[
+                      'titulo'=>$json_grupos[$gallery]["year"][$year]["titulo"],
+                      'slug'=>"#"
+                    ]
+                  ];
+                  if ($type==1) {
+                    $dataGallery= $this->getGaleryElements($codeId,2,$slug);
+                  }else {
+                    $dataGallery= $this->getGroupElements($codeId,2,$slug);
+                  }
+                }else {
+                  $this->addCategori($json_grupos,$gallery,2,$year);
+                  exit;
+                }
               }
             }
           }else {
@@ -178,10 +329,19 @@ class DefaultController extends AbstractController
             $codeId=$json_grupos[$gallery]["codeId"];
             $type= $json_grupos[$gallery]["type"];
             $pageTitle= $json_grupos[$gallery]["titulo"];
+            $ruteInfo= [
+              [
+                'titulo'=>"INICIO",
+                'slug'=>"/"
+              ],[
+                'titulo'=>$json_grupos[$gallery]["titulo"],
+                'slug'=>"#"
+              ]
+            ];
             if ($type==1) {
-              $modules= $this->getGaleryElements($codeId,2,$slug);
+              $dataGallery= $this->getGaleryElements($codeId,2,$slug);
             }else {
-              $modules= $this->getGroupElements($codeId,2,$slug);
+              $dataGallery= $this->getGroupElements($codeId,2,$slug);
             }
           }
         }else {
@@ -194,25 +354,16 @@ class DefaultController extends AbstractController
         $this->addCategori($json_grupos,$gallery,1);
         exit;
       }
-
-      $this->getListModules($modules,$arrayCss);
-      if(count($arrayCss)){
-        $resultFileCss = array_values(array_unique($arrayCss));
+      foreach ($dataGallery as $key => $data) {
+        $parameters[$key]=$data;
       }
-      $responseRender = $this->render('@CamusAssets/Content/content.html.twig', array(
-        'meta' => "",
-        'site_name' => "FotoChic by chic Magazine | ".$pageTitle,
-        'site_short_domain' => "Milo",
-        'modules' => $modules,
-        'headerType' => 1,
-        'currentSection' => "",
-        'page' => 1,
-        'boardColor' => "#b10b1f",
-        'amp_domain' => "none",
-        'piano_domain' => "none",
-        'fileCSS' => $resultFileCss,
-        'number' => 100
-      ));
+      $this->getListModules($dataGallery["modules"],$arrayCss);
+      if(count($arrayCss)){
+        $parameters["fileCSS"] = array_values(array_unique($arrayCss));
+      }
+      $parameters["site_name"]= "FotoChic by chic Magazine | ".$pageTitle;
+      $parameters["ruteInfo"]= $ruteInfo;
+      $responseRender = $this->render('@CamusAssets/Content/content.html.twig', $parameters);
       return $responseRender;
     }
 
@@ -269,8 +420,10 @@ class DefaultController extends AbstractController
     public function getGroupElements($groupId, $type=1, $slug="", $level="full", $includeChildren="true"){
       $client= new Client('fotoChic App/1.0 (https://fotos.chicmagazine.com.mx/)');
       $modules = [];
-      dump($groupId);
+      // dump($groupId);
       $resultGroup = $client->LoadGroup($groupId, $level, $includeChildren);
+      // dump($resultGroup);
+      // die;
       // $xml   = simplexml_load_string($resultGroup, 'SimpleXMLElement', LIBXML_NOCDATA);
   		// $group = json_decode(json_encode((array)$xml), TRUE);
       if ($type == 1) {
@@ -324,7 +477,7 @@ class DefaultController extends AbstractController
                 ],
                 "content"=> [
                   "id"=> 2260,
-                  "slug"=> $slug."/".str_replace("https://fotos.chicmagazine.com.mx/","",$value->PageUrl),
+                  "slug"=> str_replace("/todas-la-fotos","",$slug)."/".str_replace("https://fotos.chicmagazine.com.mx/","",$value->PageUrl),
                   "xalokId"=> null,
                   "author"=> null
                 ],
@@ -343,7 +496,16 @@ class DefaultController extends AbstractController
             array_push($modules,$imagenes);
           }
         }
-        return $modules;
+        $dataGrup= [
+          "site_name"=> (isset($resultGroup->Title)) ? "FotoChic by chic Magazine | ".$resultGroup->Title: 'FotoChic by chic Magazine',
+          "modules"=>$modules,
+          "isRuteContentHiden"=>"block",
+          "isFolderContentHiden"=>"block ruby",
+          "galleryCount"=> (isset($resultGroup->GalleryCount)) ? $resultGroup->GalleryCount: 0,
+          "collectionCount"=> (isset($resultGroup->CollectionCount)) ? $resultGroup->CollectionCount: 0,
+          "subGroupCount"=> (isset($resultGroup->SubGroupCount)) ? $resultGroup->SubGroupCount: 0
+        ];
+        return $dataGrup;
       }
     }
 
@@ -410,7 +572,16 @@ class DefaultController extends AbstractController
             array_push($modules,$imagenes);
           }
         }
-        return $modules;
+        $dataGrup= [
+          "site_name"=> (isset($resultGroup->Title)) ? "FotoChic by chic Magazine | ".$resultGroup->Title: 'FotoChic by chic Magazine',
+          "modules"=>$modules,
+          "isRuteContentHiden"=>"block",
+          "isFolderContentHiden"=>"none",
+          "galleryCount"=> (isset($resultGroup->GalleryCount)) ? $resultGroup->GalleryCount: 0,
+          "collectionCount"=> (isset($resultGroup->CollectionCount)) ? $resultGroup->CollectionCount: 0,
+          "subGroupCount"=> (isset($resultGroup->SubGroupCount)) ? $resultGroup->SubGroupCount: 0
+        ];
+        return $dataGrup;
       }else {
         if (!empty($resultGroup->Photos)) {
           $media=[];
@@ -432,7 +603,7 @@ class DefaultController extends AbstractController
                 "providerReference"=> (isset($value->FileName)) ? $value->FileName: '',
                 "isActual"=> $imageActual,
               ],
-              "src"=> "http://".$value->UrlHost."".$value->UrlCore."-2.jpg"
+              "src"=> "http://".$value->UrlHost."".$value->UrlCore."-4.jpg"
             ];
             array_push($media,$tempoMedia);
             $imageActual=false;
@@ -500,7 +671,16 @@ class DefaultController extends AbstractController
           ];
           array_push($modules,$carrusel);
         }
-        return $modules;
+        $dataGrup= [
+          "site_name"=> (isset($resultGroup->Title)) ? "FotoChic by chic Magazine | ".$resultGroup->Title: 'FotoChic by chic Magazine',
+          "modules"=>$modules,
+          "isRuteContentHiden"=>"none",
+          "isFolderContentHiden"=>"none",
+          "galleryCount"=> (isset($resultGroup->GalleryCount)) ? $resultGroup->GalleryCount: 0,
+          "collectionCount"=> (isset($resultGroup->CollectionCount)) ? $resultGroup->CollectionCount: 0,
+          "subGroupCount"=> (isset($resultGroup->SubGroupCount)) ? $resultGroup->SubGroupCount: 0
+        ];
+        return $dataGrup;
       }
     }
 
@@ -518,6 +698,61 @@ class DefaultController extends AbstractController
         if (isset($galeria->faultcode)) {
           throw $this->createNotFoundException();
         }else {
+          $i = 0;
+          $oldCategoryNorm="";
+          $oldCategory=[];
+          $oldYearNorm="";
+          if (!empty($galeria->ParentGroups) && count($galeria->ParentGroups) > 1) {
+            foreach ($galeria->ParentGroups as $value) {
+              if ($i >= 1) {
+                $oldGalery= $this->getGroupElements($value, 1, null, "level1", "false");
+                if (empty($oldCategoryNorm)) {
+                  $oldCategoryNorm= $this->normalizeText($oldGalery->Title);
+                  $oldCategory= $oldGalery;
+                }else {
+                  $oldYearNorm=$this->normalizeText($oldGalery->Title);
+                }
+                if (!empty($grupos)) {
+                  if (isset($grupos[$oldCategoryNorm])) {
+                    if (!empty($oldYearNorm)) {
+                      if (isset($grupos[$oldCategoryNorm]["year"][$oldYearNorm])) {
+                        $this->addCategori($grupos,$oldCategoryNorm,3,$oldYearNorm,$codeId);
+                      }else {
+                        // aqui existe la categoria pero no el año ni la galeria
+                        $this->addIndividualCategory($grupos,$oldCategoryNorm,$oldGalery,3,$galeria,$type);
+                        break;
+                      }
+                    }elseif (count($galeria->ParentGroups) < 3) {
+                      // dump("esto siginifca que tengo que crear el archivo solo con el año");
+                      $this->addIndividualCategory($grupos,$oldCategoryNorm,null,1,$galeria,$type);
+                      break;
+                    }
+                  }else {
+                    if (!empty($oldYearNorm)) {
+                      $this->addIndividualCategory($grupos,$oldCategory,$oldGalery,4,$galeria,$type);
+                      break;
+                    }elseif (count($galeria->ParentGroups) < 3) {
+                      // dump("esto siginifca que tengo que crear el archivo solo con la primera galeria");
+                      $this->addIndividualCategory($grupos,$oldCategory,null,2,$galeria,$type);
+                      break;
+                    }
+                  }
+                }else {
+                  if (!empty($oldYearNorm)) {
+                    $this->addIndividualCategory($grupos,$oldCategory,$oldGalery,4,$galeria,$type);
+                    break;
+                  }elseif (count($galeria->ParentGroups) < 3) {
+                    // dump("esto siginifca que tengo que crear el archivo solo con la primera galeria y el año");
+                    $this->addIndividualCategory($grupos,$oldCategory,null,2,$galeria,$type);
+                    break;
+                  }
+                }
+                // dump($oldGalery);
+              }
+              $i++;
+            }
+            return;
+          }
           $pushGrupo= $grupos;
           $titleNorm= $this->normalizeText($galeria->Title);
           $newGrupo=[
@@ -577,6 +812,110 @@ class DefaultController extends AbstractController
           header("Status: 301 Moved Permanently");
           header("Location: /".$codeId."/".$subCategori."/".$titleNorm);
         }
+      }
+    }
+
+    public function addIndividualCategory($grupos,$oldGalleryCategory,$oldGalleryYear="",$depth=0,$actualGalery=[],$actualType=2,$subCategori="",$subSubCategori=""){
+      if ($depth==1) {
+        $pushGrupo= $grupos;
+        $newTitleNorm= $this->normalizeText($actualGalery->Title);
+        $newCodeId= str_replace("https://fotos.chicmagazine.com.mx/f","",$actualGalery->PageUrl);
+        $addYear=[
+          "titulo"=>$newTitleNorm,
+          "codeId"=>$newCodeId,
+          "type"=>$actualType
+        ];
+        $pushGrupo[$oldGalleryCategory]["year"][$newTitleNorm]= $addYear;
+        $grupos = json_encode($pushGrupo);
+        $file = './bundles/camusassets/grupos.json';
+        file_put_contents($file, $grupos);
+        header("Status: 301 Moved Permanently");
+        header("Location: /".$oldGalleryCategory."/".$newTitleNorm);
+        exit;
+      }elseif ($depth==2) {
+        $pushGrupo= $grupos;
+        $oldGCTitleNorm= $this->normalizeText($oldGalleryCategory->Title);
+        $newTitleNorm= $this->normalizeText($actualGalery->Title);
+        $oldGCCodeId= str_replace("https://fotos.chicmagazine.com.mx/f","",$oldGalleryCategory->PageUrl);
+        $newCodeId= str_replace("https://fotos.chicmagazine.com.mx/f","",$actualGalery->PageUrl);
+        $newGrupo=[
+          "titulo"=>$oldGCTitleNorm,
+          "codeId"=>$oldGCCodeId,
+          "type"=>2,
+          "year"=> [
+            $newTitleNorm=>[
+              "titulo"=>$newTitleNorm,
+              "codeId"=>$newCodeId,
+              "type"=>$actualType
+            ]
+          ]
+        ];
+        $pushGrupo[$oldGCTitleNorm]= $newGrupo;
+        $grupos = json_encode($pushGrupo);
+        $file = './bundles/camusassets/grupos.json';
+        file_put_contents($file, $grupos);
+        header("Status: 301 Moved Permanently");
+        header("Location: /".$oldGCTitleNorm."/".$newTitleNorm);
+        exit;
+      } elseif ($depth==3) {
+        $pushGrupo= $grupos;
+        $oldGYTitleNorm= $this->normalizeText($oldGalleryYear->Title);
+        $newTitleNorm= $this->normalizeText($actualGalery->Title);
+        $oldGYCodeId= str_replace("https://fotos.chicmagazine.com.mx/f","",$oldGalleryYear->PageUrl);
+        $newCodeId= str_replace("https://fotos.chicmagazine.com.mx/p","",$actualGalery->PageUrl);
+        $addYear=[
+          "titulo"=>$oldGYTitleNorm,
+          "codeId"=>$oldGYCodeId,
+          "type"=>2,
+          "gallery"=> [
+            $newTitleNorm=>[
+              "titulo"=>$newTitleNorm,
+              "codeId"=>$newCodeId,
+              "type"=>$actualType
+            ]
+          ]
+        ];
+        $pushGrupo[$oldGalleryCategory]["year"][$oldGYTitleNorm]= $addYear;
+        $grupos = json_encode($pushGrupo);
+        $file = './bundles/camusassets/grupos.json';
+        file_put_contents($file, $grupos);
+        header("Status: 301 Moved Permanently");
+        header("Location: /".$oldGalleryCategory."/".$oldGYTitleNorm."/".$newTitleNorm);
+        exit;
+      }elseif ($depth==4) {
+        $pushGrupo= $grupos;
+        $oldGCTitleNorm= $this->normalizeText($oldGalleryCategory->Title);
+        $oldGYTitleNorm= $this->normalizeText($oldGalleryYear->Title);
+        $newTitleNorm= $this->normalizeText($actualGalery->Title);
+        $oldGCCodeId= str_replace("https://fotos.chicmagazine.com.mx/f","",$oldGalleryCategory->PageUrl);
+        $oldGYCodeId= str_replace("https://fotos.chicmagazine.com.mx/f","",$oldGalleryYear->PageUrl);
+        $newCodeId= str_replace("https://fotos.chicmagazine.com.mx/p","",$actualGalery->PageUrl);
+        $addYear=[
+          "titulo"=>$oldGCTitleNorm,
+          "codeId"=>$oldGCCodeId,
+          "type"=>2,
+          "year"=>[
+            $oldGYTitleNorm=>[
+              "titulo"=>$oldGYTitleNorm,
+              "codeId"=>$oldGYCodeId,
+              "type"=>2,
+              "gallery"=> [
+                $newTitleNorm=>[
+                  "titulo"=>$newTitleNorm,
+                  "codeId"=>$newCodeId,
+                  "type"=>$actualType
+                ]
+              ]
+            ]
+          ]
+        ];
+        $pushGrupo[$oldGCTitleNorm]= $addYear;
+        $grupos = json_encode($pushGrupo);
+        $file = './bundles/camusassets/grupos.json';
+        file_put_contents($file, $grupos);
+        header("Status: 301 Moved Permanently");
+        header("Location: /".$oldGCTitleNorm."/".$oldGYTitleNorm."/".$newTitleNorm);
+        exit;
       }
     }
 
@@ -657,8 +996,28 @@ class DefaultController extends AbstractController
         '',
         $string
       );
+      $string = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $string);
       $string = strtolower($string);
       return $string;
+    }
+
+    public function getListParameters(){
+      $parameters= array(
+        'meta' => "",
+        'site_name' => "",
+        'topContenDisplay' => "block",
+        'site_short_domain' => "FotoChic",
+        'modules' => [],
+        'headerType' => 1,
+        'currentSection' => "",
+        'page' => 1,
+        'boardColor' => "#b10b1f",
+        'amp_domain' => "none",
+        'piano_domain' => "none",
+        'fileCSS'=> [],
+        'number' => 100
+      );
+      return $parameters;
     }
 
 }

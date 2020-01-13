@@ -1,6 +1,6 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[6],{
 
-/***/ 207:
+/***/ 203:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,9 +9,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var load_script__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(208);
+/* harmony import */ var load_script__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(204);
 /* harmony import */ var load_script__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(load_script__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _CamusGlobalComponents_FloatPlayer_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(209);
+/* harmony import */ var _CamusGlobalComponents_FloatPlayer_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(205);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -250,7 +250,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 208:
+/***/ 204:
 /***/ (function(module, exports) {
 
 
@@ -322,7 +322,7 @@ function ieOnEnd (script, cb) {
 
 /***/ }),
 
-/***/ 209:
+/***/ 205:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

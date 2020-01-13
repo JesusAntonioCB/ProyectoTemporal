@@ -5,13 +5,13 @@
     <link rel="preload" href="{{ asset('/bundles/camusassets/scss/main/main.css') }}" as="style">
     <link rel="preload" href="{{ asset('/bundles/camusassets/js/bundle/mainbundle.js') }}" as="script">
     {% block GTM %}
-    <script>
+    {# <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-NZ2KQ2J');
-    </script>
+    </script> #}
     {% endblock %}
 
     <meta charset="utf-8">
@@ -47,7 +47,7 @@
         {% endif %}
       {% endif %}
     {% endif %}
-    <script>
+    {# <script>
       var googletag = googletag || {};
       googletag.cmd = googletag.cmd || [];
       googletag.cmd.push(function() {
@@ -91,19 +91,19 @@
         {% endif %}
         googletag.enableServices();
       });
-    </script>
+    </script> #}
   </head>
   <body class="noJs">
 
     <!-- Google Tag Manager (noscript) -->
-    <noscript>
+    {# <noscript>
       <iframe
               src="https://www.googletagmanager.com/ns.html?id=GTM-NZ2KQ2J"
               height="0"
               width="0"
               style="display:none;visibility:hidden">
       </iframe>
-    </noscript>
+    </noscript> #}
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Header -->
@@ -161,12 +161,46 @@
           </div>
         </div>
 
-        <div class="title-top-content">
-            <span>{{site_name}}</span>
+        {# <div class="title-top-content">
+          <span>{{site_name}}</span>
           </h1>
-      </div>
+        </div> #}
     </div>
-    <div class="body-content">
+     <div class="body-content">
+      <div class="folder-info-content" style="display:{{isRuteContentHiden}}">
+        <div class="rute-info">
+        {% set i = 0 %}
+        {% for rute in ruteInfo %}
+          {% if i >= 1 %}
+            {% if rute.slug == "#" %}
+              » <span class="text disable">{{rute.titulo}}</span>
+              {% else %}
+                » <a href="{{ rute.slug }}" class="text">{{rute.titulo}}</a>
+            {% endif %}
+            {% else %}
+              <span class="text disable">{{rute.titulo}}</span>
+          {% endif %}
+          {% set i = i + 1 %}
+        {% endfor %}
+        </div>
+        <div class="folder-info" style="display:{{isFolderContentHiden}}">
+          <div class="text gallery-info">
+          <span>
+            Galerías <b>{{galleryCount}}</b>
+          </span>
+          </div>
+          <div class="text collection-info">
+            <span>
+              Colecciones <b>{{collectionCount}}</b>
+            </span>
+          </div>
+          <div class="text grup-info">
+            <span>
+              Grupos <b>{{subGroupCount}}</b>
+            </span>
+          </div>
+        </div>
+      </div>
       <div class="content bcontent">
         {% block body %}
         {% endblock %}
@@ -199,7 +233,7 @@
     <script type="application/javascript" src="{{ asset('/bundles/camusassets/js/bundle/mainbundle.js') }}" defer></script>
 
     <!-- BrightCove -->
-    <script type="text/javascript">
+    {# <script type="text/javascript">
       var limitSecs = 5;
       var iSec = 0;
       function removecssfile(id){
@@ -216,10 +250,10 @@
         }
       }
       removecssfile('#myFontAwesome');
-    </script>
+    </script> #}
 
     <!-- Google -->
-    <script>
+    {# <script>
       function cargarGoogleTagServices() {
         var e = document.createElement('script');
         e.setAttribute('language', 'javascript');
@@ -230,10 +264,10 @@
       }
       var oldonloadGpt = window.onload;
       window.onload = (typeof window.onload != "function") ? cargarGoogleTagServices(): function() { oldonloadGpt(); cargarGoogleTagServices(); };
-    </script>
+    </script> #}
 
     <!-- Piano -->
-    <script>
+    {# <script>
         (function(src){
             var a=document.createElement("script");
             a.type="text/javascript";
@@ -243,10 +277,10 @@
             b.parentNode.insertBefore(a,b)
         })("{{ piano_domain }}");
         tp = window.tp || [];
-    </script>
+    </script> #}
 
     <!-- Facebook -->
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v4.0"></script>
+    {# <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v4.0"></script> #}
   </body>
 </html>

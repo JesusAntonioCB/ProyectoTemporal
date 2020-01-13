@@ -6,10 +6,10 @@ import Header from "./CamusGlobalComponents/Header.js";
 import Menu from "./CamusGlobalComponents/Menu.js";
 import { shareSelectedText } from "./CamusGlobalComponents/ShareText.js";
 //piano
-import "./CamusGlobalComponents/piano/PianoLogin.js";
-import "./CamusGlobalComponents/piano/PianoLogout.js";
-import "./CamusGlobalComponents/piano/PianoRegister.js";
-import "./CamusGlobalComponents/piano/PianoProfile.js";
+// import "./CamusGlobalComponents/piano/PianoLogin.js";
+// import "./CamusGlobalComponents/piano/PianoLogout.js";
+// import "./CamusGlobalComponents/piano/PianoRegister.js";
+// import "./CamusGlobalComponents/piano/PianoProfile.js";
 import ModuleShareButtons from "./CamusGlobalComponents/ModuleShareButtons.jsx";
 
 
@@ -32,80 +32,80 @@ $.fn.placeholderWarn = function (textWarn, modal) {
 class Main extends React.Component {
     constructor(props) {
         super(props);
-        this.facebookSDK = $('script[src*="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v4.0"]');
+        // this.facebookSDK = $('script[src*="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v4.0"]');
         this.initialize();
     }
 
     initialize() {
-        window.fbAsyncInit = () => {
-            FB.init({
-                appId: '604118326773630',
-                status: false,
-                cookie: false,
-                xfbml: true,
-                version: 'v4.0'
-            });
+        // window.fbAsyncInit = () => {
+        //     FB.init({
+        //         appId: '604118326773630',
+        //         status: false,
+        //         cookie: false,
+        //         xfbml: true,
+        //         version: 'v4.0'
+        //     });
+        //
+        //     FB.Event.subscribe('xfbml.render', function () {
+        //         if ($(".nd-comments").length > 0) {
+        //             $(".nd-comments.loading-comments").removeClass("loading-comments").addClass("finished");
+        //         }
+        //     });
+        // };
 
-            FB.Event.subscribe('xfbml.render', function () {
-                if ($(".nd-comments").length > 0) {
-                    $(".nd-comments.loading-comments").removeClass("loading-comments").addClass("finished");
-                }
-            });
-        };
+        // $.when($.ajax("https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v4.0"))
+        //     .then((data, textStatus, jqXHR) => {
+        //         if (jqXHR.status == 200) {
+        //             window.fbAsyncInit();
+        //         }
+        //     });
 
-        $.when($.ajax("https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v4.0"))
-            .then((data, textStatus, jqXHR) => {
-                if (jqXHR.status == 200) {
-                    window.fbAsyncInit();
-                }
-            });
-
-        tp.push(["init", function () {
-            tp = window.tp || [];
-            if (tp.pianoId.isUserValid()) {
-                var userData = tp.pianoId.getUser(),
-                    nameContainer = $('.btn-login'),
-                    exitContainer = $('.btn-register');
-                window.value = true;
-                nameContainer.removeClass('btn-login').addClass('btn-profileUser').html('<a href="/suscripciones/perfil">Hola, ' + userData.given_name + ' ' + userData.family_name + '</a>').unbind();
-                exitContainer.removeClass('btn-register').addClass('btn-exit').text('Salir');
-
-                tp.pianoId.init({
-                    loggedOut: function () {
-                        if (window.value === true) {
-                            alert("Has cerrado sesión");
-                            window.value = false;
-                            if (window.location.href.indexOf("suscripciones/perfil") > -1 || window.location.href.indexOf("suscripciones") > -1) {
-                                document.location.href = "/";
-                            } else {
-                                location.reload();
-                            }
-                        }
-                    }
-                });
-
-                if (exitContainer.hasClass("btn-exit")) {
-                    exitContainer.on("click", function () {
-                        tp.user.logout();
-                    });
-                }
-            } else if (!tp.user.isUserValid()) {
-                // If URL has reset_token parameter
-                var tokenMatch = location.search.match(/reset_token=([A-Za-z0-9]+)/);
-                if (tokenMatch) {
-                    // Get value of the token
-                    var token = tokenMatch[1];
-                    // Present password reset form with the found token
-                    tp.pianoId.show({
-                        showCloseButton: false,
-                        'resetPasswordToken': token, loggedIn: function () {
-                            // Once user logs in - refresh the page
-                            location.reload();
-                        }
-                    });
-                }
-            }
-        }]);
+        // tp.push(["init", function () {
+        //     tp = window.tp || [];
+        //     if (tp.pianoId.isUserValid()) {
+        //         var userData = tp.pianoId.getUser(),
+        //             nameContainer = $('.btn-login'),
+        //             exitContainer = $('.btn-register');
+        //         window.value = true;
+        //         nameContainer.removeClass('btn-login').addClass('btn-profileUser').html('<a href="/suscripciones/perfil">Hola, ' + userData.given_name + ' ' + userData.family_name + '</a>').unbind();
+        //         exitContainer.removeClass('btn-register').addClass('btn-exit').text('Salir');
+        //
+        //         tp.pianoId.init({
+        //             loggedOut: function () {
+        //                 if (window.value === true) {
+        //                     alert("Has cerrado sesión");
+        //                     window.value = false;
+        //                     if (window.location.href.indexOf("suscripciones/perfil") > -1 || window.location.href.indexOf("suscripciones") > -1) {
+        //                         document.location.href = "/";
+        //                     } else {
+        //                         location.reload();
+        //                     }
+        //                 }
+        //             }
+        //         });
+        //
+        //         if (exitContainer.hasClass("btn-exit")) {
+        //             exitContainer.on("click", function () {
+        //                 tp.user.logout();
+        //             });
+        //         }
+        //     } else if (!tp.user.isUserValid()) {
+        //         // If URL has reset_token parameter
+        //         var tokenMatch = location.search.match(/reset_token=([A-Za-z0-9]+)/);
+        //         if (tokenMatch) {
+        //             // Get value of the token
+        //             var token = tokenMatch[1];
+        //             // Present password reset form with the found token
+        //             tp.pianoId.show({
+        //                 showCloseButton: false,
+        //                 'resetPasswordToken': token, loggedIn: function () {
+        //                     // Once user logs in - refresh the page
+        //                     location.reload();
+        //                 }
+        //             });
+        //         }
+        //     }
+        // }]);
 
         $('body').removeClass('noJs');
         $("[contenteditable=true]").removeAttr("contenteditable");
