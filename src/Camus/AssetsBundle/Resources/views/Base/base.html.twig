@@ -178,7 +178,7 @@
                 » <a href="{{ rute.slug }}" class="text">{{rute.titulo}}</a>
             {% endif %}
             {% else %}
-              <span class="text disable">{{rute.titulo}}</span>
+              <a href="{{ rute.slug }}" class="text">{{rute.titulo}}</a>
           {% endif %}
           {% set i = i + 1 %}
         {% endfor %}
@@ -186,17 +186,17 @@
         <div class="folder-info" style="display:{{isFolderContentHiden}}">
           <div class="text gallery-info">
           <span>
-            Galerías <b>{{galleryCount}}</b>
+        Galerías <b> {% if galleryCount is defined and galleryCount is not empty %} {{galleryCount}} {% endif %} </b>
           </span>
           </div>
           <div class="text collection-info">
             <span>
-              Colecciones <b>{{collectionCount}}</b>
+          Colecciones <b> {% if collectionCount is defined and collectionCount is not empty %} {{collectionCount}} {% endif %} </b>
             </span>
           </div>
           <div class="text grup-info">
             <span>
-              Grupos <b>{{subGroupCount}}</b>
+          Grupos <b>{% if subGroupCount is defined and subGroupCount is not empty %} {{subGroupCount}} {% endif %}</b>
             </span>
           </div>
         </div>

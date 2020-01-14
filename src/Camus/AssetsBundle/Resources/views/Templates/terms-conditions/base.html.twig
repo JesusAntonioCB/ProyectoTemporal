@@ -1,4 +1,4 @@
-{% extends 'Camus\AssetsBundle:Base:base.html.twig' %}
+{% extends '@CamusAssets/Base/base.html.twig' %}
 
 {% if currentSection == "/contactanos" %}
   {% set template = "contact-us" %}
@@ -108,7 +108,7 @@
             <div id="my-account"></div>
             {#<h4 class="user-data-title">NEWSLETTER</h4>
             <div class="newsletterContainer">
-              {{ include ("Application\Camus\AssetsBundle:Templates:terms-conditions/newsletter.html.twig") }}
+              {{ include ("@CamusAssets/Templates/terms-conditions/newsletter.html.twig") }}
             </div>
             <h4 class="user-data-title">DISPOSITIVOS MÓVILES</h4>
             <ul class="sesiones">
@@ -137,7 +137,7 @@
           </div>
         </div>
         <div class="block-right">
-          {{ include("Application\Camus\AssetsBundle:Templates:terms-conditions/"~template~".html.twig") }}
+          {{ include("@CamusAssets/Templates/terms-conditions/"~template~".html.twig") }}
         </div>
         <div class="block-left">
           <div class="block-header">

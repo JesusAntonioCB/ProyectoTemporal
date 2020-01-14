@@ -109,6 +109,55 @@ class DefaultController extends AbstractController
     }
 
     /**
+    * @Route("/contact-form")
+    */
+    public function contactFormAction(){
+      if(isset($_GET["name"]) && isset($_GET["email"])){
+        $message=stripslashes($_GET["message"]);
+        $secret="6Lfk2aAUAAAAAIUOGaJd9iJ9uQED8-db4Ubr5n2S";
+        $response=$_GET["captcha"];
+        $verify=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secret}&response={$response}");
+          $captcha_success=json_decode($verify);
+          if ($captcha_success->success==false) {
+            return new JsonResponse("False");
+          }
+          else if ($captcha_success->success==true) {
+            $name = $_GET["name"];
+            $email = $_GET["email"];
+            $departament = $_GET["departament"];
+            $place = $_GET["place"];
+            $message = $_GET["message"];
+
+            $departamentos = array(
+              "ventas"=>array('Ventas', 'andrea.moreno@milenio.com'),
+              /*"rhdf"=>array('Admon./Recursos Humanos', 'luis.garcia@milenio.com'),
+              "redaccion"=>array('Redacción', 'reporteros.df@milenio.com,monitoreo.df@milenio.com'),
+              "mileniotv" => array("MilenioTV", 'hector.zamarron@milenio.com,roberto.velazquez@milenio.com'),
+              "susc"=>array('Suscripciones', 'suscripciones@milenio.com'),
+              "moviles"=>array('Aplicaciones Móviles', 'moviles@operaciones.milenio.com'),*/
+            );
+
+            $departamento =  $departamentos[$departament];
+
+            $email_to = $departamento[1];
+            $email_subject = "Forma de contacto milenio.com - plaza";
+
+            $email_message = "Información del usuario\n";
+            $email_message .= "Nombre: ".$name."\n";
+            $email_message .= "Email: ".$email."\n";
+            $email_message .= "Plaza: ".$place."\n";
+            $email_message .= "El usuario envio el siguiente mensaje: \n".$message."\n";
+
+            $headers = 'From: '.$email."\r\n".
+            'Reply-To: '.$email."\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+            @mail($email_to, $email_subject, $email_message, $headers);
+            return new JsonResponse("True");
+          }
+      }
+    }
+
+    /**
     * @Route("/{gallery}", name="gallery")
     * @Route("/{gallery}/{year}", name="gallery_year")
     * @Route("/{gallery}/{year}/{fullGalery}", name="gallery_year_gallery")
@@ -122,6 +171,21 @@ class DefaultController extends AbstractController
       $resultFileCss = [];
       $ruteInfo = [];
       $pageTitle="";
+      $termsSections = array("/aviso-legal-y-de-privacidad", "/contactanos", "/suscripciones/perfil"); // Terms sections
+      if(in_array($slug, $termsSections)){
+        return $this->render('@CamusAssets/Templates/terms-conditions/base.html.twig',
+        array(
+          'boardColor' => '#b10b1f',
+          'site_domain' => 'https://fotos.chicmagazine.com.mx',
+          'headerType' => 9,
+          'isRuteContentHiden' => "none",
+          'isFolderContentHiden' => "none",
+          'ruteInfo' => [],
+          'amp_domain' => "none",
+          'piano_domain' => "none",
+          'currentSection' => $slug
+        ));
+      }
       $grupos = file_get_contents("./bundles/camusassets/grupos.json");
       $json_grupos= json_decode($grupos, true);
       $parameters=$this->getListParameters();
