@@ -1086,9 +1086,8 @@ $circle-white-ratio-small: 24px;
 }
 
 .folder-info-content{
+  margin-bottom: 10px!important;
   .rute-info{
-    padding-left: 20px;
-    padding-bottom: 0px;
     line-height: 31px;
     letter-spacing: 1px;
     font-size: 12px;
@@ -1104,7 +1103,6 @@ $circle-white-ratio-small: 24px;
     }
   }
   .folder-info{
-    padding-left: 20px;
     .text{
       text-align: left;
       margin-right: 10px;

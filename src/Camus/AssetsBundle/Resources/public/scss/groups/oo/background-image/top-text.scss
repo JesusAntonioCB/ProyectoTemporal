@@ -4,18 +4,18 @@
 @import "../../../modules/main-fonts-mixin.scss";
 @import "../../../modules/main-containers-mixin.scss";
 .bcontent{
-  column-count: 5;
+  column-count: 3;
   @include three-column{
-    column-count: 5;
-  }
-  @include skyscraper-media{
-    column-count: 4;
-  }
-  @include two-column{
     column-count: 3;
   }
-  @include one-column{
+  @include skyscraper-media{
     column-count: 2;
+  }
+  @include two-column{
+    column-count: 2;
+  }
+  @include one-column{
+    column-count: 1;
   }
   .contenedor-notas-block{
     display: block !important;
@@ -23,7 +23,7 @@
 }
 .oo-top-text{
   width: 100%;
-  max-width: 350px;
+  // max-width: 350px;
   height: auto;
   margin: auto;
   margin-bottom: 15px;
@@ -135,13 +135,32 @@
 
 .top-content{
   display: block !important;
+  max-width: 1284px;
+  margin: auto;
+  @include three-column{
+    max-width: 966px;
+  }
+  @include skyscraper-media{
+    max-width: 966px;
+  }
+  @include two-column{
+    max-width: 618px;
+  }
+  @include one-column{
+    max-width: 320px;
+  }
 }
 
 .body-content{
-  margin-top: 30px !important;
-  padding: 30px!important;
+  margin-top: 27px !important;
   .content{
     padding: 0px;
+  }
+}
+.rute-info{
+  .text{
+    position: relative;
+    top: -28px;
   }
 }
 

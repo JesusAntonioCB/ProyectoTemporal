@@ -1,8 +1,11 @@
+.content-footer{
+  background-color: $color-gray-white;
+}
 #main-footer{
   position: relative;
-  // position: fixed;
-  // bottom: 0;
-  // width: 100%;
+  max-width: 1284px;
+  margin: auto;
+  height: 120px;
   background-color: $color-gray-white;
   .head, .content{
     max-width: 966px;
@@ -35,7 +38,7 @@
       .logo-container{
         float: left;
         height: 100%;
-        transform: translate(58px, -36px);
+        transform: translate(-25px, -36px);
         .img-container, .double-img{
           display: inline-block;
           text-align: center;
@@ -89,15 +92,6 @@
           }
         }
       }
-      &:after{
-        content: '';
-        display: table;
-        clear: both;
-      }
-      .footer-red-social{
-        .icon-face{
-        }
-      }
       @include skyscraper-media{
         .sections{
           transform: translate(-83px, 13px);
@@ -144,7 +138,7 @@
   .content{
     .rights-reserved{
       float: left;
-      transform: translateY(-20px);
+      transform: translateY(-7px);
       .copyright, .comscore{
         display: inline-block;
         vertical-align: middle;
@@ -185,7 +179,8 @@
     }
     .social-network{
       position: absolute;
-      left: 48%;
+      left: 50%;
+      bottom: 10px;
       .text{
         float: left;
         margin-right: 20px;
@@ -196,34 +191,43 @@
           opacity: 0.4;
         }
       }
-      .networks{
-        float: right;
-        .fa{
-          width: 40px;
-          margin-bottom: 2px;
-          padding: 11px 0;
-          font-size: 18px;
-          text-align: center;
-          text-decoration: none;
-          color: $color-white;
-          background-color: $color-nobel;
-        }
-      }
-      &:after{
-        content: '';
-        display: table;
-        clear: both;
-      }
     }
-    &:after{
-      content: '';
-      display: table;
-      clear: both;
+  }
+  .footer-red-social{
+    position: absolute;
+    right: 10px;
+    bottom: 55%;
+    .fa-twitter-square{
+      font-size: 25px;
+      transform: translate(-5px, 0px);
+      cursor: pointer;
+    }
+    .fa-instagram{
+      font-size: 25px;
+      transform: translate(-3px, 0px);
+      cursor: pointer;
+    }
+    .fa-facebook-official{
+      font-size: 25px;
+      transform: translate(0px, 0px);
+      cursor: pointer;
     }
   }
   @include one-column{
     .footer-red-social{
       bottom: 69% !important;
     }
+  }
+  @include three-column{
+    max-width: 966px;
+  }
+  @include skyscraper-media{
+    max-width: 966px;
+  }
+  @include two-column{
+    max-width: 618px;
+  }
+  @include one-column{
+    max-width: 320px;
   }
 }

@@ -564,7 +564,7 @@ class DefaultController extends AbstractController
           "site_name"=> (isset($resultGroup->Title)) ? "FotoChic by chic Magazine | ".$resultGroup->Title: 'FotoChic by chic Magazine',
           "modules"=>$modules,
           "isRuteContentHiden"=>"block",
-          "isFolderContentHiden"=>"block ruby",
+          "isFolderContentHiden"=>"flex",
           "galleryCount"=> (isset($resultGroup->GalleryCount)) ? $resultGroup->GalleryCount: 0,
           "collectionCount"=> (isset($resultGroup->CollectionCount)) ? $resultGroup->CollectionCount: 0,
           "subGroupCount"=> (isset($resultGroup->SubGroupCount)) ? $resultGroup->SubGroupCount: 0

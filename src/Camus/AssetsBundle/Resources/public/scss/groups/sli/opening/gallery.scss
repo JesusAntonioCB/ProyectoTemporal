@@ -9,6 +9,7 @@ html,body{
 .content{
   padding: 0px!important;
   margin-bottom: 0px!important;
+  max-width: 100% !important;
 }
 #main-header{
   display: none!important;
@@ -39,6 +40,13 @@ html,body{
     .panel-shop{
       height: 210px;
       width: 401px;
+      .fa-times{
+        position: absolute;
+        transform: translate(10px, 7px);
+        font-size: 16px;
+        cursor: pointer;
+        color: #575757;
+      }
       .panel-shop-logo{
         width: 314px;
         margin-top: 30px;
@@ -101,9 +109,6 @@ html,body{
           position: relative;
           top: -28px;
           right: -336px;
-          background-image: url(https://cdn.zenfolio.net/zf/img/layout/quickshop/add-icon.svg);
-          background-repeat: no-repeat;
-          height: 35px;
         }
       }
     }
@@ -127,6 +132,27 @@ html,body{
         border-radius: 4px;
         font-size: 16px;
       }
+    }
+  }
+  .gallery-icons{
+    .fa-arrow-left{
+      color: #ccc;
+      font-size: 25px;
+      transform: translate(10px, 15px);
+      float: left;
+      cursor: pointer;
+    }
+    .fa-heart-o{
+      color: #ccc;
+      font-size: 30px;
+      transform: translate(-10px, 10px);
+      cursor: pointer;
+    }
+    .fa-share-alt{
+      color: #ccc;
+      font-size: 30px;
+      transform: translate(10px, 10px);
+      cursor: pointer;
     }
   }
   .gallery-nav{
@@ -174,7 +200,7 @@ html,body{
     width: 100%;
     overflow: hidden;
     max-width: 420px;
-    margin-top: 45px;
+    margin-top: 25px;
     .slick-list{
       height: inherit !important;
     }

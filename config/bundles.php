@@ -14,4 +14,5 @@ return [
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
     App\Camus\AssetsBundle\CamusAssetsBundle::class => ['all' => true],
     App\Camus\FrontEndBundle\CamusFrontEndBundle::class => ['all' => true],
+    Symfony\Bundle\WebServerBundle\WebServerBundle::class => ['dev' => true],
 ];
