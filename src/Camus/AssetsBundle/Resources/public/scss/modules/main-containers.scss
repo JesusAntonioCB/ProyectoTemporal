@@ -1084,41 +1084,6 @@ $circle-white-ratio-small: 24px;
     }
   };
 }
-
-.folder-info-content{
-  margin-bottom: 10px!important;
-  .rute-info{
-    line-height: 31px;
-    letter-spacing: 1px;
-    font-size: 12px;
-    font-weight: normal;
-    font-style: normal;
-    text-transform: uppercase;
-    color: $color-gray-sky;
-    .disable{
-      color: $color-gray-sky !important;
-    }
-    .text{
-      color: $color-pencil-gray;
-    }
-  }
-  .folder-info{
-    .text{
-      text-align: left;
-      margin-right: 10px;
-      padding: 2px 0px;
-      color: $color-gray-sky;
-      b{
-        font-weight: normal;
-        color: $color-pencil-gray;
-      }
-    }
-    .disable{
-      color: $color-gray-sky;
-    }
-  }
-}
-
 // .sn-stadistics {
 //   @include global-container-1c;
 // }

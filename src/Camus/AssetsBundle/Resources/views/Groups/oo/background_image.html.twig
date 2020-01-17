@@ -3,11 +3,13 @@
     <div class="media-container">
       <div class="image">
         <a {{ module.slug|linkConstruct|raw }}>
+        {% dump(module) %}
           {% if module.hasThumbnailClip == true %}
             {{ module.thumbnail|asImageClip(module.thumbnailClip, module.alt)|raw }}
           {% else %}
-            {{ module.thumbnail|asImage(module.alt)|raw }}
+            {{ module.thumbnail|asImage(module.alt,"tl",module,"300")|raw }}
           {% endif %}
+
         </a>
       </div>
       {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == "default" %}

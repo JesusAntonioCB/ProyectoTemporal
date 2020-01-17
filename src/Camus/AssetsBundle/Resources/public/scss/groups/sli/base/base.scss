@@ -39,6 +39,7 @@
     }
     .firms{
       //position: relative;
+      column-count: 4;
       white-space: nowrap;
       border-top: 2px solid $color-gray-white;
       .list-base, .sn-bottom-text-note, .sn-opinion-descriptive,.sn-opinion-horoscope, .sn-centered, .foot-text-note{
@@ -50,6 +51,15 @@
       }
       .slick-dots{
         height: 25px;
+      }
+      @include three-column{
+        column-count: 3;
+      }
+      @include two-column{
+        column-count: 2;
+      }
+      @include one-column{
+        column-count: 1;
       }
     }
   }

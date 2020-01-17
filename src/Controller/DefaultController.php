@@ -44,16 +44,41 @@ class DefaultController extends AbstractController
       $responseRender = $this->render('@CamusAssets/Content/content.html.twig', $parameters);
       return $responseRender;
     }
-    /**
-     * @Route("/lucky/number")
-     */
-    public function luckyAction()
-    {
-        $number = random_int(0, 100);
 
-        return $this -> render ( 'base/base2.html.twig' , [
-            'number' => $number ,
-        ]);
+    /**
+     * @Route("/eventos-recientes")
+     */
+    public function EventRecentAction(Request $request){
+      $slug = "";
+      $pushGrupo = [];
+      $modules = [];
+      $arrayCss = [];
+      $resultFileCss = [];
+      $ruteInfo = [];
+      $pageTitle = "";
+      $parameters=$this->getListParameters();
+      $user = $this->getParameter('zenfolioUser');
+      $dataUser= $this->getUserElements($user,$slug,2);
+      $this->getListModules($dataUser["modules"],$arrayCss);
+      if(count($arrayCss)){
+        $parameters["fileCSS"] = array_values(array_unique($arrayCss));
+      }
+      foreach ($dataUser as $key => $data) {
+        $parameters[$key]=$data;
+      }
+      $parameters["site_name"]= "FotoChic by chic Magazine | Eventos recientes";
+      $ruteInfo= [
+        [
+          'titulo'=>"INICIO",
+          'slug'=>"/"
+        ],[
+          'titulo'=>"Reciente",
+          'slug'=>"#"
+        ]
+      ];
+      $parameters["ruteInfo"]= $ruteInfo;
+      $responseRender = $this->render('@CamusAssets/Content/content.html.twig', $parameters);
+      return $responseRender;
     }
 
     /**
@@ -69,6 +94,7 @@ class DefaultController extends AbstractController
         $arrayCss = array();
         $resultFileCss = array();
         $this->getListModules($modules,$arrayCss);
+        dump($arrayCss);
         if(count($arrayCss)){
           $resultFileCss = array_values(array_unique($arrayCss));
         }
@@ -336,7 +362,7 @@ class DefaultController extends AbstractController
                         ]
                       ];
                       if ($type==1) {
-                        $dataGallery= $this->getGaleryElements($codeId,2,$slug);
+                        $dataGallery= $this->getGaleryElements($codeId,2,$slug,"full","true","",$ruteInfo);
                       }else {
                         $dataGallery= $this->getGroupElements($codeId,2,$slug);
                       }
@@ -431,132 +457,47 @@ class DefaultController extends AbstractController
       return $responseRender;
     }
 
-    public function getGalery($gallery){
-      $myXMLData = new MDZenfolioConnection;
-      $prueba= $myXMLData->getPhotoSetById($gallery);
-      $xml   = simplexml_load_string($prueba, 'SimpleXMLElement', LIBXML_NOCDATA);
-      $photos = $xml->Photos->Photo;
-
-      // dump($photos);
-      // foreach ($photos as $value) {
-      //   dump($value);
-      // }
-  		$xml = json_decode(json_encode((array)$xml), TRUE);
-      // dump($xml);
-      // die;
-      return $xml;
-      // dump($xml["Photos"]["Photo"]);
-      // $photos = $xml["Photos"]["Photo"];
-
-
-      //id de la galeria
-      //4041378296509351132
-
-      //equivalente en la pagina
-      //p107594972
-      $myXMLData = $myXMLData->getPhotoSetById("4041378296509351132");
-      // dump($myXMLData);
-      $xml = simplexml_load_string($myXMLData) or die("Error: Cannot create object");
-      // dump($xml);
-      $photos = $xml -> Photos -> Photo;
+    public function getUserElements($zenfolioUser,$slug,$type){
+      $client= new Client('fotoChic App/1.0 (https://fotos.chicmagazine.com.mx/)');
+      $modules = [];
+      // dump($groupId);
+      // $resultUser = $client->LoadPublicProfile($zenfolioUser);
+      $resultUser = $client->LoadGroupHierarchy($zenfolioUser);
+      dump($resultUser);
       die;
-      // if ($xml === false) {
-      //   echo "Failed loading XML: ";
-      //   foreach(libxml_get_errors() as $error) {
-      //       echo "<br>", $error -> message;
-      //   }
-      // } else {
-      // $photos = $xml -> Photos -> Photo;
-      // $dir = $xml -> Id . '-' . $xml -> Title;
-      // if (!file_exists($dir)) {
-      //   mkdir($dir, 0777, true);
-      // }
-      // echo $dir . PHP_EOL;
-      // for ($i = 0; $i < count($photos); $i++) {
-      //   $name = $photos[$i] -> Id . '-' . $photos[$i] -> FileName;
-      //   file_put_contents($dir . '/' . $photos[$i] -> FileName, file_get_contents($photos[$i] -> OriginalUrl));
-      //   echo PHP_EOL . 'downloaded--> '. $photos[$i] -> Title;// . PHP_EOL;
-      // }
-      // echo PHP_EOL . '------------ terminado ------------';
-      // }
+      if ($type == 1) {
+        return $resultUser;
+      }else {
+        if (!empty($resultUser->RecentPhotoSets)) {
+          foreach ($resultUser->RecentPhotoSets as $value) {
+            $imagenes=$this->getEstructure("sn_base","bottom_text",$value,"modulo",$slug,$resultGroup);
+            array_push($modules,$imagenes);
+          }
+        }
+        $dataGrup= [
+          "site_name"=> (isset($resultUser->Title)) ? "FotoChic by chic Magazine | ".$resultUser->Title: 'FotoChic by chic Magazine',
+          "modules"=>$modules,
+          "isRuteContentHiden"=>"block",
+          "isFolderContentHiden"=>"block ruby",
+          "galleryCount"=> (isset($resultUser->GalleryCount)) ? $resultUser->GalleryCount: 0,
+          "collectionCount"=> (isset($resultUser->CollectionCount)) ? $resultUser->CollectionCount: 0,
+          "subGroupCount"=> (isset($resultUser->SubGroupCount)) ? $resultUser->SubGroupCount: 0
+        ];
+        return $dataGrup;
+      }
     }
 
     public function getGroupElements($groupId, $type=1, $slug="", $level="full", $includeChildren="true"){
       $client= new Client('fotoChic App/1.0 (https://fotos.chicmagazine.com.mx/)');
       $modules = [];
-      // dump($groupId);
       $resultGroup = $client->LoadGroup($groupId, $level, $includeChildren);
-      // dump($resultGroup);
-      // die;
-      // $xml   = simplexml_load_string($resultGroup, 'SimpleXMLElement', LIBXML_NOCDATA);
-  		// $group = json_decode(json_encode((array)$xml), TRUE);
       if ($type == 1) {
         return $resultGroup;
       }else {
         if (!empty($resultGroup->Elements)) {
           foreach ($resultGroup->Elements as $value) {
-            $imagenes=[
-              "type"=> "sn_base",
-              "template"=> "bottom_text",
-                "id"=> 110,
-                "title"=> (isset($value->Title)) ? $value->Title: '',
-                "abstract"=> "",
-                "body"=> "",
-                "thumbnailClippingLarger"=> [
-                  "width"=> 600,
-                  "height"=> 341,
-                  "x"=> 0,
-                  "y"=> 13,
-                  "quality"=> 100,
-                  "id"=> 1989,
-                  "fileType"=> "image/jpeg",
-                  "publishedVersion"=> [
-                    "id"=> 8385,
-                    "title"=> "Bodas",
-                    "providerReference"=> "yuridia-caso-guapa-lucio-vestida.jpg"
-                  ],
-                  "src"=> (isset($value->TitlePhoto)) ? "http://".$value->TitlePhoto->UrlHost."".$value->TitlePhoto->UrlCore."-2.jpg": '',
-                ],
-                "media"=> [],
-                "heading"=> [],
-                "extraData"=> [
-                  "mediaTitle"=> "",
-                  "headingTitle"=> "",
-                  "mediaIconVisible"=> "hidden",
-                ],
-                "thumbnail"=> [
-                  "width"=> 318,
-                  "height"=> 373,
-                  "x"=> 251,
-                  "y"=> 0,
-                  "quality"=> 100,
-                  "id"=> 1988,
-                  "fileType"=> "image/jpeg",
-                  "publishedVersion"=> [
-                    "id"=> 8385,
-                    "title"=> "Bodas",
-                    "providerReference"=> "yuridia-caso-guapa-lucio-vestida.jpg"
-                  ],
-                  "src"=> (isset($value->TitlePhoto)) ? "http://".$value->TitlePhoto->UrlHost."".$value->TitlePhoto->UrlCore."-2.jpg": '',
-                ],
-                "content"=> [
-                  "id"=> 2260,
-                  "slug"=> str_replace("/todas-la-fotos","",$slug)."/".str_replace("https://fotos.chicmagazine.com.mx/","",$value->PageUrl),
-                  "xalokId"=> null,
-                  "author"=> null
-                ],
-                "clippings"=> [
-                  "default"=> [
-                    "window_width"=> 320,
-                    "width"=> 300
-                  ],
-                  "size_1272"=> [
-                    "window_width"=> 638,
-                    "width"=> 618
-                  ]
-                ],
-                "modules"=> []
-            ];
+            $pageUrl= "https://fotos.chicmagazine.com.mx";
+            $imagenes=$this->getEstructure("sn_base","bottom_text",$value,"modulo",$slug,$pageUrl);
             array_push($modules,$imagenes);
           }
         }
@@ -564,7 +505,7 @@ class DefaultController extends AbstractController
           "site_name"=> (isset($resultGroup->Title)) ? "FotoChic by chic Magazine | ".$resultGroup->Title: 'FotoChic by chic Magazine',
           "modules"=>$modules,
           "isRuteContentHiden"=>"block",
-          "isFolderContentHiden"=>"flex",
+          "isFolderContentHiden"=>"block ruby",
           "galleryCount"=> (isset($resultGroup->GalleryCount)) ? $resultGroup->GalleryCount: 0,
           "collectionCount"=> (isset($resultGroup->CollectionCount)) ? $resultGroup->CollectionCount: 0,
           "subGroupCount"=> (isset($resultGroup->SubGroupCount)) ? $resultGroup->SubGroupCount: 0
@@ -573,79 +514,34 @@ class DefaultController extends AbstractController
       }
     }
 
-    public function getGaleryElements($groupId, $type=1, $slug="", $level="full", $includeChildren="true", $comparateString=""){
+    public function getGaleryElements($groupId, $type=1, $slug="", $level="full", $includeChildren="true", $comparateString="",$ruteInfo=[]){
       $client= new Client('fotoChic App/1.0 (https://fotos.chicmagazine.com.mx/)');
       $modules = [];
       $resultGroup = $client->LoadPhotoSet($groupId, $level, $includeChildren);
-      // $xml   = simplexml_load_string($resultGroup, 'SimpleXMLElement', LIBXML_NOCDATA);
-  		// $group = json_decode(json_encode((array)$xml), TRUE);
       if ($type == 1) {
         return $resultGroup;
       }elseif ($type == 2) {
-        // dump($resultGroup);
         if (!empty($resultGroup->Photos)) {
           foreach ($resultGroup->Photos as $value) {
             $r = "";
-            $imagenes=[
-              "type"=> "oo_background_image",
-              "template"=> "top_text",
-                "id"=> 110,
-                "title"=> (isset($value->Title)) ? $value->Title: '',
-                "abstract"=> "",
-                "body"=> "",
-                "media"=> [],
-                "heading"=> [],
-                "extraData"=> [
-                  "mediaTitle"=> "",
-                  "headingTitle"=> "",
-                  "mediaIconVisible"=> "hidden"
-                ],
-                "thumbnail"=> [
-                  "width"=> 318,
-                  "height"=> 373,
-                  "x"=> 251,
-                  "y"=> 0,
-                  "quality"=> 100,
-                  "id"=> 1988,
-                  "fileType"=> "image/jpeg",
-                  "publishedVersion"=> [
-                    "id"=> 8385,
-                    "title"=> "Bodas",
-                    "providerReference"=> "yuridia-caso-guapa-lucio-vestida.jpg"
-                  ],
-                  "src"=> "http://".$value->UrlHost."".$value->UrlCore."-2.jpg"
-                ],
-                "content"=> [
-                  "id"=> 2260,
-                  "slug"=> $slug."/".str_replace($resultGroup->PageUrl."/","",$value->PageUrl),
-                  "xalokId"=> null,
-                  "author"=> null
-                ],
-                "clippings"=> [
-                  "default"=> [
-                    "window_width"=> 320,
-                    "width"=> 300
-                  ],
-                  "size_1272"=> [
-                    "window_width"=> 638,
-                    "width"=> 618
-                  ]
-                ],
-                "modules"=> []
-            ];
+            $pageUrl= $resultGroup->PageUrl;
+            $imagenes=$this->getEstructure("oo_background_image","top_text",$value,"modulo",$slug,$pageUrl);
+            // $imagenes=$this->getEstructure("eo_billboard","section_image_secondary",$value,"modulo",$slug,$pageUrl);
             array_push($modules,$imagenes);
           }
         }
         $dataGrup= [
-          "site_name"=> (isset($resultGroup->Title)) ? "FotoChic by chic Magazine | ".$resultGroup->Title: 'FotoChic by chic Magazine',
-          "modules"=>$modules,
-          "isRuteContentHiden"=>"block",
-          "isFolderContentHiden"=>"none",
-          "galleryCount"=> (isset($resultGroup->GalleryCount)) ? $resultGroup->GalleryCount: 0,
-          "collectionCount"=> (isset($resultGroup->CollectionCount)) ? $resultGroup->CollectionCount: 0,
-          "subGroupCount"=> (isset($resultGroup->SubGroupCount)) ? $resultGroup->SubGroupCount: 0
+          "site_name"=> "",
+          "extraData"=>[
+            "ruteInfo"=>$ruteInfo,
+            "folderInfo"=>[]
+          ],
         ];
-        return $dataGrup;
+        $modules=$this->getEstructure("sli_base","gallery",$modules,"categoria",null,$dataGrup);
+        $data= [
+          "modules"=>$modules
+        ];
+        return $data;
       }else {
         if (!empty($resultGroup->Photos)) {
           $media=[];
@@ -656,83 +552,11 @@ class DefaultController extends AbstractController
                 $imageActual = "active";
               }
             }
-            $tempoMedia=[
-              "id"=> $value->Id,
-              "xalokId"=> "",
-              "providerName"=> "camus.media.image_provider",
-              "fileType"=> (isset($value->MimeType)) ? $value->MimeType: '',
-              "publishedVersion"=> [
-                "id"=> $value->Id,
-                "title"=> (isset($value->Title)) ? $value->Title: '',
-                "providerReference"=> (isset($value->FileName)) ? $value->FileName: '',
-                "isActual"=> $imageActual,
-              ],
-              "src"=> "http://".$value->UrlHost."".$value->UrlCore."-4.jpg"
-            ];
+            $tempoMedia= $this->getEstructure(null,null,$value,"media",null,$imageActual);
             array_push($media,$tempoMedia);
             $imageActual=false;
           }
-          $carrusel= [
-            "type"=> "sli_opening",
-            "template"=> "gallery",
-            "title"=> "Vacía y con mala calidad del aire, así recibe la CdMx año",
-            "abstract"=> "El Sistema de Monitoreo Atmosférico informó que la calidad del aire en la Ciudad de México hoy va de regular a mala.",
-            "sizes"=> [
-              "template_1254"=> [
-                "width"=> 4,
-                "height"=> 1
-              ],
-              "template_1024"=> [
-                "width"=> 3,
-                "height"=> 1
-              ],
-              "template_720"=> [
-                "width"=> 2,
-                "height"=> 1
-              ],
-              "template_320"=> [
-                "width"=> 1,
-                "height"=> 1
-              ]
-            ],
-            "content"=> [
-              "id"=> null,
-              "slug"=> null,
-              "xalokId"=> null,
-              "column"=> null,
-              "publishedHour"=> null,
-              "publishedDate"=> "01-01-2020",
-              "author"=> [
-                "id"=> null,
-                "name"=> "Milenio Digital",
-                "media"=> [
-                  "src"=> "http://fotos.chicmagazine.com.mx/img/s/v-10/p3754851953-4.jpg"
-                ],
-                "slug"=> null
-              ]
-            ],
-            "modules"=> null,
-            "heading"=> [
-              "background"=> "rgb(51,51,51)",
-              "title"=> null
-            ],
-            "extra"=> [
-              "media"=> [
-                "icon"=> null,
-                "title"=> null
-              ],
-              "heading"=> [
-                "title"=> null
-              ]
-            ],
-            "show"=> [
-              "board"=> false,
-              "content"=> false,
-              "inner"=> false
-            ],
-            "subtitle"=> "",
-            "media"=> $media
-          ];
+          $carrusel= $this->getEstructure("sli_opening","gallery",$media,"slider",null);
           array_push($modules,$carrusel);
         }
         $dataGrup= [
@@ -995,20 +819,18 @@ class DefaultController extends AbstractController
         1 => $moduleType
       );
     }
-    public function getListModules($modules,& $arrayModules){
-      foreach ($modules as $module) {
-        $type = $this->splitTemplate($module["type"]);
-        $template = $module["template"];
-        // $template = $this->splitTemplate($module->template);
-        // if($template[0] == end($type[1])){
-        //   $template = $template[1];
-        // }else{
-        //   $template = implode("-", $template);
-        // }
-        $fileCSS = $type[0]."/".str_replace("_","-",$type[1])."/".str_replace("_","-",$template).".css";
-        array_push($arrayModules,$fileCSS);
-        // dump($arrayModules);
-        // $this->getListModules($module,$arrayModules);
+    public function getListModules($modules, &$arrayModules){
+      // dump($modules);
+      if (is_array($modules)) {
+        foreach ($modules as $module) {
+          if (isset($module['type'])) {
+              $type = $this->splitTemplate($module['type']);
+              $template = $module['template'];
+              $fileCSS = $type[0] . "/" . str_replace("_", "-", $type[1]) . "/" . str_replace("_", "-", $template) . ".css";
+              array_push($arrayModules, $fileCSS);
+          }
+          $this->getListModules($module, $arrayModules);
+        }
       }
     }
 
@@ -1063,6 +885,176 @@ class DefaultController extends AbstractController
       $string = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $string);
       $string = strtolower($string);
       return $string;
+    }
+
+    public function getEstructure($type,$template,$item,$depth,$slug="",$dataextra=""){
+      if ($depth=="slider") {
+        $carrusel= [
+          "type"=> $type,
+          "template"=> $template,
+          "title"=> "Vacía y con mala calidad del aire, así recibe la CdMx año",
+          "abstract"=> "El Sistema de Monitoreo Atmosférico informó que la calidad del aire en la Ciudad de México hoy va de regular a mala.",
+          "sizes"=> [
+            "template_1254"=> [
+              "width"=> 4,
+              "height"=> 1
+            ],
+            "template_1024"=> [
+              "width"=> 3,
+              "height"=> 1
+            ],
+            "template_720"=> [
+              "width"=> 2,
+              "height"=> 1
+            ],
+            "template_320"=> [
+              "width"=> 1,
+              "height"=> 1
+            ]
+          ],
+          "content"=> [
+            "id"=> null,
+            "slug"=> null,
+            "xalokId"=> null,
+            "column"=> null,
+            "publishedHour"=> null,
+            "publishedDate"=> "01-01-2020",
+            "author"=> [
+              "id"=> null,
+              "name"=> "Milenio Digital",
+              "media"=> [
+                "src"=> "http://fotos.chicmagazine.com.mx/img/s/v-10/p3754851953-4.jpg"
+              ],
+              "slug"=> null
+            ]
+          ],
+          "modules"=> null,
+          "heading"=> [
+            "background"=> "rgb(51,51,51)",
+            "title"=> null
+          ],
+          "extra"=> [
+            "media"=> [
+              "icon"=> null,
+              "title"=> null
+            ],
+            "heading"=> [
+              "title"=> null
+            ]
+          ],
+          "show"=> [
+            "board"=> false,
+            "content"=> false,
+            "inner"=> false
+          ],
+          "subtitle"=> "",
+          "media"=> $item
+        ];
+        return $carrusel;
+      }elseif ($depth=="modulo") {
+        $imagenes=[
+          "type"=> $type,
+          "template"=> $template,
+            "id"=> 110,
+            "title"=> (isset($item->Title)) ? $item->Title: '',
+            "abstract"=> "",
+            "body"=> "",
+            "media"=> [],
+            "heading"=> [],
+            "extraData"=> [
+              "mediaTitle"=> "",
+              "headingTitle"=> "",
+              "mediaIconVisible"=> "hidden"
+            ],
+            "thumbnail"=> [
+              "width"=> 318,
+              "height"=> 373,
+              "x"=> 251,
+              "y"=> 0,
+              "quality"=> 100,
+              "id"=> 1988,
+              "fileType"=> "image/jpeg",
+              "publishedVersion"=> [
+                "id"=> 8385,
+                "title"=> "Bodas",
+                "providerReference"=> "yuridia-caso-guapa-lucio-vestida.jpg"
+              ],
+              "src"=> (isset($item->TitlePhoto)) ? "http://".$item->TitlePhoto->UrlHost."".$item->TitlePhoto->UrlCore."-2.jpg": "http://".$item->UrlHost."".$item->UrlCore."-2.jpg"
+            ],
+            "content"=> [
+              "id"=> 2260,
+              "slug"=> str_replace("/todas-la-fotos","",$slug)."/".str_replace($dataextra."/","",$item->PageUrl),
+              "xalokId"=> null,
+              "author"=> null
+            ],
+            "clippings"=> [
+              "default"=> [
+                "window_width"=> 320,
+                "width"=> 300
+              ],
+              "size_1272"=> [
+                "window_width"=> 638,
+                "width"=> 618
+              ]
+            ],
+            "modules"=> []
+        ];
+        return $imagenes;
+      }elseif ($depth=="media") {
+        $tempoMedia=[
+          "id"=> $item->Id,
+          "xalokId"=> "",
+          "providerName"=> "camus.media.image_provider",
+          "fileType"=> (isset($item->MimeType)) ? $item->MimeType: '',
+          "publishedVersion"=> [
+            "id"=> $item->Id,
+            "title"=> (isset($item->Title)) ? $item->Title: '',
+            "providerReference"=> (isset($item->FileName)) ? $item->FileName: '',
+            "isActual"=> $dataextra,
+          ],
+          "src"=> "http://".$item->UrlHost."".$item->UrlCore."-4.jpg"
+        ];
+        return $tempoMedia;
+      }elseif ($depth=="categoria") {
+        $categoria=[
+          [
+            "type"=> $type,
+            "template"=> $template,
+            "headingColorTheme"=> "rgba(177,1,36,1)",
+            "id"=> 636976,
+            "title"=> $dataextra["site_name"],
+            "abstract"=> "",
+            "body"=> "",
+            "link"=> "",
+            "extraData"=> $dataextra["extraData"],
+            "thumbnailClippingLarger"=> [],
+            "media"=> [],
+            "heading"=> [],
+            "thumbnail"=> null,
+            "content"=> [],
+            "sizes"=> [
+              "template_1254"=> [
+                "width"=> 4,
+                "height"=> 1
+              ],
+              "template_1024"=> [
+                "width"=> 3,
+                "height"=> 1
+              ],
+              "template_720"=>[
+                "width"=> 2,
+                "height"=> 1
+              ],
+              "template_320"=> [
+                "width"=> 1,
+                "height"=> 1
+              ]
+            ],
+            "modules"=> $item
+          ]
+        ];
+        return $categoria;
+      }
     }
 
     public function getListParameters(){

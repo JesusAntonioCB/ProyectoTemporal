@@ -3,27 +3,9 @@
 @import "../../../modules/global-containers-mixin.scss";
 @import "../../../modules/main-fonts-mixin.scss";
 @import "../../../modules/main-containers-mixin.scss";
-.bcontent{
-  column-count: 3;
-  @include three-column{
-    column-count: 3;
-  }
-  @include skyscraper-media{
-    column-count: 2;
-  }
-  @include two-column{
-    column-count: 2;
-  }
-  @include one-column{
-    column-count: 1;
-  }
-  .contenedor-notas-block{
-    display: block !important;
-  }
-}
 .oo-top-text{
   width: 100%;
-  // max-width: 350px;
+  max-width: 307px;
   height: auto;
   margin: auto;
   margin-bottom: 15px;
@@ -122,6 +104,111 @@
         }
       }
     }
+    &:hover{
+      .bottom-selected-container{
+        opacity: 1;
+        .button-selected{
+          .circleCheck{
+            top: 9%;
+            left: 0;
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+    .bottom-selected-container{
+      position: absolute;
+      transition: .5s;
+      opacity: 0;
+      bottom: 4px;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.44);
+      .button-selected{
+        position: relative;
+        height: 26px;
+        margin: 5px;
+        font-size: 20px;
+        color: $color-white;
+        .circleCheck{
+          position: absolute;
+          cursor: pointer;
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          border: 3px solid $color-white;
+          border-radius: 100%;
+          top: 50%;
+          left: 2.5%;
+          transform: translate(-50%, -50%);
+          transition: all ease-out 200ms;
+          text-indent: 90px;
+          background:black;
+          box-shadow: 2px -1px 6px 0px
+          black;
+          white-space: nowrap;
+          color: $color-white;
+          user-select: none;
+          &:after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 8px;
+            border-bottom: 3px solid $color-white;
+            border-left: 3px solid $color-white;
+            top: 25%;
+            left: 50%;
+            transform-origin: bottom left;
+            transform: rotate(-45deg);
+            opacity: 0;
+            transition: all ease-out 200ms;
+          }
+        }
+        .zoombtn{
+          transition: .5s;
+          position: absolute;
+          cursor: pointer;
+          right: 0;
+          bottom: 0;
+          &:hover{
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+  }
+}
+.oo-top-text {
+  &.ui-selected{
+    .media-container{
+      .bottom-selected-container{
+        opacity: 1 !important;
+        background: $transparent;
+        .button-selected{
+          .circleCheck{
+            top: 9%;
+            left: 0;
+            transform: scale(1.2);
+            &:after{
+              opacity: 1;
+            }
+          }
+          .zoombtn{
+            opacity: 0;
+          }
+        }
+      }
+      &:hover{
+        .bottom-selected-container{
+          opacity: 1;
+          background: rgba(0, 0, 0, 0.44);
+          .button-selected{
+            .zoombtn{
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -157,29 +244,9 @@
     padding: 0px;
   }
 }
-.rute-info{
-  .text{
-    position: relative;
-    top: -28px;
-  }
-}
-
-
-@include skyscraper-media{
-  .buttons-top-content{
-    width: 700px !important;
-    top: 3px !important;
-    right: -43px !important;
-    height: 0px !important;
-  }
-}
 @include two-column{
   .top-content{
     height: 15px !important;
-  }
-  .buttons-top-content{
-    width: 600px !important;
-    right: -80px !important;
   }
   .title-top-content{
     width: 100px !important;
@@ -189,11 +256,6 @@
 @include one-column{
   .top-content{
     height: 30px !important;
-  }
-  .buttons-top-content{
-    width: 500px !important;
-    right: -150px !important;
-    top: -2px !important;
   }
   .title-top-content{
     width: 100px !important;

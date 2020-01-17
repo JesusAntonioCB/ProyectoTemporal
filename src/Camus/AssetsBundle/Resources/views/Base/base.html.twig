@@ -25,7 +25,9 @@
     <link rel="apple-touch-icon" sizes="192x192" href="/bundles/camusassets/images/16x16.ico">
     <link rel="stylesheet" href="{{ asset('/bundles/camusassets/scss/main/main.css') }}">
     {% if fileCSS is defined %}
+    {% dump(fileCSS) %}
       <style type="text/css">
+
         {% for file in fileCSS %}
           {% if existFile('./bundles/camusassets/scss/main/groups/'~file) %}
             {{ includeFile('./bundles/camusassets/scss/main/groups/'~file)|raw }}
@@ -109,98 +111,8 @@
     <!-- Header -->
     {{ include ('@CamusAssets/Header/header.html.twig') }}
     <!-- Content -->
-    <div class="top-content">
-        <div class="buttons-top-content">
-          <div class="subbuttons">
-            <div class="letras">
-              SELECCIONAR FOTOS
-            </div>
-          </div>
-
-          <div class="subbuttons">
-            <div class="icon-car">
-            </div>
-            <div class="letras">
-            &nbsp;&nbsp;&nbsp; COMPRAR<span class="downbutton">&nbsp;▼</span>
-            </div>
-            <div class="div-top-content">
-              <div class="div-top-buy">
-                <a href="#">Seleccionar fotos que comprar</a>
-              </div>
-              <div class="div-top-separator"></div>
-              <div class="div-top-buy">
-                <a href="#">Comprar todas las fotos</a>
-              </div>
-              <div class="div-top-buy">
-                <a href="#">Ver cesta</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="subbuttons">
-            <div class="icon-book">
-
-            </div>
-            <div class="letras">
-              &nbsp;&nbsp;&nbsp; CREAR ÁLBUM
-            </div>
-          </div>
-
-          <div class="subbuttons">
-            <div class="letras">
-              COMPARTIR
-            </div>
-          </div>
-
-          <div class="subbuttons">
-            <div class="icon-arrow">
-            </div>
-            <div class="letras">
-              &nbsp;&nbsp;&nbsp; PASE DE DIAPOSITIVAS
-            </div>
-          </div>
-        </div>
-
-        {# <div class="title-top-content">
-          <span>{{site_name}}</span>
-          </h1>
-        </div> #}
-    </div>
+    
      <div class="body-content">
-      <div class="folder-info-content" style="display:{{isRuteContentHiden}}">
-        <div class="rute-info">
-        {% set i = 0 %}
-        {% for rute in ruteInfo %}
-          {% if i >= 1 %}
-            {% if rute.slug == "#" %}
-              » <span class="text disable">{{rute.titulo}}</span>
-              {% else %}
-                » <a href="{{ rute.slug }}" class="text">{{rute.titulo}}</a>
-            {% endif %}
-            {% else %}
-              <a href="{{ rute.slug }}" class="text">{{rute.titulo}}</a>
-          {% endif %}
-          {% set i = i + 1 %}
-        {% endfor %}
-        </div>
-        <div class="folder-info" style="display:{{isFolderContentHiden}}">
-          <div class="text gallery-info">
-          <span>
-        Galerías <b> {% if galleryCount is defined and galleryCount is not empty %} {{galleryCount}} {% endif %} </b>
-          </span>
-          </div>
-          <div class="text collection-info">
-            <span>
-          Colecciones <b> {% if collectionCount is defined and collectionCount is not empty %} {{collectionCount}} {% endif %} </b>
-            </span>
-          </div>
-          <div class="text grup-info">
-            <span>
-          Grupos <b>{% if subGroupCount is defined and subGroupCount is not empty %} {{subGroupCount}} {% endif %}</b>
-            </span>
-          </div>
-        </div>
-      </div>
       <div class="content bcontent">
         {% block body %}
         {% endblock %}

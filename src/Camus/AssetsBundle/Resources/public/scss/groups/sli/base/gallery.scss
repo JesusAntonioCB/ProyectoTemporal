@@ -1,0 +1,190 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.sli-gallery{
+  position: relative;
+  width: 100%;
+  margin-bottom: $global-margin-bottom;
+  padding-top: $global-padding-top;
+  overflow: hidden;
+  .media-container{
+    .headline{
+      display: inline-flex;
+      width: 100%;
+      background: $color-white;
+      margin-bottom: 0;
+      @include container-sli-headline;
+      .title{
+        @include sli-title("base");
+        color: $color-hollywood-cerise;
+        text-align: center;
+      }
+      .buttons-top-content{
+        position: relative;
+        display: inline-flex;
+        .subbuttons{
+          border-color: #546774;
+          color: #ffffff;
+          background-color: #546774;
+          border-width: 1px;
+          border-style: solid;
+          margin: 2px 5px;
+          .div-top-content{
+            display: none;
+            background-color: #ffffff;
+            z-index: 1;
+            position: absolute;
+            top: 27px;
+            height: 100px;
+            border-color: #bcbcbc;
+            border-width: 1px;
+            width: 219px;
+            color: #63839b;
+            border-style: solid;
+            padding: 8px;
+            .div-top-buy{
+              padding: 6px 9px;
+              color: #63839b;
+              font-size: 11.9px;
+            }
+            .div-top-buy:hover{
+              color: #3c3c3c;
+              background-color: #e4e4e4;
+            }
+            .div-top-separator{
+              border-top: 1px solid;
+              color: #bcbcbc;
+            }
+          }
+          .letras{
+            margin: 0px 8px;
+            padding: 3px;
+            font-size: 12px;
+            font-weight: normal;
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            span{
+              margin-right: 2px;
+            }
+            .downbutton{
+              font-size: 9px;
+              cursor: pointer;
+            }
+          }
+        }
+        .subbuttons:hover{
+          border-color: #708390;
+          background-color: #708390;
+          cursor: pointer;
+        }
+        .subbuttons:hover .div-top-content{
+          display: block;
+        }
+      }
+      .folder-info-content{
+        margin: auto;
+        margin-left: 0;
+        margin-top: 0;
+        .rute-info{
+          max-width: 447px;
+          letter-spacing: 1px;
+          font-size: 12px;
+          text-transform: uppercase;
+          color: $color-gray-sky;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          -webkit-line-clamp: 2;
+          .disable{
+            color: $color-gray-sky !important;
+          }
+          .text{
+            position: relative;
+            color: $color-pencil-gray;
+          }
+        }
+        .folder-info{
+          .text{
+            text-align: left;
+            margin-right: 10px;
+            padding: 2px 0px;
+            color: $color-gray-sky;
+            b{
+              font-weight: normal;
+              color: $color-pencil-gray;
+            }
+          }
+          .disable{
+            color: $color-gray-sky;
+          }
+        }
+        @include three-column{
+          max-width: 966px;
+        }
+        @include two-column{
+          max-width: 618px;
+        }
+        @include one-column{
+          max-width: 320px;
+        }
+      }
+    }
+    .firms{
+      //position: relative;
+      column-count: 4;
+      white-space: nowrap;
+      .list-base, .sn-bottom-text-note, .sn-opinion-descriptive,.sn-opinion-horoscope, .sn-centered, .foot-text-note{
+        width: 300px;
+        white-space: normal;
+        vertical-align: top;
+        margin-right: 2px;
+        margin-bottom: 0;
+      }
+      .slick-dots{
+        height: 25px;
+      }
+      @include three-column{
+        column-count: 3;
+      }
+      @include two-column{
+        column-count: 2;
+      }
+      @include one-column{
+        column-count: 1;
+      }
+    }
+  }
+}
+
+@include two-column{
+  .sli-base{
+    .media-container{
+      .arrows{
+        display: none;
+      }
+    }
+  }
+}
+
+@include one-column{
+  .sli-base{
+    padding: 12px 0;
+    margin: 0;
+    .media-container{
+      .headline{
+        .title{
+          font-size: 30px;
+          line-height: 36px;
+        }
+      }
+      /*.firms{
+        .sn-bottom-text-growable-left{
+          width: 300px;
+        }
+      }*/
+    }
+  }
+}

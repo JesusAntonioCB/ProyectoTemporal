@@ -6,6 +6,8 @@
 parameters:
     thumbor_host: 'https://imagenes.milenio.com/'
     thumbor_key: hxka70iwrwy7jjtsov7715
+    zenfolioUser: 'chicmagazine'
+    zenfolioPass: 'ch1c2011'
 services:
     # default configuration for services in *this* file
     _defaults:

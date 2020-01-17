@@ -400,9 +400,16 @@ class ModelModuleExtension extends AbstractExtension
       $modelDataFilter['heading']["title"] = $this->filterEnt(strip_tags($modelData->heading["title"]));
     }
     // $modelDataFilter['heading']["title"] = 'cinepolis';
-
     if(isset($modelData->extraData["headingTitle"]) && $modelData->extraData["headingTitle"] != null){
       $modelDataFilter['extraHeading']["title"] = strip_tags($modelData->extraData["headingTitle"]);
+    }
+
+    if(isset($modelData->extraData["ruteInfo"]) && $modelData->extraData["ruteInfo"] != null && is_array($modelData->extraData["ruteInfo"])){
+      $modelDataFilter['extraHeading']["ruteInfo"] = $modelData->extraData["ruteInfo"];
+    }
+
+    if(isset($modelData->extraData["folderInfo"]) && $modelData->extraData["folderInfo"] != null && is_array($modelData->extraData["ruteInfo"])){
+      $modelDataFilter['extraHeading']["folderInfo"] = $modelData->extraData["folderInfo"];
     }
 
     if(isset($modelData->extraData["mediaTitle"]) && $modelData->extraData["mediaTitle"] != null){
@@ -688,7 +695,7 @@ class ModelModuleExtension extends AbstractExtension
       return $media;
     }
   }
-  public function asImage($media, $alt, $position = 'tl'){
+  public function asImage($media, $alt, $position = 'tl',$width=0,$height=0){
     $media = $this->urlToRelative($media);
     $tag = '<img
     data-src="'.$media.'"
@@ -768,13 +775,13 @@ class ModelModuleExtension extends AbstractExtension
      }
      $object = new \stdClass();
      if (is_array($array) && count($array) > 0) {
-         foreach ($array as $name=>$value) {
-             $name = trim($name);
-             if (!empty($name)) {
-                 $object->$name = $this->convertArrayToObject($value);
-             }
-         }
-         return $object;
+       foreach ($array as $name=>$value) {
+           $name = trim($name);
+           if (!empty($name)) {
+               $object->$name = $this->convertArrayToObject($value);
+           }
+       }
+       return $object;
      }
      else {
          return FALSE;

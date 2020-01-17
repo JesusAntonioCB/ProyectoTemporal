@@ -6,7 +6,7 @@ import Header from "./CamusGlobalComponents/Header.js";
 import Menu from "./CamusGlobalComponents/Menu.js";
 import { shareSelectedText } from "./CamusGlobalComponents/ShareText.js";
 //piano
-// import "./CamusGlobalComponents/piano/PianoLogin.js";
+import SelectableImage from "./CamusSingleComponents/oo/selectableImage.jsx";
 // import "./CamusGlobalComponents/piano/PianoLogout.js";
 // import "./CamusGlobalComponents/piano/PianoRegister.js";
 // import "./CamusGlobalComponents/piano/PianoProfile.js";

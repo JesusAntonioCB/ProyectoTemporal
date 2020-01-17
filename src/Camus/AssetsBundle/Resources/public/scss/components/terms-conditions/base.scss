@@ -30,7 +30,7 @@
     .title-terms {
       margin: 5px 0;
       font-size: 24px;
-      @include text-with-roboto-medium-color-alizarin-crimson;
+      @include text-with-open-sans-5-color-dark-gray-sky;
     }
     @include two-column {
       display: block;
@@ -53,7 +53,7 @@
     .title-terms {
       margin-top: 12px;
       font-size: 24px;
-      @include text-with-roboto-medium-color-alizarin-crimson;
+      @include text-with-open-sans-5-color-dark-gray-sky;
     }
     @include two-column {
       display: none;
@@ -114,7 +114,7 @@
       font-size: 28px;
       text-align: center;
       border: 0;
-      background-color: $color-red-light;
+      background-color: $color-lynch;
     }
     .form-contact-us{
       position: relative;

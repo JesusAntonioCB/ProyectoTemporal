@@ -102,7 +102,7 @@
     {% if modules|length > 0 %}
       {% set moduleSli = { 'template': 'ticker_caliente' } %}
       {% include '@CamusAssets/Groups/sli/base.html.twig' ignore missing with {module: moduleSli} %}
-
+      {% dump(modules) %}
       {% for module in modules %}
         {% if module.type is defined %}
           {% set type = module.type|splitTemplate %}
