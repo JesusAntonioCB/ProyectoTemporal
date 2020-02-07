@@ -1,0 +1,142 @@
+@import "../../../modules/media-queries.scss";
+@import "../../../modules/main-colors.scss";
+@import "../../../modules/global-containers-mixin.scss";
+@import "../../../modules/main-fonts-mixin.scss";
+@import "../../../modules/main-containers-mixin.scss";
+.gall-base{
+  position: relative;
+  width: 100%;
+  margin-bottom: $global-margin-bottom;
+  padding-top: $global-padding-top;
+  overflow: hidden;
+  .media-container{
+    .headline{
+      display: inline-flex;
+      width: 100%;
+      background: $color-white;
+      margin-bottom: 0;
+      @include container-sli-headline;
+      .title{
+        @include sli-title("base");
+        color: $color-hollywood-cerise;
+        text-align: center;
+      }
+      .folder-info-content{
+        margin: auto;
+        margin-left: 0;
+        margin-top: 0;
+        .rute-info{
+          max-width: 447px;
+          letter-spacing: 1px;
+          font-size: 12px;
+          text-transform: uppercase;
+          color: $color-gray-sky;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          margin-bottom: 10px;
+          -webkit-line-clamp: 2;
+          .disable{
+            color: $color-gray-sky !important;
+          }
+          .text{
+            position: relative;
+            color: $color-pencil-gray;
+          }
+        }
+        .folder-info{
+          margin-bottom: 10px;
+          display: inline-flex;
+          .text{
+            text-align: left;
+            margin-right: 10px;
+            padding: 2px 0px;
+            color: $color-gray-sky;
+            b{
+              font-weight: normal;
+              color: $color-pencil-gray;
+            }
+          }
+          .disable{
+            color: $color-gray-sky;
+          }
+        }
+        @include three-column{
+          max-width: 966px;
+        }
+        @include two-column{
+          max-width: 618px;
+        }
+        @include one-column{
+          max-width: 320px;
+        }
+      }
+    }
+    .firms{
+      display: flex;
+      flex-wrap: wrap;
+      white-space: nowrap;
+      .column-js{
+        flex-basis: calc(100% / 4);
+        @include three-column{
+          flex-basis: calc(100% / 3);
+        }
+        @include two-column{
+          flex-basis: calc(100% / 2);
+        }
+        @include one-column{
+          flex-basis: 100%;
+        }
+      }
+      .list-base, .sn-bottom-text-note, .sn-bottom-text-gallery,.sn-opinion-horoscope, .sn-centered, .foot-text-note{
+        // width: 300px;
+        white-space: normal;
+        vertical-align: top;
+        margin: 0;
+        padding: 8px;
+      }
+      .slick-dots{
+        height: 25px;
+      }
+      @include three-column{
+        column-count: 3;
+      }
+      @include two-column{
+        column-count: 2;
+      }
+      @include one-column{
+        column-count: 1;
+      }
+    }
+  }
+}
+
+@include two-column{
+  .gall-base{
+    .media-container{
+      .arrows{
+        display: none;
+      }
+    }
+  }
+}
+
+@include one-column{
+  .gall-base{
+    padding: 12px 0;
+    margin: 0;
+    .media-container{
+      .headline{
+        .title{
+          font-size: 30px;
+          line-height: 36px;
+        }
+      }
+      /*.firms{
+        .sn-bottom-text-growable-left{
+          width: 300px;
+        }
+      }*/
+    }
+  }
+}

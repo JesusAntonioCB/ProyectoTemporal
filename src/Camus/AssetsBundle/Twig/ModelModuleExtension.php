@@ -282,6 +282,10 @@ class ModelModuleExtension extends AbstractExtension
         'icon' => 'default',
         'indicator' => 'default'
       ),
+      'extraThumbnail' => array(
+        'width' => 0,
+        'height' => 0
+      ),
       'extraLink' => '',
       "abstract" => '',
       "signaturePlace" => '',
@@ -337,6 +341,7 @@ class ModelModuleExtension extends AbstractExtension
       'modules' => array(),
       'penaltiesPoints' => array(),
       'dataSearch' => '',
+      'dataIndex' => 0,
       'leagueId' => '',
       'idPlayer' => '',
       'idTeam' => ''
@@ -408,7 +413,7 @@ class ModelModuleExtension extends AbstractExtension
       $modelDataFilter['extraHeading']["ruteInfo"] = $modelData->extraData["ruteInfo"];
     }
 
-    if(isset($modelData->extraData["folderInfo"]) && $modelData->extraData["folderInfo"] != null && is_array($modelData->extraData["ruteInfo"])){
+    if(isset($modelData->extraData["folderInfo"]) && $modelData->extraData["folderInfo"] != null && is_array($modelData->extraData["folderInfo"])){
       $modelDataFilter['extraHeading']["folderInfo"] = $modelData->extraData["folderInfo"];
     }
 
@@ -503,6 +508,12 @@ class ModelModuleExtension extends AbstractExtension
         $modelDataFilter['thumbnail'] = $modelData->thumbnail["src"];
       }else if(is_string($modelData->thumbnail)) {
         $modelDataFilter['thumbnail'] = $modelData->thumbnail;
+      }
+      if (isset($modelData->thumbnail["width"])) {
+        $modelDataFilter['extraThumbnail']['width'] = $modelData->thumbnail["width"];
+      }
+      if (isset($modelData->thumbnail["height"])) {
+        $modelDataFilter['extraThumbnail']['height'] = $modelData->thumbnail["height"];
       }
 
       if(isset($modelData->thumbnail["publishedVersion"]["title"])){
@@ -666,6 +677,9 @@ class ModelModuleExtension extends AbstractExtension
     if(isset($modelData->dataSearch) && $modelData->dataSearch != null){
       $modelDataFilter['dataSearch'] = $modelData->dataSearch;
     }
+    if(isset($modelData->dataIndex) && $modelData->dataIndex != null){
+      $modelDataFilter['dataIndex'] = $modelData->dataIndex;
+    }
     // if ($modelDataFilter['type'] == 'list_small') {
     //   $modelDataFilter['title'] = 'Title';
     // }
@@ -696,6 +710,11 @@ class ModelModuleExtension extends AbstractExtension
     }
   }
   public function asImage($media, $alt, $position = 'tl',$width=0,$height=0){
+    if ($width != 0 || $width != "0" && $height!= 0 || $width != "0") {
+      $radio=$height/$width;
+    }else {
+      $radio=0;
+    }
     $media = $this->urlToRelative($media);
     $tag = '<img
     data-src="'.$media.'"

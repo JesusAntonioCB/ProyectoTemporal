@@ -1,0 +1,80 @@
+{% if module.template == 'gallery' %}
+  <div  class="sli-opening slider" data-camus-id="{{ module.id }}">
+    {% if module.subtitle != '' %}
+      <h2 class="heading">{{ module.subtitle|striptags }}</h2>
+    {% endif %}
+    <div class="media-container">
+      <div class="gallery-icons">
+        <a href="./"><div class="fa fa-arrow-left"></div></a>
+        <div class="fa fa-heart-o"></div>
+        <div class="fa fa-share-alt"></div>
+      </div>
+      <div class="gallery-container">
+        {% for listElement in module.media %}
+        {% if listElement is not empty %}
+          <div class="img-item">
+            {{ listElement.src|imageSize(module.template)|raw }}
+            <span class="detail">{{ listElement.publishedVersion.title }} ©</span>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="gallery-nav">
+        {% for listElement in module.media %}
+        {% if listElement is not empty %}
+          <div class="img-item">
+            {{ listElement.src|imageSize(module.template)|raw }}
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="description-cartoon">
+      <div class="panel-shop">
+        <div class="fa fa-times"></div>
+        <img src="https://cdn.zenfolio.net/img/s/v-12/u27397674-o940956710-111.png" title="FotoChic by Chic Magazine" class="panel-shop-logo">
+        <div class="panel-shop-text">
+          VISITAR TIENDA
+        </div>
+      </div>
+      <div class="panel-buy">
+        <div class="panel-buy-tt">
+          <div class="panel-buy-tt-sub1">
+            Descargas
+          </div>
+          <div class="panel-buy-tt-sub2">
+            Precio (unidad) MXN
+          </div>
+        </div>
+        <div class="panel-buy-pr">
+          <div class="panel-buy-pr-sub1">
+            Descarga fotografía digital
+          </div>
+          <div class="panel-buy-pr-sub2">
+            110,99
+          </div>
+          <div class="panel-buy-pr-sub3">
+          </div>
+        </div>
+        <div class="panel-buy-tt">
+          <div class="panel-buy-tt-sub1">
+            Paquete
+          </div>
+        </div>
+        <div class="panel-buy-pr">
+          <div class="panel-buy-pr-sub1">
+            Comprar Galería Completa
+          </div>
+          <div class="panel-buy-pr-sub2">
+            2.000,00
+          </div>
+          <div class="panel-buy-pr-sub3">
+          </div>
+        </div>
+      </div>
+      <div class="panel-car">
+        <a href="/cart.html" class="panel-car-txt">Ir a cesta</a>
+      </div>
+    </div>
+  </div>
+{% endif %}

@@ -24,14 +24,6 @@ class DefaultController extends AbstractController
         $parameters[$key]=$data;
       }
       $parameters["site_name"]="FotoChic by chic Magazine";
-      $parameters["isRuteContentHiden"]="none";
-      $parameters["isFolderContentHiden"]="none";
-      $parameters["ruteInfo"]=[
-        [
-          'titulo'=>"FotoChic by chic Magazine",
-          'slug'=>"/"
-        ]
-      ];
       // $parameters["modules"] = $dataGrup["modules"];
       $arrayCss = array();
       $resultFileCss = array();
@@ -39,8 +31,6 @@ class DefaultController extends AbstractController
       if(count($arrayCss)){
         $parameters["fileCSS"] = array_values(array_unique($arrayCss));
       }
-      // dump($parameters);
-      // die;
       $responseRender = $this->render('@CamusAssets/Content/content.html.twig', $parameters);
       return $responseRender;
     }
@@ -87,14 +77,9 @@ class DefaultController extends AbstractController
     public function getPruebaModulosAction(){
         $string = file_get_contents("./bundles/camusassets/modulos.json");
         $modules = json_decode($string, true)["modules"];
-        // dump($modules);
-        // $modules = json_decode(json_encode((array)$modules), TRUE);
-        // dump($modules);
-        // die;
         $arrayCss = array();
         $resultFileCss = array();
         $this->getListModules($modules,$arrayCss);
-        dump($arrayCss);
         if(count($arrayCss)){
           $resultFileCss = array_values(array_unique($arrayCss));
         }
@@ -123,14 +108,11 @@ class DefaultController extends AbstractController
       $method= "LoadGroup";
       $urlId= "847382622";
       $prueba= $myXMLData->getCategories($method,$urlId);
-      // dump($prueba);
-      // die;
       $xml   = simplexml_load_string($prueba, 'SimpleXMLElement', LIBXML_NOCDATA);
       $photos = $xml->Photos->Photo;
 
   		$xml = json_decode(json_encode((array)$xml), TRUE);
-      // dump($xml);
-      die;
+
       return $xml;
     }
 
@@ -215,10 +197,6 @@ class DefaultController extends AbstractController
       $grupos = file_get_contents("./bundles/camusassets/grupos.json");
       $json_grupos= json_decode($grupos, true);
       $parameters=$this->getListParameters();
-      // dump($json_grupos);
-      // dump($gallery);
-      // dump(isset($json_grupos[$gallery]));
-      // die;
       if (!empty($json_grupos)) {
         $ComparateCodeId=substr($gallery, 1, 100);
         //comprobar si ya existe
@@ -290,8 +268,6 @@ class DefaultController extends AbstractController
                 ]
               ];
               $dataGallery= $this->getGaleryElements($codeId, 3, $slug, "full", "true", $year);
-              // dump($dataGallery);
-              // die;
             }else {
               if (!empty($fullGalery)) {
                 // si una galeria es definida
@@ -312,8 +288,6 @@ class DefaultController extends AbstractController
                     ]
                   ];
                   $dataGallery= $this->getGaleryElements($codeId, 3, $slug, "full", "true", $fullGalery);
-                  // dump($codeId);
-                  // die;
                 }else {
                   if (!empty($openGalery)) {
                     // si se abrio una imagen
@@ -328,9 +302,9 @@ class DefaultController extends AbstractController
                         ]
                       ];
                       if ($type==1) {
-                        $dataGallery= $this->getGaleryElements($codeId, 3, $slug, "full", "true", $openGalery);
+                        $dataGallery= $this->getGaleryElements($codeId, 3, $slug, "full", "true", $openGalery,$ruteInfo);
                       }else {
-                        $dataGallery= $this->getGroupElements($codeId,2,$slug);
+                        $dataGallery= $this->getGroupElements($codeId,2,$slug,"full","true",$ruteInfo);
                       }
                     }else {
                       $this->addCategori($json_grupos,$gallery,3,$year,$fullGalery);
@@ -362,9 +336,9 @@ class DefaultController extends AbstractController
                         ]
                       ];
                       if ($type==1) {
-                        $dataGallery= $this->getGaleryElements($codeId,2,$slug,"full","true","",$ruteInfo);
+                        $dataGallery= $this->getGaleryElements($codeId,3,$slug,"full","true","",$ruteInfo);
                       }else {
-                        $dataGallery= $this->getGroupElements($codeId,2,$slug);
+                        $dataGallery= $this->getGroupElements($codeId,2,$slug,"full","true",$ruteInfo);
                       }
                     }else {
                       $this->addCategori($json_grupos,$gallery,3,$year,$fullGalery);
@@ -404,9 +378,9 @@ class DefaultController extends AbstractController
                     ]
                   ];
                   if ($type==1) {
-                    $dataGallery= $this->getGaleryElements($codeId,2,$slug);
+                    $dataGallery= $this->getGaleryElements($codeId,3,$slug);
                   }else {
-                    $dataGallery= $this->getGroupElements($codeId,2,$slug);
+                    $dataGallery= $this->getGroupElements($codeId,2,$slug,"full","true",$ruteInfo);
                   }
                 }else {
                   $this->addCategori($json_grupos,$gallery,2,$year);
@@ -429,9 +403,9 @@ class DefaultController extends AbstractController
               ]
             ];
             if ($type==1) {
-              $dataGallery= $this->getGaleryElements($codeId,2,$slug);
+              $dataGallery= $this->getGaleryElements($codeId,3,$slug);
             }else {
-              $dataGallery= $this->getGroupElements($codeId,2,$slug);
+              $dataGallery= $this->getGroupElements($codeId,2,$slug,"full","true",$ruteInfo);
             }
           }
         }else {
@@ -444,9 +418,13 @@ class DefaultController extends AbstractController
         $this->addCategori($json_grupos,$gallery,1);
         exit;
       }
+      // dump($dataGallery);
+      // die;
       foreach ($dataGallery as $key => $data) {
         $parameters[$key]=$data;
       }
+      // dump($parameters);
+      // die;
       $this->getListModules($dataGallery["modules"],$arrayCss);
       if(count($arrayCss)){
         $parameters["fileCSS"] = array_values(array_unique($arrayCss));
@@ -487,7 +465,7 @@ class DefaultController extends AbstractController
       }
     }
 
-    public function getGroupElements($groupId, $type=1, $slug="", $level="full", $includeChildren="true"){
+    public function getGroupElements($groupId, $type=1, $slug="", $level="full", $includeChildren="true",$ruteInfo=[]){
       $client= new Client('fotoChic App/1.0 (https://fotos.chicmagazine.com.mx/)');
       $modules = [];
       $resultGroup = $client->LoadGroup($groupId, $level, $includeChildren);
@@ -501,22 +479,36 @@ class DefaultController extends AbstractController
             array_push($modules,$imagenes);
           }
         }
+        // $dataGrup= [
+        //   "site_name"=> (isset($resultGroup->Title)) ? "FotoChic by chic Magazine | ".$resultGroup->Title: 'FotoChic by chic Magazine',
+        //   "modules"=>$modules,
+        // ];
         $dataGrup= [
-          "site_name"=> (isset($resultGroup->Title)) ? "FotoChic by chic Magazine | ".$resultGroup->Title: 'FotoChic by chic Magazine',
-          "modules"=>$modules,
-          "isRuteContentHiden"=>"block",
-          "isFolderContentHiden"=>"block ruby",
-          "galleryCount"=> (isset($resultGroup->GalleryCount)) ? $resultGroup->GalleryCount: 0,
-          "collectionCount"=> (isset($resultGroup->CollectionCount)) ? $resultGroup->CollectionCount: 0,
-          "subGroupCount"=> (isset($resultGroup->SubGroupCount)) ? $resultGroup->SubGroupCount: 0
+          "site_name"=> "",
+          "extraData"=>[
+            "ruteInfo"=>$ruteInfo,
+            "folderInfo"=>[
+              "isRuteContentHiden"=>"block",
+              "isFolderContentHiden"=>"block ruby",
+              "galleryCount"=> (isset($resultGroup->GalleryCount)) ? $resultGroup->GalleryCount: 0,
+              "collectionCount"=> (isset($resultGroup->CollectionCount)) ? $resultGroup->CollectionCount: 0,
+              "subGroupCount"=> (isset($resultGroup->SubGroupCount)) ? $resultGroup->SubGroupCount: 0
+            ]
+          ],
         ];
-        return $dataGrup;
+        $modules=$this->getEstructure("gall_base","base",$modules,"categoria",null,$dataGrup);
+        $modules=$this->getEstructure("ctr_modules","twelve",$modules,"categoria",null,$dataGrup);
+        $data= [
+          "modules"=>$modules
+        ];
+        return $data;
       }
     }
 
     public function getGaleryElements($groupId, $type=1, $slug="", $level="full", $includeChildren="true", $comparateString="",$ruteInfo=[]){
       $client= new Client('fotoChic App/1.0 (https://fotos.chicmagazine.com.mx/)');
       $modules = [];
+      $arrModules=[];
       $resultGroup = $client->LoadPhotoSet($groupId, $level, $includeChildren);
       if ($type == 1) {
         return $resultGroup;
@@ -525,7 +517,7 @@ class DefaultController extends AbstractController
           foreach ($resultGroup->Photos as $value) {
             $r = "";
             $pageUrl= $resultGroup->PageUrl;
-            $imagenes=$this->getEstructure("oo_background_image","top_text",$value,"modulo",$slug,$pageUrl);
+            $imagenes=$this->getEstructure("sn_base","bottom_text_gallery",$value,"modulo",$slug,$pageUrl);
             // $imagenes=$this->getEstructure("eo_billboard","section_image_secondary",$value,"modulo",$slug,$pageUrl);
             array_push($modules,$imagenes);
           }
@@ -537,28 +529,64 @@ class DefaultController extends AbstractController
             "folderInfo"=>[]
           ],
         ];
-        $modules=$this->getEstructure("sli_base","gallery",$modules,"categoria",null,$dataGrup);
+        // $modules=$this->getEstructure("sli_base","gallery",$modules,"categoria",null,$dataGrup);
+        $module = $this->getEstructure("gall_base","gallery",$modules,"categoria",null,$dataGrup);
+        $modules = $this->getEstructure("ctr_modules","twelve",[$module],"categoria",null,$dataGrup);
+        array_push($arrModules,$modules);
+        // $dataGrup= [
+        //   "site_name"=> "Portada",
+        //   "extraData"=>[],
+        // ];
+        // $portada = $this->getEstructure("eo_billboard","section_image",[],"categoria",null,$dataGrup);
+        // array_push($modules,$portada);
         $data= [
-          "modules"=>$modules
+          "modules"=>$arrModules
         ];
+        // dump($data);
+        // die;
         return $data;
       }else {
         if (!empty($resultGroup->Photos)) {
           $media=[];
-          $imageActual= "active";
+          $modules=[];
+          $arrModules=[];
+          $imageActual= false;
+          $index=0;
           foreach ($resultGroup->Photos as $value) {
             if (!empty($comparateString)) {
               if (strpos($value->PageUrl, $comparateString)) {
-                $imageActual = "active";
+                $imageActual = "item-start";
               }
             }
+            $pageUrl= $resultGroup->PageUrl;
+            $imagenes=$this->getEstructure("sn_base","bottom_text_gallery",$value,"modulo",$slug,$pageUrl,$index);
             $tempoMedia= $this->getEstructure(null,null,$value,"media",null,$imageActual);
             array_push($media,$tempoMedia);
+            array_push($modules,$imagenes);
             $imageActual=false;
+            $index++;
           }
-          $carrusel= $this->getEstructure("sli_opening","gallery",$media,"slider",null);
-          array_push($modules,$carrusel);
+          $dataGrup= [
+            "site_name"=> "",
+            "extraData"=>[
+              "ruteInfo"=>$ruteInfo,
+              "folderInfo"=>[]
+            ],
+          ];
+          // dump($media);
+          // die;
+          $module=$this->getEstructure("gall_base","gallery",$modules,"categoria",null,$dataGrup);
+          $modules=$this->getEstructure("ctr_modules","twelve",[$module],"categoria",null,$dataGrup);
+          array_push($arrModules,$modules);
+          $module=$this->getEstructure("sli_opening","modal",$media,"slider",null,$dataGrup);
+          $modules=$this->getEstructure("ctr_modules","twelve",[$module],"categoria",null,$dataGrup);
+          array_push($arrModules,$module);
+          $data= [
+            "modules"=>$arrModules
+          ];
         }
+        // dump($data);
+        // die;
         $dataGrup= [
           "site_name"=> (isset($resultGroup->Title)) ? "FotoChic by chic Magazine | ".$resultGroup->Title: 'FotoChic by chic Magazine',
           "modules"=>$modules,
@@ -568,7 +596,7 @@ class DefaultController extends AbstractController
           "collectionCount"=> (isset($resultGroup->CollectionCount)) ? $resultGroup->CollectionCount: 0,
           "subGroupCount"=> (isset($resultGroup->SubGroupCount)) ? $resultGroup->SubGroupCount: 0
         ];
-        return $dataGrup;
+        return $data;
       }
     }
 
@@ -819,6 +847,7 @@ class DefaultController extends AbstractController
         1 => $moduleType
       );
     }
+
     public function getListModules($modules, &$arrayModules){
       // dump($modules);
       if (is_array($modules)) {
@@ -877,8 +906,8 @@ class DefaultController extends AbstractController
               ")", "?", "'", "¡", "¿",
               "[", "^", "<code>", "]",
               "+", "}", "{", "¨", "´",
-              ">", "< ", ";", ",", ":",
-              "."),
+              ">", "<", ";", ",", ":",
+              ".", "”", "“", "*", "_"),
         '',
         $string
       );
@@ -887,12 +916,12 @@ class DefaultController extends AbstractController
       return $string;
     }
 
-    public function getEstructure($type,$template,$item,$depth,$slug="",$dataextra=""){
+    public function getEstructure($type,$template,$item,$depth,$slug="",$dataextra="",$index=0){
       if ($depth=="slider") {
         $carrusel= [
           "type"=> $type,
           "template"=> $template,
-          "title"=> "Vacía y con mala calidad del aire, así recibe la CdMx año",
+          "title"=> "",
           "abstract"=> "El Sistema de Monitoreo Atmosférico informó que la calidad del aire en la Ciudad de México hoy va de regular a mala.",
           "sizes"=> [
             "template_1254"=> [
@@ -967,8 +996,8 @@ class DefaultController extends AbstractController
               "mediaIconVisible"=> "hidden"
             ],
             "thumbnail"=> [
-              "width"=> 318,
-              "height"=> 373,
+              "width"=> (isset($item->TitlePhoto)) ? $item->TitlePhoto->Width: ((isset($item->Width)) ? $item->Width: 0),
+              "height"=> (isset($item->TitlePhoto)) ? $item->TitlePhoto->Height:( (isset($item->Height)) ? $item->Height: 0),
               "x"=> 251,
               "y"=> 0,
               "quality"=> 100,
@@ -979,7 +1008,7 @@ class DefaultController extends AbstractController
                 "title"=> "Bodas",
                 "providerReference"=> "yuridia-caso-guapa-lucio-vestida.jpg"
               ],
-              "src"=> (isset($item->TitlePhoto)) ? "http://".$item->TitlePhoto->UrlHost."".$item->TitlePhoto->UrlCore."-2.jpg": "http://".$item->UrlHost."".$item->UrlCore."-2.jpg"
+              "src"=> (isset($item->TitlePhoto)) ? "http://".$item->TitlePhoto->UrlHost."".$item->TitlePhoto->UrlCore."-2.jpg": ((isset($item->UrlHost)) ? "http://".$item->UrlHost."".$item->UrlCore."-2.jpg": "")
             ],
             "content"=> [
               "id"=> 2260,
@@ -997,6 +1026,7 @@ class DefaultController extends AbstractController
                 "width"=> 618
               ]
             ],
+            "dataIndex"=> $index,
             "modules"=> []
         ];
         return $imagenes;
@@ -1017,41 +1047,39 @@ class DefaultController extends AbstractController
         return $tempoMedia;
       }elseif ($depth=="categoria") {
         $categoria=[
-          [
-            "type"=> $type,
-            "template"=> $template,
-            "headingColorTheme"=> "rgba(177,1,36,1)",
-            "id"=> 636976,
-            "title"=> $dataextra["site_name"],
-            "abstract"=> "",
-            "body"=> "",
-            "link"=> "",
-            "extraData"=> $dataextra["extraData"],
-            "thumbnailClippingLarger"=> [],
-            "media"=> [],
-            "heading"=> [],
-            "thumbnail"=> null,
-            "content"=> [],
-            "sizes"=> [
-              "template_1254"=> [
-                "width"=> 4,
-                "height"=> 1
-              ],
-              "template_1024"=> [
-                "width"=> 3,
-                "height"=> 1
-              ],
-              "template_720"=>[
-                "width"=> 2,
-                "height"=> 1
-              ],
-              "template_320"=> [
-                "width"=> 1,
-                "height"=> 1
-              ]
+          "type"=> $type,
+          "template"=> $template,
+          "headingColorTheme"=> "rgba(177,1,36,1)",
+          "id"=> 636976,
+          "title"=> $dataextra["site_name"],
+          "abstract"=> "",
+          "body"=> "",
+          "link"=> "",
+          "extraData"=> $dataextra["extraData"],
+          "thumbnailClippingLarger"=> [],
+          "media"=> [],
+          "heading"=> [],
+          "thumbnail"=> null,
+          "content"=> [],
+          "sizes"=> [
+            "template_1254"=> [
+              "width"=> 4,
+              "height"=> 1
             ],
-            "modules"=> $item
-          ]
+            "template_1024"=> [
+              "width"=> 3,
+              "height"=> 1
+            ],
+            "template_720"=>[
+              "width"=> 2,
+              "height"=> 1
+            ],
+            "template_320"=> [
+              "width"=> 1,
+              "height"=> 1
+            ]
+          ],
+          "modules"=> $item
         ];
         return $categoria;
       }

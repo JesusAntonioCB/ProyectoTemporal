@@ -1,0 +1,149 @@
+{% if module.template == 'base' %}
+  <div class="gall-base">
+    <div class="media-container">
+      <div class="headline" >
+        {% if module.hasThumbnail == true %}
+          <div class="img-container" >
+            {{ module.thumbnail|asImage(module.alt)|raw }}
+          </div>
+        {% endif %}
+        {% if module.title != '' %}
+          <div class="title" >
+            <span  >{{ module.title }}</span>
+          </div>
+        {% endif %}
+        {% if module.extraHeading.ruteInfo is defined and module.extraHeading.ruteInfo is not empty %}
+          <div class="folder-info-content">
+            {% if module.extraHeading.ruteInfo is defined and module.extraHeading.ruteInfo is not empty %}
+              <div class="rute-info">
+                {% set i = 0 %}
+                {% for rute in ruteInfo %}
+                  {% if i >= 1 %}
+                    {% if rute.slug == "#" %}
+                      » <span class="text disable">{{rute.titulo}}</span>
+                      {% else %}
+                        » <a href="{{ rute.slug }}" class="text">{{rute.titulo}}</a>
+                    {% endif %}
+                    {% else %}
+                      {% if rute.slug == "#" %}
+                        <span class="text disable">{{rute.titulo}}</span>
+                        {% else %}
+                          <a href="{{ rute.slug }}" class="text">{{rute.titulo}}</a>
+                      {% endif %}
+                  {% endif %}
+                  {% set i = i + 1 %}
+                {% endfor %}
+              </div>
+            {% endif %}
+            {% if module.extraHeading.folderInfo is defined and module.extraHeading.folderInfo is not empty %}
+              <div class="folder-info">
+                <div class="text gallery-info">
+                  <span>
+                Galerías <b> {% if module.extraHeading.folderInfo.galleryCount is defined and module.extraHeading.folderInfo.galleryCount is not empty %} {{module.extraHeading.folderInfo.galleryCount}} {% endif %} </b>
+                  </span>
+                </div>
+                <div class="text collection-info">
+                  <span>
+                Colecciones <b> {% if module.extraHeading.folderInfo.collectionCount is defined and module.extraHeading.folderInfo.collectionCount is not empty %} {{module.extraHeading.folderInfo.collectionCount}} {% endif %} </b>
+                  </span>
+                </div>
+                <div class="text grup-info">
+                  <span>
+                Grupos <b>{% if module.extraHeading.folderInfo.subGroupCount is defined and module.extraHeading.folderInfo.subGroupCount is not empty %} {{module.extraHeading.folderInfo.subGroupCount}} {% endif %}</b>
+                  </span>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if module.hasSponsor is defined and module.hasSponsor == true %}
+          {{ module.sponsor|asSponsor|raw }}
+        {% endif %}
+      </div>
+      <div  class="firms">
+        {% for list in module.modules %}
+          {% if list != null %}
+            {% set type = list.type|splitTemplate %}
+            {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: list|getModelModule, parentId: module.id } %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% elseif module.template == 'gallery' %}
+  <div class="gall-gallery">
+    <div class="media-container">
+      <div class="headline" >
+        {% if module.hasThumbnail == true %}
+          <div class="img-container" >
+            {{ module.thumbnail|asImage(module.alt)|raw }}
+          </div>
+        {% endif %}
+        {% if module.title != '' %}
+          <div class="title" >
+            <span  >{{ module.title }}</span>
+          </div>
+        {% endif %}
+        {% if module.extraHeading is defined and module.extraHeading is not empty %}
+          <div class="folder-info-content">
+            {% if module.extraHeading.ruteInfo is defined and module.extraHeading.ruteInfo is not empty %}
+              <div class="rute-info">
+                {% set i = 0 %}
+                {% for rute in ruteInfo %}
+                  {% if i >= 1 %}
+                    {% if rute.slug == "#" %}
+                      » <span class="text disable">{{rute.titulo}}</span>
+                      {% else %}
+                        » <a href="{{ rute.slug }}" class="text">{{rute.titulo}}</a>
+                    {% endif %}
+                    {% else %}
+                      {% if rute.slug == "#" %}
+                        <span class="text disable">{{rute.titulo}}</span>
+                        {% else %}
+                          <a href="{{ rute.slug }}" class="text">{{rute.titulo}}</a>
+                      {% endif %}
+                  {% endif %}
+                  {% set i = i + 1 %}
+                {% endfor %}
+              </div>
+            {% endif %}
+            {% if module.extraHeading.folderInfo is defined and module.extraHeading.folderInfo is not empty %}
+              <div class="folder-info">
+                <div class="text gallery-info">
+                  <span>
+                Galerías <b> {% if module.extraHeading.folderInfo.galleryCount is defined and module.extraHeading.folderInfo.galleryCount is not empty %} {{module.extraHeading.folderInfo.galleryCount}} {% endif %} </b>
+                  </span>
+                </div>
+                <div class="text collection-info">
+                  <span>
+                Colecciones <b> {% if module.extraHeading.folderInfo.collectionCount is defined and module.extraHeading.folderInfo.collectionCount is not empty %} {{module.extraHeading.folderInfo.collectionCount}} {% endif %} </b>
+                  </span>
+                </div>
+                <div class="text grup-info">
+                  <span>
+                Grupos <b>{% if module.extraHeading.folderInfo.subGroupCount is defined and module.extraHeading.folderInfo.subGroupCount is not empty %} {{module.extraHeading.folderInfo.subGroupCount}} {% endif %}</b>
+                  </span>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if module.hasSponsor is defined and module.hasSponsor == true %}
+          {{ module.sponsor|asSponsor|raw }}
+        {% endif %}
+        <div class="menu-control-gallery"></div>
+      </div>
+      <div class="selectable-info-conotainer"></div>
+      <div  class="firms">
+        {% for list in module.modules %}
+          {% if list != null %}
+            {% set type = list.type|splitTemplate %}
+            {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: list|getModelModule, parentId: module.id } %}
+          {% endif %}
+        {% endfor %}
+        <div class="zoomImage hide"></div>
+        <div class="zoomImage_layer hide"></div>
+      </div>
+    </div>
+  </div>
+{% endif %}

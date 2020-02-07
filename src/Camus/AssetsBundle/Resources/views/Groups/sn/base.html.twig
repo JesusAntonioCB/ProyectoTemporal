@@ -138,7 +138,7 @@
     </div>
   </div>
 {% elseif module.template == 'live' %}
-  <div class="sn-live"  data-camus-template="{{module.templateName}}"   >
+  <div class="sn-live"  data-camus-template="{{module.templateName}}">
     <div class="media-container">
       <div class="img-container">
         <a href="{{ module.slug }}" class="btn-play">
@@ -173,7 +173,7 @@
     </div>
   </div>
 {% elseif module.template == 'live_large' %}
-  <div class="sn-live-large"  data-camus-template="{{module.templateName}}"   >
+  <div class="sn-live-large"  data-camus-template="{{module.templateName}}">
     <div class="media-container">
       <div class="img-container">
         <a href="{{ module.slug }}">
@@ -238,7 +238,11 @@
     <div class="media-container">
       <div class="img-container">
         <a {{ module.slug|linkConstruct|raw }}>
-          {{ module.thumbnail|asImage(module.alt)|raw }}
+          {% if module.extraThumbnail is defined and module.extraThumbnail is not empty %}
+            {{ module.thumbnail|asImage(module.alt,"tl",module.extraThumbnail.width,module.extraThumbnail.height)|raw }}
+            {% else %}
+              {{ module.thumbnail|asImage(module.alt)|raw }}
+          {% endif %}
         </a>
       </div>
       {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == 'default' %}
@@ -246,22 +250,67 @@
           <span class="fa fa-camera"></span>
         </a>
       {% endif %}
-    <div class="headline-bottom-container-gradient">
-      {% if module.heading.title != '' %}
-      <div class="section-top" >
-        <span >{{ module.heading.title }}</span>
+      <div class="headline-bottom-container-gradient">
+        {% if module.heading.title != '' %}
+          <div class="section-top" >
+            <span >{{ module.heading.title }}</span>
+          </div>
+        {% endif %}
+        <div class="title">
+          <a {{ module.slug|linkConstruct|raw }}>
+            <span class="title-notes" >{{ module.title }}</span>
+          </a>
+        </div>
+        {% if module.sponsor.media|length > 0 %}
+          {{ module.sponsor|asSponsor|raw }}
+        {% endif %}
       </div>
-      {% endif %}
-      <div class="title">
-        <a {{ module.slug|linkConstruct|raw }}>
-          <h4 class="title-notes" >{{ module.title }}</span>
-        </a>
-      </div>
-      {% if module.sponsor.media|length > 0 %}
-        {{ module.sponsor|asSponsor|raw }}
-      {% endif %}
     </div>
   </div>
+{% elseif module.template == 'bottom_text_gallery' %}
+  <div class="sn-bottom-text-gallery" data-camus-template="{{module.templateName}}" >
+    <div class="media-container">
+      <div class="fav-container">
+      </div>
+      <div class="img-container" data-index="{{module.dataIndex}}">
+        <a {{ module.slug|linkConstruct|raw }}>
+          {% if module.extraThumbnail is defined and module.extraThumbnail is not empty %}
+            {{ module.thumbnail|asImage(module.alt,"tl",module.extraThumbnail.width,module.extraThumbnail.height)|raw }}
+            {% else %}
+              {{ module.thumbnail|asImage(module.alt)|raw }}
+          {% endif %}
+        </a>
+      </div>
+      {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == 'default' %}
+        <a {{ module.slug|linkConstruct|raw }} class="item-icon" >
+          <span class="fa fa-camera"></span>
+        </a>
+      {% endif %}
+      <div class="headline-bottom-container-gradient">
+        {% if module.heading.title != '' %}
+          <div class="section-top" >
+            <span >{{ module.heading.title }}</span>
+          </div>
+        {% endif %}
+        <div class="title">
+          <a {{ module.slug|linkConstruct|raw }} data-index="{{module.dataIndex}}">
+            <span class="title-notes" >{{ module.title }}</span>
+          </a>
+        </div>
+        <div class="sub-buttons">
+          <div class="button-buy">
+            <div class="text-buy">
+              Comprar
+            </div>
+          </div>
+          {% if module.sponsor.media|length > 0 %}
+            {{ module.sponsor|asSponsor|raw }}
+          {% endif %}
+          {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+          <div class="social-media"></div>
+        </div>
+      </div>
+    </div>
   </div>
 {% elseif module.template == 'composed_tv' %}
   <div class="sn-composed-tv" data-camus-module-type="ctr">

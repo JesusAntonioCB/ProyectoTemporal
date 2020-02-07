@@ -18,7 +18,6 @@
       </div>
       <div class="gallery-container" >
         {% for listElement in module.media %}
-        {% dump(listElement) %}
         {% if listElement is not empty %}
           {#{% set type = listElement.type|splitTemplate %}#}
           {% set infografiaClass = "" %}

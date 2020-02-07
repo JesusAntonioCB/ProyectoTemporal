@@ -3,13 +3,15 @@
     <div class="media-container">
       <div class="image">
         <a {{ module.slug|linkConstruct|raw }}>
-        {% dump(module) %}
           {% if module.hasThumbnailClip == true %}
             {{ module.thumbnail|asImageClip(module.thumbnailClip, module.alt)|raw }}
           {% else %}
-            {{ module.thumbnail|asImage(module.alt,"tl",module,"300")|raw }}
+            {% if module.extraThumbnail is defined and module.extraThumbnail is not empty %}
+              {{ module.thumbnail|asImage(module.alt,"tl",module.extraThumbnail.width,module.extraThumbnail.height)|raw }}
+              {% else %}
+                {{ module.thumbnail|asImage(module.alt,"tl")|raw }}
+            {% endif %}
           {% endif %}
-
         </a>
       </div>
       {% if module.extraMedia.icon == 'visible' or module.extraMedia.icon == "default" %}
@@ -22,22 +24,12 @@
         <div class="title ">
             <div class="text-title"> {{ module.title }} </div>
         </div>
-        <div class="buy-gallery">
-          <span href="#" class="buy-icon-facebook"></span>
-          <span href="#" class="buy-icon-twitter"></span>
-          <span href="#" class="buy-icon-pinterest"></span>
-        </div>
-        <div class="button-buy">
-          <div class="text-buy">
-            Comprar
-          </div>
-        </div>
         </a>
         <!-- <div class="author">
           <span >{{ module.author }}</span>
         </div> -->
-        <!-- {{ module.slug|socialTag(module.title, module.thumbnail)|raw }} -->
-        <!-- <div class="social-media"></div> -->
+         {{ module.slug|socialTag(module.title, module.thumbnail)|raw }}
+        {# <div class="social-media"></div> #}
       </div>
     </div>
   </div>

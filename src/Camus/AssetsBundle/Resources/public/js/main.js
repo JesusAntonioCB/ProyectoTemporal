@@ -2,15 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from "jquery";
 import Blazy from 'blazy';
+import Columns from 'columns.js';
 import Header from "./CamusGlobalComponents/Header.js";
 import Menu from "./CamusGlobalComponents/Menu.js";
 import { shareSelectedText } from "./CamusGlobalComponents/ShareText.js";
-//piano
-import SelectableImage from "./CamusSingleComponents/oo/selectableImage.jsx";
+//
+import modalSlider from "./CamusSingleComponents/gall/modalSlider.jsx";
 // import "./CamusGlobalComponents/piano/PianoLogout.js";
 // import "./CamusGlobalComponents/piano/PianoRegister.js";
 // import "./CamusGlobalComponents/piano/PianoProfile.js";
+import SelectableImage from "./CamusGlobalComponents/selectableImage.jsx";
 import ModuleShareButtons from "./CamusGlobalComponents/ModuleShareButtons.jsx";
+import ModuleFavoriteButton from "./CamusGlobalComponents/ModuleFavoriteButton.jsx";
 
 
 
@@ -37,6 +40,17 @@ class Main extends React.Component {
     }
 
     initialize() {
+      if ($(".gall-base").find(".firms").length || $(".gall-gallery").find(".firms").length) {
+        let container= $(".gall-base").find(".firms").length ? $(".gall-base").find(".firms")[0]:$(".gall-gallery").find(".firms")[0],
+            grid = new Columns(container, {
+          columns: 1,
+          breakpoints: {
+            648: 2,
+            968: 3,
+            1440: 4
+          },
+        });
+      }
         // window.fbAsyncInit = () => {
         //     FB.init({
         //         appId: '604118326773630',
@@ -143,6 +157,10 @@ class Main extends React.Component {
             />, this);
         });
 
+        $(".fav-container").each(function () {
+            ReactDOM.render( < ModuleFavoriteButton />, this);
+        });
+
         $("body").on('slick-opening-change', function (e, params) {
             var container = params.target;
             var socials = $(container).find(".social-media, .social-media-large")[0];
@@ -177,10 +195,9 @@ class Main extends React.Component {
         });
 
         // Components prefixes.
-        var componentsFatherContainer = $(".contenedor-detail-block, .contenedor-notas-block, .ctr-modules, #content-body > div", ".body-content"),
+        var componentsFatherContainer = $(".contenedor-detail-block, .contenedor-notas-block, .ctr-modules, .modal-carruseles-container, #content-body > div", ".body-content"),
             prefixDictionary = ["sli", "tabs", "eo", "sn", "nd-md-base", "nd-sd-media"],
             prefixAmount = prefixDictionary.length;
-
         if (componentsFatherContainer.length) {
             for (var i = 0; i < prefixAmount; i++) {
                 var elements = componentsFatherContainer.children().filter(function () {

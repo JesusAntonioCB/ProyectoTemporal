@@ -25,9 +25,7 @@
     <link rel="apple-touch-icon" sizes="192x192" href="/bundles/camusassets/images/16x16.ico">
     <link rel="stylesheet" href="{{ asset('/bundles/camusassets/scss/main/main.css') }}">
     {% if fileCSS is defined %}
-    {% dump(fileCSS) %}
       <style type="text/css">
-
         {% for file in fileCSS %}
           {% if existFile('./bundles/camusassets/scss/main/groups/'~file) %}
             {{ includeFile('./bundles/camusassets/scss/main/groups/'~file)|raw }}
@@ -111,9 +109,9 @@
     <!-- Header -->
     {{ include ('@CamusAssets/Header/header.html.twig') }}
     <!-- Content -->
-    
+
      <div class="body-content">
-      <div class="content bcontent">
+      <div class="content">
         {% block body %}
         {% endblock %}
         <!-- <div class="copyright-content">
@@ -143,7 +141,6 @@
     <!-- playing -->
     {% block ping %}
     {% endblock %}
-
     <script type="application/javascript" src="{{ asset('/bundles/camusassets/js/bundle/mainbundle.js') }}" defer></script>
 
     <!-- BrightCove -->

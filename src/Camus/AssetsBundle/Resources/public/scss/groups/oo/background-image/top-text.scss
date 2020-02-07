@@ -76,33 +76,6 @@
           background-position: -34px 0px;
         }
       }
-      .button-buy:hover {
-        background-color: #bcbcbc;
-      }
-      .button-buy{
-        background-color: #ebebeb;
-        height: 24px;
-        float: right;
-        vertical-align: top;
-        -moz-transition: opacity ease-out 0.2s;
-        -webkit-transition: opacity ease-out 0.2s;
-        -o-transition: opacity ease-out 0.2s;
-        transition: opacity ease-out 0.2s;
-        position: relative;
-        bottom: 10px;
-        .text-buy{
-          color: #575757;
-          font-size: 14px;
-          font-family: Helvetica,'Helvetica Neue',Arial,sans-serif;
-          font-weight: normal;
-          font-style: normal;
-          text-transform: uppercase;
-          letter-spacing: 1.5px;
-          padding-left: 18px;
-          padding-right: 18px;
-          padding-top: 2px;
-        }
-      }
     }
     &:hover{
       .bottom-selected-container{
@@ -220,45 +193,9 @@
   display: block !important;
 }
 
-.top-content{
-  display: block !important;
-  max-width: 1284px;
-  margin: auto;
-  @include three-column{
-    max-width: 966px;
-  }
-  @include skyscraper-media{
-    max-width: 966px;
-  }
-  @include two-column{
-    max-width: 618px;
-  }
-  @include one-column{
-    max-width: 320px;
-  }
-}
-
 .body-content{
   margin-top: 27px !important;
   .content{
     padding: 0px;
-  }
-}
-@include two-column{
-  .top-content{
-    height: 15px !important;
-  }
-  .title-top-content{
-    width: 100px !important;
-    top: -3px !important;
-  }
-}
-@include one-column{
-  .top-content{
-    height: 30px !important;
-  }
-  .title-top-content{
-    width: 100px !important;
-    top: 3px !important;
   }
 }

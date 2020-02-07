@@ -45,9 +45,9 @@ ol,ul {
   box-sizing: border-box
 }
 .text-hide {
-  color: transparent;
+  color: $transparent;
   text-shadow: none;
-  background-color: transparent;
+  background-color: $transparent;
   border: 0
 }
 .hide {
@@ -431,7 +431,7 @@ ol,ul {
     	position: relative;
     	width: 100%;
       max-width: 1940px;
-    	background-color: transparent;
+    	background-color: $transparent;
       display: flex;
       display: -webkit-flex;
       display: -moz-flex;
@@ -484,22 +484,6 @@ ol,ul {
   }
   &.view-small{
     margin-top: 45px;
-  }
-}
-.top-content{
-  display: none;
-  .title-top-content{
-    font-size: 12px;
-    font-weight: normal;
-    font-style: normal;
-    font-family: Helvetica,'Helvetica Neue',Arial,sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    position: relative;
-    top: 21px;
-    left: 30px;
-    color: #aaaaaa;
-    width: max-content;
   }
 }
 .copyrightG{
@@ -572,7 +556,7 @@ ol,ul {
 .social-media{
   display: inline-block;
   float: right;
-  color: $color-social-gray;
+  color: $color-white;
   .SocialMediaShareButton:nth-child(n+2), .SocialMediaShareButton:nth-child(n+3){
     margin-left: 12px;
   }
@@ -582,6 +566,32 @@ ol,ul {
       display: none;
       @include one-column{
         display: block;
+      }
+    }
+    .SocialMediaShareButton{
+      display: table;
+      text-align: center;
+      width: 15px;
+      height: 15px;
+      background: $color-dark-gray;
+      cursor: pointer;
+      i{
+        vertical-align: middle;
+      }
+      &.facebook-share-modules{
+        &:hover{
+          background: $color-facebook-dark;
+        }
+      }
+      &.twitter-share-modules{
+        &:hover{
+          background: $color-twitter;
+        }
+      }
+      &.whatsapp-share-modules{
+        &:hover{
+          background: $color-whatsapp;
+        }
       }
     }
   }
@@ -863,6 +873,62 @@ html.vrBlock, body.vrBlock{
   -webkit-animation: load8 1.1s infinite linear;
   animation: load8 1.1s infinite linear;
 }
+/*-------------------capa oscura-------------------------*/
+.layer{
+  position: fixed;
+  background: rgba(0, 0, 0, 0.64);
+  height: 100%;
+  bottom: 0;
+  width: 100%;
+  z-index: 0;
+  color: #fff;
+  overflow: hidden;
+  cursor: pointer;
+}
+/*-------------------boton de favoritos-------------------------*/
+$fav-size-0: 1rem;
+$fav-size--2: 0.8rem;
+$fav-size-2: 1.25rem;
+$fav-size-3: 1.42875rem;
+.fav-container {
+	.fav-btn {
+    opacity: 0;
+    top: auto;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+    display: flex;
+		justify-content: center;
+		align-items: center;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.55);
+		.favme {
+			display:block;
+			font-size: $fav-size-2;
+			width: auto;
+			height: auto;
+			cursor: pointer;
+			box-shadow: none;
+			transition: all .2s ease;
+			color: $color-lighter-silver;
+			margin: 0;
+
+			&.active {
+				color: $color-red-alizarin-crimison;
+			}
+			&:hover {
+				animation: favme-hover .3s infinite alternate;
+			}
+			&.is_animating {
+				animation: favme-anime .3s;
+			}
+		}
+	}
+  .active{
+    opacity: 1 !important;
+  }
+}
 @-webkit-keyframes load8 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -882,4 +948,45 @@ html.vrBlock, body.vrBlock{
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+@keyframes favme-anime {
+  0% {
+		opacity: 1;
+    transform: scale(1);
+		// font-size: $fav-size-0;
+		-webkit-text-stroke-color: $transparent;
+	}
+	25%	 {
+		opacity:.6;
+		color: #FFF;
+    transform: scale(.7);
+		// font-size: $fav-size--2;
+		-webkit-text-stroke-width: 1px;
+   	-webkit-text-stroke-color: $color-red-dark;
+	}
+	75%	 {
+		opacity:.6;
+		color: #FFF;
+    transform: scale(1.32);
+		// font-size: $fav-size-3;
+		-webkit-text-stroke-width: 1px;
+   	-webkit-text-stroke-color: $color-red-dark;
+	}
+  100% {
+		opacity: 1;
+    transform: scale(1.15);
+		// font-size: $fav-size-2;
+		-webkit-text-stroke-color: $transparent;
+	}
+}
+
+@keyframes favme-hover {
+	from {
+    transform: scale(1.22);
+		// font-size: $fav-size-3;
+	}
+	80% {
+    transform: scale(1.05);
+		// font-size: $fav-size-2;
+	}
 }

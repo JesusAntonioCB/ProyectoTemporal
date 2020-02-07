@@ -1,6 +1,6 @@
 {% if module.template == 'opinion' %}
  {% if module.modules is defined and module.modules is not empty %}
-   <div class="sli-opinion"   >
+   <div class="sli-opinion" >
      <div class="media-container">
         <div class="headline" >
           {% if module.hasThumbnail == true %}
@@ -48,46 +48,6 @@
           <span  >{{ module.title }}</span>
         </div>
         {% endif %}
-      {% if module.extraHeading is defined and module.extraHeading is not empty %}
-        <div class="folder-info-content">
-          {% if module.extraHeading.ruteInfo is defined and module.extraHeading.ruteInfo is not empty %}
-            <div class="rute-info">
-              {% set i = 0 %}
-              {% for rute in ruteInfo %}
-                {% if i >= 1 %}
-                  {% if rute.slug == "#" %}
-                    » <span class="text disable">{{rute.titulo}}</span>
-                    {% else %}
-                      » <a href="{{ rute.slug }}" class="text">{{rute.titulo}}</a>
-                  {% endif %}
-                  {% else %}
-                    <a href="{{ rute.slug }}" class="text">{{rute.titulo}}</a>
-                {% endif %}
-                {% set i = i + 1 %}
-              {% endfor %}
-            </div>
-          {% endif %}
-          {% if module.extraHeading.folderInfo is defined and module.extraHeading.folderInfo is not empty %}
-            <div class="folder-info">
-              <div class="text gallery-info">
-                <span>
-              Galerías <b> {% if module.extraHeading.galleryCount is defined and module.extraHeading.galleryCount is not empty %} {{module.extraHeading.galleryCount}} {% endif %} </b>
-                </span>
-              </div>
-              <div class="text collection-info">
-                <span>
-              Colecciones <b> {% if module.extraHeading.collectionCount is defined and module.extraHeading.collectionCount is not empty %} {{module.extraHeading.collectionCount}} {% endif %} </b>
-                </span>
-              </div>
-              <div class="text grup-info">
-                <span>
-              Grupos <b>{% if module.extraHeading.subGroupCount is defined and module.extraHeading.subGroupCount is not empty %} {{module.extraHeading.subGroupCount}} {% endif %}</b>
-                </span>
-              </div>
-            </div>
-          {% endif %}
-        </div>
-      {% endif %}
         {% if module.hasSponsor is defined and module.hasSponsor == true %}
           {{ module.sponsor|asSponsor|raw }}
         {% endif %}
@@ -104,80 +64,6 @@
           </div>
         </div>#}
       </div>
-      <div  class="firms">
-        {% for list in module.modules %}
-          {% if list != null %}
-            {% set type = list.type|splitTemplate %}
-            {% include '@CamusAssets/Groups/'~type[0]~'/'~type[1]~'.html.twig' ignore missing with {module: list|getModelModule, parentId: module.id } %}
-          {% endif %}
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-{% elseif module.template == 'gallery' %}
-  <div class="sli-gallery">
-    <div class="media-container">
-      <div class="headline" >
-        {% if module.hasThumbnail == true %}
-          <div class="img-container" >
-            {{ module.thumbnail|asImage(module.alt)|raw }}
-          </div>
-        {% endif %}
-        {% if module.title != '' %}
-          <div class="title" >
-            <span  >{{ module.title }}</span>
-          </div>
-        {% endif %}
-        {% if module.extraHeading is defined and module.extraHeading is not empty %}
-          <div class="folder-info-content">
-            {% if module.extraHeading.ruteInfo is defined and module.extraHeading.ruteInfo is not empty %}
-              <div class="rute-info">
-                {% set i = 0 %}
-                {% for rute in ruteInfo %}
-                  {% if i >= 1 %}
-                    {% if rute.slug == "#" %}
-                      » <span class="text disable">{{rute.titulo}}</span>
-                      {% else %}
-                        » <a href="{{ rute.slug }}" class="text">{{rute.titulo}}</a>
-                    {% endif %}
-                    {% else %}
-                      {% if rute.slug == "#" %}
-                        <span class="text disable">{{rute.titulo}}</span>
-                        {% else %}
-                          <a href="{{ rute.slug }}" class="text">{{rute.titulo}}</a>
-                      {% endif %}
-                  {% endif %}
-                  {% set i = i + 1 %}
-                {% endfor %}
-              </div>
-            {% endif %}
-            {% if module.extraHeading.folderInfo is defined and module.extraHeading.folderInfo is not empty %}
-              <div class="folder-info">
-                <div class="text gallery-info">
-                  <span>
-                Galerías <b> {% if module.extraHeading.galleryCount is defined and module.extraHeading.galleryCount is not empty %} {{module.extraHeading.galleryCount}} {% endif %} </b>
-                  </span>
-                </div>
-                <div class="text collection-info">
-                  <span>
-                Colecciones <b> {% if module.extraHeading.collectionCount is defined and module.extraHeading.collectionCount is not empty %} {{module.extraHeading.collectionCount}} {% endif %} </b>
-                  </span>
-                </div>
-                <div class="text grup-info">
-                  <span>
-                Grupos <b>{% if module.extraHeading.subGroupCount is defined and module.extraHeading.subGroupCount is not empty %} {{module.extraHeading.subGroupCount}} {% endif %}</b>
-                  </span>
-                </div>
-              </div>
-            {% endif %}
-          </div>
-        {% endif %}
-        {% if module.hasSponsor is defined and module.hasSponsor == true %}
-          {{ module.sponsor|asSponsor|raw }}
-        {% endif %}
-        <div class="menu-control-gallery"></div>
-      </div>
-      <div class="selectable-info-conotainer"></div>
       <div  class="firms">
         {% for list in module.modules %}
           {% if list != null %}
@@ -218,13 +104,13 @@
     </div>
   {% endif %}
 {% elseif module.template == 'large' %}
-  <div class="sli-large"   style="background-color: {{ module.color }}" >
+  <div class="sli-large" style="background-color: {{ module.color }}" >
     <div class="media-container">
       <div class="headline">
         <div class="title">
-          <span  >{{ module.title }}</span>
+          <span>{{ module.title }}</span>
         </div>
-        <div class="arrows"   style="color: {{ module.color }}">
+        <div class="arrows" style="color: {{ module.color }}">
           <div class="left">
             <i class="fa fa-chevron-left" aria-hidden="true"></i>
           </div>
@@ -272,17 +158,4 @@
       {% endfor %}
     </div>
   </div>
-{# {% elseif module.template == "ticker_caliente" %}
-  <div class="sli-ticker-caliente" {{data_camus_allow_empty_module["1"]}}>
-    <div class="img-container">
-      <img src="/bundles/camusassets/images/caliente.png" alt="caliente.mx">
-    </div>
-    <div class="item-wrapper">
-      <button class="left"><i class="fa fa-caret-left"></i></button>
-      <div class="items-league">
-      </div>
-      <button class="right"><i class="fa fa-caret-right"></i></button>
-    </div>
-  </div>
-  {% include '@CamusAssets/Groups/ad/pleca.html.twig' ignore missing with {} %} #}
 {% endif %}

@@ -1,79 +1,171 @@
 {% if module.template == 'gallery' %}
-  <div  class="sli-opening slider" data-camus-id="{{ module.id }}">
+  <div class="sli-opening slider" data-camus-id="{{ module.id }}">
     {% if module.subtitle != '' %}
       <h2 class="heading">{{ module.subtitle|striptags }}</h2>
     {% endif %}
     <div class="media-container">
-      <div class="gallery-icons">
-        <a href="./"><div class="fa fa-arrow-left"></div></a>
-        <div class="fa fa-heart-o"></div>
-        <div class="fa fa-share-alt"></div>
+      <div class="description-cartoon">
+        <h1 class="title"> </h1>
+        <div class="summary">
+          <span </span>
+        </div>
+        <div class="section">
+          <span </span>
+        </div>
+        <div class="date">
+          <span></span>
+        </div>
       </div>
-      <div class="gallery-container">
+      <div class="gallery-container" >
         {% for listElement in module.media %}
         {% if listElement is not empty %}
-          <div class="img-item">
+          {#{% set type = listElement.type|splitTemplate %}#}
+          {% set infografiaClass = "" %}
+          {# {% if contentLayer.type == "INF" %}
+            {% set infografiaClass = "infografia" %}
+          {% endif %} #}
+          <div class="img-item {{ infografiaClass }}">
             {{ listElement.src|imageSize(module.template)|raw }}
-            <span class="detail">{{ listElement.publishedVersion.title }} ©</span>
+            <span class="detail">{{ listElement.publishedVersion.title }}</span>
           </div>
+          {#{{ include ('Application\Camus\AssetsBundle:Groups:'~type[0]~'/'~type[1]~'.html.twig', {module: listElement|getModelModule}) }}#}
           {% endif %}
         {% endfor %}
       </div>
-      <div class="gallery-nav">
-        {% for listElement in module.media %}
-        {% if listElement is not empty %}
-          <div class="img-item">
-            {{ listElement.src|imageSize(module.template)|raw }}
+      <div class="left-container">
+
+        <div class="cartoon-counter">
+          <div class="arrow-buttons">
+
+            {#MODIFICACION DE LAS FLECHAS#}
+            <button class="left"> <span> <img src="/bundles/camusassets/images/flecha_cartones_atras.jpg" alt="Flecha atras"/></button> </span>
+            <button class="right"> <span> <img src="/bundles/camusassets/images/flecha_cartones_adelante.jpg" alt="Flecha adelante"/></button> </span>
+
+            {#  FLECHAS ANTERIORES
+            <button class="left"><span class="fa fa-chevron-left"></span></button>
+            <button class="right"><span class="fa fa-chevron-right"></span></button>
+            #}
+
           </div>
-          {% endif %}
-        {% endfor %}
+          <div class="counter">
+            {#<div class="mono">
+              <span>Mono</span>
+            </div>#}
+            <div class="number">
+              <span class="img-index">1</span>
+              <span>/</span>
+              <span>{{ module.media|length }}</span>
+            </div>
+          </div>
+          <span class="img-detail">{{ module.media.0.publishedVersion.title }}</span>
+        </div>
+
+        <div class="social-networks-share">
+          <div class="span-share">
+            {# <span>Compartir</span> #}                                                                {#COMENTADO#}
+          </div>
+          {% set slugUrl = app.request.requestUri %}
+          {{ slugUrl|socialTag(module.title, module.media.0.src)|raw }}
+          <div class="social-media-large"></div>
+        </div>
+
+      </div>
+      <div class="detail-container">
+        <span class="img-index">1</span>
+        <span class="img-detail">{{ module.media.0.publishedVersion.title }}</span>
       </div>
     </div>
-    <div class="description-cartoon">
-      <div class="panel-shop">
-        <div class="fa fa-times"></div>
-        <img src="https://cdn.zenfolio.net/img/s/v-12/u27397674-o940956710-111.png" title="FotoChic by Chic Magazine" class="panel-shop-logo">
-        <div class="panel-shop-text">
-          VISITAR TIENDA
+  </div>
+{% elseif module.template == 'modal' %}
+  <div class="modal hide">
+    <div class="modal-container">
+      <div class="modal-carruseles-container">
+        <div class="sli-modal slider" data-camus-id="{{ module.id }}">
+          <div class="media-container">
+            <div class="header-cartoon">
+              <div class="btn-return">
+                <span class="fa fa-arrow-left"> </span>
+              </div>
+              <div class="fav-container">
+              </div>
+              <div class="btn-share">
+                <span class="fa fa-share-alt"></span>
+              </div>
+              <div class="btn-buy">
+                <div class="text-buy">
+                  Comprar<span class="fa fa-angle-double-right"></span>
+                </div>
+              </div>
+            </div>
+            <div class="gallery-slider">
+              <div class="gallery-container father-sli" >
+                {% for listElement in module.media %}
+                  {% if listElement is not empty %}
+                    <div class="img-item {{ listElement.publishedVersion.isActual }}">
+                      {{ listElement.src|imageSize(module.template)|raw }}
+                      <span class="detail">{{ listElement.publishedVersion.title }}</span>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <div class="left"> <span class="fa fa-chevron-left"> </span> </div>
+              <div class="right"> <span class="fa fa-chevron-right"> </span> </div>
+            </div>
+          </div>
         </div>
+        <div class="sli-child slider" data-camus-id="{{ module.id }}">
+          <div class="media-container">
+            <div class="detail-container">
+              {# <span class="img-index">1</span> #}
+              <div class="img-detail img-control">{{ module.media.0.publishedVersion.title }} <span class="fa fa-copyright" ></span> </div>
+              <div class="img-control auto-start">
+                <div class="text-container">
+                  <span class="fa fa-play"></span> <span class="text">Pase de diapositivas</span>
+                </div>
+              </div>
+              <div class="img-control hide-slider"><span class="fa fa-angle-double-down"></div>
+            </div>
+            <div class="gallery-slider">
+              <div class="gallery-container child-sli" >
+                {% for listElement in module.media %}
+                  {% if listElement is not empty %}
+                    <div class="img-item {{ listElement.publishedVersion.isActual }}">
+                      {{ listElement.src|imageSize(module.template)|raw }}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <div class="left"> <span class="fa fa-chevron-left"> </span> </div>
+              <div class="right"> <span class="fa fa-chevron-right"> </span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="social-networks-share">
+        <div class="span-share">
+          {# <span>Compartir</span> #}                                                                {#COMENTADO#}
+        </div>
+        {% set slugUrl = app.request.requestUri %}
+        {{ slugUrl|socialTag(module.title, module.media.0.src)|raw }}
+        <div class="social-media-large"></div>
       </div>
-      <div class="panel-buy">
-        <div class="panel-buy-tt">
-          <div class="panel-buy-tt-sub1">
-            Descargas
-          </div>
-          <div class="panel-buy-tt-sub2">
-            Precio (unidad) MXN
-          </div>
-        </div>
-        <div class="panel-buy-pr">
-          <div class="panel-buy-pr-sub1">
-            Descarga fotografía digital
-          </div>
-          <div class="panel-buy-pr-sub2">
-            110,99
-          </div>
-          <div class="panel-buy-pr-sub3">
-          </div>
-        </div>
-        <div class="panel-buy-tt">
-          <div class="panel-buy-tt-sub1">
-            Paquete
-          </div>
-        </div>
-        <div class="panel-buy-pr">
-          <div class="panel-buy-pr-sub1">
-            Comprar Galería Completa
-          </div>
-          <div class="panel-buy-pr-sub2">
-            2.000,00
-          </div>
-          <div class="panel-buy-pr-sub3">
-          </div>
-        </div>
       </div>
-      <div class="panel-car">
-        <a href="/cart.html" class="panel-car-txt">Ir a cesta</a>
+      <div class="modal-left-menu">
+        <div class="left-menu-header">
+          <img src="{{ asset('/bundles/camusassets/images/logos-fotochic/logo-fotoChic.png') }}" alt="logo-fotoChic" title="FotoChic by Chic Magazine">
+          <div class="left-menu-close" title="Cerrar">
+            <span class="normal-icon fa fa-times"></span>
+            <span class="hovered-icon fa fa-times-circle"></span>
+          </div>
+          <div class="left-menu-visit-shop left-menu-visit-shop_logo_image">
+            Visitar tienda
+          </div>
+        </div>
+        <div class="left-menu-footer">
+          <a href="#" class="go-to-cart go-to-cart_disabled">
+            Ir a cesta
+            <span class="fa fa-shopping-cart"></span>
+          </a>
+        </div>
       </div>
     </div>
   </div>

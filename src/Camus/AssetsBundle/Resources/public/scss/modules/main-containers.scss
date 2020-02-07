@@ -190,24 +190,6 @@ $circle-white-ratio-small: 24px;
     vertical-align: middle;
   }
 }
-
-.media-container:hover .headline-bottom-container-gradient{
-  opacity: 1;
-}
-
-.headline-bottom-container-gradient{
-  bottom: 0;
-  background-color: rgba(64,64,64,0.6);
-  opacity: 0;
-  transition: opacity ease-in 0.3s;
-}
-
-.headline-bottom-container-gradient{
-  height: 32px;
-  position: absolute;
-  width: 100%;
-  padding: 0 8px;
-}
 .headline-big-container{
   @include text-with-utopia-bold-color-black;
   margin-top: 10px;
