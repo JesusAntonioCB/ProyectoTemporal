@@ -12,8 +12,128 @@ class SelectableImage{
     let oThis=this;
     if ($(".menu-control-gallery").length) {
       console.log("prueba");
-      oThis.appendMenuControl();
+      oThis.appendpre();
     }
+  }
+
+  appendpre(type=""){
+    let _this=this;
+    switch (type) {
+        case "CancelMenu":
+          var element = (
+          <div className="top-content">
+            <div className="buttons-top-content">
+              <div className="subbuttons letras">
+                <span className="fa fa-shopping-cart"></span>COMPRAR <span className="downbutton">&#9660;</span>
+              </div>
+              <div className="subbuttons">
+                <div className="letras">
+                  <span className="fa fa-shopping-cart"></span>COMPRAR <span className="downbutton">&#9660;</span>
+                </div>
+                <div className="div-top-content">
+                  <div className="div-top-buy">
+                    <a href="#">Seleccionar fotos que comprar</a>
+                  </div>
+                  <div className="div-top-separator"></div>
+                  <div className="div-top-buy">
+                    <a href="#">Comprar todas las fotos</a>
+                  </div>
+                  <div className="div-top-buy">
+                    <a href="#">Ver cesta</a>
+                  </div>
+                </div>
+              </div>
+              <div className="subbuttons">
+                <div className="letras">AGREGAR A FAVORITOS</div>
+              </div>
+              <div className="subbuttons btnCancel" onClick={ _this.openAgain }>
+                <div className="letras">CANCELAR</div>
+              </div>
+            </div>
+          </div>
+        );
+        ReactDOM.render(element, $(".menu-control-gallery")[0]);
+      break;
+      case "":
+        var element = (
+        <div className="top-content">
+          <div className="buttons-top-content">
+            <div className="subbuttons btnSelectable" onClick={ _this.initSelectable.bind(this) }>
+              <div className="letras">SELECCIONAR FOTOS</div>
+            </div>
+            <div className="subbuttons">
+              <div className="letras">
+                <span className="fa fa-shopping-cart"></span>COMPRAR <span className="downbutton">&#9660;</span>
+              </div>
+              <div className="div-top-content">
+                <div className="div-top-buy">
+                  <a href="#">Seleccionar fotos que comprar</a>
+                </div>
+                <div className="div-top-separator"></div>
+                <div className="div-top-buy">
+                  <a href="#">Comprar todas las fotos</a>
+                </div>
+                <div className="div-top-buy">
+                  <a href="#">Ver cesta</a>
+                </div>
+              </div>
+            </div>
+            <div className="subbuttons">
+              <div className="letras"><span className="fa fa-book"></span>CREAR ÁLBUM</div>
+            </div>
+            <div className="subbuttons">
+              <div className="letras">COMPARTIR</div>
+            </div>
+            <div className="subbuttons">
+              <div className="letras"><span className="leftButton">&#9658;</span>PASE DE DIAPOSITIVAS</div>
+            </div>
+          </div>
+        </div>
+        );
+        ReactDOM.render(element, $(".menu-control-gallery")[0]);
+      break;
+
+    }
+
+  }
+  openAgain(){
+    let _this=this;
+    const element = (
+      <div className="top-content">
+        <div className="buttons-top-content">
+          <div className="subbuttons btnSelectable" onClick={ _this.selected }>
+            <div className="letras">SELECCIONAR FOTOS</div>
+          </div>
+          <div className="subbuttons">
+            <div className="letras">
+              <span className="fa fa-shopping-cart"></span>COMPRAR <span className="downbutton">&#9660;</span>
+            </div>
+            <div className="div-top-content">
+              <div className="div-top-buy">
+                <a href="#">Seleccionar fotos que comprar</a>
+              </div>
+              <div className="div-top-separator"></div>
+              <div className="div-top-buy">
+                <a href="#">Comprar todas las fotos</a>
+              </div>
+              <div className="div-top-buy">
+                <a href="#">Ver cesta</a>
+              </div>
+            </div>
+          </div>
+          <div className="subbuttons">
+            <div className="letras"><span className="fa fa-book"></span>CREAR ÁLBUM</div>
+          </div>
+          <div className="subbuttons">
+            <div className="letras">COMPARTIR</div>
+          </div>
+          <div className="subbuttons">
+            <div className="letras"><span className="leftButton">&#9658;</span>PASE DE DIAPOSITIVAS</div>
+          </div>
+        </div>
+      </div>
+    );
+    ReactDOM.render(element, $(".menu-control-gallery")[0]);
   }
 
   appendMenuControl(){
@@ -26,7 +146,7 @@ class SelectableImage{
           </div>
           <div className="subbuttons">
             <div className="letras">
-              <span className="fa fa-shopping-cart"></span>COMPRAR<span className="downbutton">&#9660;</span>
+              <span className="fa fa-shopping-cart"></span>COMPRAR <span className="downbutton">&#9660;</span>
             </div>
             <div className="div-top-content">
               <div className="div-top-buy">
@@ -68,7 +188,7 @@ class SelectableImage{
       </div>
     );
     item.each(function(index){
-      dump(this);
+      // dump(this);
       ReactDOM.render(element, this);
     });
   }
@@ -98,6 +218,7 @@ class SelectableImage{
   initSelectable(object){
     let oThis=this;
     var contenedor= $(".contenedor-notas-block");
+    var type= "CancelMenu";
     const selectable = new Selectable({
        filter: ".sn-bottom-text-gallery",
        ignore: [".headline-bottom-container-gradient", ".fav-container",".bottom-selected-container"],
@@ -135,6 +256,8 @@ class SelectableImage{
       $(item.node).find(".bottom-selected-container").find(".circleCheck").removeClass("active");
       console.log("deseleccione uno");
     });
+
+    oThis.appendpre(type);
   }
 
   imageZoom(object){
