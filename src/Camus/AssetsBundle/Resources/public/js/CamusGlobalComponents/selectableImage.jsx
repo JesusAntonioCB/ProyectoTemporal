@@ -11,7 +11,6 @@ class SelectableImage{
   selected(){
     let oThis=this;
     if ($(".menu-control-gallery").length) {
-      console.log("prueba");
       oThis.appendpre();
     }
   }
@@ -46,7 +45,7 @@ class SelectableImage{
               <div className="subbuttons">
                 <div className="letras">AGREGAR A FAVORITOS</div>
               </div>
-              <div className="subbuttons btnCancel" onClick={ _this.openAgain }>
+              <div className="subbuttons btnCancel" onClick={ _this.appendpre.bind(this,"") }>
                 <div className="letras">CANCELAR</div>
               </div>
             </div>
@@ -97,11 +96,12 @@ class SelectableImage{
 
   }
   openAgain(){
-    let _this=this;
+    // ReactDOM.unmountComponentAtNode($(".menu-control-gallery")[0]);
+    let Tthis=this;
     const element = (
       <div className="top-content">
         <div className="buttons-top-content">
-          <div className="subbuttons btnSelectable" onClick={ _this.selected }>
+          <div className="subbuttons btnSelectable" onClick={ Tthis.initSelectable.bind(this) }>
             <div className="letras">SELECCIONAR FOTOS</div>
           </div>
           <div className="subbuttons">
@@ -231,9 +231,9 @@ class SelectableImage{
     });
     selectable.on("init", function() {
       if ($(".selectable-info-conotainer").length) {
-        console.log("init dentro del ico container");
-        console.log(selectable.getItems());
-        console.log(selectable.getItems().length);
+        // console.log("init dentro del ico container");
+        // console.log(selectable.getItems());
+        // console.log(selectable.getItems().length);
         oThis.appendMenuSelected($(".selectable-info-conotainer")[0],selectable.getItems().length,selectable.getSelectedItems().length);
       }
       var items= $(".sn-bottom-text-gallery");
@@ -243,15 +243,13 @@ class SelectableImage{
       oThis.appendCheked(items.find(".bottom-selected-container"));
     });
     selectable.on("selecteditem", function(item) {
-      // console.log(item);
-      console.log();
       oThis.appendMenuSelected($(".selectable-info-conotainer")[0],selectable.getItems().length,selectable.getSelectedItems().length);
       $(item.node).find(".bottom-selected-container").find(".circleCheck").addClass("active");
       console.log("seleccione uno");
     });
     selectable.on("deselecteditem", function(item) {
       // console.log(item);
-      console.log(selectable.getSelectedItems().length);
+      // console.log(selectable.getSelectedItems().length);
       oThis.appendMenuSelected($(".selectable-info-conotainer")[0],selectable.getItems().length,selectable.getSelectedItems().length);
       $(item.node).find(".bottom-selected-container").find(".circleCheck").removeClass("active");
       console.log("deseleccione uno");
@@ -276,8 +274,6 @@ class SelectableImage{
         x= Math.sign((position.top-((size.width-container.width())/2))) != -1 ? position.top-((size.width-container.width())/2) : 0,
         y= Math.sign((position.left-((size.width-container.width())/2))) != -1 ? position.left-((size.width-container.width())/2) : 0;
     let relativePotition= container[0].getBoundingClientRect();
-    console.log(relativePotition);
-    console.log(position);
     // zoomImage.find(".zoomImage-content").attr("src",image.attr("src")).css({"top":x,"left":y});
     const element = (
       <div className="zoomImage-content" style={{top: x, left:y, width: size.width}}>
@@ -295,8 +291,6 @@ class SelectableImage{
   }
 
   closeModal(zoomImage,object){
-    console.log("holasss");
-    console.log(zoomImage);
     zoomImage.addClass("hide");
     $(".zoomImage_layer").addClass("hide");
   }
