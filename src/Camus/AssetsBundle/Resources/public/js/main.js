@@ -139,7 +139,7 @@ class Main extends React.Component {
             });
         }
 
-        $(".social-media, .social-media-large, .social-media-buttons").each(function () {
+        $(".social-media, .social-media-large, .social-media-buttons, .share-body-down").each(function () {
             if ($(this).attr('class') == 'social-media-buttons') {
                 var socialUrl = $('meta[property^="og:url"]').attr("content"),
                     socialTitle = $('meta[property^="og:title"]').attr("content");

@@ -2,9 +2,13 @@ import $ from "jquery";
 import Selectable from 'selectable.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import slick from "slick-carousel";
 
 class SelectableImage{
   constructor() {
+    this.state = {
+      selectable: ""
+    };
     this.selected();
   }
 
@@ -15,6 +19,73 @@ class SelectableImage{
     }
   }
 
+  selectall(){
+    let _this=this;
+    _this.state.selectable.selectAll();
+  }
+
+  deselected(object){
+    let oThis=this;
+    oThis.state.selectable.clear();
+  }
+
+  // presentation(){
+  //   let _this=this;
+  //   if (!$(".bottom-selected-container").length){
+  //     $("body, html").css({
+  //       "overflow":"hidden",
+  //     });
+  //     $(".modal").toggleClass("hide");
+  //     var fatherSli= $(".modal").find(".sli-modal").find(".gallery-slider").find(".father-sli"),
+  //         fatherHead= $(".modal").find(".sli-modal").find(".media-container").find(".header-cartoon"),
+  //         childSli= $(".modal").find(".sli-child").find(".gallery-slider").find(".child-sli"),
+  //         modalMenu= $(".modal"),
+  //         autoSlider= $(".modal").find(".sli-child").find(".media-container").find(".detail-container");
+  //
+  //     fatherSli.slick('slickGoTo', 0);
+  //     childSli.slick('slickGoTo', 0);
+  //     fatherSli.slick('refresh');
+  //     fatherSli.slick('slickPause');
+  //
+  //     autoSlider.find(".auto-start").toggleClass("start");
+  //     autoSlider.find(".text-container").find(".fa").toggleClass("fa-play").toggleClass("fa-pause");
+  //
+  //     if (autoSlider.find(".auto-start").hasClass("start")) {
+  //       fatherSli.find(".slick-initialized").slick('slickPlay');
+  //       fatherHead.find(".btn-buy").addClass("hide");
+  //
+  //       modalMenu.find(".gallery-slider").mousemove(function(){
+  //         var i = null;
+  //         clearTimeout(i);
+  //         modalMenu.find(".sli-child").stop().slideDown(500);
+  //         fatherHead.stop().slideDown(500);
+  //         modalMenu.find(".sli-child").stop().removeClass("hide");
+  //         modalMenu.find(".gallery-container").stop().removeClass("child-hide-pre");
+  //         modalMenu.find(".left").stop().removeClass("fade");
+  //         modalMenu.find(".right").stop().removeClass("fade");
+  //
+  //         i = setTimeout(function(){
+  //           modalMenu.find(".sli-child").stop().slideUp(500);
+  //           fatherHead.stop().slideUp(500);
+  //           modalMenu.find(".sli-child").stop().addClass("hide");
+  //           modalMenu.find(".gallery-container").stop().addClass("child-hide-pre");
+  //           modalMenu.find(".left").stop().addClass("fade");
+  //           modalMenu.find(".right").stop().addClass("fade");
+  //         }, 5000);
+  //       });
+  //
+  //       if (modalMenu.find(".modal-carruseles-container").hasClass("menu-active")) {
+  //         $(".modal-left-menu, modal-carruseles-container").toggleClass("menu-active");
+  //         $(".firms, .thin-data, .gallery-container").slick('refresh');
+  //         $(".firms, .thin-data, .gallery-container").slick('slickPause');
+  //       }
+  //     }else {
+  //       fatherSli.find(".slick-initialized").slick('slickPause');
+  //       fatherHead.find(".btn-buy").removeClass("hide");
+  //     }
+  //   }
+  // }
+
   appendpre(type=""){
     let _this=this;
     switch (type) {
@@ -22,9 +93,6 @@ class SelectableImage{
           var element = (
           <div className="top-content">
             <div className="buttons-top-content">
-              <div className="subbuttons letras">
-                <span className="fa fa-shopping-cart"></span>COMPRAR <span className="downbutton">&#9660;</span>
-              </div>
               <div className="subbuttons">
                 <div className="letras">
                   <span className="fa fa-shopping-cart"></span>COMPRAR <span className="downbutton">&#9660;</span>
@@ -51,8 +119,36 @@ class SelectableImage{
             </div>
           </div>
         );
+        var it=$(".selectable-info-conotainer");
+        it.find(".menu-selected-content").removeClass("hide");
         ReactDOM.render(element, $(".menu-control-gallery")[0]);
+        // Selectable.destroy();
+        // ReactDOM.unmountComponentAtNode($(".selectable-info-conotainer")[0]);
       break;
+      case "sel-photos":
+        var element = (
+          <div className="top-content">
+            <div className="buttons-top-content">
+            <div className="subbuttons">
+              <div className="letras"><span className="fa fa-book"></span>CREAR ÁLBUM</div>
+            </div>
+            <div className="subbuttons">
+              <div className="letras"><span className="fa fa-shopping-cart"></span>COMPRAR SELECCION</div>
+            </div>
+              <div className="subbuttons">
+                <div className="letras">GUARDAR PARA MAS TARDE</div>
+              </div>
+              <div className="subbuttons btnCancel" onClick={ _this.appendpre.bind(this,"") }>
+                <div className="letras">CANCELAR</div>
+              </div>
+            </div>
+          </div>
+        );
+        var it=$(".selectable-info-conotainer");
+        it.find(".menu-selected-content").removeClass("hide");
+        ReactDOM.render(element, $(".menu-control-gallery")[0]);
+
+        break;
       case "":
         var element = (
         <div className="top-content">
@@ -60,12 +156,12 @@ class SelectableImage{
             <div className="subbuttons btnSelectable" onClick={ _this.initSelectable.bind(this) }>
               <div className="letras">SELECCIONAR FOTOS</div>
             </div>
-            <div className="subbuttons">
+            <div className="subbuttons buy">
               <div className="letras">
                 <span className="fa fa-shopping-cart"></span>COMPRAR <span className="downbutton">&#9660;</span>
               </div>
               <div className="div-top-content">
-                <div className="div-top-buy">
+                <div className="div-top-buy" onClick={ _this.appendpre.bind(this,"sel-photos"), _this.initSelectable.bind(this) }>
                   <a href="#">Seleccionar fotos que comprar</a>
                 </div>
                 <div className="div-top-separator"></div>
@@ -80,100 +176,38 @@ class SelectableImage{
             <div className="subbuttons">
               <div className="letras"><span className="fa fa-book"></span>CREAR ÁLBUM</div>
             </div>
-            <div className="subbuttons">
+            <div className="subbuttons btnShare">
               <div className="letras">COMPARTIR</div>
             </div>
-            <div className="subbuttons">
-              <div className="letras"><span className="leftButton">&#9658;</span>PASE DE DIAPOSITIVAS</div>
+            <div className="subbuttons btnPresentation">
+              <div className="letras" ><span className="leftButton">&#9658;</span>PASE DE DIAPOSITIVAS</div>
             </div>
           </div>
         </div>
         );
+        var items= $(".sn-bottom-text-gallery");
+        var it=$(".selectable-info-conotainer");
+        var buy=$(".headline").parents().parents().parents().find(".buttons-top-content");
+        var share=$(".gall-gallery");
+        it.find(".menu-selected-content").addClass("hide");
+        items.find(".bottom-selected-container").remove();
+        items.find(".headline-bottom-container-gradient").removeClass("hide");
+        buy.find("btnShare").click(function(){
+          share.find(".div-share-content").toggleClass("hide");
+        });
+
+        console.log(buy);
+        console.log(share);
+        if (typeof(selectable)== "object") {
+          console.log(selectable);
+        }
+        if (typeof(_this.state.selectable)== "object") {
+          _this.state.selectable.destroy();
+        }
         ReactDOM.render(element, $(".menu-control-gallery")[0]);
+        // ReactDOM.unmountComponentAtNode($(".sn-bottom-text-gallery")[0]);
       break;
-
     }
-
-  }
-  openAgain(){
-    // ReactDOM.unmountComponentAtNode($(".menu-control-gallery")[0]);
-    let Tthis=this;
-    const element = (
-      <div className="top-content">
-        <div className="buttons-top-content">
-          <div className="subbuttons btnSelectable" onClick={ Tthis.initSelectable.bind(this) }>
-            <div className="letras">SELECCIONAR FOTOS</div>
-          </div>
-          <div className="subbuttons">
-            <div className="letras">
-              <span className="fa fa-shopping-cart"></span>COMPRAR <span className="downbutton">&#9660;</span>
-            </div>
-            <div className="div-top-content">
-              <div className="div-top-buy">
-                <a href="#">Seleccionar fotos que comprar</a>
-              </div>
-              <div className="div-top-separator"></div>
-              <div className="div-top-buy">
-                <a href="#">Comprar todas las fotos</a>
-              </div>
-              <div className="div-top-buy">
-                <a href="#">Ver cesta</a>
-              </div>
-            </div>
-          </div>
-          <div className="subbuttons">
-            <div className="letras"><span className="fa fa-book"></span>CREAR ÁLBUM</div>
-          </div>
-          <div className="subbuttons">
-            <div className="letras">COMPARTIR</div>
-          </div>
-          <div className="subbuttons">
-            <div className="letras"><span className="leftButton">&#9658;</span>PASE DE DIAPOSITIVAS</div>
-          </div>
-        </div>
-      </div>
-    );
-    ReactDOM.render(element, $(".menu-control-gallery")[0]);
-  }
-
-  appendMenuControl(){
-    let _this=this;
-    const element = (
-      <div className="top-content">
-        <div className="buttons-top-content">
-          <div className="subbuttons btnSelectable" onClick={ _this.initSelectable.bind(this) }>
-            <div className="letras">SELECCIONAR FOTOS</div>
-          </div>
-          <div className="subbuttons">
-            <div className="letras">
-              <span className="fa fa-shopping-cart"></span>COMPRAR <span className="downbutton">&#9660;</span>
-            </div>
-            <div className="div-top-content">
-              <div className="div-top-buy">
-                <a href="#">Seleccionar fotos que comprar</a>
-              </div>
-              <div className="div-top-separator"></div>
-              <div className="div-top-buy">
-                <a href="#">Comprar todas las fotos</a>
-              </div>
-              <div className="div-top-buy">
-                <a href="#">Ver cesta</a>
-              </div>
-            </div>
-          </div>
-          <div className="subbuttons">
-            <div className="letras"><span className="fa fa-book"></span>CREAR ÁLBUM</div>
-          </div>
-          <div className="subbuttons">
-            <div className="letras">COMPARTIR</div>
-          </div>
-          <div className="subbuttons">
-            <div className="letras"><span className="leftButton">&#9658;</span>PASE DE DIAPOSITIVAS</div>
-          </div>
-        </div>
-      </div>
-    );
-    ReactDOM.render(element, $(".menu-control-gallery")[0]);
   }
 
   appendCheked(item){
@@ -187,9 +221,11 @@ class SelectableImage{
         </div>
       </div>
     );
+
     item.each(function(index){
       // dump(this);
       ReactDOM.render(element, this);
+      // console.log(element, this);
     });
   }
 
@@ -199,7 +235,7 @@ class SelectableImage{
       <div className="menu-selected-content">
         <div className="selected-buttons">
           <div className="buttons-container">
-            Seleccionar: <span className="btn-all">Todo</span> | <span className="btn-nothing">Ninguno</span>
+            Seleccionar: <a className="btn-all" href="#" onClick={_this.selectall.bind(this)}>Todo</a> | <a className="btn-nothing" href="#" onClick={_this.deselected.bind(this)}>Ninguno</a>
           </div>
         </div>
         <div className="selected-text">
@@ -218,7 +254,7 @@ class SelectableImage{
   initSelectable(object){
     let oThis=this;
     var contenedor= $(".contenedor-notas-block");
-    var type= "CancelMenu";
+    var type= "";
     const selectable = new Selectable({
        filter: ".sn-bottom-text-gallery",
        ignore: [".headline-bottom-container-gradient", ".fav-container",".bottom-selected-container"],
@@ -227,8 +263,8 @@ class SelectableImage{
           border: "1px dashed rgba(98, 2, 2, 1)",
           backgroundColor: "rgba(255, 255, 255, 0.4)"
         }
-
     });
+    oThis.state.selectable = selectable;
     selectable.on("init", function() {
       if ($(".selectable-info-conotainer").length) {
         // console.log("init dentro del ico container");
@@ -248,13 +284,17 @@ class SelectableImage{
       console.log("seleccione uno");
     });
     selectable.on("deselecteditem", function(item) {
-      // console.log(item);
+      console.log(item);
       // console.log(selectable.getSelectedItems().length);
       oThis.appendMenuSelected($(".selectable-info-conotainer")[0],selectable.getItems().length,selectable.getSelectedItems().length);
       $(item.node).find(".bottom-selected-container").find(".circleCheck").removeClass("active");
       console.log("deseleccione uno");
     });
-
+    if ($(".buttons-top-content").find(".buySelectable")) {
+      type = "sel-photos"
+    }else {
+      type = "CancelMenu"
+    }
     oThis.appendpre(type);
   }
 

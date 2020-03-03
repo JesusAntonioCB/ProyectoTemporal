@@ -5,7 +5,7 @@ class modalSlider{
     this.init();
   }
   init(){
-    $('body').on('click', '.sn-bottom-text-gallery .img-container, .sn-bottom-text-gallery .headline-bottom-container-gradient .title a',function(e) {
+    $('body').on('click', '.sn-bottom-text-gallery .img-container, .sn-bottom-text-gallery .headline-bottom-container-gradient .title a ' ,function(e) {
       e.preventDefault();
       if (!$(".bottom-selected-container").length) {
         $("body, html").css({

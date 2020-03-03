@@ -323,6 +323,7 @@ class Slider extends React.Component {
           infinite: true,
           initialSlide: startSlider,
           slidesToShow: 1,
+          pauseOnHover: false,
           swipeToSlide: true,
           prevArrow: arrowLeft,
           nextArrow: arrowRight,
@@ -334,6 +335,15 @@ class Slider extends React.Component {
         var flag = false;
         // $("body, html").css({"height":"100%","overflow":"hidden"});
         var header= $(slickElement).parent().parent().find(".header-cartoon");
+        var fatherSli= $(slickElement).parent().parent().parent().parent().find(".sli-modal");
+        var bPresent= $(slickElement).parents().parents().parents().parents().parents().parents().parents().find(".buttons-top-content");
+        var share= $(slickElement).parents().parents().parents().parents().parents().parents();
+        bPresent.find(".btnShare").click(function(){
+          share.find(".div-share-content").removeClass("hide");
+        });
+        share.find(".div-share-content").find(".button").click(function(){
+          share.find(".div-share-content").addClass("hide");
+        });
         header.find(".btn-buy").click(function(){
           $(this).addClass("hide");
           $(".modal-left-menu, .modal-carruseles-container").toggleClass("menu-active");
@@ -347,8 +357,30 @@ class Slider extends React.Component {
           $(slickElement).slick('slickPause');
         });
         header.find(".btn-return").click(function(){
+          var detailC= $(slickElement).parents().parents().find(".detail-container"),
+              modalMenu= $(slickElement).parents().parents().parents().parents().find(".modal-carruseles-container");
+              console.log(bPresent);
+              console.log(share);
           $("body, html").removeAttr('style');
           $(".modal").toggleClass("hide");
+          if (detailC.find(".auto-start").hasClass("start")) {
+            detailC.find(".auto-start").toggleClass("start");
+            detailC.find(".text-container").find(".fa").toggleClass("fa-pause").toggleClass("fa-play");
+            $(slickElement).slick('slickPause');
+
+            if (header.find(".btn-buy").hasClass("hide")) {
+              header.find(".btn-buy").removeClass("hide");
+            }
+          }
+          $(fatherSli.find(".gallery.container").removeClass("child-hide-pre"));
+
+          if (bPresent.find(".btnPresentation").hasClass("on")) {
+            bPresent.find(".btnPresentation").removeClass("on");
+            modalMenu.find(".gallery-slider").off("mousemove");
+            console.log(fatherSli.find(".gallery-container").hasClass("child-hide-pre"));
+              // ahora que D:!
+          }
+
         });
         header.find(".btn-share").click(function(){
           $(".social-networks-share").css("display", "table");
@@ -410,20 +442,98 @@ class Slider extends React.Component {
         });
         // $("body, html").css({"height":"100%","overflow":"hidden"});
         var detailC= $(slickElement).parent().parent().find(".detail-container");
+        var bPresent= $(slickElement).parents().parents().parents().parents().parents().parents().parents().find(".buttons-top-content");
+        var header= $(slickElement).parents().parents().find(".header-cartoon");
+
         detailC.find(".hide-slider").click(function(){
           $(slickElement).parent().slideToggle(500);
           var fatherSli= $(slickElement).parent().parent().parent().parent().find(".sli-modal");
           fatherSli.find(".gallery-container").toggleClass("child-Hide");
+          $(this).find(".fa").toggleClass("fa-angle-double-down").toggleClass("fa-angle-double-up");
         });
+
+        bPresent.find(".btnPresentation").on("click", function(){
+          bPresent.find(".btnPresentation").toggleClass("on");
+          if (!$(".bottom-selected-container").length){
+              $("body, html").css({
+                "overflow":"hidden",
+              });
+              $(".modal").toggleClass("hide");
+              var fatherSli= $(".modal").find(".sli-modal").find(".gallery-slider").find(".father-sli"),
+                  childSli= $(".modal").find(".sli-child").find(".gallery-slider").find(".child-sli"),
+                  autoSlider= $(".modal").find(".sli-child").find(".media-container").find(".detail-container"),
+                  fatherSlik= $(slickElement).parent().parent().parent().parent().find(".sli-modal"),
+                  header= $(slickElement).parents().parents().find(".header-cartoon"),
+                  modalMenu= $(slickElement).parents().parents().parents().parents().find(".modal-carruseles-container");
+
+              fatherSli.slick('slickGoTo', 0);
+              childSli.slick('slickGoTo', 0);
+              fatherSli.slick('refresh');
+              fatherSli.slick('slickPause');
+              detailC.find(".auto-start").toggleClass("start");
+              detailC.find(".text-container").find(".fa").toggleClass("fa-play").toggleClass("fa-pause");
+
+            if (detailC.find(".auto-start").hasClass("start")) {
+              fatherSlik.find(".slick-initialized").slick('slickPlay');
+              header.find(".btn-buy").addClass("hide");
+              var i = null;
+              if (bPresent.find(".btnPresentation").hasClass("on")) {
+              modalMenu.find(".gallery-slider").on("mousemove", function(){
+                var fatherSli= $(slickElement).parent().parent().parent().parent().find(".sli-modal");
+
+                  clearTimeout(i);
+                  modalMenu.find(".sli-child").stop().slideDown(500);
+                  header.stop().slideDown(500);
+                  modalMenu.find(".sli-child").stop().removeClass("hide");
+                  fatherSli.find(".gallery-container").stop().removeClass("child-hide-pre");
+                  fatherSli.find(".left").stop().removeClass("fade");
+                  fatherSli.find(".right").stop().removeClass("fade");
+                  i = setTimeout(function () {
+                    modalMenu.find(".sli-child").stop().slideUp(500);
+                    header.stop().slideUp(5);
+                    modalMenu.find(".sli-child").stop().addClass("hide");
+                    fatherSli.find(".gallery-container").stop().addClass("child-hide-pre");
+                    fatherSli.find(".left").stop().addClass("fade");
+                    fatherSli.find(".right").stop().addClass("fade");
+                  }, 5000);
+                });
+              if (modalMenu.hasClass("menu-active")) {
+                $(".modal-left-menu, .modal-carruseles-container").toggleClass("menu-active");
+                $(slickElement).slick('refresh');
+                $(slickElement).slick('slickPause');
+              }
+            }
+          }else {
+            fatherSlik.find(".slick-initialized").slick('slickPause');
+            header.find(".btn-buy").removeClass("hide");
+            }
+          }
+        });
+
         detailC.find(".auto-start").click(function(){
           $(this).toggleClass("start");
           $(this).find(".text-container").find(".fa").toggleClass("fa-play").toggleClass("fa-pause");
-          var fatherSli= $(slickElement).parent().parent().parent().parent().find(".sli-modal");
+          var fatherSli= $(slickElement).parent().parent().parent().parent().find(".sli-modal"),
+              header= $(slickElement).parents().parents().find(".header-cartoon"),
+              modalMenu= $(slickElement).parents().parents().parents().parents().find(".modal-carruseles-container");
           console.log($(this).hasClass("start"));
           if ($(this).hasClass("start")) {
             fatherSli.find(".slick-initialized").slick('slickPlay');
+            header.find(".btn-buy").addClass("hide");
+            console.log(modalMenu.hasClass("menu-active"));
+            // setTimeout(function(){
+            //   $(slickElement).parent().slideToggle(500);
+            //   var fatherSli= $(slickElement).parent().parent().parent().parent().find(".sli-modal");
+            //   fatherSli.find(".gallery-container").toggleClass("child-Hide");
+            // }, 3000);
+            if (modalMenu.hasClass("menu-active")) {
+              $(".modal-left-menu, .modal-carruseles-container").toggleClass("menu-active");
+              $(slickElement).slick('refresh');
+              $(slickElement).slick('slickPause');
+            }
           }else {
             fatherSli.find(".slick-initialized").slick('slickPause');
+            header.find(".btn-buy").removeClass("hide");
           }
         });
         break;

@@ -72,10 +72,42 @@ function SocialMedia(props){
         separator= " - "
         className="whatsapp-share-modules share-container">
           <i className="fa fa-whatsapp" aria-hidden="true"></i>
+          <span>Comparte en Whatsapp</span>
       </WhatsappShareButton>
     </div>
     );
     break;
+    case "share-body-down":
+    return (
+      <div className="sf-share">
+      <div className="sfs-container">
+      <FacebookShareButton
+        url={shareUrl}
+        quote= {props.title}
+        className="ShareButton">
+        <div className="sfs-icon"> <i className="fa fa-facebook-official"> </i></div>
+          <span> Facebook </span>
+      </FacebookShareButton>
+      <TwitterShareButton
+        url={window.location.href}
+        title={props.title}
+        via="fama_revista"
+        className="ShareButton">
+        <div className="sfs-icon"> <i className="fa fa-twitter"> </i></div>
+          <span> Twitter </span>
+      </TwitterShareButton>
+      <WhatsappShareButton
+        url={shareUrl}
+        title={props.title}
+        separator= " - "
+        className="ShareButton">
+        <div className="sfs-icon"> <i className="fa fa-whatsapp"> </i></div>
+        <span> Whatsapp </span>
+      </WhatsappShareButton>
+      </div>
+      </div>
+    );
+      break;
     case "social-media-buttons":
     return (
       <div className="share-social-media-buttons">

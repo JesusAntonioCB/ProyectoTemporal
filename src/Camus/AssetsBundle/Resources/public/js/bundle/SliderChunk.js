@@ -1,6 +1,6 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[4],{
 
-/***/ 206:
+/***/ 207:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,7 +9,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(207);
+/* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(32);
 /* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(slick_carousel__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -369,6 +369,7 @@ function (_React$Component) {
               infinite: true,
               initialSlide: startSlider,
               slidesToShow: 1,
+              pauseOnHover: false,
               swipeToSlide: true,
               prevArrow: arrowLeft,
               nextArrow: arrowRight,
@@ -380,6 +381,15 @@ function (_React$Component) {
             var flag = false; // $("body, html").css({"height":"100%","overflow":"hidden"});
 
             var header = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parent().parent().find(".header-cartoon");
+            var fatherSli = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parent().parent().parent().parent().find(".sli-modal");
+            var bPresent = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parents().parents().parents().parents().parents().parents().parents().find(".buttons-top-content");
+            var share = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parents().parents().parents().parents().parents().parents();
+            bPresent.find(".btnShare").click(function () {
+              share.find(".div-share-content").removeClass("hide");
+            });
+            share.find(".div-share-content").find(".button").click(function () {
+              share.find(".div-share-content").addClass("hide");
+            });
             header.find(".btn-buy").click(function () {
               jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).addClass("hide");
               jquery__WEBPACK_IMPORTED_MODULE_1___default()(".modal-left-menu, .modal-carruseles-container").toggleClass("menu-active");
@@ -393,8 +403,30 @@ function (_React$Component) {
               jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).slick('slickPause');
             });
             header.find(".btn-return").click(function () {
+              var detailC = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parents().parents().find(".detail-container"),
+                  modalMenu = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parents().parents().parents().parents().find(".modal-carruseles-container");
+              console.log(bPresent);
+              console.log(share);
               jquery__WEBPACK_IMPORTED_MODULE_1___default()("body, html").removeAttr('style');
               jquery__WEBPACK_IMPORTED_MODULE_1___default()(".modal").toggleClass("hide");
+
+              if (detailC.find(".auto-start").hasClass("start")) {
+                detailC.find(".auto-start").toggleClass("start");
+                detailC.find(".text-container").find(".fa").toggleClass("fa-pause").toggleClass("fa-play");
+                jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).slick('slickPause');
+
+                if (header.find(".btn-buy").hasClass("hide")) {
+                  header.find(".btn-buy").removeClass("hide");
+                }
+              }
+
+              jquery__WEBPACK_IMPORTED_MODULE_1___default()(fatherSli.find(".gallery.container").removeClass("child-hide-pre"));
+
+              if (bPresent.find(".btnPresentation").hasClass("on")) {
+                bPresent.find(".btnPresentation").removeClass("on");
+                modalMenu.find(".gallery-slider").off("mousemove");
+                console.log(fatherSli.find(".gallery-container").hasClass("child-hide-pre")); // ahora que D:!
+              }
             });
             header.find(".btn-share").click(function () {
               jquery__WEBPACK_IMPORTED_MODULE_1___default()(".social-networks-share").css("display", "table");
@@ -463,21 +495,97 @@ function (_React$Component) {
             }); // $("body, html").css({"height":"100%","overflow":"hidden"});
 
             var detailC = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parent().parent().find(".detail-container");
+            var bPresent = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parents().parents().parents().parents().parents().parents().parents().find(".buttons-top-content");
+            var header = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parents().parents().find(".header-cartoon");
             detailC.find(".hide-slider").click(function () {
               jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parent().slideToggle(500);
               var fatherSli = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parent().parent().parent().parent().find(".sli-modal");
               fatherSli.find(".gallery-container").toggleClass("child-Hide");
+              jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).find(".fa").toggleClass("fa-angle-double-down").toggleClass("fa-angle-double-up");
+            });
+            bPresent.find(".btnPresentation").on("click", function () {
+              bPresent.find(".btnPresentation").toggleClass("on");
+
+              if (!jquery__WEBPACK_IMPORTED_MODULE_1___default()(".bottom-selected-container").length) {
+                jquery__WEBPACK_IMPORTED_MODULE_1___default()("body, html").css({
+                  "overflow": "hidden"
+                });
+                jquery__WEBPACK_IMPORTED_MODULE_1___default()(".modal").toggleClass("hide");
+                var fatherSli = jquery__WEBPACK_IMPORTED_MODULE_1___default()(".modal").find(".sli-modal").find(".gallery-slider").find(".father-sli"),
+                    childSli = jquery__WEBPACK_IMPORTED_MODULE_1___default()(".modal").find(".sli-child").find(".gallery-slider").find(".child-sli"),
+                    autoSlider = jquery__WEBPACK_IMPORTED_MODULE_1___default()(".modal").find(".sli-child").find(".media-container").find(".detail-container"),
+                    fatherSlik = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parent().parent().parent().parent().find(".sli-modal"),
+                    header = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parents().parents().find(".header-cartoon"),
+                    modalMenu = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parents().parents().parents().parents().find(".modal-carruseles-container");
+                fatherSli.slick('slickGoTo', 0);
+                childSli.slick('slickGoTo', 0);
+                fatherSli.slick('refresh');
+                fatherSli.slick('slickPause');
+                detailC.find(".auto-start").toggleClass("start");
+                detailC.find(".text-container").find(".fa").toggleClass("fa-play").toggleClass("fa-pause");
+
+                if (detailC.find(".auto-start").hasClass("start")) {
+                  fatherSlik.find(".slick-initialized").slick('slickPlay');
+                  header.find(".btn-buy").addClass("hide");
+                  var i = null;
+
+                  if (bPresent.find(".btnPresentation").hasClass("on")) {
+                    modalMenu.find(".gallery-slider").on("mousemove", function () {
+                      var fatherSli = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parent().parent().parent().parent().find(".sli-modal");
+                      clearTimeout(i);
+                      modalMenu.find(".sli-child").stop().slideDown(500);
+                      header.stop().slideDown(500);
+                      modalMenu.find(".sli-child").stop().removeClass("hide");
+                      fatherSli.find(".gallery-container").stop().removeClass("child-hide-pre");
+                      fatherSli.find(".left").stop().removeClass("fade");
+                      fatherSli.find(".right").stop().removeClass("fade");
+                      i = setTimeout(function () {
+                        modalMenu.find(".sli-child").stop().slideUp(500);
+                        header.stop().slideUp(5);
+                        modalMenu.find(".sli-child").stop().addClass("hide");
+                        fatherSli.find(".gallery-container").stop().addClass("child-hide-pre");
+                        fatherSli.find(".left").stop().addClass("fade");
+                        fatherSli.find(".right").stop().addClass("fade");
+                      }, 5000);
+                    });
+
+                    if (modalMenu.hasClass("menu-active")) {
+                      jquery__WEBPACK_IMPORTED_MODULE_1___default()(".modal-left-menu, .modal-carruseles-container").toggleClass("menu-active");
+                      jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).slick('refresh');
+                      jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).slick('slickPause');
+                    }
+                  }
+                } else {
+                  fatherSlik.find(".slick-initialized").slick('slickPause');
+                  header.find(".btn-buy").removeClass("hide");
+                }
+              }
             });
             detailC.find(".auto-start").click(function () {
               jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).toggleClass("start");
               jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).find(".text-container").find(".fa").toggleClass("fa-play").toggleClass("fa-pause");
-              var fatherSli = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parent().parent().parent().parent().find(".sli-modal");
+              var fatherSli = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parent().parent().parent().parent().find(".sli-modal"),
+                  header = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parents().parents().find(".header-cartoon"),
+                  modalMenu = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parents().parents().parents().parents().find(".modal-carruseles-container");
               console.log(jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).hasClass("start"));
 
               if (jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).hasClass("start")) {
                 fatherSli.find(".slick-initialized").slick('slickPlay');
+                header.find(".btn-buy").addClass("hide");
+                console.log(modalMenu.hasClass("menu-active")); // setTimeout(function(){
+                //   $(slickElement).parent().slideToggle(500);
+                //   var fatherSli= $(slickElement).parent().parent().parent().parent().find(".sli-modal");
+                //   fatherSli.find(".gallery-container").toggleClass("child-Hide");
+                // }, 3000);
+
+                if (modalMenu.hasClass("menu-active")) {
+                  jquery__WEBPACK_IMPORTED_MODULE_1___default()(".modal-left-menu, .modal-carruseles-container").toggleClass("menu-active");
+                  jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).slick('refresh');
+                  jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).slick('slickPause');
+                }
               } else {
                 fatherSli.find(".slick-initialized").slick('slickPause');
+                header.find(".btn-buy").removeClass("hide");
               }
             });
             break;
