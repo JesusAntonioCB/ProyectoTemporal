@@ -384,11 +384,22 @@ function (_React$Component) {
             var fatherSli = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parent().parent().parent().parent().find(".sli-modal");
             var bPresent = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parents().parents().parents().parents().parents().parents().parents().find(".buttons-top-content");
             var share = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parents().parents().parents().parents().parents().parents();
-            bPresent.find(".btnShare").click(function () {
-              share.find(".div-share-content").removeClass("hide");
-            });
             share.find(".div-share-content").find(".button").click(function () {
-              share.find(".div-share-content").addClass("hide");
+              share.find(".div-share-content").slideUp();
+            });
+            share.find(".div-share-content").find(".last").click(function () {//cambiar datos en share-content
+            });
+            jquery__WEBPACK_IMPORTED_MODULE_1___default()(document).click(function (e) {
+              var container = share.find(".div-share-content");
+
+              if (!container.is(e.target) && container.has(e.target).length === 0) {
+                container.slideUp();
+              }
+            });
+            bPresent.find("#Share").click(function () {
+              share.find(".div-share-content").slideToggle();
+              share.find(".sf-url").find("#up").val(url);
+              event.stopImmediatePropagation();
             });
             header.find(".btn-buy").click(function () {
               jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).addClass("hide");
@@ -405,8 +416,6 @@ function (_React$Component) {
             header.find(".btn-return").click(function () {
               var detailC = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parents().parents().find(".detail-container"),
                   modalMenu = jquery__WEBPACK_IMPORTED_MODULE_1___default()(slickElement).parents().parents().parents().parents().find(".modal-carruseles-container");
-              console.log(bPresent);
-              console.log(share);
               jquery__WEBPACK_IMPORTED_MODULE_1___default()("body, html").removeAttr('style');
               jquery__WEBPACK_IMPORTED_MODULE_1___default()(".modal").toggleClass("hide");
 
@@ -430,6 +439,20 @@ function (_React$Component) {
             });
             header.find(".btn-share").click(function () {
               jquery__WEBPACK_IMPORTED_MODULE_1___default()(".social-networks-share").css("display", "table");
+              jquery__WEBPACK_IMPORTED_MODULE_1___default()(".modal").append('<div class="fade" style="opacity: 0.7;"></div>');
+              event.stopImmediatePropagation();
+            });
+            jquery__WEBPACK_IMPORTED_MODULE_1___default()(document).click(function (e) {
+              var container = jquery__WEBPACK_IMPORTED_MODULE_1___default()(".social-networks-share");
+
+              if (!container.is(e.target) && container.has(e.target).length === 0) {
+                container.slideUp();
+                jquery__WEBPACK_IMPORTED_MODULE_1___default()(".modal").find(".fade").remove();
+              }
+            });
+            jquery__WEBPACK_IMPORTED_MODULE_1___default()(".social-networks-share").find(".button").click(function () {
+              jquery__WEBPACK_IMPORTED_MODULE_1___default()(".social-networks-share").slideUp();
+              jquery__WEBPACK_IMPORTED_MODULE_1___default()(".modal").find(".fade").remove();
             });
 
             if (splitedUrl.length > 1) {
@@ -541,7 +564,7 @@ function (_React$Component) {
                       fatherSli.find(".right").stop().removeClass("fade");
                       i = setTimeout(function () {
                         modalMenu.find(".sli-child").stop().slideUp(500);
-                        header.stop().slideUp(5);
+                        header.stop().slideUp();
                         modalMenu.find(".sli-child").stop().addClass("hide");
                         fatherSli.find(".gallery-container").stop().addClass("child-hide-pre");
                         fatherSli.find(".left").stop().addClass("fade");

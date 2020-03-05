@@ -338,11 +338,22 @@ class Slider extends React.Component {
         var fatherSli= $(slickElement).parent().parent().parent().parent().find(".sli-modal");
         var bPresent= $(slickElement).parents().parents().parents().parents().parents().parents().parents().find(".buttons-top-content");
         var share= $(slickElement).parents().parents().parents().parents().parents().parents();
-        bPresent.find(".btnShare").click(function(){
-          share.find(".div-share-content").removeClass("hide");
-        });
         share.find(".div-share-content").find(".button").click(function(){
-          share.find(".div-share-content").addClass("hide");
+          share.find(".div-share-content").slideUp();
+        });
+        share.find(".div-share-content").find(".last").click(function(){
+          //cambiar datos en share-content
+        });
+        $(document).click(function(e){
+          var container = share.find(".div-share-content");
+          if (!container.is(e.target) && container.has(e.target).length === 0) {
+            container.slideUp();
+          }
+        });
+        bPresent.find("#Share").click(function(){
+          share.find(".div-share-content").slideToggle();
+          share.find(".sf-url").find("#up").val(url);
+          event.stopImmediatePropagation();
         });
         header.find(".btn-buy").click(function(){
           $(this).addClass("hide");
@@ -359,8 +370,6 @@ class Slider extends React.Component {
         header.find(".btn-return").click(function(){
           var detailC= $(slickElement).parents().parents().find(".detail-container"),
               modalMenu= $(slickElement).parents().parents().parents().parents().find(".modal-carruseles-container");
-              console.log(bPresent);
-              console.log(share);
           $("body, html").removeAttr('style');
           $(".modal").toggleClass("hide");
           if (detailC.find(".auto-start").hasClass("start")) {
@@ -373,7 +382,6 @@ class Slider extends React.Component {
             }
           }
           $(fatherSli.find(".gallery.container").removeClass("child-hide-pre"));
-
           if (bPresent.find(".btnPresentation").hasClass("on")) {
             bPresent.find(".btnPresentation").removeClass("on");
             modalMenu.find(".gallery-slider").off("mousemove");
@@ -384,6 +392,19 @@ class Slider extends React.Component {
         });
         header.find(".btn-share").click(function(){
           $(".social-networks-share").css("display", "table");
+          $(".modal").append('<div class="fade" style="opacity: 0.7;"></div>')
+          event.stopImmediatePropagation();
+        });
+        $(document).click(function(e){
+          var container = $(".social-networks-share");
+          if (!container.is(e.target) && container.has(e.target).length === 0) {
+            container.slideUp();
+            $(".modal").find(".fade").remove();
+          }
+        });
+        $(".social-networks-share").find(".button").click(function(){
+          $(".social-networks-share").slideUp();
+          $(".modal").find(".fade").remove();
         });
         if (splitedUrl.length > 1) {
           $(slickElement).slick('slickGoTo', splitedUrl[1]-1);
@@ -477,10 +498,10 @@ class Slider extends React.Component {
               fatherSlik.find(".slick-initialized").slick('slickPlay');
               header.find(".btn-buy").addClass("hide");
               var i = null;
-              if (bPresent.find(".btnPresentation").hasClass("on")) {
-              modalMenu.find(".gallery-slider").on("mousemove", function(){
-                var fatherSli= $(slickElement).parent().parent().parent().parent().find(".sli-modal");
 
+              if (bPresent.find(".btnPresentation").hasClass("on")) {
+                modalMenu.find(".gallery-slider").on("mousemove", function(){
+                  var fatherSli= $(slickElement).parent().parent().parent().parent().find(".sli-modal");
                   clearTimeout(i);
                   modalMenu.find(".sli-child").stop().slideDown(500);
                   header.stop().slideDown(500);
@@ -488,14 +509,14 @@ class Slider extends React.Component {
                   fatherSli.find(".gallery-container").stop().removeClass("child-hide-pre");
                   fatherSli.find(".left").stop().removeClass("fade");
                   fatherSli.find(".right").stop().removeClass("fade");
-                  i = setTimeout(function () {
-                    modalMenu.find(".sli-child").stop().slideUp(500);
-                    header.stop().slideUp(5);
-                    modalMenu.find(".sli-child").stop().addClass("hide");
-                    fatherSli.find(".gallery-container").stop().addClass("child-hide-pre");
-                    fatherSli.find(".left").stop().addClass("fade");
-                    fatherSli.find(".right").stop().addClass("fade");
-                  }, 5000);
+                    i = setTimeout(function () {
+                      modalMenu.find(".sli-child").stop().slideUp(500);
+                      header.stop().slideUp();
+                      modalMenu.find(".sli-child").stop().addClass("hide");
+                      fatherSli.find(".gallery-container").stop().addClass("child-hide-pre");
+                      fatherSli.find(".left").stop().addClass("fade");
+                      fatherSli.find(".right").stop().addClass("fade");
+                    }, 5000);
                 });
               if (modalMenu.hasClass("menu-active")) {
                 $(".modal-left-menu, .modal-carruseles-container").toggleClass("menu-active");

@@ -142,11 +142,28 @@
         </div>
         <div class="social-networks-share">
         <div class="span-share">
-          {# <span>Compartir</span> #}                                                                {#COMENTADO#}
+          <div class="head">
+            <h4><span class="fa fa-share-square"></span> Compartir mediante... </h4>
+          {# <span>Compartir</span> #}
+          </div>                                                         {#COMENTADO#}
         </div>
         {% set slugUrl = app.request.requestUri %}
         {{ slugUrl|socialTag(module.title, module.media.0.src)|raw }}
         <div class="social-media-large"></div>
+        <div class="share-footer">
+          <div class="button">
+            <div class="standard-button">
+              <div class="middle">
+                <div class="label">
+                  Cerrar
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="copyright">
+          Derechos Reservados © Grupo Milenio 2020
+          </div>
+        </div>
       </div>
       </div>
       <div class="modal-left-menu">
@@ -169,4 +186,5 @@
       </div>
     </div>
   </div>
+
 {% endif %}

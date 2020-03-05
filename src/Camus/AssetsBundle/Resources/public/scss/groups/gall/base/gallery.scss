@@ -462,7 +462,7 @@
           font-weight: normal;
           font-style: normal;
           text-transform: uppercase;
-          color: #5e5e5e!important;
+          color: #5e5e5e;
         }
         .tabs, .tab{
           position: relative;
@@ -474,9 +474,13 @@
           border-right-width: 1px;
           width: 120px;
           text-align: center;
-          .last{
-            border-right-style: solid;
-            border-right-width: 1px;
+        }
+        .last{
+          border-right-style: solid;
+          border-right-width: 1px;
+          &:hover{
+            text-decoration: none;
+            color: $color-black;
           }
         }
         .active{

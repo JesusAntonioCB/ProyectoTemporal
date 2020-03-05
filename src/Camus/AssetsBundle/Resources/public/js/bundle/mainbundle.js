@@ -37021,6 +37021,11 @@ function () {
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
             className: "letras"
           }, "GUARDAR PARA MAS TARDE")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+            className: "subbuttons hide",
+            id: "Share"
+          }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
+            className: "letras"
+          }, "COMPARTIR")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
             className: "subbuttons btnCancel",
             onClick: _this.appendpre.bind(this, "")
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
@@ -37073,7 +37078,8 @@ function () {
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
             className: "fa fa-book"
           }), "CREAR \xC1LBUM")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-            className: "subbuttons btnShare"
+            className: "subbuttons",
+            id: "Share"
           }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
             className: "letras"
           }, "COMPARTIR")), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
@@ -37085,16 +37091,9 @@ function () {
           }, "\u25BA"), "PASE DE DIAPOSITIVAS"))));
           var items = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".sn-bottom-text-gallery");
           var it = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".selectable-info-conotainer");
-          var buy = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".headline").parents().parents().parents().find(".buttons-top-content");
-          var share = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".gall-gallery");
           it.find(".menu-selected-content").addClass("hide");
           items.find(".bottom-selected-container").remove();
           items.find(".headline-bottom-container-gradient").removeClass("hide");
-          buy.find("btnShare").click(function () {
-            share.find(".div-share-content").toggleClass("hide");
-          });
-          console.log(buy);
-          console.log(share);
 
           if ((typeof selectable === "undefined" ? "undefined" : _typeof(selectable)) == "object") {
             console.log(selectable);

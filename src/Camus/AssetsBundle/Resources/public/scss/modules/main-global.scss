@@ -591,13 +591,14 @@ ol,ul {
       &.whatsapp-share-modules{
         &:hover{
           background: $color-whatsapp;
+          display: block;
         }
       }
     }
   }
 }
 .social-networks-share{
-  font-size: 11px;
+  font-size: 12px;
   color: $color-white;
   .span-share{
     margin-bottom: 10px;
@@ -607,6 +608,7 @@ ol,ul {
     margin-bottom: 2px;
     min-height: 40px;
     padding: 11px 20px;
+    cursor: pointer;
     i{
       width: 35px;
       vertical-align: middle;
@@ -621,7 +623,6 @@ ol,ul {
   }
   .whatsapp-share-modules{
     background-color: $color-whatsapp;
-    display: none;
   }
   .more{
     background-color: $color-light-silver;

@@ -138,6 +138,9 @@ class SelectableImage{
               <div className="subbuttons">
                 <div className="letras">GUARDAR PARA MAS TARDE</div>
               </div>
+              <div className="subbuttons hide" id="Share">
+                <div className="letras">COMPARTIR</div>
+              </div>
               <div className="subbuttons btnCancel" onClick={ _this.appendpre.bind(this,"") }>
                 <div className="letras">CANCELAR</div>
               </div>
@@ -176,7 +179,7 @@ class SelectableImage{
             <div className="subbuttons">
               <div className="letras"><span className="fa fa-book"></span>CREAR ÁLBUM</div>
             </div>
-            <div className="subbuttons btnShare">
+            <div className="subbuttons" id="Share">
               <div className="letras">COMPARTIR</div>
             </div>
             <div className="subbuttons btnPresentation">
@@ -187,17 +190,9 @@ class SelectableImage{
         );
         var items= $(".sn-bottom-text-gallery");
         var it=$(".selectable-info-conotainer");
-        var buy=$(".headline").parents().parents().parents().find(".buttons-top-content");
-        var share=$(".gall-gallery");
         it.find(".menu-selected-content").addClass("hide");
         items.find(".bottom-selected-container").remove();
         items.find(".headline-bottom-container-gradient").removeClass("hide");
-        buy.find("btnShare").click(function(){
-          share.find(".div-share-content").toggleClass("hide");
-        });
-
-        console.log(buy);
-        console.log(share);
         if (typeof(selectable)== "object") {
           console.log(selectable);
         }
