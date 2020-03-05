@@ -1,35 +1,35 @@
 <header id="main-header" class="header">
+{% dump(headerType) %}
   <div class="container-menu">
-    <div class="content">
-      <a href="/"><img src="https://cdn.zenfolio.net/img/s/v-12/u27397674-o940956710-111.png" title="FotoChic by Chic Magazine" class="main-logo"/></a>
-      <div class="container-right">
-        <ul>
-          <li class="header-link">EVENTOS RECIENTES</li>
-          <li class="header-link"><a href="#"> FOTOS <span class="header-item"> ▼</span><a/>
-            <ul class="sub-menu">
-							<li class="sub-header-link"> <a href="/">TODAS LAS FOTOS</a> </li>
-							<li class="sub-header-link"> <a href="/bodas">BODAS</a> </li>
-							<li class="sub-header-link"> <a href="/despedidas">DESPEDIDAS</a> </li>
-							<li class="sub-header-link"> <a href="/cumpleanos">CUMPLEAÑOS</a> </li>
-              <li class="sub-header-link"> <a href="/exposiciones">EXPOSICIONES</a> </li>
-              <li class="sub-header-link"> <a href="/inauguraciones">INAUGURACIONES</a> </li>
-              <li class="sub-header-link"> <a href="/eventos-varios">EVENTOS VARIOS</a> </li>
-              <li class="sub-header-link"> <a href="/bares">BARES</a> </li>
-              <li class="sub-header-link"> <a href="/posadas">POSADAS</a> </li>
-              <li class="sub-header-link"> <a href="/conciertos">CONCIERTOS</a> </li>
-					  </ul>
-          </li>
-          <li class="header-link">REVISTA</li>
-          <li class="header-link"> <a href="/contactanos">CONTACTO</a> </li>
-          <li class="header-link"> <a href="http://chicmagazine.com.mx">VOLVER AL SITIO</a> </li>
-        </ul>
-      </div>
-      <div class="search-container">
-        <form class="search-form search-item" action="/buscador" method="GET">
-          <input type="text" class="search-input search-hidden" name="text" placeholder="BUSCAR" />
-          <div class="fa fa-search"></div>
-        </form>
-      </div>
+    <div class="container-hamburguer">
+      <span class="fa fa-bars homepage"></span>
     </div>
+    <a href="/" class="main-logo"><img src="https://cdn.zenfolio.net/img/s/v-12/u27397674-o940956710-111.png" title="FotoChic by Chic Magazine" class="logo"/></a>
+    <div class="search-container">
+      <form class="search-form search-item" action="/buscador" method="GET">
+        <input type="text" class="search-input search-hidden" name="text" placeholder="BUSCAR" />
+        <div class="fa fa-search"></div>
+      </form>
+    </div>
+    <ul class="container-list-sections">
+      <li class="header-link">EVENTOS RECIENTES</li>
+      <li class="header-link"><a href="#"> FOTOS <span class="header-item"> ▼</span><a/>
+        <ul class="sub-menu">
+          <li class="sub-header-link"> <a href="/">TODAS LAS FOTOS</a> </li>
+          <li class="sub-header-link"> <a href="/bodas">BODAS</a> </li>
+          <li class="sub-header-link"> <a href="/despedidas">DESPEDIDAS</a> </li>
+          <li class="sub-header-link"> <a href="/cumpleanos">CUMPLEAÑOS</a> </li>
+          <li class="sub-header-link"> <a href="/exposiciones">EXPOSICIONES</a> </li>
+          <li class="sub-header-link"> <a href="/inauguraciones">INAUGURACIONES</a> </li>
+          <li class="sub-header-link"> <a href="/eventos-varios">EVENTOS VARIOS</a> </li>
+          <li class="sub-header-link"> <a href="/bares">BARES</a> </li>
+          <li class="sub-header-link"> <a href="/posadas">POSADAS</a> </li>
+          <li class="sub-header-link"> <a href="/conciertos">CONCIERTOS</a> </li>
+        </ul>
+      </li>
+      <li class="header-link">REVISTA</li>
+      <li class="header-link"> <a href="/contactanos">CONTACTO</a> </li>
+      <li class="header-link"> <a href="http://chicmagazine.com.mx">VOLVER AL SITIO</a> </li>
+    </ul>
   </div>
 </header>

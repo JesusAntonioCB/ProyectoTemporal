@@ -7,7 +7,6 @@
   position: relative;
   width: 100%;
   margin-bottom: $global-margin-bottom;
-  padding-top: $global-padding-top;
   overflow: hidden;
   .media-container{
     .headline{
@@ -23,7 +22,7 @@
       }
       .folder-info-content{
         margin: auto;
-        margin-left: 0;
+        margin-left: 8px;
         margin-top: 0;
         .rute-info{
           max-width: 447px;
@@ -123,7 +122,6 @@
 
 @include one-column{
   .gall-base{
-    padding: 12px 0;
     margin: 0;
     .media-container{
       .headline{

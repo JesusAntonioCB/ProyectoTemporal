@@ -30,16 +30,18 @@ class Menu {
     });
 
     menuIcon.on( 'click', function ( event ) {
-      if(window.innerWidth <= windowWidth) {
-        menuMobile.toggle();
-        headerNBody.toggleClass(activeSidebarClass);
-      } else {
-        menu.toggle();
-        $(this).toggleClass("act");
-        if(!$(this).hasClass('act')){
-          $(".contenedor-notas-block").bind('touchmove', function(e){e.preventDefault()});
-        }
-      }
+      menuMobile.toggle();
+      headerNBody.toggleClass(activeSidebarClass);
+      // if(window.innerWidth <= windowWidth) {
+      //   menuMobile.toggle();
+      //   headerNBody.toggleClass(activeSidebarClass);
+      // } else {
+      //   menu.toggle();
+      //   $(this).toggleClass("act");
+      //   if(!$(this).hasClass('act')){
+      //     $(".contenedor-notas-block").bind('touchmove', function(e){e.preventDefault()});
+      //   }
+      // }
     });
 
     $('.body-content', 'body').on('touchmove', function(e) {

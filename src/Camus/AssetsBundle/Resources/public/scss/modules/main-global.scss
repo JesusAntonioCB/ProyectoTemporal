@@ -60,203 +60,164 @@ ol,ul {
   margin-left: auto
 }
 
-// #userResetPassword, .register-input{
-//   &.warning{
-//     background-color: $color-yellow;
-//   }
-// }
-// #userResetPassword{
-//   margin-top: 10px;
-// }
-// .ui-loader{
-//   display: none;
-// }
-//
-//
-// #sidebar{
-//   display: none;
-//   height: 100%;
-//   width: $sidebar-width;
-//   position: fixed;
-//   z-index: 10;
-//   top: 0;
-//   left: 0;
-//   overflow-x: hidden;
-//   color: $color-black;
-//   background-color: $color-light-shadow-gray;
-//   padding-top: 0;
-//   list-style-type: none;
-//   transform: translatey(0px);
-//   .camus_mobile {
-//     display: none;
-//     position: absolute;
-//     top: 20px;
-//     right: 8%;
-//   }
-//   #piano-user {
-//     width: 90%;
-//     margin: 10px 5%;
-//     .piano-id-container {
-//       iframe {
-//         width: 100% !important;
-//       }
-//     }
-//   }
-//   .container-access{
-//     position: relative;
-//     padding: 10px;
-//     .textBold{
-//       margin-top: 15px;
-//     }
-//   }
-//
-//   .container-today{
-//     padding: 0 10px 0 20px;
-//     .today{
-//       @include text-with-open-sans-bold-color-black;
-//     }
-//     ul{
-//       margin-bottom: 15px;
-//       padding-left: 0;
-//       list-style: none;
-//       @include text-with-open-sans-5-color-night-gray;
-//       font-size: 12px;
-//       line-height: 22px;
-//       li{
-//         display: inline;
-//         margin-right: 10px;
-//       }
-//     }
-//   }
-// }
-//
-// #social-login{
-//   margin: 15px 10px;
-//   .close{
-//     float: left;
-//     width: 30px;
-//     height: 30px;
-//     padding: 3px;
-//     font-size: 24px;
-//   }
-//   .btn-exit,.btn-register,.btn-login{
-//     cursor: pointer;
-//   }
-//   .btn-login, .btn-register, .btn-exit, .btn-profileUser{
-//     float: right;
-//     margin: 0 10px;
-//     padding: 4px 0;
-//     font-size: 16px;
-//   }
-//   .btn-profileUser{
-//     max-width: 120px;
-//     display: block;
-//     margin: 0px;
-//     height: 30px;
-//     overflow: hidden;
-//   }
-//   &::after{
-//     content: "";
-//     clear: both;
-//     display: table;
-//   }
-// }
+#userResetPassword, .register-input{
+  &.warning{
+    background-color: $color-yellow;
+  }
+}
+#userResetPassword{
+  margin-top: 10px;
+}
+.ui-loader{
+  display: none;
+}
+.active-sidebar{
+  transform: translateX($sidebar-width);
+  // position: fixed !important;
+}
+#sidebar{
+  display: none;
+  height: 100%;
+  width: $sidebar-width;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  color: $color-black;
+  background-color: $color-light-shadow-gray;
+  padding-top: 0;
+  list-style-type: none;
+  .camus_mobile {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 8%;
+  }
+  #piano-user {
+    width: 90%;
+    margin: 10px 5%;
+    .piano-id-container {
+      iframe {
+        width: 100% !important;
+      }
+    }
+  }
+  .container-access{
+    position: relative;
+    padding: 10px;
+    .textBold{
+      margin-top: 15px;
+    }
+  }
+
+  .container-today{
+    padding: 0 10px 0 20px;
+    .today{
+      @include text-with-open-sans-bold-color-black;
+    }
+    ul{
+      margin-bottom: 15px;
+      padding-left: 0;
+      list-style: none;
+      @include text-with-open-sans-5-color-night-gray;
+      font-size: 12px;
+      line-height: 22px;
+      li{
+        display: inline;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+#social-login{
+  margin: 15px 10px;
+  .close{
+    float: left;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    font-size: 24px;
+  }
+  .btn-exit,.btn-register,.btn-login{
+    cursor: pointer;
+  }
+  .btn-login, .btn-register, .btn-exit, .btn-profileUser{
+    float: right;
+    margin: 0 10px;
+    padding: 4px 0;
+    font-size: 16px;
+  }
+  .btn-profileUser{
+    max-width: 120px;
+    display: block;
+    margin: 0px;
+    height: 30px;
+    overflow: hidden;
+  }
+  &::after{
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
 
 #main-header{
-  max-width: 1284px;
-  margin: auto;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
   height: 100px;
   z-index: 100;
   .btn-login, .btn-register, .btn-exit{
     cursor: pointer;
   }
   .container-menu{
-    height: 65px;
-    @include three-column{
-      background-size: auto;
+    position: relative;
+    height: 100px;
+    max-width: 1284px;
+    margin: 0 auto;
+    .container-hamburguer{
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%) translateX(-100%);
+      font-size: 22px;
+      color: $color-black;
+      padding-right: 8px;
+      cursor: pointer;
     }
-    @include one-column{
-      height: 45px;
-      background-size: auto 45px;
+    .main-logo{
+      max-width: 384px;
+      max-height: 100px;
+      float: left;
+      .logo{
+        width: 100%;
+      }
     }
-    .content{
-      height: 100%;
-      .main-logo{
-        position: absolute;
-        transform: translate(-32px, 0px);
-        max-width: 384px;
-      }
-      .search-container {
-        position: relative;
-        float: right;
-        top: 43%;
-        .fa-search{
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          cursor: pointer;
-          font-size: 15px;
-          color: gray;
+    .container-list-sections{
+      margin: 0px;
+      padding: 0px;
+      list-style-type: none;
+      white-space: nowrap;
+      overflow: auto;
+      line-height: 100px;
+      @include text-with-open-serif-color-pencil-gray;
+      .header-link{
+        line-height: normal;
+        height: 20px;
+        padding: 5px 10px;
+        font-size: 13px;
+        font-weight: 900;
+        text-decoration: none;
+        display: inline;
+        .header-item{
+          padding-left: 3px;
+          font-size: 8px;
+          position: relative;
+          bottom: 1px;
         }
-      }
-
-      input[type=text] {
-        padding: 3px 0px 3px 10px;
-        margin-top: 8px;
-        font-size: 12px;
-        border: none;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.5) inset;
-        font-weight: bold;
-        background-color: #ffffff;
-        color: #999;
-        border-radius: 16px 16px 16px 16px;
-        display: block;
-        line-height: 16px;
-      }
-
-      .search-container button {
-        float: right;
-        padding: 6px 10px;
-        margin-top: 8px;
-        margin-right: 16px;
-        background: #ddd;
-        font-size: 17px;
-        border: none;
-        cursor: pointer;
-      }
-
-      .container-right{
-        position: relative;
-        top: 50%;
-        left: 390px;
-        .header-link{
-          line-height: 20px;
-          height: 20px;
-          padding: 5px 12px;
-          font-size: 13px;
-          font-weight: 900;
-          display: inline-block;
-          text-decoration: none;
-          .header-item{
-            padding-left: 3px;
-            font-size: 8px;
-            position: relative;
-            bottom: 1px;
-          }
-        }
-
-        .header-link:hover{
-          color:$color-gray-sky;
-        }
-
-        .header-link:hover .sub-header-link{
-          display: block;
-        }
-
-        .header-link:hover .sub-menu{
-          opacity: 1;
-        }
-
         .sub-menu{
           display:grid;
           position:absolute;
@@ -267,148 +228,104 @@ ol,ul {
           z-index: 101;
           .sub-header-link{
             display: none;
+            color: $color-gray-black-chic;
             background-color: $color-white;
             line-height: 46px;
             height: 34px;
             padding: 0px 14px;
             font-size: 14px;
             font-weight: 900;
+            &:hover{
+              color:$color-gray-sky;
+            }
           }
-
-          .sub-header-link:hover{
-           color:$color-gray-sky;
-          }
-
         }
-
-        ul{
-          float: left;
-          margin: 0px;
-          padding: 0px;
-          list-style-type: none;
-          @include text-with-open-serif-color-pencil-gray;
-
-          li{
-            float: left;
-            margin-right: 25px;
-
+        &:hover{
+          color:$color-gray-sky;
+          .sub-header-link{
+            display: block;
+          }
+          .sub-menu{
+            opacity: 1;
           }
         }
       }
     }
-  }
-  .container-submenu{
-    height: $submenus-height;
-    background-color: $color-white;
-    .content{
-      width: 1284px;
-      padding: 0 15px;
-      margin: 0 auto;
-      .fixed-sections, .container-list-sections{
-        line-height: $submenus-height;
-      }
-      .fixed-sections{
-        float: right;
-        margin-left: 10px;
-        font-size: 14px;
-        font-weight: 600;
-        text-transform: uppercase;
-        color: $color-white;
+    .search-container {
+      float: right;
+      display: table;
+      position: relative;
+      margin: 0 10px;
+      height: 100px;
+      .search-item{
+        display: table-cell;
+        vertical-align: middle;
+        .fa-search{
+          position: absolute;
+          top: 42px;
+          right: 10px;
+          cursor: pointer;
+          font-size: 15px;
+          color: gray;
+        }
+        input[type=text] {
+          padding: 3px 0px 3px 10px;
+          font-size: 12px;
+          border: none;
+          box-shadow: 0 1px 2px rgba(0,0,0,0.5) inset;
+          font-weight: bold;
+          background-color: #ffffff;
+          color: #999;
+          border-radius: 16px 16px 16px 16px;
+          display: block;
+          line-height: 16px;
+        }
       }
     }
-  }
-  @include three-column{
-    max-width: 966px;
-  }
-  @include skyscraper-media{
-    max-width: 966px;
+    &:after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+    @include skyscraper-media{
+      max-width: 966px;
+    }
+    @include three-column{
+      max-width: 966px;
+      background-size: auto;
+    }
+    @include two-column{
+      height: 90px;
+      max-width: 618px;
+      .container-hamburguer{
+        display: block;
+      }
+      .main-logo{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        max-height: 90px;
+      }
+      .container-list-sections{
+        display: none;
+      }
+      .search-container{
+        display: none;
+      }
+    }
+    @include one-column{
+      height: 71px;
+      background-size: auto 45px;
+    }
   }
   @include two-column{
-    max-width: 618px;
+    height: 90px;
   }
   @include one-column{
-    max-width: 320px;
+    height: 71px;
   }
 }
-
-@include three-column{
-  #main-header{
-    .container-menu{
-      .content{
-        max-width: 1604px;
-      }
-    }
-    .container-submenu{
-      .content{
-        max-width: 1604px;
-      }
-    }
-  }
-};
-@include skyscraper-media{
-  .container-right ul{
-    width: 600px;
-  }
-  .search-container{
-    top: 73%;
-  }
-};
-@include two-column{
-  .body-content>.content{
-    padding: 0px !important;
-  }
-  #main-header{
-    .container-menu{
-      .content{
-        max-width: 968px;
-        padding: 0;
-        .main-logo{
-          max-width: 200px;
-          transform: translate(-10px, 20px);
-        }
-        .container-right{
-          display: flex;
-          top: 40%;
-          left: 200px;
-          width: 500px;
-        }
-        .search-container{
-          top: 0%;
-          right: 20px;
-        }
-      }
-    }
-  }
-};
-@include one-column{
-  #main-header{
-    .container-menu{
-      .content{
-        max-width: 648px;
-        padding: 0;
-        .main-logo{
-          max-width: 150px;
-        }
-        .container-right{
-          top: 0%;
-          left: 143px;
-          width: 243px;
-          .sub-menu{
-            left: 0px;
-            top: 40px;
-          }
-        }
-        .search-container{
-          top: -100%;
-          right: 15px;
-          .search-input {
-            width: 100px;
-          }
-        }
-      }
-    }
-  }
-};
 
 .body-content{
   >.content{

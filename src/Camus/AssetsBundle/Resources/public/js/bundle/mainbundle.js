@@ -36148,19 +36148,17 @@ function () {
         }
       });
       menuIcon.on('click', function (event) {
-        if (window.innerWidth <= windowWidth) {
-          menuMobile.toggle();
-          headerNBody.toggleClass(activeSidebarClass);
-        } else {
-          menu.toggle();
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).toggleClass("act");
-
-          if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass('act')) {
-            jquery__WEBPACK_IMPORTED_MODULE_0___default()(".contenedor-notas-block").bind('touchmove', function (e) {
-              e.preventDefault();
-            });
-          }
-        }
+        menuMobile.toggle();
+        headerNBody.toggleClass(activeSidebarClass); // if(window.innerWidth <= windowWidth) {
+        //   menuMobile.toggle();
+        //   headerNBody.toggleClass(activeSidebarClass);
+        // } else {
+        //   menu.toggle();
+        //   $(this).toggleClass("act");
+        //   if(!$(this).hasClass('act')){
+        //     $(".contenedor-notas-block").bind('touchmove', function(e){e.preventDefault()});
+        //   }
+        // }
       });
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('.body-content', 'body').on('touchmove', function (e) {
         if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hasClass("active-sidebar")) {

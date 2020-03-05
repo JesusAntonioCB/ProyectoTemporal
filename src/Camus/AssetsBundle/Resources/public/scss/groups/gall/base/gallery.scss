@@ -23,7 +23,7 @@
       }
       .folder-info-content{
         margin: auto;
-        margin-left: 0;
+        margin-left: 8px;
         margin-top: 4px;
         .rute-info{
           max-width: 447px;
@@ -374,6 +374,30 @@
           }
         }
       }
+      @include three-column{
+        display: inline-block !important;
+        .menu-control-gallery{
+          .top-content{
+            .buttons-top-content{
+              display: block;
+              .subbuttons{
+                display: inline-block;
+              }
+            }
+          }
+        }
+      }
+      @include one-column{
+        .menu-control-gallery{
+          .top-content{
+            .buttons-top-content{
+              .subbuttons{
+                display: block;
+              }
+            }
+          }
+        }
+      }
     }
     .firms{
       white-space: nowrap;
@@ -414,8 +438,9 @@
     .selectable-info-conotainer{
       .menu-selected-content{
         position: relative;
-        padding: 4px 0px;
+        padding: 4px 5px;
         color: #5e5e5e;
+        font-size: 12px;
         .selected-buttons{
           padding: 0px 8px;
           display: block;
@@ -426,7 +451,6 @@
         }
         .selected-text{
           text-align: center;
-          font-size: 12px;
           text-transform: uppercase;
           letter-spacing: 0.5px;
         }
@@ -437,6 +461,25 @@
           right: 0;
           top: 3px;
         }
+      }
+      @include two-column{
+        .menu-selected-content{
+          .selected-buttons{
+            position: relative;
+            padding: 5px 0;
+          }
+          .selected-text{
+            padding: 0px 8px;
+            text-align: left;
+            padding: 5px 0;
+          }
+          .selected-number{
+            position: relative;
+            padding: 5px 0;
+          }
+        }
+      }
+      @include one-column{
       }
     }
   }
@@ -462,7 +505,7 @@
           font-weight: normal;
           font-style: normal;
           text-transform: uppercase;
-          color: #5e5e5e;
+          color: #5e5e5e!important;
         }
         .tabs, .tab{
           position: relative;
@@ -474,13 +517,9 @@
           border-right-width: 1px;
           width: 120px;
           text-align: center;
-        }
-        .last{
-          border-right-style: solid;
-          border-right-width: 1px;
-          &:hover{
-            text-decoration: none;
-            color: $color-black;
+          .last{
+            border-right-style: solid;
+            border-right-width: 1px;
           }
         }
         .active{
@@ -605,51 +644,51 @@
             margin: 0px auto;
             width: 195px;
             height: 85px;
-          .ShareButton{
-            display: block;
-            float: left;
-            margin: 0px;
-            width: 65px;
-            text-align: center;
-            position: relative;
-            cursor: pointer;
-              &:hover {
-                text-decoration: underline;
-                color: #7C99AF;
-              }
-            .sfs-icon{
-              margin: 0px 5px;
-              width: 51px;
-              height: 50px;
-              .fa-facebook-official{
-                color: $color-facebook;
-                font-size: 50px;
-                &:hover{
-                  color: #7C99AF;
-                }
-              }
-              .fa-twitter{
-                color: $color-twitter;
-                font-size: 50px;
-                &:hover{
-                  color: #7C99AF;
-                }
-              }
-              .fa-whatsapp{
-                color: $color-whatsapp;
-                font-size: 50px;
-                &:hover{
-                  color: #7C99AF;
-                }
-              }
-            }
-            span{
+            .ShareButton{
               display: block;
-              padding: 5px 0px 0px;
-              font-size: 11px;
+              float: left;
+              margin: 0px;
+              width: 65px;
+              text-align: center;
+              position: relative;
+              cursor: pointer;
+                &:hover {
+                  text-decoration: underline;
+                  color: #7C99AF;
+                }
+              .sfs-icon{
+                margin: 0px 5px;
+                width: 51px;
+                height: 50px;
+                .fa-facebook-official{
+                  color: $color-facebook;
+                  font-size: 50px;
+                  &:hover{
+                    color: #7C99AF;
+                  }
+                }
+                .fa-twitter{
+                  color: $color-twitter;
+                  font-size: 50px;
+                  &:hover{
+                    color: #7C99AF;
+                  }
+                }
+                .fa-whatsapp{
+                  color: $color-whatsapp;
+                  font-size: 50px;
+                  &:hover{
+                    color: #7C99AF;
+                  }
+                }
+              }
+              span{
+                display: block;
+                padding: 5px 0px 0px;
+                font-size: 11px;
+              }
             }
           }
-        }
         }
       }
     }
@@ -839,7 +878,6 @@
 
 @include one-column{
   .gall-base{
-    padding: 12px 0;
     margin: 0;
     .media-container{
       .headline{
