@@ -64,6 +64,11 @@
             }
           }
         }
+        &:after{
+          content: '';
+          display: table;
+          clear: both;
+        }
       }
       .rights-reserved{
         display: none;
@@ -91,8 +96,13 @@
             font-size: 22px;
           }
         }
+        &:after{
+          content: '';
+          display: table;
+          clear: both;
+        }
       }
-      @include skyscraper-media{
+      @include three-column{
         .sections{
           transform: translate(-83px, 13px);
         }
@@ -102,17 +112,48 @@
       }
       @include two-column{
         .sections{
-          transform: translate(19px, 13px);
-          width: 500px;
+          transform: translate(-75px, 13px);
+          width: 397px;
+          ul{
+            padding-left: 0;
+          }
         }
         .logo-container{
+          clear: both;
           transform: translate(-18px, -51px);
         }
       }
       @include one-column{
+        height: auto;
+        display: flex;
+        flex-direction: column-reverse;
         .sections{
-          width: 300px;
+          transform: translate(0);
+          width: 100%;
+          ul{
+            li{
+              width: 100%;
+              line-height: normal;
+              padding: 0;
+              text-align: center;
+            }
+            .footer-item{
+              display: none;
+            }
+          }
         }
+        .logo-container{
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 50%;
+          transform: translate(0);
+        }
+      }
+      &:after{
+        content: '';
+        display: table;
+        clear: both;
       }
     }
     .right{
@@ -192,6 +233,37 @@
         }
       }
     }
+    @include two-column{
+      .rights-reserved{
+        float: none;
+        text-align: center;
+      }
+      .social-network{
+        bottom: 8px;
+        transform: translateX(-50%);
+      }
+    }
+    @include one-column{
+      display: flex;
+      flex-direction: column-reverse;
+      .rights-reserved{
+        transform: translateX(0);
+        margin: 10px 0;
+      }
+      .social-network{
+        position: relative;
+        left: 0;
+        width: 100%;
+        bottom: 0;
+        transform: translateX(0%);
+        margin-bottom: 10px;
+        .text{
+          float: none;
+          margin: 0;
+          text-align: center;
+        }
+      }
+    }
   }
   .footer-red-social{
     position: absolute;
@@ -224,6 +296,13 @@
         color: $color-facebook-dark;
       }
     }
+    @include one-column{
+      right: 0;
+      max-width: 320px;
+      height: auto;
+      position: relative;
+      text-align: center;
+    }
   }
   @include one-column{
     .footer-red-social{
@@ -238,8 +317,10 @@
   }
   @include two-column{
     max-width: 618px;
+    height: 130px;
   }
   @include one-column{
     max-width: 320px;
+    height: auto;
   }
 }
