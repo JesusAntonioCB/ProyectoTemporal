@@ -15,5 +15,6 @@
   {#<div class="container-today">
     {{ render_esi(controller('@CamusFrontEnd/Default/topiclist')) }}
   </div>#}
+  {{ render(controller('CamusFrontEndBundle:Default:menu', {name: 'menu-mobile'})) }}
   {# {{ render_esi(controller('@CamusFrontEnd/Default/menu', {name: 'menu-mobile'})) }} #}
 </div>

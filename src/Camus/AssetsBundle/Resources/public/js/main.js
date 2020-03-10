@@ -144,12 +144,16 @@ class Main extends React.Component {
                 var socialUrl = $('meta[property^="og:url"]').attr("content"),
                     socialTitle = $('meta[property^="og:title"]').attr("content");
             } else {
+              console.log($(this).attr('class') );
+              console.log(socialUrl);
                 var socialUrl = $(this).siblings("span[data-social-link]");
                 if (socialUrl.length) {
                     var socialTitle = $(socialUrl[0]).attr('data-social-title');
                     socialUrl = $(socialUrl[0]).attr('data-social-link');
                 }
             }
+            console.log(socialTitle);
+            console.log(socialUrl);
             ReactDOM.render( < ModuleShareButtons
             url = {socialUrl}
             title = {socialTitle}

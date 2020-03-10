@@ -17,6 +17,33 @@ class Header  {
     $(".to-top", "#main-footer").click(function(){
       $('html, body').animate({scrollTop : 0},1000);
     });
+    $(".header-link").hover(function(){
+      console.log("entrada");
+      $(this).find(".sub-menu").offset();
+      var width= $(this).width();
+      var left= $(this).position().left;
+      // var width= $(this).find(".sub-menu").width();
+      // var left= $(this).find(".sub-menu").offset().left;
+      console.log(left + width);
+      console.log(width);
+      console.log(left);
+      var position= left;
+      $(this).find(".sub-menu").css("left",position);
+      $(this).find(".sub-menu").css("top",top);
+    }, function(){
+      console.log("salida");
+      var width= $(this).width();
+      var left= $(this).position().left;
+      var top= $(this).position().top;
+      // var width= $(this).find(".sub-menu").width();
+      // var left= $(this).find(".sub-menu").offset().left;
+      console.log(left + width);
+      console.log(width);
+      console.log(left);
+      var position= left;
+      $(this).find(".sub-menu").css("left",position);
+      $(this).find(".sub-menu").css("top",top);
+    });
     window.addEventListener( "scroll", function( event ) {
       if($(document).scrollTop() >= heightHeader){
         $(elEditions+","+elToday+","+elTitleNote+","+elModalGigya).addClass("view-small");

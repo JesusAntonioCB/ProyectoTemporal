@@ -411,6 +411,8 @@ function (_React$Component) {
           var socialUrl = jquery__WEBPACK_IMPORTED_MODULE_2___default()('meta[property^="og:url"]').attr("content"),
               socialTitle = jquery__WEBPACK_IMPORTED_MODULE_2___default()('meta[property^="og:title"]').attr("content");
         } else {
+          console.log(jquery__WEBPACK_IMPORTED_MODULE_2___default()(this).attr('class'));
+          console.log(socialUrl);
           var socialUrl = jquery__WEBPACK_IMPORTED_MODULE_2___default()(this).siblings("span[data-social-link]");
 
           if (socialUrl.length) {
@@ -419,6 +421,8 @@ function (_React$Component) {
           }
         }
 
+        console.log(socialTitle);
+        console.log(socialUrl);
         react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CamusGlobalComponents_ModuleShareButtons_jsx__WEBPACK_IMPORTED_MODULE_10__["default"], {
           url: socialUrl,
           title: socialTitle,
@@ -36058,6 +36062,33 @@ function () {
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('html, body').animate({
           scrollTop: 0
         }, 1000);
+      });
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(".header-link").hover(function () {
+        console.log("entrada");
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find(".sub-menu").offset();
+        var width = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).width();
+        var left = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).position().left; // var width= $(this).find(".sub-menu").width();
+        // var left= $(this).find(".sub-menu").offset().left;
+
+        console.log(left + width);
+        console.log(width);
+        console.log(left);
+        var position = left;
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find(".sub-menu").css("left", position);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find(".sub-menu").css("top", top);
+      }, function () {
+        console.log("salida");
+        var width = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).width();
+        var left = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).position().left;
+        var top = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).position().top; // var width= $(this).find(".sub-menu").width();
+        // var left= $(this).find(".sub-menu").offset().left;
+
+        console.log(left + width);
+        console.log(width);
+        console.log(left);
+        var position = left;
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find(".sub-menu").css("left", position);
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find(".sub-menu").css("top", top);
       });
       window.addEventListener("scroll", function (event) {
         if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).scrollTop() >= heightHeader) {

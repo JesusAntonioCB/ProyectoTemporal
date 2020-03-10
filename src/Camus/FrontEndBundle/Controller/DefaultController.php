@@ -49,7 +49,7 @@ class DefaultController extends Controller
     //   if(count($arrayCss)){
     //     $resultFileCss = array_values(array_unique($arrayCss));
     //   }
-    //   $response = $this->render('ApplicationCamusAssetsBundle:Content:content.html.twig', array(
+    //   $response = $this->render('@CamusAssets/Content/content.html.twig', array(
     //     'meta' => $metas,
     //     'keywords' => $keywords,
     //     'modules' => $modules,
@@ -140,7 +140,7 @@ class DefaultController extends Controller
         "season" => $seasonId,
         "title" => ""
       );
-      array_push($service["templates"],$this->container->get('templating')->render('ApplicationCamusAssetsBundle:Groups:sn/stadistics.html.twig', array('module' => $moduleModel)));
+      array_push($service["templates"],$this->container->get('templating')->render('@CamusAssets/Groups/sn/stadistics.html.twig', array('module' => $moduleModel)));
     }
 
     return new JsonResponse($service);
@@ -193,8 +193,8 @@ class DefaultController extends Controller
       }
     }
 
-    $service["standing"] = $this->container->get('templating')->render('ApplicationCamusAssetsBundle:Groups:sn/stadistics.html.twig', array('module' => $moduleModelS));
-    $service["calendar"] = $this->container->get('templating')->render('ApplicationCamusAssetsBundle:Groups:sn/stadistics.html.twig', array('module' => $moduleModelC));
+    $service["standing"] = $this->container->get('templating')->render('@CamusAssets/Groups/sn/stadistics.html.twig', array('module' => $moduleModelS));
+    $service["calendar"] = $this->container->get('templating')->render('@CamusAssets/Groups/sn/stadistics.html.twig', array('module' => $moduleModelC));
 
     return new JsonResponse($service);
   }
@@ -221,8 +221,8 @@ class DefaultController extends Controller
       "round" => $roundId,
       "title" => ""
     );
-    $service["standing"] = $this->container->get('templating')->render('ApplicationCamusAssetsBundle:Groups:sn/stadistics.html.twig', array('module' => $moduleModelS));
-    $service["calendar"] = $this->container->get('templating')->render('ApplicationCamusAssetsBundle:Groups:sn/stadistics.html.twig', array('module' => $moduleModelC));
+    $service["standing"] = $this->container->get('templating')->render('@CamusAssets/Groups/sn/stadistics.html.twig', array('module' => $moduleModelS));
+    $service["calendar"] = $this->container->get('templating')->render('@CamusAssets/Groups/sn/stadistics.html.twig', array('module' => $moduleModelC));
 
     return new JsonResponse($service);
   }
@@ -309,7 +309,7 @@ class DefaultController extends Controller
       $pageObj = $this->getPagination(1);
       $typesList = (object)['NWS' => 'news', 'ENT' => 'news', 'CHR' => 'news', 'FIR' => 'opinion', 'DEB' => 'opinion', 'PGL' => 'basic', 'MAM' => 'event', 'EDT' => 'event', 'VID' => 'basic', 'CRT' => 'basic', 'POS' => 'opinion'];
       $detailType = $typesList->$contentType;
-      return $this->render('ApplicationCamusAssetsBundle:Fixtures:article.html.twig', array(
+      return $this->render('@CamusAssets/Fixtures/article.html.twig', array(
         'detailType' => $detailType,
         'modules' => $modules,
         'contentId' => $contentId,
@@ -399,7 +399,7 @@ class DefaultController extends Controller
       'place' => $place
     ));
 
-    return $this->render('ApplicationCamusAssetsBundle:Content:content-indivual.html.twig', array('modules' => $modules));
+    return $this->render('@CamusAssets/Content/content-indivual.html.twig', array('modules' => $modules));
   }
 
   /**
@@ -411,7 +411,7 @@ class DefaultController extends Controller
       'date' => $date
     ));
 
-    return $this->render('ApplicationCamusAssetsBundle:Content:content-indivual.html.twig', array('modules' => $modules));
+    return $this->render('@CamusAssets/Content/content-indivual.html.twig', array('modules' => $modules));
   }
 
   public function letterAction($letter = 'a'){
@@ -482,7 +482,7 @@ class DefaultController extends Controller
       $resultFileCss = array_values(array_unique($arrayCss));
     }
 
-    return $this->render('ApplicationCamusAssetsBundle:Content:content.html.twig', array(
+    return $this->render('@CamusAssets/Content/content.html.twig', array(
       'meta' => '',
       'keywords' => $keywords,
       'modules' => $modules,
@@ -558,7 +558,7 @@ class DefaultController extends Controller
       $resultFileCss = array_values(array_unique($arrayCss));
     }
 
-    return $this->render('ApplicationCamusAssetsBundle:Content:content.html.twig', array(
+    return $this->render('@CamusAssets/Content/content.html.twig', array(
       'meta' => '',
       'modules' => $modules,
       'headerType' => 1,
@@ -593,7 +593,7 @@ class DefaultController extends Controller
       $body['limit'] = $_POST["limit"];
       $service = $this->postFromApi($route, $body);
       if(isset($service)) {
-        $response = $this->render('ApplicationCamusAssetsBundle:Fixtures:element-loader.html.twig', array(
+        $response = $this->render('@CamusAssets/Fixtures/element-loader.html.twig', array(
           'modules' => $service->data,
           'boardColor' => "#b10b1f"
         ));
@@ -703,7 +703,7 @@ class DefaultController extends Controller
     $token = $request->get('reset_token');
 
     if(isset($token)) {
-      return $this->render('ApplicationCamusAssetsBundle:Fixtures:reset-password.html.twig',
+      return $this->render('@CamusAssets/Fixtures/reset-password.html.twig',
       array(
         'headerType' => 9,
         'currentSection' => 'reset-password'
@@ -748,7 +748,7 @@ class DefaultController extends Controller
 
     $termsSections = array("/aviso-legal-y-de-privacidad", "/contactanos", "/suscripciones/perfil"); // Terms sections
     if(in_array($slug, $termsSections)){
-      return $this->render('ApplicationCamusAssetsBundle:Templates:terms-conditions/base.html.twig',
+      return $this->render('@CamusAssets/Templates/terms-conditions/base.html.twig',
       array(
         'boardColor' => '#b10b1f',
         'headerType' => 9,
@@ -1059,7 +1059,7 @@ class DefaultController extends Controller
         if(count($arrayCss)){
           $resultFileCss = array_values(array_unique($arrayCss));
         }
-        $responseRender = $this->render('ApplicationCamusAssetsBundle:Content:content.html.twig', array(
+        $responseRender = $this->render('@CamusAssets/Content/content.html.twig', array(
           'meta' => $metas,
           'keywords' => $keywords,
           'modules' => $modules,
@@ -1197,7 +1197,7 @@ class DefaultController extends Controller
         if(count($arrayCss)){
           $resultFileCss = array_values(array_unique($arrayCss));
         }
-        return $this->render('ApplicationCamusAssetsBundle:Detail:detail.html.twig', array(
+        return $this->render('@CamusAssets/Detail/detail.html.twig', array(
           'modules' => $modules,
           'content' => $content,
           'contentId' => $contentId,
@@ -1222,8 +1222,180 @@ class DefaultController extends Controller
   }
 
   public function menuAction($name = null){
-    $menu = $this->getMenu('Home');
-    $response = $this->render('ApplicationCamusAssetsBundle:Templates:menu/menu.html.twig', array(
+    // $menu = $this->getMenu('Home');
+    $menu= [
+      "sections" =>[
+        (object)[
+          "id" => 23,
+          "identifier" => "WebFotoChic",
+          "position"=> 1,
+          "title"=> "EVENTOS RECIENTES",
+          "tag"=> "EVENTOS RECIENTES",
+          "url"=> "#",
+          "iconType"=> null,
+          "iconUrl"=> null,
+          "backgroundType"=> null,
+          "backgroundUrl"=> null,
+          "contentType"=> null,
+          "classType"=> null,
+          "startDate"=> null,
+          "endDate"=> null,
+          "visible"=> true,
+          "slug"=> (object)[
+            "id"=> 2246,
+            "slug"=> "#",
+            "board"=> (object)[
+              "id"=> 4445,
+              "disc"=> "BRD",
+            ],
+            "section"=> null,
+            "place"=> null,
+          ],
+          "colorTheme"=> "rgba(95,123,137,1)",
+          "tagConfig"=> null,
+          "idCamus"=> 4445,
+          "isTemplate"=> false,
+          "section"=> null,
+          "data"=> [],
+        ],
+        (object)[
+          "id" => 23,
+          "identifier" => "WebFotoChic",
+          "position"=> 1,
+          "title"=> "FOTOS",
+          "tag"=> "FOTOS",
+          "url"=> "#",
+          "iconType"=> null,
+          "iconUrl"=> null,
+          "backgroundType"=> null,
+          "backgroundUrl"=> null,
+          "contentType"=> null,
+          "classType"=> null,
+          "startDate"=> null,
+          "endDate"=> null,
+          "visible"=> true,
+          "slug"=> (object)[
+            "id"=> 2246,
+            "slug"=> "#",
+            "board"=> (object)[
+              "id"=> 4445,
+              "disc"=> "BRD",
+            ],
+            "section"=> null,
+            "place"=> null,
+          ],
+          "colorTheme"=> "rgba(95,123,137,1)",
+          "tagConfig"=> null,
+          "idCamus"=> 4445,
+          "isTemplate"=> false,
+          "section"=> null,
+          "data"=> [],
+        ],
+        (object)[
+          "id" => 23,
+          "identifier" => "WebFotoChic",
+          "position"=> 1,
+          "title"=> "REVISTA",
+          "tag"=> "REVISTA",
+          "url"=> "#",
+          "iconType"=> null,
+          "iconUrl"=> null,
+          "backgroundType"=> null,
+          "backgroundUrl"=> null,
+          "contentType"=> null,
+          "classType"=> null,
+          "startDate"=> null,
+          "endDate"=> null,
+          "visible"=> true,
+          "slug"=> (object)[
+            "id"=> 2246,
+            "slug"=> "#",
+            "board"=> (object)[
+              "id"=> 4445,
+              "disc"=> "BRD",
+            ],
+            "section"=> null,
+            "place"=> null,
+          ],
+          "colorTheme"=> "rgba(95,123,137,1)",
+          "tagConfig"=> null,
+          "idCamus"=> 4445,
+          "isTemplate"=> false,
+          "section"=> null,
+          "data"=> [],
+        ],
+        (object)[
+          "id" => 23,
+          "identifier" => "WebFotoChic",
+          "position"=> 1,
+          "title"=> "CONTACTO",
+          "tag"=> "CONTACTO",
+          "url"=> "/contactanos",
+          "iconType"=> null,
+          "iconUrl"=> null,
+          "backgroundType"=> null,
+          "backgroundUrl"=> null,
+          "contentType"=> null,
+          "classType"=> null,
+          "startDate"=> null,
+          "endDate"=> null,
+          "visible"=> true,
+          "slug"=> (object)[
+            "id"=> 2246,
+            "slug"=> "/contactanos",
+            "board"=> (object)[
+              "id"=> 4445,
+              "disc"=> "BRD",
+            ],
+            "section"=> null,
+            "place"=> null,
+          ],
+          "colorTheme"=> "rgba(95,123,137,1)",
+          "tagConfig"=> null,
+          "idCamus"=> 4445,
+          "isTemplate"=> false,
+          "section"=> null,
+          "data"=> [],
+        ],
+        (object)[
+          "id" => 23,
+          "identifier" => "WebFotoChic",
+          "position"=> 1,
+          "title"=> "VOLVER AL SITIO",
+          "tag"=> "VOLVER AL SITIO",
+          "url"=> "/",
+          "iconType"=> null,
+          "iconUrl"=> null,
+          "backgroundType"=> null,
+          "backgroundUrl"=> null,
+          "contentType"=> null,
+          "classType"=> null,
+          "startDate"=> null,
+          "endDate"=> null,
+          "visible"=> true,
+          "slug"=> (object)[
+            "id"=> 2246,
+            "slug"=> "/",
+            "board"=> (object)[
+              "id"=> 4445,
+              "disc"=> "BRD",
+            ],
+            "section"=> null,
+            "place"=> null,
+          ],
+          "colorTheme"=> "rgba(95,123,137,1)",
+          "tagConfig"=> null,
+          "idCamus"=> 4445,
+          "isTemplate"=> false,
+          "section"=> null,
+          "data"=> [],
+        ]
+      ],
+      "breadcrumb" =>[],
+      "selectedSection" =>"",
+      "selectedSectionFather" =>"",
+    ];
+    $response = $this->render('@CamusAssets/Templates/menu/menu.html.twig', array(
       'name' => $name,
       'jsonData' => $menu
     ));
@@ -1233,7 +1405,7 @@ class DefaultController extends Controller
   public function sectionsAction($sectionUrl){
     $section = "Home";
     $menu = $this->getMenu($section);
-    $response = $this->render('ApplicationCamusAssetsBundle:Slices:sections.html.twig', array(
+    $response = $this->render('@CamusAssets/Slices/sections.html.twig', array(
       'jsonData' => $menu,
       'section' => $sectionUrl
     ));
@@ -1242,7 +1414,7 @@ class DefaultController extends Controller
   }
   public function breadcrumbsAction($headerType, $section, $part, $currentPath){
     $menu = $this->getMenu($section, $currentPath);
-    $response = $this->render('ApplicationCamusAssetsBundle:Slices:breadcrumbs.html.twig', array(
+    $response = $this->render('@CamusAssets/Slices/breadcrumbs.html.twig', array(
       'part' => (int)$part,
       'jsonData' => $menu,
       'headerType' => $headerType
@@ -1338,7 +1510,7 @@ class DefaultController extends Controller
 
   public function modulerenderAction($module, $boardColor = null, $parentId = null){
     if($module == "ticker"){
-      $response = $this->render('ApplicationCamusAssetsBundle:Groups:sli/base.html.twig', array(
+      $response = $this->render('@CamusAssets/Groups/sli/base.html.twig', array(
         'module' => array("template" => "ticker_caliente"),
       ));
     }else{
@@ -1346,7 +1518,7 @@ class DefaultController extends Controller
       $module = $service->data;
       $module = $this->getIndividualModule($module);
       $type = $this->splitTemplate($module['type']);
-      $response = $this->render('ApplicationCamusAssetsBundle:Groups:'.$type[0].'/'.$type[1].'.html.twig', array(
+      $response = $this->render('@CamusAssets/Groups/'.$type[0].'/'.$type[1].'.html.twig', array(
         'module' => $module,
         'boardColor' => $boardColor,
         'parentId' => $parentId
@@ -1358,7 +1530,7 @@ class DefaultController extends Controller
   }
   public function themesAction(){
     $service = $this->postFromApi('/topic_filter/a', array())->data;
-    $response = $this->render('ApplicationCamusAssetsBundle:Slices:ai_theme.html.twig', array(
+    $response = $this->render('@CamusAssets/Slices/ai_theme.html.twig', array(
       'jsonDataTopics' => $service
     ));
     $response->setSharedMaxAge(60);
@@ -1377,7 +1549,7 @@ class DefaultController extends Controller
     else{
       $section = $fullSlug[0];
     }
-    $response = $this->render('ApplicationCamusAssetsBundle:Slices:places.html.twig', array(
+    $response = $this->render('@CamusAssets/Slices/places.html.twig', array(
       'jsonDataPlaces' => $service,
       'currentSection' => $section
     ));
@@ -1388,7 +1560,7 @@ class DefaultController extends Controller
 
   public function topicListAction(){
     $service = $this->postFromApi('/menu_tags', array())->data;
-    $response = $this->render('ApplicationCamusAssetsBundle:Slices:topics.html.twig', array(
+    $response = $this->render('@CamusAssets/Slices/topics.html.twig', array(
       'jsonDataTopics' => $service
     ));
     $response->setSharedMaxAge(300);
@@ -1397,7 +1569,7 @@ class DefaultController extends Controller
 
   public function latestTopicsAction(){
     $service = $this->postFromApi('/menu_tags', array())->data;
-    $response = $this->render('ApplicationCamusAssetsBundle:Slices:latest-topics.html.twig', array(
+    $response = $this->render('@CamusAssets/Slices/latest-topics.html.twig', array(
       'jsonDataTopics' => $service
     ));
     $response->setSharedMaxAge(300);
