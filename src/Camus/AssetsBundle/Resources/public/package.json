@@ -17,7 +17,7 @@
     "kaleidoscopejs": "^1.0.18",
     "load-script": "^1.0.0",
     "minimatch": "^3.0.4",
-    "moment-timezone": "^0.5.26",
+    "moment-timezone": "^0.5.35",
     "natives": "^1.1.6",
     "nestable": "^0.2.0",
     "rc-progress": "^2.5.1",
